@@ -1,0 +1,216 @@
+\documentclass[compress,aspectratio=169]{ctexbeamer}
+
+\usepackage{upgreek}
+
+\usetheme{Luebeck}
+\useoutertheme{miniframes}
+
+\usecolortheme{seahorse}
+\usecolortheme{orchid}
+
+\usefonttheme{structuresmallcapsserif}
+
+\AtBeginSection[]
+{
+	\begin{frame}
+        \frametitle{目录}
+		\tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+	\end{frame}
+}
+\AtBeginSubsection[]
+{
+	\begin{frame}
+        \frametitle{目录}
+		\tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+	\end{frame}
+}
+
+%设定中文字体
+\setCJKmainfont[AutoFakeSlant=0.25]{Noto Serif CJK SC}      %谷歌衬线字体
+\setCJKsansfont[AutoFakeSlant=0.25]{Noto Sans CJK SC}       %谷歌无衬线字体
+\setCJKmonofont[AutoFakeBold,AutoFakeSlant=0.25]{FangSong}  %仿宋字体
+
+\setlength{\parskip}{6pt}   %段落间距为6pt
+
+\title{集创赛~安谋科技杯小组}
+\subtitle{选题原因与初步规划}
+
+\author{棱镜\textsc{PrisM}项目组}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{组员信息}
+    \begin{center}
+        棱镜\textsc{PrisM}项目组：李宇轩、张岩、李铭杰
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{总目录}
+    \tableofcontents
+\end{frame}
+
+\section{选题原因}
+
+\subsection{杯赛信息}
+
+\begin{frame}[fragile]
+    \frametitle{杯赛名称}
+    \begin{center}
+        \large
+        数字与SoC设计赛道\qquad 
+        安谋科技（Arm China）杯
+    \end{center}\vspace{3ex}
+    \begin{center}
+        \url{http://univ.ciciec.com/nd.jsp?id=553#_jcp=1}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{杯赛题目}
+    \begin{center}
+        \large
+        基于Arm处理器的智能游戏机设计
+    \end{center}
+\end{frame}
+
+\subsection{杯赛间的对比}
+\begin{frame}
+    \frametitle{赛道特点}
+    我们希望参与和FPGA有关的杯赛，故关注以下赛道
+    \begin{itemize}
+        \item \textbf{数字与SoC设计赛道}：在FPGA上可以使用CPU，硬软件代码相结合。
+        \item \textbf{FPGA设计与应用赛道}：在FPGA上不能使用CPU，纯硬件代码，难度偏高。
+        \item \textbf{芯片设计与应用本科赛道}：本科赛道，部分题目涉及FPGA。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{安谋科技杯的优势}
+    \begin{enumerate}
+        \item 硬件代码（Verilog）与软件代码（C）相结合，相对容易一些。
+        \item 杯赛任务目标明确，思路清晰（相较雨骤杯、Robei杯）。
+        \item 杯赛的设计目标是游戏机，竞争相对公平（相较景嘉微杯、芯原杯）
+        \item 而且设计游戏机听上去也比较吸引人~:)
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{安谋科技杯的劣势}
+    \begin{enumerate}
+        \item 数字与Soc设计赛道并非纯本科生赛道，存在与研究生的竞争压力。
+        \item 数字与Soc设计赛道的报名人数，是每年各赛道中最多的。
+    \end{enumerate}
+\end{frame}
+
+\section{初步规划}
+
+\subsection{关于FPGA芯片的选择}
+
+\begin{frame}[fragile]
+    \frametitle{芯片特点}
+    杯赛允许使用的FPGA芯片有两款：安路科技的EG4S20、安路科技的PH1A60。
+
+    安路科技是国内一家专注于FPGA业务的公司\footnote{\url{https://www.anlogic.com/}}
+    \begin{itemize}
+        \item EG4S20隶属于其SALEAGLE4（猎鹰）系列\footnote{\url{https://www.anlogic.com/product/fpga/saleagle/eg4}}，$\text{LUTs}=19600$
+        \item PH1A60隶属于其SALPHOENIX（凤凰）系列\footnote{\url{https://www.anlogic.com/product/fpga/phoenix/ph1a}}，$\text{LUTs}=70848$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{芯片选择}
+    尽管PH1A60芯片的性能远远高于EG4S20，但因为未知原因，目前在淘宝上很难搜到搭载PH1A60芯片的核心板，而现成的核心板是初期学习和测试所必须的。
+
+    相反EG4S20的选择则丰富很多，核心板的价格普遍在250元左右。
+    
+    我们目前选中了硬木课堂设计的一款核心板\footnote{\url{https://item.taobao.com/item.htm?spm=a1z10.3-c-s.w4002-22468221883.9.6d741133IDlRsQ&id=666895953150}}
+    \begin{enumerate}
+        \item 硬木课堂似乎是专门生产这类适用于教学和竞赛用的电路板。
+        \item 硬木课堂基于其核心板，提供了丰富的教程资料。\footnote{\url{https://www.yuque.com/yingmuketang/01/qha859}}
+        \item 注意到有视频显示去年有参加安谋科技杯的队伍，使用的就是该款核心板。
+        \item 硬木课堂就该核心板有丰富的配套扩展硬件，如显示屏、摄像头等。
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{现状}
+    \begin{itemize}
+        \item 计划现阶段先使用硬木课堂的EG4S20核心板进行学习和初步开发。
+        \item 已经购置一块核心板，稍后会再购置两块，做到每个人手上都有。
+        \item 已经在安路科技的官网上找到了EG4S20的芯片手册。
+        \item 后期根据实际的硬件需要，决定是否更换性能更好的PH1A60芯片。
+        \item 后期可能也会自行设计电路板。
+    \end{itemize}
+\end{frame}
+
+\subsection{关于处理器}
+
+\begin{frame}
+    \frametitle{处理器}
+    杯赛可以选用的处理器IP有两个：Cortex-M0、Cortex-M3。
+    \begin{itemize}
+        \item 两款芯片中，M3的性能应高于M0，但尚未调查具体的性能数据。
+        \item 两款芯片均不支持内存管理，因此不可能在其上运行操作系统。
+    \end{itemize}
+\end{frame}
+
+\subsection{关于软件}
+\begin{frame}
+    \frametitle{软件}
+    杯赛涉及的软件主要包含两款
+    \begin{enumerate}
+        \item 安路科技的TangDynasty，用于编写硬件代码和FPGA烧写（正在研究\footnote{计划使用的版本是\texttt{TD\_RELEASE\_4.6.7\_64bit\_NL.msi}}）\footnote{\url{https://www.anlogic.com/support/tools-downloads}}。
+        \item 安谋科技的Keil $\upmu$Vision，用于编写软件代码（尚未具体研究）。
+    \end{enumerate}
+\end{frame}
+
+\subsection{现阶段展望}
+\begin{frame}
+    \frametitle{时间节点}
+    \begin{itemize}
+        \item 2023/03/15，报名截止。
+        \item 2023/05/31，初赛。
+        \item 2023/07，分赛区决赛。
+        \item 2023/08，全国总决赛。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{时间规划}
+    \begin{itemize}
+        \item 会后尽快完成杯赛的报名。
+        \item 寒假中主要目标是通过一些示例，熟悉一下Verilog和FPGA的使用。
+        \item 寒假末开始实验处理器IP的使用。
+        \item 之后开始逐步有序的开展工程项目。
+        \item 第一步，根据初步的游戏设想，完成游戏机硬件部分的设计。
+        \item 第二步，在该平台编写游戏的软件代码。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{难点}
+    \begin{enumerate}
+        \item 掌握Verilog语言和FPGA的工作流程。
+        \item 实现处理器IP的加载和使用。
+        \item 实现显示屏和相关外设的驱动。
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{游戏}
+    \begin{enumerate}
+        \item 游戏的软件代码编写或许是相对最容易的。
+        \item 游戏不追求画面，受限于硬件资源（内存在2MB的数量级）。
+        \item 游戏的创意很重要，或许可以参考一下JS13K游戏挑战竞赛中的创意。
+        \item 或许最重要的比拼点，在于游戏的交互方式，所谓智能游戏机。
+    \end{enumerate}
+\end{frame}
+
+
+\end{document}
