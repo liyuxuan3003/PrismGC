@@ -1,10 +1,2 @@
 # 资源链接汇总
-
-链接2：、、、
-# 资源链接汇总
-
-## 硬件部分
-
-## 软件部分
-链接1：...
-、、
+- C语言链接：https://www.runoob.com/cprogramming/c-tutorial.html
