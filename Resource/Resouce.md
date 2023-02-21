@@ -1,10 +1,4 @@
 # 资源链接汇总
-
-链接2：、、、
-# 资源链接汇总
-
-## 硬件部分
-
-## 软件部分
-链接1：...
-、、
+https://www.runoob.com/w3cnote/verilog-tutorial.html
+https://www.yuque.com/yingmuketang/01/qha859
+https://blog.csdn.net/qq_42839007/article/details/104045351
