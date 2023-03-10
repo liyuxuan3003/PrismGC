@@ -1,0 +1,5 @@
+simulation
+*.log
+*.bit
+*.db
+*.area
