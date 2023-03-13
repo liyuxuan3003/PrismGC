@@ -1,0 +1,26 @@
+set_pin_assignment	{ ina[0] }	{ LOCATION = A9; }
+set_pin_assignment	{ ina[1] }	{ LOCATION = A10; }
+set_pin_assignment	{ ina[2] }	{ LOCATION = B10; }
+set_pin_assignment	{ ina[3] }	{ LOCATION = A11; }
+set_pin_assignment	{ inb[0] }	{ LOCATION = A12; }
+set_pin_assignment	{ inb[1] }	{ LOCATION = B12; }
+set_pin_assignment	{ inb[2] }	{ LOCATION = A13; }
+set_pin_assignment	{ inb[3] }	{ LOCATION = A14; }
+set_pin_assignment	{ seg[0] }	{ LOCATION = A4; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ seg[1] }	{ LOCATION = A6; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ seg[2] }	{ LOCATION = B8; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ seg[3] }	{ LOCATION = E8; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ seg[4] }	{ LOCATION = A7; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ seg[5] }	{ LOCATION = B5; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ seg[6] }	{ LOCATION = A8; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ seg[7] }	{ LOCATION = C8; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ sel[0] }	{ LOCATION = C9; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ sel[1] }	{ LOCATION = B6; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ sel[2] }	{ LOCATION = A5; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ sel[3] }	{ LOCATION = A3; IOSTANDARD = LVCMOS33; }
+
+
+
+
+
+
