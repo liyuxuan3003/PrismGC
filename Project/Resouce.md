@@ -20,7 +20,7 @@
 
 ## 正点原子（STM32单片机）
 - 购买链接：https://m.tb.cn/h.UnNLJDv?tk=er2AdhwGp7E
-- 购买型号：https://m.tb.cn/h.UKi9QRx?tk=qHw2d8OdLkS
+- 购买型号：精英+4.3存屏+STLINK下载器
 - 资料：http://openedv.com/thread-340250-1-1.html
 
 ## WII手柄
