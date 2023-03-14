@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Project>
-    <Project_Created_Time>2023-01-12 18:01:35</Project_Created_Time>
-    <TD_Version>4.6.64949</TD_Version>
+<Project Version="1" Path="D:/Project/20230110-FPGA/PrismGC/Test/lyx/Test3_Digit/digit">
+    <Project_Created_Time></Project_Created_Time>
+    <TD_Version>5.0.30786</TD_Version>
     <UCode>00000000</UCode>
     <Name>digit</Name>
     <HardWare>
@@ -10,22 +10,69 @@
     </HardWare>
     <Source_Files>
         <Verilog>
-            <File>main.v</File>
-            <File>digit.v</File>
-            <File>driver_seg.v</File>
-            <File>driver_segcs.v</File>
+            <File Path="main.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="1"/>
+                </FileInfo>
+            </File>
+            <File Path="digit.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="2"/>
+                </FileInfo>
+            </File>
+            <File Path="driver_seg.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="3"/>
+                </FileInfo>
+            </File>
+            <File Path="driver_segcs.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="4"/>
+                </FileInfo>
+            </File>
         </Verilog>
-        <ADC_FILE>main.adc</ADC_FILE>
-        <SDC_FILE/>
-        <CWC_FILE/>
+        <ADC_FILE>
+            <File Path="main.adc">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="constrain_1"/>
+                    <Attr Name="CompileOrder" Val="1"/>
+                </FileInfo>
+            </File>
+        </ADC_FILE>
     </Source_Files>
+    <FileSets>
+        <FileSet Name="constrain_1" Type="ConstrainFiles">
+        </FileSet>
+        <FileSet Name="design_1" Type="DesignFiles">
+        </FileSet>
+    </FileSets>
     <TOP_MODULE>
-        <LABEL/>
+        <LABEL></LABEL>
         <MODULE>main</MODULE>
         <CREATEINDEX>auto</CREATEINDEX>
     </TOP_MODULE>
+    <Property>
+    </Property>
+    <Device_Settings>
+    </Device_Settings>
+    <Configurations>
+    </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-02-12 23:02:55</Step_Last_Change>
+        <Step_Last_Change>2023-03-14 22:41:12.978</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>

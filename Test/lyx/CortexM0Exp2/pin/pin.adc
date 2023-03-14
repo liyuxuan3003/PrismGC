@@ -1,0 +1,12 @@
+set_pin_assignment	{ RSTn }	{ LOCATION = A9; IOSTANDARD = LVTTL33; }
+set_pin_assignment	{ SWCLK }	{ LOCATION = R2; IOSTANDARD = LVTTL33; }
+set_pin_assignment	{ SWDIO }	{ LOCATION = P2; IOSTANDARD = LVTTL33; }
+set_pin_assignment	{ clk }	{ LOCATION = R7; IOSTANDARD = LVTTL33; }
+set_pin_assignment	{ ioPin[0] }	{ LOCATION = B14; IOSTANDARD = LVTTL33; }
+set_pin_assignment	{ ioPin[1] }	{ LOCATION = B15; IOSTANDARD = LVTTL33; }
+set_pin_assignment	{ ioPin[2] }	{ LOCATION = B16; IOSTANDARD = LVTTL33; }
+set_pin_assignment	{ ioPin[3] }	{ LOCATION = C15; IOSTANDARD = LVTTL33; }
+set_pin_assignment	{ ioPin[4] }	{ LOCATION = C16; IOSTANDARD = LVTTL33; }
+set_pin_assignment	{ ioPin[5] }	{ LOCATION = E13; IOSTANDARD = LVTTL33; }
+set_pin_assignment	{ ioPin[6] }	{ LOCATION = E16; IOSTANDARD = LVTTL33; }
+set_pin_assignment	{ ioPin[7] }	{ LOCATION = F16; IOSTANDARD = LVTTL33; }

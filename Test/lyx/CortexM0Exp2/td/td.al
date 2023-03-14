@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Project Version="1" Path="D:/Project/20230110-FPGA/PrismGC/Test/lyx/CortexM0/td">
+<Project Version="1" Path="D:/Project/20230110-FPGA/PrismGC/Test/lyx/CortexM0Exp2/td">
     <Project_Created_Time></Project_Created_Time>
     <TD_Version>5.0.30786</TD_Version>
-    <UCode>00011000</UCode>
+    <UCode>10100000</UCode>
     <Name>td</Name>
     <HardWare>
         <Family>EG4</Family>
@@ -26,7 +26,7 @@
                     <Attr Name="CompileOrder" Val="2"/>
                 </FileInfo>
             </File>
-            <File Path="../rtl/AHBlite_Interconnect.v">
+            <File Path="../rtl/AHBlite_GPIO.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -34,7 +34,7 @@
                     <Attr Name="CompileOrder" Val="3"/>
                 </FileInfo>
             </File>
-            <File Path="../rtl/AHBlite_SlaveMUX.v">
+            <File Path="../rtl/AHBlite_Interconnect.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -42,7 +42,7 @@
                     <Attr Name="CompileOrder" Val="4"/>
                 </FileInfo>
             </File>
-            <File Path="../rtl/Block_RAM.v">
+            <File Path="../rtl/AHBlite_SlaveMUX.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -50,7 +50,7 @@
                     <Attr Name="CompileOrder" Val="5"/>
                 </FileInfo>
             </File>
-            <File Path="../rtl/CortexM0_SoC.v">
+            <File Path="../rtl/Block_RAM.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -58,7 +58,7 @@
                     <Attr Name="CompileOrder" Val="6"/>
                 </FileInfo>
             </File>
-            <File Path="../rtl/cortexm0ds_logic.v">
+            <File Path="../rtl/CortexM0_SoC.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -66,9 +66,25 @@
                     <Attr Name="CompileOrder" Val="7"/>
                 </FileInfo>
             </File>
+            <File Path="../rtl/cortexm0ds_logic.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="8"/>
+                </FileInfo>
+            </File>
+            <File Path="../rtl/GPIO.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="9"/>
+                </FileInfo>
+            </File>
         </Verilog>
         <ADC_FILE>
-            <File Path="td.adc">
+            <File Path="../pin/pin.adc">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -96,7 +112,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-03-14 23:24:58.372</Step_Last_Change>
+        <Step_Last_Change>2023-03-14 23:40:39.457</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
