@@ -1,0 +1,4 @@
+set_pin_assignment	{ RSTn }	{ LOCATION = A9; }
+set_pin_assignment	{ SWCLK }	{ LOCATION = R2; }
+set_pin_assignment	{ SWDIO }	{ LOCATION = P2; }
+set_pin_assignment	{ clk }	{ LOCATION = R7; }
