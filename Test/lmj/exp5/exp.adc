@@ -1,0 +1,9 @@
+set_pin_assignment	{ clk_i }	{ LOCATION = R7; }
+set_pin_assignment	{ led[0] }	{ LOCATION = B14; }
+set_pin_assignment	{ led[1] }	{ LOCATION = B15; }
+set_pin_assignment	{ led[2] }	{ LOCATION = B16; }
+set_pin_assignment	{ led[3] }	{ LOCATION = C15; }
+set_pin_assignment	{ rst_n }	{ LOCATION = A14; }
+set_pin_assignment	{ sw[0] }	{ LOCATION = A9; }
+set_pin_assignment	{ sw[1] }	{ LOCATION = A10; }
+
