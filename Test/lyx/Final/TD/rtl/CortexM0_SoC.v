@@ -6,8 +6,8 @@ module CortexM0_SoC
     inout  wire  SWDIO,     //SW调试接口 数据
     input  wire  SWCLK,     //SW调试接口 时钟
     output wire  TXD,       //UART串口 输出
-    input  wire  RXD        //UART串口 输入
-    inout  wire  ioPin      //GPIO
+    input  wire  RXD,       //UART串口 输入
+    inout  wire[7:0] ioPin  //GPIO
 );
 
 //------------------------------------------------------------------------------
