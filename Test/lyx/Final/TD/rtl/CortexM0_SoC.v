@@ -7,6 +7,7 @@ module CortexM0_SoC
     input  wire  SWCLK,     //SW调试接口 时钟
     output wire  TXD,       //UART串口 输出
     input  wire  RXD        //UART串口 输入
+    inout  wire  ioPin      //GPIO
 );
 
 //------------------------------------------------------------------------------
@@ -367,6 +368,38 @@ AHBlite_Block_RAM RAMDATA_Interface
 );
 
 //------------------------------------------------------------------------------
+// AHB GPIO
+//------------------------------------------------------------------------------
+
+/*** 实例化GPIO的Interface ***/
+
+wire [7:0] oData;
+wire [7:0] iData;
+wire outEn;
+
+AHBlite_GPIO GPIO_Interface
+(
+    /* Connect to Interconnect Port 2 */
+    .HCLK			(clk),
+    .HRESETn		(cpuresetn),
+    .HSEL			(HSEL_P2),
+    .HADDR			(HADDR_P2),
+    .HPROT			(HPROT_P2),
+    .HSIZE			(HSIZE_P2),
+    .HTRANS			(HTRANS_P2),
+    .HWDATA		    (HWDATA_P2),
+    .HWRITE			(HWRITE_P2),
+    .HRDATA			(HRDATA_P2),
+    .HREADY			(HREADY_P2),
+    .HREADYOUT		(HREADYOUT_P2),
+    .HRESP			(HRESP_P2),
+    .outEn          (outEn),
+    .oData          (oData),
+    .iData          (iData)
+    /**********************************/ 
+);
+
+//------------------------------------------------------------------------------
 // AHB UART
 //------------------------------------------------------------------------------
 
@@ -424,6 +457,22 @@ Block_RAM RAM_DATA
     .doutb          (RAMDATA_RDATA),
     .wea            (RAMDATA_WRITE)
 );
+
+//------------------------------------------------------------------------------
+// GPIO
+//------------------------------------------------------------------------------
+
+/*** 实例化GPIO ***/
+GPIO GPIO
+(
+    .outEn(outEn),
+    .oData(oData),
+    .iData(iData),
+    .clk(clk),
+    .RSTn(cpuresetn),
+    .ioPin(ioPin)
+);
+
 
 //------------------------------------------------------------------------------
 // UART

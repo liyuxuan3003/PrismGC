@@ -8,8 +8,8 @@ module AHBlite_Decoder
     parameter Port1_en = 1,
     /************************/
 
-    /*EMPTY*/
-    parameter Port2_en = 0,
+    /*GPIO enable parameter*/
+    parameter Port2_en = 1,
     /************************/
 
     /*UART enable parameter*/
@@ -25,7 +25,7 @@ module AHBlite_Decoder
     /*RAMDATA OUTPUT SELECTION SIGNAL*/
     output wire P1_HSEL,
 
-    /*EMPTY*/
+    /*GPIO OUTPUT SELECTION SIGNAL*/
     output wire P2_HSEL,
 
     /*UART OUTPUT SELECTION SIGNAL*/
@@ -44,9 +44,12 @@ assign P0_HSEL = (HADDR[31:16] == 16'h0000) ? Port0_en : 1'b0;
 assign P1_HSEL = (HADDR[31:16] == 16'h2000) ? Port1_en : 1'b0; 
 /***********************************/
 
-
-//EMPTY
-assign P2_HSEL = 1'b0; 
+//GPIO
+//0X40000020 OUT DATA
+//0X40000024 IN  DATA
+//0x40000028 OUT ENABLE
+/*Insert GPIO decoder code there*/
+assign P2_HSEL = (HADDR[31:4] == 28'h4000_002) ? Port2_en : 1'd0;
 /***********************************/
 
 //UART
