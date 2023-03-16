@@ -1,6 +1,9 @@
 #include <string.h>
 #include <stdint.h>
 
+#include "Sleep.h"
+
+#include "Interrupt.h"
 #include "UART.h"
 
 int main() 
@@ -14,7 +17,7 @@ int main()
 	while(1)
 	{
         UARTString("Hello World!\r\n");
-        Delay(0x05f5e100);
+        Delay(TICKS);
 	}
 }
 

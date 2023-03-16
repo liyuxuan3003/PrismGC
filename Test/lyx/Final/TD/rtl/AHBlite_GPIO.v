@@ -13,7 +13,7 @@ module AHBlite_GPIO
     output wire          HREADYOUT, 
     output wire   [31:0] HRDATA,  
     output wire          HRESP,
-    output wire          outEn,
+    output wire   [31:0] outEn,
     output wire   [31:0] oData,
     input  wire   [31:0] iData  
 );
@@ -53,16 +53,16 @@ end
 assign HRDATA = (rd_en_reg  & (addr_reg == 4'h4)) ? {iData} : 32'd0;
 
 reg [31:0] oData_reg;
-reg outEn_reg;
+reg [31:0] outEn_reg;
 always@(posedge HCLK or negedge HRESETn) 
 begin
     if(~HRESETn) 
     begin
         oData_reg <= 32'd0;
-        outEn_reg <= 1'd0;
+        outEn_reg <= 32'd0;
     end
     else if(wr_en_reg & addr_reg == 4'h0)  oData_reg <= HWDATA[31:0];
-    else if(wr_en_reg & addr_reg == 4'h8)  outEn_reg <= HWDATA[0];
+    else if(wr_en_reg & addr_reg == 4'h8)  outEn_reg <= HWDATA[31:0];
 end
     
 assign oData = oData_reg;

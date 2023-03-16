@@ -9,7 +9,8 @@ module top
     inout       SWDIO,          //SW调试接口 数据
     input       SWCLK,          //SW调试接口 时钟
     output      TXD,            //UART串口 输出TX
-    input       RXD             //UART串口 输入RX
+    input       RXD,            //UART串口 输入RX
+    inout[31:0] NC              //悬空管脚
 );
 
 CortexM0_SoC SoC
@@ -19,9 +20,8 @@ CortexM0_SoC SoC
     .SWDIO(SWDIO),
     .SWCLK(SWCLK),
     .TXD(TXD),
-    .RXD(RXD)
+    .RXD(RXD),
+    .ioPin({NC[3:0],SEGCS,SEG,LED,SWI})
 );
-
-assign LED[1]= 1'b1;
 
 endmodule

@@ -373,9 +373,9 @@ AHBlite_Block_RAM RAMDATA_Interface
 
 /*** 实例化GPIO的Interface ***/
 
-wire [7:0] oData;
-wire [7:0] iData;
-wire outEn;
+wire [31:0] outEn;
+wire [31:0] oData;
+wire [31:0] iData;
 
 AHBlite_GPIO GPIO_Interface
 (

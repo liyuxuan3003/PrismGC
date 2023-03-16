@@ -1,52 +1,38 @@
 #include <string.h>
 
 #include "UART.h"
-
-void Delay(int interval) 
-{
-    volatile int i = 0;
-    while(1) 
-    {
-        i = i + 1;
-        if(i == interval) break;
-    }
-}
  
-char ReadUARTState()
+char UARTReadState()
 {
-    char state;
-	state = UART -> UARTTX_STATE;
-    return(state);
+    char stat = UART -> TX_STATE;
+    return stat;
 }
 
-char ReadUART()
+char UARTRead()
 {
-    char data;
-	data = UART -> UARTRX_DATA;
-    return(data);
+    char data = UART -> RX_DATA;
+    return data;
 }
 
-void WriteUART(char data)
+void UARTWrite(char data)
 {
-    while(ReadUARTState());
-	UART -> UARTTX_DATA = data;
+    while(UARTReadState());
+	UART -> TX_DATA = data;
 }
 
 void UARTString(char *stri)
 {
 	int i;
 	for(i=0;i<strlen(stri);i++)
-	{
-		WriteUART(stri[i]);
-	}
+		UARTWrite(stri[i]);
 }
 
 void UARTHandle()
 {
 	int data;
-	data = ReadUART();
+	data = UARTRead();
 	UARTString("Cortex-M0 : ");
-	WriteUART(data);
-	WriteUART('\r');
-    WriteUART('\n');
+	UARTWrite(data);
+	UARTWrite('\r');
+    UARTWrite('\n');
 }

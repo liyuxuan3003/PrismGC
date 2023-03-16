@@ -1,25 +1,25 @@
-#include <stdint.h>
+#ifndef UART_H
+#define UART_H
 
-//INTERRUPT DEF
-#define NVIC_CTRL_ADDR (*(volatile unsigned *)0xe000e100) 
+#include <stdint.h>
 
 //UART DEF
 typedef struct
 {
-    volatile uint32_t UARTRX_DATA;
-    volatile uint32_t UARTTX_STATE;
-    volatile uint32_t UARTTX_DATA;
+    volatile uint32_t RX_DATA;
+    volatile uint32_t TX_STATE;
+    volatile uint32_t TX_DATA;
 } UARTType;
 
 #define UART_BASE 0x40000010
 #define UART ((UARTType *)UART_BASE)
 
-void Delay(int interval);
+char UARTReadState(void);
 
-char ReadUARTState(void);
-
-char ReadUART(void);
-void WriteUART(char data);
+char UARTRead(void);
+void UARTWrite(char data);
 
 void UARTString(char *stri);
 void UARTHandle(void);
+
+#endif
