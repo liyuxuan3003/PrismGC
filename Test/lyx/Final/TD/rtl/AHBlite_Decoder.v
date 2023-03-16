@@ -45,9 +45,9 @@ assign P1_HSEL = (HADDR[31:16] == 16'h2000) ? Port1_en : 1'b0;
 /***********************************/
 
 //GPIO
-//0X40000020 OUT DATA
-//0X40000024 IN  DATA
-//0x40000028 OUT ENABLE
+//0X40000020 IN  DATA
+//0x40000024 OUT ENABLE
+//0X40000028 OUT DATA
 /*Insert GPIO decoder code there*/
 assign P2_HSEL = (HADDR[31:4] == 28'h4000_002) ? Port2_en : 1'd0;
 /***********************************/

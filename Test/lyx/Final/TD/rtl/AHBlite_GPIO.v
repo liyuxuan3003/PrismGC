@@ -25,7 +25,7 @@ wire write_en;
 assign write_en = HSEL & HTRANS[1] & HWRITE & HREADY;
 
 wire read_en;
-assign read_en=HSEL&HTRANS[1]&(~HWRITE)&HREADY;
+assign read_en  = HSEL & HTRANS[1] & (~HWRITE) & HREADY;
 
 reg [3:0] addr_reg;
 always@(posedge HCLK or negedge HRESETn)
@@ -50,7 +50,10 @@ begin
     else  wr_en_reg <= 1'b0;
 end
 
-assign HRDATA = (rd_en_reg  & (addr_reg == 4'h4)) ? {iData} : 32'd0;
+assign HRDATA = 
+    (rd_en_reg & addr_reg == 4'h0) ? {iData} : 
+    (rd_en_reg & addr_reg == 4'h4) ? {outEn} :
+    (rd_en_reg & addr_reg == 4'h8) ? {oData} : 32'h3132_3334;
 
 reg [31:0] oData_reg;
 reg [31:0] outEn_reg;
@@ -61,8 +64,8 @@ begin
         oData_reg <= 32'd0;
         outEn_reg <= 32'd0;
     end
-    else if(wr_en_reg & addr_reg == 4'h0)  oData_reg <= HWDATA[31:0];
-    else if(wr_en_reg & addr_reg == 4'h8)  outEn_reg <= HWDATA[31:0];
+    else if(wr_en_reg & addr_reg == 4'h8)  oData_reg <= HWDATA[31:0];
+    else if(wr_en_reg & addr_reg == 4'h4)  outEn_reg <= HWDATA[31:0];
 end
     
 assign oData = oData_reg;

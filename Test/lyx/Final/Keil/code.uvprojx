@@ -404,6 +404,36 @@
               <FileType>5</FileType>
               <FilePath>.\src\UART.h</FilePath>
             </File>
+            <File>
+              <FileName>BitOperate.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\BitOperate.h</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\GPIO.h</FilePath>
+            </File>
+            <File>
+              <FileName>HardwareConfig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\HardwareConfig.h</FilePath>
+            </File>
+            <File>
+              <FileName>Interrupt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Interrupt.h</FilePath>
+            </File>
+            <File>
+              <FileName>Sleep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Sleep.c</FilePath>
+            </File>
+            <File>
+              <FileName>Sleep.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Sleep.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

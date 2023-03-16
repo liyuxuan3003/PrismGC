@@ -18,12 +18,12 @@ begin
 end
 assign iData = iPin_reg;
 
+integer i;
 always@(posedge clk or negedge RSTn)
 begin
     if(~RSTn) oPin_reg <= 32'bzzzzzzzz_zzzzzzzz_zzzzzzzz_zzzzzzzz;
     else
     begin
-        integer i;
         for(i=0;i<32;i=i+1)
             oPin_reg[i] <= outEn[i] ? oData[i] : 1'bz; 
     end
