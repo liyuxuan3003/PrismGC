@@ -22,4 +22,6 @@ CortexM0_SoC SoC
     .RXD(RXD)
 );
 
+assign LED[1]= 1'b1;
+
 endmodule
