@@ -2,7 +2,7 @@
 <Project Version="1" Path="D:/Project/20230110-FPGA/PrismGC/Test/lyx/Final/TD">
     <Project_Created_Time></Project_Created_Time>
     <TD_Version>5.0.30786</TD_Version>
-    <UCode>00000000</UCode>
+    <UCode>00100000</UCode>
     <Name>TD</Name>
     <HardWare>
         <Family>EG4</Family>
@@ -144,7 +144,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-03-16 14:08:35.748</Step_Last_Change>
+        <Step_Last_Change>2023-03-16 14:51:32.362</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
