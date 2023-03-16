@@ -51,9 +51,9 @@ begin
 end
 
 assign HRDATA = 
-    (rd_en_reg & addr_reg == 4'h0) ? {iData} : 
-    (rd_en_reg & addr_reg == 4'h4) ? {outEn} :
-    (rd_en_reg & addr_reg == 4'h8) ? {oData} : 32'h3132_3334;
+    (rd_en_reg & addr_reg >= 4'h0 & addr_reg < 4'h4) ? {iData} : 
+    (rd_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8) ? {outEn} :
+    (rd_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC) ? {oData} : 32'h3132_3334;
 
 reg [31:0] oData_reg;
 reg [31:0] outEn_reg;
@@ -64,8 +64,8 @@ begin
         oData_reg <= 32'd0;
         outEn_reg <= 32'd0;
     end
-    else if(wr_en_reg & addr_reg == 4'h8)  oData_reg <= HWDATA[31:0];
-    else if(wr_en_reg & addr_reg == 4'h4)  outEn_reg <= HWDATA[31:0];
+    else if(wr_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC)  oData_reg <= HWDATA[31:0];
+    else if(wr_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8)  outEn_reg <= HWDATA[31:0];
 end
     
 assign oData = oData_reg;

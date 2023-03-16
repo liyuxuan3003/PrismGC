@@ -21,16 +21,16 @@ int main()
     //PORTA -> O_SWI_EN = 0x00;
     //PORTA -> O_LED_EN = 0xFF;
 
-    //PORTA -> O_LED_DATA = 0x55;
-    GPIOA->O_EN=0x700;
-    //GPIOA->O_DATA=0x01555500;
-    /*
-    char c = PORTA -> O_LED_DATA;
+    GPIOA->O_EN=0xff00;
+    GPIOA->O_DATA=0x5500;
+    uint32_t d=GPIOA->O_DATA;
+    char c=(d>>8) & 0xff;
+    //char c = PORTA -> O_LED_DATA;
 
     UARTWrite('*');
     UARTWrite(c);
     UARTWrite('*');
-
+/*
     c = PORTA->I_LED_DATA;
 
     UARTWrite('*');
@@ -52,10 +52,12 @@ int main()
 	while(1)
 	{
         UARTString("Hello World!\r\n");
-        LED_0(H);
+        LED_0(V);
         Delay(TICKS);
-        LED_0(L);
-        Delay(TICKS);
+        // LED_0(H);
+        // Delay(TICKS);
+        // LED_0(L);
+        // Delay(TICKS);
 	}
 }
 
