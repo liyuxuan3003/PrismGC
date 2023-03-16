@@ -2,7 +2,7 @@
 
 #include "UART.h"
 
-void Delay(int interval)
+void Delay(int interval) 
 {
     volatile int i = 0;
     while(1) 

@@ -3,7 +3,7 @@
 
 #include "UART.h"
 
-int main()
+int main() 
 { 
 	//interrupt initial
 	NVIC_CTRL_ADDR = 1;

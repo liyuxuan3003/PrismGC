@@ -1,7 +1,7 @@
 #include <stdint.h>
 
 //INTERRUPT DEF
-#define NVIC_CTRL_ADDR (*(volatile unsigned *)0xe000e100)
+#define NVIC_CTRL_ADDR (*(volatile unsigned *)0xe000e100) 
 
 //UART DEF
 typedef struct
