@@ -98,7 +98,7 @@
                     <Attr Name="CompileOrder" Val="11"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/AHBlite_WaterLight.v">
+            <File Path="rtl/clkuart_pwm.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -106,28 +106,12 @@
                     <Attr Name="CompileOrder" Val="12"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/clkuart_pwm.v">
+            <File Path="rtl/top.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
                     <Attr Name="CompileOrder" Val="13"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/WaterLight.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="14"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/buzzer.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="15"/>
                 </FileInfo>
             </File>
         </Verilog>
@@ -149,9 +133,9 @@
         </FileSet>
     </FileSets>
     <TOP_MODULE>
-        <LABEL>CortexM0_SoC</LABEL>
-        <MODULE>CortexM0_SoC</MODULE>
-        <CREATEINDEX></CREATEINDEX>
+        <LABEL></LABEL>
+        <MODULE>top</MODULE>
+        <CREATEINDEX>auto</CREATEINDEX>
     </TOP_MODULE>
     <Property>
     </Property>
@@ -160,7 +144,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-03-15 23:49:28.479</Step_Last_Change>
+        <Step_Last_Change>2023-03-16 12:07:08.627</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>

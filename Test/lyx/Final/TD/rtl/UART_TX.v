@@ -1,4 +1,5 @@
-module UART_TX(
+module UART_TX
+(
     input clk,
     input clk_uart,
     input RSTn,
@@ -15,7 +16,8 @@ wire FIFOwr_en;
 wire [7:0] FIFOdata;
 wire FIFOempty;
 wire FIFOfull;
-FIFO FIFO(
+FIFO FIFO
+(
     .clock(clk),
     .sclr(RSTn),
     .rdreq(FIFOrd_en),
@@ -41,15 +43,18 @@ assign trans_finish = (counter == 4'hb);
 wire trans_start;
 assign trans_start = (~FIFOempty) & (~counter_en);
 
-always@(posedge clk or negedge RSTn) begin
+always@(posedge clk or negedge RSTn) 
+begin
     if(~RSTn) counter_en <= 1'b0;
     else if(trans_start) counter_en <= 1'b1;
     else if(trans_finish) counter_en <= 1'b0;
 end
 
-always@(posedge clk or negedge RSTn) begin
+always@(posedge clk or negedge RSTn) 
+begin
     if(~RSTn) counter <= 4'h0;
-    else if(counter_en) begin 
+    else if(counter_en) 
+    begin 
         if(clk_uart) counter <= counter + 1'b1;
         else if(trans_finish) counter <= 4'h0;
     end
@@ -61,11 +66,14 @@ wire [9:0] data_formed;
 
 assign data_formed = {1'b1,FIFOdata,1'b0};
 
-always@(posedge clk or negedge RSTn) begin
+always@(posedge clk or negedge RSTn) 
+begin
     if(~RSTn) TXD <= 1'b1;
-    else if(counter_en) begin
+    else if(counter_en) 
+    begin
         if(clk_uart && (counter <= 4'h9)) TXD <= data_formed[counter];
-    end else TXD <= 1'b1;
+    end 
+    else TXD <= 1'b1;
 end
 
 //FIFO read control

@@ -1,5 +1,5 @@
-module AHBlite_Interconnect(
-
+module AHBlite_Interconnect
+(
     // CLK & RST
     input   wire    HCLK,
     input   wire    HRESETn,
@@ -76,7 +76,6 @@ module AHBlite_Interconnect(
     input   wire            HREADYOUT_P3,
     input   wire    [31:0]  HRDATA_P3,
     input   wire            HRESP_P3
-
 );
 
 // Public signals--------------------------------
@@ -139,7 +138,8 @@ assign HREADY_P3     =   HREADY;
 // Decoder---------------------------------------
 //-----------------------------------------------
 
-AHBlite_Decoder Decoder(
+AHBlite_Decoder Decoder
+(
     .HADDR      (HADDR),
     .P0_HSEL    (HSEL_P0),
     .P1_HSEL    (HSEL_P1),
@@ -149,8 +149,8 @@ AHBlite_Decoder Decoder(
 
 // Slave MUX-------------------------------------
 //-----------------------------------------------
-AHBlite_SlaveMUX SlaveMUX(
-
+AHBlite_SlaveMUX SlaveMUX
+(
     // CLOCK & RST
     .HCLK           (HCLK),
     .HRESETn        (HRESETn),
