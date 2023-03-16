@@ -385,24 +385,9 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\main.c</FilePath>
-            </File>
-            <File>
               <FileName>startup_CMSDK_CM0.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\src\startup_CMSDK_CM0.s</FilePath>
-            </File>
-            <File>
-              <FileName>UART.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\UART.c</FilePath>
-            </File>
-            <File>
-              <FileName>UART.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\UART.h</FilePath>
             </File>
           </Files>
         </Group>
