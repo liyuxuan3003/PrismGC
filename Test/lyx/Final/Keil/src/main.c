@@ -18,8 +18,8 @@ int main()
 	//UART display
 	UARTString("Cortex-M0 Start up!\r\n");
 
-    //PORTA -> O_SWI_EN = 0x00;
-    //PORTA -> O_LED_EN = 0xFF;
+    PORTA -> O_SWI_EN = 0x00;
+    PORTA -> O_LED_EN = 0xFF;
 
     GPIOA->O_EN=0xff00;
     GPIOA->O_DATA=0x5500;

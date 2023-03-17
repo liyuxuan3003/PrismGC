@@ -4,7 +4,7 @@ module Block_RAM #(parameter ADDR_WIDTH = 12)
     input [ADDR_WIDTH-1:0] addra,
     input [ADDR_WIDTH-1:0] addrb,
     input [31:0] dina,
-    input [3:0] wea,
+    input [3:0] wea, 
     output reg [31:0] doutb
 );
 
