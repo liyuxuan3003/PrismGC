@@ -376,6 +376,7 @@ AHBlite_Block_RAM RAMDATA_Interface
 wire [31:0] outEn;
 wire [31:0] oData;
 wire [31:0] iData;
+wire [3:0]  GPIO_WRITE;
 
 AHBlite_GPIO GPIO_Interface
 (
@@ -393,6 +394,7 @@ AHBlite_GPIO GPIO_Interface
     .HREADY			(HREADY_P2),
     .HREADYOUT		(HREADYOUT_P2),
     .HRESP			(HRESP_P2),
+    .GPIO_WRITE     (GPIO_WRITE),
     .outEn          (outEn),
     .oData          (oData),
     .iData          (iData)
@@ -465,6 +467,7 @@ Block_RAM RAM_DATA
 /*** 实例化GPIO ***/
 GPIO GPIO
 (
+    .we(GPIO_WRITE),
     .outEn(outEn),
     .oData(oData),
     .iData(iData),

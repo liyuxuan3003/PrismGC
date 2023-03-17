@@ -6,6 +6,6 @@ void Delay(int interval)
     while(1) 
     {
         i = i + 1;
-        if(i == interval) break;
+        if(i >= interval) break;
     }
 }

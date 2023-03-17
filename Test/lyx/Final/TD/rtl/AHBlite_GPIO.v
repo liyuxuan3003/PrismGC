@@ -13,6 +13,7 @@ module AHBlite_GPIO
     output wire          HREADYOUT, 
     output wire   [31:0] HRDATA,  
     output wire          HRESP,
+    output wire   [3:0]  GPIO_WRITE,
     output wire   [31:0] outEn,
     output wire   [31:0] oData,
     input  wire   [31:0] iData  
@@ -26,6 +27,37 @@ assign write_en = HSEL & HTRANS[1] & HWRITE & HREADY;
 
 wire read_en;
 assign read_en  = HSEL & HTRANS[1] & (~HWRITE) & HREADY;
+
+reg [3:0] size_dec;
+always@(*) begin
+    //HADDR[1:0] 地址（最后两位）
+    //HSIZE[1:0] 位宽
+    //10 Word       32位
+    //01 Half Word  16位
+    //00 Byte        8位
+    case({HADDR[1:0],HSIZE[1:0]})
+        //32位访问 1种情况
+        4'b0010 : size_dec = 4'b1111;
+        //16位访问 2种情况
+        4'b0001 : size_dec = 4'b0011;
+        4'b1001 : size_dec = 4'b1100;
+        //08位访问 4种情况
+        4'b0000 : size_dec = 4'b0001;
+        4'b0100 : size_dec = 4'b0010;
+        4'b1000 : size_dec = 4'b0100;
+        4'b1100 : size_dec = 4'b1000;
+        //其他情况
+        default : size_dec = 4'b0000;
+    endcase
+end
+
+reg [3:0] size_reg;
+always@(posedge HCLK or negedge HRESETn) 
+begin
+    if(~HRESETn) size_reg <= 0;
+    else if(write_en & HREADY) size_reg <= size_dec;
+end
+
 
 reg [3:0] addr_reg;
 always@(posedge HCLK or negedge HRESETn)
@@ -64,11 +96,24 @@ begin
         oData_reg <= 32'd0;
         outEn_reg <= 32'd0;
     end
-    else if(wr_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC)  oData_reg <= HWDATA[31:0];
-    else if(wr_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8)  outEn_reg <= HWDATA[31:0];
+    else if(wr_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC)  
+    begin
+        if(size_reg[0]) oData_reg[7:0]   <= HWDATA[7:0];
+        if(size_reg[1]) oData_reg[15:8]  <= HWDATA[15:8];
+        if(size_reg[2]) oData_reg[23:16] <= HWDATA[23:16];
+        if(size_reg[3]) oData_reg[31:24] <= HWDATA[31:24];
+    end
+    else if(wr_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8) 
+    begin
+        if(size_reg[0]) outEn_reg[7:0]   <= HWDATA[7:0];
+        if(size_reg[1]) outEn_reg[15:8]  <= HWDATA[15:8];
+        if(size_reg[2]) outEn_reg[23:16] <= HWDATA[23:16];
+        if(size_reg[3]) outEn_reg[31:24] <= HWDATA[31:24];
+    end
 end
     
 assign oData = oData_reg;
 assign outEn = outEn_reg;
+assign GPIO_WRITE=wr_en_reg ? size_reg : 4'h0;
 
 endmodule

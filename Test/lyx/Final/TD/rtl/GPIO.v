@@ -2,6 +2,7 @@ module GPIO
 (
     input clk,
     input RSTn,
+    input [3:0]   we,
     input [31:0]  outEn,
     input [31:0]  oData,  
     output[31:0]  iData,  
@@ -25,7 +26,7 @@ begin
     else
     begin
         for(i=0;i<32;i=i+1)
-            oPin_reg[i] <= outEn[i] ? oData[i] : 1'bz; 
+            oPin_reg[i] <= outEn[i] ? oData[i] : 1'bz;
     end
 end
 assign ioPin = oPin_reg;

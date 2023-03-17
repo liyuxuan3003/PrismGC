@@ -16,16 +16,16 @@ int main()
 	NVIC_CTRL_ADDR = 1;
 
 	//UART display
-	UARTString("Cortex-M0 Start up!\r\n");
+	// UARTString("Cortex-M0 Start up!\r\n");
 
     PORTA -> O_SWI_EN = 0x00;
     PORTA -> O_LED_EN = 0xFF;
 
-    GPIOA->O_EN=0xff00;
-    GPIOA->O_DATA=0x5500;
-    uint32_t d=GPIOA->O_DATA;
-    char c=(d>>8) & 0xff;
-    //char c = PORTA -> O_LED_DATA;
+    //GPIOA->O_EN=0xff00;
+    //GPIOA->O_DATA=0x5500;
+    //uint32_t d=GPIOA->O_DATA;
+    //char c=(d>>8) & 0xff;
+    char c = PORTA -> O_LED_DATA;
 
     UARTWrite('*');
     UARTWrite(c);
@@ -52,8 +52,9 @@ int main()
 	while(1)
 	{
         UARTString("Hello World!\r\n");
-        LED_0(V);
-        Delay(TICKS);
+        PORTA->O_LED_DATA=PORTA->I_SWI_DATA;
+        // LED_0(V);
+        // Delay(TICKS);
         // LED_0(H);
         // Delay(TICKS);
         // LED_0(L);
