@@ -26,6 +26,9 @@ int main()
 
     // PORTB -> O_SWI_ENA = 0x00;
     // PORTB -> O_LED_ENA = 0xFF;
+
+    // PORTB -> O_SWI_ENA = 0x00;
+    // PORTB -> O_LED_ENA = 0xFF;
 	
 	while(1)
 	{

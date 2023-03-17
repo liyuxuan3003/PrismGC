@@ -10,7 +10,6 @@
 #define GPIOB_BASE 0x40010010
 #define GPIOB_ADDR (*(volatile unsigned *)GPIOB_BASE) 
 
-
 typedef struct
 {
     volatile uint32_t I_DAT;
