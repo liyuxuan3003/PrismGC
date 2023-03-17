@@ -14,20 +14,56 @@ module AHBlite_GPIO
     output wire   [31:0] HRDATA,  
     output wire          HRESP,
     output wire   [3:0]  GPIO_WRITE,
-    output wire   [31:0] outEn,
-    output wire   [31:0] oData,
-    input  wire   [31:0] iData  
+    output wire          GPIO_GROUP_ID,
+    output wire   [31:0] GPIO_O_ENA,
+    output wire   [31:0] GPIO_O_DAT,
+    input  wire   [31:0] GPIO_I_DAT  
 );
 
 assign HRESP = 1'b0;
 assign HREADYOUT = 1'b1;
 
+/*** 使能部分 ***/
 wire write_en;
 assign write_en = HSEL & HTRANS[1] & HWRITE & HREADY;
 
 wire read_en;
 assign read_en  = HSEL & HTRANS[1] & (~HWRITE) & HREADY;
 
+reg wr_en_reg;
+always@(posedge HCLK or negedge HRESETn)
+begin
+    if(~HRESETn) wr_en_reg <= 1'b0;
+    else if(write_en) wr_en_reg <= 1'b1;
+    else  wr_en_reg <= 1'b0;
+end
+
+reg rd_en_reg;
+always@(posedge HCLK or negedge HRESETn) 
+begin
+    if(~HRESETn) rd_en_reg <= 1'b0;
+    else if(read_en) rd_en_reg <= 1'b1;
+    else rd_en_reg <= 1'b0;
+end
+
+/*** 地址部分 ***/
+reg [3:0] addr_reg;
+reg [3:0] addr_group_reg;
+always@(posedge HCLK or negedge HRESETn)
+begin
+    if(~HRESETn) 
+    begin
+        addr_reg <= 4'h0;
+        addr_group_reg <= 4'h0;
+    end
+    else if(read_en || write_en) 
+    begin
+        addr_reg <= HADDR[3:0];
+        addr_group_reg <= HADDR[7:4];
+    end
+end
+
+/*** 位宽部分 ***/
 reg [3:0] size_dec;
 always@(*) begin
     //HADDR[1:0] 地址（最后两位）
@@ -58,62 +94,59 @@ begin
     else if(write_en & HREADY) size_reg <= size_dec;
 end
 
+assign GPIO_WRITE=wr_en_reg ? size_reg : 4'h0;
 
-reg [3:0] addr_reg;
-always@(posedge HCLK or negedge HRESETn)
-begin
-    if(~HRESETn) addr_reg <= 4'h0;
-    else if(read_en || write_en) addr_reg <= HADDR[3:0];
-end
-
-reg rd_en_reg;
-always@(posedge HCLK or negedge HRESETn) 
-begin
-    if(~HRESETn) rd_en_reg <= 1'b0;
-    else if(read_en) rd_en_reg <= 1'b1;
-    else rd_en_reg <= 1'b0;
-end
-
-reg wr_en_reg;
-always@(posedge HCLK or negedge HRESETn)
-begin
-    if(~HRESETn) wr_en_reg <= 1'b0;
-    else if(write_en) wr_en_reg <= 1'b1;
-    else  wr_en_reg <= 1'b0;
-end
-
+/*** 输入 ***/
 assign HRDATA = 
-    (rd_en_reg & addr_reg >= 4'h0 & addr_reg < 4'h4) ? {iData} : 
-    (rd_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8) ? {outEn} :
-    (rd_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC) ? {oData} : 32'h3132_3334;
+    (rd_en_reg & addr_reg >= 4'h0 & addr_reg < 4'h4) ? {GPIO_I_DAT} : 
+    (rd_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8) ? {GPIO_O_ENA} :
+    (rd_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC) ? {GPIO_O_DAT} : 32'h0000_0000;
 
-reg [31:0] oData_reg;
-reg [31:0] outEn_reg;
+/*** 输出 ***/
+reg [31:0] o_dat_reg[3:0];
+reg [31:0] o_ena_reg[3:0];
+
+reg [31:0] o_dat_reg_port;
+reg [31:0] o_ena_reg_port;
+
+wire [3:0] o_group_id;
+assign o_group_id=addr_group_reg;
+
+integer o_group_id_int;
+
+integer i;
+
 always@(posedge HCLK or negedge HRESETn) 
 begin
+    o_group_id_int=o_group_id;
     if(~HRESETn) 
     begin
-        oData_reg <= 32'd0;
-        outEn_reg <= 32'd0;
+        for(i=0;i<4;i=i+1)
+        begin
+            o_dat_reg[i] <= 32'd0;
+            o_ena_reg[i] <= 32'd0;
+        end
     end
     else if(wr_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC)  
     begin
-        if(size_reg[0]) oData_reg[7:0]   <= HWDATA[7:0];
-        if(size_reg[1]) oData_reg[15:8]  <= HWDATA[15:8];
-        if(size_reg[2]) oData_reg[23:16] <= HWDATA[23:16];
-        if(size_reg[3]) oData_reg[31:24] <= HWDATA[31:24];
+        if(size_reg[0]) o_dat_reg[o_group_id_int][7:0]   <= HWDATA[7:0];
+        if(size_reg[1]) o_dat_reg[o_group_id_int][15:8]  <= HWDATA[15:8];
+        if(size_reg[2]) o_dat_reg[o_group_id_int][23:16] <= HWDATA[23:16];
+        if(size_reg[3]) o_dat_reg[o_group_id_int][31:24] <= HWDATA[31:24];
     end
     else if(wr_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8) 
     begin
-        if(size_reg[0]) outEn_reg[7:0]   <= HWDATA[7:0];
-        if(size_reg[1]) outEn_reg[15:8]  <= HWDATA[15:8];
-        if(size_reg[2]) outEn_reg[23:16] <= HWDATA[23:16];
-        if(size_reg[3]) outEn_reg[31:24] <= HWDATA[31:24];
+        if(size_reg[0]) o_ena_reg[o_group_id_int][7:0]   <= HWDATA[7:0];
+        if(size_reg[1]) o_ena_reg[o_group_id_int][15:8]  <= HWDATA[15:8];
+        if(size_reg[2]) o_ena_reg[o_group_id_int][23:16] <= HWDATA[23:16];
+        if(size_reg[3]) o_ena_reg[o_group_id_int][31:24] <= HWDATA[31:24];
     end
+    o_dat_reg_port=o_dat_reg[o_group_id_int];
+    o_ena_reg_port=o_ena_reg[o_group_id_int];
 end
     
-assign oData = oData_reg;
-assign outEn = outEn_reg;
-assign GPIO_WRITE=wr_en_reg ? size_reg : 4'h0;
+assign GPIO_O_DAT = o_dat_reg_port;
+assign GPIO_O_ENA = o_ena_reg_port;
+assign GPIO_GROUP_ID = o_group_id;
 
 endmodule

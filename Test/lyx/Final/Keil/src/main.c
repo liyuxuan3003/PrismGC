@@ -16,45 +16,24 @@ int main()
 	NVIC_CTRL_ADDR = 1;
 
 	//UART display
-	// UARTString("Cortex-M0 Start up!\r\n");
+	UARTString("Cortex-M0 Start up!\r\n");
 
-    PORTA -> O_SWI_EN = 0x00;
-    PORTA -> O_LED_EN = 0xFF;
+    PORTA -> O_SWI_ENA = 0x00;
+    PORTA -> O_LED_ENA = 0xFF;
+    PORTA -> O_SEG_ENA = 0xFF;
+    PORTA -> O_SEGCS_ENA = 0xF;
+    PORTA -> O_SEGCS_DAT = 0x1;
 
-    //GPIOA->O_EN=0xff00;
-    //GPIOA->O_DATA=0x5500;
-    //uint32_t d=GPIOA->O_DATA;
-    //char c=(d>>8) & 0xff;
-    char c = PORTA -> O_LED_DATA;
-
-    UARTWrite('*');
-    UARTWrite(c);
-    UARTWrite('*');
-/*
-    c = PORTA->I_LED_DATA;
-
-    UARTWrite('*');
-    UARTWrite(c);
-    UARTWrite('*');
-
-    c = PORTA->I_SWI_DATA;
-
-    UARTWrite('*');
-    UARTWrite(c);
-    UARTWrite('*');
-*/
-    SWI_0(I);
-    LED_0(O);
-    LED_1(O);
-
-    LED_0(H);
+    // PORTB -> O_SWI_ENA = 0x00;
+    // PORTB -> O_LED_ENA = 0xFF;
 	
 	while(1)
 	{
-        UARTString("Hello World!\r\n");
-        PORTA->O_LED_DATA=PORTA->I_SWI_DATA;
+        // UARTString("Hello World!\r\n");
+        PORTA->O_LED_DAT=PORTA->I_SWI_DAT;
+        PORTA->O_SEG_DAT=PORTA->I_SWI_DAT;
         // LED_0(V);
-        // Delay(TICKS);
+        Delay(TICKS);
         // LED_0(H);
         // Delay(TICKS);
         // LED_0(L);

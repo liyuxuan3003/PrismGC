@@ -1,13 +1,16 @@
 /*** SoC顶层封装 ***/
 module CortexM0_SoC 
 (
-    input  wire  clk,       //时钟
-    input  wire  RSTn,      //SoC使能
-    inout  wire  SWDIO,     //SW调试接口 数据
-    input  wire  SWCLK,     //SW调试接口 时钟
-    output wire  TXD,       //UART串口 输出
-    input  wire  RXD,       //UART串口 输入
-    inout  wire[31:0] ioPin //GPIO
+    input  wire  clk,           //时钟
+    input  wire  RSTn,          //SoC使能
+    inout  wire  SWDIO,         //SW调试接口 数据
+    input  wire  SWCLK,         //SW调试接口 时钟
+    output wire  TXD,           //UART串口 输出
+    input  wire  RXD,           //UART串口 输入
+    inout  wire[31:0] io_pin0,  //GPIO-0
+    inout  wire[31:0] io_pin1,  //GPIO-1
+    inout  wire[31:0] io_pin2,  //GPIO-2
+    inout  wire[31:0] io_pin3   //GPIO-3
 );
 
 //------------------------------------------------------------------------------
@@ -373,10 +376,11 @@ AHBlite_Block_RAM RAMDATA_Interface
 
 /*** 实例化GPIO的Interface ***/
 
-wire [31:0] outEn;
-wire [31:0] oData;
-wire [31:0] iData;
+wire [31:0] GPIO_O_ENA;
+wire [31:0] GPIO_O_DAT;
+wire [31:0] GPIO_I_DAT;
 wire [3:0]  GPIO_WRITE;
+wire [3:0]  GPIO_GROUP_ID;
 
 AHBlite_GPIO GPIO_Interface
 (
@@ -395,9 +399,10 @@ AHBlite_GPIO GPIO_Interface
     .HREADYOUT		(HREADYOUT_P2),
     .HRESP			(HRESP_P2),
     .GPIO_WRITE     (GPIO_WRITE),
-    .outEn          (outEn),
-    .oData          (oData),
-    .iData          (iData)
+    .GPIO_GROUP_ID  (GPIO_GROUP_ID),
+    .GPIO_O_ENA     (GPIO_O_ENA),
+    .GPIO_O_DAT     (GPIO_O_DAT),
+    .GPIO_I_DAT     (GPIO_I_DAT)
     /**********************************/ 
 );
 
@@ -467,13 +472,17 @@ Block_RAM RAM_DATA
 /*** 实例化GPIO ***/
 GPIO GPIO
 (
-    .we(GPIO_WRITE),
-    .outEn(outEn),
-    .oData(oData),
-    .iData(iData),
+    .write_byte(GPIO_WRITE),
+    .group_id(GPIO_GROUP_ID),
+    .o_ena(GPIO_O_ENA),
+    .o_dat(GPIO_O_DAT),
+    .i_dat(GPIO_I_DAT), 
     .clk(clk),
     .RSTn(cpuresetn),
-    .ioPin(ioPin)
+    .io_pin0(io_pin0),
+    .io_pin1(io_pin1),
+    .io_pin2(io_pin2),
+    .io_pin3(io_pin3)
 );
 
 

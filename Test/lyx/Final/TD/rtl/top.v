@@ -21,7 +21,10 @@ CortexM0_SoC SoC
     .SWCLK(SWCLK),
     .TXD(TXD),
     .RXD(RXD),
-    .ioPin({NC[3:0],SEGCS,SEG,LED,SWI})
+    .io_pin0({NC[3:0],SEGCS,SEG,LED,SWI}),
+    .io_pin1({NC[15:0],SWI,LED}),
+    .io_pin2({NC[31:0]}),
+    .io_pin3({NC[31:0]})
 );
 
 endmodule

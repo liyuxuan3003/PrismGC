@@ -4,17 +4,22 @@
 #include <stdint.h>
 
 //GPIO DEF
-#define GPIOA_BASE 0x40000020
+#define GPIOA_BASE 0x40010000
 #define GPIOA_ADDR (*(volatile unsigned *)GPIOA_BASE) 
+
+#define GPIOB_BASE 0x40010010
+#define GPIOB_ADDR (*(volatile unsigned *)GPIOB_BASE) 
+
 
 typedef struct
 {
-    volatile uint32_t I_DATA;
-    volatile uint32_t O_EN;
-    volatile uint32_t O_DATA;
+    volatile uint32_t I_DAT;
+    volatile uint32_t O_ENA;
+    volatile uint32_t O_DAT;
 } GPIOType;
 
 #define GPIOA ((GPIOType *)GPIOA_BASE)
+#define GPIOB ((GPIOType *)GPIOB_BASE)
 
 //iData
 #define P     +0)&              //P-Pin         获取输入寄存器上的指定位的值
