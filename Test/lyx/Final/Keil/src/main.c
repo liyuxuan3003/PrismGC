@@ -15,6 +15,16 @@ int main()
 	//interrupt initial
 	// NVIC_CTRL_ADDR = 1;
 
+    GPIOA -> O_ENA = 0x3;
+    GPIOB -> O_ENA = 0x3;
+    GPIOC -> O_ENA = 0x3;
+    GPIOD -> O_ENA = 0x3;
+
+    GPIOA -> O_DAT = 0x2;
+    GPIOB -> O_DAT = 0x2;
+    GPIOC -> O_DAT = 0x2;
+    GPIOD -> O_DAT = 0x2;
+
 	//UART display
 	// UARTString("Cortex-M0 Start up!\r\n");
 
@@ -26,11 +36,11 @@ int main()
     // PORTB -> O_DB_ENA =0xFF;
     // PORTB -> O_DB_DAT =0x55;
 
-    GPIOA -> O_ENA = 0xFFF;
-    GPIOA -> O_DAT = 0x055;
+    // GPIOA -> O_ENA = 0xFFF;
+    // GPIOA -> O_DAT = 0x055;
 
-    GPIOC -> O_ENA = 0xFFF;
-    GPIOC -> O_DAT = 0x055;
+    // GPIOC -> O_ENA = 0xFFF;
+    // GPIOC -> O_DAT = 0x055;
 
     // PORTC -> O_SEG_ENA = 0xFF;
     // PORTC -> O_SEGCS_ENA = 0xF;

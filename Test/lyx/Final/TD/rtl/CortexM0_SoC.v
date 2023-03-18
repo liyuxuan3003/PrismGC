@@ -376,11 +376,23 @@ AHBlite_Block_RAM RAMDATA_Interface
 
 /*** 实例化GPIO的Interface ***/
 
-wire [31:0] GPIO_O_ENA;
-wire [31:0] GPIO_O_DAT;
-wire [31:0] GPIO_I_DAT;
+wire [31:0] GPIO0_O_ENA;
+wire [31:0] GPIO0_O_DAT;
+wire [31:0] GPIO0_I_DAT;
+
+wire [31:0] GPIO1_O_ENA;
+wire [31:0] GPIO1_O_DAT;
+wire [31:0] GPIO1_I_DAT;
+
+wire [31:0] GPIO2_O_ENA;
+wire [31:0] GPIO2_O_DAT;
+wire [31:0] GPIO2_I_DAT;
+
+wire [31:0] GPIO3_O_ENA;
+wire [31:0] GPIO3_O_DAT;
+wire [31:0] GPIO3_I_DAT;
+
 wire [3:0]  GPIO_WRITE;
-wire [3:0]  GPIO_GROUP_ID;
 
 AHBlite_GPIO GPIO_Interface
 (
@@ -399,10 +411,18 @@ AHBlite_GPIO GPIO_Interface
     .HREADYOUT		(HREADYOUT_P2),
     .HRESP			(HRESP_P2),
     .GPIO_WRITE     (GPIO_WRITE),
-    .GPIO_GROUP_ID  (GPIO_GROUP_ID),
-    .GPIO_O_ENA     (GPIO_O_ENA),
-    .GPIO_O_DAT     (GPIO_O_DAT),
-    .GPIO_I_DAT     (GPIO_I_DAT)
+    .GPIO0_O_ENA     (GPIO0_O_ENA),
+    .GPIO0_O_DAT     (GPIO0_O_DAT),
+    .GPIO0_I_DAT     (GPIO0_I_DAT),
+    .GPIO1_O_ENA     (GPIO1_O_ENA),
+    .GPIO1_O_DAT     (GPIO1_O_DAT),
+    .GPIO1_I_DAT     (GPIO1_I_DAT),
+    .GPIO2_O_ENA     (GPIO2_O_ENA),
+    .GPIO2_O_DAT     (GPIO2_O_DAT),
+    .GPIO2_I_DAT     (GPIO2_I_DAT),
+    .GPIO3_O_ENA     (GPIO3_O_ENA),
+    .GPIO3_O_DAT     (GPIO3_O_DAT),
+    .GPIO3_I_DAT     (GPIO3_I_DAT)
     /**********************************/ 
 );
 
@@ -473,10 +493,18 @@ Block_RAM RAM_DATA
 GPIO GPIO
 (
     .write_byte(GPIO_WRITE),
-    .group_id(GPIO_GROUP_ID),
-    .o_ena(GPIO_O_ENA),
-    .o_dat(GPIO_O_DAT),
-    .i_dat(GPIO_I_DAT), 
+    .o_ena0(GPIO0_O_ENA),
+    .o_dat0(GPIO0_O_DAT),
+    .i_dat0(GPIO0_I_DAT), 
+    .o_ena1(GPIO1_O_ENA),
+    .o_dat1(GPIO1_O_DAT),
+    .i_dat1(GPIO1_I_DAT), 
+    .o_ena2(GPIO2_O_ENA),
+    .o_dat2(GPIO2_O_DAT),
+    .i_dat2(GPIO2_I_DAT), 
+    .o_ena3(GPIO3_O_ENA),
+    .o_dat3(GPIO3_O_DAT),
+    .i_dat3(GPIO3_I_DAT), 
     .clk(clk),
     .RSTn(cpuresetn),
     .io_pin0(io_pin0),

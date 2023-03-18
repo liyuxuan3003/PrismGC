@@ -14,10 +14,22 @@ module AHBlite_GPIO
     output wire   [31:0] HRDATA,  
     output wire          HRESP,
     output wire   [3:0]  GPIO_WRITE,
-    output wire          GPIO_GROUP_ID,
-    output wire   [31:0] GPIO_O_ENA,
-    output wire   [31:0] GPIO_O_DAT,
-    input  wire   [31:0] GPIO_I_DAT  
+    /*** GPIO0 ***/
+    output wire   [31:0] GPIO0_O_ENA,
+    output wire   [31:0] GPIO0_O_DAT,
+    input  wire   [31:0] GPIO0_I_DAT,
+    /*** GPIO1 ***/
+    output wire   [31:0] GPIO1_O_ENA,
+    output wire   [31:0] GPIO1_O_DAT,
+    input  wire   [31:0] GPIO1_I_DAT,
+    /*** GPIO2 ***/
+    output wire   [31:0] GPIO2_O_ENA,
+    output wire   [31:0] GPIO2_O_DAT,
+    input  wire   [31:0] GPIO2_I_DAT,
+    /*** GPIO3 ***/
+    output wire   [31:0] GPIO3_O_ENA,
+    output wire   [31:0] GPIO3_O_DAT,
+    input  wire   [31:0] GPIO3_I_DAT
 );
 
 assign HRESP = 1'b0;
@@ -97,28 +109,33 @@ end
 assign GPIO_WRITE=wr_en_reg ? size_reg : 4'h0;
 
 /*** 输入 ***/
+
 assign HRDATA = 
-    (rd_en_reg & addr_reg >= 4'h0 & addr_reg < 4'h4) ? {GPIO_I_DAT} : 
-    (rd_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8) ? {GPIO_O_ENA} :
-    (rd_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC) ? {GPIO_O_DAT} : 32'h0000_0000;
+    (rd_en_reg & addr_reg >= 4'h0 & addr_reg < 4'h4 & addr_group_reg == 4'h0) ? {GPIO0_I_DAT} : 
+    (rd_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8 & addr_group_reg == 4'h0) ? {GPIO0_O_ENA} : 
+    (rd_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC & addr_group_reg == 4'h0) ? {GPIO0_O_DAT} : //0
+    (rd_en_reg & addr_reg >= 4'h0 & addr_reg < 4'h4 & addr_group_reg == 4'h1) ? {GPIO1_I_DAT} : 
+    (rd_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8 & addr_group_reg == 4'h1) ? {GPIO1_O_ENA} :
+    (rd_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC & addr_group_reg == 4'h1) ? {GPIO1_O_DAT} : //1
+    (rd_en_reg & addr_reg >= 4'h0 & addr_reg < 4'h4 & addr_group_reg == 4'h2) ? {GPIO2_I_DAT} : 
+    (rd_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8 & addr_group_reg == 4'h2) ? {GPIO2_O_ENA} :
+    (rd_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC & addr_group_reg == 4'h2) ? {GPIO2_O_DAT} : //2
+    (rd_en_reg & addr_reg >= 4'h0 & addr_reg < 4'h4 & addr_group_reg == 4'h3) ? {GPIO3_I_DAT} : 
+    (rd_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8 & addr_group_reg == 4'h3) ? {GPIO3_O_ENA} :
+    (rd_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC & addr_group_reg == 4'h3) ? {GPIO3_O_DAT} : //3
+    32'h0000_0000;
 
 /*** 输出 ***/
 reg [31:0] o_dat_reg[3:0];
 reg [31:0] o_ena_reg[3:0];
 
-reg [31:0] o_dat_reg_port;
-reg [31:0] o_ena_reg_port;
-
 wire [3:0] o_group_id;
 assign o_group_id=addr_group_reg;
-
-integer o_group_id_int;
 
 integer i;
 
 always@(posedge HCLK or negedge HRESETn) 
 begin
-    o_group_id_int=o_group_id;
     if(~HRESETn) 
     begin
         for(i=0;i<4;i=i+1)
@@ -129,24 +146,27 @@ begin
     end
     else if(wr_en_reg & addr_reg >= 4'h8 & addr_reg < 4'hC)  
     begin
-        if(size_reg[0]) o_dat_reg[o_group_id_int][7:0]   <= HWDATA[7:0];
-        if(size_reg[1]) o_dat_reg[o_group_id_int][15:8]  <= HWDATA[15:8];
-        if(size_reg[2]) o_dat_reg[o_group_id_int][23:16] <= HWDATA[23:16];
-        if(size_reg[3]) o_dat_reg[o_group_id_int][31:24] <= HWDATA[31:24];
+        if(size_reg[0]) o_dat_reg[o_group_id][7:0]   <= HWDATA[7:0];
+        if(size_reg[1]) o_dat_reg[o_group_id][15:8]  <= HWDATA[15:8];
+        if(size_reg[2]) o_dat_reg[o_group_id][23:16] <= HWDATA[23:16];
+        if(size_reg[3]) o_dat_reg[o_group_id][31:24] <= HWDATA[31:24];
     end
     else if(wr_en_reg & addr_reg >= 4'h4 & addr_reg < 4'h8) 
     begin
-        if(size_reg[0]) o_ena_reg[o_group_id_int][7:0]   <= HWDATA[7:0];
-        if(size_reg[1]) o_ena_reg[o_group_id_int][15:8]  <= HWDATA[15:8];
-        if(size_reg[2]) o_ena_reg[o_group_id_int][23:16] <= HWDATA[23:16];
-        if(size_reg[3]) o_ena_reg[o_group_id_int][31:24] <= HWDATA[31:24];
+        if(size_reg[0]) o_ena_reg[o_group_id][7:0]   <= HWDATA[7:0];
+        if(size_reg[1]) o_ena_reg[o_group_id][15:8]  <= HWDATA[15:8];
+        if(size_reg[2]) o_ena_reg[o_group_id][23:16] <= HWDATA[23:16];
+        if(size_reg[3]) o_ena_reg[o_group_id][31:24] <= HWDATA[31:24];
     end
-    o_dat_reg_port=o_dat_reg[o_group_id_int];
-    o_ena_reg_port=o_ena_reg[o_group_id_int];
 end
     
-assign GPIO_O_DAT = o_dat_reg_port;
-assign GPIO_O_ENA = o_ena_reg_port;
-assign GPIO_GROUP_ID = o_group_id;
+assign GPIO0_O_DAT = o_dat_reg[0];
+assign GPIO0_O_ENA = o_ena_reg[0];
+assign GPIO1_O_DAT = o_dat_reg[1];
+assign GPIO1_O_ENA = o_ena_reg[1];
+assign GPIO2_O_DAT = o_dat_reg[2];
+assign GPIO2_O_ENA = o_ena_reg[2];
+assign GPIO3_O_DAT = o_dat_reg[3];
+assign GPIO3_O_ENA = o_ena_reg[3];
 
 endmodule
