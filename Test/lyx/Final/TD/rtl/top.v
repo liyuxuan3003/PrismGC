@@ -22,19 +22,19 @@ wire[3:0] DIG_DOT;
 wire[3:0] DIG_ENA;
 wire[3:0] DIG_CRT;
 
-// Digit Digit
-// (
-//     .clk(CLK),
-//     .seg_pin(SEG),
-//     .segcs_pin(SEGCS),
-//     .DIG0(DIG0),
-//     .DIG1(DIG1),
-//     .DIG2(DIG2),
-//     .DIG3(DIG3),
-//     .DIG_DOT(DIG_DOT),
-//     .DIG_ENA(DIG_ENA),
-//     .DIG_CRT(DIG_CRT)
-// );
+Digit Digit
+(
+    .clk(CLK),
+    .seg_pin(SEG),
+    .segcs_pin(SEGCS),
+    .DIG0(DIG0),
+    .DIG1(DIG1),
+    .DIG2(DIG2),
+    .DIG3(DIG3),
+    .DIG_DOT(DIG_DOT),
+    .DIG_ENA(DIG_ENA),
+    .DIG_CRT(DIG_CRT)
+);
 
 CortexM0_SoC SoC
 (
@@ -44,14 +44,10 @@ CortexM0_SoC SoC
     .SWCLK(SWCLK),
     .TXD(TXD),
     .RXD(RXD),
-    .io_pin0({NC[29:0],LED[1:0]}),
-    .io_pin1({NC[29:0],LED[3:2]}),
-    .io_pin2({NC[29:0],LED[5:4]}),
-    .io_pin3({NC[29:0],LED[7:6]})
-    // .io_pin2({NC[3:0],NC[3:0],NC[7:0],SWI,LED}),
-    // .io_pin1({NC[23:0],PI4[19],PI4[17],PI4[15],PI4[13],PI4[11],PI4[9],PI4[7],PI4[5]}),
-    // .io_pin0({NC[19:0],SEGCS,SEG}),
-    // .io_pin3({NC[31:0]})
+    .io_pin0({NC[15:0],LED,SWI}),
+    .io_pin1({NC[23:0],PI4[19],PI4[17],PI4[15],PI4[13],PI4[11],PI4[9],PI4[7],PI4[5]}),
+    .io_pin2({NC[3:0],DIG_CRT,DIG_ENA,DIG_DOT,DIG3,DIG2,DIG1,DIG0}),
+    .io_pin3({NC[31:0]})
 );
 
 endmodule

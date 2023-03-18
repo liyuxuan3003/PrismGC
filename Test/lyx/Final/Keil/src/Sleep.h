@@ -3,6 +3,6 @@
 
 #define TICKS 10000000
 
-void Delay(int interval);
+void Delay(unsigned int interval);
 
 #endif
