@@ -1,0 +1,49 @@
+Dependencies for Project 'atk_f103', Target 'Template': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
+F (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Source\Templates\arm\startup_stm32f103xe.s)(0x64155922)(--cpu Cortex-M3 -g --apcs=interwork -IF:\FPGA\MDK5.36\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include--pd "__UVISION_VERSION SETA 536" --pd "STM32F10X_HD SETA 1"--list ..\..\output\startup_stm32f103xe.lst --xref -o ..\..\output\startup_stm32f103xe.o --depend ..\..\output\startup_stm32f103xe.d)
+F (..\..\User\main.c)(0x64155FE7)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers -I ..\..\User-IF:\FPGA\MDK5.36\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F103xE-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
+I (..\..\Drivers\./SYSTEM/sys/sys.h)(0x635FAD07)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Include\core_cm3.h)(0x60E97864)
+I (F:\FPGA\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h)(0x60E97864)
+I (..\..\Drivers\./SYSTEM/usart/usart.h)(0x5FFEEE4A)
+I (F:\FPGA\MDK5.36\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (..\..\Drivers\./SYSTEM/delay/delay.h)(0x5FFEEE4A)
+F (..\..\..\..\..\..\..\Keil\【正点原子】精英STM32F103开发板 V2-资料盘(A盘)\4，程序源码\2，标准例程-HAL库版本\实验0 基础入门实验\实验0-2，新建工程实验-寄存器版本\Drivers\SYSTEM\delay\delay.c)(0x5FFEEE4A)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers -I ..\..\User-IF:\FPGA\MDK5.36\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F103xE-o ..\..\output\delay.o --omf_browse ..\..\output\delay.crf --depend ..\..\output\delay.d)
+I (..\..\Drivers\./SYSTEM/sys/sys.h)(0x635FAD07)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Include\core_cm3.h)(0x60E97864)
+I (F:\FPGA\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h)(0x60E97864)
+I (..\..\Drivers\./SYSTEM/delay/delay.h)(0x5FFEEE4A)
+F (..\..\..\..\..\..\..\Keil\【正点原子】精英STM32F103开发板 V2-资料盘(A盘)\4，程序源码\2，标准例程-HAL库版本\实验0 基础入门实验\实验0-2，新建工程实验-寄存器版本\Drivers\SYSTEM\sys\sys.c)(0x635FAD07)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers -I ..\..\User-IF:\FPGA\MDK5.36\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F103xE-o ..\..\output\sys.o --omf_browse ..\..\output\sys.crf --depend ..\..\output\sys.d)
+I (..\..\Drivers\./SYSTEM/sys/sys.h)(0x635FAD07)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Include\core_cm3.h)(0x60E97864)
+I (F:\FPGA\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h)(0x60E97864)
+F (..\..\..\..\..\..\..\Keil\【正点原子】精英STM32F103开发板 V2-资料盘(A盘)\4，程序源码\2，标准例程-HAL库版本\实验0 基础入门实验\实验0-2，新建工程实验-寄存器版本\Drivers\SYSTEM\usart\usart.c)(0x5FFEEE4A)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers -I ..\..\User-IF:\FPGA\MDK5.36\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F103xE-o ..\..\output\usart.o --omf_browse ..\..\output\usart.crf --depend ..\..\output\usart.d)
+I (..\..\Drivers\./SYSTEM/sys/sys.h)(0x635FAD07)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Include\core_cm3.h)(0x60E97864)
+I (F:\FPGA\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x60E97864)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h)(0x60E97864)
+I (..\..\Drivers\./SYSTEM/usart/usart.h)(0x5FFEEE4A)
+I (F:\FPGA\MDK5.36\ARM\ARMCC\include\stdio.h)(0x60252374)
