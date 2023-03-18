@@ -10,6 +10,9 @@
 #define GPIOB_BASE 0x40010010
 #define GPIOB_ADDR (*(volatile unsigned *)GPIOB_BASE) 
 
+#define GPIOC_BASE 0x40010020
+#define GPIOC_ADDR (*(volatile unsigned *)GPIOB_BASE) 
+
 typedef struct
 {
     volatile uint32_t I_DAT;
@@ -19,6 +22,7 @@ typedef struct
 
 #define GPIOA ((GPIOType *)GPIOA_BASE)
 #define GPIOB ((GPIOType *)GPIOB_BASE)
+#define GPIOC ((GPIOType *)GPIOB_BASE)
 
 //iData
 #define P     +0)&              //P-Pin         获取输入寄存器上的指定位的值

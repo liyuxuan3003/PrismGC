@@ -22,17 +22,14 @@ void UARTWrite(char data)
 
 void UARTString(char *stri)
 {
-	int i;
-	for(i=0;i<strlen(stri);i++)
+	for(int i=0;i<strlen(stri);i++)
 		UARTWrite(stri[i]);
 }
 
 void UARTHandle()
 {
-	int data;
-	data = UARTRead();
-	UARTString("Cortex-M0 : ");
+	int data = UARTRead();
+    if(data=='\r')
+        UARTWrite('\n');
 	UARTWrite(data);
-	UARTWrite('\r');
-    UARTWrite('\n');
 }

@@ -20,27 +20,24 @@ int main()
 
     PORTA -> O_SWI_ENA = 0x00;
     PORTA -> O_LED_ENA = 0xFF;
-    PORTA -> O_SEG_ENA = 0xFF;
-    PORTA -> O_SEGCS_ENA = 0xF;
-    PORTA -> O_SEGCS_DAT = 0x1;
-
-    // PORTB -> O_SWI_ENA = 0x00;
-    // PORTB -> O_LED_ENA = 0xFF;
-
-    // PORTB -> O_SWI_ENA = 0x00;
-    // PORTB -> O_LED_ENA = 0xFF;
 	
+    PORTA -> O_LED_DAT = 0x00;
+
+    PORTC -> O_DIG_ENA = 0xFFFF;
+    PORTC -> O_DIG_DOT_ENA = 0xF;
+    PORTC -> O_DIG_ENA_ENA = 0xF;
+    PORTC -> O_DIG_CRT_ENA = 0xF;
+
+    PORTC -> O_DIG_CRT_DAT = 0xF;
+    PORTC -> O_DIG_DAT = 0x0123;
+    PORTC -> O_DIG_DOT_DAT = 0x0;
+    PORTC -> O_DIG_ENA_DAT = 0xF;
+
 	while(1)
 	{
         // UARTString("Hello World!\r\n");
-        PORTA->O_LED_DAT=PORTA->I_SWI_DAT;
-        PORTA->O_SEG_DAT=PORTA->I_SWI_DAT;
-        // LED_0(V);
-        Delay(TICKS);
-        // LED_0(H);
-        // Delay(TICKS);
-        // LED_0(L);
-        // Delay(TICKS);
+        PORTA -> O_LED_DAT ++;
+        Delay(TICKS/10);
 	}
 }
 

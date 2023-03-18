@@ -130,6 +130,22 @@
                     <Attr Name="CompileOrder" Val="15"/>
                 </FileInfo>
             </File>
+            <File Path="rtl/Digit.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="16"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/DigitDecoder.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="17"/>
+                </FileInfo>
+            </File>
         </Verilog>
         <ADC_FILE>
             <File Path="pin/pin.adc">
@@ -149,9 +165,9 @@
         </FileSet>
     </FileSets>
     <TOP_MODULE>
-        <LABEL></LABEL>
+        <LABEL>top</LABEL>
         <MODULE>top</MODULE>
-        <CREATEINDEX>auto</CREATEINDEX>
+        <CREATEINDEX></CREATEINDEX>
     </TOP_MODULE>
     <Property>
     </Property>
@@ -160,7 +176,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-03-17 22:06:12.338</Step_Last_Change>
+        <Step_Last_Change>2023-03-18 11:40:21.076</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
