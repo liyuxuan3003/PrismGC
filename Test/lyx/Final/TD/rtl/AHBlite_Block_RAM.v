@@ -1,5 +1,5 @@
-module AHBlite_Block_RAM #(
-    parameter                       ADDR_WIDTH = 14)(
+module AHBlite_Block_RAM #(parameter ADDR_WIDTH = 14)
+(
     input  wire                     HCLK,    
     input  wire                     HRESETn, 
     input  wire                     HSEL,    
@@ -34,38 +34,39 @@ assign read_en = trans_en & (~HWRITE);
 
 reg [3:0] size_dec;
 always@(*) begin
-  case({HADDR[1:0],HSIZE[1:0]})
-    4'h0 : size_dec = 4'h1;
-    4'h1 : size_dec = 4'h3;
-    4'h2 : size_dec = 4'hf;
-    4'h4 : size_dec = 4'h2;
-    4'h8 : size_dec = 4'h4;
-    4'h9 : size_dec = 4'hc;
-    4'hc : size_dec = 4'h8;
-    default : size_dec = 4'h0;
-  endcase
+    case({HADDR[1:0],HSIZE[1:0]})
+        4'h0 : size_dec = 4'h1;
+        4'h1 : size_dec = 4'h3;
+        4'h2 : size_dec = 4'hf;
+        4'h4 : size_dec = 4'h2;
+        4'h8 : size_dec = 4'h4;
+        4'h9 : size_dec = 4'hc;
+        4'hc : size_dec = 4'h8;
+        default : size_dec = 4'h0;
+    endcase
 end
 
 reg [3:0] size_reg;
-always@(posedge HCLK or negedge HRESETn) begin
-  if(~HRESETn) size_reg <= 0;
-  else if(write_en & HREADY) size_reg <= size_dec;
+always@(posedge HCLK or negedge HRESETn) 
+begin
+    if(~HRESETn) size_reg <= 0;
+    else if(write_en & HREADY) size_reg <= size_dec;
 end
-
 
 reg [ADDR_WIDTH-1:0] addr_reg;
-always@(posedge HCLK or negedge HRESETn) begin
-  if(~HRESETn) addr_reg <= 0;
-  else if(trans_en & HREADY) addr_reg <= HADDR[(ADDR_WIDTH+1):2];
+always@(posedge HCLK or negedge HRESETn)
+begin
+    if(~HRESETn) addr_reg <= 0;
+    else if(trans_en & HREADY) addr_reg <= HADDR[(ADDR_WIDTH+1):2];
 end
-
 
 reg wr_en_reg;
 
-always@(posedge HCLK or negedge HRESETn) begin
-  if(~HRESETn) wr_en_reg <= 1'b0;
-  else if(HREADY) wr_en_reg <= write_en;
-  else wr_en_reg <= 1'b0;
+always@(posedge HCLK or negedge HRESETn) 
+begin
+    if(~HRESETn) wr_en_reg <= 1'b0;
+    else if(HREADY) wr_en_reg <= write_en;
+    else wr_en_reg <= 1'b0;
 end
 
 assign BRAM_RDADDR = HADDR[(ADDR_WIDTH+1):2];
