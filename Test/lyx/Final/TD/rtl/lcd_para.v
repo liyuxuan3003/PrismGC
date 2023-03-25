@@ -20,8 +20,8 @@
 
 //`define	VGA_640_480_60FPS_25MHz
 //`define	VGA_800_600_60FPS_40MHz
-`define	VGA_1280_720_60FPS_74_25MHz
-//`define	VGA_1920_1080_60FPS_148_5MHz
+// `define	VGA_1280_720_60FPS_74_25MHz
+`define	VGA_1920_1080_60FPS_148_5MHz
 
 //---------------------------------
 //	640 * 480
