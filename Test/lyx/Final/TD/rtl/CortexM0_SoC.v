@@ -691,9 +691,9 @@ AHBlite_HDMI HDMI_Interface
     /**********************************/ 
 );
 
-HDMI_TX_Display u_HDMI_TX_Display
+hdmi_tx_display u_HDMI_TX_Display
 (
-    .clk_24m(clk),
+    .FPGA_SYS_50M_CLK_P(clk),
     
     //HDMI
     .HDMI_CLK_P(HDMI_CLK_P),
