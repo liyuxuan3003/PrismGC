@@ -67,13 +67,12 @@ video_tpg_12801024p u2_tpg
     .TPG_mode(TPG_mode),
     .PDEN(VGA_DE),
     .HSYNC(VGA_HS),    
-    .VSYNC(VGA_VS ), 
+    .VSYNC(VGA_VS), 
     .PDATA(VGA_RGB)
 );	
 	
 	
 hdmi_tx #(.FAMILY("EG4"))	//EF2、EF3、EG4、AL3、PH1
-
 u3_hdmi_tx
 (
     .PXLCLK_I(PXLCLK_I),
