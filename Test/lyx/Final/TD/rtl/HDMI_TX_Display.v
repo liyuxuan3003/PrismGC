@@ -1,14 +1,8 @@
-//-------------------------------
-//modukle   :   hdmi_tx_display
-//data      :   2022-03-15
-//author    :   CrazyBingo
-
 `timescale 1ns / 1ps
 module HDMI_TX_Display
 (
     input           clk_24m,
-    input	[7:0]	Displaymode,
-    input   [31:0]	Displaycontent,
+    input   [31:0]	HDMI_DATA,
     //HDMI
     output			HDMI_CLK_P,
     output			HDMI_D2_P,
@@ -49,8 +43,8 @@ lcd_driver u_lcd_driver
 	.rst_n			(sys_rst_n), 
 	 
 	 //lcd interface
-	.lcd_dclk		(),//(lcd_dclk),
-	.lcd_blank		(),//lcd_blank
+	.lcd_dclk		(),
+	.lcd_blank		(),
 	.lcd_sync		(),		    	
 	.lcd_hs			(VGA_HS),		
 	.lcd_vs			(VGA_VS),
@@ -75,8 +69,7 @@ u_lcd_display
 	//global clock
 	.clk			(clk_pixel),		
 	.rst_n			(sys_rst_n), 
-	.Displaymode	(Displaymode),
-    .Displaycontent	(Displaycontent),
+    .HDMI_DATA	    (HDMI_DATA),
 	.lcd_xpos		(lcd_xpos),	
 	.lcd_ypos		(lcd_ypos),
 	.lcd_data		(lcd_data)
@@ -84,7 +77,7 @@ u_lcd_display
 
 //-----------------------------------
 //HDMI TX Module
-hdmi_tx #(.FAMILY("EG4"))	//EF2、EF3、EG4、AL3、PH1
+hdmi_tx #(.FAMILY("EG4"))	//EF2 EF3 EG4 AL3 PH1
 u3_hdmi_tx
 (
 	.PXLCLK_I	    (clk_pixel),

@@ -11,6 +11,10 @@ module top
     input       SWCLK,          //SW调试接口 时钟
     output      TXD,            //UART串口 输出TX
     input       RXD,            //UART串口 输入RX
+    output      HDMI_CLK_P,     //HDMI CLK
+    output      HDMI_D2_P,      //HDMI D2
+    output      HDMI_D1_P,      //HDMI D1
+    output      HDMI_D0_P,      //HDMI D0
     inout[31:0] NC              //悬空管脚
 );
 
@@ -44,6 +48,10 @@ CortexM0_SoC SoC
     .SWCLK(SWCLK),
     .TXD(TXD),
     .RXD(RXD),
+    .HDMI_CLK_P(HDMI_CLK_P),
+    .HDMI_D2_P(HDMI_D2_P),
+    .HDMI_D1_P(HDMI_D1_P),
+    .HDMI_D0_P(HDMI_D0_P),
     .io_pin0({NC[15:0],LED,SWI}),
     .io_pin1({NC[23:0],PI4[19],PI4[17],PI4[15],PI4[13],PI4[11],PI4[9],PI4[7],PI4[5]}),
     .io_pin2({NC[3:0],DIG_CRT,DIG_ENA,DIG_DOT,DIG3,DIG2,DIG1,DIG0}),

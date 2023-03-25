@@ -7,6 +7,10 @@ module CortexM0_SoC
     input  wire  SWCLK,         //SW调试接口 时钟
     output wire  TXD,           //UART串口 输出
     input  wire  RXD,           //UART串口 输入
+    output wire HDMI_CLK_P,     //HDMI CLK
+    output wire HDMI_D2_P,      //HDMI D2
+    output wire HDMI_D1_P,      //HDMI D1
+    output wire HDMI_D0_P,      //HDMI D0
     inout  wire[31:0] io_pin0,  //GPIO-0
     inout  wire[31:0] io_pin1,  //GPIO-1
     inout  wire[31:0] io_pin2,  //GPIO-2
@@ -217,6 +221,66 @@ wire            HREADYOUT_P3;
 wire    [31:0]  HRDATA_P3;
 wire            HRESP_P3;
 
+//P4
+wire            HSEL_P4;
+wire    [31:0]  HADDR_P4;
+wire    [2:0]   HBURST_P4;
+wire            HMASTLOCK_P4;
+wire    [3:0]   HPROT_P4;
+wire    [2:0]   HSIZE_P4;
+wire    [1:0]   HTRANS_P4;
+wire    [31:0]  HWDATA_P4;
+wire            HWRITE_P4;
+wire            HREADY_P4;
+wire            HREADYOUT_P4;
+wire    [31:0]  HRDATA_P4;
+wire            HRESP_P4;
+
+//P5
+wire            HSEL_P5;
+wire    [31:0]  HADDR_P5;
+wire    [2:0]   HBURST_P5;
+wire            HMASTLOCK_P5;
+wire    [3:0]   HPROT_P5;
+wire    [2:0]   HSIZE_P5;
+wire    [1:0]   HTRANS_P5;
+wire    [31:0]  HWDATA_P5;
+wire            HWRITE_P5;
+wire            HREADY_P5;
+wire            HREADYOUT_P5;
+wire    [31:0]  HRDATA_P5;
+wire            HRESP_P5;
+
+//P6
+wire            HSEL_P6;
+wire    [31:0]  HADDR_P6;
+wire    [2:0]   HBURST_P6;
+wire            HMASTLOCK_P6;
+wire    [3:0]   HPROT_P6;
+wire    [2:0]   HSIZE_P6;
+wire    [1:0]   HTRANS_P6;
+wire    [31:0]  HWDATA_P6;
+wire            HWRITE_P6;
+wire            HREADY_P6;
+wire            HREADYOUT_P6;
+wire    [31:0]  HRDATA_P6;
+wire            HRESP_P6;
+
+//P7
+wire            HSEL_P7;
+wire    [31:0]  HADDR_P7;
+wire    [2:0]   HBURST_P7;
+wire            HMASTLOCK_P7;
+wire    [3:0]   HPROT_P7;
+wire    [2:0]   HSIZE_P7;
+wire    [1:0]   HTRANS_P7;
+wire    [31:0]  HWDATA_P7;
+wire            HWRITE_P7;
+wire            HREADY_P7;
+wire            HREADYOUT_P7;
+wire    [31:0]  HRDATA_P7;
+wire            HRESP_P7;
+
 
 /*** 实例化AHBlite内部连接 ***/
 AHBlite_Interconnect Interconncet
@@ -295,11 +359,71 @@ AHBlite_Interconnect Interconncet
     .HREADY_P3      (HREADY_P3),
     .HREADYOUT_P3   (HREADYOUT_P3),
     .HRDATA_P3      (HRDATA_P3),
-    .HRESP_P3       (HRESP_P3)
+    .HRESP_P3       (HRESP_P3),
+
+    // P4
+    .HSEL_P4        (HSEL_P4),
+    .HADDR_P4       (HADDR_P4),
+    .HBURST_P4      (HBURST_P4),
+    .HMASTLOCK_P4   (HMASTLOCK_P4),
+    .HPROT_P4       (HPROT_P4),
+    .HSIZE_P4       (HSIZE_P4),
+    .HTRANS_P4      (HTRANS_P4),
+    .HWDATA_P4      (HWDATA_P4),
+    .HWRITE_P4      (HWRITE_P4),
+    .HREADY_P4      (HREADY_P4),
+    .HREADYOUT_P4   (HREADYOUT_P4),
+    .HRDATA_P4      (HRDATA_P4),
+    .HRESP_P4       (HRESP_P4),
+
+    // P5
+    .HSEL_P5        (HSEL_P5),
+    .HADDR_P5       (HADDR_P5),
+    .HBURST_P5      (HBURST_P5),
+    .HMASTLOCK_P5   (HMASTLOCK_P5),
+    .HPROT_P5       (HPROT_P5),
+    .HSIZE_P5       (HSIZE_P5),
+    .HTRANS_P5      (HTRANS_P5),
+    .HWDATA_P5      (HWDATA_P5),
+    .HWRITE_P5      (HWRITE_P5),
+    .HREADY_P5      (HREADY_P5),
+    .HREADYOUT_P5   (HREADYOUT_P5),
+    .HRDATA_P5      (HRDATA_P5),
+    .HRESP_P5       (HRESP_P5),
+
+    // P6
+    .HSEL_P6        (HSEL_P6),
+    .HADDR_P6       (HADDR_P6),
+    .HBURST_P6      (HBURST_P6),
+    .HMASTLOCK_P6   (HMASTLOCK_P6),
+    .HPROT_P6       (HPROT_P6),
+    .HSIZE_P6       (HSIZE_P6),
+    .HTRANS_P6      (HTRANS_P6),
+    .HWDATA_P6      (HWDATA_P6),
+    .HWRITE_P6      (HWRITE_P6),
+    .HREADY_P6      (HREADY_P6),
+    .HREADYOUT_P6   (HREADYOUT_P6),
+    .HRDATA_P6      (HRDATA_P6),
+    .HRESP_P6       (HRESP_P6),
+
+    // P7
+    .HSEL_P7        (HSEL_P7),
+    .HADDR_P7       (HADDR_P7),
+    .HBURST_P7      (HBURST_P7),
+    .HMASTLOCK_P7   (HMASTLOCK_P7),
+    .HPROT_P7       (HPROT_P7),
+    .HSIZE_P7       (HSIZE_P7),
+    .HTRANS_P7      (HTRANS_P7),
+    .HWDATA_P7      (HWDATA_P7),
+    .HWRITE_P7      (HWRITE_P7),
+    .HREADY_P7      (HREADY_P7),
+    .HREADYOUT_P7   (HREADYOUT_P7),
+    .HRDATA_P7      (HRDATA_P7),
+    .HRESP_P7       (HRESP_P7)
 );
 
 //------------------------------------------------------------------------------
-// AHB RAMCODE
+// AHB RAMCODE/RAMDATA
 //------------------------------------------------------------------------------
 
 /*** 实例化RAMCODE的Interface ***/
@@ -334,10 +458,6 @@ AHBlite_Block_RAM RAMCODE_Interface
     /**********************************/
 );
 
-//------------------------------------------------------------------------------
-// AHB RAMDATA
-//------------------------------------------------------------------------------
-
 /*** 实例化RAMDATA的Interface ***/
 
 wire [31:0] RAMDATA_RDATA;
@@ -368,6 +488,30 @@ AHBlite_Block_RAM RAMDATA_Interface
     .BRAM_RDATA     (RAMDATA_RDATA),
     .BRAM_WRITE     (RAMDATA_WRITE)
     /**********************************/
+);
+
+// RAMCODE和RAMDATA均是Block_RAM的实例，前者是程序空间，后者是数据空间
+
+/*** 实例化RAMCODE ***/
+Block_RAM RAM_CODE
+(
+    .clka           (clk),
+    .addra          (RAMCODE_WADDR),
+    .addrb          (RAMCODE_RADDR),
+    .dina           (RAMCODE_WDATA),
+    .doutb          (RAMCODE_RDATA),
+    .wea            (RAMCODE_WRITE)
+);
+
+/*** 实例化RAMDATA ***/
+Block_RAM RAM_DATA
+(
+    .clka           (clk),
+    .addra          (RAMDATA_WADDR),
+    .addrb          (RAMDATA_RADDR),
+    .dina           (RAMDATA_WDATA),
+    .doutb          (RAMDATA_RDATA),
+    .wea            (RAMDATA_WRITE)
 );
 
 //------------------------------------------------------------------------------
@@ -426,6 +570,30 @@ AHBlite_GPIO GPIO_Interface
     /**********************************/ 
 );
 
+/*** 实例化GPIO ***/
+GPIO GPIO
+(
+    .write_byte(GPIO_WRITE),
+    .o_ena0(GPIO0_O_ENA),
+    .o_dat0(GPIO0_O_DAT),
+    .i_dat0(GPIO0_I_DAT), 
+    .o_ena1(GPIO1_O_ENA),
+    .o_dat1(GPIO1_O_DAT),
+    .i_dat1(GPIO1_I_DAT), 
+    .o_ena2(GPIO2_O_ENA),
+    .o_dat2(GPIO2_O_DAT),
+    .i_dat2(GPIO2_I_DAT), 
+    .o_ena3(GPIO3_O_ENA),
+    .o_dat3(GPIO3_O_DAT),
+    .i_dat3(GPIO3_I_DAT), 
+    .clk(clk),
+    .RSTn(cpuresetn),
+    .io_pin0(io_pin0),
+    .io_pin1(io_pin1),
+    .io_pin2(io_pin2),
+    .io_pin3(io_pin3)
+);
+
 //------------------------------------------------------------------------------
 // AHB UART
 //------------------------------------------------------------------------------
@@ -456,67 +624,6 @@ AHBlite_UART UART_Interface
     .tx_en          (tx_en),
     .UART_TX        (UART_TX_data)
 );
-
-//------------------------------------------------------------------------------
-// RAM
-//------------------------------------------------------------------------------
-
-// RAMCODE和RAMDATA均是Block_RAM的实例，前者是程序空间，后者是数据空间
-
-/*** 实例化RAMCODE ***/
-Block_RAM RAM_CODE
-(
-    .clka           (clk),
-    .addra          (RAMCODE_WADDR),
-    .addrb          (RAMCODE_RADDR),
-    .dina           (RAMCODE_WDATA),
-    .doutb          (RAMCODE_RDATA),
-    .wea            (RAMCODE_WRITE)
-);
-
-/*** 实例化RAMDATA ***/
-Block_RAM RAM_DATA
-(
-    .clka           (clk),
-    .addra          (RAMDATA_WADDR),
-    .addrb          (RAMDATA_RADDR),
-    .dina           (RAMDATA_WDATA),
-    .doutb          (RAMDATA_RDATA),
-    .wea            (RAMDATA_WRITE)
-);
-
-//------------------------------------------------------------------------------
-// GPIO
-//------------------------------------------------------------------------------
-
-/*** 实例化GPIO ***/
-GPIO GPIO
-(
-    .write_byte(GPIO_WRITE),
-    .o_ena0(GPIO0_O_ENA),
-    .o_dat0(GPIO0_O_DAT),
-    .i_dat0(GPIO0_I_DAT), 
-    .o_ena1(GPIO1_O_ENA),
-    .o_dat1(GPIO1_O_DAT),
-    .i_dat1(GPIO1_I_DAT), 
-    .o_ena2(GPIO2_O_ENA),
-    .o_dat2(GPIO2_O_DAT),
-    .i_dat2(GPIO2_I_DAT), 
-    .o_ena3(GPIO3_O_ENA),
-    .o_dat3(GPIO3_O_DAT),
-    .i_dat3(GPIO3_I_DAT), 
-    .clk(clk),
-    .RSTn(cpuresetn),
-    .io_pin0(io_pin0),
-    .io_pin1(io_pin1),
-    .io_pin2(io_pin2),
-    .io_pin3(io_pin3)
-);
-
-
-//------------------------------------------------------------------------------
-// UART
-//------------------------------------------------------------------------------
 
 wire clk_uart;
 wire bps_en;
@@ -556,6 +663,43 @@ UART_RX UART_RX
     .data(UART_RX_data),
     .interrupt(interrupt_UART),
     .bps_en(bps_en_rx)
+);
+
+//------------------------------------------------------------------------------
+// AHB HDMI
+//------------------------------------------------------------------------------
+
+wire [7:0] HDMI_DATA;
+
+AHBlite_HDMI HDMI_Interface
+(
+    /* Connect to Interconnect Port 4 */
+    .HCLK                   (clk),
+    .HRESETn                (cpuresetn),
+    .HSEL                   (HSEL_P4),
+    .HADDR                  (HADDR_P4),
+    .HPROT                  (HPROT_P4),
+    .HSIZE                  (HSIZE_P4),
+    .HTRANS                 (HTRANS_P4),
+    .HWDATA                 (HWDATA_P4),
+    .HWRITE                 (HWRITE_P4),
+    .HRDATA                 (HRDATA_P4),
+    .HREADY                 (HREADY_P4),
+    .HREADYOUT              (HREADYOUT_P4),
+    .HRESP                  (HRESP_P4),
+    .HDMI_DATA              (HDMI_DATA)
+    /**********************************/ 
+);
+
+HDMI_TX_Display u_HDMI_TX_Display
+(
+    .clk_24m(clk),
+    
+    //HDMI
+    .HDMI_CLK_P(HDMI_CLK_P),
+    .HDMI_D2_P(HDMI_D2_P),
+    .HDMI_D1_P(HDMI_D1_P),
+    .HDMI_D0_P(HDMI_D0_P)
 );
 
 endmodule

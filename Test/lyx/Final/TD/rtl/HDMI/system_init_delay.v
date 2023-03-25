@@ -24,6 +24,6 @@ begin
     else
         delay_cnt <= SYS_DELAY_TOP - 1'b1;
 end
-assign    delay_done = (delay_cnt == SYS_DELAY_TOP - 1'b1)? 1'b1 : 1'b0;
+assign delay_done = (delay_cnt == SYS_DELAY_TOP - 1'b1)? 1'b1 : 1'b0;
 
 endmodule

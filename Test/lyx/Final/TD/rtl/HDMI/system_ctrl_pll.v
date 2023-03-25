@@ -1,17 +1,3 @@
-//----------------------------------
-//sync global clock and reset signal
-wire    clk_ref;
-wire    sys_rst_n;
-system_ctrl    u_system_ctrl
-(
-    .clk                (clk),          //50MHz
-    .rst_n              (rst_n),        //global reset
-    
-    .clk_ref            (clk_ref),      //clock output    
-    .sys_rst_n          (sys_rst_n)     //system reset
-);
-***************************************************************************/
-
 `timescale 1 ns / 1 ns
 module system_ctrl_pll
 (
@@ -66,17 +52,17 @@ reg     rst_nr1, rst_nr2;
 always @(posedge clk_c0)
 begin
     if(!rst_n)
-        begin
+    begin
         rst_nr1 <= 1'b0;
         rst_nr2 <= 1'b0;
-        end
+    end
     else
-        begin
+    begin
         rst_nr1 <= 1'b1;
         rst_nr2 <= rst_nr1;
-        end
+    end
 end
-assign    sys_rst_n = rst_nr2 & locked;    //active low
+assign sys_rst_n = rst_nr2 & locked;    //active low
 
 endmodule
 
