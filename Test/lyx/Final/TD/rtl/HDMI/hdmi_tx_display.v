@@ -7,9 +7,7 @@
 module hdmi_tx_display
 (
     input           FPGA_SYS_50M_CLK_P,
-    
-    output			LED,
-    
+
     //HDMI
     output			HDMI_CLK_P,
     output			HDMI_D2_P,
@@ -26,6 +24,7 @@ module hdmi_tx_display
 	
 wire clk25m,pxlclk_5x_i;
 wire pxlclk_i,locked;
+	
 
 wire 	reset;
 assign  reset = 1'b0;
@@ -36,7 +35,7 @@ begin
 	if (rst_cnt[7])
 		rst_cnt <=  rst_cnt;
 	else
-		rst_cnt <= rst_cnt+1'b1;
+		rst_cnt <=  rst_cnt+1'b1;
 end
 
 tx_pll inst
@@ -95,16 +94,6 @@ hdmi_top ux_hdmi
     .VGA_G	    (VGA_G),
     .VGA_B      (VGA_B)	
 );		
-
-reg		[23:0]	cnt;	
-always @(posedge pxlclk_i)
-begin
-	if(locked)
-		cnt <= cnt+1'b1;
-	else
-		cnt  <= 16'd0;
-end
-assign LED=cnt[23];
 
 	
 endmodule

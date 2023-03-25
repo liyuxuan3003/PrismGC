@@ -60,7 +60,7 @@ assign VGA_G = VGA_RGB[15:10];
 assign VGA_B = VGA_RGB[7:3];
 
 video_tpg_12801024p u2_tpg
-(   
+(
     .PCLK(PXLCLK_I),
     .Reset(RST_I),
     .DEN_TPG(DEN_TPG),
@@ -72,14 +72,15 @@ video_tpg_12801024p u2_tpg
 );	
 	
 	
-hdmi_tx #(.FAMILY("EG4"))	//EF2 EF3 EG4 AL3 PH1
+hdmi_tx #(.FAMILY("EG4"))	//EF2、EF3、EG4、AL3、PH1
+
 u3_hdmi_tx
 (
     .PXLCLK_I(PXLCLK_I),
     .PXLCLK_5X_I(PXLCLK_5X_I),
 
     .RST_N (RST_I),
-
+    
     //VGA
     .VGA_HS (VGA_HS ),
     .VGA_VS (VGA_VS ),

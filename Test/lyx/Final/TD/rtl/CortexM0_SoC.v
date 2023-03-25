@@ -1,20 +1,25 @@
 /*** SoC顶层封装 ***/
 module CortexM0_SoC 
 (
-    input  wire  clk,           //时钟
-    input  wire  RSTn,          //SoC使能
-    inout  wire  SWDIO,         //SW调试接口 数据
-    input  wire  SWCLK,         //SW调试接口 时钟
-    output wire  TXD,           //UART串口 输出
-    input  wire  RXD,           //UART串口 输入
-    output wire HDMI_CLK_P,     //HDMI CLK
-    output wire HDMI_D2_P,      //HDMI D2
-    output wire HDMI_D1_P,      //HDMI D1
-    output wire HDMI_D0_P,      //HDMI D0
-    inout  wire[31:0] io_pin0,  //GPIO-0
-    inout  wire[31:0] io_pin1,  //GPIO-1
-    inout  wire[31:0] io_pin2,  //GPIO-2
-    inout  wire[31:0] io_pin3   //GPIO-3
+    input       clk,           //时钟
+    input       RSTn,          //SoC使能
+    inout       SWDIO,         //SW调试接口 数据
+    input       SWCLK,         //SW调试接口 时钟
+    output      TXD,           //UART串口 输出
+    input       RXD,           //UART串口 输入
+    output      HDMI_CLK_P,     //HDMI CLK
+    output      HDMI_D2_P,      //HDMI D2
+    output      HDMI_D1_P,      //HDMI D1
+    output      HDMI_D0_P,      //HDMI D0
+    output[4:0] VGA_R,          //VGA R
+    output[5:0] VGA_G,          //VGA G
+    output[4:0] VGA_B,          //VGA B
+    output      VGA_HS,         //VGA HS
+    output      VGA_VS,         //VGA VS
+    inout[31:0] io_pin0,        //GPIO-0
+    inout[31:0] io_pin1,        //GPIO-1
+    inout[31:0] io_pin2,        //GPIO-2
+    inout[31:0] io_pin3         //GPIO-3
 );
 
 //------------------------------------------------------------------------------
@@ -699,7 +704,13 @@ hdmi_tx_display u_HDMI_TX_Display
     .HDMI_CLK_P(HDMI_CLK_P),
     .HDMI_D2_P(HDMI_D2_P),
     .HDMI_D1_P(HDMI_D1_P),
-    .HDMI_D0_P(HDMI_D0_P)
+    .HDMI_D0_P(HDMI_D0_P),
+
+    .VGA_R(VGA_R),
+    .VGA_G(VGA_G),
+    .VGA_B(VGA_B),
+    .VGA_HS(VGA_HS),
+    .VGA_VS(VGA_VS)
 );
 
 endmodule
