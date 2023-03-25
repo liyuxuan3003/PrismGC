@@ -66,13 +66,14 @@ end
 always @(posedge clk25m)
 begin
 	if(!locked)
-		t_mode <= 4'd1;
+		t_mode <= 4'b0001;
 	else if(pat_begin)
     begin
-		if(t_mode==4'd11)
-			t_mode <= 4'd1;
-		else
-			t_mode <= t_mode+1'b1;
+    	// if(t_mode==4'b0001)
+		// 	t_mode <= 4'b0010;
+		// else
+		// 	t_mode <= 4'b0001;
+		t_mode <= 4'b0010;
     end
 end
 	
