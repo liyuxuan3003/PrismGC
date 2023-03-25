@@ -27,7 +27,9 @@
 - 手柄购买链接（左手弯柄又名鸡腿）：https://m.tb.cn/h.UpxegpN?tk=SNyRd8YcN7s
 - 手柄转接器购买链接：https://m.tb.cn/h.UKwwcpI?tk=5UGsd857Dhc
 - 资料：https://www.instructables.com/Wii-Nunchuck-as-general-purpose-controller-via-Ard/
-
+- 用Verilog实现IIC协议：https://blog.csdn.net/qq_43550173/article/details/90384126
+- IIC总线协议详情：https://zhuanlan.zhihu.com/p/149364473
+- WII手柄直连经验：https://tieba.baidu.com/p/6314558646 （doubtful）
 ## 梯子
 - 鹰云VPN：https://yinyun.me/
 
