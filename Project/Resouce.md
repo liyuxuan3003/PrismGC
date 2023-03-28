@@ -28,6 +28,7 @@
 - 手柄转接器购买链接：https://m.tb.cn/h.UKwwcpI?tk=5UGsd857Dhc
 - 资料：https://www.instructables.com/Wii-Nunchuck-as-general-purpose-controller-via-Ard/
 - 用Verilog实现IIC协议：https://blog.csdn.net/qq_43550173/article/details/90384126
+- https://blog.csdn.net/ssj925319/article/details/126427237?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1-126427237-blog-90384126.235^v27^pc_relevant_3mothn_strategy_recovery&spm=1001.2101.3001.4242.2&utm_relevant_index=4
 - IIC总线协议详情：https://zhuanlan.zhihu.com/p/149364473
 - WII手柄直连经验：https://tieba.baidu.com/p/6314558646 （doubtful）
 ## 梯子
