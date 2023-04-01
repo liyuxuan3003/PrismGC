@@ -49,36 +49,6 @@ tx_pll inst
     .clk1_out(pxlclk_i),
     .clk2_out(pxlclk_5x_i)
 );
-
-reg			pat_1d,pat_2d,pat_begin;
-reg	[25:0]	pattern_cnt;
-reg	[3:0]	t_mode;
-always @(posedge clk25m)
-begin
-	pattern_cnt <= pattern_cnt+1'b1;
-end
-
-always @(posedge clk25m)
-begin
-	pat_1d <= pattern_cnt[25];
-	pat_2d <= pat_1d;
-	pat_begin <= pat_1d & (!pat_2d);
-end
-
-always @(posedge clk25m)
-begin
-	if(!locked)
-		t_mode <= 4'b0001;
-	else if(pat_begin)
-    begin
-    	// if(t_mode==4'b0001)
-		// 	t_mode <= 4'b0010;
-		// else
-		// 	t_mode <= 4'b0001;
-		t_mode <= HDMI_DATA[3:0];
-    end
-end
-	
 	
 hdmi_top ux_hdmi
 (   
@@ -86,7 +56,7 @@ hdmi_top ux_hdmi
 	.PXLCLK_5X_I(pxlclk_5x_i),
 	.RST_I		(reset),
 	.DEN_TPG	(1'b1 ),
-	.TPG_mode	(t_mode),
+	.TPG_mode	(HDMI_DATA[3:0]),
 	.HDMI_CLK_P	(HDMI_CLK_P	),
 	.HDMI_D2_P	(HDMI_D2_P	),
 	.HDMI_D1_P	(HDMI_D1_P	),

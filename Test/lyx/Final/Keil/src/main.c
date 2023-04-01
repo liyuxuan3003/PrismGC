@@ -9,6 +9,7 @@
 #include "HardwareConfig.h"
 #include "UART.h"
 #include "GPIO.h"
+#include "HDMI.h"
 
 int main() 
 { 
@@ -37,10 +38,22 @@ int main()
     PORTC -> O_DIG_ENA_DAT = 0xF;
     PORTC -> O_DIG_CRT_DAT = 0xF;
 
+    int cnt=0;
+    int pat=0x1;
+
 	while(1)
 	{
+        if(cnt>=1000)
+        {
+            cnt=0;
+            pat++;
+            if(pat==0x0C)
+                pat=0x01;
+        }
         PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
         PORTC -> O_DIG_DAT --;
+        HDMI -> HDMI_DATA = pat;
+        cnt++;
         Delay(TICKS/5000);
 	}
 }
