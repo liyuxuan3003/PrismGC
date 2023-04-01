@@ -19,7 +19,9 @@ module hdmi_tx_display
     output			VGA_VS,
     output [4:0]	VGA_R,		
     output [5:0]	VGA_G,		
-    output [4:0]	VGA_B			
+    output [4:0]	VGA_B,
+
+    input [31:0]    HDMI_DATA		
 );
 	
 wire clk25m,pxlclk_5x_i;
@@ -73,7 +75,7 @@ begin
 		// 	t_mode <= 4'b0010;
 		// else
 		// 	t_mode <= 4'b0001;
-		t_mode <= 4'b0010;
+		t_mode <= HDMI_DATA[3:0];
     end
 end
 	

@@ -674,7 +674,7 @@ UART_RX UART_RX
 // AHB HDMI
 //------------------------------------------------------------------------------
 
-wire [7:0] HDMI_DATA;
+wire [31:0] HDMI_DATA;
 
 AHBlite_HDMI HDMI_Interface
 (
@@ -710,7 +710,9 @@ hdmi_tx_display u_HDMI_TX_Display
     .VGA_G(VGA_G),
     .VGA_B(VGA_B),
     .VGA_HS(VGA_HS),
-    .VGA_VS(VGA_VS)
+    .VGA_VS(VGA_VS),
+
+    .HDMI_DATA(HDMI_DATA)
 );
 
 endmodule

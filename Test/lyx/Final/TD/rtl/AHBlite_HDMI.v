@@ -37,12 +37,12 @@ begin
     else wr_en_reg <= 1'b0;
 end
 
-reg hdmi_data_reg;
+reg[31:0] hdmi_data_reg;
 always@(posedge HCLK) 
 begin
     if(~HRESETn) 
     begin
-        hdmi_data_reg <= 32'h0000_0000;
+        hdmi_data_reg <= 32'h0000_0011;
     end 
     else if(wr_en_reg && HREADY) 
     begin
