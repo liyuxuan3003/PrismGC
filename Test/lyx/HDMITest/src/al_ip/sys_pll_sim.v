@@ -1,5 +1,5 @@
 // Verilog netlist created by TD v5.0.30786
-// Sat Apr  1 21:31:58 2023
+// Sat Apr  1 22:13:50 2023
 
 `timescale 1ns / 1ps
 module sys_pll  // sys_pll.v(24)
@@ -36,13 +36,13 @@ module sys_pll  // sys_pll.v(24)
     .CLKC0_DIV2_ENABLE("DISABLE"),
     .CLKC0_ENABLE("ENABLE"),
     .CLKC0_FPHASE(0),
-    .CLKC1_CPHASE(24),
-    .CLKC1_DIV(25),
+    .CLKC1_CPHASE(19),
+    .CLKC1_DIV(20),
     .CLKC1_DIV2_ENABLE("DISABLE"),
     .CLKC1_ENABLE("ENABLE"),
     .CLKC1_FPHASE(0),
-    .CLKC2_CPHASE(4),
-    .CLKC2_DIV(5),
+    .CLKC2_CPHASE(3),
+    .CLKC2_DIV(4),
     .CLKC2_DIV2_ENABLE("DISABLE"),
     .CLKC2_ENABLE("ENABLE"),
     .CLKC2_FPHASE(0),

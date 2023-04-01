@@ -16,8 +16,8 @@
 //	Clock information:
 //		Clock name	| Frequency 	| Phase shift
 //		C0        	| 100.000000MHZ	| 0  DEG     
-//		C1        	| 40.000000 MHZ	| 0  DEG     
-//		C2        	| 200.000000MHZ	| 0  DEG     
+//		C1        	| 50.000000 MHZ	| 0  DEG     
+//		C2        	| 250.000000MHZ	| 0  DEG     
 ///////////////////////////////////////////////////////////////////////////////
 `timescale 1 ns / 100 fs
 
@@ -61,12 +61,12 @@ module sys_pll(refclk,
 		.CLKC0_CPHASE(9),
 		.CLKC0_FPHASE(0),
 		.CLKC1_ENABLE("ENABLE"),
-		.CLKC1_DIV(25),
-		.CLKC1_CPHASE(24),
+		.CLKC1_DIV(20),
+		.CLKC1_CPHASE(19),
 		.CLKC1_FPHASE(0),
 		.CLKC2_ENABLE("ENABLE"),
-		.CLKC2_DIV(5),
-		.CLKC2_CPHASE(4),
+		.CLKC2_DIV(4),
+		.CLKC2_CPHASE(3),
 		.CLKC2_FPHASE(0)	)
 	pll_inst (.refclk(refclk),
 		.reset(reset),

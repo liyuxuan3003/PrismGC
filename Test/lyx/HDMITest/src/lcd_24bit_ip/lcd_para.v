@@ -53,7 +53,8 @@ Date			By			Version			Change Description
 //vga parameter define
 
 //`define	VGA_640_480_60FPS_25MHz
-`define	VGA_800_600_60FPS_40MHz
+// `define	VGA_800_600_60FPS_40MHz
+`define	VGA_1024_600_60FPS_50MHz
 // `define	VGA_1280_720_60FPS_74_25MHz
 // `define	VGA_1920_1080_60FPS_148_5MHz
 
@@ -89,6 +90,22 @@ Date			By			Version			Change Description
 `define	V_TOTAL	12'd628
 `endif
 
+//---------------------------------
+//	1024 * 600
+`ifdef VGA_1024_600_60FPS_50MHz 
+`define	H_FRONT	12'd160
+`define	H_SYNC 	12'd20  
+`define	H_BACK 	12'd140  
+`define	H_DISP 	12'd1024
+`define	H_TOTAL	12'd1344
+				
+`define	V_FRONT	12'd12
+`define	V_SYNC 	12'd3 
+`define	V_BACK 	12'd20  
+`define	V_DISP 	12'd600  
+`define	V_TOTAL	12'd635
+`endif
+
 
 //---------------------------------
 //	1280 * 720
@@ -105,8 +122,6 @@ Date			By			Version			Change Description
 `define	V_DISP 	12'd720   
 `define	V_TOTAL	12'd750
 `endif
-
-
 
 //---------------------------------
 //	1920 * 1080
