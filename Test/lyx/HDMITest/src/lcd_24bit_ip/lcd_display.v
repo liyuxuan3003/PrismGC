@@ -171,10 +171,10 @@ end
 always@(*)
 begin
 	case(image_cnt)
-	0:	lcd_data <= lcd_data0;
-	1:	lcd_data <= lcd_data1;
-	2:	lcd_data <= lcd_data2;
-	3:	lcd_data <= lcd_data3;
+	0:	lcd_data <= `RED;
+	1:	lcd_data <= `BLACK;
+	2:	lcd_data <= `BLUE;
+	3:	lcd_data <= `BLACK;
 	endcase
 end
 
