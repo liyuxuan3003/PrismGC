@@ -14,7 +14,7 @@
 		<pll_lock>ENABLE</pll_lock>
 	</Page1>
 	<Page2>
-		<bandwidth_setting>Medium</bandwidth_setting>
+		<bandwidth_setting>High</bandwidth_setting>
 	</Page2>
 	<Page3>
 		<setting>frequncy_setting</setting>
@@ -23,20 +23,20 @@
 		<clocks>
 			<clock>
 				<id>0</id>
-				<clock_division_factor>11</clock_division_factor>
+				<clock_division_factor>10</clock_division_factor>
 				<clock_frequency>100.0000000000000000Mhz</clock_frequency>
 				<phase_shift>0.0000000000000000deg</phase_shift>
 			</clock>
 			<clock>
 				<id>1</id>
-				<clock_division_factor>15</clock_division_factor>
-				<clock_frequency>72.0000000000000000Mhz</clock_frequency>
+				<clock_division_factor>25</clock_division_factor>
+				<clock_frequency>40.0000000000000000Mhz</clock_frequency>
 				<phase_shift>0.0000000000000000deg</phase_shift>
 			</clock>
 			<clock>
 				<id>2</id>
-				<clock_division_factor>3</clock_division_factor>
-				<clock_frequency>360.0000000000000000Mhz</clock_frequency>
+				<clock_division_factor>5</clock_division_factor>
+				<clock_frequency>200.0000000000000000Mhz</clock_frequency>
 				<phase_shift>0.0000000000000000deg</phase_shift>
 			</clock>
 		</clocks>

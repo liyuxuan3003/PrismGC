@@ -16,8 +16,8 @@
 //	Clock information:
 //		Clock name	| Frequency 	| Phase shift
 //		C0        	| 100.000000MHZ	| 0  DEG     
-//		C1        	| 73.333333 MHZ	| 0  DEG     
-//		C2        	| 366.666667MHZ	| 0  DEG     
+//		C1        	| 40.000000 MHZ	| 0  DEG     
+//		C2        	| 200.000000MHZ	| 0  DEG     
 ///////////////////////////////////////////////////////////////////////////////
 `timescale 1 ns / 100 fs
 
@@ -50,23 +50,23 @@ module sys_pll(refclk,
 		.DERIVE_PLL_CLOCKS("DISABLE"),
 		.GEN_BASIC_CLOCK("DISABLE"),
 		.GMC_GAIN(4),
-		.ICP_CURRENT(13),
+		.ICP_CURRENT(29),
 		.KVCO(4),
 		.LPF_CAPACITOR(1),
-		.LPF_RESISTOR(4),
+		.LPF_RESISTOR(2),
 		.REFCLK_DIV(1),
 		.FBCLK_DIV(2),
 		.CLKC0_ENABLE("ENABLE"),
-		.CLKC0_DIV(11),
-		.CLKC0_CPHASE(10),
+		.CLKC0_DIV(10),
+		.CLKC0_CPHASE(9),
 		.CLKC0_FPHASE(0),
 		.CLKC1_ENABLE("ENABLE"),
-		.CLKC1_DIV(15),
-		.CLKC1_CPHASE(14),
+		.CLKC1_DIV(25),
+		.CLKC1_CPHASE(24),
 		.CLKC1_FPHASE(0),
 		.CLKC2_ENABLE("ENABLE"),
-		.CLKC2_DIV(3),
-		.CLKC2_CPHASE(2),
+		.CLKC2_DIV(5),
+		.CLKC2_CPHASE(4),
 		.CLKC2_FPHASE(0)	)
 	pll_inst (.refclk(refclk),
 		.reset(reset),

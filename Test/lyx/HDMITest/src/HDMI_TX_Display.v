@@ -12,7 +12,9 @@ module HDMI_TX_Display
 		output			HDMI_CLK_P,
 		output			HDMI_D2_P,
 		output			HDMI_D1_P,
-		output			HDMI_D0_P
+		output			HDMI_D0_P,
+
+        output[60:1] PI4
 );
 
 // clk_div
@@ -38,6 +40,11 @@ system_ctrl_pll	u_system_ctrl_pll
 	.clk_c2			(clk_pixel_5x)	//5x pixel clock
 );
 localparam  PIXEL_CLOCK = 74_250000;
+
+assign PI4[5]=clk_24m;
+assign PI4[7]=clk_ref;
+assign PI4[9]=clk_pixel;
+assign PI4[11]=clk_pixel_5x;
 	
 //-------------------------------------
 //LCD driver timing

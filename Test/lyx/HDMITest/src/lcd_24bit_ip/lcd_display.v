@@ -35,7 +35,7 @@ Date			By			Version			Change Description
 `timescale 1ns/1ns
 module lcd_display
 #(
-	parameter	[27:0]	DELAY_TOP = 74_250000
+	parameter	[27:0]	DELAY_TOP = 73_333333
 )
 (
 	input	 			clk,		//system clock
@@ -171,10 +171,10 @@ end
 always@(*)
 begin
 	case(image_cnt)
-	0:	lcd_data <= `RED;
-	1:	lcd_data <= `BLACK;
-	2:	lcd_data <= `BLUE;
-	3:	lcd_data <= `BLACK;
+	0:	lcd_data <= lcd_data0;
+	1:	lcd_data <= lcd_data1;
+	2:	lcd_data <= lcd_data2;
+	3:	lcd_data <= lcd_data3;
 	endcase
 end
 
