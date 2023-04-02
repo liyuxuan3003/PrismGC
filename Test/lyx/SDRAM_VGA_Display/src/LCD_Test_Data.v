@@ -129,29 +129,18 @@ begin
                 if(lcd_xpos <= H_DISP - 1'b1 && lcd_ypos <= V_DISP - 1'b1)
                 begin
                     case(img_cnt)
-                        // 2'd0:    sys_data <= lcd_xpos * lcd_ypos;
                         2'd0:    sys_data <=
+                        (lcd_xpos >= 100 && lcd_xpos < 200 && lcd_ypos >= 100 && lcd_ypos < 200) ?
+                        RED : WHITE;
+                        2'd1:    sys_data <=
+                        (lcd_xpos >= 200 && lcd_xpos < 300 && lcd_ypos >= 200 && lcd_ypos < 300) ?
+                        RED : WHITE;
+                        2'd2:    sys_data <=
                         (lcd_xpos >= 300 && lcd_xpos < 400 && lcd_ypos >= 300 && lcd_ypos < 400) ?
                         RED : WHITE;
-                        2'd1:    sys_data <= (lcd_ypos < V_DISP/2) ? 
-                        {lcd_ypos[7:0], lcd_ypos[7:0], lcd_ypos[7:0]}:
-                        {lcd_xpos[7:0], lcd_xpos[7:0], lcd_xpos[7:0]};
-                        2'd2:    sys_data <= 
-                        (lcd_xpos >= (H_DISP/8)*0 && lcd_xpos < (H_DISP/8)*1) ? RED    :
-                        (lcd_xpos >= (H_DISP/8)*1 && lcd_xpos < (H_DISP/8)*2) ? GREEN  :
-                        (lcd_xpos >= (H_DISP/8)*2 && lcd_xpos < (H_DISP/8)*3) ? BLUE   :
-                        (lcd_xpos >= (H_DISP/8)*3 && lcd_xpos < (H_DISP/8)*4) ? WHITE  :
-                        (lcd_xpos >= (H_DISP/8)*4 && lcd_xpos < (H_DISP/8)*5) ? BLACK  :
-                        (lcd_xpos >= (H_DISP/8)*5 && lcd_xpos < (H_DISP/8)*6) ? YELLOW :
-                        (lcd_xpos >= (H_DISP/8)*6 && lcd_xpos < (H_DISP/8)*7) ? CYAN   :   ROYAL;
-                        2'd3:    sys_data <= 
-                        (lcd_ypos >= (V_DISP/8)*0 && lcd_ypos < (V_DISP/8)*1) ? RED    :
-                        (lcd_ypos >= (V_DISP/8)*1 && lcd_ypos < (V_DISP/8)*2) ? GREEN  :
-                        (lcd_ypos >= (V_DISP/8)*2 && lcd_ypos < (V_DISP/8)*3) ? BLUE   :
-                        (lcd_ypos >= (V_DISP/8)*3 && lcd_ypos < (V_DISP/8)*4) ? WHITE  :
-                        (lcd_ypos >= (V_DISP/8)*4 && lcd_ypos < (V_DISP/8)*5) ? BLACK  :
-                        (lcd_ypos >= (V_DISP/8)*5 && lcd_ypos < (V_DISP/8)*6) ? YELLOW :
-                        (lcd_ypos >= (V_DISP/8)*6 && lcd_ypos < (V_DISP/8)*7) ? CYAN   :   ROYAL;
+                        2'd3:    sys_data <=
+                        (lcd_xpos >= 400 && lcd_xpos < 500 && lcd_ypos >= 400 && lcd_ypos < 500) ?
+                        RED : WHITE;
                     endcase
                 end
                 else

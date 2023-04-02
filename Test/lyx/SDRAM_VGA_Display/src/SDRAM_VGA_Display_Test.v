@@ -1,42 +1,4 @@
-/*-----------------------------------------------------------------------
-                                 \\\|///
-                               \\  - -  //
-                                (  @ @  )
-+-----------------------------oOOo-(_)-oOOo-----------------------------+
-CONFIDENTIAL IN CONFIDENCE
-This confidential and proprietary software may be only used as authorized
-by a licensing agreement from CrazyBingo (Thereturnofbingo).
-In the event of publication, the following notice is applicable:
-Copyright (C) 2012-20xx CrazyBingo Corporation.
-The entire notice above must be reproduced on all authorized copies.
-Author                  :       CrazyBingo
-Official Websites       :       www.crazyfpga.com
-Email Address           :       http://crazyfpga@qq.com
-Filename                :       SDRAM_VGA_Display_Test.v
-Data                    :       2012-03-18
-Description             :       Sdram_Control_2Port test with VGA Display.
-Modification History    :
-Data            Author          Version     Change Description
-=========================================================================
-12/03/18        CrazyBingo      1.0         Original
-12/03/21        CrazyBingo      1.1         Modification
-12/05/09        CrazyBingo      1.2         Modification
-12/05/13        CrazyBingo      1.3         Modification
-12/06/01        CrazyBingo      1.4         Modification
-12/06/04        CrazyBingo      1.5         Modification
-13/04/10        CrazyBingo      1.6         Modification
-13/09/21        CrazyBingo      1.7         Modification
-13/11/07        CrazyBingo      2.0         Modification
-13/11/16        CrazyBingo      2.1         Modification
-17/04/21        CrazyBingo      3.0         Perfect some bugs and details
-18/07/31		CrazyBingo		4.0			Plant for Analogic FPGA
--------------------------------------------------------------------------
-|                                     Oooo                              |
-+------------------------------oooO--(   )------------------------------+
-                              (   )   ) /
-                               \ (   (_/
-                                \_)
------------------------------------------------------------------------*/ 
+`include "lcd_24bit_ip/lcd_para.v"
 
 `timescale 1ns / 1ns
 module SDRAM_VGA_Display_Test
@@ -78,8 +40,8 @@ wire            sys_we;
 wire            sdram_init_done;            //sdram init done
 LCD_Test_Data    
 #(
-    .H_DISP             (12'd1280),
-    .V_DISP             (12'd720)
+    .H_DISP             (`H_DISP),
+    .V_DISP             (`V_DISP)
 )
 u_LCD_Test_Data
 (
@@ -158,7 +120,7 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     .WR_DATA            (sys_data_in),      //write data input
     .WR                 (sys_we_in),        //write data request
     .WR_MIN_ADDR        (21'd0),            //write start address
-    .WR_MAX_ADDR        (21'd1280 * 21'd720),//write max address
+    .WR_MAX_ADDR        (`H_DISP * `V_DISP),//write max address
     .WR_LENGTH          (9'd256),           //write burst length
 
     //    FIFO Read Side
@@ -167,7 +129,7 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     .RD_DATA            (sys_data_out),     //read data output
     .RD                 (sys_rd_out),       //read request
     .RD_MIN_ADDR        (21'd0),            //read start address
-    .RD_MAX_ADDR        (21'd1280 * 21'd720),//read max address
+    .RD_MAX_ADDR        (`H_DISP * `V_DISP),//read max address
     .RD_LENGTH          (9'd256),           //read length
     
     //User interface add by CrazyBingo

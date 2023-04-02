@@ -1,36 +1,3 @@
-/*-----------------------------------------------------------------------
-                                 \\\|///
-                               \\  - -  //
-                                (  @ @  )
-+-----------------------------oOOo-(_)-oOOo-----------------------------+
-CONFIDENTIAL IN CONFIDENCE
-This confidential and proprietary software may be only used as authorized
-by a licensing agreement from CrazyBingo (Thereturnofbingo).
-In the event of publication, the following notice is applicable:
-Copyright (C) 2012-20xx CrazyBingo Corporation.
-The entire notice above must be reproduced on all authorized copies.
-Author                  :       CrazyBingo
-Official Websites       :       http://www.crazyfpga.com
-Email Address           :       crazyfpga@qq.com
-Filename                :       lcd_driver.v
-Data                    :       2012-02-18
-Description             :       LCD/VGA driver.
-Modification History    :
-Data            Author          Version     Change Description
-=========================================================================
-12/02/18        CrazyBingo      1.0         Original
-12/03/19        CrazyBingo      1.1         Modification
-12/03/21        CrazyBingo      1.2         Modification
-12/05/13        CrazyBingo      1.3         Modification
-13/11/07        CrazyBingo      2.1         Modification
--------------------------------------------------------------------------
-|                                     Oooo                              |
-+------------------------------oooO--(   )------------------------------+
-                              (   )   ) /
-                               \ (   (_/
-                                \_)
------------------------------------------------------------------------*/     
-
 `timescale 1ns/1ns
 module lcd_driver
 (  	

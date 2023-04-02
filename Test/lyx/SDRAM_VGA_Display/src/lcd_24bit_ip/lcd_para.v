@@ -1,37 +1,3 @@
-/*-----------------------------------------------------------------------
-                                 \\\|///
-                               \\  - -  //
-                                (  @ @  )
-+-----------------------------oOOo-(_)-oOOo-----------------------------+
-CONFIDENTIAL IN CONFIDENCE
-This confidential and proprietary software may be only used as authorized
-by a licensing agreement from CrazyBingo (Thereturnofbingo).
-In the event of publication, the following notice is applicable:
-Copyright (C) 2012-20xx CrazyBingo Corporation.
-The entire notice above must be reproduced on all authorized copies.
-Author                  :       CrazyBingo
-Official Websites       :       http://www.crazyfpga.com
-Email Address           :       crazyfpga@qq.com
-Filename                :       lcd_para.v
-Data                    :       2012-02-18
-Description             :       LCD/VGA driver parameter.
-Modification History    :
-Data            Author          Version     Change Description
-=========================================================================
-12/02/18        CrazyBingo      1.0         Original
-12/03/19        CrazyBingo      1.1         Modification
-12/03/21        CrazyBingo      1.2         Modification
-12/05/13        CrazyBingo      1.3         Modification
-13/11/07        CrazyBingo      2.1         Modification
-17/04/02        CrazyBingo      3.0         Modify for 720P & 1080P
--------------------------------------------------------------------------
-|                                     Oooo                              |
-+------------------------------oooO--(   )------------------------------+
-                              (   )   ) /
-                               \ (   (_/
-                                \_)
------------------------------------------------------------------------*/
-
 `timescale 1ns/1ns
 
 //-----------------------------------------------------------------------
@@ -53,7 +19,8 @@ Data            Author          Version     Change Description
 //vga parameter define
 //`define     VGA_640_480_60FPS_25MHz
 //`define     VGA_800_600_60FPS_40MHz
-`define     VGA_1280_720_60FPS_74_25MHz
+`define	  VGA_1024_600_60FPS_50MHz
+//`define     VGA_1280_720_60FPS_74_25MHz
 //`define     VGA_1920_1080_60FPS_148_5MHz
 
 //---------------------------------
@@ -86,6 +53,22 @@ Data            Author          Version     Change Description
 `define     V_BACK      12'd23  
 `define     V_DISP      12'd600  
 `define     V_TOTAL     12'd628
+`endif
+
+//---------------------------------
+//	1024 * 600
+`ifdef VGA_1024_600_60FPS_50MHz 
+`define	H_FRONT	12'd160
+`define	H_SYNC 	12'd20  
+`define	H_BACK 	12'd140  
+`define	H_DISP 	12'd1024
+`define	H_TOTAL	12'd1344
+				
+`define	V_FRONT	12'd12
+`define	V_SYNC 	12'd3 
+`define	V_BACK 	12'd20  
+`define	V_DISP 	12'd600  
+`define	V_TOTAL	12'd635
 `endif
 
 //---------------------------------
