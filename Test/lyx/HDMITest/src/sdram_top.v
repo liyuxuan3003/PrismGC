@@ -1,27 +1,27 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: anlgoic
-// Author: 	xg 
-// description:  top module
-//////////////////////////////////////////////////////////////////////////////////
 
-`define DEBUG
+`include "sdram_global_def.v"
 
-`include "global_def.v"
-
-module top
+module sdram_top
 (   
 	input   SYS_CLK,
-		
-	output	LED,
 
-    output[60:1] PI4
+    input   local_clk,
+    input   Clk,
+    input   Clk_sft,
+
+    input 	    				    App_wr_en,
+    input   [`ADDR_WIDTH-1:0]	    App_wr_addr,
+    input   [`DM_WIDTH-1:0]	        App_wr_dm,
+    input   [`DATA_WIDTH-1:0]	    App_wr_din,
+
+    input 	    				    App_rd_en,
+    input   [`ADDR_WIDTH-1:0]	    App_rd_addr,
+    output 	    				    Sdr_rd_en,
+    output  [`DATA_WIDTH-1:0]	    Sdr_rd_dout
 );
 
 wire			            lock;
-wire                        local_clk;
-wire                        Clk;
-wire                        Clk_sft;
 wire                        Rst;
 
 wire  			            SDRAM_CLK;
@@ -33,24 +33,8 @@ wire  [`ROW_WIDTH-1:0]	    SDR_ADDR;
 wire  [`DATA_WIDTH-1:0]	    SDR_DQ ;
 wire  [`DM_WIDTH-1:0]	    SDR_DM; 
 
-wire 	    				    App_wr_en;
-wire   [`ADDR_WIDTH-1:0]	    App_wr_addr;
-wire   [`DM_WIDTH-1:0]	        App_wr_dm;
-wire   [`DATA_WIDTH-1:0]	    App_wr_din;
-
-wire 	    				    App_rd_en;
-wire   [`ADDR_WIDTH-1:0]	    App_rd_addr;
-wire 	    				    Sdr_rd_en;
-wire  [`DATA_WIDTH-1:0]	        Sdr_rd_dout;
-
 wire 		                Sdr_init_done;
 wire                        Sdr_init_ref_vld;
-
-wire		                Check_ok;   //synthesis keep
-
-assign LED=Check_ok;
-assign PI4[5]=Check_ok;
-assign PI4[7]=App_rd_en;
 
 reg	[7:0]	rst_cnt=0;	
 always @(posedge SYS_CLK)
@@ -61,44 +45,9 @@ begin
 		rst_cnt <= rst_cnt+1'b1;
 end
 
-
-clk_pll u0_clk
-(
-    .refclk(SYS_CLK),
-    .reset(!rst_cnt[7]),
-    .extlock(lock),
-    .clk0_out(local_clk),
-    .clk1_out(Clk),
-    .clk2_out(Clk_sft)
-);
-
 assign Rst=!lock;
 
-wire[2:0] judgecnt;
-
-app_wrrd u1_app_wrrd
-(   
-    .Clk(Clk),
-    .Rst(Rst),
-    
-    .Sdr_init_done(Sdr_init_done),
-    .Sdr_init_ref_vld(Sdr_init_ref_vld),
-
-    .App_wr_en(App_wr_en), 
-    .App_wr_addr(App_wr_addr),  	
-    .App_wr_dm(App_wr_dm),
-    .App_wr_din(App_wr_din),
-
-    .App_rd_en(App_rd_en),
-    .App_rd_addr(App_rd_addr),
-    .Sdr_rd_en	(Sdr_rd_en),
-    .Sdr_rd_dout(Sdr_rd_dout),
-    .Check_ok(Check_ok),
-
-    .judgecnt(judgecnt)
-);
-
-sdr_as_ram #( .self_refresh_open(1'b1)) u2_ram
+sdr_as_ram #( .self_refresh_open(1'b1)) u_sdr_as_ram
 ( 
     .Sdr_clk(Clk),
     .Sdr_clk_sft(Clk_sft),
@@ -130,10 +79,9 @@ sdr_as_ram #( .self_refresh_open(1'b1)) u2_ram
     .SDR_DQ(SDR_DQ)	
 );
 
-
 assign SDR_CKE=1'b1;
 
-EG_PHY_SDRAM_2M_32 sdram
+EG_PHY_SDRAM_2M_32 u_sdram
 (
     .clk(SDRAM_CLK),
     .ras_n(SDR_RAS),

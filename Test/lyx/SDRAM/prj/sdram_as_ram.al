@@ -3,7 +3,7 @@
     <Project_Created_Time></Project_Created_Time>
     <TD_Encoding>UTF-8</TD_Encoding>
     <TD_Version>5.0.30786</TD_Version>
-    <UCode>00110100</UCode>
+    <UCode>00000000</UCode>
     <Name>sdram_as_ram</Name>
     <HardWare>
         <Family>EG4</Family>
@@ -35,7 +35,7 @@
                     <Attr Name="CompileOrder" Val="3"/>
                 </FileInfo>
             </File>
-            <File Path="../source_code/include/global_def.v">
+            <File Path="../source_code/rtl/enc_file/sdr_as_ram.enc.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -43,20 +43,12 @@
                     <Attr Name="CompileOrder" Val="4"/>
                 </FileInfo>
             </File>
-            <File Path="../source_code/rtl/enc_file/sdr_as_ram.enc.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="6"/>
-                </FileInfo>
-            </File>
             <File Path="../source_code/rtl/enc_file/sdr_init_ref.enc.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="7"/>
+                    <Attr Name="CompileOrder" Val="5"/>
                 </FileInfo>
             </File>
             <File Path="../source_code/rtl/enc_file/sdr_wrrd.enc.v">
@@ -64,7 +56,7 @@
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="8"/>
+                    <Attr Name="CompileOrder" Val="6"/>
                 </FileInfo>
             </File>
         </Verilog>
@@ -88,16 +80,6 @@
                 </FileInfo>
             </File>
         </SDC_FILE>
-        <CWC_FILE>
-            <File Path="dbg.cwc">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="5"/>
-                </FileInfo>
-            </File>
-        </CWC_FILE>
     </Source_Files>
     <FileSets>
         <FileSet Name="constrain_1" Type="ConstrainFiles">
@@ -117,7 +99,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-04-01 23:04:02.870</Step_Last_Change>
+        <Step_Last_Change>2023-04-02 16:25:11.398</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>

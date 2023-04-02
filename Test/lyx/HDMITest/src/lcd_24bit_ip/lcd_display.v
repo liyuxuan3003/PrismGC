@@ -1,38 +1,7 @@
-/*-----------------------------------------------------------------------
-								 \\\|///
-							   \\  - -  //
-								(  @ @  )
-+-----------------------------oOOo-(_)-oOOo-----------------------------+
-CONFIDENTIAL IN CONFIDENCE
-This confidential and proprietary software may be only used as authorized
-by a licensing agreement from CrazyBingo (Thereturnofbingo).
-In the event of publication, the following notice is applicable:
-Copyright (C) 2013-20xx CrazyBingo Corporation
-The entire notice above must be reproduced on all authorized copies.
-Author				:		CrazyBingo
-Technology blogs 	: 		www.crazyfpga.com
-Email Address 		: 		crazyfpga@vip.qq.com
-Filename			:		lcd_display.v
-Date				:		2012-02-18
-Description			:		LCD/VGA display simulation.
-Modification History	:
-Date			By			Version			Change Description
-=========================================================================
-12/02/18		CrazyBingo	1.0				Original
-12/03/19		CrazyBingo	1.1				Modification
-12/03/21		CrazyBingo	1.2				Modification
-12/05/13		CrazyBingo	1.3				Modification
-13/11/07		CrazyBingo	2.1				Modification
-17/04/02		CrazyBingo	3.0				Modify for 12bit width logic
--------------------------------------------------------------------------
-|                                     Oooo							|
-+------------------------------oooO--(   )-----------------------------+
-                              (   )   ) /
-                               \ (   (_/
-                                \_)
-----------------------------------------------------------------------*/
-
 `timescale 1ns/1ns
+
+`include "../sdram_global_def.v"
+
 module lcd_display
 #(
 	parameter	[27:0]	DELAY_TOP = 73_333333
@@ -43,8 +12,13 @@ module lcd_display
 	
 	input		[11:0]	lcd_xpos,	//lcd horizontal coordinate
 	input		[11:0]	lcd_ypos,	//lcd vertical coordinate
-	output	reg	[23:0]	lcd_data	//lcd data
+	output	reg	[23:0]	lcd_data,	//lcd data
+    output 	    				    App_rd_en,
+    output   [`ADDR_WIDTH-1:0]	    App_rd_addr,
+    input 	    				    Sdr_rd_en,
+    input    [`DATA_WIDTH-1:0]	    Sdr_rd_dout
 );
+
 `include "lcd_para.v" 
 `define	VGA_HORIZONTAL_COLOR
 `define	VGA_VERICAL_COLOR
@@ -140,6 +114,48 @@ begin
 end
 `endif
 
+//-------------------------------------------
+//DATA FROM RAM
+
+reg	[13:0]	tx_cnt;
+
+always @(posedge clk)
+begin
+	if(rst_n)
+		tx_cnt <= 'd0;
+	else
+		tx_cnt <= tx_cnt+1'b1;
+end
+
+reg	[23:0]	lcd_ram_data;
+reg 	    				App_rd_en_reg;
+reg [`ADDR_WIDTH-1:0]	    App_rd_addr_reg;
+
+always@(posedge clk or negedge rst_n)
+begin
+	if(!rst_n)
+		lcd_ram_data <= 0;
+	else
+    begin		
+        if(tx_cnt[12:11]==2'b11)
+        begin
+            App_rd_en_reg <= 1;
+            App_rd_addr_reg <= lcd_xpos + 1024 * lcd_ypos;   //或许要更换为宏定义？
+        end
+		else
+        begin
+            App_rd_en_reg <= 0;
+            App_rd_addr_reg <= lcd_xpos + 1024 * lcd_ypos;   //或许要更换为宏定义？
+        end
+        lcd_ram_data <= `RED;
+        if(Sdr_rd_en == 1)
+            lcd_ram_data <= `BLUE;
+            // lcd_ram_data <= Sdr_rd_dout[23:0];
+    end
+end
+assign App_rd_en    =   App_rd_en_reg;
+assign APP_rd_addr  =   App_rd_addr_reg;
+
 //------------------------------------
 //0.5S Delay
 reg [27:0]	delay_cnt;
@@ -166,16 +182,21 @@ begin
 		image_cnt <= image_cnt;
 end
 
-//------------------------------------
-//4 picture cycle
+// ------------------------------------
+// 4 picture cycle
 always@(*)
 begin
 	case(image_cnt)
 	0:	lcd_data <= lcd_data0;
 	1:	lcd_data <= lcd_data1;
-	2:	lcd_data <= lcd_data2;
+	2:	lcd_data <= lcd_ram_data;
 	3:	lcd_data <= lcd_data3;
 	endcase
 end
+
+// always@(posedge Sdr_rd_en)
+// begin
+//     lcd_data <= lcd_ram_data;
+// end
 
 endmodule

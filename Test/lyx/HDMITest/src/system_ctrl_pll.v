@@ -1,51 +1,3 @@
-/*-----------------------------------------------------------------------
-                                 \\\|///
-                               \\  - -  //
-                                (  @ @  )
-+-----------------------------oOOo-(_)-oOOo-----------------------------+
-CONFIDENTIAL IN CONFIDENCE
-This confidential and proprietary software may be only used as authorized
-by a licensing agreement from CrazyBingo (Thereturnofbingo).
-In the event of publication, the following notice is applicable:
-Copyright (C) 2012-20xx CrazyBingo Corporation.
-The entire notice above must be reproduced on all authorized copies.
-Author                  :       CrazyBingo
-Official Websites       :       www.crazyfpga.com
-Email Address           :       crazyfpga@qq.com
-Filename                :       system_ctrl_pll.v
-Data                    :       2011-6-25
-Description             :       sync global clock and reset signal
-Modification History    :
-Data            Author          Version     Change Description
-=========================================================================
-11/06/25        CrazyBingo      1.0         Original
-12/03/12        CrazyBingo      1.1         Modification
-12/06/01        CrazyBingo      1.4         Modification
-12/11/18        CrazyBingo      2.0         Modification
-13/10/24        CrazyBingo      2.1         Modification
--------------------------------------------------------------------------
-|                                     Oooo                              |
-+------------------------------oooO--(   )------------------------------+
-                              (   )   ) /
-                               \ (   (_/
-                                \_)
------------------------------------------------------------------------*/
-
-/***************************************************************************
-//----------------------------------
-//sync global clock and reset signal
-wire    clk_ref;
-wire    sys_rst_n;
-system_ctrl    u_system_ctrl
-(
-    .clk                (clk),          //50MHz
-    .rst_n              (rst_n),        //global reset
-    
-    .clk_ref            (clk_ref),      //clock output    
-    .sys_rst_n          (sys_rst_n)     //system reset
-);
-***************************************************************************/
-
 `timescale 1 ns / 1 ns
 module system_ctrl_pll
 (
@@ -57,7 +9,12 @@ module system_ctrl_pll
     output              clk_c0,     //clock output    
     output              clk_c1,     //clock output  
     output              clk_c2,     //clock output  
-    output              sys_rst_n   //system reset
+    output              clk_c3,     //clock output  
+    output              clk_c4,     //clock output  
+    output              sys_rst_n,  //system reset
+
+    //lock
+    output              locked
 );
 
 
@@ -82,7 +39,6 @@ u_system_init_delay
 //-----------------------------------
 //system pll module
 wire    pll_rst = ~delay_done;// ? ~locked : 1'b1;    //PLL reset, H valid
-wire    locked;
 sys_pll    u_sys_pll 
 (
     .refclk             (clk),
@@ -90,7 +46,9 @@ sys_pll    u_sys_pll
     .extlock            (locked),
     .clk0_out           (clk_c0),
     .clk1_out           (clk_c1),
-    .clk2_out           (clk_c2)
+    .clk2_out           (clk_c2),
+    .clk3_out           (clk_c3),
+    .clk4_out           (clk_c4)
 );
 
 
@@ -100,15 +58,15 @@ reg     rst_nr1, rst_nr2;
 always @(posedge clk_c0)
 begin
     if(!rst_n)
-        begin
+    begin
         rst_nr1 <= 1'b0;
         rst_nr2 <= 1'b0;
-        end
+    end
     else
-        begin
+    begin
         rst_nr1 <= 1'b1;
         rst_nr2 <= rst_nr1;
-        end
+    end
 end
 assign    sys_rst_n = rst_nr2 & locked;    //active low
 
