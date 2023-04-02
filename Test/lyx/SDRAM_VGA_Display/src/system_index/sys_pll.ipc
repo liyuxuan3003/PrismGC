@@ -2,12 +2,12 @@
 <PLLConfig version="1.0">
 	<GeneralConfig>
 		<Type>PLL</Type>
-		<Device>EG4S20NG88</Device>
+		<Device>EG4S20BG256</Device>
 		<create_VHDL>false</create_VHDL>
 	</GeneralConfig>
 	<Page1>
 		<speed_grade>Any</speed_grade>
-		<input_frequency>24.0000000000000000Mhz</input_frequency>
+		<input_frequency>50.0000000000000000Mhz</input_frequency>
 		<feedback_mode>Normal</feedback_mode>
 		<clk_num>CLKC0</clk_num>
 		<enable_reset>ENABLE</enable_reset>
@@ -18,8 +18,8 @@
 	</Page2>
 	<Page3>
 		<setting>frequncy_setting</setting>
-		<multiplication_factor>6</multiplication_factor>
-		<division_factor>1</division_factor>
+		<multiplication_factor>14</multiplication_factor>
+		<division_factor>5</division_factor>
 		<clocks>
 			<clock>
 				<id>0</id>

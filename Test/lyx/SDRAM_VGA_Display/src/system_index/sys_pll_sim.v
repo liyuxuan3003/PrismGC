@@ -1,5 +1,5 @@
-// Verilog netlist created by TD v5.0.38657
-// Wed Mar 16 10:25:13 2022
+// Verilog netlist created by TD v5.0.30786
+// Sun Apr  2 16:40:42 2023
 
 `timescale 1ns / 1ps
 module sys_pll  // sys_pll.v(25)
@@ -61,19 +61,19 @@ module sys_pll  // sys_pll.v(25)
     .DERIVE_PLL_CLOCKS("DISABLE"),
     .DPHASE_SOURCE("DISABLE"),
     .DYNCFG("DISABLE"),
-    .FBCLK_DIV(6),
+    .FBCLK_DIV(14),
     .FEEDBK_MODE("NORMAL"),
     .FEEDBK_PATH("CLKC0_EXT"),
-    .FIN("24.000"),
+    .FIN("50.000"),
     .FREQ_LOCK_ACCURACY(2),
     .GEN_BASIC_CLOCK("DISABLE"),
-    .GMC_GAIN(2),
+    .GMC_GAIN(0),
     .GMC_TEST(14),
     .ICP_CURRENT(9),
     .IF_ESCLKSTSW("DISABLE"),
     .INTFB_WAKE("DISABLE"),
     .KVCO(2),
-    .LPF_CAPACITOR(1),
+    .LPF_CAPACITOR(2),
     .LPF_RESISTOR(8),
     .NORESET("DISABLE"),
     .ODIV_MUXC0("DIV"),
@@ -91,7 +91,7 @@ module sys_pll  // sys_pll.v(25)
     .PREDIV_MUXC2("VCO"),
     .PREDIV_MUXC3("VCO"),
     .PREDIV_MUXC4("VCO"),
-    .REFCLK_DIV(1),
+    .REFCLK_DIV(5),
     .REFCLK_SEL("INTERNAL"),
     .STDBY_ENABLE("DISABLE"),
     .STDBY_VCO_ENA("DISABLE"),

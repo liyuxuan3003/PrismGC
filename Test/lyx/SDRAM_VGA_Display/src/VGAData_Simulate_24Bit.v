@@ -115,101 +115,110 @@ reg             sys_hs;
 always@(posedge clk or negedge rst_n)
 begin
     if(!rst_n)
-        begin
+    begin
         lcd_xpos <= 0;
         lcd_ypos <= 0;
         sys_data <= 0;
         sys_hs <= 0;
         img_cnt <= 0;
         img_state <= 0;
-        end
+    end
     else if(sys_vaild & write_flag)
-        begin
+    begin
         case(img_state)
-        2'd0:    begin
+            2'd0:    
+            begin
                 img_cnt <= 0;
                 lcd_xpos <= 0;
                 lcd_ypos <= 0;
                 sys_data <= 0;
                 sys_hs <= 0;
                 img_state <= 2'd1;
-                end
-        2'd1:    begin
+            end
+            2'd1:    
+            begin
                 sys_hs <= (lcd_xpos <= H_DISP - 1'b1 && lcd_ypos <= V_DISP - 1'b1) ? 1'b1 : 1'b0;
                 if(lcd_xpos == H_TOTAL - 1'b1 && lcd_ypos == V_TOTAL - 1'b1)
                     img_state <= 2'd2;
                 else
                     img_state <= 2'd1;    
-//-----------------------------------------------------------------------------------------------    
+    
                 if(lcd_xpos < H_TOTAL - 1'b1)
                     lcd_xpos <= lcd_xpos + 1'b1;
                 else
                     lcd_xpos <= 11'd0;
                     
                 if(lcd_xpos == H_TOTAL - 1'b1)
-                    begin
+                begin
                     if(lcd_ypos < V_TOTAL - 1'b1)
                         lcd_ypos <= lcd_ypos + 1'b1;
                     else
                         lcd_ypos <= 11'd0;
-                    end
+                end
                 else
                     lcd_ypos <= lcd_ypos;
-//-----------------------------------------------------------------------------------------------    
+
                 if(lcd_xpos <= H_DISP - 1'b1 && lcd_ypos <= V_DISP - 1'b1)
+                begin
                     case(img_cnt)
-                    2'd0:    sys_data <= lcd_xpos * lcd_ypos;
-                    2'd1:    sys_data <= (lcd_ypos < V_DISP/2) ? {lcd_ypos[7:0], lcd_ypos[7:0], lcd_ypos[7:0]}:
-                                                                 {lcd_xpos[7:0], lcd_xpos[7:0], lcd_xpos[7:0]};
-//-----------------------------------------------------------------------------------------------                    
-                    2'd2:    sys_data <= (lcd_xpos >= (H_DISP/8)*0 && lcd_xpos < (H_DISP/8)*1) ? RED    :
-                                         (lcd_xpos >= (H_DISP/8)*1 && lcd_xpos < (H_DISP/8)*2) ? GREEN  :
-                                         (lcd_xpos >= (H_DISP/8)*2 && lcd_xpos < (H_DISP/8)*3) ? BLUE   :
-                                         (lcd_xpos >= (H_DISP/8)*3 && lcd_xpos < (H_DISP/8)*4) ? WHITE  :
-                                         (lcd_xpos >= (H_DISP/8)*4 && lcd_xpos < (H_DISP/8)*5) ? BLACK  :
-                                         (lcd_xpos >= (H_DISP/8)*5 && lcd_xpos < (H_DISP/8)*6) ? YELLOW :
-                                         (lcd_xpos >= (H_DISP/8)*6 && lcd_xpos < (H_DISP/8)*7) ? CYAN   :   ROYAL;
-//-----------------------------------------------------------------------------------------------                                        
-                    2'd3:    sys_data <= (lcd_ypos >= (V_DISP/8)*0 && lcd_ypos < (V_DISP/8)*1) ? RED    :
-                                         (lcd_ypos >= (V_DISP/8)*1 && lcd_ypos < (V_DISP/8)*2) ? GREEN  :
-                                         (lcd_ypos >= (V_DISP/8)*2 && lcd_ypos < (V_DISP/8)*3) ? BLUE   :
-                                         (lcd_ypos >= (V_DISP/8)*3 && lcd_ypos < (V_DISP/8)*4) ? WHITE  :
-                                         (lcd_ypos >= (V_DISP/8)*4 && lcd_ypos < (V_DISP/8)*5) ? BLACK  :
-                                         (lcd_ypos >= (V_DISP/8)*5 && lcd_ypos < (V_DISP/8)*6) ? YELLOW :
-                                         (lcd_ypos >= (V_DISP/8)*6 && lcd_ypos < (V_DISP/8)*7) ? CYAN   :   ROYAL;    
+                        2'd0:    sys_data <= lcd_xpos * lcd_ypos;
+                        2'd1:    sys_data <= (lcd_ypos < V_DISP/2) ? 
+                        {lcd_ypos[7:0], lcd_ypos[7:0], lcd_ypos[7:0]}:
+                        {lcd_xpos[7:0], lcd_xpos[7:0], lcd_xpos[7:0]};
+                        2'd2:    sys_data <= 
+                        (lcd_xpos >= (H_DISP/8)*0 && lcd_xpos < (H_DISP/8)*1) ? RED    :
+                        (lcd_xpos >= (H_DISP/8)*1 && lcd_xpos < (H_DISP/8)*2) ? GREEN  :
+                        (lcd_xpos >= (H_DISP/8)*2 && lcd_xpos < (H_DISP/8)*3) ? BLUE   :
+                        (lcd_xpos >= (H_DISP/8)*3 && lcd_xpos < (H_DISP/8)*4) ? WHITE  :
+                        (lcd_xpos >= (H_DISP/8)*4 && lcd_xpos < (H_DISP/8)*5) ? BLACK  :
+                        (lcd_xpos >= (H_DISP/8)*5 && lcd_xpos < (H_DISP/8)*6) ? YELLOW :
+                        (lcd_xpos >= (H_DISP/8)*6 && lcd_xpos < (H_DISP/8)*7) ? CYAN   :   ROYAL;
+                        2'd3:    sys_data <= 
+                        (lcd_ypos >= (V_DISP/8)*0 && lcd_ypos < (V_DISP/8)*1) ? RED    :
+                        (lcd_ypos >= (V_DISP/8)*1 && lcd_ypos < (V_DISP/8)*2) ? GREEN  :
+                        (lcd_ypos >= (V_DISP/8)*2 && lcd_ypos < (V_DISP/8)*3) ? BLUE   :
+                        (lcd_ypos >= (V_DISP/8)*3 && lcd_ypos < (V_DISP/8)*4) ? WHITE  :
+                        (lcd_ypos >= (V_DISP/8)*4 && lcd_ypos < (V_DISP/8)*5) ? BLACK  :
+                        (lcd_ypos >= (V_DISP/8)*5 && lcd_ypos < (V_DISP/8)*6) ? YELLOW :
+                        (lcd_ypos >= (V_DISP/8)*6 && lcd_ypos < (V_DISP/8)*7) ? CYAN   :   ROYAL;
                     endcase
+                end
                 else
                     sys_data <= 0;
+            end
+            2'd2:    
+            begin
+                sys_hs <= 0;
+                lcd_xpos <= 0;
+                lcd_ypos <= 0;
+                sys_data <= 0;
+                if(display_done)
+                begin
+                    `ifdef    IMAGE_STEADY_MODE     //Steady Image
+                    img_cnt <= img_cnt;             //2'd0            
+                    `endif
+                    `ifdef    IMAGE_DYNAMIC_MODE    //Move Image
+                    img_cnt <= img_cnt + 1'b1;    
+                    `endif
+                    img_state <= 2'd3;
                 end
-                2'd2:    begin
-                        sys_hs <= 0;
-                        lcd_xpos <= 0;
-                        lcd_ypos <= 0;
-                        sys_data <= 0;
-                        if(display_done)
-                            begin
-                            `ifdef    IMAGE_STEADY_MODE     //Steady Image
-                            img_cnt <= img_cnt;             //2'd0            
-                            `endif
-                            `ifdef    IMAGE_DYNAMIC_MODE    //Move Image
-                            img_cnt <= img_cnt + 1'b1;    
-                            `endif
-                            img_state <= 2'd3;
-                            end
-                        else
-                            begin
-                            img_cnt <= img_cnt;            
-                            img_state <= 2'd2;
-                            end
-                        end
-                2'd3:    `ifdef    IMAGE_SIGNAL_MODE        //Signal Image write
-                        img_state <= 2'd3;                    
-                        `endif
-                        `ifdef    IMAGE_REPEAT_MODE         //Multiple Image write
-                        img_state <= 2'd1;
-                        `endif
+                else
+                begin
+                    img_cnt <= img_cnt;            
+                    img_state <= 2'd2;
+                end
+            end
+            2'd3:    
+            begin
+                `ifdef    IMAGE_SIGNAL_MODE        //Signal Image write
+                img_state <= 2'd3;                    
+                `endif
+                `ifdef    IMAGE_REPEAT_MODE         //Multiple Image write
+                img_state <= 2'd1;
+                `endif
+            end
         endcase
-        end
+    end
 end
 assign    sys_we = sys_hs & write_en;
 
