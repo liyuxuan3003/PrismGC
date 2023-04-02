@@ -76,12 +76,12 @@ system_ctrl_pll u_system_ctrl_pll
 wire    [23:0]  sys_data;
 wire            sys_we;
 wire            sdram_init_done;            //sdram init done
-VGAData_Simulate_24Bit    
+LCD_Test_Data    
 #(
     .H_DISP             (12'd1280),
     .V_DISP             (12'd720)
 )
-u_VGAData_Simulate_24Bit
+u_LCD_Test_Data
 (
     .clk                (clk_ref),        
     .rst_n              (sys_rst_n),     

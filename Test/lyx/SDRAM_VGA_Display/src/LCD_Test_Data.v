@@ -1,37 +1,5 @@
-/*-----------------------------------------------------------------------
-                                 \\\|///
-                               \\  - -  //
-                                (  @ @  )
-+-----------------------------oOOo-(_)-oOOo-----------------------------+
-CONFIDENTIAL IN CONFIDENCE
-This confidential and proprietary software may be only used as authorized
-by a licensing agreement from CrazyBingo (Thereturnofbingo).
-In the event of publication, the following notice is applicable:
-Copyright (C) 2012-20xx CrazyBingo Corporation.
-The entire notice above must be reproduced on all authorized copies.
-Author                  :       CrazyBingo
-Official Websites       :       www.crazyfpga.com
-Email Address           :       http://crazyfpga@qq.com
-Filename                :       VGA_data_generate.v
-Data                    :       2012-03-12
-Description             :       VGA data generate for simulation
-Modification History    :
-Data            Author          Version     Change Description
-=========================================================================
-12/03/12        CrazyBingo      1.0         Original
-12/03/21        CrazyBingo      1.0         Complete
-14/04/05        CrazyBingo      2.0         Modification
-17/04/21        CrazyBingo      2.1         Modification
--------------------------------------------------------------------------
-|                                     Oooo                              |
-+------------------------------oooO--(   )------------------------------+
-                              (   )   ) /
-                               \ (   (_/
-                                \_)
------------------------------------------------------------------------*/
-
 `timescale 1 ns / 1 ns
-module VGAData_Simulate_24Bit
+module LCD_Test_Data
 #(
     parameter           H_DISP = 12'd640,
     parameter           V_DISP = 12'd480
@@ -161,7 +129,10 @@ begin
                 if(lcd_xpos <= H_DISP - 1'b1 && lcd_ypos <= V_DISP - 1'b1)
                 begin
                     case(img_cnt)
-                        2'd0:    sys_data <= lcd_xpos * lcd_ypos;
+                        // 2'd0:    sys_data <= lcd_xpos * lcd_ypos;
+                        2'd0:    sys_data <=
+                        (lcd_xpos >= 300 && lcd_xpos < 400 && lcd_ypos >= 300 && lcd_ypos < 400) ?
+                        RED : WHITE;
                         2'd1:    sys_data <= (lcd_ypos < V_DISP/2) ? 
                         {lcd_ypos[7:0], lcd_ypos[7:0], lcd_ypos[7:0]}:
                         {lcd_xpos[7:0], lcd_xpos[7:0], lcd_xpos[7:0]};

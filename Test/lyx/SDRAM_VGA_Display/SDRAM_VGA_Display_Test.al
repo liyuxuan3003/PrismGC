@@ -18,7 +18,7 @@
                     <Attr Name="CompileOrder" Val="1"/>
                 </FileInfo>
             </File>
-            <File Path="src/VGAData_Simulate_24Bit.v">
+            <File Path="src/lcd_24bit_ip/lcd_para.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -26,7 +26,7 @@
                     <Attr Name="CompileOrder" Val="2"/>
                 </FileInfo>
             </File>
-            <File Path="src/Sdram_Control_2Port_512Kx4x32Bit/command.v">
+            <File Path="src/lcd_24bit_ip/lcd_driver.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -34,55 +34,7 @@
                     <Attr Name="CompileOrder" Val="3"/>
                 </FileInfo>
             </File>
-            <File Path="src/Sdram_Control_2Port_512Kx4x32Bit/control_interface.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="4"/>
-                </FileInfo>
-            </File>
-            <File Path="src/Sdram_Control_2Port_512Kx4x32Bit/Sdram_Control_2Port.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="5"/>
-                </FileInfo>
-            </File>
-            <File Path="src/lcd_24bit_ip/lcd_para.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="6"/>
-                </FileInfo>
-            </File>
-            <File Path="src/lcd_24bit_ip/lcd_driver.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="7"/>
-                </FileInfo>
-            </File>
-            <File Path="src/system_index/system_ctrl_pll.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="8"/>
-                </FileInfo>
-            </File>
-            <File Path="src/system_index/system_init_delay.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="9"/>
-                </FileInfo>
-            </File>
-            <File Path="src/Sdram_Control_2Port_512Kx4x32Bit/read_fifo.v">
+            <File Path="src/LCD_Test_Data.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -90,7 +42,7 @@
                     <Attr Name="CompileOrder" Val="10"/>
                 </FileInfo>
             </File>
-            <File Path="src/Sdram_Control_2Port_512Kx4x32Bit/SDRAM_512Kx4x32Bit.v">
+            <File Path="src/sys_pll/sys_pll.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -98,7 +50,7 @@
                     <Attr Name="CompileOrder" Val="11"/>
                 </FileInfo>
             </File>
-            <File Path="src/Sdram_Control_2Port_512Kx4x32Bit/write_fifo.v">
+            <File Path="src/sys_pll/sys_pll_sim.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -106,12 +58,84 @@
                     <Attr Name="CompileOrder" Val="12"/>
                 </FileInfo>
             </File>
-            <File Path="src/system_index/sys_pll.v">
+            <File Path="src/sys_pll/system_ctrl.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
                     <Attr Name="CompileOrder" Val="13"/>
+                </FileInfo>
+            </File>
+            <File Path="src/sys_pll/system_ctrl_pll.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="14"/>
+                </FileInfo>
+            </File>
+            <File Path="src/sys_pll/system_init_delay.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="15"/>
+                </FileInfo>
+            </File>
+            <File Path="src/sdram/command.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="16"/>
+                </FileInfo>
+            </File>
+            <File Path="src/sdram/control_interface.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="17"/>
+                </FileInfo>
+            </File>
+            <File Path="src/sdram/read_fifo.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="18"/>
+                </FileInfo>
+            </File>
+            <File Path="src/sdram/SDRAM_512Kx4x32Bit.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="19"/>
+                </FileInfo>
+            </File>
+            <File Path="src/sdram/Sdram_Control_2Port.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="20"/>
+                </FileInfo>
+            </File>
+            <File Path="src/sdram/Sdram_Params.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="21"/>
+                </FileInfo>
+            </File>
+            <File Path="src/sdram/write_fifo.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="22"/>
                 </FileInfo>
             </File>
         </Verilog>
@@ -121,7 +145,7 @@
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="15"/>
+                    <Attr Name="CompileOrder" Val="5"/>
                 </FileInfo>
             </File>
             <File Path="src/enc_file/SerializerN_1_lvds.enc.vhd">
@@ -129,7 +153,7 @@
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="16"/>
+                    <Attr Name="CompileOrder" Val="6"/>
                 </FileInfo>
             </File>
             <File Path="src/enc_file/SerializerN_1_lvds_dat.enc.vhd">
@@ -137,7 +161,7 @@
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="17"/>
+                    <Attr Name="CompileOrder" Val="7"/>
                 </FileInfo>
             </File>
             <File Path="src/enc_file/TMDSEncoder.enc.vhd">
@@ -145,7 +169,7 @@
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="18"/>
+                    <Attr Name="CompileOrder" Val="8"/>
                 </FileInfo>
             </File>
             <File Path="src/enc_file/hdmi_tx.vhd">
@@ -153,7 +177,7 @@
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="19"/>
+                    <Attr Name="CompileOrder" Val="9"/>
                 </FileInfo>
             </File>
         </VHDL>
@@ -163,7 +187,7 @@
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="14"/>
+                    <Attr Name="CompileOrder" Val="4"/>
                 </FileInfo>
             </File>
         </Header>
@@ -177,16 +201,6 @@
                 </FileInfo>
             </File>
         </ADC_FILE>
-        <SDC_FILE>
-            <File Path="sdc/EGS20NG88_Board.sdc">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="constrain_1"/>
-                    <Attr Name="CompileOrder" Val="2"/>
-                </FileInfo>
-            </File>
-        </SDC_FILE>
     </Source_Files>
     <FileSets>
         <FileSet Name="constrain_1" Type="ConstrainFiles">
@@ -206,7 +220,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-04-02 17:02:33.557</Step_Last_Change>
+        <Step_Last_Change>2023-04-02 17:24:54.995</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>

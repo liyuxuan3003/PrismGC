@@ -19,7 +19,7 @@ module control_interface(
 		Sdram_Init_Done
         );
 
-`include        "Sdram_Params.h"
+`include        "Sdram_Params.v"
 
 input                           CLK;                    // System Clock
 input                           RESET_N;                // System Reset

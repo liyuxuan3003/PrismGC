@@ -24,7 +24,7 @@ module command(
         WE_N
         );
 
-`include        "Sdram_Params.h"
+`include        "Sdram_Params.v"
 
 input                           CLK;                    // System Clock
 input                           RESET_N;                // System Reset

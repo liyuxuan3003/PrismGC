@@ -40,7 +40,7 @@ module Sdram_Control_2Port(
 		Sdram_PingPong_EN		//SDRAM PING-PONG operation enable
         );
 
-`include    "Sdram_Params.h"
+`include    "Sdram_Params.v"
 
 
 //	HOST Side
