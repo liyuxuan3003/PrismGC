@@ -72,78 +72,235 @@ int main(void)
     f_mount(fs[1], "1:", 1); /* π“‘ÿFLASH */
     if(key_scan(1) == WKUP_PRES)
     {
-        int x=350,y=100,z=100,b=1,c=1;
+        int x=350,y=100,z=0,b=1,c=1,q=100;
         while(1)
         {
-            if(y<500)
+            if(y<400)
             {
                 lcd_draw_circle(x,y,50,RED);
-                delay_ms(500);
+                lcd_draw_line(0,450,1500,450,RED);
+                delay_ms(500-b*10);
                 y=y+100;
                 lcd_clear(WHITE);
+            }
+            else if(y==400)
+            {
+                if(c>4)
+                {
+                    lcd_draw_circle(x,y,50,RED);
+                    lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                    lcd_draw_line(0,450,1500,450,RED);
+                    z=z+100;
+                    delay_ms(500-b*10);
+                    y=y+100;
+                    lcd_clear(WHITE);
+                }
+                else
+                {
+                    lcd_draw_circle(x,y,50,RED);
+                    lcd_draw_line(0,450,1500,450,RED);
+                    delay_ms(500-b*10);
+                    y=y+100;
+                    lcd_clear(WHITE);
+                }
             }
             else if(y==500)
             {
                 if (key_scan(1) == WKUP_PRES)
                 {
                     lcd_clear(WHITE);
+                    b=b+1;
                     y=700;
                     z=100;
+                    q=100;
+                    c++;
                     continue;
                 }
                 else
                 {
-                lcd_draw_circle(x,y,50,RED);
-                delay_ms(500);
-                y=y+100;
-                lcd_clear(WHITE);
+                    if(c>4)
+                    {
+                        lcd_draw_circle(x,y,50,RED);
+                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        z=z+100;
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        lcd_clear(WHITE);
+                    }
+                    else
+                    {
+                        lcd_draw_circle(x,y,50,RED);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        lcd_clear(WHITE);
+                    }
                 };
             }
             else if(y==600)
             {
-                lcd_draw_circle(x,y,50,RED);
-                delay_ms(500);
-                y=y+100;
-                lcd_clear(WHITE);
+                if(c>4)
+                    {
+                        lcd_draw_circle(x,y,50,RED);
+                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        z=z+100;
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        lcd_clear(WHITE);
+                    }
+                    else
+                    {
+                        lcd_draw_circle(x,y,50,RED);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        lcd_clear(WHITE);
+                    }
             }
-            else if(y<1100)
+            else if(y<800)
             {
-                    lcd_draw_rectangle(300,z,400,z+100,GREEN);
-                    delay_ms(500);
+                    lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                    lcd_draw_line(0,450,1500,450,RED);
+                    delay_ms(500-b*10);
                     z=z+100;
                     y=y+100;
                     lcd_clear(WHITE);
+            }
+            else if(y==800)
+            {
+                    if(c>4)
+                    {
+                        lcd_draw_circle(x,q,50,RED);
+                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        z=z+100;
+                        q=q+100;
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        lcd_clear(WHITE);
+                    }
+                    else
+                    {
+                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        z=z+100;
+                        lcd_clear(WHITE);
+                    }
+            }
+            else if(y==900)
+            {
+                    if(c>4)
+                    {
+                        lcd_draw_circle(x,q,50,RED);
+                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        z=z+100;
+                        q=q+100;
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        lcd_clear(WHITE);
+                    }
+                    else
+                    {
+                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        delay_ms(500-b*10); 
+                        y=y+100;
+                        z=z+100;
+                        lcd_clear(WHITE);
+                    }
+            }
+            else if(y==1000)
+            {
+                    if(c>4)
+                    {
+                        lcd_draw_circle(x,q,50,RED);
+                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        z=z+100;
+                        q=q+100;
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        lcd_clear(WHITE);
+                    }
+                    else
+                    {
+                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        z=z+100;
+                        lcd_clear(WHITE);
+                    }
             }
             else if(y==1100)
             {
                 if (key_scan(1) == WKUP_PRES)
                 {
                     lcd_clear(WHITE);
-                    y=100;
+                    b=b+1;
+                    c++;
+                    y=q;
                     z=100;
+                    q=100;
                     continue;
                 }
                 else
                 {
-                lcd_draw_rectangle(300,z,400,z+100,GREEN);
-                delay_ms(500);
-                z=z+100;
-                y=y+100;
-                lcd_clear(WHITE);
+                if(c>4)
+                    {
+                        lcd_draw_circle(x,q,50,RED);
+                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        z=z+100;
+                        q=q+100;
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        lcd_clear(WHITE);
+                    }
+                    else
+                    {
+                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        z=z+100;
+                        lcd_clear(WHITE);
+                    }
                 };
             }
             else if(y==1200)
             {
-                    lcd_draw_rectangle(300,z,400,z+100,GREEN);
-                    delay_ms(500);
-                    z=z+100;
-                    y=y+100;
-                    lcd_clear(WHITE);
+                    if(c>4)
+                    {
+                        lcd_draw_circle(x,q,50,RED);
+                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                        lcd_draw_line(0,450,1500,450,RED);
+                        z=z+100;
+                        q=q+100;
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        lcd_clear(WHITE);
+                    }
+                    else
+                    {
+                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
+                        lcd_draw_line(0,450,1500,450,RED); 
+                        delay_ms(500-b*10);
+                        y=y+100;
+                        z=z+100;
+                        lcd_clear(WHITE);
+                    }
             }
             else if(y==1300)
                 {
-                    y=100;
+                    y=q;
                     z=100;
+                    q=100;
                 }
             };
         }
