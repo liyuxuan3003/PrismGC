@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
-    <Project_Created_Time>2023-03-15 10:59:13</Project_Created_Time>
+    <Project_Created_Time>2023-03-26 17:15:32</Project_Created_Time>
     <TD_Version>4.6.64949</TD_Version>
-    <UCode>00000000</UCode>
-    <Name>exp5</Name>
+    <Name>WII_2nd</Name>
     <HardWare>
         <Family>EG4</Family>
         <Device>EG4S20BG256</Device>
     </HardWare>
     <Source_Files>
         <Verilog>
-            <File>clk_pwm.v</File>
-            <File>generater.v</File>
-            <File>TOP.v</File>
+            <File>WII.v</File>
+            <File>wii.v</File>
         </Verilog>
-        <ADC_FILE>exp.adc</ADC_FILE>
+        <ADC_FILE/>
         <SDC_FILE/>
         <CWC_FILE/>
     </Source_Files>
     <TOP_MODULE>
         <LABEL/>
-        <MODULE>WaterLight</MODULE>
+        <MODULE>iic_drive</MODULE>
         <CREATEINDEX>auto</CREATEINDEX>
     </TOP_MODULE>
     <Project_Settings>
-        <Step_Last_Change>2023-03-26 17:03:51</Step_Last_Change>
-        <Current_Step>60</Current_Step>
-        <Step_Status>true</Step_Status>
+        <Step_Last_Change>2023-03-28 19:55:58</Step_Last_Change>
     </Project_Settings>
 </Project>
