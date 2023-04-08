@@ -1,7 +1,5 @@
 `timescale 1ns/1ns
 
-`include "../sdram_global_def.v"
-
 module lcd_display
 #(
 	parameter	[27:0]	DELAY_TOP = 73_333333
@@ -12,11 +10,7 @@ module lcd_display
 	
 	input		[11:0]	lcd_xpos,	//lcd horizontal coordinate
 	input		[11:0]	lcd_ypos,	//lcd vertical coordinate
-	output	reg	[23:0]	lcd_data,	//lcd data
-    output 	    				    App_rd_en,
-    output   [`ADDR_WIDTH-1:0]	    App_rd_addr,
-    input 	    				    Sdr_rd_en,
-    input    [`DATA_WIDTH-1:0]	    Sdr_rd_dout
+	output	reg	[23:0]	lcd_data 	//lcd data
 );
 
 `include "lcd_para.v" 
@@ -49,7 +43,7 @@ begin
 			lcd_data0 <= `YELLOW;
 		else if(lcd_ypos >= (`V_DISP/8)*6 && lcd_ypos < (`V_DISP/8)*7)
 			lcd_data0 <= `CYAN;
-		else// if(lcd_ypos >= (`V_DISP/8)*7 && lcd_ypos < (`V_DISP/8)*8)
+		else if(lcd_ypos >= (`V_DISP/8)*7 && lcd_ypos < (`V_DISP/8)*8)
 			lcd_data0 <= `ROYAL;
 		end
 end
@@ -78,7 +72,7 @@ begin
 			lcd_data1 <= `YELLOW;
 		else if(lcd_xpos >= (`H_DISP/8)*6 && lcd_xpos < (`H_DISP/8)*7)
 			lcd_data1 <= `CYAN;
-		else// if(lcd_xpos >= (`H_DISP/8)*7 && lcd_xpos < (`H_DISP/8)*8)
+		else if(lcd_xpos >= (`H_DISP/8)*7 && lcd_xpos < (`H_DISP/8)*8)
 			lcd_data1 <= `ROYAL;
 		end
 end
@@ -114,48 +108,6 @@ begin
 end
 `endif
 
-//-------------------------------------------
-//DATA FROM RAM
-
-reg	[13:0]	tx_cnt;
-
-always @(posedge clk)
-begin
-	if(rst_n)
-		tx_cnt <= 'd0;
-	else
-		tx_cnt <= tx_cnt+1'b1;
-end
-
-reg	[23:0]	lcd_ram_data;
-reg 	    				App_rd_en_reg;
-reg [`ADDR_WIDTH-1:0]	    App_rd_addr_reg;
-
-always@(posedge clk or negedge rst_n)
-begin
-	if(!rst_n)
-		lcd_ram_data <= 0;
-	else
-    begin		
-        if(tx_cnt[12:11]==2'b11)
-        begin
-            App_rd_en_reg <= 1;
-            App_rd_addr_reg <= lcd_xpos + 1024 * lcd_ypos;   //或许要更换为宏定义？
-        end
-		else
-        begin
-            App_rd_en_reg <= 0;
-            App_rd_addr_reg <= lcd_xpos + 1024 * lcd_ypos;   //或许要更换为宏定义？
-        end
-        lcd_ram_data <= `RED;
-        if(Sdr_rd_en == 1)
-            lcd_ram_data <= `BLUE;
-            // lcd_ram_data <= Sdr_rd_dout[23:0];
-    end
-end
-assign App_rd_en    =   App_rd_en_reg;
-assign APP_rd_addr  =   App_rd_addr_reg;
-
 //------------------------------------
 //0.5S Delay
 reg [27:0]	delay_cnt;
@@ -189,14 +141,9 @@ begin
 	case(image_cnt)
 	0:	lcd_data <= lcd_data0;
 	1:	lcd_data <= lcd_data1;
-	2:	lcd_data <= lcd_ram_data;
+	2:	lcd_data <= lcd_data2;
 	3:	lcd_data <= lcd_data3;
 	endcase
 end
-
-// always@(posedge Sdr_rd_en)
-// begin
-//     lcd_data <= lcd_ram_data;
-// end
 
 endmodule

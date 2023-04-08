@@ -88,12 +88,7 @@ u_lcd_display
 	
 	.lcd_xpos		(lcd_xpos),	
 	.lcd_ypos		(lcd_ypos),
-	.lcd_data		(lcd_data),
-
-    .App_rd_en(App_rd_en),
-    .App_rd_addr(App_rd_addr),
-    .Sdr_rd_en(Sdr_rd_en),
-    .Sdr_rd_dout(Sdr_rd_dout)
+	.lcd_data		(lcd_data)
 );
 
 //-----------------------------------
@@ -118,104 +113,5 @@ u3_hdmi_tx
 	.HDMI_D0_P      (HDMI_D0_P )	
 );
 
-//-----------------------------------
-//SDRAM Module
-
-wire 	    				    App_wr_en;
-wire   [`ADDR_WIDTH-1:0]	    App_wr_addr;
-wire   [`DM_WIDTH-1:0]	        App_wr_dm;
-wire   [`DATA_WIDTH-1:0]	    App_wr_din;
-
-wire 	    				    App_rd_en;
-wire   [`ADDR_WIDTH-1:0]	    App_rd_addr;
-wire 	    				    Sdr_rd_en;
-wire   [`DATA_WIDTH-1:0]	    Sdr_rd_dout;
-
-sdram_top u_sdram_top
-(
-    .SYS_CLK(clk),
-    .local_clk(clk_ref),
-    .Clk(clk_sdram),
-    .Clk_sft(clk_sdram_sft),
-
-    .App_wr_en(App_wr_en),
-    .App_wr_addr(App_wr_addr),
-    .App_wr_dm(App_wr_dm),
-    .App_wr_din(App_wr_din),
-
-    .App_rd_en(App_rd_en),
-    .App_rd_addr(App_rd_addr),
-    .Sdr_rd_en(Sdr_rd_en),
-    .Sdr_rd_dout(Sdr_rd_dout)
-);
-
-// /******************************************/
-
-// reg	[2:0]	judge_cnt;
-// reg			tx_vld;
-// reg	[13:0]	tx_cnt;
-// reg			wr_en;
-// reg	[`ADDR_WIDTH-1:0]	wr_addr,wr_addr_1d;
-// reg	[`DATA_WIDTH-1:0]	wr_din;
-// reg						rd_en;
-// reg	[`ADDR_WIDTH-1:0]	rd_addr,rd_addr_1d;
-	
-	
-// wire Clk=clk_sdram;
-// wire Rst=sys_rst_n;
-
-// always @(posedge Clk)
-// begin
-// 	if(Rst)
-// 		judge_cnt <= 'd0;
-// 	else
-// 		judge_cnt <= judge_cnt+1'b1;
-// end	
-	
-	
-// always @(posedge Clk)
-// begin
-// 	if(Rst)
-// 		tx_vld <= 'd0;
-// 	else if(judge_cnt==3'b111)
-// 		tx_vld <= 1'b1;
-// 	else if(tx_cnt[13])
-// 		tx_vld <= 1'b0;
-// end
-
-// always @(posedge Clk)
-// begin
-// 	if(Rst)
-// 		tx_cnt <= 'd0;
-// 	else if(tx_vld)
-// 		tx_cnt <= tx_cnt+1'b1;
-// 	else
-// 		tx_cnt <= 'd0;
-// end
-
-
-
-// always @(posedge Clk)
-// begin
-// 	if(Rst)
-// 	begin	
-//         wr_en <= 1'b0;
-//         wr_addr <= 'd0;
-//         wr_din <= 'd0;
-        
-//         wr_addr_1d <= 'd0;
-// 	end
-// 	else 
-//     begin
-//         wr_en <= 1'b1;
-//         wr_addr <= wr_addr+1'b1;
-//         wr_din <= wr_din+1'b1;
-//     end
-// 	wr_addr_1d <= wr_addr;
-// end
-// assign		App_wr_en=wr_en;
-// assign  	App_wr_addr=wr_addr_1d;
-// assign		App_wr_dm=4'b0000;
-// assign		App_wr_din=wr_din;
 
 endmodule
