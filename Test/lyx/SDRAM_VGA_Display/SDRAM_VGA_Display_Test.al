@@ -138,6 +138,14 @@
                     <Attr Name="CompileOrder" Val="22"/>
                 </FileInfo>
             </File>
+            <File Path="src/LCD_Pixel.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="23"/>
+                </FileInfo>
+            </File>
         </Verilog>
         <VHDL>
             <File Path="src/enc_file/DVITransmitter.enc.vhd">
@@ -220,7 +228,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-04-08 11:02:21.335</Step_Last_Change>
+        <Step_Last_Change>2023-04-09 00:28:44.925</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
