@@ -674,6 +674,7 @@ UART_RX UART_RX
 // AHB HDMI
 //------------------------------------------------------------------------------
 
+wire        LCD_CMD_SIG;
 wire [31:0] LCD_CMD;
 
 AHBlite_HDMI HDMI_Interface
@@ -692,7 +693,8 @@ AHBlite_HDMI HDMI_Interface
     .HREADY                 (HREADY_P4),
     .HREADYOUT              (HREADYOUT_P4),
     .HRESP                  (HRESP_P4),
-    .LCD_CMD              (LCD_CMD)
+    .LCD_CMD_SIG            (LCD_CMD_SIG),
+    .LCD_CMD                (LCD_CMD)
     /**********************************/ 
 );
 
@@ -706,6 +708,7 @@ HDMI_TX_Display u_HDMI_TX_Display
     .HDMI_D1_P(HDMI_D1_P),
     .HDMI_D0_P(HDMI_D0_P),
 
+    .LCD_CMD_SIG(LCD_CMD_SIG),
     .LCD_CMD(LCD_CMD)
 );
 

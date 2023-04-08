@@ -38,6 +38,10 @@ int main()
     PORTC -> O_DIG_ENA_DAT = 0xF;
     PORTC -> O_DIG_CRT_DAT = 0xF;
 
+    HDMI -> LCD_CMD = 0xFF000000;
+    HDMI -> LCD_CMD = 0x00110011;
+    HDMI -> LCD_CMD = 0x00FF0000;
+
     uint32_t pat=0x1;
 	while(1)
 	{
@@ -45,7 +49,7 @@ int main()
         PORTC -> O_DIG_DAT --;
         pat = PORTA -> I_SWI_DAT;
         pat >>= 4;
-        HDMI -> LCD_CMD = pat;
+        // HDMI -> LCD_CMD = pat;
         Delay(TICKS/5000);
 	}
 }

@@ -2,6 +2,7 @@
 
 module lcd_display
 #(
+    parameter   LCD_STACK_WIDTH = 12,
 	parameter	[27:0]	DELAY_TOP = 73_333333
 )
 (
@@ -12,6 +13,7 @@ module lcd_display
 	input		[11:0]	lcd_ypos,	//lcd vertical coordinate
 	output	reg	[23:0]	lcd_data, 	//lcd data
 
+    input               LCD_CMD_SIG,
     input       [31:0]  LCD_CMD
 );
 
@@ -101,14 +103,78 @@ begin
 	if(!rst_n)
 		lcd_data3 <= 0;
 	else
-		begin
-		if(lcd_ypos < `V_DISP/2)
-			lcd_data3 <= {lcd_ypos[7:0], lcd_ypos[7:0], lcd_ypos[7:0]};
-		else
-			lcd_data3 <= {lcd_xpos[7:0], lcd_xpos[7:0], lcd_xpos[7:0]};
-		end
+    begin
+        if(lcd_ypos < `V_DISP/2)
+            lcd_data3 <= {lcd_ypos[7:0], lcd_ypos[7:0], lcd_ypos[7:0]};
+        else
+            lcd_data3 <= {lcd_xpos[7:0], lcd_xpos[7:0], lcd_xpos[7:0]};
+    end
 end
 `endif
+
+
+//-------------------------------------------
+
+(* ram_style="block" *)reg[31:0] LCD_STACK[(2**LCD_STACK_WIDTH-1):0];
+
+reg[31:0] LCD_STACK_PT;
+
+always@(LCD_CMD_SIG or negedge rst_n)
+begin
+    if(!rst_n)
+        LCD_STACK_PT <= 0;
+    else
+    begin
+        LCD_STACK[LCD_STACK_PT] <= LCD_CMD;
+        LCD_STACK_PT <= LCD_STACK_PT + 1;
+    end
+end 
+
+reg[23:0] lcd_data_cmd;
+integer i;
+always @(posedge clk or negedge rst_n)
+begin
+	if(!rst_n)
+		lcd_data_cmd <= 0;
+	else if (LCD_STACK_PT == 0)
+        lcd_data_cmd <= 0;
+    else
+    begin
+        for(i=1; i>=0; i=i-1) 
+        begin
+            if(LCD_STACK[i][31:24] == 8'hFF && i<=LCD_STACK_PT-1)
+            begin
+                case (LCD_STACK[i][15:8])
+                    //绘制像素
+                    8'h00:
+                    begin
+                        if (lcd_xpos==LCD_STACK[i+1][31:16] && lcd_ypos==LCD_STACK[i+1][15:0])
+                        begin
+                            lcd_data_cmd <= LCD_STACK[i+2][23:0];
+                        end
+                    end
+                    //绘制线条
+                    8'h01:
+                    begin
+                        //
+                    end
+                    //绘制方块
+                    8'h02:
+                    begin
+                        if (lcd_xpos>=LCD_STACK[i+1][31:16] && 
+                            lcd_ypos>=LCD_STACK[i+1][15:0]  &&
+                            lcd_xpos<=LCD_STACK[i+2][31:16] && 
+                            lcd_ypos<=LCD_STACK[i+2][15:0] )
+                        begin
+                            lcd_data_cmd <= LCD_STACK[i+3][23:0];
+                        end
+                    end
+                endcase
+            end
+        end
+    end
+end
+
 
 //------------------------------------
 //0.5S Delay
@@ -140,12 +206,13 @@ end
 // 4 picture cycle
 always@(*)
 begin
-	case(LCD_CMD[1:0])
-	0:	lcd_data <= lcd_data0;
-	1:	lcd_data <= lcd_data1;
-	2:	lcd_data <= lcd_data2;
-	3:	lcd_data <= lcd_data3;
-	endcase
+    lcd_data<=lcd_data_cmd;
+	// case(LCD_CMD[1:0])
+	// 0:	lcd_data <= lcd_data0;
+	// 1:	lcd_data <= lcd_data1;
+	// 2:	lcd_data <= lcd_data2;
+	// 3:	lcd_data <= lcd_data3;
+	// endcase
 end
 
 endmodule

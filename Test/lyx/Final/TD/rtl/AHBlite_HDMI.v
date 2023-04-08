@@ -13,7 +13,8 @@ module AHBlite_HDMI
     output wire          HREADYOUT, 
     output wire   [31:0] HRDATA,  
     output wire          HRESP,
-    output wire   [31:0] LCD_CMD
+    output reg           LCD_CMD_SIG,
+    output reg    [31:0] LCD_CMD
 );
 
 assign HRESP = 1'b0;
@@ -37,22 +38,21 @@ begin
     else wr_en_reg <= 1'b0;
 end
 
-reg[31:0] hdmi_data_reg;
 always@(posedge HCLK) 
 begin
     if(~HRESETn) 
     begin
-        hdmi_data_reg <= 32'h0000_0001;
+        LCD_CMD <= 0;
+        LCD_CMD_SIG <= 0;
     end 
     else if(wr_en_reg && HREADY) 
     begin
-        hdmi_data_reg <= HWDATA;
+        LCD_CMD <= HWDATA;
+        LCD_CMD_SIG <= ~LCD_CMD_SIG;
     end
 end
 
-assign LCD_CMD = hdmi_data_reg;
-
-assign HRDATA = LCD_CMD;
+assign HRDATA = 32'h0000_0000;
 
 endmodule
 

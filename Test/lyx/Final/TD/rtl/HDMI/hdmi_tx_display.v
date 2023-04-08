@@ -9,6 +9,7 @@ module HDMI_TX_Display
     output			HDMI_D1_P,
     output			HDMI_D0_P,
 
+    input           LCD_CMD_SIG,
     input[31:0]     LCD_CMD
 );
 
@@ -60,7 +61,6 @@ lcd_driver u_lcd_driver
 	.lcd_vs			(VGA_VS),
 	.lcd_en			(VGA_DE),		
 	.lcd_rgb		(VGA_RGB),
-
 	
 	//user interface
 	.lcd_request	(),
@@ -84,12 +84,13 @@ u_lcd_display
 	.lcd_xpos		(lcd_xpos),	
 	.lcd_ypos		(lcd_ypos),
 	.lcd_data		(lcd_data),
-    .LCD_CMD        (LCD_CMD)
+    .LCD_CMD_SIG    (LCD_CMD_SIG),
+    .LCD_CMD        (LCD_CMD) 
 );
 
 //-----------------------------------
 //HDMI TX Module
-hdmi_tx #(.FAMILY("EG4"))	//EF2、EF3、EG4、AL3、PH1
+hdmi_tx #(.FAMILY("EG4"))	//EF2 EF3 EG4 AL3 PH1
 u3_hdmi_tx
 (
 	.PXLCLK_I	    (clk_pixel),
