@@ -6,7 +6,7 @@
 //UART DEF
 typedef struct
 {
-    volatile uint32_t HDMI_DATA;
+    volatile uint32_t LCD_CMD;
 } HDMIType;
 
 #define HDMI_BASE 0x40020000

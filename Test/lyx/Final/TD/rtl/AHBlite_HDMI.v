@@ -13,7 +13,7 @@ module AHBlite_HDMI
     output wire          HREADYOUT, 
     output wire   [31:0] HRDATA,  
     output wire          HRESP,
-    output wire   [31:0] HDMI_DATA
+    output wire   [31:0] LCD_CMD
 );
 
 assign HRESP = 1'b0;
@@ -50,9 +50,9 @@ begin
     end
 end
 
-assign HDMI_DATA = hdmi_data_reg;
+assign LCD_CMD = hdmi_data_reg;
 
-assign HRDATA = HDMI_DATA;
+assign HRDATA = LCD_CMD;
 
 endmodule
 

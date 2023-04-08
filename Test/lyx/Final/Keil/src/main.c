@@ -45,7 +45,7 @@ int main()
         PORTC -> O_DIG_DAT --;
         pat = PORTA -> I_SWI_DAT;
         pat >>= 4;
-        HDMI -> HDMI_DATA = pat;
+        HDMI -> LCD_CMD = pat;
         Delay(TICKS/5000);
 	}
 }

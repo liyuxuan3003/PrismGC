@@ -674,7 +674,7 @@ UART_RX UART_RX
 // AHB HDMI
 //------------------------------------------------------------------------------
 
-wire [31:0] HDMI_DATA;
+wire [31:0] LCD_CMD;
 
 AHBlite_HDMI HDMI_Interface
 (
@@ -692,13 +692,13 @@ AHBlite_HDMI HDMI_Interface
     .HREADY                 (HREADY_P4),
     .HREADYOUT              (HREADYOUT_P4),
     .HRESP                  (HRESP_P4),
-    .HDMI_DATA              (HDMI_DATA)
+    .LCD_CMD              (LCD_CMD)
     /**********************************/ 
 );
 
-hdmi_tx_display u_HDMI_TX_Display
+HDMI_TX_Display u_HDMI_TX_Display
 (
-    .FPGA_SYS_50M_CLK_P(clk),
+    .clk(clk),
     
     //HDMI
     .HDMI_CLK_P(HDMI_CLK_P),
@@ -706,13 +706,7 @@ hdmi_tx_display u_HDMI_TX_Display
     .HDMI_D1_P(HDMI_D1_P),
     .HDMI_D0_P(HDMI_D0_P),
 
-    .VGA_R(VGA_R),
-    .VGA_G(VGA_G),
-    .VGA_B(VGA_B),
-    .VGA_HS(VGA_HS),
-    .VGA_VS(VGA_VS),
-
-    .HDMI_DATA(HDMI_DATA)
+    .LCD_CMD(LCD_CMD)
 );
 
 endmodule
