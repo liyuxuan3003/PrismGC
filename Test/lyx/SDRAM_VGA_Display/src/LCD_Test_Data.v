@@ -120,7 +120,7 @@ begin
                 end
 
                 // sys_data <= `WHITE;
-                sys_data <= lcd_xpos + lcd_ypos;
+                sys_data <= cnt_bckg * 32;
                 // sys_data[15:8] <=  lcd_xpos[7:0];
                 // sys_data[23:16] <= lcd_ypos[7:0];
             end
@@ -142,9 +142,9 @@ begin
             8'hFF:
             begin
                 sys_hs <= 1'b0;
-                sys_load <= 1'b0;
+                sys_load <= 1'b1;
                 cnt_after <= cnt_after + 1;
-                if (cnt_after[21:0] == 22'h00)
+                if (cnt_after[23:0] == 24'h00)
                 begin
                     status=8'h01;
                     lcd_xpos <= 0;
