@@ -38,8 +38,10 @@ system_ctrl_pll u_system_ctrl_pll
 wire            sys_load;
 wire    [23:0]  sys_data;
 wire            sys_we;
+wire    [31:0]  sys_addr_min;
+wire    [31:0]  sys_addr_max;
+
 wire            sdram_init_done;            //sdram init done
-wire    [31:0]  sys_addr;
 
 LCD_Test_Data    
 #(
@@ -56,7 +58,8 @@ u_LCD_Test_Data
     .sys_load           (sys_load),
     .sys_data           (sys_data),    
     .sys_we             (sys_we),
-    .sys_addr           (sys_addr)
+    .sys_addr_min       (sys_addr_min),
+    .sys_addr_max       (sys_addr_max)
 );  
 
 //-----------------------------------------
@@ -93,10 +96,7 @@ SDRAM_512Kx4x32bit	u_SDRAM_512Kx4x32bit
 //Sdram_Control_2Port module     
 //sdram write port
 wire            clk_write   =   clk_ref;    //Change with input signal
-wire            sys_load_in =   sys_load;
 wire    [31:0]  sys_data_in =   {sys_data, sys_data[7:0]};
-wire            sys_we_in   =   sys_we;
-wire    [31:0]  sys_addr_in =   sys_addr_in;
 //sdram read port
 wire            clk_read    =   clk_pixel;    //Change with vga timing    
 wire    [31:0]  sys_data_out;
@@ -122,11 +122,11 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
 
     //    FIFO Write Side
     .WR_CLK             (clk_write),        //write fifo clock
-    .WR_LOAD            (sys_load_in),      //write register load & fifo clear
+    .WR_LOAD            (sys_load),         //write register load & fifo clear
     .WR_DATA            (sys_data_in),      //write data input
-    .WR                 (sys_we_in),        //write data request
-    .WR_MIN_ADDR        (`H_DISP*128),      //write start address
-    .WR_MAX_ADDR        (`H_DISP*256),//write max address
+    .WR                 (sys_we),           //write data request
+    .WR_MIN_ADDR        (sys_addr_min),     //write start address
+    .WR_MAX_ADDR        (sys_addr_max),     //write max address
     .WR_LENGTH          (9'd256),           //write burst length
 
     //    FIFO Read Side
