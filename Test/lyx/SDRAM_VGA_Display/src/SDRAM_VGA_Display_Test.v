@@ -54,7 +54,7 @@ u_LCD_Test_Data
     .rst_n              (sys_rst_n),     
     
     .sys_vaild          (sdram_init_done),
-    .DIVIDE_PARAM       (8'd128),
+    .DIVIDE_PARAM       (8'd1),
     .sys_load           (sys_load),
     .sys_data           (sys_data),    
     .sys_we             (sys_we),
