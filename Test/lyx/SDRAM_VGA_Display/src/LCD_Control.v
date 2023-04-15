@@ -63,7 +63,8 @@ begin
             // state <= ~state;
             if(cnt_div==0)
             begin
-                sys_data <= pixel;
+                if (pixel == `GREEN)
+                    sys_data <= cnt;
                 cnt <= cnt + 1;
                 if(cnt == len+254)
                 begin
@@ -75,6 +76,6 @@ begin
     end
 end
 
-assign sys_we = (cnt_div==16) & busy;
+assign sys_we = (cnt_div==1) & busy;
 
 endmodule

@@ -88,8 +88,9 @@ LCD_ControlTest u_LCD_ControlTest
     .len(len),
     .enable(enable),
     .busy(busy),
-    .wr_len             (sys_wr_len)
+    .wr_len             (sys_wr_len),
 
+    .sys_vaild          (sdram_init_done)
 );
 
 //-----------------------------------------
