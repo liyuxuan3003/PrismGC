@@ -45,7 +45,7 @@ begin
         begin
             busy <= 1'b1;
             sys_addr_min <= x_pos + y_pos * H_DISP;
-            sys_addr_max <= H_DISP * V_DISP;
+            sys_addr_max <= H_DISP * (V_DISP  + 1);
             sys_load <= 1'b1;
             cnt <= 0;
             state <= 1'b0;
@@ -58,7 +58,7 @@ begin
             begin
                 sys_data <= pixel;
                 cnt <= cnt + 1;
-                if(cnt == 512)
+                if(cnt == len)
                 begin
                     busy <= 1'b0;
                     done <= 1'b1;

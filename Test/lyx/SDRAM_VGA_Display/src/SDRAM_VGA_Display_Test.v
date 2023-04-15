@@ -154,7 +154,7 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     .WR                 (sys_we),           //write data request
     .WR_MIN_ADDR        (sys_addr_min),     //write start address
     .WR_MAX_ADDR        (sys_addr_max),     //write max address
-    .WR_LENGTH          (9'd256),           //write burst length
+    .WR_LENGTH          (9'd32),           //write burst length
 
     //    FIFO Read Side
     .RD_CLK             (clk_read),         //read fifo clock

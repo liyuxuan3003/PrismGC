@@ -20,7 +20,7 @@ always @(posedge clk or negedge rst_n)
 begin
     if(!rst_n)
     begin
-        x_pos <= 0;
+        x_pos <= 100;
         y_pos <= 0;
         pixel <= 0;
         len <= 0;
@@ -33,12 +33,26 @@ begin
         cnt_time <= cnt_time + 1;
         if(cnt_time == 0)
         begin
-            cnt_pat <= cnt_pat + 1;
-            x_pos <= 100;
-            y_pos <= 150+cnt_pat;
-            pixel <= `RED;
-            len   <= 256;
-            enable <= 1;
+            if (cnt_pat < 5'h1F)
+            begin
+                cnt_pat <= cnt_pat + 1;
+                if(cnt_pat == 0)
+                begin
+                    x_pos <= 0;
+                    y_pos <= 0;
+                    len <= `H_DISP * (`V_DISP + 1);
+                    pixel <= `BLACK;
+                    enable <= 1;
+                end
+                else
+                begin 
+                    x_pos <= 256;
+                    y_pos <= 400+cnt_pat;
+                    pixel <= `RED;
+                    len   <= 513;
+                    enable <= 1;
+                end
+            end
         end
         if(cnt_time == 24'hFFFFFE)
         begin
