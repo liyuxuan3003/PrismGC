@@ -141,7 +141,7 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     //User interface add by CrazyBingo
     .Sdram_Init_Done    (sdram_init_done),  //SDRAM init done signal
     .Sdram_Read_Valid   (1'b1),             //Enable to read
-    .Sdram_PingPong_EN  (1'b1)              //SDRAM PING-PONG operation enable
+    .Sdram_PingPong_EN  (1'b0)              //SDRAM PING-PONG operation enable
 );
 
 

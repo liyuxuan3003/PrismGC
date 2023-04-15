@@ -33,8 +33,6 @@ localparam  ROYAL   =   24'h00FFFF;   /*00000000,11111111,11111111*/
 
 //----------------------------------------------------------------
 
-//-------------------------------------
-//Divide for data write clock
 reg [7:0] cnt;
 always @(posedge clk or negedge rst_n)
 begin
@@ -56,6 +54,8 @@ begin
         cnt_display <= cnt_display + 1;
 end
 
+reg [2:0]   status;
+reg [23:0]  pos;
 always @(posedge clk or negedge rst_n)
 begin
     if(!rst_n)
@@ -63,18 +63,38 @@ begin
         sys_addr_min <= 0;
         sys_addr_max <= H_DISP * V_DISP;
         sys_load <= 1'b1;
+        status <= 0;
+        pos <= 0;
     end
-    else
+    else if (write_flag == 1'b1)
     begin
-        sys_load <= 1'b0;
-        if (write_flag == 1'b1)
+        if(status==3'd0)
         begin
-            sys_data <= cnt_display;
+            sys_load <= 1'b0;
+            sys_data <= `RED;
+            pos <= pos + 1;
+            if (pos >= H_DISP * V_DISP)
+                status <= status + 1;
+        end
+        else if(status==3'd1)
+        begin
+            sys_addr_min <= H_DISP * 100;
+            sys_load <= 1'b1;
+            pos <= 0;
+            status <= status + 1;
+        end
+        else if(status==3'd2)
+        begin
+            sys_load <= 1'b0;
+            sys_data <= `GREEN;
+            pos <= pos + 1;
+            if (pos >= H_DISP * 200)
+                status <= status + 1;
         end
     end
 end
 
-assign  sys_we =  write_en;
+assign  sys_we =  write_en & (status==3'd0 || status==3'd2);
 
 
 
