@@ -43,24 +43,51 @@ wire    [31:0]  sys_addr_max;
 
 wire            sdram_init_done;            //sdram init done
 
-LCD_Test_Data    
+wire[15:0]         x_pos;
+wire[15:0]         y_pos;
+wire[23:0]         pixel;
+wire[23:0]         len;
+wire               enable;
+
+wire               busy;
+
+LCD_Control    
 #(
     .H_DISP             (`H_DISP),
     .V_DISP             (`V_DISP)
 )
-u_LCD_Test_Data
+u_LCD_Control
 (
     .clk                (clk_ref),        
     .rst_n              (sys_rst_n),     
     
     .sys_vaild          (sdram_init_done),
-    .DIVIDE_PARAM       (8'd1),
     .sys_load           (sys_load),
     .sys_data           (sys_data),    
     .sys_we             (sys_we),
     .sys_addr_min       (sys_addr_min),
-    .sys_addr_max       (sys_addr_max)
-);  
+    .sys_addr_max       (sys_addr_max),
+
+    .x_pos(x_pos),
+    .y_pos(y_pos),
+    .pixel(pixel),
+    .len(len),
+    .enable(enable),
+    .busy(busy)
+);
+
+LCD_ControlTest u_LCD_ControlTest
+(
+    .clk                (clk_ref),        
+    .rst_n              (sys_rst_n),     
+
+    .x_pos(x_pos),
+    .y_pos(y_pos),
+    .pixel(pixel),
+    .len(len),
+    .enable(enable),
+    .busy(busy)
+);
 
 //-----------------------------------------
 //EM638325 SDRAM_512Kx4x32bit

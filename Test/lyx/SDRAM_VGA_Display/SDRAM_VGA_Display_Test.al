@@ -34,7 +34,7 @@
                     <Attr Name="CompileOrder" Val="3"/>
                 </FileInfo>
             </File>
-            <File Path="src/LCD_Test_Data.v">
+            <File Path="src/sys_pll/sys_pll.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -42,7 +42,7 @@
                     <Attr Name="CompileOrder" Val="10"/>
                 </FileInfo>
             </File>
-            <File Path="src/sys_pll/sys_pll.v">
+            <File Path="src/sys_pll/sys_pll_sim.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -50,7 +50,7 @@
                     <Attr Name="CompileOrder" Val="11"/>
                 </FileInfo>
             </File>
-            <File Path="src/sys_pll/sys_pll_sim.v">
+            <File Path="src/sys_pll/system_ctrl.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -58,7 +58,7 @@
                     <Attr Name="CompileOrder" Val="12"/>
                 </FileInfo>
             </File>
-            <File Path="src/sys_pll/system_ctrl.v">
+            <File Path="src/sys_pll/system_ctrl_pll.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -66,7 +66,7 @@
                     <Attr Name="CompileOrder" Val="13"/>
                 </FileInfo>
             </File>
-            <File Path="src/sys_pll/system_ctrl_pll.v">
+            <File Path="src/sys_pll/system_init_delay.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -74,7 +74,7 @@
                     <Attr Name="CompileOrder" Val="14"/>
                 </FileInfo>
             </File>
-            <File Path="src/sys_pll/system_init_delay.v">
+            <File Path="src/sdram/command.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -82,7 +82,7 @@
                     <Attr Name="CompileOrder" Val="15"/>
                 </FileInfo>
             </File>
-            <File Path="src/sdram/command.v">
+            <File Path="src/sdram/control_interface.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -90,7 +90,7 @@
                     <Attr Name="CompileOrder" Val="16"/>
                 </FileInfo>
             </File>
-            <File Path="src/sdram/control_interface.v">
+            <File Path="src/sdram/read_fifo.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -98,7 +98,7 @@
                     <Attr Name="CompileOrder" Val="17"/>
                 </FileInfo>
             </File>
-            <File Path="src/sdram/read_fifo.v">
+            <File Path="src/sdram/SDRAM_512Kx4x32Bit.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -106,7 +106,7 @@
                     <Attr Name="CompileOrder" Val="18"/>
                 </FileInfo>
             </File>
-            <File Path="src/sdram/SDRAM_512Kx4x32Bit.v">
+            <File Path="src/sdram/Sdram_Control_2Port.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -114,7 +114,7 @@
                     <Attr Name="CompileOrder" Val="19"/>
                 </FileInfo>
             </File>
-            <File Path="src/sdram/Sdram_Control_2Port.v">
+            <File Path="src/sdram/Sdram_Params.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -122,7 +122,7 @@
                     <Attr Name="CompileOrder" Val="20"/>
                 </FileInfo>
             </File>
-            <File Path="src/sdram/Sdram_Params.v">
+            <File Path="src/sdram/write_fifo.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -130,7 +130,7 @@
                     <Attr Name="CompileOrder" Val="21"/>
                 </FileInfo>
             </File>
-            <File Path="src/sdram/write_fifo.v">
+            <File Path="src/LCD_Control.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -138,7 +138,7 @@
                     <Attr Name="CompileOrder" Val="22"/>
                 </FileInfo>
             </File>
-            <File Path="src/LCD_Pixel.v">
+            <File Path="src/LCD_ControlTest.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -228,7 +228,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-04-15 14:41:35.546</Step_Last_Change>
+        <Step_Last_Change>2023-04-15 16:52:38.581</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
