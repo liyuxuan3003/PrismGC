@@ -4,7 +4,7 @@
 module SDRAM_VGA_Display_Test
 (
     //global clock 24MHz
-    input               clk_24m,          //24MHz
+    input               clk,          //24MHz
 //    input               rst_n,          //global reset
     
 	//HDMI
@@ -22,7 +22,7 @@ wire	clk_pixel, clk_pixel_5x;
 wire    sys_rst_n;  //global reset
 system_ctrl_pll u_system_ctrl_pll
 (
-    .clk            (clk_24m),      //24MHz
+    .clk            (clk),      //24MHz
 	.rst_n			(1'b1),			//global reset
     
     .sys_rst_n      (sys_rst_n),    //global reset

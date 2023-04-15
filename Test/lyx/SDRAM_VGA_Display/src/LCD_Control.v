@@ -60,11 +60,9 @@ begin
         else if(busy == 1'b1)
         begin
             sys_load <= 1'b0;
-            // state <= ~state;
             if(cnt_div==0)
             begin
-                if (pixel == `GREEN)
-                    sys_data <= cnt;
+                sys_data <= pixel;
                 cnt <= cnt + 1;
                 if(cnt == len+254)
                 begin

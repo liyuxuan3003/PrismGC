@@ -44,16 +44,16 @@ begin
                     x_pos <= 0;
                     y_pos <= 0;
                     len <= `H_DISP * `V_DISP;
-                    pixel <= `BLACK;
+                    pixel <= `BLUE;
                     enable <= 1;
                     wr_len <= 9'd256;
                 end
                 else
                 begin 
-                    x_pos <= 16;
-                    y_pos <= 20 + cnt_pat;
-                    pixel <= `GREEN;
-                    len   <= 960;
+                    x_pos <= 40;
+                    y_pos <= 40 + cnt_pat;
+                    pixel <= `RED;
+                    len   <= 500;
                     enable <= 1;
                     wr_len <= 9'd1;
                 end
