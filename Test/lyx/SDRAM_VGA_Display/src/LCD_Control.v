@@ -23,11 +23,18 @@ module LCD_Control
     output  reg         busy
 );
 
+reg[4:0] cnt_div;
+always @(posedge clk or negedge rst_n)
+begin
+    if(!rst_n)
+        cnt_div <= 0;
+    else
+        cnt_div <= cnt_div + 1;
+end
+
 reg[23:0] cnt;
 reg state;
-
 reg done;
-
 always @(posedge clk or negedge rst_n) 
 begin
     if(!rst_n)
@@ -53,12 +60,12 @@ begin
         else if(busy == 1'b1)
         begin
             sys_load <= 1'b0;
-            state <= ~state;
-            if(state == 1'b0)
+            // state <= ~state;
+            if(cnt_div==0)
             begin
                 sys_data <= pixel;
                 cnt <= cnt + 1;
-                if(cnt == len)
+                if(cnt == len+254)
                 begin
                     busy <= 1'b0;
                     done <= 1'b1;
@@ -68,6 +75,6 @@ begin
     end
 end
 
-assign sys_we = state & busy;
+assign sys_we = (cnt_div==16) & busy;
 
 endmodule
