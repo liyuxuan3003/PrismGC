@@ -10,11 +10,13 @@ module LCD_ControlTest
     output reg [23:0]    len,
     output reg           enable, 
 
+    output reg [8:0]     wr_len,
+
     input                busy
 );
 
 reg[25:0] cnt_time;
-reg[4:0]  cnt_pat;
+reg[31:0] cnt_pat;
 
 always @(posedge clk or negedge rst_n)
 begin
@@ -31,9 +33,11 @@ begin
     else
     begin
         cnt_time <= cnt_time + 1;
+        //if (busy==0 & cnt_time > 26'hFF)
+        //    cnt_time <= 26'h3FFFFFF;
         if(cnt_time == 0)
         begin
-            if (cnt_pat < 5'h1F)
+            if (cnt_pat < 31'h1FF)
             begin
                 cnt_pat <= cnt_pat + 1;
                 if(cnt_pat == 0)
@@ -43,18 +47,20 @@ begin
                     len <= `H_DISP * (`V_DISP + 1);
                     pixel <= `BLUE;
                     enable <= 1;
+                    wr_len <= 9'd256;
                 end
                 else
                 begin 
-                    x_pos <= 3;
-                    y_pos <= 400+cnt_pat;
+                    x_pos <= 20;
+                    y_pos <= 20+cnt_pat;
                     pixel <= `RED;
-                    len   <= 100;
+                    len   <= 1000;
                     enable <= 1;
+                    wr_len <= 9'd1;
                 end
             end
         end
-        if(cnt_time == 26'h3FFFFFE)
+        if(cnt_time == 26'h3FFFFFF)
         begin
             enable <= 1'b0;
         end

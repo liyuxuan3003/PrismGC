@@ -40,6 +40,7 @@ wire    [23:0]  sys_data;
 wire            sys_we;
 wire    [31:0]  sys_addr_min;
 wire    [31:0]  sys_addr_max;
+wire    [8:0]   sys_wr_len;
 
 wire            sdram_init_done;            //sdram init done
 
@@ -67,7 +68,7 @@ u_LCD_Control
     .sys_we             (sys_we),
     .sys_addr_min       (sys_addr_min),
     .sys_addr_max       (sys_addr_max),
-
+    
     .x_pos(x_pos),
     .y_pos(y_pos),
     .pixel(pixel),
@@ -86,7 +87,9 @@ LCD_ControlTest u_LCD_ControlTest
     .pixel(pixel),
     .len(len),
     .enable(enable),
-    .busy(busy)
+    .busy(busy),
+    .wr_len             (sys_wr_len)
+
 );
 
 //-----------------------------------------
@@ -154,7 +157,7 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     .WR                 (sys_we),           //write data request
     .WR_MIN_ADDR        (sys_addr_min),     //write start address
     .WR_MAX_ADDR        (sys_addr_max),     //write max address
-    .WR_LENGTH          (9'd1),             //write burst length
+    .WR_LENGTH          (sys_wr_len),       //write burst length
 
     //    FIFO Read Side
     .RD_CLK             (clk_read),         //read fifo clock
