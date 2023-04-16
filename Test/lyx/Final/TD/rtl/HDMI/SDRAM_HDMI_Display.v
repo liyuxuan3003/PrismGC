@@ -5,7 +5,7 @@ module SDRAM_HDMI_Display
 (
     //global clock
     input               clk,
-    //input               rst_n,          //global reset
+    input               rst_n,          //global reset
     
 	//HDMI
 	output			HDMI_CLK_P,
@@ -41,6 +41,17 @@ system_ctrl_pll u_system_ctrl_pll
 	.clk_c2			(clk_pixel),	//1x pixel clock
 	.clk_c3			(clk_pixel_5x)	//5x pixel clock
 );
+
+// sys_pll sys_pll
+// (
+//     .refclk         (clk),          //50MHz
+// 	.reset			(rst_n),	    //global reset
+    
+//     .clk0_out       (clk_ref),      //144MHz 
+//     .clk1_out       (clk_refout),   //144MHz -90deg
+// 	.clk2_out		(clk_pixel),	//1x pixel clock
+// 	.clk3_out	    (clk_pixel_5x)	//5x pixel clock
+// );
 
 
 //-------------------------------------------

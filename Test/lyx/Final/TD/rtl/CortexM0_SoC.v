@@ -713,6 +713,7 @@ AHBlite_HDMI HDMI_Interface
 SDRAM_HDMI_Display u_SDRAM_HDMI_Display
 (
     .clk(clk),
+    .rst_n(RSTn),
     
     //HDMI
     .HDMI_CLK_P(HDMI_CLK_P),

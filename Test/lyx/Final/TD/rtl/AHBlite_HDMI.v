@@ -59,18 +59,18 @@ begin
         addr_reg <= HADDR[7:0];
 end
 
-always@(posedge HCLK) 
+always@(*) 
 begin
     if(rd_en_reg)
     begin
         case (addr_reg)
-            8'h18 : HRDATA <= 32'h0000_0055;
+            8'h18 : HRDATA <= SYS_VAILD;
             8'h1C : HRDATA <= BUSY;
-            default: HRDATA <= 32'h0000_0033;
+            default: HRDATA <= 32'h0000_0000;
         endcase
     end
     else
-        HRDATA <= 32'h0000_0011;
+        HRDATA <= 32'h0000_0000;
 end
 
 always@(posedge HCLK or negedge HRESETn) 
