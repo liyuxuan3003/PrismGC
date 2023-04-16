@@ -32,8 +32,8 @@ wire	clk_pixel, clk_pixel_5x;
 wire    sys_rst_n;  //global reset
 system_ctrl_pll u_system_ctrl_pll
 (
-    .clk            (clk),      //24MHz
-	.rst_n			(1'b1),			//global reset
+    .clk            (clk),          //50MHz
+	.rst_n			(rst_n),	    //global reset
     
     .sys_rst_n      (sys_rst_n),    //global reset
     .clk_c0         (clk_ref),      //144MHz 
