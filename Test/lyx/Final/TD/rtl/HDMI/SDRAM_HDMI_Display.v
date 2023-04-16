@@ -42,17 +42,6 @@ system_ctrl_pll u_system_ctrl_pll
 	.clk_c3			(clk_pixel_5x)	//5x pixel clock
 );
 
-// sys_pll sys_pll
-// (
-//     .refclk         (clk),          //50MHz
-// 	.reset			(rst_n),	    //global reset
-    
-//     .clk0_out       (clk_ref),      //144MHz 
-//     .clk1_out       (clk_refout),   //144MHz -90deg
-// 	.clk2_out		(clk_pixel),	//1x pixel clock
-// 	.clk3_out	    (clk_pixel_5x)	//5x pixel clock
-// );
-
 
 //-------------------------------------------
 //Generate LCD Test picture
