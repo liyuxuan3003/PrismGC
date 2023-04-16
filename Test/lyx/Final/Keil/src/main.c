@@ -38,34 +38,19 @@ int main()
     PORTC -> O_DIG_ENA_DAT = 0xF;
     PORTC -> O_DIG_CRT_DAT = 0xF;
 
-    while(!HDMI -> SYS_VAILD) ;
+    RamReady();
 
-    HDMI -> X_POS = 0;
-    HDMI -> Y_POS = 0;
-    HDMI -> PIXEL = 0xFFFFFF;
-    HDMI -> LEN = 1024 * 600;
-    HDMI -> SYS_WR_LEN = 256;
-    HDMI -> ENABLE = 1;
-    Delay(TICKS);
-    HDMI -> ENABLE = 0;
+    LCDBackground(0xFFFFFF);
+    int x=0;
 
-    Delay(TICKS*1);
-
-    HDMI -> X_POS = 20;
-    HDMI -> Y_POS = 20;
-    HDMI -> PIXEL = 0xFF0000;
-    HDMI -> LEN = 500;
-    HDMI -> SYS_WR_LEN = 1;
-    HDMI -> ENABLE = 1;
-    Delay(TICKS);
-    HDMI -> ENABLE = 0;
-
-    uint32_t pat=0x1;
 	while(1)
 	{
         PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
         PORTC -> O_DIG_DAT --;
-        Delay(TICKS/5000);
+        x++;
+        LCDBackground(0xFFFFFF);
+        LCDRectangle(0xFF0000,x*16,20,x*16+256,20+256,16);
+        Delay(TICKS/5);
 	}
 }
 
