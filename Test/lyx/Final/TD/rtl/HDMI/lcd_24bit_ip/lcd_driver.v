@@ -19,8 +19,9 @@ module lcd_driver
 	output	[11:0]	lcd_xpos,		//lcd horizontal coordinate
 	output	[11:0]	lcd_ypos,		//lcd vertical coordinate
 	input	[23:0]	lcd_data		//lcd data
-);	 
+);	   
 `include "lcd_para.v" 
+
 
 /*******************************************
 		SYNC--BACK--DISP--FRONT
@@ -77,15 +78,11 @@ assign	lcd_rgb 	= 	lcd_en ? lcd_data : 24'h000000;	//ffffff;
 //------------------------------------------
 //ahead x clock
 localparam	H_AHEAD = 	12'd1;
-
-
 assign	lcd_request	=	(hcnt >= `H_SYNC + `H_BACK - H_AHEAD && hcnt < `H_SYNC + `H_BACK + `H_DISP - H_AHEAD) &&
 						(vcnt >= `V_SYNC + `V_BACK && vcnt < `V_SYNC + `V_BACK + `V_DISP) 
 						? 1'b1 : 1'b0;
 //lcd xpos & ypos
-assign	lcd_xpos	= 	lcd_request ? (hcnt - (`H_SYNC + `H_BACK - H_AHEAD)) : 11'd0;
+assign	lcd_xpos	= 	lcd_request ? (hcnt - (`H_SYNC + `H_BACK - H_AHEAD)) : 12'd0;
 assign	lcd_ypos	= 	lcd_request ? (vcnt - (`V_SYNC + `V_BACK)) : 12'd0;
-
-
 
 endmodule

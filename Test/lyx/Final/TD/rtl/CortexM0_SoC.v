@@ -674,8 +674,14 @@ UART_RX UART_RX
 // AHB HDMI
 //------------------------------------------------------------------------------
 
-wire        LCD_CMD_SIG;
-wire [31:0] LCD_CMD;
+wire    [15:0] X_POS;
+wire    [15:0] Y_POS;
+wire    [23:0] PIXEL;
+wire    [23:0] LEN;
+wire           ENABLE;
+wire    [8:0]  SYS_WR_LEN;
+wire           SYS_VAILD;
+wire           BUSY;
 
 AHBlite_HDMI HDMI_Interface
 (
@@ -693,12 +699,18 @@ AHBlite_HDMI HDMI_Interface
     .HREADY                 (HREADY_P4),
     .HREADYOUT              (HREADYOUT_P4),
     .HRESP                  (HRESP_P4),
-    .LCD_CMD_SIG            (LCD_CMD_SIG),
-    .LCD_CMD                (LCD_CMD)
+    .X_POS                  (X_POS),
+    .Y_POS                  (Y_POS),
+    .PIXEL                  (PIXEL),
+    .LEN                    (LEN),
+    .ENABLE                 (ENABLE),
+    .SYS_WR_LEN             (SYS_WR_LEN),
+    .SYS_VAILD              (SYS_VAILD),
+    .BUSY                   (BUSY)
     /**********************************/ 
 );
 
-HDMI_TX_Display u_HDMI_TX_Display
+SDRAM_HDMI_Display u_SDRAM_HDMI_Display
 (
     .clk(clk),
     
@@ -708,8 +720,14 @@ HDMI_TX_Display u_HDMI_TX_Display
     .HDMI_D1_P(HDMI_D1_P),
     .HDMI_D0_P(HDMI_D0_P),
 
-    .LCD_CMD_SIG(LCD_CMD_SIG),
-    .LCD_CMD(LCD_CMD)
+    .x_pos(X_POS),
+    .y_pos(Y_POS),
+    .pixel(PIXEL),
+    .len(LEN),
+    .enable(ENABLE),
+    .sys_wr_len(SYS_WR_LEN),
+    .sys_vaild(SYS_VAILD),
+    .busy(BUSY)
 );
 
 endmodule
