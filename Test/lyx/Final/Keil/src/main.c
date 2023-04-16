@@ -49,7 +49,7 @@ int main()
     Delay(TICKS);
     HDMI -> ENABLE = 0;
 
-    Delay(TICKS*5);
+    Delay(TICKS*1);
 
     HDMI -> X_POS = 20;
     HDMI -> Y_POS = 20;
