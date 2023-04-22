@@ -12,16 +12,16 @@ module AHBlite_Block_RAM #(parameter ADDR_WIDTH = 14)
     input wire                      HREADY, 
     output wire                     HREADYOUT, 
     output wire   [31:0]            HRDATA,  
-    output wire   [1:0]             HRESP,
-    output wire   [ADDR_WIDTH-1:0]  BRAM_RDADDR,
-    output wire   [ADDR_WIDTH-1:0]  BRAM_WRADDR,
-    input  wire   [31:0]            BRAM_RDATA,
-    output wire   [31:0]            BRAM_WDATA,
-    output wire   [3:0]             BRAM_WRITE
+    output wire   [1:0]             HRESP
+    // output wire   [ADDR_WIDTH-1:0]  BRAM_RDADDR,
+    // output wire   [ADDR_WIDTH-1:0]  BRAM_WRADDR,
+    // input  wire   [31:0]            BRAM_RDATA,
+    // output wire   [31:0]            BRAM_WDATA,
+    // output wire   [3:0]             BRAM_WRITE
 );
 
 assign HRESP = 2'b0;
-assign HRDATA = BRAM_RDATA;
+// assign HRDATA = BRAM_RDATA;
 
 wire trans_en;
 assign trans_en = HSEL & HTRANS[1];
@@ -69,12 +69,12 @@ begin
     else wr_en_reg <= 1'b0;
 end
 
-assign BRAM_RDADDR = HADDR[(ADDR_WIDTH+1):2];
-assign BRAM_WRADDR  = addr_reg;
+wire [ADDR_WIDTH-1:0] BRAM_RDADDR = HADDR[(ADDR_WIDTH+1):2];
+wire [ADDR_WIDTH-1:0] BRAM_WRADDR = addr_reg;
 assign HREADYOUT = 1'b1;
-assign BRAM_WRITE = wr_en_reg ? size_reg : 4'h0;
-assign BRAM_WDATA = HWDATA; 
-/*
+wire [3:0] BRAM_WRITE = wr_en_reg ? size_reg : 4'h0;
+wire [31:0] BRAM_WDATA = HWDATA; 
+
 Block_RAM uBlockRAM
 (
     .clka(HCLK),
@@ -84,5 +84,5 @@ Block_RAM uBlockRAM
     .wea(BRAM_WRITE),
     .doutb(HRDATA)
 );
-*/
+
 endmodule

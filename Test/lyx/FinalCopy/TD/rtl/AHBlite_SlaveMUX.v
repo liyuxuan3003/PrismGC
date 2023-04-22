@@ -69,63 +69,73 @@ begin
 end
 
 //hready mux
-reg hready_mux;
 
-always@(*) 
-begin
-    case(hsel_reg)
-        8'b0000_0001 : begin hready_mux = P7_HREADYOUT;end
-        8'b0000_0010 : begin hready_mux = P6_HREADYOUT;end
-        8'b0000_0100 : begin hready_mux = P5_HREADYOUT;end
-        8'b0000_1000 : begin hready_mux = P4_HREADYOUT;end
-        8'b0001_0000 : begin hready_mux = P3_HREADYOUT;end
-        8'b0010_0000 : begin hready_mux = P2_HREADYOUT;end
-        8'b0100_0000 : begin hready_mux = P1_HREADYOUT;end
-        8'b1000_0000 : begin hready_mux = P0_HREADYOUT;end
-        default : begin hready_mux = 1'b1;end
-    endcase
-end
+//wire hready_mux;
+Mux16_1 muxHREADYOUT
+(
+    .sel({hsel_reg,8'h0}),
+    .sigIn({P0_HREADYOUT,P1_HREADYOUT,P2_HREADYOUT,P3_HREADYOUT,P4_HREADYOUT,P5_HREADYOUT,P6_HREADYOUT,P7_HREADYOUT,8'h0}),
+    .sigOut(HREADYOUT),
+    .sigOutDefault(1)
+);
+Mux16_1 muxHRESP
+(
+    .sel({hsel_reg,8'h0}),
+    .sigIn({P0_HRESP,P1_HRESP,P2_HRESP,P3_HRESP,P4_HRESP,P5_HRESP,P6_HRESP,P7_HRESP,8'h0}),
+    .sigOut(HRESP),
+    .sigOutDefault(0)
+);
+//assign HREADYOUT = hready_mux;
 
-assign HREADYOUT = hready_mux;
+wire[15:0] hselReg={hsel_reg,8'h0};
+wire[511:0] HRDATA_A={P0_HRDATA,P1_HRDATA,P2_HRDATA,P3_HRDATA,P4_HRDATA,P5_HRDATA,P6_HRDATA,P7_HRDATA,256'h0};
+//Mux HRDATA
+Mux16_1 #(.WIDTH(32)) muxHRDATA
+(
+    .sel(hselReg),
+    .sigIn(HRDATA_A),
+    .sigOut(HRDATA),
+    .sigOutDefault(0)
+);
 
 //hresp mux
-reg hresp_mux;
+// reg hresp_mux;
 
-always@(*) 
-begin
-    case(hsel_reg)
-        8'b0000_0001 : begin hresp_mux = P7_HRESP;end
-        8'b0000_0010 : begin hresp_mux = P6_HRESP;end
-        8'b0000_0100 : begin hresp_mux = P5_HRESP;end
-        8'b0000_1000 : begin hresp_mux = P4_HRESP;end
-        8'b0001_0000 : begin hresp_mux = P3_HRESP;end
-        8'b0010_0000 : begin hresp_mux = P2_HRESP;end
-        8'b0100_0000 : begin hresp_mux = P1_HRESP;end
-        8'b1000_0000 : begin hresp_mux = P0_HRESP;end
-        default : begin hresp_mux = 1'b0;end
-    endcase
-end
+// always@(*) 
+// begin
+//     case(hsel_reg)
+//         8'b0000_0001 : begin hresp_mux = P7_HRESP;end
+//         8'b0000_0010 : begin hresp_mux = P6_HRESP;end
+//         8'b0000_0100 : begin hresp_mux = P5_HRESP;end
+//         8'b0000_1000 : begin hresp_mux = P4_HRESP;end
+//         8'b0001_0000 : begin hresp_mux = P3_HRESP;end
+//         8'b0010_0000 : begin hresp_mux = P2_HRESP;end
+//         8'b0100_0000 : begin hresp_mux = P1_HRESP;end
+//         8'b1000_0000 : begin hresp_mux = P0_HRESP;end
+//         default : begin hresp_mux = 1'b0;end
+//     endcase
+// end
 
-assign HRESP = hresp_mux;
+// assign HRESP = hresp_mux;
 
 //hrdata mux
-reg [31:0] hrdata_mux;
+// reg [31:0] hrdata_mux;
 
-always@(*) 
-begin
-    case(hsel_reg)
-        8'b0000_0001 : begin hrdata_mux = P7_HRDATA;end
-        8'b0000_0010 : begin hrdata_mux = P6_HRDATA;end
-        8'b0000_0100 : begin hrdata_mux = P5_HRDATA;end
-        8'b0000_1000 : begin hrdata_mux = P4_HRDATA;end
-        8'b0001_0000 : begin hrdata_mux = P3_HRDATA;end
-        8'b0010_0000 : begin hrdata_mux = P2_HRDATA;end
-        8'b0100_0000 : begin hrdata_mux = P1_HRDATA;end
-        8'b1000_0000 : begin hrdata_mux = P0_HRDATA;end
-        default : begin hrdata_mux = 32'b0;end
-    endcase
-end
+// always@(*) 
+// begin
+//     case(hsel_reg)
+//         8'b0000_0001 : begin hrdata_mux = P7_HRDATA;end
+//         8'b0000_0010 : begin hrdata_mux = P6_HRDATA;end
+//         8'b0000_0100 : begin hrdata_mux = P5_HRDATA;end
+//         8'b0000_1000 : begin hrdata_mux = P4_HRDATA;end
+//         8'b0001_0000 : begin hrdata_mux = P3_HRDATA;end
+//         8'b0010_0000 : begin hrdata_mux = P2_HRDATA;end
+//         8'b0100_0000 : begin hrdata_mux = P1_HRDATA;end
+//         8'b1000_0000 : begin hrdata_mux = P0_HRDATA;end
+//         default : begin hrdata_mux = 32'b0;end
+//     endcase
+// end
 
-assign HRDATA = hrdata_mux;
+// assign HRDATA = hrdata_mux;
 
 endmodule 

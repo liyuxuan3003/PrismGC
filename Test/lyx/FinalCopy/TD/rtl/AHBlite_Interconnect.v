@@ -234,17 +234,10 @@ assign HREADY_P7     =   HREADY;
 // Decoder---------------------------------------
 //-----------------------------------------------
 
-AHBlite_Decoder Decoder
+AHBLiteDecoder Decoder
 (
     .HADDR      (HADDR),
-    .P0_HSEL    (HSEL_P0),
-    .P1_HSEL    (HSEL_P1),
-    .P2_HSEL    (HSEL_P2),
-    .P3_HSEL    (HSEL_P3),  
-    .P4_HSEL    (HSEL_P4),
-    .P5_HSEL    (HSEL_P5),
-    .P6_HSEL    (HSEL_P6),
-    .P7_HSEL    (HSEL_P7)  
+    .HSEL_A     ({HSEL_P7,HSEL_P6,HSEL_P5,HSEL_P4,HSEL_P3,HSEL_P2,HSEL_P1,HSEL_P0})
 );
 
 // Slave MUX-------------------------------------

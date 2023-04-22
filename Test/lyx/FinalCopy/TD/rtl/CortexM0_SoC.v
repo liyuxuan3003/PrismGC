@@ -433,13 +433,13 @@ AHBlite_Interconnect Interconncet
 
 /*** 实例化RAMCODE的Interface ***/
 
-wire [31:0] RAMCODE_RDATA;
-wire [31:0] RAMCODE_WDATA;
-wire [13:0] RAMCODE_WADDR;
-wire [13:0] RAMCODE_RADDR;
-wire [3:0]  RAMCODE_WRITE;
+// wire [31:0] RAMCODE_RDATA;
+// wire [31:0] RAMCODE_WDATA;
+// wire [13:0] RAMCODE_WADDR;
+// wire [13:0] RAMCODE_RADDR;
+// wire [3:0]  RAMCODE_WRITE;
 
-AHBlite_Block_RAM RAMCODE_Interface
+AHBLiteBlockRAM RAMCODE_Interface
 (
     /* Connect to Interconnect Port 0 */
     .HCLK           (clk),
@@ -454,24 +454,24 @@ AHBlite_Block_RAM RAMCODE_Interface
     .HRDATA         (HRDATA_P0),
     .HREADY         (HREADY_P0),
     .HREADYOUT      (HREADYOUT_P0),
-    .HRESP          (HRESP_P0),
-    .BRAM_WRADDR    (RAMCODE_WADDR),
-    .BRAM_RDADDR    (RAMCODE_RADDR),
-    .BRAM_RDATA     (RAMCODE_RDATA),
-    .BRAM_WDATA     (RAMCODE_WDATA),
-    .BRAM_WRITE     (RAMCODE_WRITE)
+    .HRESP          (HRESP_P0)
+    // .BRAM_WRADDR    (RAMCODE_WADDR),
+    // .BRAM_RDADDR    (RAMCODE_RADDR),
+    // .BRAM_RDATA     (RAMCODE_RDATA),
+    // .BRAM_WDATA     (RAMCODE_WDATA),
+    // .BRAM_WRITE     (RAMCODE_WRITE)
     /**********************************/
 );
 
 /*** 实例化RAMDATA的Interface ***/
 
-wire [31:0] RAMDATA_RDATA;
-wire [31:0] RAMDATA_WDATA;
-wire [13:0] RAMDATA_WADDR;
-wire [13:0] RAMDATA_RADDR;
-wire [3:0]  RAMDATA_WRITE;
+// wire [31:0] RAMDATA_RDATA;
+// wire [31:0] RAMDATA_WDATA;
+// wire [13:0] RAMDATA_WADDR;
+// wire [13:0] RAMDATA_RADDR;
+// wire [3:0]  RAMDATA_WRITE;
 
-AHBlite_Block_RAM RAMDATA_Interface
+AHBLiteBlockRAM RAMDATA_Interface
 (
     /* Connect to Interconnect Port 1 */
     .HCLK           (clk),
@@ -486,38 +486,38 @@ AHBlite_Block_RAM RAMDATA_Interface
     .HRDATA         (HRDATA_P1),
     .HREADY         (HREADY_P1),
     .HREADYOUT      (HREADYOUT_P1),
-    .HRESP          (HRESP_P1),
-    .BRAM_WRADDR    (RAMDATA_WADDR),
-    .BRAM_RDADDR    (RAMDATA_RADDR),
-    .BRAM_WDATA     (RAMDATA_WDATA),
-    .BRAM_RDATA     (RAMDATA_RDATA),
-    .BRAM_WRITE     (RAMDATA_WRITE)
+    .HRESP          (HRESP_P1)
+    // .BRAM_WRADDR    (RAMDATA_WADDR),
+    // .BRAM_RDADDR    (RAMDATA_RADDR),
+    // .BRAM_WDATA     (RAMDATA_WDATA),
+    // .BRAM_RDATA     (RAMDATA_RDATA),
+    // .BRAM_WRITE     (RAMDATA_WRITE)
     /**********************************/
 );
 
 // RAMCODE和RAMDATA均是Block_RAM的实例，前者是程序空间，后者是数据空间
 
-/*** 实例化RAMCODE ***/
-Block_RAM RAM_CODE
-(
-    .clka           (clk),
-    .addra          (RAMCODE_WADDR),
-    .addrb          (RAMCODE_RADDR),
-    .dina           (RAMCODE_WDATA),
-    .doutb          (RAMCODE_RDATA),
-    .wea            (RAMCODE_WRITE)
-);
+// /*** 实例化RAMCODE ***/
+// Block_RAM RAM_CODE
+// (
+//     .clka           (clk),
+//     .addra          (RAMCODE_WADDR),
+//     .addrb          (RAMCODE_RADDR),
+//     .dina           (RAMCODE_WDATA),
+//     .doutb          (RAMCODE_RDATA),
+//     .wea            (RAMCODE_WRITE)
+// );
 
-/*** 实例化RAMDATA ***/
-Block_RAM RAM_DATA
-(
-    .clka           (clk),
-    .addra          (RAMDATA_WADDR),
-    .addrb          (RAMDATA_RADDR),
-    .dina           (RAMDATA_WDATA),
-    .doutb          (RAMDATA_RDATA),
-    .wea            (RAMDATA_WRITE)
-);
+// /*** 实例化RAMDATA ***/
+// Block_RAM RAM_DATA
+// (
+//     .clka           (clk),
+//     .addra          (RAMDATA_WADDR),
+//     .addrb          (RAMDATA_RADDR),
+//     .dina           (RAMDATA_WDATA),
+//     .doutb          (RAMDATA_RDATA),
+//     .wea            (RAMDATA_WRITE)
+// );
 
 //------------------------------------------------------------------------------
 // AHB GPIO

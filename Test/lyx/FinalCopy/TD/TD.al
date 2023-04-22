@@ -274,6 +274,46 @@
                     <Attr Name="CompileOrder" Val="38"/>
                 </FileInfo>
             </File>
+            <File Path="rtl/AHBLiteBlockRAM.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="39"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/BlockRAM.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="40"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/SizeDecoder.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="41"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/AHBLiteDecoder.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="42"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/Mux16_1.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="43"/>
+                </FileInfo>
+            </File>
         </Verilog>
         <VHDL>
             <File Path="rtl/HDMI/enc_file/DVITransmitter.enc.vhd">
@@ -346,7 +386,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-04-22 21:48:34.187</Step_Last_Change>
+        <Step_Last_Change>2023-04-22 23:45:31.037</Step_Last_Change>
         <Current_Step>0</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
