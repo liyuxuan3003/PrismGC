@@ -18,8 +18,8 @@ output              sda_r
 );
 
 //  SCL 分频系数
-// 产生IIC时钟  100M/20K = 5000
-parameter  SCL_SUM = 13'd5000;
+// 产生IIC时钟  25M/20K = 1250
+parameter  SCL_SUM = 13'd1250;
 
 // 仿真时
 //parameter  SCL_SUM = 13'd64;

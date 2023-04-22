@@ -1,0 +1,13 @@
+set_pin_assignment	{ aud_scl }	{ LOCATION = D14; }
+set_pin_assignment	{ aud_sda }	{ LOCATION = E15; }
+set_pin_assignment	{ clk }	{ LOCATION = R7; }
+set_pin_assignment	{ i2c_data_r[0] }	{ LOCATION = B14; }
+set_pin_assignment	{ i2c_data_r[1] }	{ LOCATION = B15; }
+set_pin_assignment	{ i2c_data_r[2] }	{ LOCATION = B16; }
+set_pin_assignment	{ i2c_data_r[3] }	{ LOCATION = C15; }
+set_pin_assignment	{ i2c_data_r[4] }	{ LOCATION = C16; }
+set_pin_assignment	{ i2c_data_r[5] }	{ LOCATION = E13; }
+set_pin_assignment	{ i2c_data_r[6] }	{ LOCATION = E16; }
+set_pin_assignment	{ i2c_data_r[7] }	{ LOCATION = F16; }
+set_pin_assignment	{ rst_n }	{ LOCATION = A14; }
+

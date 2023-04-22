@@ -1,0 +1,6 @@
+set_pin_assignment	{ aud_scl }	{ LOCATION = D14; }
+set_pin_assignment	{ aud_sda }	{ LOCATION = E15; }
+set_pin_assignment	{ clk }	{ LOCATION = R7; }
+set_pin_assignment	{ rst_n }	{ LOCATION = A14; }
+
+
