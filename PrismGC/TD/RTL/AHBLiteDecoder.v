@@ -1,8 +1,7 @@
 module AHBLiteDecoder #(parameter DEVICES_EXP=4)
 (
     input[31:0] HADDR,
-    output[2**DEVICES_EXP-1:0] HSEL_A,
-    output[DEVICES_EXP-1:0] HSEL_ENCODE
+    output[2**DEVICES_EXP-1:0] HSEL_A
 );
 
 assign HSEL_A[0]  = (HADDR[31:16] == 16'h0000) ? 1'b1 : 1'b0;
@@ -17,11 +16,5 @@ assign HSEL_A[8]  = (HADDR[31:16] == 16'h6005) ? 1'b1 : 1'b0;
 assign HSEL_A[9]  = (HADDR[31:16] == 16'h6006) ? 1'b1 : 1'b0;
 assign HSEL_A[10] = (HADDR[31:16] == 16'h6007) ? 1'b1 : 1'b0;
 assign HSEL_A[2**DEVICES_EXP-1:11] = 0;
-
-Encoder16_4 uEncoder16_4
-(
-    .sig(HSEL_A),
-    .code(HSEL_ENCODE)
-);
 
 endmodule

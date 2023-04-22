@@ -41,12 +41,32 @@ begin
         sizeDecodeReg <= sizeDecode;
 end
 
+reg [ADDR_WIDTH-1:0] addrReg;
+always@(posedge HCLK or negedge HRESETn)
+begin
+    if(~HRESETn) 
+        addrReg <= 0;
+    else if(HREADY & HSEL & HTRANS[1]) 
+        addrReg <= HADDR[(ADDR_WIDTH+1):2];
+end
+
+reg enableWriteReg;
+always@(posedge HCLK or negedge HRESETn) 
+begin
+    if(~HRESETn) 
+        enableWriteReg <= 1'b0;
+    else if(HREADY) 
+        enableWriteReg <= enableWrite;
+    else 
+        enableWriteReg <= 1'b0;
+end
+
 BlockRAM uBlockRAM
 (
     .clk(HCLK),
     .addrIn(HADDR[(ADDR_WIDTH+2-1):2]),
     .addrOut(HADDR[(ADDR_WIDTH+2-1):2]),
-    .sizeDecode(sizeDecodeReg),
+    .sizeDecode(enableWriteReg ? sizeDecodeReg : 4'b0000),
     .dataIn(HWDATA),
     .dataOut(HRDATA)
 );

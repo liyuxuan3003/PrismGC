@@ -4,7 +4,7 @@ module AHBLiteSlaveMux #(parameter DEVICES_EXP=4)
     input HRESETn,
     input HREADY,
 
-    input[DEVICES_EXP-1:0] HSEL_ENCODE,
+    input[2**DEVICES_EXP-1:0] HSEL_A,
     input[2**DEVICES_EXP-1:0] HREADYOUT_A,
     input[2**DEVICES_EXP-1:0] HRESP_A,
     input[2**DEVICES_EXP*32-1:0] HRDATA_A,
@@ -15,38 +15,41 @@ module AHBLiteSlaveMux #(parameter DEVICES_EXP=4)
 );
 
 //Reg HSEL_ENCODE
-reg [DEVICES_EXP-1:0] hselEncodeReg;
+reg [2**DEVICES_EXP-1:0] hselReg;
 
 always@(posedge HCLK or negedge HRESETn) 
 begin
     if(~HRESETn) 
-        hselEncodeReg <= 2**DEVICES_EXP-1;
+        hselReg <= 0;
     else if(HREADY) 
-        hselEncodeReg <= HSEL_ENCODE;
+        hselReg <= HSEL_A;
 end
 
 // Mux HREADYOUT
 Mux16_1 muxHREADYOUT
 (
-    .sel(hselEncodeReg),
+    .sel(hselReg),
     .sigIn(HREADYOUT_A),
-    .sigOut(HREADYOUT)
+    .sigOut(HREADYOUT),
+    .sigOutDefault(1)
 );
 
 //Mux HRESP
 Mux16_1 muxHRESP
 (
-    .sel(hselEncodeReg),
+    .sel(hselReg),
     .sigIn(HRESP_A),
-    .sigOut(HRESP)
+    .sigOut(HRESP),
+    .sigOutDefault(0)
 );
 
 //Mux HRDATA
 Mux16_1 #(.WIDTH(32)) muxHRDATA
 (
-    .sel(hselEncodeReg),
+    .sel(hselReg),
     .sigIn(HRDATA_A),
-    .sigOut(HRDATA)
+    .sigOut(HRDATA),
+    .sigOutDefault(0)
 );
 
 endmodule 

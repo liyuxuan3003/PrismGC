@@ -18,7 +18,6 @@ module AHBLite #(parameter DEVICES_EXP=4)
     output              HRESP
 );
 
-wire[DEVICES_EXP-1:0]       HSEL_ENCODE;
 wire[2**DEVICES_EXP-1:0]    HSEL_A;
 wire[2**DEVICES_EXP-1:0]    HREADYOUT_A;
 wire[2**DEVICES_EXP-1:0]    HRESP_A;
@@ -27,8 +26,7 @@ wire[2**DEVICES_EXP*32-1:0] HRDATA_A;
 AHBLiteDecoder  #(.DEVICES_EXP(DEVICES_EXP)) uAHBLiteDecoder
 (
     .HADDR(HADDR),
-    .HSEL_A(HSEL_A),
-    .HSEL_ENCODE(HSEL_ENCODE)
+    .HSEL_A(HSEL_A)
 );
 
 AHBLiteSlaveMux #(.DEVICES_EXP(DEVICES_EXP)) uAHBLiteSlaveMux
@@ -36,7 +34,7 @@ AHBLiteSlaveMux #(.DEVICES_EXP(DEVICES_EXP)) uAHBLiteSlaveMux
     .HCLK(HCLK),
     .HRESETn(HRESETn),
     .HREADY(HREADY),
-    .HSEL_ENCODE(HSEL_ENCODE),
+    .HSEL_A(HSEL_A),
     .HREADYOUT_A(HREADYOUT_A),
     .HRESP_A(HRESP_A),
     .HRDATA_A(HRDATA_A),
