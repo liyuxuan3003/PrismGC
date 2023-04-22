@@ -314,6 +314,14 @@
                     <Attr Name="CompileOrder" Val="43"/>
                 </FileInfo>
             </File>
+            <File Path="rtl/AHBLiteSlaveMux.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="44"/>
+                </FileInfo>
+            </File>
         </Verilog>
         <VHDL>
             <File Path="rtl/HDMI/enc_file/DVITransmitter.enc.vhd">
@@ -386,8 +394,8 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-04-22 23:45:31.037</Step_Last_Change>
-        <Current_Step>0</Current_Step>
+        <Step_Last_Change>2023-04-23 00:01:21.856</Step_Last_Change>
+        <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
 </Project>

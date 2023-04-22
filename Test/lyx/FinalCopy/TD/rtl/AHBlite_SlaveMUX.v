@@ -4,53 +4,10 @@ module AHBlite_SlaveMUX
     input HRESETn,
     input HREADY,
 
-    //port 0
-    input P0_HSEL,
-    input P0_HREADYOUT,
-    input P0_HRESP,
-    input [31:0] P0_HRDATA,
-
-    //port 1
-    input P1_HSEL,
-    input P1_HREADYOUT,
-    input P1_HRESP,
-    input [31:0] P1_HRDATA,
-
-    //port 2
-    input P2_HSEL,
-    input P2_HREADYOUT,
-    input P2_HRESP,
-    input [31:0] P2_HRDATA,
-
-    //port 3
-    input P3_HSEL,
-    input P3_HREADYOUT,
-    input P3_HRESP,
-    input [31:0] P3_HRDATA,
-
-    //port 4
-    input P4_HSEL,
-    input P4_HREADYOUT,
-    input P4_HRESP,
-    input [31:0] P4_HRDATA,
-
-    //port 5
-    input P5_HSEL,
-    input P5_HREADYOUT,
-    input P5_HRESP,
-    input [31:0] P5_HRDATA,
-
-    //port 6
-    input P6_HSEL,
-    input P6_HREADYOUT,
-    input P6_HRESP,
-    input [31:0] P6_HRDATA,
-
-    //port 7
-    input P7_HSEL,
-    input P7_HREADYOUT,
-    input P7_HRESP,
-    input [31:0] P7_HRDATA,
+    input[15:0] HSEL_A,
+    input[15:0] HREADYOUT_A,
+    input[15:0] HRESP_A,
+    input[511:0] HRDATA_A,
 
     //output
     output wire HREADYOUT,
@@ -59,13 +16,12 @@ module AHBlite_SlaveMUX
 );
 
 //reg the hsel
-reg [7:0] hsel_reg;
+reg [15:0] hsel_reg;
 
 always@(posedge HCLK or negedge HRESETn) 
 begin
-    if(~HRESETn) hsel_reg <= 8'b0000_0000;
-    else if(HREADY) hsel_reg <= 
-    {P0_HSEL,P1_HSEL,P2_HSEL,P3_HSEL,P4_HSEL,P5_HSEL,P6_HSEL,P7_HSEL};
+    if(~HRESETn) hsel_reg <= 0;
+    else if(HREADY) hsel_reg <= HSEL_A;
 end
 
 //hready mux
@@ -73,26 +29,24 @@ end
 //wire hready_mux;
 Mux16_1 muxHREADYOUT
 (
-    .sel({hsel_reg,8'h0}),
-    .sigIn({P0_HREADYOUT,P1_HREADYOUT,P2_HREADYOUT,P3_HREADYOUT,P4_HREADYOUT,P5_HREADYOUT,P6_HREADYOUT,P7_HREADYOUT,8'h0}),
+    .sel(hsel_reg),
+    .sigIn(HREADYOUT_A),
     .sigOut(HREADYOUT),
     .sigOutDefault(1)
 );
 Mux16_1 muxHRESP
 (
-    .sel({hsel_reg,8'h0}),
-    .sigIn({P0_HRESP,P1_HRESP,P2_HRESP,P3_HRESP,P4_HRESP,P5_HRESP,P6_HRESP,P7_HRESP,8'h0}),
+    .sel(hsel_reg),
+    .sigIn(HRESP_A),
     .sigOut(HRESP),
     .sigOutDefault(0)
 );
 //assign HREADYOUT = hready_mux;
 
-wire[15:0] hselReg={hsel_reg,8'h0};
-wire[511:0] HRDATA_A={P0_HRDATA,P1_HRDATA,P2_HRDATA,P3_HRDATA,P4_HRDATA,P5_HRDATA,P6_HRDATA,P7_HRDATA,256'h0};
-//Mux HRDATA
+
 Mux16_1 #(.WIDTH(32)) muxHRDATA
 (
-    .sel(hselReg),
+    .sel(hsel_reg),
     .sigIn(HRDATA_A),
     .sigOut(HRDATA),
     .sigOutDefault(0)

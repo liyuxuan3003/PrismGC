@@ -242,60 +242,17 @@ AHBLiteDecoder Decoder
 
 // Slave MUX-------------------------------------
 //-----------------------------------------------
-AHBlite_SlaveMUX SlaveMUX
+AHBLiteSlaveMux SlaveMUX
 (
     // CLOCK & RST
     .HCLK           (HCLK),
     .HRESETn        (HRESETn),
     .HREADY         (HREADY),
 
-    //P0
-    .P0_HSEL        (HSEL_P0),
-    .P0_HREADYOUT   (HREADYOUT_P0),
-    .P0_HRESP       (HRESP_P0),
-    .P0_HRDATA      (HRDATA_P0),
-
-    //P1
-    .P1_HSEL        (HSEL_P1),
-    .P1_HREADYOUT   (HREADYOUT_P1),
-    .P1_HRESP       (HRESP_P1),
-    .P1_HRDATA      (HRDATA_P1),
-
-    //P2
-    .P2_HSEL        (HSEL_P2),
-    .P2_HREADYOUT   (HREADYOUT_P2),
-    .P2_HRESP       (HRESP_P2),
-    .P2_HRDATA      (HRDATA_P2),
-
-    //P3
-    .P3_HSEL        (HSEL_P3),
-    .P3_HREADYOUT   (HREADYOUT_P3),
-    .P3_HRESP       (HRESP_P3),
-    .P3_HRDATA      (HRDATA_P3),
-
-    //P4
-    .P4_HSEL        (HSEL_P4),
-    .P4_HREADYOUT   (HREADYOUT_P4),
-    .P4_HRESP       (HRESP_P4),
-    .P4_HRDATA      (HRDATA_P4),
-
-    //P5
-    .P5_HSEL        (HSEL_P5),
-    .P5_HREADYOUT   (HREADYOUT_P5),
-    .P5_HRESP       (HRESP_P5),
-    .P5_HRDATA      (HRDATA_P5),
-
-    //P6
-    .P6_HSEL        (HSEL_P6),
-    .P6_HREADYOUT   (HREADYOUT_P6),
-    .P6_HRESP       (HRESP_P6),
-    .P6_HRDATA      (HRDATA_P6),
-
-    //P7
-    .P7_HSEL        (HSEL_P7),
-    .P7_HREADYOUT   (HREADYOUT_P7),
-    .P7_HRESP       (HRESP_P7),
-    .P7_HRDATA      (HRDATA_P7),
+    .HSEL_A        ({HSEL_P7,HSEL_P6,HSEL_P5,HSEL_P4,HSEL_P3,HSEL_P2,HSEL_P1,HSEL_P0}),
+    .HREADYOUT_A   ({HREADYOUT_P7,HREADYOUT_P6,HREADYOUT_P5,HREADYOUT_P4,HREADYOUT_P3,HREADYOUT_P2,HREADYOUT_P1,HREADYOUT_P0}),
+    .HRESP_A       ({HRESP_P7,HRESP_P6,HRESP_P5,HRESP_P4,HRESP_P3,HRESP_P2,HRESP_P1,HRESP_P0}),
+    .HRDATA_A      ({HRDATA_P7,HRDATA_P6,HRDATA_P5,HRDATA_P4,HRDATA_P3,HRDATA_P2,HRDATA_P1,HRDATA_P0}),
 
     .HREADYOUT      (HREADY),
     .HRESP          (HRESP),
