@@ -1,4 +1,4 @@
-module AHBLiteBlockRAM #(parameter ADDR_WIDTH = 12)
+module AHBLiteBlockRAM #(parameter ADDR_WIDTH = 14)
 (
     input  wire                     HCLK,    
     input  wire                     HRESETn, 
@@ -64,7 +64,7 @@ end
 BlockRAM uBlockRAM
 (
     .clk(HCLK),
-    .addrIn(HADDR[(ADDR_WIDTH+2-1):2]),
+    .addrIn(addrReg),
     .addrOut(HADDR[(ADDR_WIDTH+2-1):2]),
     .sizeDecode(enableWriteReg ? sizeDecodeReg : 4'b0000),
     .dataIn(HWDATA),

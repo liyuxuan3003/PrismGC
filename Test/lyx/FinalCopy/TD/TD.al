@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Project Version="1" Path="D:/Project/20230110-FPGA/PrismGC/Test/lyx/Final/TD">
+<Project Version="1" Path="D:/Project/20230110-FPGA/PrismGC/Test/lyx/FinalCopy/TD">
     <Project_Created_Time></Project_Created_Time>
     <TD_Version>5.0.30786</TD_Version>
     <UCode>00000000</UCode>
@@ -346,8 +346,8 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-04-22 21:22:19.315</Step_Last_Change>
-        <Current_Step>60</Current_Step>
+        <Step_Last_Change>2023-04-22 21:48:34.187</Step_Last_Change>
+        <Current_Step>0</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
 </Project>
