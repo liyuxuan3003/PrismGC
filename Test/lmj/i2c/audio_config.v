@@ -24,7 +24,7 @@
 module audio_config(
     input        clk     ,                  // 时钟信号
     input        rst_n   ,                  // 复位信号
-    
+    output      [7:0]  i2c_data_r ,         //I2C读出的数据   
     output       aud_scl ,                  // 音频的SCL时钟
     inout        aud_sda                    // 音频的SDA信号
 );
@@ -78,7 +78,7 @@ i2c_dri #(
     .i2c_addr       (reg_data[15:8]),       // I2C器件字地址
     .i2c_data_w     (reg_data[ 7:0]),       // I2C要写的数据
       
-    .i2c_data_r     (),                     // I2C读出的数据
+    .i2c_data_r     (i2c_data_r),           // I2C读出的数据
     .i2c_done       (i2c_done  ),           // I 2C一次操作完成
       
     .scl            (aud_scl   ),           // I2C的SCL时钟信号

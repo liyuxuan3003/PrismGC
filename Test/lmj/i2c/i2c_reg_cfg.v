@@ -138,61 +138,7 @@ always @(posedge clk or negedge rst_n) begin
     else begin
         case(init_reg_cnt)
             // R0,Bit[7] 1:软复位 ES8388 0:正常
-            6'd0 : i2c_data <= {8'd0 ,8'h80};  	
-            6'd1 : i2c_data <= {8'd0 ,8'h00};  //结束复位后进行延时
-            
-            6'd2 : i2c_data <= {8'd1 ,8'h58};            
-            6'd3 : i2c_data <= {8'd1 ,8'h50};
-            // R2,器件电源管理配置
-            6'd4 : i2c_data <= {8'd2 ,8'hf3};
-            6'd5 : i2c_data <= {8'd2 ,8'h00};	
-		
-			// R3,ADC电源管理，Bit[3] 1:麦克风偏置电源关闭
-            6'd6: i2c_data <=  {8'd3 ,8'h09};
-            // R0,使能参考 500K驱动使能            
-            6'd7 : i2c_data <= {8'd0 ,8'h06};
-
-            // R4,DAC电源管理和输出通道配置
-            6'd8 : i2c_data <= {8'd4 ,8'h3c};
-            // R8,Bit[7] 0:Slave模式, Bit[6] 0:MCLK不分频
-            6'd9 : i2c_data <= {8'd8,8'h00};
-            // R9,ADC L/R Mic增益配置为+21dB
-            6'd10 : i2c_data <= {8'd9,8'h77};
-            // R10,ADC 输入通道选择L/R	INPUT1
-            6'd11: i2c_data <= {8'd10,8'h00};
-            // R12,ADC 数据选择为left data = left ADC, right data = left ADC 
-                       //左右通道正常极性,音频数据位宽=wl,数据格式=I2S
-            6'd12: i2c_data <= {8'd12,2'b01,1'b0,wl,2'b0};				
-            // R13,single speed mode, MCLK/采样率=256
-            6'd13: i2c_data <= {8'd13,8'h0c};
-            // R16,ADC数字音量控制将信号衰减 L	设置为最小
-            6'd14 : i2c_data <= {8'd16 ,8'h00};
-            // R17,ADC数字音量控制将信号衰减 R	设置为最小
-            6'd15: i2c_data <=  {8'd17 ,8'h00};			
-            // R18,ALC设置 Bit[7:6]: ALC打开,max PGA gain:11.5dB, min PGA gain:+6dB
-            6'd16: i2c_data <=  {8'd18 ,2'b11,3'b011,3'b011};
-            // R23,DAC 音频数据=wl, 数据格式=I2S    
-            6'd17 : i2c_data <= {8'd23,2'b0,wl,3'b0};		
-            // R24,DAC	配置 MCLK/采样率=256
-            6'd18: i2c_data <= {8'd24,8'h0c};
-            // R26,DAC数字音量控制将信号衰减 L	设置为最小       
-            6'd19: i2c_data <= {8'd26,8'h0a};
-            // R27,DAC数字音量控制将信号衰减 R	设置为最小
-            6'd20: i2c_data <= {8'd27,8'h0a         };
-            // R29,3D环绕设置        
-            6'd21: i2c_data <= {8'd29,8'h1c          };
-            // R39,L混频器        
-            6'd22: i2c_data <= {8'd39,8'hf8          };	
-            // R42,R混频器              
-            6'd23 : i2c_data <= {8'd42,8'hf8};
-            // R43,Bit[7] 1:DACLRC和ADCLRC共用              
-            6'd24 : i2c_data <= {8'd43,8'h80};				
-            // R46 R47设置耳机音量
-            6'd25: i2c_data <= {8'd46,2'b0,PHONE_VOLUME};		
-            6'd26: i2c_data <= {8'd47,2'b0,PHONE_VOLUME};
-            // R48 R49设置喇叭音量					
-            6'd27: i2c_data <= {8'd48,2'b0,SPEAK_VOLUME};				
-            6'd28: i2c_data <= {8'd49,2'b0,SPEAK_VOLUME};		
+            6'd0 : i2c_data <= {8'h40 ,8'h00};  	
             default : ;
         endcase
     end

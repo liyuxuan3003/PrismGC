@@ -2,6 +2,7 @@
 <Project>
     <Project_Created_Time>2023-04-03 20:21:35</Project_Created_Time>
     <TD_Version>4.6.64949</TD_Version>
+    <UCode>00000000</UCode>
     <Name>WII</Name>
     <HardWare>
         <Family>EG4</Family>
@@ -13,7 +14,7 @@
             <File>../i2c/i2c_dri.v</File>
             <File>../i2c/i2c_reg_cfg.v</File>
         </Verilog>
-        <ADC_FILE/>
+        <ADC_FILE>TEST1.adc</ADC_FILE>
         <SDC_FILE/>
         <CWC_FILE/>
     </Source_Files>
@@ -23,6 +24,8 @@
         <CREATEINDEX>auto</CREATEINDEX>
     </TOP_MODULE>
     <Project_Settings>
-        <Step_Last_Change>2023-04-03 22:48:47</Step_Last_Change>
+        <Step_Last_Change>2023-04-19 12:09:28</Step_Last_Change>
+        <Current_Step>60</Current_Step>
+        <Step_Status>true</Step_Status>
     </Project_Settings>
 </Project>

@@ -196,7 +196,7 @@ always @(posedge dri_clk or negedge rst_n) begin
         st_done <= 1'b0 ;                            
         cnt     <= cnt +1'b1 ;                       
         case(cur_state)                              
-             st_idle: begin                          //空闲状态
+             st_idle: begin                          //空闲状态 
                 scl     <= 1'b1;                     
                 sda_out <= 1'b1;                     
                 sda_dir <= 1'b1;                     
