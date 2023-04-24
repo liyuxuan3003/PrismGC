@@ -1,23 +1,3 @@
-/**
- ****************************************************************************************************
- * @file        main.c
- * @author      正点原子团队(ALIENTEK)
- * @version     V1.0
- * @date        2020-04-28
- * @brief       图片显示 实验
- * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
- ****************************************************************************************************
- * @attention
- *
- * 实验平台:正点原子 STM32F103开发板
- * 在线视频:www.yuanzige.com
- * 技术论坛:www.openedv.com
- * 公司网址:www.alientek.com
- * 购买地址:openedv.taobao.com
- *
- ****************************************************************************************************
- */
-
 #include "./SYSTEM/sys/sys.h"
 #include "./SYSTEM/usart/usart.h"
 #include "./SYSTEM/delay/delay.h"
@@ -35,13 +15,14 @@
 #include "math.h"
 #include <stdio.h>
 
-
-/**
- * @brief       得到path路径下,目标文件的总个数
- * @param       path : 路径
- * @retval      总有效文件数
- */
-
+int rectangle(int b,int x1,int x2,int y1,int y2);
+int bianliang(int a);
+int canshuA(int a);
+int panding(int y1,int y2,int b);
+int jiasu(int t,int y2);
+int xueliang(int xue);
+int xueliangjisuan(int xue,int b);
+int xueliangjisuan1(int xue,int b);
 
 int main(void)
 {
@@ -70,240 +51,49 @@ int main(void)
     exfuns_init();           /* 为fatfs相关变量申请内存 */
     f_mount(fs[0], "0:", 1); /* 挂载SD卡 */
     f_mount(fs[1], "1:", 1); /* 挂载FLASH */
+
     if(key_scan(1) == WKUP_PRES)
     {
-        int x=350,y=100,z=0,b=1,c=1,q=100;
-        while(1)
+        int x1=300,y1=0,x2=400,y2=100,b=0,a=0,t=0,xue=3;
+        while(xue>0)
         {
-            if(y<400)
+            int x1=300,y1=0,x2=400,y2=100;
+            a=canshuA(a);
+            b=bianliang(a);
+            while(y2<=800)
             {
-                lcd_draw_circle(x,y,50,RED);
-                lcd_draw_line(0,450,1500,450,RED);
-                delay_ms(500-b*10);
-                y=y+100;
-                lcd_clear(WHITE);
-            }
-            else if(y==400)
-            {
-                if(c>4)
+                xueliang(xue);
+                rectangle(b,x1,x2,y1,y2);
+                if(y2==600)
                 {
-                    lcd_draw_circle(x,y,50,RED);
-                    lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                    lcd_draw_line(0,450,1500,450,RED);
-                    z=z+100;
-                    delay_ms(500-b*10);
-                    y=y+100;
+                    lcd_draw_line(0,600,1000,600,BLACK);
+                    xue=xueliangjisuan(xue,b);
+                    panding(y1,y2,b);
+                    y2=panding(y1,y2,b);
+                    t=jiasu(t,y2);
+                    y1=y2-100;
+                    delay_ms(500-t*10);
                     lcd_clear(WHITE);
-                }
-                else
-                {
-                    lcd_draw_circle(x,y,50,RED);
-                    lcd_draw_line(0,450,1500,450,RED);
-                    delay_ms(500-b*10);
-                    y=y+100;
-                    lcd_clear(WHITE);
-                }
-            }
-            else if(y==500)
-            {
-                if (key_scan(1) == WKUP_PRES)
-                {
-                    lcd_clear(WHITE);
-                    b=b+1;
-                    y=700;
-                    z=100;
-                    q=100;
-                    c++;
                     continue;
                 }
                 else
                 {
-                    if(c>4)
-                    {
-                        lcd_draw_circle(x,y,50,RED);
-                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        z=z+100;
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        lcd_clear(WHITE);
-                    }
-                    else
-                    {
-                        lcd_draw_circle(x,y,50,RED);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        lcd_clear(WHITE);
-                    }
-                };
-            }
-            else if(y==600)
-            {
-                if(c>4)
-                    {
-                        lcd_draw_circle(x,y,50,RED);
-                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        z=z+100;
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        lcd_clear(WHITE);
-                    }
-                    else
-                    {
-                        lcd_draw_circle(x,y,50,RED);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        lcd_clear(WHITE);
-                    }
-            }
-            else if(y<800)
-            {
-                    lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                    lcd_draw_line(0,450,1500,450,RED);
-                    delay_ms(500-b*10);
-                    z=z+100;
-                    y=y+100;
+                    lcd_draw_line(0,600,1000,600,BLACK);
+                    xue=xueliangjisuan1(xue,b);
+                    y1=y1+100;
+                    y2=y2+100;
+                    delay_ms(500-t*10);
                     lcd_clear(WHITE);
-            }
-            else if(y==800)
-            {
-                    if(c>4)
-                    {
-                        lcd_draw_circle(x,q,50,RED);
-                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        z=z+100;
-                        q=q+100;
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        lcd_clear(WHITE);
-                    }
-                    else
-                    {
-                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        z=z+100;
-                        lcd_clear(WHITE);
-                    }
-            }
-            else if(y==900)
-            {
-                    if(c>4)
-                    {
-                        lcd_draw_circle(x,q,50,RED);
-                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        z=z+100;
-                        q=q+100;
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        lcd_clear(WHITE);
-                    }
-                    else
-                    {
-                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        delay_ms(500-b*10); 
-                        y=y+100;
-                        z=z+100;
-                        lcd_clear(WHITE);
-                    }
-            }
-            else if(y==1000)
-            {
-                    if(c>4)
-                    {
-                        lcd_draw_circle(x,q,50,RED);
-                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        z=z+100;
-                        q=q+100;
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        lcd_clear(WHITE);
-                    }
-                    else
-                    {
-                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        z=z+100;
-                        lcd_clear(WHITE);
-                    }
-            }
-            else if(y==1100)
-            {
-                if (key_scan(1) == WKUP_PRES)
-                {
-                    lcd_clear(WHITE);
-                    b=b+1;
-                    c++;
-                    y=q;
-                    z=100;
-                    q=100;
                     continue;
-                }
-                else
-                {
-                if(c>4)
-                    {
-                        lcd_draw_circle(x,q,50,RED);
-                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        z=z+100;
-                        q=q+100;
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        lcd_clear(WHITE);
-                    }
-                    else
-                    {
-                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        z=z+100;
-                        lcd_clear(WHITE);
-                    }
-                };
-            }
-            else if(y==1200)
-            {
-                    if(c>4)
-                    {
-                        lcd_draw_circle(x,q,50,RED);
-                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                        lcd_draw_line(0,450,1500,450,RED);
-                        z=z+100;
-                        q=q+100;
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        lcd_clear(WHITE);
-                    }
-                    else
-                    {
-                        lcd_draw_rectangle(300,z,400,z+50,GREEN);
-                        lcd_draw_line(0,450,1500,450,RED); 
-                        delay_ms(500-b*10);
-                        y=y+100;
-                        z=z+100;
-                        lcd_clear(WHITE);
-                    }
-            }
-            else if(y==1300)
-                {
-                    y=q;
-                    z=100;
-                    q=100;
                 }
             };
-        }
+            continue;
+        };
+        lcd_draw_rectangle(40,350,140,450,RED);
+        lcd_draw_rectangle(190,350,290,450,GREEN);
+        lcd_draw_rectangle(340,350,440,450,BLUE);
+        delay_ms(2000);
+    }        
     else
     {
         text_show_string(30,  50, 1000, 16, "Please click on KEY_UP Button Start the game", 16, 0, RED);
@@ -312,8 +102,163 @@ int main(void)
     return 0;
     }
 
+int rectangle(int b,int x1,int x2,int y1,int y2)
+{
+    if(b<16)
+    {
+        lcd_draw_rectangle(x1,y1,x2,y2,GREEN);
+    }
+    else if(b<48)
+    {
+        lcd_draw_rectangle(x1,y1,x2,y2,RED);
+    }
+    else if(b<72)
+    {
+        lcd_draw_rectangle(x1,y1,x2,y2,BLUE);
+    }
+    else
+    {
+        lcd_draw_rectangle(x1,y1,x2,y2,RED);
+    }
+};
+int bianliang(int a)
+{
+    int b;
+    if(a<=8&&a>=0)
+    {
+        b=a*a;
+        return b;
+    }
+    else
+    {
+        b=a-8;
+        return b;
+    }
+}
+int canshuA(int a)
+{
+    if(a<=8)
+    {
+        a=a+2;
+    }
+    else
+    {
+        a=a-8;
+    }
+    return a;
+}
 
+int panding(int y1,int y2,int b)
+{
+    if(b>=16&&b<48)
+    {
+        if(key_scan(1) == KEY0_PRES)
+        {
+            y2=1000;
+        }
+        else
+        {
+            y1=y1+100;
+            y2=y2+100;
+        } 
+    }
+    else
+    {
+        if(key_scan(1) == KEY1_PRES)
+        {
+            y2=1000;
+        }
+        else
+        {
+            y1=y1+100;
+            y2=y2+100;
+        } 
+    }
+    return y2;
+}
 
+int jiasu(int t,int y2)
+{
+    if(y2==1000)
+    {
+        t=t+1;
+    }
+    else
+    {
+        t=t;
+    }
+    return t;
+}
+int xueliang(int xue)
+{
+    if(xue==3)
+    {
+        lcd_draw_rectangle(10,10,50,50,RED);
+        lcd_draw_rectangle(60,10,100,50,RED);
+        lcd_draw_rectangle(110,10,150,50,RED);
+    }
+    else if(xue==2)
+    {
+        lcd_draw_rectangle(10,10,50,50,RED);
+        lcd_draw_rectangle(60,10,100,50,RED);
+    }
+    else if(xue==1)
+    {
+        lcd_draw_rectangle(10,10,50,50,RED);
+    }
+}
+int xueliangjisuan(int xue,int b)
+{
+    if(b>=16&&b<48)
+    {
+        if(key_scan(1) == KEY0_PRES)
+        {
+            xue=xue;
+        }
+        else
+        {
+            xue=xue-1;
+        } 
+    }
+    else
+    {
+        if(key_scan(1) == KEY1_PRES)
+        {
+            xue=xue;
+        }
+        else
+        {
+            xue=xue-1;
+        } 
+    }
+    return xue;
+}
+int xueliangjisuan1(int xue,int b)
+{
+    if(b>=16&&b<48)
+    {
+        if(key_scan(1) == KEY0_PRES)
+        {
+            xue=xue-1;
+        }
+        else
+        {
+            xue=xue;
+        } 
+    }
+    else
+    {
+        if(key_scan(1) == KEY1_PRES)
+        {
+            xue=xue-1;
+        }
+        else
+        {
+            xue=xue;
+        } 
+    }
+    return xue;
+}
 
 
 
