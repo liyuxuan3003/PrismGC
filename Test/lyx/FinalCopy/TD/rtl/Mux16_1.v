@@ -25,27 +25,3 @@ assign sigOut =
     (sel == 16'b1000_0000_0000_0000) ? sigIn[16*WIDTH-1:15*WIDTH] : sigOutDefault;
     
 endmodule
-
-module Mux8_1
-(
-    input [7:0] sel,
-    input [7:0] sigIn,
-    output reg sigOut,
-    input  sigOutDefault
-);
-
-always @(*) 
-begin
-    case (sel)
-        8'b0000_0001 : sigOut<=sigIn[0];
-        8'b0000_0010 : sigOut<=sigIn[1];
-        8'b0000_0100 : sigOut<=sigIn[2];
-        8'b0000_1000 : sigOut<=sigIn[3];
-        8'b0001_0000 : sigOut<=sigIn[4];
-        8'b0010_0000 : sigOut<=sigIn[5];
-        8'b0100_0000 : sigOut<=sigIn[6];
-        8'b1000_0000 : sigOut<=sigIn[7]; 
-        default: sigOut<=sigOutDefault;
-    endcase
-end  
-endmodule

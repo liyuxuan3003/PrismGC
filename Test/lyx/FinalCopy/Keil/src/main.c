@@ -10,6 +10,7 @@
 #include "UART.h"
 #include "GPIO.h"
 #include "HDMI.h"
+#include "Digit.h"
 
 int main() 
 { 
@@ -26,17 +27,13 @@ int main()
     //PORTA INIT
     PORTA -> O_LED_DAT = 0x00;
 
-    //PORTC IO STATUS
-    PORTC -> O_DIG_ENA = 0xFFFF;
-    PORTC -> O_DIG_DOT_ENA = 0xF;
-    PORTC -> O_DIG_ENA_ENA = 0xF;
-    PORTC -> O_DIG_CRT_ENA = 0xF;
-
-    //PORTC INIT
-    PORTC -> O_DIG_DAT = 0x0000;
-    PORTC -> O_DIG_DOT_DAT = 0x4;
-    PORTC -> O_DIG_ENA_DAT = 0xF;
-    PORTC -> O_DIG_CRT_DAT = 0xF;
+    DIG_CRTL = 0xF;
+    for(int i=0;i<4;i++)
+    {
+        DIG[i].ENA = 1;
+        DIG[i].DOT = 0;
+        DIG[i].COD = 0;
+    }
 
     RamReady();
 
@@ -45,11 +42,11 @@ int main()
 
 	while(1)
 	{
-        //PORTA -> O_LED_DAT = 0x55;
+        for(int i=0;i<4;i++)
+            DIG[i].COD ++;
         PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
         uint8_t a = PORTA -> O_LED_DAT;
         UARTWrite(a);
-        PORTC -> O_DIG_DAT --;
         x++;
         LCDBackground(0xFFFFFF);
         LCDRectangle(0xFF0000,+x*16,20,+x*16+256,20+256,16);

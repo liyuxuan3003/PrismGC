@@ -1,22 +1,20 @@
-module AHBLiteGPIO #(parameter PORT_NUM = 4)
+module AHBLiteDigit
 (
-    input  wire          HCLK,    
-    input  wire          HRESETn, 
-    input  wire          HSEL,    
-    input  wire   [31:0] HADDR,   
-    input  wire    [1:0] HTRANS,  
-    input  wire    [2:0] HSIZE,   
-    input  wire    [3:0] HPROT,   
-    input  wire          HWRITE,  
-    input  wire   [31:0] HWDATA,  
-    input  wire          HREADY,  
-    output wire          HREADYOUT, 
-    output wire   [31:0] HRDATA,  
-    output wire          HRESP,
-    inout[31:0] io_pin0,        //GPIO-0
-    inout[31:0] io_pin1,        //GPIO-1
-    inout[31:0] io_pin2,        //GPIO-2
-    inout[31:0] io_pin3         //GPIO-3
+    input               HCLK,    
+    input               HRESETn, 
+    input               HSEL,    
+    input       [31:0]  HADDR,   
+    input       [1:0]   HTRANS,  
+    input       [2:0]   HSIZE,   
+    input       [3:0]   HPROT,   
+    input               HWRITE,  
+    input       [31:0]  HWDATA,   
+    input               HREADY, 
+    output              HREADYOUT, 
+    output      [31:0]  HRDATA,  
+    output              HRESP,
+    output      [7:0]   SEG,           
+    output      [3:0]   SEGCS 
 );
 
 localparam ADDR_WIDTH = 8;
@@ -65,7 +63,7 @@ begin
         enableWriteReg <= 1'b0;
 end
 
-GPIO #(.PORT_NUM(PORT_NUM)) uGPIO
+Digit uDigit
 (
     .clk(HCLK),
     .rstn(HRESETn),
@@ -74,7 +72,8 @@ GPIO #(.PORT_NUM(PORT_NUM)) uGPIO
     .sizeDecode(enableWriteReg ? sizeDecodeReg : 4'b0000),
     .dataIn(HWDATA),
     .dataOut(HRDATA),
-    .ioPin({io_pin3,io_pin2,io_pin1,io_pin0})
+    .SEG(SEG),
+    .SEGCS(SEGCS)
 );
 
 endmodule

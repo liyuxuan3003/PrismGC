@@ -30,6 +30,8 @@ module AHBLite
     output[4:0] VGA_B,          //VGA B
     output      VGA_HS,         //VGA HS
     output      VGA_VS,         //VGA VS
+    output[7:0] SEG,            //八段数码管
+    output[3:0] SEGCS,          //八段数码管的位选
     inout[31:0] io_pin0,        //GPIO-0
     inout[31:0] io_pin1,        //GPIO-1
     inout[31:0] io_pin2,        //GPIO-2
@@ -69,7 +71,7 @@ AHBLiteSlaveMux uSlaveMUX
     .HRDATA         (HRDATA)
 );
 
-AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) uRAMCode
+AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) uAHBRAMCode
 (
     .HCLK           (HCLK),
     .HRESETn        (HRESETn),
@@ -86,7 +88,7 @@ AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) uRAMCode
     .HRESP          (HRESP_A[`idRAMCode])
 );
 
-AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_DATA_WIDTH)) uRAMData
+AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_DATA_WIDTH)) uAHBRAMData
 (
     .HCLK           (HCLK),
     .HRESETn        (HRESETn),
@@ -104,7 +106,7 @@ AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_DATA_WIDTH)) uRAMData
 );
 
 
-AHBLiteGPIO uGPIO
+AHBLiteGPIO uAHBGPIO
 (
     .HCLK			(HCLK),
     .HRESETn		(HRESETn),
@@ -125,7 +127,7 @@ AHBLiteGPIO uGPIO
     .io_pin3(io_pin3)
 );
 
-AHBLiteUART uUART
+AHBLiteUART uAHBUART
 (
     .HCLK           (HCLK),
     .HRESETn        (HRESETn),
@@ -144,7 +146,7 @@ AHBLiteUART uUART
     .RXD(RXD)
 );
 
-AHBLiteHDMI uHDMI
+AHBLiteHDMI uAHBHDMI
 (
     .HCLK                   (HCLK),
     .HRESETn                (HRESETn),
@@ -163,6 +165,25 @@ AHBLiteHDMI uHDMI
     .HDMI_D2_P(HDMI_D2_P),
     .HDMI_D1_P(HDMI_D1_P),
     .HDMI_D0_P(HDMI_D0_P)
+);
+
+AHBLiteDigit uAHBDigit
+(
+    .HCLK			(HCLK),
+    .HRESETn		(HRESETn),
+    .HSEL			(HSEL_A[`idDigit]),
+    .HADDR			(HADDR),
+    .HPROT			(HPROT),
+    .HSIZE			(HSIZE),
+    .HTRANS			(HTRANS),
+    .HWDATA		    (HWDATA),
+    .HWRITE			(HWRITE),
+    .HRDATA			(HRDATA_A[`idDigit*32+:32]),
+    .HREADY			(HREADY),
+    .HREADYOUT		(HREADYOUT_A[`idDigit]),
+    .HRESP			(HRESP_A[`idDigit]),
+    .SEG            (SEG),
+    .SEGCS          (SEGCS)
 );
 
 endmodule

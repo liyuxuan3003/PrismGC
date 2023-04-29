@@ -49,29 +49,7 @@ typedef struct
     volatile uint32_t O_RESERVED_DAT:24;
 } PORTBType;
 
-typedef struct
-{
-    volatile uint16_t  I_DIG_DAT;
-    volatile uint8_t   I_DIG_DOT_DAT:4;
-    volatile uint8_t   I_DIG_ENA_DAT:4;
-    volatile uint8_t   I_DIG_CRT_DAT:4;
-    volatile uint8_t   I_RESERVED_DAT:4;
-    
-    volatile uint16_t  O_DIG_ENA;
-    volatile uint8_t   O_DIG_DOT_ENA:4;
-    volatile uint8_t   O_DIG_ENA_ENA:4;
-    volatile uint8_t   O_DIG_CRT_ENA:4;
-    volatile uint8_t   O_RESERVED_ENA:4;
-
-    volatile uint16_t  O_DIG_DAT;
-    volatile uint8_t   O_DIG_DOT_DAT:4;
-    volatile uint8_t   O_DIG_ENA_DAT:4;
-    volatile uint8_t   O_DIG_CRT_DAT:4;
-    volatile uint8_t   O_RESERVED_DAT:4;
-} PORTCType;
-
 #define PORTA ((PORTAType *)GPIOA_BASE)
 #define PORTB ((PORTBType *)GPIOB_BASE)
-#define PORTC ((PORTCType *)GPIOC_BASE)
 
 #endif
