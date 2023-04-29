@@ -45,7 +45,6 @@ Digit Digit
     .DIG_CRT(DIG_CRT)
 );
 
-
 // AHBLite总线相关
 wire        HRESETn;
 wire [31:0] HADDR;          //传输地址 ADDR-Address
@@ -60,7 +59,6 @@ wire [31:0] HRDATA;         //由外设返回的读数据
 wire        HRESP;          //传输是否成功 通常为0 传输成功为1
 wire        HMASTER;        //未知
 wire        HREADY;         //未知
-
 
 // Interrupt
 wire [31:0] IRQ = 32'b0;        //M0的IRQ中断信号
@@ -113,10 +111,10 @@ AHBLite uAHBLite
     .VGA_B(VGA_B),              //VGA B
     .VGA_HS(VGA_HS),            //VGA HS
     .VGA_VS(VGA_VS),            //VGA VS
-    .io_pin0(io_pin0),          //GPIO-0
-    .io_pin1(io_pin1),          //GPIO-1
-    .io_pin2(io_pin2),          //GPIO-2
-    .io_pin3(io_pin3)           //GPIO-3
+    .io_pin0({NC[15:0],LED,SWI}),
+    .io_pin1({NC[23:0],PI4[19],PI4[17],PI4[15],PI4[13],PI4[11],PI4[9],PI4[7],PI4[5]}),
+    .io_pin2({NC[3:0],DIG_CRT,DIG_ENA,DIG_DOT,DIG3,DIG2,DIG1,DIG0}),
+    .io_pin3({NC[31:0]})
 );
 
 endmodule
