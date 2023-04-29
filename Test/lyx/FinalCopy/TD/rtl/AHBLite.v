@@ -44,7 +44,7 @@ wire[2**`DEVICES_EXP*32-1:0] HRDATA_A;
 // Decoder---------------------------------------
 //-----------------------------------------------
 
-AHBLiteDecoder Decoder
+AHBLiteDecoder uDecoder
 (
     .HADDR      (HADDR),
     .HSEL_A     (HSEL_A)
@@ -52,7 +52,7 @@ AHBLiteDecoder Decoder
 
 // Slave MUX-------------------------------------
 //-----------------------------------------------
-AHBLiteSlaveMux SlaveMUX
+AHBLiteSlaveMux uSlaveMUX
 (
     // CLOCK & RST
     .HCLK           (HCLK),
@@ -69,7 +69,7 @@ AHBLiteSlaveMux SlaveMUX
     .HRDATA         (HRDATA)
 );
 
-AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) RAMCODE_Interface
+AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) uRAMCode
 (
     .HCLK           (HCLK),
     .HRESETn        (HRESETn),
@@ -86,7 +86,7 @@ AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) RAMCODE_Interface
     .HRESP          (HRESP_A[`idRAMCode])
 );
 
-AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_DATA_WIDTH)) RAMDATA_Interface
+AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_DATA_WIDTH)) uRAMData
 (
     .HCLK           (HCLK),
     .HRESETn        (HRESETn),
@@ -104,7 +104,7 @@ AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_DATA_WIDTH)) RAMDATA_Interface
 );
 
 
-AHBLiteGPIO GPIO_Interface
+AHBLiteGPIO uGPIO
 (
     .HCLK			(HCLK),
     .HRESETn		(HRESETn),
@@ -125,7 +125,7 @@ AHBLiteGPIO GPIO_Interface
     .io_pin3(io_pin3)
 );
 
-AHBLiteUART UART_Interface
+AHBLiteUART uUART
 (
     .HCLK           (HCLK),
     .HRESETn        (HRESETn),
@@ -144,7 +144,7 @@ AHBLiteUART UART_Interface
     .RXD(RXD)
 );
 
-AHBLiteHDMI HDMI_Interface
+AHBLiteHDMI uHDMI
 (
     .HCLK                   (HCLK),
     .HRESETn                (HRESETn),
