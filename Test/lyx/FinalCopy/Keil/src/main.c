@@ -45,13 +45,18 @@ int main()
 
 	while(1)
 	{
+        //PORTA -> O_LED_DAT = 0x55;
         PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
+        uint8_t a = PORTA -> O_LED_DAT;
+        UARTWrite(a);
         PORTC -> O_DIG_DAT --;
         x++;
         LCDBackground(0xFFFFFF);
         LCDRectangle(0xFF0000,+x*16,20,+x*16+256,20+256,16);
         LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,1 );
         Delay(TICKS/5);
+        //PORTA -> O_LED_DAT = 0x00;
+        //Delay(TICKS/5);
 	}
 }
 

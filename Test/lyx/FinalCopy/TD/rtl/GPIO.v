@@ -1,80 +1,91 @@
-module GPIO 
+`include "GlobalDefine.v"
+
+module GPIO #(parameter PORT_NUM = 0)
 (
     input clk,
-    input RSTn,
-    input [3:0]   write_byte,
-
-    input [31:0]  o_ena0,
-    input [31:0]  o_dat0,  
-    output[31:0]  i_dat0,
-    inout [31:0]  io_pin0,
-
-    input [31:0]  o_ena1,
-    input [31:0]  o_dat1,  
-    output[31:0]  i_dat1,
-    inout [31:0]  io_pin1,
-
-    input [31:0]  o_ena2,
-    input [31:0]  o_dat2,  
-    output[31:0]  i_dat2,
-    inout [31:0]  io_pin2,
-
-    input [31:0]  o_ena3,
-    input [31:0]  o_dat3,  
-    output[31:0]  i_dat3,   
-    inout [31:0]  io_pin3
+    input rstn,
+    input [PORT_NUM*4-1:0]      addrIn,
+    input [PORT_NUM*4-1:0]      addrOut,
+    input [3:0]                 sizeDecode,
+    input  [31:0]               dataIn,
+    output reg [31:0]           dataOut,
+    inout [PORT_NUM*32-1:0]     ioPin
 );
- 
-reg [31:0] o_dat_reg [3:0];
-reg [31:0] i_dat_reg [3:0];
 
-always@(posedge clk or negedge RSTn) 
+`define DATA_IN     0
+`define ENABLE_OUT  1
+`define DATA_OUT    2
+
+reg [31:0] mem [(PORT_NUM*4-1):0];
+
+always@(posedge clk or negedge rstn)
 begin
-    if(~RSTn)
+    if(~rstn)
     begin
-        i_dat_reg[0] <= 32'h0000_0000;
-        i_dat_reg[1] <= 32'h0000_0000;
-        i_dat_reg[2] <= 32'h0000_0000;
-        i_dat_reg[3] <= 32'h0000_0000;
-    end 
-    else 
-    begin
-        i_dat_reg[0] <= io_pin0;
-        i_dat_reg[1] <= io_pin1;
-        i_dat_reg[2] <= io_pin2;
-        i_dat_reg[3] <= io_pin3;
-    end
-end
+        mem[0*4+`ENABLE_OUT] <= 32'b0;
+        mem[1*4+`ENABLE_OUT] <= 32'b0;
+        mem[2*4+`ENABLE_OUT] <= 32'b0;
+        mem[3*4+`ENABLE_OUT] <= 32'b0;
 
-assign i_dat0 = i_dat_reg[0];
-assign i_dat1 = i_dat_reg[1];
-assign i_dat2 = i_dat_reg[2];
-assign i_dat3 = i_dat_reg[3];
-
-integer i;
-always@(posedge clk or negedge RSTn)
-begin
-    if(~RSTn) 
-    begin
-        o_dat_reg[0] <= 32'bzzzzzzzz_zzzzzzzz_zzzzzzzz_zzzzzzzz;
-        o_dat_reg[1] <= 32'bzzzzzzzz_zzzzzzzz_zzzzzzzz_zzzzzzzz;
-        o_dat_reg[2] <= 32'bzzzzzzzz_zzzzzzzz_zzzzzzzz_zzzzzzzz;
-        o_dat_reg[3] <= 32'bzzzzzzzz_zzzzzzzz_zzzzzzzz_zzzzzzzz;
+        mem[0*4+`DATA_OUT] <= 32'bz;
+        mem[1*4+`DATA_OUT] <= 32'bz;
+        mem[2*4+`DATA_OUT] <= 32'bz;
+        mem[3*4+`DATA_OUT] <= 32'bz;
     end
     else
     begin
-        for(i=0;i<32;i=i+1)
-        begin
-            o_dat_reg[0][i] <= o_ena0[i] ? o_dat0[i] : 1'bz;
-            o_dat_reg[1][i] <= o_ena1[i] ? o_dat1[i] : 1'bz;
-            o_dat_reg[2][i] <= o_ena2[i] ? o_dat2[i] : 1'bz;
-            o_dat_reg[3][i] <= o_ena3[i] ? o_dat3[i] : 1'bz;
-        end
+        mem[0*4+`DATA_IN] <= ioPin[`M(0,32)];
+        mem[1*4+`DATA_IN] <= ioPin[`M(1,32)];
+        mem[2*4+`DATA_IN] <= ioPin[`M(2,32)];
+        mem[3*4+`DATA_IN] <= ioPin[`M(3,32)];
+
+        if(sizeDecode[0]) mem[addrIn][7:0]   <= dataIn[7:0];
+        if(sizeDecode[1]) mem[addrIn][15:8]  <= dataIn[15:8];
+        if(sizeDecode[2]) mem[addrIn][23:16] <= dataIn[23:16];
+        if(sizeDecode[3]) mem[addrIn][31:24] <= dataIn[31:24];
+
+        dataOut <= mem[addrOut];
     end
 end
-assign io_pin0 = o_dat_reg[0];
-assign io_pin1 = o_dat_reg[1];
-assign io_pin2 = o_dat_reg[2];
-assign io_pin3 = o_dat_reg[3];
 
+genvar i;
+genvar j;
+
+generate
+    for(i=0; i<PORT_NUM; i=i+1) 
+    begin: mem_crtl
+        for(j=0; j<32; j=j+1)
+        begin: out
+            assign ioPin[i*32+j] = mem[i*4+`ENABLE_OUT][j] ? mem[i*4+`DATA_OUT][j] : 1'bz;
+        end
+    end
+endgenerate
+
+
+/*
+genvar i;
+genvar j;
+generate
+    for(i=0; i<PORT_NUM; i=i+1) 
+    begin: mem_crtl
+        always@(posedge clk or negedge rstn) 
+        begin
+            if(~rstn)
+            begin
+                mem[i*4+`ENABLE_OUT] <= 32'b0;
+                mem[i*4+`DATA_OUT]   <= 32'bz;
+            end
+            else
+            begin
+                //if(addrOut >> 2 == i)
+                //    dataOut <= ioPin[`M(i,32)];
+            end
+        end
+        for(j=0; j<32; j=j+1)
+        begin: out
+            assign ioPin[i*32+j] = mem[i*4+`ENABLE_OUT][j] ? mem[i*4+`DATA_OUT] : 1'bz;
+        end
+    end
+endgenerate
+*/
 endmodule
