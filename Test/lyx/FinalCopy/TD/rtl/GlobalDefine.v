@@ -12,6 +12,4 @@
 `define idUART          3
 `define idHDMI          4
 
-`define M(loc,w) (loc+1)*w-1:loc*w
-
 `endif

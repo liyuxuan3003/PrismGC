@@ -19,7 +19,7 @@ module AHBLiteGPIO #(parameter PORT_NUM = 4)
     inout[31:0] io_pin3         //GPIO-3
 );
 
-localparam ADDR_WIDTH = 6;
+localparam ADDR_WIDTH = 8;
 
 assign HRESP = 1'b0;
 assign HREADYOUT = 1'b1;
