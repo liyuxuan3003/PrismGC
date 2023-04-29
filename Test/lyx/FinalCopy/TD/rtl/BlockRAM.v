@@ -1,14 +1,14 @@
-module BlockRAM #(parameter ADDR_WIDTH = 12)   
+module BlockRAM #(parameter MEM_ADDR_WIDTH = 0)   
 (
-    input                   clk,
-    input [ADDR_WIDTH-1:0]  addrIn,
-    input [ADDR_WIDTH-1:0]  addrOut,
-    input [3:0]             sizeDecode,
-    input  [31:0]           dataIn,
-    output reg [31:0]       dataOut
+    input                       clk,
+    input [MEM_ADDR_WIDTH-1:0]  addrIn,
+    input [MEM_ADDR_WIDTH-1:0]  addrOut,
+    input [3:0]                 sizeDecode,
+    input  [31:0]               dataIn,
+    output reg [31:0]           dataOut
 );
 
-(* ram_style="block" *)reg [31:0] mem [(2**ADDR_WIDTH-1):0];
+(* ram_style="block" *)reg [31:0] mem [(2**MEM_ADDR_WIDTH-1):0];
 
 always@(posedge clk) 
 begin

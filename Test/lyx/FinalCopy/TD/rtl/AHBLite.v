@@ -69,7 +69,7 @@ AHBLiteSlaveMux SlaveMUX
     .HRDATA         (HRDATA)
 );
 
-AHBLiteBlockRAM RAMCODE_Interface
+AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) RAMCODE_Interface
 (
     .HCLK           (HCLK),
     .HRESETn        (HRESETn),
@@ -86,7 +86,7 @@ AHBLiteBlockRAM RAMCODE_Interface
     .HRESP          (HRESP_A[`idRAMCode])
 );
 
-AHBLiteBlockRAM RAMDATA_Interface
+AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_DATA_WIDTH)) RAMDATA_Interface
 (
     .HCLK           (HCLK),
     .HRESETn        (HRESETn),

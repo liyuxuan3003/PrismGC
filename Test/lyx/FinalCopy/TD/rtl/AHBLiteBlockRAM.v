@@ -1,4 +1,4 @@
-module AHBLiteBlockRAM #(parameter ADDR_WIDTH = 14)
+module AHBLiteBlockRAM #(parameter ADDR_WIDTH = 0)
 (
     input  wire                     HCLK,    
     input  wire                     HRESETn, 
@@ -16,8 +16,6 @@ module AHBLiteBlockRAM #(parameter ADDR_WIDTH = 14)
 );
 
 assign HRESP = 1'b0;
-
-//Block RAM 总是可以在一个时钟内完全任务
 assign HREADYOUT = 1'b1;
 
 wire enableWrite = HREADY & HSEL & HTRANS[1] & ( HWRITE);
@@ -61,7 +59,7 @@ begin
         enableWriteReg <= 1'b0;
 end
 
-BlockRAM uBlockRAM
+BlockRAM #(.MEM_ADDR_WIDTH(ADDR_WIDTH-2)) uBlockRAM
 (
     .clk(HCLK),
     .addrIn(addrReg),
