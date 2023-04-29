@@ -1,12 +1,12 @@
 /*** SoC顶层封装 ***/
 module CortexM0_SoC 
 (
-    input       clk,           //时钟
-    input       RSTn,          //SoC使能
-    inout       SWDIO,         //SW调试接口 数据
-    input       SWCLK,         //SW调试接口 时钟
-    output      TXD,           //UART串口 输出
-    input       RXD,           //UART串口 输入
+    input       clk,            //时钟
+    input       RSTn,           //SoC使能
+    inout       SWDIO,          //SW调试接口 数据
+    input       SWCLK,          //SW调试接口 时钟
+    output      TXD,            //UART串口 输出
+    input       RXD,            //UART串口 输入
     output      HDMI_CLK_P,     //HDMI CLK
     output      HDMI_D2_P,      //HDMI D2
     output      HDMI_D1_P,      //HDMI D1
@@ -67,7 +67,7 @@ wire        HWRITE;         //读写选择 0-读 1-写
 wire [31:0] HRDATA;         //由外设返回的读数据
 wire        HRESP;          //传输是否成功 通常为0 传输成功为1
 wire        HMASTER;        //未知
-wire        HREADY;         //未知
+wire        HREADY;         //总线数据准备完成
 
 //------------------------------------------------------------------------------
 // RESET AND DEBUG
@@ -92,12 +92,11 @@ begin
     else CDBGPWRUPACK <= CDBGPWRUPREQ;
 end
 
-
 //------------------------------------------------------------------------------
 // Instantiate Cortex-M0 processor logic level
 //------------------------------------------------------------------------------
 
-cortexm0ds_logic u_logic 
+cortexm0ds_logic uCortexM0 
 (
     // System inputs
     .FCLK           (clk),           //FREE running clock 
@@ -161,44 +160,24 @@ cortexm0ds_logic u_logic
 );
 
 //------------------------------------------------------------------------------
-// AHBlite Interconncet
+// AHBLite
 //------------------------------------------------------------------------------
 
-
-/*** 实例化AHBlite内部连接 ***/
 AHBLite uAHBLite
 (
-    .HCLK           (clk),
-    .HRESETn        (cpuresetn),
-    .RSTn           (RSTn),
-
-    // CORE SIDE
-    .HADDR          (HADDR),
-    .HTRANS         (HTRANS),
-    .HSIZE          (HSIZE),
-    .HBURST         (HBURST),
-    .HPROT          (HPROT),
-    .HMASTLOCK      (HMASTLOCK),
-    .HWRITE         (HWRITE),
-    .HWDATA         (HWDATA),
-    .HRDATA         (HRDATA),
-    .HREADY         (HREADY),
-    .HRESP          (HRESP),
-    .TXD(TXD),           //UART串口 输出
-    .RXD(RXD),           //UART串口 输入
-    .HDMI_CLK_P(HDMI_CLK_P),     //HDMI CLK
-    .HDMI_D2_P(HDMI_D2_P),      //HDMI D2
-    .HDMI_D1_P(HDMI_D1_P),      //HDMI D1
-    .HDMI_D0_P(HDMI_D0_P),      //HDMI D0
-    .VGA_R(VGA_R),          //VGA R
-    .VGA_G(VGA_G),          //VGA G
-    .VGA_B(VGA_B),          //VGA B
-    .VGA_HS(VGA_HS),         //VGA HS
-    .VGA_VS(VGA_VS),         //VGA VS
-    .io_pin0(io_pin0),        //GPIO-0
-    .io_pin1(io_pin1),        //GPIO-1
-    .io_pin2(io_pin2),        //GPIO-2
-    .io_pin3(io_pin3)         //GPIO-3
+    .HCLK(clk),
+    .HRESETn(cpuresetn),
+    .HADDR(HADDR),
+    .HBURST(HBURST),
+    .HMASTLOCK(HMASTLOCK),
+    .HPROT(HPROT),
+    .HSIZE(HSIZE),
+    .HTRANS(HTRANS),
+    .HWDATA(HWDATA),
+    .HWRITE(HWRITE),
+    .HREADY(HREADY),
+    .HRDATA(HRDATA),
+    .HRESP(HRESP)
 );
 
 endmodule
