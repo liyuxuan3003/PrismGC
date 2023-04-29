@@ -166,36 +166,6 @@ cortexm0ds_logic u_logic
 
 /*** 外设接口 ***/
 
-//P0
-wire            HSEL_P0;
-wire    [31:0]  HADDR_P0;
-wire    [2:0]   HBURST_P0;
-wire            HMASTLOCK_P0;
-wire    [3:0]   HPROT_P0;
-wire    [2:0]   HSIZE_P0;
-wire    [1:0]   HTRANS_P0;
-wire    [31:0]  HWDATA_P0;
-wire            HWRITE_P0;
-wire            HREADY_P0;
-wire            HREADYOUT_P0;
-wire    [31:0]  HRDATA_P0;
-wire            HRESP_P0;
-
-//P1
-wire            HSEL_P1;
-wire    [31:0]  HADDR_P1;
-wire    [2:0]   HBURST_P1;
-wire            HMASTLOCK_P1;
-wire    [3:0]   HPROT_P1;
-wire    [2:0]   HSIZE_P1;
-wire    [1:0]   HTRANS_P1;
-wire    [31:0]  HWDATA_P1;
-wire            HWRITE_P1;
-wire            HREADY_P1;
-wire            HREADYOUT_P1;
-wire    [31:0]  HRDATA_P1;
-wire            HRESP_P1;
-
 //P2
 wire            HSEL_P2;
 wire    [31:0]  HADDR_P2;
@@ -306,36 +276,6 @@ AHBlite_Interconnect Interconncet
     .HREADY         (HREADY),
     .HRESP          (HRESP),
 
-    // P0
-    .HSEL_P0        (HSEL_P0),
-    .HADDR_P0       (HADDR_P0),
-    .HBURST_P0      (HBURST_P0),
-    .HMASTLOCK_P0   (HMASTLOCK_P0),
-    .HPROT_P0       (HPROT_P0),
-    .HSIZE_P0       (HSIZE_P0),
-    .HTRANS_P0      (HTRANS_P0),
-    .HWDATA_P0      (HWDATA_P0),
-    .HWRITE_P0      (HWRITE_P0),
-    .HREADY_P0      (HREADY_P0),
-    .HREADYOUT_P0   (HREADYOUT_P0),
-    .HRDATA_P0      (HRDATA_P0),
-    .HRESP_P0       (HRESP_P0),
-
-    // P1
-    .HSEL_P1        (HSEL_P1),
-    .HADDR_P1       (HADDR_P1),
-    .HBURST_P1      (HBURST_P1),
-    .HMASTLOCK_P1   (HMASTLOCK_P1),
-    .HPROT_P1       (HPROT_P1),
-    .HSIZE_P1       (HSIZE_P1),
-    .HTRANS_P1      (HTRANS_P1),
-    .HWDATA_P1      (HWDATA_P1),
-    .HWRITE_P1      (HWRITE_P1),
-    .HREADY_P1      (HREADY_P1),
-    .HREADYOUT_P1   (HREADYOUT_P1),
-    .HRDATA_P1      (HRDATA_P1),
-    .HRESP_P1       (HRESP_P1),
-
     // P2
     .HSEL_P2        (HSEL_P2),
     .HADDR_P2       (HADDR_P2),
@@ -426,98 +366,6 @@ AHBlite_Interconnect Interconncet
     .HRDATA_P7      (HRDATA_P7),
     .HRESP_P7       (HRESP_P7)
 );
-
-//------------------------------------------------------------------------------
-// AHB RAMCODE/RAMDATA
-//------------------------------------------------------------------------------
-
-/*** 实例化RAMCODE的Interface ***/
-
-// wire [31:0] RAMCODE_RDATA;
-// wire [31:0] RAMCODE_WDATA;
-// wire [13:0] RAMCODE_WADDR;
-// wire [13:0] RAMCODE_RADDR;
-// wire [3:0]  RAMCODE_WRITE;
-
-AHBLiteBlockRAM RAMCODE_Interface
-(
-    /* Connect to Interconnect Port 0 */
-    .HCLK           (clk),
-    .HRESETn        (cpuresetn),
-    .HSEL           (HSEL_P0),
-    .HADDR          (HADDR_P0),
-    .HPROT          (HPROT_P0),
-    .HSIZE          (HSIZE_P0),
-    .HTRANS         (HTRANS_P0),
-    .HWDATA         (HWDATA_P0),
-    .HWRITE         (HWRITE_P0),
-    .HRDATA         (HRDATA_P0),
-    .HREADY         (HREADY_P0),
-    .HREADYOUT      (HREADYOUT_P0),
-    .HRESP          (HRESP_P0)
-    // .BRAM_WRADDR    (RAMCODE_WADDR),
-    // .BRAM_RDADDR    (RAMCODE_RADDR),
-    // .BRAM_RDATA     (RAMCODE_RDATA),
-    // .BRAM_WDATA     (RAMCODE_WDATA),
-    // .BRAM_WRITE     (RAMCODE_WRITE)
-    /**********************************/
-);
-
-/*** 实例化RAMDATA的Interface ***/
-
-// wire [31:0] RAMDATA_RDATA;
-// wire [31:0] RAMDATA_WDATA;
-// wire [13:0] RAMDATA_WADDR;
-// wire [13:0] RAMDATA_RADDR;
-// wire [3:0]  RAMDATA_WRITE;
-
-AHBLiteBlockRAM RAMDATA_Interface
-(
-    /* Connect to Interconnect Port 1 */
-    .HCLK           (clk),
-    .HRESETn        (cpuresetn),
-    .HSEL           (HSEL_P1),
-    .HADDR          (HADDR_P1),
-    .HPROT          (HPROT_P1),
-    .HSIZE          (HSIZE_P1),
-    .HTRANS         (HTRANS_P1),
-    .HWDATA         (HWDATA_P1),
-    .HWRITE         (HWRITE_P1),
-    .HRDATA         (HRDATA_P1),
-    .HREADY         (HREADY_P1),
-    .HREADYOUT      (HREADYOUT_P1),
-    .HRESP          (HRESP_P1)
-    // .BRAM_WRADDR    (RAMDATA_WADDR),
-    // .BRAM_RDADDR    (RAMDATA_RADDR),
-    // .BRAM_WDATA     (RAMDATA_WDATA),
-    // .BRAM_RDATA     (RAMDATA_RDATA),
-    // .BRAM_WRITE     (RAMDATA_WRITE)
-    /**********************************/
-);
-
-// RAMCODE和RAMDATA均是Block_RAM的实例，前者是程序空间，后者是数据空间
-
-// /*** 实例化RAMCODE ***/
-// Block_RAM RAM_CODE
-// (
-//     .clka           (clk),
-//     .addra          (RAMCODE_WADDR),
-//     .addrb          (RAMCODE_RADDR),
-//     .dina           (RAMCODE_WDATA),
-//     .doutb          (RAMCODE_RDATA),
-//     .wea            (RAMCODE_WRITE)
-// );
-
-// /*** 实例化RAMDATA ***/
-// Block_RAM RAM_DATA
-// (
-//     .clka           (clk),
-//     .addra          (RAMDATA_WADDR),
-//     .addrb          (RAMDATA_RADDR),
-//     .dina           (RAMDATA_WDATA),
-//     .doutb          (RAMDATA_RDATA),
-//     .wea            (RAMDATA_WRITE)
-// );
 
 //------------------------------------------------------------------------------
 // AHB GPIO

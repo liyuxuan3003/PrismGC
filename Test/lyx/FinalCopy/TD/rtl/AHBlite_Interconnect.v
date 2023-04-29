@@ -17,36 +17,6 @@ module AHBlite_Interconnect
     output  wire    [31:0]  HRDATA,
     output  wire            HRESP,
 
-    // Peripheral 0
-    output  wire            HSEL_P0,
-    output  wire    [31:0]  HADDR_P0,
-    output  wire    [2:0]   HBURST_P0,
-    output  wire            HMASTLOCK_P0,
-    output  wire    [3:0]   HPROT_P0,
-    output  wire    [2:0]   HSIZE_P0,
-    output  wire    [1:0]   HTRANS_P0,
-    output  wire    [31:0]  HWDATA_P0,
-    output  wire            HWRITE_P0,
-    output  wire            HREADY_P0,
-    input   wire            HREADYOUT_P0,
-    input   wire    [31:0]  HRDATA_P0,
-    input   wire            HRESP_P0,
-
-    // Peripheral 1
-    output  wire            HSEL_P1,
-    output  wire    [31:0]  HADDR_P1,
-    output  wire    [2:0]   HBURST_P1,
-    output  wire            HMASTLOCK_P1,
-    output  wire    [3:0]   HPROT_P1,
-    output  wire    [2:0]   HSIZE_P1,
-    output  wire    [1:0]   HTRANS_P1,
-    output  wire    [31:0]  HWDATA_P1,
-    output  wire            HWRITE_P1,
-    output  wire            HREADY_P1,
-    input   wire            HREADYOUT_P1,
-    input   wire    [31:0]  HRDATA_P1,
-    input   wire            HRESP_P1,
-
     // Peripheral 2
     output  wire            HSEL_P2,
     output  wire    [31:0]  HADDR_P2,
@@ -137,6 +107,36 @@ module AHBlite_Interconnect
     input   wire    [31:0]  HRDATA_P7,
     input   wire            HRESP_P7
 );
+
+// Peripheral 0
+wire            HSEL_P0;
+wire    [31:0]  HADDR_P0;
+wire    [2:0]   HBURST_P0;
+wire            HMASTLOCK_P0;
+wire    [3:0]   HPROT_P0;
+wire    [2:0]   HSIZE_P0;
+wire    [1:0]   HTRANS_P0;
+wire    [31:0]  HWDATA_P0;
+wire            HWRITE_P0;
+wire            HREADY_P0;
+wire            HREADYOUT_P0;
+wire    [31:0]  HRDATA_P0;
+wire            HRESP_P0;
+
+// Peripheral 1
+wire            HSEL_P1;
+wire    [31:0]  HADDR_P1;
+wire    [2:0]   HBURST_P1;
+wire            HMASTLOCK_P1;
+wire    [3:0]   HPROT_P1;
+wire    [2:0]   HSIZE_P1;
+wire    [1:0]   HTRANS_P1;
+wire    [31:0]  HWDATA_P1;
+wire            HWRITE_P1;
+wire            HREADY_P1;
+wire            HREADYOUT_P1;
+wire    [31:0]  HRDATA_P1;
+wire            HRESP_P1;
 
 // Public signals--------------------------------
 //-----------------------------------------------
@@ -257,6 +257,52 @@ AHBLiteSlaveMux SlaveMUX
     .HREADYOUT      (HREADY),
     .HRESP          (HRESP),
     .HRDATA         (HRDATA)
+);
+
+//------------------------------------------------------------------------------
+// AHB RAMCODE/RAMDATA
+//------------------------------------------------------------------------------
+
+/*** 实例化RAMCODE的Interface ***/
+
+AHBLiteBlockRAM RAMCODE_Interface
+(
+    /* Connect to Interconnect Port 0 */
+    .HCLK           (HCLK),
+    .HRESETn        (HRESETn),
+    .HSEL           (HSEL_P0),
+    .HADDR          (HADDR_P0),
+    .HPROT          (HPROT_P0),
+    .HSIZE          (HSIZE_P0),
+    .HTRANS         (HTRANS_P0),
+    .HWDATA         (HWDATA_P0),
+    .HWRITE         (HWRITE_P0),
+    .HRDATA         (HRDATA_P0),
+    .HREADY         (HREADY_P0),
+    .HREADYOUT      (HREADYOUT_P0),
+    .HRESP          (HRESP_P0)
+    /**********************************/
+);
+
+/*** 实例化RAMDATA的Interface ***/
+
+AHBLiteBlockRAM RAMDATA_Interface
+(
+    /* Connect to Interconnect Port 1 */
+    .HCLK           (HCLK),
+    .HRESETn        (HRESETn),
+    .HSEL           (HSEL_P1),
+    .HADDR          (HADDR_P1),
+    .HPROT          (HPROT_P1),
+    .HSIZE          (HSIZE_P1),
+    .HTRANS         (HTRANS_P1),
+    .HWDATA         (HWDATA_P1),
+    .HWRITE         (HWRITE_P1),
+    .HRDATA         (HRDATA_P1),
+    .HREADY         (HREADY_P1),
+    .HREADYOUT      (HREADYOUT_P1),
+    .HRESP          (HRESP_P1)
+    /**********************************/
 );
 
 endmodule
