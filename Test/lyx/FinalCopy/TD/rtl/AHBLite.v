@@ -104,25 +104,8 @@ AHBLiteBlockRAM RAMDATA_Interface
     .HRESP          (HRESP_A[`idRAMData])
 );
 
-wire [31:0] GPIO0_O_ENA;
-wire [31:0] GPIO0_O_DAT;
-wire [31:0] GPIO0_I_DAT;
 
-wire [31:0] GPIO1_O_ENA;
-wire [31:0] GPIO1_O_DAT;
-wire [31:0] GPIO1_I_DAT;
-
-wire [31:0] GPIO2_O_ENA;
-wire [31:0] GPIO2_O_DAT;
-wire [31:0] GPIO2_I_DAT;
-
-wire [31:0] GPIO3_O_ENA;
-wire [31:0] GPIO3_O_DAT;
-wire [31:0] GPIO3_I_DAT;
-
-wire [3:0]  GPIO_WRITE;
-
-AHBlite_GPIO GPIO_Interface
+AHBLiteGPIO GPIO_Interface
 (
     .HCLK			(HCLK),
     .HRESETn		(HRESETn),
@@ -137,38 +120,6 @@ AHBlite_GPIO GPIO_Interface
     .HREADY			(HREADY),
     .HREADYOUT		(HREADYOUT_A[`idGPIO]),
     .HRESP			(HRESP_A[`idGPIO]),
-    .GPIO_WRITE     (GPIO_WRITE),
-    .GPIO0_O_ENA     (GPIO0_O_ENA),
-    .GPIO0_O_DAT     (GPIO0_O_DAT),
-    .GPIO0_I_DAT     (GPIO0_I_DAT),
-    .GPIO1_O_ENA     (GPIO1_O_ENA),
-    .GPIO1_O_DAT     (GPIO1_O_DAT),
-    .GPIO1_I_DAT     (GPIO1_I_DAT),
-    .GPIO2_O_ENA     (GPIO2_O_ENA),
-    .GPIO2_O_DAT     (GPIO2_O_DAT),
-    .GPIO2_I_DAT     (GPIO2_I_DAT),
-    .GPIO3_O_ENA     (GPIO3_O_ENA),
-    .GPIO3_O_DAT     (GPIO3_O_DAT),
-    .GPIO3_I_DAT     (GPIO3_I_DAT)
-);
-
-GPIO GPIO
-(
-    .write_byte(GPIO_WRITE),
-    .o_ena0(GPIO0_O_ENA),
-    .o_dat0(GPIO0_O_DAT),
-    .i_dat0(GPIO0_I_DAT), 
-    .o_ena1(GPIO1_O_ENA),
-    .o_dat1(GPIO1_O_DAT),
-    .i_dat1(GPIO1_I_DAT), 
-    .o_ena2(GPIO2_O_ENA),
-    .o_dat2(GPIO2_O_DAT),
-    .i_dat2(GPIO2_I_DAT), 
-    .o_ena3(GPIO3_O_ENA),
-    .o_dat3(GPIO3_O_DAT),
-    .i_dat3(GPIO3_I_DAT), 
-    .clk(HCLK),
-    .RSTn(HRESETn),
     .io_pin0(io_pin0),
     .io_pin1(io_pin1),
     .io_pin2(io_pin2),
@@ -285,7 +236,7 @@ AHBlite_HDMI HDMI_Interface
 SDRAM_HDMI_Display u_SDRAM_HDMI_Display
 (
     .clk(HCLK),
-    .rst_n(RSTn),
+    .rst_n(HRESETn),
     
     //HDMI
     .HDMI_CLK_P(HDMI_CLK_P),

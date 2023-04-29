@@ -1,4 +1,4 @@
-module AHBlite_GPIO
+module AHBLiteGPIO
 (
     input  wire          HCLK,    
     input  wire          HRESETn, 
@@ -13,24 +13,29 @@ module AHBlite_GPIO
     output wire          HREADYOUT, 
     output wire   [31:0] HRDATA,  
     output wire          HRESP,
-    output wire   [3:0]  GPIO_WRITE,
-    /*** GPIO0 ***/
-    output wire   [31:0] GPIO0_O_ENA,
-    output wire   [31:0] GPIO0_O_DAT,
-    input  wire   [31:0] GPIO0_I_DAT,
-    /*** GPIO1 ***/
-    output wire   [31:0] GPIO1_O_ENA,
-    output wire   [31:0] GPIO1_O_DAT,
-    input  wire   [31:0] GPIO1_I_DAT,
-    /*** GPIO2 ***/
-    output wire   [31:0] GPIO2_O_ENA,
-    output wire   [31:0] GPIO2_O_DAT,
-    input  wire   [31:0] GPIO2_I_DAT,
-    /*** GPIO3 ***/
-    output wire   [31:0] GPIO3_O_ENA,
-    output wire   [31:0] GPIO3_O_DAT,
-    input  wire   [31:0] GPIO3_I_DAT
+    inout[31:0] io_pin0,        //GPIO-0
+    inout[31:0] io_pin1,        //GPIO-1
+    inout[31:0] io_pin2,        //GPIO-2
+    inout[31:0] io_pin3         //GPIO-3
 );
+
+wire [31:0] GPIO0_O_ENA;
+wire [31:0] GPIO0_O_DAT;
+wire [31:0] GPIO0_I_DAT;
+
+wire [31:0] GPIO1_O_ENA;
+wire [31:0] GPIO1_O_DAT;
+wire [31:0] GPIO1_I_DAT;
+
+wire [31:0] GPIO2_O_ENA;
+wire [31:0] GPIO2_O_DAT;
+wire [31:0] GPIO2_I_DAT;
+
+wire [31:0] GPIO3_O_ENA;
+wire [31:0] GPIO3_O_DAT;
+wire [31:0] GPIO3_I_DAT;
+
+wire [3:0]  GPIO_WRITE;
 
 assign HRESP = 1'b0;
 assign HREADYOUT = 1'b1;
@@ -168,5 +173,28 @@ assign GPIO2_O_DAT = o_dat_reg[2];
 assign GPIO2_O_ENA = o_ena_reg[2];
 assign GPIO3_O_DAT = o_dat_reg[3];
 assign GPIO3_O_ENA = o_ena_reg[3];
+
+GPIO GPIO
+(
+    .write_byte(GPIO_WRITE),
+    .o_ena0(GPIO0_O_ENA),
+    .o_dat0(GPIO0_O_DAT),
+    .i_dat0(GPIO0_I_DAT), 
+    .o_ena1(GPIO1_O_ENA),
+    .o_dat1(GPIO1_O_DAT),
+    .i_dat1(GPIO1_I_DAT), 
+    .o_ena2(GPIO2_O_ENA),
+    .o_dat2(GPIO2_O_DAT),
+    .i_dat2(GPIO2_I_DAT), 
+    .o_ena3(GPIO3_O_ENA),
+    .o_dat3(GPIO3_O_DAT),
+    .i_dat3(GPIO3_I_DAT), 
+    .clk(HCLK),
+    .RSTn(HRESETn),
+    .io_pin0(io_pin0),
+    .io_pin1(io_pin1),
+    .io_pin2(io_pin2),
+    .io_pin3(io_pin3)
+);
 
 endmodule
