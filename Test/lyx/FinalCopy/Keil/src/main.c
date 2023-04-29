@@ -31,8 +31,6 @@ int main()
     for(int i=0;i<4;i++)
     {
         DIG[i].ENA = 1;
-        DIG[i].DOT = 0;
-        DIG[i].COD = 0;
     }
 
     RamReady();
