@@ -1,20 +1,23 @@
-module AHBLiteDecoder #(parameter DEVICES_EXP=4)
+`include "GlobalDefine.v"
+
+module AHBLiteDecoder
 (
     input[31:0] HADDR,
-    output[2**DEVICES_EXP-1:0] HSEL_A
+    output[2**`DEVICES_EXP-1:0] HSEL_A
 );
 
-assign HSEL_A[0]  = (HADDR[31:16] == 16'h0000) ? 1'b1 : 1'b0;
-assign HSEL_A[1]  = (HADDR[31:16] == 16'h2000) ? 1'b1 : 1'b0;
-assign HSEL_A[2]  = (HADDR[31:16] == 16'h4001) ? 1'b1 : 1'b0;
-assign HSEL_A[3]  = (HADDR[31:4] == 28'h4000_001) ? 1'b1 : 1'b0;
-assign HSEL_A[4]  = (HADDR[31:16] == 16'h4002) ? 1'b1 : 1'b0;
-assign HSEL_A[5]  = (HADDR[31:16] == 16'h6002) ? 1'b1 : 1'b0;
-assign HSEL_A[6]  = (HADDR[31:16] == 16'h6003) ? 1'b1 : 1'b0;
-assign HSEL_A[7]  = (HADDR[31:16] == 16'h6004) ? 1'b1 : 1'b0;
-assign HSEL_A[8]  = (HADDR[31:16] == 16'h6005) ? 1'b1 : 1'b0;
-assign HSEL_A[9]  = (HADDR[31:16] == 16'h6006) ? 1'b1 : 1'b0;
-assign HSEL_A[10] = (HADDR[31:16] == 16'h6007) ? 1'b1 : 1'b0;
-assign HSEL_A[2**DEVICES_EXP-1:11] = 0;
+assign HSEL_A[`idRAMCode]   = (HADDR[31:16] == `addrRAMCode)    ? 1'b1 : 1'b0;
+assign HSEL_A[`idRAMData]   = (HADDR[31:16] == `addrRAMData)    ? 1'b1 : 1'b0;
+assign HSEL_A[`idSDRAM]     = (HADDR[31:16] == `addrSDRAM)      ? 1'b1 : 1'b0;
+assign HSEL_A[`idTimer]     = (HADDR[31:16] == `addrTimer)      ? 1'b1 : 1'b0;
+assign HSEL_A[`idGPIO]      = (HADDR[31:16] == `addrGPIO)       ? 1'b1 : 1'b0;
+assign HSEL_A[`idUART]      = (HADDR[31:16] == `addrUART)       ? 1'b1 : 1'b0;
+assign HSEL_A[`idIIC]       = (HADDR[31:16] == `addrIIC)        ? 1'b1 : 1'b0;
+assign HSEL_A[`idHDMI]      = (HADDR[31:16] == `addrHDMI)       ? 1'b1 : 1'b0;
+assign HSEL_A[`idGPULite]   = (HADDR[31:16] == `addrGPULite)    ? 1'b1 : 1'b0;
+assign HSEL_A[`idBuzzer]    = (HADDR[31:16] == `addrBuzzer)     ? 1'b1 : 1'b0;
+assign HSEL_A[`idDigit]     = (HADDR[31:16] == `addrDigit)      ? 1'b1 : 1'b0;
+assign HSEL_A[`idKeyBoard]  = (HADDR[31:16] == `addrKeyBoard)   ? 1'b1 : 1'b0;
+assign HSEL_A[2**`DEVICES_EXP-1:`idMAX] = 0;
 
 endmodule

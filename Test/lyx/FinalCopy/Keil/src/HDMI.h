@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#include "Peripheral.h"
+
 //HDMI DEF
 typedef struct
 {
@@ -16,7 +18,6 @@ typedef struct
     volatile uint32_t BUSY;
 } HDMIType;
 
-#define HDMI_BASE 0x40020000
 #define HDMI ((HDMIType *)HDMI_BASE)
 
 #define H_DISP 1024

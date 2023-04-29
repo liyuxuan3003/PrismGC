@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#include "Peripheral.h"
+
 //UART DEF
 typedef struct
 {
@@ -11,7 +13,6 @@ typedef struct
     volatile uint32_t TX_DATA;
 } UARTType;
 
-#define UART_BASE 0x40000010
 #define UART ((UARTType *)UART_BASE)
 
 char UARTReadState(void);
