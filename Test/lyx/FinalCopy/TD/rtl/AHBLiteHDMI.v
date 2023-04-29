@@ -1,4 +1,4 @@
-module AHBlite_HDMI
+module AHBLiteHDMI
 (
     input  wire          HCLK,    
     input  wire          HRESETn, 
@@ -13,20 +13,23 @@ module AHBlite_HDMI
     output wire          HREADYOUT, 
     output reg    [31:0] HRDATA,  
     output wire          HRESP,
-    output reg    [15:0] X_POS,
-    output reg    [15:0] Y_POS,
-    output reg    [23:0] PIXEL,
-    output reg    [23:0] LEN,
-    output reg           ENABLE,
-    output reg    [8:0]  SYS_WR_LEN,
-    input                SYS_VAILD,
-    input                BUSY
+    output      HDMI_CLK_P,     //HDMI CLK
+    output      HDMI_D2_P,      //HDMI D2
+    output      HDMI_D1_P,      //HDMI D1
+    output      HDMI_D0_P       //HDMI D0
 );
+
+reg    [15:0] X_POS;
+reg    [15:0] Y_POS;
+reg    [23:0] PIXEL;
+reg    [23:0] LEN;
+reg           ENABLE;
+reg    [8:0]  SYS_WR_LEN;
+wire          SYS_VAILD;
+wire          BUSY;
 
 assign HRESP = 1'b0;
 assign HREADYOUT = 1'b1;
-
-
 
 wire write_en;
 assign write_en = HSEL & HTRANS[1] & HWRITE & HREADY;
@@ -96,6 +99,27 @@ begin
         endcase
     end
 end
+
+SDRAM_HDMI_Display u_SDRAM_HDMI_Display
+(
+    .clk(HCLK),
+    .rst_n(HRESETn),
+    
+    //HDMI
+    .HDMI_CLK_P(HDMI_CLK_P),
+    .HDMI_D2_P(HDMI_D2_P),
+    .HDMI_D1_P(HDMI_D1_P),
+    .HDMI_D0_P(HDMI_D0_P),
+
+    .x_pos(X_POS),
+    .y_pos(Y_POS),
+    .pixel(PIXEL),
+    .len(LEN),
+    .enable(ENABLE),
+    .sys_wr_len(SYS_WR_LEN),
+    .sys_vaild(SYS_VAILD),
+    .busy(BUSY)
+);
 
 endmodule
 

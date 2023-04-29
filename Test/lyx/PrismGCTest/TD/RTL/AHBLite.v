@@ -61,7 +61,7 @@ AHBLiteBlockRAM uRAMCode
     .HREADYOUT(HREADYOUT_A[`idRAMCode]), 
     .HRDATA(HRDATA_A[(`idRAMCode+1)*32-1:(`idRAMCode)*32]),  
     .HRESP(HRESP_A[`idRAMCode])
-);
+)
 
 AHBLiteBlockRAM uRAMData
 (
