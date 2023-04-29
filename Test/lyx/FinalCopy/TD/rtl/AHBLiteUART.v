@@ -1,4 +1,4 @@
-module AHBlite_UART
+module AHBLiteUART
 (
     input  wire          HCLK,    
     input  wire          HRESETn, 
@@ -13,11 +13,17 @@ module AHBlite_UART
     output wire          HREADYOUT, 
     output reg    [31:0] HRDATA,  
     output wire          HRESP,
-    input  wire    [7:0] UART_RX,
-    input  wire          state,
-    output wire          tx_en,
-    output wire    [7:0] UART_TX
+    output      TXD,            //UART串口 输出
+    input       RXD             //UART串口 输入
 );
+
+wire state;
+wire [7:0] UART_RX;
+wire [7:0] UART_TX;
+wire tx_en;
+
+assign tx_en = wr_en_reg ? 1'b1 : 1'b0;
+assign UART_TX = wr_en_reg ? HWDATA[7:0] : 8'b0;
 
 assign HRESP = 1'b0;
 assign HREADYOUT = 1'b1;
@@ -63,8 +69,45 @@ begin
         HRDATA <= 32'b0;
 end
 
-assign tx_en = wr_en_reg ? 1'b1 : 1'b0;
-assign UART_TX = wr_en_reg ? HWDATA[7:0] : 8'b0;
+wire clk_uart;
+wire bps_en;
+wire bps_en_rx,bps_en_tx;
+
+assign bps_en = bps_en_rx | bps_en_tx;
+
+/*** 实例化UART时钟分频器 ***/
+clkuart_pwm clkuart_pwm
+(
+    .clk(HCLK),
+    .RSTn(HRESETn),
+    .clk_uart(clk_uart),
+    .bps_en(bps_en)
+);
+
+/*** 实例化UART输出TX ***/
+UART_TX uUART_TX
+(
+    .clk(HCLK),
+    .clk_uart(clk_uart),
+    .RSTn(HRESETn),
+    .data(UART_TX),
+    .tx_en(tx_en),
+    .TXD(TXD),
+    .state(state),
+    .bps_en(bps_en_tx)
+);
+
+/*** 实例化UART输入RX ***/
+UART_RX uUART_RX
+(
+    .clk(HCLK),
+    .clk_uart(clk_uart),
+    .RSTn(HRESETn),
+    .RXD(RXD),
+    .data(UART_RX),
+    .interrupt(interrupt_UART),
+    .bps_en(bps_en_rx)
+);
 
 endmodule
 

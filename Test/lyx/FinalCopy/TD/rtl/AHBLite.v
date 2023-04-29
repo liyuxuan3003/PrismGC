@@ -126,13 +126,7 @@ AHBLiteGPIO GPIO_Interface
     .io_pin3(io_pin3)
 );
 
-
-wire state;
-wire [7:0] UART_RX_data;
-wire [7:0] UART_TX_data;
-wire tx_en;
-
-AHBlite_UART UART_Interface
+AHBLiteUART UART_Interface
 (
     .HCLK           (HCLK),
     .HRESETn        (HRESETn),
@@ -147,50 +141,8 @@ AHBlite_UART UART_Interface
     .HREADY         (HREADY),
     .HREADYOUT      (HREADYOUT_A[`idUART]),
     .HRESP          (HRESP_A[`idUART]),
-    .UART_RX        (UART_RX_data),
-    .state          (state),
-    .tx_en          (tx_en),
-    .UART_TX        (UART_TX_data)
-);
-
-wire clk_uart;
-wire bps_en;
-wire bps_en_rx,bps_en_tx;
-
-assign bps_en = bps_en_rx | bps_en_tx;
-
-/*** 实例化UART时钟分频器 ***/
-clkuart_pwm clkuart_pwm
-(
-    .clk(HCLK),
-    .RSTn(HRESETn),
-    .clk_uart(clk_uart),
-    .bps_en(bps_en)
-);
-
-/*** 实例化UART输出TX ***/
-UART_TX UART_TX
-(
-    .clk(HCLK),
-    .clk_uart(clk_uart),
-    .RSTn(HRESETn),
-    .data(UART_TX_data),
-    .tx_en(tx_en),
     .TXD(TXD),
-    .state(state),
-    .bps_en(bps_en_tx)
-);
-
-/*** 实例化UART输入RX ***/
-UART_RX UART_RX
-(
-    .clk(HCLK),
-    .clk_uart(clk_uart),
-    .RSTn(HRESETn),
-    .RXD(RXD),
-    .data(UART_RX_data),
-    .interrupt(interrupt_UART),
-    .bps_en(bps_en_rx)
+    .RXD(RXD)
 );
 
 //------------------------------------------------------------------------------
