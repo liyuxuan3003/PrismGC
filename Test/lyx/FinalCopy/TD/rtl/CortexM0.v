@@ -4,6 +4,7 @@ module CortexM0
     input       RSTn,          //SoC使能
     inout       SWDIO,         //SW调试接口 数据
     input       SWCLK,         //SW调试接口 时钟
+    input        [31:0]  IRQ,
     output               HRESETn,
     output       [31:0]  HADDR,
     output       [2:0]   HBURST,

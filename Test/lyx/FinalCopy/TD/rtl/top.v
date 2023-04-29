@@ -39,7 +39,7 @@ wire        HMASTER;        //未知
 wire        HREADY;         //未知
 
 // Interrupt
-wire [31:0] IRQ = 32'b0;        //M0的IRQ中断信号
+wire [31:0] IRQ;            //M0的IRQ中断信号
 
 CortexM0 uCortexM0
 (
@@ -47,6 +47,7 @@ CortexM0 uCortexM0
     .RSTn(SWI[0]),
     .SWDIO(SWDIO),
     .SWCLK(SWCLK),
+    .IRQ            (IRQ),
     .HRESETn        (HRESETn),
     .HADDR          (HADDR),
     .HTRANS         (HTRANS),
@@ -78,6 +79,7 @@ AHBLite uAHBLite
     .HRDATA         (HRDATA),
     .HREADY         (HREADY),
     .HRESP          (HRESP),
+    .IRQ(IRQ),                  //中断信号
     .TXD(TXD),                  //UART串口 输出
     .RXD(RXD),                  //UART串口 输入
     .HDMI_CLK_P(HDMI_CLK_P),    //HDMI CLK

@@ -19,24 +19,27 @@ module AHBLite
     output      [31:0]  HRDATA,
     output              HRESP,
     
-    output      TXD,            //UART串口 输出
-    input       RXD,            //UART串口 输入
-    output      HDMI_CLK_P,     //HDMI CLK
-    output      HDMI_D2_P,      //HDMI D2
-    output      HDMI_D1_P,      //HDMI D1
-    output      HDMI_D0_P,      //HDMI D0
-    output[4:0] VGA_R,          //VGA R
-    output[5:0] VGA_G,          //VGA G
-    output[4:0] VGA_B,          //VGA B
-    output      VGA_HS,         //VGA HS
-    output      VGA_VS,         //VGA VS
-    output[7:0] SEG,            //八段数码管
-    output[3:0] SEGCS,          //八段数码管的位选
-    inout[31:0] io_pin0,        //GPIO-0
-    inout[31:0] io_pin1,        //GPIO-1
-    inout[31:0] io_pin2,        //GPIO-2
-    inout[31:0] io_pin3         //GPIO-3
+    output[31:0]        IRQ,            //中断信号
+    output              TXD,            //UART串口 输出
+    input               RXD,            //UART串口 输入
+    output              HDMI_CLK_P,     //HDMI CLK
+    output              HDMI_D2_P,      //HDMI D2
+    output              HDMI_D1_P,      //HDMI D1
+    output              HDMI_D0_P,      //HDMI D0
+    output[4:0]         VGA_R,          //VGA R
+    output[5:0]         VGA_G,          //VGA G
+    output[4:0]         VGA_B,          //VGA B
+    output              VGA_HS,         //VGA HS
+    output              VGA_VS,         //VGA VS
+    output[7:0]         SEG,            //八段数码管
+    output[3:0]         SEGCS,          //八段数码管的位选
+    inout[31:0]         io_pin0,        //GPIO-0
+    inout[31:0]         io_pin1,        //GPIO-1
+    inout[31:0]         io_pin2,        //GPIO-2
+    inout[31:0]         io_pin3         //GPIO-3
 );
+
+assign IRQ[31:1] = 0;
 
 wire[2**`DEVICES_EXP-1:0]    HSEL_A;
 wire[2**`DEVICES_EXP-1:0]    HREADYOUT_A;
@@ -142,6 +145,7 @@ AHBLiteUART uAHBUART
     .HREADY         (HREADY),
     .HREADYOUT      (HREADYOUT_A[`idUART]),
     .HRESP          (HRESP_A[`idUART]),
+    .IRQ(IRQ[0]),
     .TXD(TXD),
     .RXD(RXD)
 );

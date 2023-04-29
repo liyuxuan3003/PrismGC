@@ -1,4 +1,3 @@
-//It is just a normal FIFO
 module FIFO
 (
     input clock,

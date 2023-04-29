@@ -11,102 +11,71 @@ module AHBLiteUART
     input  wire   [31:0] HWDATA,  
     input  wire          HREADY,  
     output wire          HREADYOUT, 
-    output reg    [31:0] HRDATA,  
+    output wire   [31:0] HRDATA,  
     output wire          HRESP,
-    output      TXD,            //UART串口 输出
-    input       RXD             //UART串口 输入
+    output               IRQ,            //中断
+    output               TXD,            //UART串口 输出
+    input                RXD             //UART串口 输入
 );
 
-wire state;
-wire [7:0] UART_RX;
-wire [7:0] UART_TX;
-wire tx_en;
-
-assign tx_en = wr_en_reg ? 1'b1 : 1'b0;
-assign UART_TX = wr_en_reg ? HWDATA[7:0] : 8'b0;
+localparam ADDR_WIDTH = 8;
 
 assign HRESP = 1'b0;
 assign HREADYOUT = 1'b1;
 
-wire read_en;
-assign read_en=HSEL&HTRANS[1]&(~HWRITE)&HREADY;
+wire enableWrite = HREADY & HSEL & HTRANS[1] & ( HWRITE);
+wire enableRead  = HREADY & HSEL & HTRANS[1] & (~HWRITE);
 
-wire write_en;
-assign write_en=HSEL&HTRANS[1]&(HWRITE)&HREADY;
+wire[3:0] sizeDecode;
+reg [3:0] sizeDecodeReg;
 
-reg [3:0] addr_reg;
+SizeDecoder uSizeDecoder
+(
+    .addr(HADDR[1:0]),
+    .size(HSIZE[1:0]),
+    .sizeDecode(sizeDecode)
+);
+
 always@(posedge HCLK or negedge HRESETn) 
 begin
-    if(~HRESETn) addr_reg <= 4'h0;
-    else if(read_en || write_en) addr_reg <= HADDR[3:0];
+    if(~HRESETn) 
+        sizeDecodeReg <= 0;
+    else if(enableWrite) 
+        sizeDecodeReg <= sizeDecode;
 end
 
-reg rd_en_reg;
-always@(posedge HCLK or negedge HRESETn) 
-begin
-    if(~HRESETn) rd_en_reg <= 1'b0;
-    else if(read_en) rd_en_reg <= 1'b1;
-    else rd_en_reg <= 1'b0;
-end
-
-reg wr_en_reg;
+reg [ADDR_WIDTH-1:0] addrReg;
 always@(posedge HCLK or negedge HRESETn)
 begin
-    if(~HRESETn) wr_en_reg <= 1'b0;
-    else if(write_en) wr_en_reg <= 1'b1;
-    else  wr_en_reg <= 1'b0;
+    if(~HRESETn) 
+        addrReg <= 0;
+    else if(HREADY & HSEL & HTRANS[1]) 
+        addrReg <= HADDR[(ADDR_WIDTH+1):2];
 end
 
-always@(*) 
+reg enableWriteReg;
+always@(posedge HCLK or negedge HRESETn) 
 begin
-    if(rd_en_reg) 
-    begin
-        if(addr_reg == 4'h0) HRDATA <= {24'b0,UART_RX};
-        else if(addr_reg == 4'h4) HRDATA <= {31'b0,state};
-        else HRDATA <= 32'b0;
-    end 
-    else
-        HRDATA <= 32'b0;
+    if(~HRESETn) 
+        enableWriteReg <= 1'b0;
+    else if(HREADY) 
+        enableWriteReg <= enableWrite;
+    else 
+        enableWriteReg <= 1'b0;
 end
 
-wire clk_uart;
-wire bps_en;
-wire bps_en_rx,bps_en_tx;
-
-assign bps_en = bps_en_rx | bps_en_tx;
-
-/*** 实例化UART时钟分频器 ***/
-clkuart_pwm clkuart_pwm
+UART uUART
 (
     .clk(HCLK),
-    .RSTn(HRESETn),
-    .clk_uart(clk_uart),
-    .bps_en(bps_en)
-);
-
-/*** 实例化UART输出TX ***/
-UART_TX uUART_TX
-(
-    .clk(HCLK),
-    .clk_uart(clk_uart),
-    .RSTn(HRESETn),
-    .data(UART_TX),
-    .tx_en(tx_en),
+    .rstn(HRESETn),
+    .addrIn(addrReg),
+    .addrOut(HADDR[(ADDR_WIDTH+2-1):2]),
+    .sizeDecode(enableWriteReg ? sizeDecodeReg : 4'b0000),
+    .dataIn(HWDATA),
+    .dataOut(HRDATA),
+    .IRQ(IRQ),
     .TXD(TXD),
-    .state(state),
-    .bps_en(bps_en_tx)
-);
-
-/*** 实例化UART输入RX ***/
-UART_RX uUART_RX
-(
-    .clk(HCLK),
-    .clk_uart(clk_uart),
-    .RSTn(HRESETn),
-    .RXD(RXD),
-    .data(UART_RX),
-    .interrupt(interrupt_UART),
-    .bps_en(bps_en_rx)
+    .RXD(RXD)
 );
 
 endmodule
