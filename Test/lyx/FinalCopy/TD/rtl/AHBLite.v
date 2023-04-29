@@ -3,22 +3,21 @@
 module AHBLite
 (
     // CLK & RST
-    input   wire    HCLK,
-    input   wire    HRESETn,
-    input   wire    RSTn,
+    input       HCLK,
+    input       HRESETn,
 
     // CORE SIDE
-    input   wire    [31:0]  HADDR,
-    input   wire    [2:0]   HBURST,
-    input   wire            HMASTLOCK,
-    input   wire    [3:0]   HPROT,
-    input   wire    [2:0]   HSIZE,
-    input   wire    [1:0]   HTRANS,
-    input   wire    [31:0]  HWDATA,
-    input   wire            HWRITE,
-    output  wire            HREADY,
-    output  wire    [31:0]  HRDATA,
-    output  wire            HRESP,
+    input       [31:0]  HADDR,
+    input       [2:0]   HBURST,
+    input               HMASTLOCK,
+    input       [3:0]   HPROT,
+    input       [2:0]   HSIZE,
+    input       [1:0]   HTRANS,
+    input       [31:0]  HWDATA,
+    input               HWRITE,
+    output              HREADY,
+    output      [31:0]  HRDATA,
+    output              HRESP,
     
     output      TXD,            //UART串口 输出
     input       RXD,            //UART串口 输入
