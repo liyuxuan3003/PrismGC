@@ -18,35 +18,35 @@ module GPIO #(parameter PORT_NUM = 0)
 
 reg [31:0] mem [(PORT_NUM*4-1):0];
 
-always@(posedge clk or negedge rstn)
-begin
-    if(~rstn)
+integer n;
+
+generate
+    always@(posedge clk or negedge rstn)
     begin
-        mem[0*4+`ENABLE_OUT] <= 32'b0;
-        mem[1*4+`ENABLE_OUT] <= 32'b0;
-        mem[2*4+`ENABLE_OUT] <= 32'b0;
-        mem[3*4+`ENABLE_OUT] <= 32'b0;
+        if(~rstn)
+        begin
+            for(n=0;n<PORT_NUM;n=n+1)
+            begin
+                mem[n*4+`ENABLE_OUT] <= 32'b0;
+                mem[n*4+`DATA_OUT] <= 32'bz;
+            end
+        end
+        else
+        begin
+            for(n=0;n<PORT_NUM;n=n+1)
+            begin
+                mem[n*4+`DATA_IN] <= ioPin[32*n+:32];
+            end
 
-        mem[0*4+`DATA_OUT] <= 32'bz;
-        mem[1*4+`DATA_OUT] <= 32'bz;
-        mem[2*4+`DATA_OUT] <= 32'bz;
-        mem[3*4+`DATA_OUT] <= 32'bz;
+            if(sizeDecode[0]) mem[addrIn][7:0]   <= dataIn[7:0];
+            if(sizeDecode[1]) mem[addrIn][15:8]  <= dataIn[15:8];
+            if(sizeDecode[2]) mem[addrIn][23:16] <= dataIn[23:16];
+            if(sizeDecode[3]) mem[addrIn][31:24] <= dataIn[31:24];
+
+            dataOut <= mem[addrOut];
+        end
     end
-    else
-    begin
-        mem[0*4+`DATA_IN] <= ioPin[`M(0,32)];
-        mem[1*4+`DATA_IN] <= ioPin[`M(1,32)];
-        mem[2*4+`DATA_IN] <= ioPin[`M(2,32)];
-        mem[3*4+`DATA_IN] <= ioPin[`M(3,32)];
-
-        if(sizeDecode[0]) mem[addrIn][7:0]   <= dataIn[7:0];
-        if(sizeDecode[1]) mem[addrIn][15:8]  <= dataIn[15:8];
-        if(sizeDecode[2]) mem[addrIn][23:16] <= dataIn[23:16];
-        if(sizeDecode[3]) mem[addrIn][31:24] <= dataIn[31:24];
-
-        dataOut <= mem[addrOut];
-    end
-end
+endgenerate
 
 genvar i;
 genvar j;
