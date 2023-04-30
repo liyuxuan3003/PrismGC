@@ -6,6 +6,14 @@
 `define RAM_DATA_WIDTH 14        //2^14 Bytes
 `define RAM_CODE_WIDTH 14        //2^14 Bytes
 
+`define SDRAM_WIDTH    23        //2^23 Bytes
+
+`define   DATA_WIDTH   32
+`define   DM_WIDTH     4
+
+`define   ROW_WIDTH    11
+`define   BA_WIDTH     2
+
 `define idRAMCode           0
 `define idRAMData           1
 `define idSDRAM             2

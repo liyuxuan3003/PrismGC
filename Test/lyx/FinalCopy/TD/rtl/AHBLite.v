@@ -33,6 +33,7 @@ module AHBLite
     output              VGA_VS,         //VGA VS
     output[7:0]         SEG,            //八段数码管
     output[3:0]         SEGCS,          //八段数码管的位选
+    output[60:1]        PI4,            //下侧双排针
     inout[31:0]         io_pin0,        //GPIO-0
     inout[31:0]         io_pin1,        //GPIO-1
     inout[31:0]         io_pin2,        //GPIO-2
@@ -76,13 +77,17 @@ AHBLiteSlaveMux uSlaveMUX
 
 wire clkPixel;
 wire clkTMDS;
+wire clkSdr;
+wire clkSdrShift;
 
 SystemPLL uSystemPLL
 (
     .refclk(HCLK),
     .reset(~HRESETn),
     .clk0_out(clkPixel),
-    .clk1_out(clkTMDS)
+    .clk1_out(clkTMDS),
+    .clk2_out(clkSdr),
+    .clk3_out(clkSdrShift)
 );
 
 AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) uAHBRAMCode
@@ -201,6 +206,26 @@ AHBLiteDigit uAHBDigit
     .HRESP			(HRESP_A[`idDigit]),
     .SEG            (SEG),
     .SEGCS          (SEGCS)
+);
+
+AHBLiteSDRAM  #(.ADDR_WIDTH(`SDRAM_WIDTH))  uAHBSDRAM
+(
+    .HCLK			(HCLK),
+    .HRESETn		(HRESETn),
+    .HSEL			(HSEL_A[`idSDRAM]),
+    .HADDR			(HADDR),
+    .HPROT			(HPROT),
+    .HSIZE			(HSIZE),
+    .HTRANS			(HTRANS),
+    .HWDATA		    (HWDATA),
+    .HWRITE			(HWRITE),
+    .HRDATA			(HRDATA_A[`idSDRAM*32+:32]),
+    .HREADY			(HREADY),
+    .HREADYOUT		(HREADYOUT_A[`idSDRAM]),
+    .HRESP			(HRESP_A[`idSDRAM]),
+    .clkSdr         (clkSdr),
+    .clkSdrShift    (clkSdrShift),
+    .PI4            (PI4)
 );
 
 endmodule

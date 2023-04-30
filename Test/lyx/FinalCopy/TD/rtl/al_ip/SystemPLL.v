@@ -17,18 +17,24 @@
 //		Clock name	| Frequency 	| Phase shift
 //		C0        	| 50.000000 MHZ	| 0  DEG     
 //		C1        	| 500.000000MHZ	| 0  DEG     
+//		C2        	| 142.857143MHZ	| 0  DEG     
+//		C3        	| 142.857143MHZ	| 270DEG     
 ///////////////////////////////////////////////////////////////////////////////
 `timescale 1 ns / 100 fs
 
 module SystemPLL(refclk,
 		reset,
 		clk0_out,
-		clk1_out);
+		clk1_out,
+		clk2_out,
+		clk3_out);
 
 	input refclk;
 	input reset;
 	output clk0_out;
 	output clk1_out;
+	output clk2_out;
+	output clk3_out;
 
 	wire clk0_buf;
 
@@ -58,7 +64,15 @@ module SystemPLL(refclk,
 		.CLKC1_ENABLE("ENABLE"),
 		.CLKC1_DIV(2),
 		.CLKC1_CPHASE(1),
-		.CLKC1_FPHASE(0)	)
+		.CLKC1_FPHASE(0),
+		.CLKC2_ENABLE("ENABLE"),
+		.CLKC2_DIV(7),
+		.CLKC2_CPHASE(6),
+		.CLKC2_FPHASE(0),
+		.CLKC3_ENABLE("ENABLE"),
+		.CLKC3_DIV(7),
+		.CLKC3_CPHASE(4),
+		.CLKC3_FPHASE(2)	)
 	pll_inst (.refclk(refclk),
 		.reset(reset),
 		.stdby(1'b0),
@@ -76,6 +90,6 @@ module SystemPLL(refclk,
 		.daddr(6'b000000),
 		.do({open, open, open, open, open, open, open, open}),
 		.fbclk(clk0_out),
-		.clkc({open, open, open, clk1_out, clk0_buf}));
+		.clkc({open, clk3_out, clk2_out, clk1_out, clk0_buf}));
 
 endmodule
