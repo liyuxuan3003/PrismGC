@@ -10,11 +10,13 @@ module HDMIEncoder
 	output HDMI_D0_P,
     output HDMI_D1_P,
     output HDMI_D2_P,
-	output HDMI_CLK_P
+	output HDMI_CLK_P,
+    output reg [15:0] CounterX,
+    output reg [15:0] CounterY,
+    input      [23:0] RGB
 );
 
 ////////////////////////////////////////////////////////////////////////
-reg [9:0] CounterX=0, CounterY=0;
 reg hSync, vSync, DrawArea;
 always @(posedge clk) DrawArea <= (CounterX<`H_DISP) && (CounterY<`V_DISP);
 
@@ -28,12 +30,13 @@ always @(posedge clk) vSync <= (CounterY>=`V_DISP+`V_FRONT) && (CounterY<`V_DISP
 wire [7:0] W = {8{CounterX[7:0]==CounterY[7:0]}};
 wire [7:0] A = {8{CounterX[7:5]==3'h2 && CounterY[7:5]==3'h2}};
 reg [7:0] red, green, blue;
-always @(posedge clk) red <= 8'h00;
-always @(posedge clk) green <= CounterX;
-always @(posedge clk) blue <= 8'h00;
-// always @(posedge clk) red <= ({CounterX[5:0] & {6{CounterY[4:3]==~CounterX[4:3]}}, 2'b00} | W) & ~A;
-// always @(posedge clk) green <= (CounterX[7:0] & {8{CounterY[6]}} | W) & ~A;
-// always @(posedge clk) blue <= CounterY[7:0] | W | A;
+// always @(posedge clk) red <=    RGB[23:16];
+// always @(posedge clk) green <=  RGB[15:8];
+// always @(posedge clk) blue <=   RGB[7:0];
+always @(posedge clk) red <= ({CounterX[5:0] & {6{CounterY[4:3]==~CounterX[4:3]}}, 2'b00} | W) & ~A;
+always @(posedge clk) green <= (CounterX[7:0] & {8{CounterY[6]}} | W) & ~A;
+always @(posedge clk) blue <= CounterY[7:0] | W | A;
+
 
 ////////////////////////////////////////////////////////////////////////
 wire [9:0] TMDS_red, TMDS_green, TMDS_blue;
@@ -66,9 +69,9 @@ endmodule
 ////////////////////////////////////////////////////////////////////////
 module TMDS_encoder(
 	input clk,
-	input [7:0] VD,  // video data (red, green or blue)
-	input [1:0] CD,  // control data
-	input VDE,  // video data enable, to choose between CD (when VDE=0) and VD (when VDE=1)
+	input [7:0] VD,     // video data (red, green or blue)
+	input [1:0] CD,     // control data
+	input VDE,          // video data enable, to choose between CD (when VDE=0) and VD (when VDE=1)
 	output reg [9:0] TMDS = 0
 );
 

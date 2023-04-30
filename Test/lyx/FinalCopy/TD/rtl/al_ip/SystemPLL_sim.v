@@ -1,5 +1,5 @@
 // Verilog netlist created by TD v5.0.30786
-// Sun Apr 30 13:49:41 2023
+// Sun Apr 30 15:15:24 2023
 
 `timescale 1ns / 1ps
 module SystemPLL  // SystemPLL.v(23)
@@ -27,13 +27,13 @@ module SystemPLL  // SystemPLL.v(23)
     .PROGRAMN_PERSISTN("DISABLE"))
     config_inst ();
   EG_PHY_PLL #(
-    .CLKC0_CPHASE(29),
-    .CLKC0_DIV(30),
+    .CLKC0_CPHASE(19),
+    .CLKC0_DIV(20),
     .CLKC0_DIV2_ENABLE("DISABLE"),
     .CLKC0_ENABLE("ENABLE"),
     .CLKC0_FPHASE(0),
-    .CLKC1_CPHASE(2),
-    .CLKC1_DIV(3),
+    .CLKC1_CPHASE(1),
+    .CLKC1_DIV(2),
     .CLKC1_DIV2_ENABLE("DISABLE"),
     .CLKC1_ENABLE("ENABLE"),
     .CLKC1_FPHASE(0),
@@ -55,20 +55,20 @@ module SystemPLL  // SystemPLL.v(23)
     .DERIVE_PLL_CLOCKS("DISABLE"),
     .DPHASE_SOURCE("DISABLE"),
     .DYNCFG("DISABLE"),
-    .FBCLK_DIV(3),
+    .FBCLK_DIV(1),
     .FEEDBK_MODE("NORMAL"),
     .FEEDBK_PATH("CLKC0_EXT"),
     .FIN("50.000"),
     .FREQ_LOCK_ACCURACY(2),
     .GEN_BASIC_CLOCK("DISABLE"),
-    .GMC_GAIN(0),
+    .GMC_GAIN(4),
     .GMC_TEST(14),
-    .ICP_CURRENT(9),
+    .ICP_CURRENT(13),
     .IF_ESCLKSTSW("DISABLE"),
     .INTFB_WAKE("DISABLE"),
-    .KVCO(2),
-    .LPF_CAPACITOR(2),
-    .LPF_RESISTOR(8),
+    .KVCO(4),
+    .LPF_CAPACITOR(1),
+    .LPF_RESISTOR(4),
     .NORESET("DISABLE"),
     .ODIV_MUXC0("DIV"),
     .ODIV_MUXC1("DIV"),
@@ -85,7 +85,7 @@ module SystemPLL  // SystemPLL.v(23)
     .PREDIV_MUXC2("VCO"),
     .PREDIV_MUXC3("VCO"),
     .PREDIV_MUXC4("VCO"),
-    .REFCLK_DIV(5),
+    .REFCLK_DIV(1),
     .REFCLK_SEL("INTERNAL"),
     .STDBY_ENABLE("DISABLE"),
     .STDBY_VCO_ENA("DISABLE"),

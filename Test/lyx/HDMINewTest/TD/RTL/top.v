@@ -18,14 +18,15 @@ HDMIEncoder uHDMIEncoder
     .HDMI_D0_P(HDMI_D0_P),
     .HDMI_D1_P(HDMI_D1_P),
     .HDMI_D2_P(HDMI_D2_P),
-    .HDMI_CLK_P(HDMI_CLK_P)
+    .HDMI_CLK_P(HDMI_CLK_P),
+    .RGB(24'h0000FF)
 );
 
 
 SystemPLL uSystemPLL
 (
     .refclk(CLK),
-    .reset(SWI),
+    .reset(~SWI),
     .clk0_out(clkPixel),
     .clk1_out(clkTMDS)
 );

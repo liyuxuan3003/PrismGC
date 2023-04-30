@@ -11,12 +11,12 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 //	Input frequency:             50.000Mhz
-//	Clock multiplication factor: 3
-//	Clock division factor:       5
+//	Clock multiplication factor: 1
+//	Clock division factor:       1
 //	Clock information:
 //		Clock name	| Frequency 	| Phase shift
-//		C0        	| 30.000000 MHZ	| 0  DEG     
-//		C1        	| 300.000000MHZ	| 0  DEG     
+//		C0        	| 50.000000 MHZ	| 0  DEG     
+//		C1        	| 500.000000MHZ	| 0  DEG     
 ///////////////////////////////////////////////////////////////////////////////
 `timescale 1 ns / 100 fs
 
@@ -44,20 +44,20 @@ module SystemPLL(refclk,
 		.SYNC_ENABLE("DISABLE"),
 		.DERIVE_PLL_CLOCKS("DISABLE"),
 		.GEN_BASIC_CLOCK("DISABLE"),
-		.GMC_GAIN(0),
-		.ICP_CURRENT(9),
-		.KVCO(2),
-		.LPF_CAPACITOR(2),
-		.LPF_RESISTOR(8),
-		.REFCLK_DIV(5),
-		.FBCLK_DIV(3),
+		.GMC_GAIN(4),
+		.ICP_CURRENT(13),
+		.KVCO(4),
+		.LPF_CAPACITOR(1),
+		.LPF_RESISTOR(4),
+		.REFCLK_DIV(1),
+		.FBCLK_DIV(1),
 		.CLKC0_ENABLE("ENABLE"),
-		.CLKC0_DIV(30),
-		.CLKC0_CPHASE(29),
+		.CLKC0_DIV(20),
+		.CLKC0_CPHASE(19),
 		.CLKC0_FPHASE(0),
 		.CLKC1_ENABLE("ENABLE"),
-		.CLKC1_DIV(3),
-		.CLKC1_CPHASE(2),
+		.CLKC1_DIV(2),
+		.CLKC1_CPHASE(1),
 		.CLKC1_FPHASE(0)	)
 	pll_inst (.refclk(refclk),
 		.reset(reset),

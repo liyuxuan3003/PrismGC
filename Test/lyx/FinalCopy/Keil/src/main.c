@@ -46,9 +46,10 @@ int main()
         uint8_t a = PORTA -> O_LED_DAT;
         UARTWrite(a);
         x++;
-        LCDBackground(0xFFFFFF);
-        LCDRectangle(0xFF0000,+x*16,20,+x*16+256,20+256,16);
-        LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,1 );
+        HDMI->X_POS=x;
+        //LCDBackground(0xFFFFFF);
+        //LCDRectangle(0xFF0000,+x*16,20,+x*16+256,20+256,16);
+        //LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,1 );
         Delay(TICKS/5);
         //PORTA -> O_LED_DAT = 0x00;
         //Delay(TICKS/5);

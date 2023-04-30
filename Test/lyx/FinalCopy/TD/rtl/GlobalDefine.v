@@ -34,9 +34,9 @@
 `define addrKeyBoard        16'h6009
 
 // `define     VGA_640_480_60FPS_25MHz
-`define     VGA_640_480_75FPS_31MHz
+// `define     VGA_640_480_75FPS_31MHz
 // `define     VGA_800_600_60FPS_40MHz
-// `define	  VGA_1024_600_60FPS_50MHz
+`define	  VGA_1024_600_60FPS_50MHz
 
 //---------------------------------
 //    640 * 480     25MHz   
