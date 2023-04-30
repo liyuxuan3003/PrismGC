@@ -435,11 +435,6 @@
               <FilePath>.\src\Sleep.h</FilePath>
             </File>
             <File>
-              <FileName>HDMI.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\HDMI.c</FilePath>
-            </File>
-            <File>
               <FileName>Peripheral.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Peripheral.h</FilePath>

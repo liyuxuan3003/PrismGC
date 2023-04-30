@@ -33,11 +33,6 @@ int main()
         DIG[i].ENA = 1;
     }
 
-    RamReady();
-
-    LCDBackground(0xFFFFFF);
-    int x=0;
-
 	while(1)
 	{
         for(int i=0;i<4;i++)
@@ -45,14 +40,8 @@ int main()
         PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
         uint8_t a = PORTA -> O_LED_DAT;
         UARTWrite(a);
-        x++;
-        HDMI->X_POS=x;
-        //LCDBackground(0xFFFFFF);
-        //LCDRectangle(0xFF0000,+x*16,20,+x*16+256,20+256,16);
-        //LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,1 );
+        HDMI -> PIXEL = HDMI -> X_POS + 0xFF * HDMI -> Y_POS;
         Delay(TICKS/5);
-        //PORTA -> O_LED_DAT = 0x00;
-        //Delay(TICKS/5);
 	}
 }
 
