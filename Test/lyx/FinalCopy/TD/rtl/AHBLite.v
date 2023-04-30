@@ -74,6 +74,17 @@ AHBLiteSlaveMux uSlaveMUX
     .HRDATA         (HRDATA)
 );
 
+wire clkPixel;
+wire clkTMDS;
+
+SystemPLL uSystemPLL
+(
+    .refclk(HCLK),
+    .reset(~HRESETn),
+    .clk0_out(clkPixel),
+    .clk1_out(clkTMDS)
+);
+
 AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) uAHBRAMCode
 (
     .HCLK           (HCLK),
@@ -165,6 +176,8 @@ AHBLiteHDMI uAHBHDMI
     .HREADY                 (HREADY),
     .HREADYOUT              (HREADYOUT_A[`idHDMI]),
     .HRESP                  (HRESP_A[`idHDMI]),
+    .clkPixel               (clkPixel),
+    .clkTMDS                (clkTMDS),
     .HDMI_CLK_P(HDMI_CLK_P),
     .HDMI_D2_P(HDMI_D2_P),
     .HDMI_D1_P(HDMI_D1_P),

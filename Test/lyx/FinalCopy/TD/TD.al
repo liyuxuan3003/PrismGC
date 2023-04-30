@@ -82,7 +82,7 @@
                     <Attr Name="CompileOrder" Val="9"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/lcd_24bit_ip/lcd_driver.v">
+            <File Path="rtl/HDMI/lcd_24bit_ip/lcd_para.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -90,7 +90,7 @@
                     <Attr Name="CompileOrder" Val="15"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/lcd_24bit_ip/lcd_para.v">
+            <File Path="rtl/HDMI/sdram/Sdram_Params.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -98,7 +98,7 @@
                     <Attr Name="CompileOrder" Val="16"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/LCD_Control.v">
+            <File Path="rtl/AHBLiteBlockRAM.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -106,7 +106,7 @@
                     <Attr Name="CompileOrder" Val="17"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/SDRAM_HDMI_Display.v">
+            <File Path="rtl/BlockRAM.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -114,7 +114,7 @@
                     <Attr Name="CompileOrder" Val="18"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sdram/command.v">
+            <File Path="rtl/SizeDecoder.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -122,7 +122,7 @@
                     <Attr Name="CompileOrder" Val="19"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sdram/control_interface.v">
+            <File Path="rtl/AHBLiteDecoder.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -130,7 +130,7 @@
                     <Attr Name="CompileOrder" Val="20"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sdram/read_fifo.v">
+            <File Path="rtl/Mux16_1.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -138,7 +138,7 @@
                     <Attr Name="CompileOrder" Val="21"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sdram/SDRAM_512Kx4x32Bit.v">
+            <File Path="rtl/AHBLiteSlaveMux.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -146,7 +146,7 @@
                     <Attr Name="CompileOrder" Val="22"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sdram/Sdram_Control_2Port.v">
+            <File Path="rtl/AHBLite.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -154,7 +154,7 @@
                     <Attr Name="CompileOrder" Val="23"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sdram/Sdram_Params.v">
+            <File Path="rtl/AHBLiteGPIO.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -162,7 +162,7 @@
                     <Attr Name="CompileOrder" Val="24"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sdram/write_fifo.v">
+            <File Path="rtl/AHBLiteUART.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -170,7 +170,7 @@
                     <Attr Name="CompileOrder" Val="25"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sys_pll/sys_pll.v">
+            <File Path="rtl/AHBLiteHDMI.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -178,7 +178,7 @@
                     <Attr Name="CompileOrder" Val="26"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sys_pll/sys_pll_sim.v">
+            <File Path="rtl/CortexM0.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -186,7 +186,7 @@
                     <Attr Name="CompileOrder" Val="27"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sys_pll/system_ctrl_pll.v">
+            <File Path="rtl/AHBLiteDigit.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -194,7 +194,7 @@
                     <Attr Name="CompileOrder" Val="28"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sys_pll/system_init_delay.v">
+            <File Path="rtl/UART.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -202,7 +202,7 @@
                     <Attr Name="CompileOrder" Val="29"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/AHBLiteBlockRAM.v">
+            <File Path="rtl/al_ip/SystemPLL.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -210,7 +210,7 @@
                     <Attr Name="CompileOrder" Val="30"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/BlockRAM.v">
+            <File Path="rtl/HDMI.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -218,92 +218,12 @@
                     <Attr Name="CompileOrder" Val="31"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/SizeDecoder.v">
+            <File Path="rtl/HDMIEncoder.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
                     <Attr Name="CompileOrder" Val="32"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/AHBLiteDecoder.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="33"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/Mux16_1.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="34"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/AHBLiteSlaveMux.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="35"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/AHBLite.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="36"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/AHBLiteGPIO.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="37"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/AHBLiteUART.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="38"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/AHBLiteHDMI.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="39"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/CortexM0.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="40"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/AHBLiteDigit.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="41"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/UART.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="42"/>
                 </FileInfo>
             </File>
         </Verilog>
@@ -378,7 +298,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-04-29 23:51:17.962</Step_Last_Change>
+        <Step_Last_Change>2023-04-30 14:57:04.538</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>

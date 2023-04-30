@@ -1,126 +1,87 @@
 module AHBLiteHDMI
 (
-    input  wire          HCLK,    
-    input  wire          HRESETn, 
-    input  wire          HSEL,    
-    input  wire   [31:0] HADDR,   
-    input  wire    [1:0] HTRANS,  
-    input  wire    [2:0] HSIZE,   
-    input  wire    [3:0] HPROT,   
-    input  wire          HWRITE,  
-    input  wire   [31:0] HWDATA,  
-    input  wire          HREADY,  
-    output wire          HREADYOUT, 
-    output reg    [31:0] HRDATA,  
-    output wire          HRESP,
-    output      HDMI_CLK_P,     //HDMI CLK
-    output      HDMI_D2_P,      //HDMI D2
-    output      HDMI_D1_P,      //HDMI D1
-    output      HDMI_D0_P       //HDMI D0
+    input               HCLK,    
+    input               HRESETn, 
+    input               HSEL,    
+    input       [31:0]  HADDR,   
+    input       [1:0]   HTRANS,  
+    input       [2:0]   HSIZE,   
+    input       [3:0]   HPROT,   
+    input               HWRITE,  
+    input       [31:0]  HWDATA,   
+    input               HREADY, 
+    output              HREADYOUT, 
+    output      [31:0]  HRDATA,  
+    output              HRESP,
+    input               clkPixel,
+    input               clkTMDS,
+    output              HDMI_CLK_P,     //HDMI CLK
+    output              HDMI_D2_P,      //HDMI D2
+    output              HDMI_D1_P,      //HDMI D1
+    output              HDMI_D0_P       //HDMI D0
 );
 
-reg    [15:0] X_POS;
-reg    [15:0] Y_POS;
-reg    [23:0] PIXEL;
-reg    [23:0] LEN;
-reg           ENABLE;
-reg    [8:0]  SYS_WR_LEN;
-wire          SYS_VAILD;
-wire          BUSY;
+localparam ADDR_WIDTH = 8;
 
 assign HRESP = 1'b0;
 assign HREADYOUT = 1'b1;
 
-wire write_en;
-assign write_en = HSEL & HTRANS[1] & HWRITE & HREADY;
+wire enableWrite = HREADY & HSEL & HTRANS[1] & ( HWRITE);
+wire enableRead  = HREADY & HSEL & HTRANS[1] & (~HWRITE);
 
-wire read_en;
-assign read_en = HSEL & HTRANS[1] & (~HWRITE) & HREADY;
+wire[3:0] sizeDecode;
+reg [3:0] sizeDecodeReg;
 
-reg wr_en_reg;
+SizeDecoder uSizeDecoder
+(
+    .addr(HADDR[1:0]),
+    .size(HSIZE[1:0]),
+    .sizeDecode(sizeDecode)
+);
+
 always@(posedge HCLK or negedge HRESETn) 
 begin
-    if(~HRESETn) wr_en_reg <= 1'b0;
-    else if(write_en) wr_en_reg <= 1'b1;
-    else wr_en_reg <= 1'b0;
+    if(~HRESETn) 
+        sizeDecodeReg <= 0;
+    else if(enableWrite) 
+        sizeDecodeReg <= sizeDecode;
 end
 
-reg rd_en_reg;
-always@(posedge HCLK or negedge HRESETn) 
-begin
-    if(~HRESETn) rd_en_reg <= 1'b0;
-    else if(read_en) rd_en_reg <= 1'b1;
-    else rd_en_reg <= 1'b0;
-end
-
-reg [7:0] addr_reg;
+reg [ADDR_WIDTH-1:0] addrReg;
 always@(posedge HCLK or negedge HRESETn)
 begin
     if(~HRESETn) 
-        addr_reg <= 8'h00;
-    else if(read_en || write_en) 
-        addr_reg <= HADDR[7:0];
+        addrReg <= 0;
+    else if(HREADY & HSEL & HTRANS[1]) 
+        addrReg <= HADDR[(ADDR_WIDTH+1):2];
 end
 
-always@(*) 
-begin
-    if(rd_en_reg)
-    begin
-        case (addr_reg)
-            8'h18 : HRDATA <= SYS_VAILD;
-            8'h1C : HRDATA <= BUSY;
-            default: HRDATA <= 32'h0000_0000;
-        endcase
-    end
-    else
-        HRDATA <= 32'h0000_0000;
-end
-
+reg enableWriteReg;
 always@(posedge HCLK or negedge HRESETn) 
 begin
     if(~HRESETn) 
-    begin
-        X_POS <= 0;
-        Y_POS <= 0;
-        PIXEL <= 0;
-        LEN <= 0;
-        ENABLE <= 0;
-        SYS_WR_LEN <= 0;
-    end 
-    else if(wr_en_reg && HREADY) 
-    begin
-        case (addr_reg)
-            8'h00 : X_POS <= HWDATA;
-            8'h04 : Y_POS <= HWDATA;
-            8'h08 : PIXEL <= HWDATA;
-            8'h0C : LEN <= HWDATA;
-            8'h10 : ENABLE <= HWDATA;
-            8'h14 : SYS_WR_LEN <= HWDATA;
-        endcase
-    end
+        enableWriteReg <= 1'b0;
+    else if(HREADY) 
+        enableWriteReg <= enableWrite;
+    else 
+        enableWriteReg <= 1'b0;
 end
 
-SDRAM_HDMI_Display u_SDRAM_HDMI_Display
+HDMI uHDMI
 (
     .clk(HCLK),
-    .rst_n(HRESETn),
-    
-    //HDMI
+    .rstn(HRESETn),
+    .addrIn(addrReg),
+    .addrOut(HADDR[(ADDR_WIDTH+2-1):2]),
+    .sizeDecode(enableWriteReg ? sizeDecodeReg : 4'b0000),
+    .dataIn(HWDATA),
+    .dataOut(HRDATA),
+    .clkPixel(clkPixel),
+    .clkTMDS(clkTMDS),
     .HDMI_CLK_P(HDMI_CLK_P),
-    .HDMI_D2_P(HDMI_D2_P),
-    .HDMI_D1_P(HDMI_D1_P),
     .HDMI_D0_P(HDMI_D0_P),
-
-    .x_pos(X_POS),
-    .y_pos(Y_POS),
-    .pixel(PIXEL),
-    .len(LEN),
-    .enable(ENABLE),
-    .sys_wr_len(SYS_WR_LEN),
-    .sys_vaild(SYS_VAILD),
-    .busy(BUSY)
+    .HDMI_D1_P(HDMI_D1_P),
+    .HDMI_D2_P(HDMI_D2_P)
 );
 
 endmodule
-
-
