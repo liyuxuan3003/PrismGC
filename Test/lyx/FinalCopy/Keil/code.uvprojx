@@ -439,6 +439,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Peripheral.h</FilePath>
             </File>
+            <File>
+              <FileName>GPULite.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\GPULite.c</FilePath>
+            </File>
+            <File>
+              <FileName>GPULite.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\GPULite.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

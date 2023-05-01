@@ -75,20 +75,6 @@ AHBLiteSlaveMux uSlaveMUX
     .HRDATA         (HRDATA)
 );
 
-wire clkPixel;
-wire clkTMDS;
-wire clkSdr;
-wire clkSdrShift;
-
-SystemPLL uSystemPLL
-(
-    .refclk(HCLK),
-    .reset(~HRESETn),
-    .clk0_out(clkPixel),
-    .clk1_out(clkTMDS),
-    .clk2_out(clkSdr),
-    .clk3_out(clkSdrShift)
-);
 
 AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) uAHBRAMCode
 (
@@ -166,6 +152,62 @@ AHBLiteUART uAHBUART
     .RXD(RXD)
 );
 
+AHBLiteDigit uAHBDigit
+(
+    .HCLK			(HCLK),
+    .HRESETn		(HRESETn),
+    .HSEL			(HSEL_A[`idDigit]),
+    .HADDR			(HADDR),
+    .HPROT			(HPROT),
+    .HSIZE			(HSIZE),
+    .HTRANS			(HTRANS),
+    .HWDATA		    (HWDATA),
+    .HWRITE			(HWRITE),
+    .HRDATA			(HRDATA_A[`idDigit*32+:32]),
+    .HREADY			(HREADY),
+    .HREADYOUT		(HREADYOUT_A[`idDigit]),
+    .HRESP			(HRESP_A[`idDigit]),
+    .SEG            (SEG),
+    .SEGCS          (SEGCS)
+);
+
+AHBLiteGPU uAHBGPU
+(
+    .HCLK                   (HCLK),
+    .HRESETn                (HRESETn),
+    .HSEL                   (HSEL_A[`idGPULite]),
+    .HADDR                  (HADDR),
+    .HPROT                  (HPROT),
+    .HSIZE                  (HSIZE),
+    .HTRANS                 (HTRANS),
+    .HWDATA                 (HWDATA),
+    .HWRITE                 (HWRITE),
+    .HRDATA                 (HRDATA_A[`idGPULite*32+:32]),
+    .HREADY                 (HREADY),
+    .HREADYOUT              (HREADYOUT_A[`idGPULite]),
+    .HRESP                  (HRESP_A[`idGPULite]),
+    .HDMI_CLK_P(HDMI_CLK_P),
+    .HDMI_D2_P(HDMI_D2_P),
+    .HDMI_D1_P(HDMI_D1_P),
+    .HDMI_D0_P(HDMI_D0_P)
+);
+
+/*
+wire clkPixel;
+wire clkTMDS;
+wire clkSdr;
+wire clkSdrShift;
+
+SystemPLL uSystemPLL
+(
+    .refclk(HCLK),
+    .reset(~HRESETn),
+    .clk0_out(clkPixel),
+    .clk1_out(clkTMDS),
+    .clk2_out(clkSdr),
+    .clk3_out(clkSdrShift)
+);
+
 AHBLiteHDMI uAHBHDMI
 (
     .HCLK                   (HCLK),
@@ -189,25 +231,6 @@ AHBLiteHDMI uAHBHDMI
     .HDMI_D0_P(HDMI_D0_P)
 );
 
-AHBLiteDigit uAHBDigit
-(
-    .HCLK			(HCLK),
-    .HRESETn		(HRESETn),
-    .HSEL			(HSEL_A[`idDigit]),
-    .HADDR			(HADDR),
-    .HPROT			(HPROT),
-    .HSIZE			(HSIZE),
-    .HTRANS			(HTRANS),
-    .HWDATA		    (HWDATA),
-    .HWRITE			(HWRITE),
-    .HRDATA			(HRDATA_A[`idDigit*32+:32]),
-    .HREADY			(HREADY),
-    .HREADYOUT		(HREADYOUT_A[`idDigit]),
-    .HRESP			(HRESP_A[`idDigit]),
-    .SEG            (SEG),
-    .SEGCS          (SEGCS)
-);
-
 AHBLiteSDRAM  #(.ADDR_WIDTH(`SDRAM_WIDTH))  uAHBSDRAM
 (
     .HCLK			(HCLK),
@@ -227,5 +250,5 @@ AHBLiteSDRAM  #(.ADDR_WIDTH(`SDRAM_WIDTH))  uAHBSDRAM
     .clkSdrShift    (clkSdrShift),
     .PI4            (PI4)
 );
-
+*/
 endmodule

@@ -1,4 +1,4 @@
-module AHBLiteHDMI
+module AHBLiteGPU
 (
     input  wire          HCLK,    
     input  wire          HRESETn, 

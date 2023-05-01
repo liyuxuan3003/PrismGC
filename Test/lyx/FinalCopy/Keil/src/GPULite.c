@@ -1,20 +1,20 @@
-#include "HDMI.h"
+#include "GPULite.h"
 
-void RamReady()
+void WaitRamReady()
 {
-    while(!HDMI -> SYS_VAILD) ;
+    while(!GPU -> SYS_VAILD) ;
 }
 
 void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len,uint32_t sys_wr_len)
 {
-    HDMI -> X_POS = x_pos;
-    HDMI -> Y_POS = y_pos;
-    HDMI -> PIXEL = pixel;
-    HDMI -> LEN = len;
-    HDMI -> SYS_WR_LEN = sys_wr_len;
-    HDMI -> ENABLE = 1;
-    while(HDMI -> BUSY) ;
-    HDMI -> ENABLE = 0;
+    GPU -> X_POS = x_pos;
+    GPU -> Y_POS = y_pos;
+    GPU -> PIXEL = pixel;
+    GPU -> LEN = len;
+    GPU -> SYS_WR_LEN = sys_wr_len;
+    GPU -> ENABLE = 1;
+    while(GPU -> BUSY) ;
+    GPU -> ENABLE = 0;
 }
 
 void LCDBackground(uint32_t color)

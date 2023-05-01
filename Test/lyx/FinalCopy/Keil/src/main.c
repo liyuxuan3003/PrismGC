@@ -9,12 +9,14 @@
 #include "HardwareConfig.h"
 #include "UART.h"
 #include "GPIO.h"
-#include "HDMI.h"
 #include "Digit.h"
-#include "SDRAM.h"
+//#include "SDRAM.h"
+//#include "HDMI.h"
+#include "GPULite.h"
 
 int main() 
 { 
+#ifdef SDRAM   
     SDRAM[0x1111] = 0x11223344;
     uint32_t a;
     for(int i=0;i<20;i++)
@@ -23,8 +25,12 @@ int main()
         if(a==0x11223344)
             break;
     }
-       
-
+#endif      
+#ifdef GPU
+    WaitRamReady();
+    LCDBackground(0xFFFFFF);
+    int x=0;
+#endif    
 	//interrupt initial
 	NVIC_CTRL_ADDR = 1;
 
@@ -46,17 +52,20 @@ int main()
 
 	while(1)
 	{
-        // for(int i=0;i<10;i++)
-        // {
-        //     SDRAM[i] = i;
-        //     volatile int a = SDRAM[i];
-        // }
         for(int i=0;i<4;i++)
             DIG[i].COD ++;
         PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
         uint8_t a = PORTA -> O_LED_DAT;
         UARTWrite(a);
+#ifdef HDMI        
         HDMI -> PIXEL = HDMI -> X_POS + 0xFF * HDMI -> Y_POS;
+#endif        
+#ifdef GPU
+        x++;
+        LCDBackground(0xFFFFFF);
+        LCDRectangle(0xFF0000,+x*16,20,+x*16+256,20+256,16);
+        LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,1 );
+#endif        
         Delay(TICKS/5);
 	}
 }

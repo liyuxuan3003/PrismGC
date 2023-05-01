@@ -77,18 +77,8 @@ EG_PHY_SDRAM_2M_32 sdram2M32
     .cke(1'b1)
 );
 
-// reg readyoutReg;
-
-// always@(posedge enableIn or negedge Sdr_rd_en)
-// begin
-//     if(~Sdr_rd_en)
-//         readyoutReg <= 1'b1;
-//     if(enableIn)
-//         readyoutReg <= 1'b0;
-// end
-
-// assign readyout = readyoutReg;
-assign readyout = (enableIn == 1) ? Sdr_rd_en : 1'b1;
+assign readyout = Sdr_rd_en;
+//assign readyout = (enableIn == 1) ? Sdr_rd_en : 1'b1;
 // assign readyout = Sdr_rd_en;
 // assign readyout = (Sdr_init_done && ~Sdr_init_ref_vld) || (Sdr_rd_en && enableOut);
 
@@ -96,5 +86,5 @@ assign PI4[5] = Sdr_rd_en;
 assign PI4[7] = enableIn;
 assign PI4[9] = Sdr_init_done;
 assign PI4[11] = Sdr_init_ref_vld;
-assign PI4[13] = readyout;
+
 endmodule 

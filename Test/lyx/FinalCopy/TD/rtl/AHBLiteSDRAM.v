@@ -19,7 +19,7 @@ module AHBLiteSDRAM #(parameter ADDR_WIDTH = 0)
 );
 
 assign HRESP = 1'b0;
-assign HREADYOUT = readyout;
+assign HREADYOUT = 1'b1;
 
 wire enableWrite = HREADY & HSEL & HTRANS[1] & ( HWRITE);
 wire enableRead  = HREADY & HSEL & HTRANS[1] & (~HWRITE);
@@ -61,18 +61,18 @@ begin
     else 
         enableWriteReg <= 1'b0;
 end
-reg enableReadReg;
+
+reg hselReg;
 always@(posedge HCLK or negedge HRESETn) 
 begin
     if(~HRESETn) 
-        enableReadReg <= 1'b0;
+        hselReg <= 1'b0;
     else if(HREADY) 
-        enableReadReg <= enableRead;
-    else 
-        enableReadReg <= 1'b0;
+        hselReg <= HSEL;
 end
 
 wire readyout;
+assign PI4[13] = HREADYOUT;
 
 SDRAM #(.MEM_ADDR_WIDTH(ADDR_WIDTH-2)) uSDRAM
 (
@@ -86,7 +86,7 @@ SDRAM #(.MEM_ADDR_WIDTH(ADDR_WIDTH-2)) uSDRAM
     .dataIn(HWDATA),
     .dataOut(HRDATA),
     .readyout(readyout),
-    .enableIn(enableReadReg),
+    .enableIn(enableRead),
     .PI4(PI4)
 );
 

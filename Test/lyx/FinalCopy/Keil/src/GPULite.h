@@ -1,11 +1,11 @@
-#ifndef HDMI_H
-#define HDMI_H
+#ifndef GPULITE_H
+#define GPULITE_H
 
 #include <stdint.h>
 
 #include "Peripheral.h"
 
-//HDMI DEF
+//GPULite DEF
 typedef struct
 {
     volatile uint32_t X_POS;
@@ -16,14 +16,14 @@ typedef struct
     volatile uint32_t SYS_WR_LEN;
     volatile uint32_t SYS_VAILD;
     volatile uint32_t BUSY;
-} HDMIType;
+} GPUType;
 
-#define HDMI ((HDMIType *)HDMI_BASE)
+#define GPU ((GPUType *)GPU_LITE_BASE)
 
 #define H_DISP 1024
 #define V_DISP 600
 
-void RamReady();
+void WaitRamReady();
 void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len,uint32_t sys_wr_len);
 
 void LCDBackground(uint32_t color);
