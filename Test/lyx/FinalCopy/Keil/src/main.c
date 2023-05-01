@@ -56,17 +56,21 @@ int main()
             DIG[i].COD ++;
         PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
         uint8_t a = PORTA -> O_LED_DAT;
-        UARTWrite(a);
+        //UARTWrite(a);
 #ifdef HDMI        
         HDMI -> PIXEL = HDMI -> X_POS + 0xFF * HDMI -> Y_POS;
 #endif        
 #ifdef GPU
         x++;
+        if(x>=1024)
+            x=0;
         LCDBackground(0xFFFFFF);
         LCDRectangle(0xFF0000,+x*16,20,+x*16+256,20+256,16);
         LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,1 );
+        LCDRectangle(0x00FFFF,+x*16,220,+x*16+64 ,220+64 ,16 );
+        LCDRectangle(0xFFFF00,-x*16,220,-x*16+64 ,220+64 ,16 );
 #endif        
-        Delay(TICKS/5);
+        udelay(5000);
 	}
 }
 

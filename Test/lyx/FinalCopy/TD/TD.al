@@ -386,6 +386,14 @@
                     <Attr Name="CompileOrder" Val="52"/>
                 </FileInfo>
             </File>
+            <File Path="rtl/GPU.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="53"/>
+                </FileInfo>
+            </File>
         </Verilog>
         <VHDL>
             <File Path="rtl/HDMI/enc_file/DVITransmitter.enc.vhd">
@@ -458,7 +466,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-05-01 11:17:56.697</Step_Last_Change>
+        <Step_Last_Change>2023-05-01 18:46:06.325</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>

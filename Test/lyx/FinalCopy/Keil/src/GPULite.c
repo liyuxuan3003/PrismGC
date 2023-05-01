@@ -7,14 +7,13 @@ void WaitRamReady()
 
 void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len,uint32_t sys_wr_len)
 {
+    while(GPU -> BUSY) ;
     GPU -> X_POS = x_pos;
     GPU -> Y_POS = y_pos;
     GPU -> PIXEL = pixel;
     GPU -> LEN = len;
     GPU -> SYS_WR_LEN = sys_wr_len;
     GPU -> ENABLE = 1;
-    while(GPU -> BUSY) ;
-    GPU -> ENABLE = 0;
 }
 
 void LCDBackground(uint32_t color)

@@ -58,17 +58,29 @@
 //---------------------------------
 //	1024 * 600
 `ifdef VGA_1024_600_60FPS_50MHz 
-`define	H_FRONT	12'd160
-`define	H_SYNC 	12'd20  
-`define	H_BACK 	12'd140  
+// `define	H_FRONT	12'd160
+// `define	H_SYNC 	12'd20  
+// `define	H_BACK 	12'd140  
+// `define	H_DISP 	12'd1024
+// `define	H_TOTAL	12'd1344
+				
+// `define	V_FRONT	12'd12
+// `define	V_SYNC 	12'd3 
+// `define	V_BACK 	12'd20  
+// `define	V_DISP 	12'd600  
+// `define	V_TOTAL	12'd635
+
+`define	H_FRONT	12'd24
+`define	H_SYNC 	12'd136  
+`define	H_BACK 	12'd160  
 `define	H_DISP 	12'd1024
 `define	H_TOTAL	12'd1344
 				
-`define	V_FRONT	12'd12
-`define	V_SYNC 	12'd3 
-`define	V_BACK 	12'd20  
+`define	V_FRONT	12'd3
+`define	V_SYNC 	12'd6 
+`define	V_BACK 	12'd29  
 `define	V_DISP 	12'd600  
-`define	V_TOTAL	12'd635
+`define	V_TOTAL	12'd638
 `endif
 
 //---------------------------------
