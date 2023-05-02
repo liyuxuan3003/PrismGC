@@ -13,18 +13,49 @@ module GPUHDMIEncoder
     output reg [15:0] CounterX,
     output reg [15:0] CounterY,
     output reg        DrawArea,
+    output            Request,
     input      [23:0] RGB
 );
 
 ////////////////////////////////////////////////////////////////////////
 reg hSync, vSync;
-always @(posedge clk) DrawArea <= (CounterX<`H_DISP) && (CounterY<`V_DISP);
 
-always @(posedge clk) CounterX <= (CounterX==`H_TOTAL-1) ? 0 : CounterX+1;
-always @(posedge clk) if(CounterX==`H_TOTAL-1) CounterY <= (CounterY==`V_TOTAL-1) ? 0 : CounterY+1;
+localparam	H_AHEAD = 	12'd1;
 
-always @(posedge clk) hSync <= (CounterX>=`H_DISP+`H_FRONT) && (CounterX<`H_DISP+`H_FRONT+`H_SYNC);
-always @(posedge clk) vSync <= (CounterY>=`V_DISP+`V_FRONT) && (CounterY<`V_DISP+`V_FRONT+`V_SYNC);
+// assign Request = 
+// (CounterX >= `H_TOTAL - `H_DISP && CounterX < `H_TOTAL) && 
+// (CounterY >= `V_TOTAL - `V_DISP && CounterY < `V_TOTAL);
+
+assign	Request	= 	
+(CounterX >= `H_SYNC + `H_BACK - H_AHEAD && CounterX < `H_SYNC + `H_BACK + `H_DISP - H_AHEAD) &&
+(CounterY >= `V_SYNC + `V_BACK && CounterY < `V_SYNC + `V_BACK + `V_DISP) ? 1'b1 : 1'b0;
+
+always @(posedge clk) 
+begin
+    DrawArea <= 
+    (CounterX >= `H_SYNC + `H_BACK && CounterX < `H_SYNC + `H_BACK + `H_DISP) &&
+    (CounterY >= `V_SYNC + `V_BACK && CounterY < `V_SYNC + `V_BACK + `V_DISP);
+end
+
+
+always @(posedge clk or negedge rstn) 
+begin
+    if(!rstn)
+        CounterX <= 0;
+    else
+        CounterX <= (CounterX==`H_TOTAL-1) ? 0 : CounterX+1;
+end
+
+always @(posedge clk or negedge rstn) 
+begin
+    if(!rstn)
+        CounterY <= 0;
+    else
+        if(CounterX==`H_TOTAL-1) CounterY <= (CounterY==`V_TOTAL-1) ? 0 : CounterY+1;
+end
+
+always @(posedge clk) hSync <= (CounterX < `H_SYNC);
+always @(posedge clk) vSync <= (CounterY < `V_SYNC);
 
 ////////////////
 wire [7:0] W = {8{CounterX[7:0]==CounterY[7:0]}};
@@ -90,7 +121,8 @@ endmodule
 
 
 ////////////////////////////////////////////////////////////////////////
-module TMDS_encoder(
+module TMDS_encoder
+(
 	input clk,
 	input [7:0] VD,     // video data (red, green or blue)
 	input [1:0] CD,     // control data
@@ -117,3 +149,6 @@ endmodule
 
 
 ////////////////////////////////////////////////////////////////////////
+
+// DISP FRON SYNC BACK
+// SYNC BACK DISP FRON

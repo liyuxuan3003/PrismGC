@@ -150,6 +150,7 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     //    FIFO Read Side
     .RD_CLK             (clk_read),         //read fifo clock
     .RD_LOAD            (1'b0),             //read register load & fifo clear
+    // .RD_LOAD            (CounterX == `H_DISP && CounterY == `V_DISP),//read register load & fifo clear
     .RD_DATA            (sys_data_out),     //read data output
     .RD                 (sys_rd_out),       //read request
     .RD_MIN_ADDR        (21'd0),            //read start address
@@ -162,21 +163,89 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     .Sdram_PingPong_EN  (1'b0)              //SDRAM PING-PONG operation enable
 );
 
+wire CounterX;
+wire CounterY;
+
 GPUHDMIEncoder uGPUHDMIEncoder
 (
     .clk(clk_pixel),
     .clk_TMDS(clk_pixel_5x),
-    .rstn(rst_n),
+    .rstn(sys_rst_n),
     .HDMI_CLK_P(HDMI_CLK_P),
     .HDMI_D0_P(HDMI_D0_P),
     .HDMI_D1_P(HDMI_D1_P),
     .HDMI_D2_P(HDMI_D2_P),
-    // .CounterX(CounterX),
-    // .CounterY(CounterY),
+    .CounterX(CounterX),
+    .CounterY(CounterY),
     .RGB(sys_data_out[31:8]),
-    .DrawArea(sys_rd_out)
+    .Request(sys_rd_out)
 );
+/*
+localparam  H_DISP = 12'd1024;  
+localparam	V_DISP = 12'd600; 
+assign sys_vaild = sdram_init_done;
 
+always @(negedge rst_n)
+begin
+	pingAddr <= 0;
+	pongAddr <= 0;
+end
+
+reg[1:0]  wrState;
+reg[4:0]  wrDiv;
+reg[23:0] wrCount;
+reg sysForceWriteReg;
+always @(posedge clk or negedge rst_n) 
+begin
+    if(!rst_n)
+	begin
+        wrState <= 0;
+		wrCount <= 0;
+		wrDiv <= 0;
+	end
+    else
+    begin
+        case (wrState)
+            0: wrState <= enable ? 1:0;
+            1: begin
+                sys_waddr_min <= pingAddr + x_pos + y_pos * H_DISP;
+                sys_waddr_max <= pingAddr + H_DISP * (V_DISP  + 1);
+                sys_wload <= 1'b1;
+                wrState <= 2;
+                end
+            2: begin
+                sys_wload <= 1'b0;
+                wrCount <= 0;
+                wrDiv <= 0;
+                wrState <= 3;
+                end
+            3: begin
+                wrDiv <= wrDiv + 1;
+                sys_wdata <= pixel;
+                if(wrDiv == 0)
+                begin
+                    wrCount <= wrCount + 1;
+                    if(wrCount == len+254)
+                        wrState <= 4;
+                    //if(wrCount == len)
+                    //begin
+                    //	wrState <= 4;
+                    //	if(len<256)
+                    //		sysForceWriteReg <= 1;
+                end
+                end
+            4: begin
+                wrState <= enable ? 4:0;
+                sysForceWriteReg <= 0;
+                end
+            default: wrState <= 0;
+        endcase
+    end
+end
+assign busy = (wrState==1) | (wrState==2) | (wrState==3);
+assign sys_we = (wrDiv==1) & (wrState==3);
+assign sys_we_force = sysForceWriteReg;
+*/
 
 // //-------------------------------------
 // //LCD driver timing
