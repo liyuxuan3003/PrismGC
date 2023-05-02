@@ -162,56 +162,71 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     .Sdram_PingPong_EN  (1'b0)              //SDRAM PING-PONG operation enable
 );
 
-
-//-------------------------------------
-//LCD driver timing
-wire  			VGA_DE;
-wire  			VGA_HS;      
-wire  			VGA_VS;
-wire  	[23:0]  VGA_RGB;
-lcd_driver u_lcd_driver
+GPUHDMIEncoder uGPUHDMIEncoder
 (
-    //global clock
-    .clk                (clk_pixel),        
-    .rst_n              (sys_rst_n), 
+    .clk(clk_pixel),
+    .clk_TMDS(clk_pixel_5x),
+    .rstn(rst_n),
+    .HDMI_CLK_P(HDMI_CLK_P),
+    .HDMI_D0_P(HDMI_D0_P),
+    .HDMI_D1_P(HDMI_D1_P),
+    .HDMI_D2_P(HDMI_D2_P),
+    // .CounterX(CounterX),
+    // .CounterY(CounterY),
+    .RGB(sys_data_out[31:8]),
+    .DrawArea(sys_rd_out)
+);
+
+
+// //-------------------------------------
+// //LCD driver timing
+// wire  			VGA_DE;
+// wire  			VGA_HS;      
+// wire  			VGA_VS;
+// wire  	[23:0]  VGA_RGB;
+// lcd_driver u_lcd_driver
+// (
+//     //global clock
+//     .clk                (clk_pixel),        
+//     .rst_n              (sys_rst_n), 
      
-	 //lcd interface
-	.lcd_dclk			(),
-	.lcd_blank			(),
-	.lcd_sync			(),		    	
-	.lcd_hs				(VGA_HS),		
-	.lcd_vs				(VGA_VS),
-	.lcd_en				(VGA_DE),		
-	.lcd_rgb			(VGA_RGB),
+// 	 //lcd interface
+// 	.lcd_dclk			(),
+// 	.lcd_blank			(),
+// 	.lcd_sync			(),		    	
+// 	.lcd_hs				(VGA_HS),		
+// 	.lcd_vs				(VGA_VS),
+// 	.lcd_en				(VGA_DE),		
+// 	.lcd_rgb			(VGA_RGB),
 
     
-    //user interface
-    .lcd_request        (sys_rd_out),
-    .lcd_data           (sys_data_out[31:8]),    
-    .lcd_xpos           (),    
-    .lcd_ypos           ()
-);
+//     //user interface
+//     .lcd_request        (sys_rd_out),
+//     .lcd_data           (sys_data_out[31:8]),    
+//     .lcd_xpos           (),    
+//     .lcd_ypos           ()
+// );
 
-//-----------------------------------
-//HDMI TX Module
-hdmi_tx #(.FAMILY("EG4"))	//EF2、EF3、EG4、AL3、PH1
-u3_hdmi_tx
-(
-	.PXLCLK_I	        (clk_pixel),
-	.PXLCLK_5X_I        (clk_pixel_5x),
-	.RST_N 		        (~sys_rst_n),
+// //-----------------------------------
+// //HDMI TX Module
+// hdmi_tx #(.FAMILY("EG4"))	//EF2、EF3、EG4、AL3、PH1
+// u3_hdmi_tx
+// (
+// 	.PXLCLK_I	        (clk_pixel),
+// 	.PXLCLK_5X_I        (clk_pixel_5x),
+// 	.RST_N 		        (~sys_rst_n),
         
-	//VGA   
-	.VGA_HS             (VGA_HS ),
-	.VGA_VS             (VGA_VS ),
-	.VGA_DE             (VGA_DE ),
-	.VGA_RGB            (VGA_RGB),
+// 	//VGA   
+// 	.VGA_HS             (VGA_HS ),
+// 	.VGA_VS             (VGA_VS ),
+// 	.VGA_DE             (VGA_DE ),
+// 	.VGA_RGB            (VGA_RGB),
     
-	//HDMI  
-	.HDMI_CLK_P         (HDMI_CLK_P),
-	.HDMI_D2_P          (HDMI_D2_P ),
-	.HDMI_D1_P          (HDMI_D1_P ),
-	.HDMI_D0_P          (HDMI_D0_P )	
-);
+// 	//HDMI  
+// 	.HDMI_CLK_P         (HDMI_CLK_P),
+// 	.HDMI_D2_P          (HDMI_D2_P ),
+// 	.HDMI_D1_P          (HDMI_D1_P ),
+// 	.HDMI_D0_P          (HDMI_D0_P )	
+// );
 
 endmodule

@@ -434,6 +434,14 @@
                     <Attr Name="CompileOrder" Val="58"/>
                 </FileInfo>
             </File>
+            <File Path="rtl/HDMI/GPUHDMIEncoder.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="59"/>
+                </FileInfo>
+            </File>
         </Verilog>
         <VHDL>
             <File Path="rtl/HDMI/enc_file/DVITransmitter.enc.vhd">
@@ -506,7 +514,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-05-02 17:28:51.256</Step_Last_Change>
+        <Step_Last_Change>2023-05-02 22:06:49.298</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>

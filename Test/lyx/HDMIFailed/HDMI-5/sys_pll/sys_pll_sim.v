@@ -1,5 +1,5 @@
 // Verilog netlist created by TD v5.0.30786
-// Tue May  2 21:47:07 2023
+// Sun Apr 16 14:58:13 2023
 
 `timescale 1ns / 1ps
 module sys_pll  // sys_pll.v(25)
@@ -33,23 +33,23 @@ module sys_pll  // sys_pll.v(25)
     .PROGRAMN_PERSISTN("DISABLE"))
     config_inst ();
   EG_PHY_PLL #(
-    .CLKC0_CPHASE(9),
-    .CLKC0_DIV(10),
+    .CLKC0_CPHASE(4),
+    .CLKC0_DIV(5),
     .CLKC0_DIV2_ENABLE("DISABLE"),
     .CLKC0_ENABLE("ENABLE"),
     .CLKC0_FPHASE(0),
-    .CLKC1_CPHASE(6),
-    .CLKC1_DIV(10),
+    .CLKC1_CPHASE(2),
+    .CLKC1_DIV(5),
     .CLKC1_DIV2_ENABLE("DISABLE"),
     .CLKC1_ENABLE("ENABLE"),
-    .CLKC1_FPHASE(4),
-    .CLKC2_CPHASE(19),
-    .CLKC2_DIV(20),
+    .CLKC1_FPHASE(6),
+    .CLKC2_CPHASE(14),
+    .CLKC2_DIV(15),
     .CLKC2_DIV2_ENABLE("DISABLE"),
     .CLKC2_ENABLE("ENABLE"),
     .CLKC2_FPHASE(0),
-    .CLKC3_CPHASE(3),
-    .CLKC3_DIV(4),
+    .CLKC3_CPHASE(2),
+    .CLKC3_DIV(3),
     .CLKC3_DIV2_ENABLE("DISABLE"),
     .CLKC3_ENABLE("ENABLE"),
     .CLKC3_FPHASE(0),
@@ -61,7 +61,7 @@ module sys_pll  // sys_pll.v(25)
     .DERIVE_PLL_CLOCKS("DISABLE"),
     .DPHASE_SOURCE("DISABLE"),
     .DYNCFG("DISABLE"),
-    .FBCLK_DIV(2),
+    .FBCLK_DIV(3),
     .FEEDBK_MODE("NORMAL"),
     .FEEDBK_PATH("CLKC0_EXT"),
     .FIN("50.000"),
