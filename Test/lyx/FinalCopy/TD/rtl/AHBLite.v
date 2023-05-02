@@ -34,6 +34,8 @@ module AHBLite
     output[7:0]         SEG,            //八段数码管
     output[3:0]         SEGCS,          //八段数码管的位选
     output              BUZ,            //蜂鸣器
+    input       [3:0]   COL,
+    output      [3:0]   ROW,
     output[60:1]        PI4,            //下侧双排针
     inout[31:0]         io_pin0,        //GPIO-0
     inout[31:0]         io_pin1,        //GPIO-1
@@ -188,6 +190,25 @@ AHBLiteBuzzer uAHBBuzzer
     .HREADYOUT		(HREADYOUT_A[`idBuzzer]),
     .HRESP			(HRESP_A[`idBuzzer]),
     .BUZ            (BUZ)
+);
+
+AHBLiteKeyBoard uAHBKeyBoard
+(
+    .HCLK			(HCLK),
+    .HRESETn		(HRESETn),
+    .HSEL			(HSEL_A[`idKeyBoard]),
+    .HADDR			(HADDR),
+    .HPROT			(HPROT),
+    .HSIZE			(HSIZE),
+    .HTRANS			(HTRANS),
+    .HWDATA		    (HWDATA),
+    .HWRITE			(HWRITE),
+    .HRDATA			(HRDATA_A[`idKeyBoard*32+:32]),
+    .HREADY			(HREADY),
+    .HREADYOUT		(HREADYOUT_A[`idKeyBoard]),
+    .HRESP			(HRESP_A[`idKeyBoard]),
+    .COL            (COL),
+    .ROW            (ROW)
 );
 
 AHBLiteGPU uAHBGPU

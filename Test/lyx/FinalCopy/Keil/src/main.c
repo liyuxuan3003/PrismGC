@@ -14,6 +14,7 @@
 //#include "HDMI.h"
 #include "GPULite.h"
 #include "Buzzer.h"
+#include "KeyBoard.h"
 
 int main() 
 { 
@@ -55,9 +56,10 @@ int main()
 	{
         for(int i=0;i<4;i++)
             DIG[i].COD ++;
-        PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
-        uint8_t a = PORTA -> O_LED_DAT;
-        UARTWrite(a);
+        // PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
+        PORTA -> O_LED_DAT = KEYBOARD -> KEY;
+        // uint8_t a = PORTA -> O_LED_DAT;
+        // UARTWrite(a);
         BUZZER -> NOTE ++;
         BUZZER -> TIME = 200;
 #ifdef HDMI        

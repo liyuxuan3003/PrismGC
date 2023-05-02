@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project Version="1" Path="D:/Project/20230110-FPGA/PrismGC/Test/lyx/FinalCopy/TD">
-    <Project_Created_Time>2023-05-02 14:15:14</Project_Created_Time>
+    <Project_Created_Time></Project_Created_Time>
     <TD_Version>5.0.30786</TD_Version>
     <UCode>00100000</UCode>
     <Name>TD</Name>
@@ -410,6 +410,30 @@
                     <Attr Name="CompileOrder" Val="55"/>
                 </FileInfo>
             </File>
+            <File Path="rtl/AHBLiteKeyBoard.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="56"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/KeyBoard.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="57"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/Encoder16_4.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="58"/>
+                </FileInfo>
+            </File>
         </Verilog>
         <VHDL>
             <File Path="rtl/HDMI/enc_file/DVITransmitter.enc.vhd">
@@ -482,7 +506,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-05-02 15:38:41.116</Step_Last_Change>
+        <Step_Last_Change>2023-05-02 17:28:51.256</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
