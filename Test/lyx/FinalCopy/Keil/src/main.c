@@ -13,6 +13,7 @@
 //#include "SDRAM.h"
 //#include "HDMI.h"
 #include "GPULite.h"
+#include "Buzzer.h"
 
 int main() 
 { 
@@ -56,7 +57,9 @@ int main()
             DIG[i].COD ++;
         PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
         uint8_t a = PORTA -> O_LED_DAT;
-        //UARTWrite(a);
+        UARTWrite(a);
+        BUZZER -> NOTE ++;
+        BUZZER -> TIME = 200;
 #ifdef HDMI        
         HDMI -> PIXEL = HDMI -> X_POS + 0xFF * HDMI -> Y_POS;
 #endif        
@@ -70,7 +73,7 @@ int main()
         LCDRectangle(0x00FFFF,+x*16,220,+x*16+64 ,220+64 ,16 );
         LCDRectangle(0xFFFF00,-x*16,220,-x*16+64 ,220+64 ,16 );
 #endif        
-        udelay(5000);
+        mdelay(500);
 	}
 }
 

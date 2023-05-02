@@ -1,6 +1,8 @@
 `ifndef GLOBAL_DEFINE_V
 `define GLOBAL_DEFINE_V
 
+`define CLK_FRE 50000000
+
 `define DEVICES_EXP 4
 
 `define RAM_DATA_WIDTH 14        //2^14 Bytes

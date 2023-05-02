@@ -33,6 +33,7 @@ module AHBLite
     output              VGA_VS,         //VGA VS
     output[7:0]         SEG,            //八段数码管
     output[3:0]         SEGCS,          //八段数码管的位选
+    output              BUZ,            //蜂鸣器
     output[60:1]        PI4,            //下侧双排针
     inout[31:0]         io_pin0,        //GPIO-0
     inout[31:0]         io_pin1,        //GPIO-1
@@ -169,6 +170,24 @@ AHBLiteDigit uAHBDigit
     .HRESP			(HRESP_A[`idDigit]),
     .SEG            (SEG),
     .SEGCS          (SEGCS)
+);
+
+AHBLiteBuzzer uAHBBuzzer
+(
+    .HCLK			(HCLK),
+    .HRESETn		(HRESETn),
+    .HSEL			(HSEL_A[`idBuzzer]),
+    .HADDR			(HADDR),
+    .HPROT			(HPROT),
+    .HSIZE			(HSIZE),
+    .HTRANS			(HTRANS),
+    .HWDATA		    (HWDATA),
+    .HWRITE			(HWRITE),
+    .HRDATA			(HRDATA_A[`idBuzzer*32+:32]),
+    .HREADY			(HREADY),
+    .HREADYOUT		(HREADYOUT_A[`idBuzzer]),
+    .HRESP			(HRESP_A[`idBuzzer]),
+    .BUZ            (BUZ)
 );
 
 AHBLiteGPU uAHBGPU

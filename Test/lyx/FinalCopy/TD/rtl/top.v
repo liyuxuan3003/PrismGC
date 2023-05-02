@@ -20,6 +20,7 @@ module top
     output[4:0] VGA_B,          //VGA B
     output      VGA_HS,         //VGA HS
     output      VGA_VS,         //VGA VS
+    output      BUZ,            //蜂鸣器
     inout[31:0] NC              //悬空管脚
 );
 
@@ -94,6 +95,7 @@ AHBLite uAHBLite
     .VGA_VS(VGA_VS),            //VGA VS
     .SEG(SEG),                  //八段数码管 段码
     .SEGCS(SEGCS),              //八段数码管 位码
+    .BUZ(BUZ),
     .io_pin0({NC[15:0],LED,SWI}),
     .io_pin1({NC[31:0]}),
     .io_pin2({NC[31:0]}),

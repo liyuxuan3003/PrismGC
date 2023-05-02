@@ -32,6 +32,8 @@ set_pin_assignment { SEGCS[1] } { LOCATION = B6; IOSTANDARD = LVCMOS33; }
 set_pin_assignment { SEGCS[2] } { LOCATION = A5; IOSTANDARD = LVCMOS33; }
 set_pin_assignment { SEGCS[3] } { LOCATION = A3; IOSTANDARD = LVCMOS33; }
 
+set_pin_assignment { BUZ } { LOCATION = H11;  IOSTANDARD = LVCMOS33; }
+
 set_pin_assignment { SWCLK } { LOCATION = R2; IOSTANDARD = LVCMOS33; }
 set_pin_assignment { SWDIO } { LOCATION = P2; IOSTANDARD = LVCMOS33; }
 

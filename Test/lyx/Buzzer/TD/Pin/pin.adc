@@ -1,0 +1,12 @@
+set_pin_assignment { CLK } { LOCATION = R7; IOSTANDARD = LVCMOS33; }
+
+set_pin_assignment { BUZ } { LOCATION = H11;  IOSTANDARD = LVCMOS33; }
+
+set_pin_assignment { SWI[0] } { LOCATION = A9;  IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[1] } { LOCATION = A10; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[2] } { LOCATION = B10; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[3] } { LOCATION = A11; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[4] } { LOCATION = A12; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[5] } { LOCATION = B12; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[6] } { LOCATION = A13; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[7] } { LOCATION = A14; IOSTANDARD = LVCMOS33; }
