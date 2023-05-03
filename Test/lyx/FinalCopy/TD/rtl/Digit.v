@@ -17,8 +17,8 @@ always@(posedge clk or negedge rstn)
 begin
     if(~rstn)
     begin
-        mem[0]=0;
-        mem[1]=4'b1;
+        mem[0] <= 0;
+        mem[1] <= 4'b1;
     end
     else
     begin
@@ -38,9 +38,9 @@ reg[15:0] clkDigCnt;
 
 always @(posedge clk)
 begin
-    clkDigCnt=clkDigCnt+1;
-    if(clkDigCnt==16'h0000)
-        clkDig=~clkDig;
+    clkDigCnt <= clkDigCnt+1;
+    if(clkDigCnt == 16'h0000)
+        clkDig <= ~clkDig;
 end
 
 wire[7:0] dig0Seg;

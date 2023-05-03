@@ -147,10 +147,10 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     .WR_LOAD            (sys_load),         //write register load & fifo clear
     .WR_DATA            (sys_data_in),      //write data input
     .WR                 (sys_we),           //write data request
-    // .WR_MIN_ADDR        (sys_addr_min),     //write start address
-    // .WR_MAX_ADDR        (sys_addr_max),     //write max address
-    .WR_MIN_ADDR        (pongAddr + sys_addr_min),     //write start address
-    .WR_MAX_ADDR        (pongAddr + sys_addr_max),     //write max address
+    .WR_MIN_ADDR        (sys_addr_min),     //write start address
+    .WR_MAX_ADDR        (sys_addr_max),     //write max address
+    // .WR_MIN_ADDR        (pongAddr + sys_addr_min),     //write start address
+    // .WR_MAX_ADDR        (pongAddr + sys_addr_max),     //write max address
     .WR_LENGTH          (sys_wr_len),       //write burst length
 
     //    FIFO Read Side
@@ -160,10 +160,10 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     .RD_LOAD            (sys_rload),
     .RD_DATA            (sys_data_out),     //read data output
     .RD                 (sys_rd_out),       //read request
-    // .RD_MIN_ADDR        (0),         //read start address
-    // .RD_MAX_ADDR        (`H_DISP * `V_DISP),//read max address
-    .RD_MIN_ADDR        (pingAddr),         //read start address
-    .RD_MAX_ADDR        (pingAddr + `H_DISP * `V_DISP),//read max address
+    .RD_MIN_ADDR        (0),         //read start address
+    .RD_MAX_ADDR        (`H_DISP * `V_DISP),//read max address
+    // .RD_MIN_ADDR        (pingAddr),         //read start address
+    // .RD_MAX_ADDR        (pingAddr + `H_DISP * `V_DISP),//read max address
     .RD_LENGTH          (9'd256),           //read length
     
     //User interface add by CrazyBingo

@@ -103,9 +103,14 @@ SDRAM_HDMI_Display u_SDRAM_HDMI_Display
     .busy(BUSY)
 );
 
-assign PI4[5]=ENABLE;
-assign PI4[7]=SYS_VAILD;
-assign PI4[9]=BUSY;
-assign PI4[11]=pingAddr[20];
+assign PI4[5]   =   addrIn[7];
+assign PI4[7]   =   addrIn[6];
+assign PI4[9]   =   addrIn[5];
+assign PI4[11]  =   addrIn[4];
+
+assign PI4[13]  =   addrOut[7];
+assign PI4[15]  =   addrOut[6];
+assign PI4[17]  =   addrOut[5];
+assign PI4[19]  =   addrOut[4];
 
 endmodule

@@ -23,17 +23,17 @@ begin
     end
     else
     begin
-        if(sizeDecode[0]) mem[addrIn][7:0]   <= dataIn[7:0];
-        if(sizeDecode[1]) mem[addrIn][15:8]  <= dataIn[15:8];
-        if(sizeDecode[2]) mem[addrIn][23:16] <= dataIn[23:16];
-        if(sizeDecode[3]) mem[addrIn][31:24] <= dataIn[31:24];
+        // if(sizeDecode[0]) mem[addrIn][7:0]   <= dataIn[7:0];
+        // if(sizeDecode[1]) mem[addrIn][15:8]  <= dataIn[15:8];
+        // if(sizeDecode[2]) mem[addrIn][23:16] <= dataIn[23:16];
+        // if(sizeDecode[3]) mem[addrIn][31:24] <= dataIn[31:24];
 
         if(keyEnable)
             mem[0] <= {28'h0000_000,keyCode};
         else
             mem[0] <= {32'hFFFF_FFFF};
 
-        dataOut <= mem[addrOut]; 
+        dataOut <= mem[0]; 
     end
 end
 

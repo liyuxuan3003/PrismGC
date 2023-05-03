@@ -21,9 +21,9 @@ always@(posedge clk or negedge rstn)
 begin
     if(~rstn)
     begin
-        mem[0]=0;
-        mem[1]=0;
-        mem[2]=0;
+        mem[0] <= 0;
+        mem[1] <= 0;
+        mem[2] <= 0;
     end
     else
     begin

@@ -47,7 +47,7 @@ begin
     else if(sys_vaild)
     begin
         if(enable == 1'b0)
-            done = 1'b0;
+            done <= 1'b0;
         else if(enable == 1'b1 & busy == 1'b0 & done == 1'b0)
         begin
             busy <= 1'b1;
