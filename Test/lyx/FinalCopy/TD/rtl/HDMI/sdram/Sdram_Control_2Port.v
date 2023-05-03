@@ -37,7 +37,7 @@ module Sdram_Control_2Port(
 		//User interface add by CrazyBingo
 		Sdram_Init_Done,		//SDRAM Init done signal
 		Sdram_Read_Valid,		//SDRAM Read valid : output
-		Sdram_PingPong_EN		//SDRAM PING-PONG operation enable
+		Sdram_Write_Refresh
         );
 
 `include    "Sdram_Params.v"
@@ -79,9 +79,7 @@ output							SDR_CLK;				//SDRAM clock
 //User interface add by CrazyBingo
 output							Sdram_Init_Done;		//SDRAM Init done signal
 input							Sdram_Read_Valid;		//SDRAM Read valid : output
-input							Sdram_PingPong_EN;		//SDRAM PING-PONG operation enable
-
-
+input                           Sdram_Write_Refresh;
 
 
 //	Internal Registers/Wires
@@ -367,57 +365,41 @@ begin
 	end
 end
 
-
 //------------------------------------------------------------------------------------------------
 //	Internal Address & Length Control for Write
-wire	[`ASIZE-1:0]	WR_MIN_ADDR1 = WR_MIN_ADDR;
-wire	[`ASIZE-1:0]	WR_MAX_ADDR1 = WR_MAX_ADDR;
-wire	[`ASIZE-1:0]	WR_MIN_ADDR2 = {~WR_MIN_ADDR[`ASIZE-1], WR_MIN_ADDR[`ASIZE-2:0]};	//Ping-Pong1 operation
-wire	[`ASIZE-1:0]	WR_MAX_ADDR2 = {~WR_MAX_ADDR[`ASIZE-1], WR_MAX_ADDR[`ASIZE-2:0]};	//Ping-Pong2 operation
-wire	PINGPONG1_WRADDR1 = (rWR_ADDR >=  WR_MIN_ADDR1 && rWR_ADDR <= WR_MAX_ADDR1 - WR_LENGTH) ? 1'b1 : 1'b0;
-wire	PINGPONG1_WRADDR2 = (rWR_ADDR >=  WR_MIN_ADDR2 && rWR_ADDR <= WR_MAX_ADDR2 - WR_LENGTH) ? 1'b1 : 1'b0;
+reg	[`ASIZE-1:0]	WR_MIN_REG;
+reg	[`ASIZE-1:0]	WR_MAX_REG;
 always@(posedge REF_CLK or negedge RESET_N)
 begin
 	if(!RESET_N)
-		rWR_ADDR <= WR_MIN_ADDR1;
+        begin	
+            WR_MIN_REG <= WR_MIN_ADDR;
+            WR_MAX_REG <= WR_MAX_ADDR;
+            rWR_ADDR <= WR_MIN_ADDR;
+        end
 	else if(WR_LOAD)
-		rWR_ADDR <= WR_MIN_ADDR1;
-	else if(mWR_DONE & WR_MASK)						//While 1 page write has done
-		begin
-		//Bank 0-1 for Ping-Pong1
-		if(PINGPONG1_WRADDR1 == 1'b1)
-			begin
-			if(rWR_ADDR < WR_MAX_ADDR1 - WR_LENGTH)
+        begin	
+            WR_MIN_REG <= WR_MIN_ADDR;
+            WR_MAX_REG <= WR_MAX_ADDR;
+            rWR_ADDR <= WR_MIN_ADDR;
+        end
+	else if(mWR_DONE & WR_MASK)
+        begin
+			if(rWR_ADDR < WR_MAX_REG - WR_LENGTH)
 				rWR_ADDR	<=	rWR_ADDR + WR_LENGTH;
 			else
-				begin
-				if(Sdram_PingPong_EN)				//SDRAM PING-PONG operation enable
-					rWR_ADDR	<=	WR_MIN_ADDR2;	//Go to Ping-Pong2
-				else
-					rWR_ADDR	<=	WR_MIN_ADDR1;	//Remain Ping-Pong1
-				end
-			end
-		//Bank 2-3 for Ping-Pong2
-		if(PINGPONG1_WRADDR2 == 1'b1)
-			begin
-			if(rWR_ADDR < WR_MAX_ADDR2 - WR_LENGTH)
-				rWR_ADDR	<=	rWR_ADDR + WR_LENGTH;
-			else
-				begin
-				if(Sdram_PingPong_EN)				//SDRAM PING-PONG operation enable
-					rWR_ADDR	<=	WR_MIN_ADDR1;	//Go to Ping-Pong1	
-				else
-					rWR_ADDR	<=	WR_MIN_ADDR2;	//Remain Ping-Pong2
-				end	
-			end
-		end
+            begin	
+                WR_MIN_REG <= WR_MIN_ADDR;
+                WR_MAX_REG <= WR_MAX_ADDR;
+                rWR_ADDR <= WR_MIN_ADDR;
+            end
+        end
 	else
 		rWR_ADDR <= rWR_ADDR;
 end
 
-
 //------------------------------------------------------------------------------------------------
-//	Internal Address & Length Control for Read; If enable Ping-Pong operation, Read should switch the address
+//	Internal Address & Length Control for Read
 reg	[`ASIZE-1:0]	RD_MIN_REG;
 reg	[`ASIZE-1:0]	RD_MAX_REG;
 always@(posedge REF_CLK or negedge RESET_N)
@@ -449,7 +431,6 @@ begin
 		rRD_ADDR <= rRD_ADDR;
 end
 
-
 //---------------------------------------------------------------------------------------------------
 //	Auto Read/Write Control
 always@(posedge REF_CLK or negedge RESET_N)
@@ -469,7 +450,7 @@ begin
 			begin	
 			//	Write Side 1 is most important
 //			if( (write_side_fifo_rusedw1 >= WR_LENGTH) && (WR_LOAD==0))	//write fifo
-			if( (wfifo_afull_flag == 1'b1) && (WR_LOAD==0))	//write fifo
+			if( (wfifo_afull_flag == 1'b1 || Sdram_Write_Refresh == 1'b1) && (WR_LOAD==0))	//write fifo
 				begin
 				mADDR	<=	rWR_ADDR;
 				mLENGTH	<=	WR_LENGTH;

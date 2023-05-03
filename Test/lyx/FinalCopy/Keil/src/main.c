@@ -119,34 +119,35 @@ int main()
         if(SWI_6(P))
         {
             x++;
-            if(x>=1024)
+            if(x>=64)
                 x=0;
             PingPong();
             mdelay(50);
             LCDBackground(0xFFFFFF);
-            LCDRectangle(0xFF0000,128,128,192,192,64);
-            LCDRectangle(0x00FF00,256,256,320,320,64);
-            // LCDRectangle(0xFF0000,16,16,16+256,16+256,16);
-            // LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,16 );
+            // LCDRectangle(0xFF0000,128,128,192,192,64);
+            // LCDRectangle(0x00FF00,256,256,320,320,64);
+            LCDRectangle(0xFF0000,16,16,16+256,16+256,16);
+            LCDRectangle(0x0000FF,(64-x)*16,20,(64-x)*16+64 ,20+64 ,16 );
+            LCDRectangle(0x00FF00,+x*16,60,+x*16+64 ,60+64 ,1 );
             mdelay(2*T0);
-            PingPong();
-            mdelay(50);
-            LCDBackground(0xFFFFFF);
-            LCDRectangle(0x00FFFF,128,128,192,192,64);
-            LCDRectangle(0xFF00FF,256,256,320,320,64);
-            // LCDRectangle(0x00FF00,16,16,16+256,16+256,16);
-            // LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,16 );
-            mdelay(2*T0);
-            // LCDRectangle(0x00FFFF,+x*16,220,+x*16+64 ,220+64 ,16 );
-            // LCDRectangle(0xFFFF00,-x*16,220,-x*16+64 ,220+64 ,16 );
+            // PingPong();
+            // mdelay(50);
+            // LCDBackground(0xFFFFFF);
+            // LCDRectangle(0x00FFFF,128,128,192,192,64);
+            // LCDRectangle(0xFF00FF,256,256,320,320,64);
+            // // LCDRectangle(0x00FF00,16,16,16+256,16+256,16);
+            // // LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,16 );
+            // mdelay(2*T0);
+            // // LCDRectangle(0x00FFFF,+x*16,220,+x*16+64 ,220+64 ,16 );
+            // // LCDRectangle(0xFFFF00,-x*16,220,-x*16+64 ,220+64 ,16 );
         }
-        if(SWI_5(P))
-        {
-            PingPong();
-            mdelay(2*T0);
-            PingPong();
-            mdelay(2*T0);
-        }
+        // if(SWI_5(P))
+        // {
+        //     PingPong();
+        //     mdelay(2*T0);
+        //     PingPong();
+        //     mdelay(2*T0);
+        // }
 #endif        
 	}
 }

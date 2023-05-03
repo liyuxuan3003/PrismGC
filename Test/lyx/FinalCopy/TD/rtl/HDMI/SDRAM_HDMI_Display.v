@@ -74,6 +74,7 @@ u_LCD_Control
     .sys_we             (sys_we),
     .sys_addr_min       (sys_addr_min),
     .sys_addr_max       (sys_addr_max),
+    .sys_refresh        (Sdram_Write_Refresh),
     
     .x_pos(x_pos),
     .y_pos(y_pos),
@@ -140,6 +141,8 @@ wire [20:0] rd_max_addr = bitPingPong ? (`PING_PONG_1 | (`H_DISP * `V_DISP)) : (
 // wire [31:0] rd_min_addr = pingAddr;
 // wire [31:0] rd_max_addr = pingAddr | (`H_DISP * `V_DISP);
 
+wire Sdram_Write_Refresh;
+
 Sdram_Control_2Port    u_Sdram_Control_2Port
 (
     //    HOST Side
@@ -181,11 +184,10 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     .RD_MIN_ADDR        (rd_min_addr),         //read start address
     .RD_MAX_ADDR        (rd_max_addr),//read max address
     .RD_LENGTH          (9'd256),           //read length
-    
-    //User interface add by CrazyBingo
+
     .Sdram_Init_Done    (sdram_init_done),  //SDRAM init done signal
     .Sdram_Read_Valid   (1'b1),             //Enable to read
-    .Sdram_PingPong_EN  (1'b0)              //SDRAM PING-PONG operation enable
+    .Sdram_Write_Refresh  (1'b0)
 );
 
 wire CounterX;

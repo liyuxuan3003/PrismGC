@@ -18,6 +18,7 @@ module LCD_Control
     output  reg         sys_load,
     output  reg [23:0]  sys_data,
     output              sys_we,
+    output  reg         sys_refresh,
     output  reg [31:0]  sys_addr_min,
     output  reg [31:0]  sys_addr_max,
     output  reg         busy
@@ -47,7 +48,10 @@ begin
     else if(sys_vaild)
     begin
         if(enable == 1'b0)
+        begin
+            // sys_refresh <= 1'b0;
             done <= 1'b0;
+        end
         else if(enable == 1'b1 & busy == 1'b0 & done == 1'b0)
         begin
             busy <= 1'b1;
@@ -64,10 +68,12 @@ begin
             begin
                 sys_data <= pixel;
                 cnt <= cnt + 1;
-                if(cnt == len+254)
+                if(cnt == len + 254)
                 begin
                     busy <= 1'b0;
                     done <= 1'b1;
+                    // if(len[7:0] != 0)
+                    //     sys_refresh <= 1'b1;
                 end
             end        
         end
