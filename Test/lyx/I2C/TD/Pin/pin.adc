@@ -1,0 +1,29 @@
+set_pin_assignment { CLK } { LOCATION = R7; IOSTANDARD = LVCMOS33; }
+
+set_pin_assignment { SWI[0] } { LOCATION = A9;  IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[1] } { LOCATION = A10; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[2] } { LOCATION = B10; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[3] } { LOCATION = A11; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[4] } { LOCATION = A12; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[5] } { LOCATION = B12; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[6] } { LOCATION = A13; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { SWI[7] } { LOCATION = A14; IOSTANDARD = LVCMOS33; }
+
+set_pin_assignment { LED[0] } { LOCATION = B14; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { LED[1] } { LOCATION = B15; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { LED[2] } { LOCATION = B16; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { LED[3] } { LOCATION = C15; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { LED[4] } { LOCATION = C16; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { LED[5] } { LOCATION = E13; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { LED[6] } { LOCATION = E16; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { LED[7] } { LOCATION = F16; IOSTANDARD = LVCMOS33; }
+
+set_pin_assignment	{ COL[0] }	{ LOCATION = E11; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ COL[1] }	{ LOCATION = D11; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ COL[2] }	{ LOCATION = C11; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ COL[3] }	{ LOCATION = F10; IOSTANDARD = LVCMOS33; }
+
+set_pin_assignment	{ ROW[0] }	{ LOCATION = E10; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ ROW[1] }	{ LOCATION = C10; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ ROW[2] }	{ LOCATION = F9; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ ROW[3] }	{ LOCATION = D9; IOSTANDARD = LVCMOS33; }

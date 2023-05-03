@@ -55,16 +55,21 @@ int main()
             BUZZER -> TIME = 200;
         }
 
-        x++;
-        if(x>=64)
-            x=0;
-        PingPong();
-        LCDBackground(0xFFFFFF);
-        LCDRectangle(0x000000,16,16,16+256,16+256,16);
-        LCDRectangle(0xFF0000,(64-x)*16,50 ,(64-x)*16+64,50+64 ,16);    
-        LCDRectangle(0x00FF00,(64-x)*16,100,(64-x)*16+64,100+64,8);    
-        LCDRectangle(0x0000FF,(64-x)*16,150,(64-x)*16+64,150+64,4);    
-        // mdelay(200);
+        if(SWI_6(P))
+        {
+            x++;
+            if(x>=64)
+                x=0;
+            PingPong();
+            LCDBackground(0xFFFFFF);
+            LCDRectangle(0x000000,16,16,16+256,16+256,16);
+            LCDRectangle(0xFFFF00,0,550,1024,555,64);
+            LCDRectangle(0xFF0000,(64-x)*16,50 ,(64-x)*16+64,50+64 ,16);    
+            LCDRectangle(0x00FF00,(64-x)*16,250,(64-x)*16+64,250+64,16);  
+            LCDRectangle(0x0000FF,(64-x)*16,450,(64-x)*16+64,450+64,16);  
+        }
+        else
+            mdelay(200);
 	}
 }
 
