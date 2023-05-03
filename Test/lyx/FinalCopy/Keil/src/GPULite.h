@@ -16,6 +16,7 @@ typedef struct
     volatile uint32_t SYS_WR_LEN;
     volatile uint32_t SYS_VAILD;
     volatile uint32_t BUSY;
+    volatile uint32_t PING_PONG;
 } GPUType;
 
 #define GPU ((GPUType *)GPU_LITE_BASE)
@@ -28,5 +29,7 @@ void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len,uint32_t
 
 void LCDBackground(uint32_t color);
 void LCDRectangle(uint32_t color,uint32_t x1,uint32_t y1,uint32_t x2,uint32_t y2,uint32_t sys_wr_len);
+
+void PingPong();
 
 #endif

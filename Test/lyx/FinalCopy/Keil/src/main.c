@@ -16,30 +16,39 @@
 #include "Buzzer.h"
 #include "KeyBoard.h"
 
+#define T0 200
+#define T1 180
+
+#define N8(t) t 
+#define N4(t) t,t 
+#define N2(t) t,t,t,t
+
+#define L8 T1
+#define L4 T0,T1 
+#define L2 T0,T0,T0,T1
+
 static const uint8_t noteArr[] = 
 {
-    1,1,2,2,3,3,1,1,
-    1,1,2,2,3,3,1,1,
-    3,3,4,4,5,5,5,5,
-    3,3,4,4,5,5,5,5,
-    5,6,5,4,3,3,1,1,
-    5,6,5,4,3,3,1,1,
-    1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,
-    0
+    N4(1),N4(2),N4(3),N4(1),
+    N4(1),N4(2),N4(3),N4(1),
+    N4(3),N4(4),N2(5),
+    N4(3),N4(4),N2(5),
+    N8(5),N8(6),N8(5),N8(4),N4(3),N4(1),
+    N8(5),N8(6),N8(5),N8(4),N4(3),N4(1),
+    N4(1),N4(1),N2(1),
+    N4(1),N4(1),N2(1)
 };
 
 static const uint16_t noteLenArr[] =
 {
-    100,80,100,80,100,80,100,80,
-    100,80,100,80,100,80,100,80,
-    100,80,100,80,100,100,100,80,
-    100,80,100,80,100,100,100,80,
-    80,80,80,80,100,80,100,80,
-    80,80,80,80,100,80,100,80,
-    100,80,100,80,100,100,100,80,
-    100,80,100,80,100,100,100,80,
-    100
+    L4,L4,L4,L4,
+    L4,L4,L4,L4,
+    L4,L4,L2,
+    L4,L4,L2,
+    L8,L8,L8,L8,L4,L4,
+    L8,L8,L8,L8,L4,L4,
+    L4,L4,L2,
+    L4,L4,L2
 };
 
 int main() 
@@ -58,26 +67,26 @@ int main()
     WaitRamReady();
     LCDBackground(0xFFFFFF);
     int x=0;
-    // LCDRectangle(0xFF0000,0,0,64,64,64);
-    // LCDRectangle(0x00FF00,128,128,192,192,64);
-    // LCDRectangle(0x0000FF,256,256,320,320,64);
-    // LCDRectangle(0xFFFF00,192,192,320,320,16);
-    // LCDRectangle(0xFF00FF,208,208,336,336,16);
-    // LCDRectangle(0x0000FF,128,0,192,64,64);
-    // LCDRectangle(0x000000,0,128,64,192,64);
+    LCDRectangle(0xFF0000,0,0,64,64,64);
+    LCDRectangle(0x00FF00,128,128,192,192,64);
+    LCDRectangle(0x0000FF,256,256,320,320,64);
+    LCDRectangle(0xFFFF00,192,192,320,320,16);
+    LCDRectangle(0xFF00FF,208,208,336,336,16);
+    LCDRectangle(0x0000FF,128,0,192,64,64);
+    LCDRectangle(0x000000,0,128,64,192,64);
 
     int noteCnt = 0;
 
-    for(int i=0;i<512;i++)
-    {
-        LCDRectangle(0x000011*i,64*i,64*i,64*i+64,64*i+64,64);
-        if(noteCnt >= sizeof(noteArr)/sizeof(noteArr[0]))
-            noteCnt = 0;
-        BUZZER -> NOTE = noteArr[noteCnt];
-        BUZZER -> TIME = noteLenArr[noteCnt];
-        noteCnt++;
-        mdelay(400);
-    }
+    // for(int i=0;i<512;i++)
+    // {
+    //     LCDRectangle(0x000011*i,64*i,64*i,64*i+64,64*i+64,64);
+    //     if(noteCnt >= sizeof(noteArr)/sizeof(noteArr[0]))
+    //         noteCnt = 0;
+    //     BUZZER -> NOTE = noteArr[noteCnt];
+    //     BUZZER -> TIME = noteLenArr[noteCnt];
+    //     noteCnt++;
+    //     mdelay(400);
+    // }
 
     // LCDRectangle(0xFF0000,+x*16,20,+x*16+256,20+256,16);
     // LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,1 );
@@ -131,14 +140,21 @@ int main()
             x++;
             if(x>=1024)
                 x=0;
+            PingPong();
+            mdelay(10);
             LCDBackground(0xFFFFFF);
             LCDRectangle(0xFF0000,+x*16,20,+x*16+256,20+256,16);
-            LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,1 );
-            LCDRectangle(0x00FFFF,+x*16,220,+x*16+64 ,220+64 ,16 );
-            LCDRectangle(0xFFFF00,-x*16,220,-x*16+64 ,220+64 ,16 );
+            mdelay(T0);
+            PingPong();
+            mdelay(10);
+            LCDBackground(0x000000);
+            LCDRectangle(0x00FF00,+x*16,20,+x*16+256,20+256,16);
+            // LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,1 );
+            // LCDRectangle(0x00FFFF,+x*16,220,+x*16+64 ,220+64 ,16 );
+            // LCDRectangle(0xFFFF00,-x*16,220,-x*16+64 ,220+64 ,16 );
         }
 #endif        
-        mdelay(100);
+        mdelay(T0);
 	}
 }
 
