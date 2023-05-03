@@ -418,72 +418,33 @@ end
 
 //------------------------------------------------------------------------------------------------
 //	Internal Address & Length Control for Read; If enable Ping-Pong operation, Read should switch the address
-wire	[`ASIZE-1:0]	RD_MIN_ADDR1 = RD_MIN_ADDR;
-wire	[`ASIZE-1:0]	RD_MAX_ADDR1 = RD_MAX_ADDR;
-wire	[`ASIZE-1:0]	RD_MIN_ADDR2 = {~RD_MIN_ADDR[`ASIZE-1], RD_MIN_ADDR[`ASIZE-2:0]};	//Ping-Pong1 operation
-wire	[`ASIZE-1:0]	RD_MAX_ADDR2 = {~RD_MAX_ADDR[`ASIZE-1], RD_MAX_ADDR[`ASIZE-2:0]};	//Ping-Pong2 operation
-wire	PINGPONG1_RDADDR1 = (rRD_ADDR >=  RD_MIN_ADDR1 && rRD_ADDR <= RD_MAX_ADDR1 - RD_LENGTH) ? 1'b1 : 1'b0;
-wire	PINGPONG1_RDADDR2 = (rRD_ADDR >=  RD_MIN_ADDR2 && rRD_ADDR <= RD_MAX_ADDR2 - RD_LENGTH) ? 1'b1 : 1'b0;
+reg	[`ASIZE-1:0]	RD_MIN_REG;
+reg	[`ASIZE-1:0]	RD_MAX_REG;
 always@(posedge REF_CLK or negedge RESET_N)
 begin
 	if(!RESET_N)
 		begin	
-		if(Sdram_PingPong_EN)							//SDRAM PING-PONG operation enable			
-			rRD_ADDR <= RD_MIN_ADDR2;
-		else
-			rRD_ADDR <= RD_MIN_ADDR1;
+            RD_MIN_REG <= RD_MIN_ADDR;
+            RD_MAX_REG <= RD_MAX_ADDR;
+			rRD_ADDR <= RD_MIN_ADDR;
 		end
 	else if(RD_LOAD)
 		begin
-		if(Sdram_PingPong_EN)							//SDRAM PING-PONG operation enable			
-			rRD_ADDR <= RD_MIN_ADDR2;
-		else
-			rRD_ADDR <= RD_MIN_ADDR1;
+            RD_MIN_REG <= RD_MIN_ADDR;
+            RD_MAX_REG <= RD_MAX_ADDR;
+			rRD_ADDR <= RD_MIN_ADDR;
 		end
-	else if(mRD_DONE & RD_MASK)							//While 1 page read has done
+	else if(mRD_DONE & RD_MASK)
 		begin
-            if(rRD_ADDR < RD_MAX_ADDR1 - RD_LENGTH)
+            if(rRD_ADDR < RD_MAX_REG - RD_LENGTH)
 				rRD_ADDR	<=	rRD_ADDR + RD_LENGTH;
 			else
-				rRD_ADDR	<=	RD_MIN_ADDR1;		//Steady Ping-Pong1
+            begin
+                RD_MIN_REG <= RD_MIN_ADDR;
+                RD_MAX_REG <= RD_MAX_ADDR;
+			    rRD_ADDR <= RD_MIN_ADDR;
+            end
         end
-		// //Bank 0-1 for Ping-Pong1
-		// if(PINGPONG1_RDADDR1 == 1'b1)
-		// 	begin
-		// 	if(rRD_ADDR < RD_MAX_ADDR1 - RD_LENGTH)
-		// 		rRD_ADDR	<=	rRD_ADDR + RD_LENGTH;
-		// 	else
-		// 		begin
-		// 		if(Sdram_PingPong_EN)					//SDRAM PING-PONG operation enable	
-		// 			begin
-		// 			if(PINGPONG1_WRADDR1 == 1'b1)
-		// 				rRD_ADDR	<=	RD_MIN_ADDR2;	//Go to Ping-Pong2
-		// 			else if(PINGPONG1_WRADDR2 == 1'b1)
-		// 				rRD_ADDR	<=	RD_MIN_ADDR1;	//Remain Ping-Pong1
-		// 			end
-		// 		else
-		// 			rRD_ADDR	<=	RD_MIN_ADDR1;		//Steady Ping-Pong1
-		// 		end
-		// 	end
-		// //Bank 2-3 for Ping-Pong2
-		// if(PINGPONG1_RDADDR2 == 1'b1)		
-		// 	begin
-		// 	if(rRD_ADDR < RD_MAX_ADDR2 - RD_LENGTH)
-		// 		rRD_ADDR	<=	rRD_ADDR + RD_LENGTH;
-		// 	else
-		// 		begin
-		// 		if(Sdram_PingPong_EN)					//SDRAM PING-PONG operation enable	
-		// 			begin
-		// 			if(PINGPONG1_WRADDR1 == 1'b1)
-		// 				rRD_ADDR	<=	RD_MIN_ADDR2;	//Remain Ping-Pong2
-		// 			else if(PINGPONG1_WRADDR2 == 1'b1)
-		// 				rRD_ADDR	<=	RD_MIN_ADDR1;	//Go to Ping-Pong1
-		// 			end
-		// 		else
-		// 			rRD_ADDR	<=	RD_MIN_ADDR2;		//Steady Ping-Pong2
-		// 		end
-		// 	end
-		// end
 	else
 		rRD_ADDR <= rRD_ADDR;
 end

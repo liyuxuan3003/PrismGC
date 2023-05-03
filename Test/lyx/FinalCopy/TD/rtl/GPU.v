@@ -66,8 +66,8 @@ wire    [8:0]  SYS_WR_LEN;
 wire          SYS_VAILD;
 wire          BUSY;
 
-wire[31:0] pingAddr;
-wire[31:0] pongAddr;
+// wire[31:0] pingAddr;
+// wire[31:0] pongAddr;
 
 assign X_POS=mem[0][15:0];
 assign Y_POS=mem[1][15:0];
@@ -76,9 +76,10 @@ assign LEN=mem[3][23:0];
 assign ENABLE=mem[4][0];
 assign SYS_WR_LEN=mem[5][8:0];
 
-assign pingAddr = (mem[8]) ? 32'h0 : 32'h100_000;
-assign pongAddr = (mem[8]) ? 32'h100_000 : 32'h0;
-
+// assign pingAddr = (mem[8]) ? 32'h0 : 32'h100_000;
+// assign pongAddr = (mem[8]) ? 32'h100_000 : 32'h0;
+wire pingPong;
+assign pingPong = mem[8][0];
 SDRAM_HDMI_Display u_SDRAM_HDMI_Display
 (
     .clk(clk),
@@ -90,8 +91,10 @@ SDRAM_HDMI_Display u_SDRAM_HDMI_Display
     .HDMI_D1_P(HDMI_D1_P),
     .HDMI_D0_P(HDMI_D0_P),
 
-    .pingAddr(pingAddr),
-    .pongAddr(pongAddr),
+    .bitPingPong(pingPong),
+
+    // .pingAddr(pingAddr),
+    // .pongAddr(pongAddr),
 
     .x_pos(X_POS),
     .y_pos(Y_POS),

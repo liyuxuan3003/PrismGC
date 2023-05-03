@@ -140,6 +140,13 @@ int main()
             // LCDRectangle(0x00FFFF,+x*16,220,+x*16+64 ,220+64 ,16 );
             // LCDRectangle(0xFFFF00,-x*16,220,-x*16+64 ,220+64 ,16 );
         }
+        if(SWI_5(P))
+        {
+            PingPong();
+            mdelay(2*T0);
+            PingPong();
+            mdelay(2*T0);
+        }
 #endif        
 	}
 }

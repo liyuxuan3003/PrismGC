@@ -13,8 +13,10 @@ module SDRAM_HDMI_Display
 	output			HDMI_D1_P,
 	output			HDMI_D0_P,
 
-    input[31:0]     pingAddr,
-    input[31:0]     pongAddr,
+    input           bitPingPong,   
+
+    // input[31:0]     pingAddr,
+    // input[31:0]     pongAddr,
 
     //LCD
     input[15:0]         x_pos,
@@ -124,10 +126,19 @@ wire    [31:0]  sys_data_out;
 wire            sys_rd_out;
 wire sys_rload;
 
-wire [31:0] wr_min_addr = pongAddr | sys_addr_min;
-wire [31:0] wr_max_addr = pongAddr | sys_addr_max;
-wire [31:0] rd_min_addr = pingAddr;
-wire [31:0] rd_max_addr = pingAddr | (`H_DISP * `V_DISP);
+`define PING_PONG_0 21'h0
+`define PING_PONG_1 21'h100_000
+
+wire [20:0] wr_min_addr = bitPingPong ? (`PING_PONG_0 | sys_addr_min) : (`PING_PONG_1 | sys_addr_min);
+wire [20:0] wr_max_addr = bitPingPong ? (`PING_PONG_0 | sys_addr_max) : (`PING_PONG_1 | sys_addr_max);
+
+wire [20:0] rd_min_addr = bitPingPong ? (`PING_PONG_1) : (`PING_PONG_0);
+wire [20:0] rd_max_addr = bitPingPong ? (`PING_PONG_1 | (`H_DISP * `V_DISP)) : (`PING_PONG_0 | (`H_DISP * `V_DISP));
+
+// wire [31:0] wr_min_addr = pongAddr | sys_addr_min;
+// wire [31:0] wr_max_addr = pongAddr | sys_addr_max;
+// wire [31:0] rd_min_addr = pingAddr;
+// wire [31:0] rd_max_addr = pingAddr | (`H_DISP * `V_DISP);
 
 Sdram_Control_2Port    u_Sdram_Control_2Port
 (
@@ -161,9 +172,8 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
 
     //    FIFO Read Side
     .RD_CLK             (clk_read),         //read fifo clock
-    // .RD_LOAD            (1'b0),             //read register load & fifo clear
-    //.RD_LOAD            (CounterX == `H_TOTAL-1 && CounterY == `V_TOTAL-1),//read register load & fifo clear
-    .RD_LOAD            (sys_rload),
+    .RD_LOAD            (1'b0),             //read register load & fifo clear
+    // .RD_LOAD            (sys_rload),
     .RD_DATA            (sys_data_out),     //read data output
     .RD                 (sys_rd_out),       //read request
     // .RD_MIN_ADDR        (0),         //read start address
