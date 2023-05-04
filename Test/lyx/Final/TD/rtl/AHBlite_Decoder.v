@@ -89,7 +89,14 @@ assign P3_HSEL = (HADDR[31:4] == 28'h4000_001) ? Port3_en : 1'b0;
 /***********************************/
 
 //HDMI
-//0X4002_0000 HDMI DATA
+//0X4002_0000 XPOS
+//0X4002_0004 YPOS
+//0X4002_0008 PIXEL
+//0X4002_000C LEN
+//0x4002_0010 ENABLE
+//0x4002_0014 SYS_WR_LEN
+//0x4002_0018 SYS_VAILD
+//0x4002_001C BUSY
 /*Insert HDMI decoder code there*/
 assign P4_HSEL = (HADDR[31:16] == 16'h4002) ? Port4_en : 1'b0;
 /***********************************/

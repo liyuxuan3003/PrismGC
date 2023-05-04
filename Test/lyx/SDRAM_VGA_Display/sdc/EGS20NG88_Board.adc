@@ -1,4 +1,4 @@
-set_pin_assignment	{ clk_24m }	{ LOCATION = R7; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ clk }	{ LOCATION = R7; IOSTANDARD = LVCMOS33; }
 
 #HDMI TX
 set_pin_assignment	{ HDMI_CLK_P }	{ LOCATION = P4; IOSTANDARD = LVDS33; }

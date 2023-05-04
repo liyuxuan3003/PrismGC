@@ -4,7 +4,7 @@
 module SDRAM_VGA_Display_Test
 (
     //global clock 24MHz
-    input               clk_24m,          //24MHz
+    input               clk,          //24MHz
 //    input               rst_n,          //global reset
     
 	//HDMI
@@ -22,7 +22,7 @@ wire	clk_pixel, clk_pixel_5x;
 wire    sys_rst_n;  //global reset
 system_ctrl_pll u_system_ctrl_pll
 (
-    .clk            (clk_24m),      //24MHz
+    .clk            (clk),      //24MHz
 	.rst_n			(1'b1),			//global reset
     
     .sys_rst_n      (sys_rst_n),    //global reset
@@ -35,24 +35,63 @@ system_ctrl_pll u_system_ctrl_pll
 
 //-------------------------------------------
 //Generate LCD Test picture
+wire            sys_load;
 wire    [23:0]  sys_data;
 wire            sys_we;
+wire    [31:0]  sys_addr_min;
+wire    [31:0]  sys_addr_max;
+wire    [8:0]   sys_wr_len;
+
 wire            sdram_init_done;            //sdram init done
-LCD_Test_Data    
+
+wire[15:0]         x_pos;
+wire[15:0]         y_pos;
+wire[23:0]         pixel;
+wire[23:0]         len;
+wire               enable;
+
+wire               busy;
+
+LCD_Control    
 #(
     .H_DISP             (`H_DISP),
     .V_DISP             (`V_DISP)
 )
-u_LCD_Test_Data
+u_LCD_Control
 (
     .clk                (clk_ref),        
     .rst_n              (sys_rst_n),     
     
     .sys_vaild          (sdram_init_done),
-    .DIVIDE_PARAM       (8'd128),
+    .sys_load           (sys_load),
     .sys_data           (sys_data),    
-    .sys_we             (sys_we)
-);  
+    .sys_we             (sys_we),
+    .sys_addr_min       (sys_addr_min),
+    .sys_addr_max       (sys_addr_max),
+    
+    .x_pos(x_pos),
+    .y_pos(y_pos),
+    .pixel(pixel),
+    .len(len),
+    .enable(enable),
+    .busy(busy)
+);
+
+LCD_ControlTest u_LCD_ControlTest
+(
+    .clk                (clk_ref),        
+    .rst_n              (sys_rst_n),     
+
+    .x_pos(x_pos),
+    .y_pos(y_pos),
+    .pixel(pixel),
+    .len(len),
+    .enable(enable),
+    .busy(busy),
+    .wr_len             (sys_wr_len),
+
+    .sys_vaild          (sdram_init_done)
+);
 
 //-----------------------------------------
 //EM638325 SDRAM_512Kx4x32bit
@@ -89,12 +128,10 @@ SDRAM_512Kx4x32bit	u_SDRAM_512Kx4x32bit
 //sdram write port
 wire            clk_write   =   clk_ref;    //Change with input signal
 wire    [31:0]  sys_data_in =   {sys_data, sys_data[7:0]};
-wire            sys_we_in   =   sys_we;
 //sdram read port
 wire            clk_read    =   clk_pixel;    //Change with vga timing    
 wire    [31:0]  sys_data_out;
 wire            sys_rd_out;
-//wire            sdram_init_done;            //sdram init done
 Sdram_Control_2Port    u_Sdram_Control_2Port
 (
     //    HOST Side
@@ -116,12 +153,12 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
 
     //    FIFO Write Side
     .WR_CLK             (clk_write),        //write fifo clock
-    .WR_LOAD            (1'b0),             //write register load & fifo clear
+    .WR_LOAD            (sys_load),         //write register load & fifo clear
     .WR_DATA            (sys_data_in),      //write data input
-    .WR                 (sys_we_in),        //write data request
-    .WR_MIN_ADDR        (21'd0),            //write start address
-    .WR_MAX_ADDR        (`H_DISP * `V_DISP),//write max address
-    .WR_LENGTH          (9'd256),           //write burst length
+    .WR                 (sys_we),           //write data request
+    .WR_MIN_ADDR        (sys_addr_min),     //write start address
+    .WR_MAX_ADDR        (sys_addr_max),     //write max address
+    .WR_LENGTH          (sys_wr_len),       //write burst length
 
     //    FIFO Read Side
     .RD_CLK             (clk_read),         //read fifo clock
@@ -135,7 +172,7 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     //User interface add by CrazyBingo
     .Sdram_Init_Done    (sdram_init_done),  //SDRAM init done signal
     .Sdram_Read_Valid   (1'b1),             //Enable to read
-    .Sdram_PingPong_EN  (1'b1)              //SDRAM PING-PONG operation enable
+    .Sdram_PingPong_EN  (1'b0)              //SDRAM PING-PONG operation enable
 );
 
 
@@ -152,8 +189,8 @@ lcd_driver u_lcd_driver
     .rst_n              (sys_rst_n), 
      
 	 //lcd interface
-	.lcd_dclk			(),//(lcd_dclk),
-	.lcd_blank			(),//lcd_blank
+	.lcd_dclk			(),
+	.lcd_blank			(),
 	.lcd_sync			(),		    	
 	.lcd_hs				(VGA_HS),		
 	.lcd_vs				(VGA_VS),

@@ -66,46 +66,6 @@
                     <Attr Name="CompileOrder" Val="7"/>
                 </FileInfo>
             </File>
-            <File Path="../src/sdram_global_def.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="13"/>
-                </FileInfo>
-            </File>
-            <File Path="../src/sdram_top.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="14"/>
-                </FileInfo>
-            </File>
-            <File Path="../src/enc_file/sdr_as_ram.enc.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="15"/>
-                </FileInfo>
-            </File>
-            <File Path="../src/enc_file/sdr_init_ref.enc.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="16"/>
-                </FileInfo>
-            </File>
-            <File Path="../src/enc_file/sdr_wrrd.enc.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="17"/>
-                </FileInfo>
-            </File>
         </Verilog>
         <VHDL>
             <File Path="../src/enc_file/DVITransmitter.enc.vhd">
@@ -188,7 +148,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-04-02 15:16:56.357</Step_Last_Change>
+        <Step_Last_Change>2023-04-08 11:11:33.905</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>

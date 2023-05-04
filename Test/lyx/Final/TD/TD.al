@@ -154,47 +154,7 @@
                     <Attr Name="CompileOrder" Val="18"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/enc_file/video_tpg_1080p.enc.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="19"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/HDMI/enc_file/video_tpg_800600.enc.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="20"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/HDMI/enc_file/video_tpg_1024768.enc.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="21"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/HDMI/enc_file/video_tpg_1280800.enc.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="22"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/HDMI/enc_file/video_tpg_12801024p.enc.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="23"/>
-                </FileInfo>
-            </File>
-            <File Path="rtl/HDMI/enc_file/video_tpg_16801050p.enc.v">
+            <File Path="rtl/HDMI/lcd_24bit_ip/lcd_driver.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -202,7 +162,39 @@
                     <Attr Name="CompileOrder" Val="24"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/hdmi_top.v">
+            <File Path="rtl/HDMI/lcd_24bit_ip/lcd_para.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="25"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/HDMI/LCD_Control.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="26"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/HDMI/SDRAM_HDMI_Display.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="27"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/HDMI/sdram/command.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="28"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/HDMI/sdram/control_interface.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -210,7 +202,7 @@
                     <Attr Name="CompileOrder" Val="29"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/hdmi_tx_display.v">
+            <File Path="rtl/HDMI/sdram/read_fifo.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -218,12 +210,68 @@
                     <Attr Name="CompileOrder" Val="30"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/al_ip/tx_pll.v">
+            <File Path="rtl/HDMI/sdram/SDRAM_512Kx4x32Bit.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="31"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/HDMI/sdram/Sdram_Control_2Port.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
                     <Attr Name="CompileOrder" Val="32"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/HDMI/sdram/Sdram_Params.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="33"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/HDMI/sdram/write_fifo.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="34"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/HDMI/sys_pll/sys_pll.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="35"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/HDMI/sys_pll/sys_pll_sim.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="36"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/HDMI/sys_pll/system_ctrl_pll.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="37"/>
+                </FileInfo>
+            </File>
+            <File Path="rtl/HDMI/sys_pll/system_init_delay.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="38"/>
                 </FileInfo>
             </File>
         </Verilog>
@@ -233,7 +281,7 @@
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="25"/>
+                    <Attr Name="CompileOrder" Val="19"/>
                 </FileInfo>
             </File>
             <File Path="rtl/HDMI/enc_file/SerializerN_1_lvds.enc.vhd">
@@ -241,7 +289,7 @@
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="26"/>
+                    <Attr Name="CompileOrder" Val="20"/>
                 </FileInfo>
             </File>
             <File Path="rtl/HDMI/enc_file/SerializerN_1_lvds_dat.enc.vhd">
@@ -249,7 +297,7 @@
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="27"/>
+                    <Attr Name="CompileOrder" Val="21"/>
                 </FileInfo>
             </File>
             <File Path="rtl/HDMI/enc_file/TMDSEncoder.enc.vhd">
@@ -257,15 +305,15 @@
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="28"/>
+                    <Attr Name="CompileOrder" Val="22"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/hdmi_tx.vhd">
+            <File Path="rtl/HDMI/enc_file/hdmi_tx.vhd">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="31"/>
+                    <Attr Name="CompileOrder" Val="23"/>
                 </FileInfo>
             </File>
         </VHDL>
@@ -298,7 +346,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-04-01 19:30:00.615</Step_Last_Change>
+        <Step_Last_Change>2023-04-22 21:22:19.315</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
