@@ -52,7 +52,7 @@ begin
         if(enableState & ~mem[7][0] & mem[4][0])
         begin
             enableState <= 0;
-            mem[4] <= 32'b0;
+            //mem[4] <= 32'b0;
         end   
     end
 end
@@ -93,8 +93,11 @@ SDRAM_HDMI_Display u_SDRAM_HDMI_Display
 
     .bitPingPong(pingPong),
 
-    // .pingAddr(pingAddr),
-    // .pongAddr(pongAddr),
+    // .WR_LOAD(PI4[5]),
+    // .WR_EMPTY(PI4[7]),
+    // .WR_AFULL(PI4[9]),
+    // .WR_EN(PI4[11]),
+    // .WR_FULL(PI4[15]),
 
     .x_pos(X_POS),
     .y_pos(Y_POS),
@@ -106,14 +109,14 @@ SDRAM_HDMI_Display u_SDRAM_HDMI_Display
     .busy(BUSY)
 );
 
-assign PI4[5]   =   addrIn[7];
-assign PI4[7]   =   addrIn[6];
-assign PI4[9]   =   addrIn[5];
-assign PI4[11]  =   addrIn[4];
+// assign PI4[17]   =   ENABLE;
+// assign PI4[13]   =   BUSY;
+// assign PI4[9]   =   addrIn[5];
+// assign PI4[11]  =   addrIn[4];
 
-assign PI4[13]  =   addrOut[7];
-assign PI4[15]  =   addrOut[6];
-assign PI4[17]  =   addrOut[5];
-assign PI4[19]  =   addrOut[4];
+// assign PI4[13]  =   addrOut[7];
+// assign PI4[15]  =   addrOut[6];
+// assign PI4[17]  =   addrOut[5];
+// assign PI4[19]  =   addrOut[4];
 
 endmodule

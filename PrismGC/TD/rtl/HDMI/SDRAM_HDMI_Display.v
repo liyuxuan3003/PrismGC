@@ -12,11 +12,17 @@ module SDRAM_HDMI_Display
 	output			HDMI_D2_P,
 	output			HDMI_D1_P,
 	output			HDMI_D0_P,
+    //output[60:1]    PI4,            //下侧双排针
 
     input           bitPingPong,   
 
     // input[31:0]     pingAddr,
     // input[31:0]     pongAddr,
+    output          WR_EMPTY,
+    output          WR_FULL,
+    output          WR_AFULL,
+    output          WR_EN,
+    output          WR_LOAD,
 
     //LCD
     input[15:0]         x_pos,
@@ -57,6 +63,8 @@ wire    [31:0]  sys_addr_min;
 wire    [31:0]  sys_addr_max;
 
 wire            sdram_init_done;            //sdram init done
+assign WR_LOAD = sys_load;
+assign WR_EN   = sys_we;
 
 LCD_Control    
 #(
@@ -141,7 +149,7 @@ wire [20:0] rd_max_addr = bitPingPong ? (`PING_PONG_1 | (`H_DISP * `V_DISP)) : (
 // wire [31:0] rd_min_addr = pingAddr;
 // wire [31:0] rd_max_addr = pingAddr | (`H_DISP * `V_DISP);
 
-wire Sdram_Write_Refresh;
+wire [7:0] Sdram_Write_Refresh;
 
 Sdram_Control_2Port    u_Sdram_Control_2Port
 (
@@ -163,7 +171,7 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     .DQ                 (sdram_data),       //sdram data
 
     //    FIFO Write Side
-    .WR_CLK             (clk_write),        //write fifo clock
+    .WR_CLK             (clk_ref),        //write fifo clock
     .WR_LOAD            (sys_load),         //write register load & fifo clear
     .WR_DATA            (sys_data_in),      //write data input
     .WR                 (sys_we),           //write data request
@@ -172,6 +180,12 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
     .WR_MIN_ADDR        (wr_min_addr),     //write start address
     .WR_MAX_ADDR        (wr_max_addr),     //write max address
     .WR_LENGTH          (sys_wr_len),       //write burst length
+    //.WR_LENGTH          (9'd256),       //write burst length
+
+
+    .WR_EMPTY           (WR_EMPTY),
+    .WR_FULL            (WR_FULL),
+    .WR_AFULL           (WR_AFULL),
 
     //    FIFO Read Side
     .RD_CLK             (clk_read),         //read fifo clock
@@ -187,7 +201,7 @@ Sdram_Control_2Port    u_Sdram_Control_2Port
 
     .Sdram_Init_Done    (sdram_init_done),  //SDRAM init done signal
     .Sdram_Read_Valid   (1'b1),             //Enable to read
-    .Sdram_Write_Refresh  (1'b0)
+    .Sdram_Write_Refresh  (Sdram_Write_Refresh)
 );
 
 wire CounterX;
@@ -209,122 +223,5 @@ GPUHDMIEncoder uGPUHDMIEncoder
     .RGB(sys_data_out[31:8]),
     .Request(sys_rd_out)
 );
-/*
-localparam  H_DISP = 12'd1024;  
-localparam	V_DISP = 12'd600; 
-assign sys_vaild = sdram_init_done;
-
-always @(negedge rst_n)
-begin
-	pingAddr <= 0;
-	pongAddr <= 0;
-end
-
-reg[1:0]  wrState;
-reg[4:0]  wrDiv;
-reg[23:0] wrCount;
-reg sysForceWriteReg;
-always @(posedge clk or negedge rst_n) 
-begin
-    if(!rst_n)
-	begin
-        wrState <= 0;
-		wrCount <= 0;
-		wrDiv <= 0;
-	end
-    else
-    begin
-        case (wrState)
-            0: wrState <= enable ? 1:0;
-            1: begin
-                sys_waddr_min <= pingAddr + x_pos + y_pos * H_DISP;
-                sys_waddr_max <= pingAddr + H_DISP * (V_DISP  + 1);
-                sys_wload <= 1'b1;
-                wrState <= 2;
-                end
-            2: begin
-                sys_wload <= 1'b0;
-                wrCount <= 0;
-                wrDiv <= 0;
-                wrState <= 3;
-                end
-            3: begin
-                wrDiv <= wrDiv + 1;
-                sys_wdata <= pixel;
-                if(wrDiv == 0)
-                begin
-                    wrCount <= wrCount + 1;
-                    if(wrCount == len+254)
-                        wrState <= 4;
-                    //if(wrCount == len)
-                    //begin
-                    //	wrState <= 4;
-                    //	if(len<256)
-                    //		sysForceWriteReg <= 1;
-                end
-                end
-            4: begin
-                wrState <= enable ? 4:0;
-                sysForceWriteReg <= 0;
-                end
-            default: wrState <= 0;
-        endcase
-    end
-end
-assign busy = (wrState==1) | (wrState==2) | (wrState==3);
-assign sys_we = (wrDiv==1) & (wrState==3);
-assign sys_we_force = sysForceWriteReg;
-*/
-
-// //-------------------------------------
-// //LCD driver timing
-// wire  			VGA_DE;
-// wire  			VGA_HS;      
-// wire  			VGA_VS;
-// wire  	[23:0]  VGA_RGB;
-// lcd_driver u_lcd_driver
-// (
-//     //global clock
-//     .clk                (clk_pixel),        
-//     .rst_n              (sys_rst_n), 
-     
-// 	 //lcd interface
-// 	.lcd_dclk			(),
-// 	.lcd_blank			(),
-// 	.lcd_sync			(),		    	
-// 	.lcd_hs				(VGA_HS),		
-// 	.lcd_vs				(VGA_VS),
-// 	.lcd_en				(VGA_DE),		
-// 	.lcd_rgb			(VGA_RGB),
-
-    
-//     //user interface
-//     .lcd_request        (sys_rd_out),
-//     .lcd_data           (sys_data_out[31:8]),    
-//     .lcd_xpos           (),    
-//     .lcd_ypos           ()
-// );
-
-// //-----------------------------------
-// //HDMI TX Module
-// hdmi_tx #(.FAMILY("EG4"))	//EF2、EF3、EG4、AL3、PH1
-// u3_hdmi_tx
-// (
-// 	.PXLCLK_I	        (clk_pixel),
-// 	.PXLCLK_5X_I        (clk_pixel_5x),
-// 	.RST_N 		        (~sys_rst_n),
-        
-// 	//VGA   
-// 	.VGA_HS             (VGA_HS ),
-// 	.VGA_VS             (VGA_VS ),
-// 	.VGA_DE             (VGA_DE ),
-// 	.VGA_RGB            (VGA_RGB),
-    
-// 	//HDMI  
-// 	.HDMI_CLK_P         (HDMI_CLK_P),
-// 	.HDMI_D2_P          (HDMI_D2_P ),
-// 	.HDMI_D1_P          (HDMI_D1_P ),
-// 	.HDMI_D0_P          (HDMI_D0_P )	
-// );
 
 endmodule

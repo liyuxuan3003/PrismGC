@@ -12,6 +12,9 @@ module Sdram_Control_2Port(
 		WR_LENGTH,
 		WR_LOAD,
 		WR_CLK,
+        WR_EMPTY,
+        WR_FULL,
+        WR_AFULL,
 
 		//	FIFO Read Side 1
         RD_DATA,
@@ -55,6 +58,10 @@ input	[`ASIZE-1:0]			WR_MAX_ADDR;			//Write max address
 input	[8:0]					WR_LENGTH;				//Write length
 input							WR_LOAD;				//Write register load & fifo clear
 input							WR_CLK;				//Write fifo clock
+output                          WR_EMPTY;
+output                          WR_FULL;
+output                          WR_AFULL;
+
 //	FIFO Read Side 1
 output  [`DSIZE-1:0]            RD_DATA;               //Data output
 input							RD;					//Read Request
@@ -79,7 +86,7 @@ output							SDR_CLK;				//SDRAM clock
 //User interface add by CrazyBingo
 output							Sdram_Init_Done;		//SDRAM Init done signal
 input							Sdram_Read_Valid;		//SDRAM Read valid : output
-input                           Sdram_Write_Refresh;
+input  [7:0]                    Sdram_Write_Refresh;
 
 
 //	Internal Registers/Wires
@@ -225,11 +232,13 @@ write_fifo u_write_fifo
 	.do             (mDATAIN1),
     .re             (IN_REQ & WR_MASK), 
 
-    .empty_flag     (), 
-    .full_flag      (),
+    .empty_flag     (WR_EMPTY), 
+    .full_flag      (WR_FULL),
 	.afull_flag     (wfifo_afull_flag) 
 );
-
+assign WR_AFULL = wfifo_afull_flag;
+// assign WR_FULL = 0;
+// assign WR_EMPTY = 0;
 				
 assign	mDATAIN	= (WR_MASK) ? mDATAIN1 : {`DSIZE-1{1'b1}};
 
@@ -450,7 +459,16 @@ begin
 			begin	
 			//	Write Side 1 is most important
 //			if( (write_side_fifo_rusedw1 >= WR_LENGTH) && (WR_LOAD==0))	//write fifo
-			if( (wfifo_afull_flag == 1'b1 || Sdram_Write_Refresh == 1'b1) && (WR_LOAD==0))	//write fifo
+            if(Sdram_Write_Refresh && (WR_LOAD==0))
+                begin
+                mADDR	<=	rWR_ADDR;
+				mLENGTH	<=	Sdram_Write_Refresh;
+				WR_MASK	<=	1;
+				RD_MASK	<=	0;
+				mWR		<=	1;
+				mRD		<=	0;
+                end
+			else if( (wfifo_afull_flag == 1'b1 ) && (WR_LOAD==0))	//write fifo
 				begin
 				mADDR	<=	rWR_ADDR;
 				mLENGTH	<=	WR_LENGTH;

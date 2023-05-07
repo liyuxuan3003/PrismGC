@@ -1,4 +1,5 @@
 #include "GPULite.h"
+#include "Sleep.h"
 
 void WaitRamReady()
 {
@@ -17,6 +18,8 @@ void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len,uint32_t
     __asm("nop");
     __asm("nop");
     while(GPU -> BUSY) ;
+    udelay(5);                          //Do not touch!
+    GPU -> ENABLE = 0;
 }
 
 void LCDBackground(uint32_t color)
