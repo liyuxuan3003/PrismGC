@@ -1,0 +1,104 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.35.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: xx Frank, xx, LIC=MPPLD-8JSVW-HLXCL-0ZB7Q-FG898-X77FC
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.35.0.2
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.35.0.2
+Dialog DLL:      DARMCM1.DLL V1.19.4.0
+Target DLL:      CMSIS_AGDI.dll V1.33.0.0
+Dialog DLL:      TARMCM1.DLL V1.14.4.0
+ 
+<h2>Project:</h2>
+E:\M0\Experiments\Task9\keil\BuzzerNLCD.uvprojx
+Project File Date:  04/03/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'Target 1'
+assembling startup_CMSDK_CM0.s...
+compiling code_def.c...
+..\src\code_def.c(9): warning:  #223-D: function "Set_SysTick_CTRL" declared implicitly
+  	Set_SysTick_CTRL(0);
+..\src\code_def.c(14): warning:  #223-D: function "Set_SysTick_CTRL" declared implicitly
+  	Set_SysTick_CTRL(0);
+..\src\code_def.c(15): warning:  #223-D: function "Set_SysTick_LOAD" declared implicitly
+  	Set_SysTick_LOAD(time);
+..\src\code_def.c(16): warning:  #223-D: function "Set_SysTick_VALUE" declared implicitly
+  	Set_SysTick_VALUE(0);
+..\src\code_def.c: 4 warnings, 0 errors
+compiling systick.c...
+compiling main.c...
+..\src\main.c(39): warning:  #169-D: expected a declaration
+..\src\main.c(88): warning:  #169-D: expected a declaration
+..\src\main.c(90): warning:  #169-D: expected a declaration
+  char Sound[]     ={ 0x32,0x02,0x00,0x00};__attribute__((aligned(2)));
+..\src\main.c(161): warning:  #186-D: pointless comparison of unsigned integer with zero
+  			if(tune>=0&&tune<22)
+..\src\main.c(168): warning:  #111-D: statement is unreachable
+  	return j;
+..\src\main.c(175): warning:  #223-D: function "SYSInit" declared implicitly
+  	SYSInit();
+..\src\main.c(179): warning:  #550-D: variable "x"  was set but never used
+  	uint16_t x, y;
+..\src\main.c(179): warning:  #550-D: variable "y"  was set but never used
+  	uint16_t x, y;
+..\src\main.c(180): warning:  #550-D: variable "dx"  was set but never used
+  	uint8_t dx, dy;
+..\src\main.c(180): warning:  #550-D: variable "dy"  was set but never used
+  	uint8_t dx, dy;
+..\src\main.c: 10 warnings, 0 errors
+compiling lcd.c...
+..\src\lcd.c(313): warning:  #177-D: variable "hsareg"  was declared but never referenced
+  	uint8_t hsareg,heareg,vsareg,veareg;
+..\src\lcd.c(313): warning:  #177-D: variable "heareg"  was declared but never referenced
+  	uint8_t hsareg,heareg,vsareg,veareg;
+..\src\lcd.c(313): warning:  #177-D: variable "vsareg"  was declared but never referenced
+  	uint8_t hsareg,heareg,vsareg,veareg;
+..\src\lcd.c(313): warning:  #177-D: variable "veareg"  was declared but never referenced
+  	uint8_t hsareg,heareg,vsareg,veareg;
+..\src\lcd.c(314): warning:  #177-D: variable "hsaval"  was declared but never referenced
+  	uint16_t hsaval,heaval,vsaval,veaval; 
+..\src\lcd.c(314): warning:  #177-D: variable "heaval"  was declared but never referenced
+  	uint16_t hsaval,heaval,vsaval,veaval; 
+..\src\lcd.c(314): warning:  #177-D: variable "vsaval"  was declared but never referenced
+  	uint16_t hsaval,heaval,vsaval,veaval; 
+..\src\lcd.c(314): warning:  #177-D: variable "veaval"  was declared but never referenced
+  	uint16_t hsaval,heaval,vsaval,veaval; 
+..\src\lcd.c(359): warning:  #177-D: variable "temp"  was declared but never referenced
+  	uint16_t temp;
+..\src\lcd.c: 9 warnings, 0 errors
+linking...
+.\BuzzerNLCD.axf: Warning: L6305W: Image does not have an entry point. (Not specified or not set due to multiple choices.)
+Program Size: Code=1924 RO-data=1580 RW-data=680 ZI-data=2152  
+Finished: 0 information, 1 warning and 0 error messages.
+After Build - User command #1: fromelf -cvf .\BuzzerNLCD.axf --vhx --32x1 -o code.hex
+After Build - User command #2: fromelf -cvf .\BuzzerNLCD.axf -o code.txt
+".\BuzzerNLCD.axf" - 0 Error(s), 24 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.V2M-MPS2_CMx_BSP.1.7.1.pack
+                Keil.V2M-MPS2_CMx_BSP.1.7.1
+                ARM V2M-MPS2 Board Support PACK for Cortex-M System Design Kit Devices
+
+<h2>Collection of Component include folders:</h2>
+  C:\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.7.1\Device\CMSDK_CM0\Include
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>

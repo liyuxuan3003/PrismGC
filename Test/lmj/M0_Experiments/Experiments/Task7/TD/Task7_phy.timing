@@ -1,0 +1,1505 @@
+=========================================================================================================
+Auto created by the td v5.0.30786
+@Copy Right: Shanghai Anlogic Infotech, 2011 - 2021.
+Sun Apr  3 19:34:36 2022
+=========================================================================================================
+
+
+Top Model:                CortexM0_SoC                                                    
+Device:                   eagle_s20                                                       
+Timing Constraint File:   Task7.sdc                                                       
+STA Level:                Detail                                                          
+
+=========================================================================================================
+Timing constraint:        clock: clk                                                      
+Clock = clk, period 20ns, rising at 0ns, falling at 10ns
+
+6556 endpoints analyzed totally, and more than 1000000000 paths analyzed
+9 errors detected : 9 setup errors (TNS = -284.476), 0 hold errors (TNS = 0.000)
+Minimum period is 23.491ns
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point u_logic/Rrvax6_reg (1893581 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (setup check):    -3.491 ns                                                        
+ Start Point:             u_logic/P33bx6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               u_logic/Rrvax6_reg.mi[0] (rising edge triggered by clock clk)   
+ Clock group:             clk                                                             
+ Data Path Delay:         23.166ns  (logic 5.948ns, net 17.218ns, 25% logic)              
+ Logic Levels:            17                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/P33bx6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/P33bx6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/_al_u4408|u_logic/_al_u75.d[1] (u_logic/P33bx6)     net  (fanout = 6)       1.280 r     5.148      ../rtl/cortexm0ds_logic.v(1685)
+ u_logic/_al_u4408|u_logic/_al_u75.f[1]                      cell                    0.205 r     5.353
+ u_logic/_al_u4619|u_logic/_al_u4410.c[0] (u_logic/Amsow6)   net  (fanout = 4)       1.263 r     6.616      ../rtl/cortexm0ds_logic.v(1229)
+ u_logic/_al_u4619|u_logic/_al_u4410.f[0]                    cell                    0.348 r     6.964
+ u_logic/_al_u4412|u_logic/_al_u1865.d[1] (u_logic/_al_u4410_o) net  (fanout = 6)       0.770 r     7.734                    
+ u_logic/_al_u4412|u_logic/_al_u1865.f[1]                    cell                    0.262 r     7.996
+ u_logic/_al_u4520|u_logic/_al_u4418.b[0] (u_logic/_al_u4412_o) net  (fanout = 2)       0.309 r     8.305                    
+ u_logic/_al_u4520|u_logic/_al_u4418.f[0]                    cell                    0.431 r     8.736
+ u_logic/_al_u4509|u_logic/_al_u4510.d[0] (u_logic/_al_u4418_o) net  (fanout = 7)       0.613 r     9.349                    
+ u_logic/_al_u4509|u_logic/_al_u4510.f[0]                    cell                    0.262 r     9.611
+ u_logic/_al_u4521.c[1] (u_logic/_al_u4510_o)                net  (fanout = 4)       0.757 r    10.368                    
+ u_logic/_al_u4521.fx[0]                                     cell                    0.448 r    10.816
+ u_logic/_al_u4545|u_logic/_al_u4610.d[1] (u_logic/_al_u4521_o) net  (fanout = 2)       0.625 r    11.441                    
+ u_logic/_al_u4545|u_logic/_al_u4610.f[1]                    cell                    0.262 r    11.703
+ u_logic/_al_u4546|u_logic/_al_u4556.c[0] (u_logic/Hnrow6_lutinv) net  (fanout = 6)       0.307 r    12.010      ../rtl/cortexm0ds_logic.v(1216)
+ u_logic/_al_u4546|u_logic/_al_u4556.f[0]                    cell                    0.348 r    12.358
+ u_logic/_al_u4550|u_logic/_al_u4557.d[0] (u_logic/_al_u4556_o) net  (fanout = 2)       0.594 r    12.952                    
+ u_logic/_al_u4550|u_logic/_al_u4557.f[0]                    cell                    0.205 r    13.157
+ u_logic/_al_u4551|u_logic/_al_u4560.d[0] (u_logic/_al_u4557_o) net  (fanout = 8)       0.806 r    13.963                    
+ u_logic/_al_u4551|u_logic/_al_u4560.f[0]                    cell                    0.262 r    14.225
+ u_logic/_al_u4565.c[1] (u_logic/_al_u4560_o)                net  (fanout = 2)       0.468 r    14.693                    
+ u_logic/_al_u4565.fx[0]                                     cell                    0.448 r    15.141
+ u_logic/_al_u4631.d[1] (u_logic/_al_u4565_o)                net  (fanout = 3)       0.625 r    15.766                    
+ u_logic/_al_u4631.fx[0]                                     cell                    0.402 r    16.168
+ u_logic/_al_u4789.d[1] (u_logic/_al_u4631_o)                net  (fanout = 4)       1.187 r    17.355                    
+ u_logic/_al_u4789.fx[0]                                     cell                    0.402 r    17.757
+ u_logic/_al_u4802.d[1] (u_logic/_al_u4789_o)                net  (fanout = 6)       0.563 r    18.320                    
+ u_logic/_al_u4802.fx[0]                                     cell                    0.402 r    18.722
+ u_logic/_al_u4958|u_logic/_al_u5007.d[0] (u_logic/_al_u4802_o) net  (fanout = 12)      0.625 r    19.347                    
+ u_logic/_al_u4958|u_logic/_al_u5007.f[0]                    cell                    0.262 r    19.609
+ u_logic/_al_u5044|u_logic/_al_u2848.d[1] (u_logic/_al_u5007_o) net  (fanout = 8)       1.009 r    20.618                    
+ u_logic/_al_u5044|u_logic/_al_u2848.f[1]                    cell                    0.262 r    20.880
+ u_logic/Yizpw6_reg.c[1] (u_logic/_al_u5044_o)               net  (fanout = 4)       1.843 r    22.723                    
+ u_logic/Yizpw6_reg.fx[0]                                    cell                    0.448 r    23.171
+ u_logic/Rrvax6_reg.mi[0] (u_logic/D39iu6)                   net  (fanout = 15)      3.574 r    26.745      ../rtl/cortexm0ds_logic.v(425)
+ u_logic/Rrvax6_reg                                          path2reg0               0.143      26.888
+ Arrival time                                                                       26.888                  (17 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ u_logic/Rrvax6_reg.clk (clk_pad)                            net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.123      23.397
+ Required time                                                                      23.397            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -3.491ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (setup check):    -3.491 ns                                                        
+ Start Point:             u_logic/P33bx6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               u_logic/Rrvax6_reg.mi[0] (rising edge triggered by clock clk)   
+ Clock group:             clk                                                             
+ Data Path Delay:         23.166ns  (logic 5.948ns, net 17.218ns, 25% logic)              
+ Logic Levels:            17                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/P33bx6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/P33bx6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/_al_u4408|u_logic/_al_u75.d[1] (u_logic/P33bx6)     net  (fanout = 6)       1.280 r     5.148      ../rtl/cortexm0ds_logic.v(1685)
+ u_logic/_al_u4408|u_logic/_al_u75.f[1]                      cell                    0.205 r     5.353
+ u_logic/_al_u4619|u_logic/_al_u4410.c[0] (u_logic/Amsow6)   net  (fanout = 4)       1.263 r     6.616      ../rtl/cortexm0ds_logic.v(1229)
+ u_logic/_al_u4619|u_logic/_al_u4410.f[0]                    cell                    0.348 r     6.964
+ u_logic/_al_u4412|u_logic/_al_u1865.d[1] (u_logic/_al_u4410_o) net  (fanout = 6)       0.770 r     7.734                    
+ u_logic/_al_u4412|u_logic/_al_u1865.f[1]                    cell                    0.262 r     7.996
+ u_logic/_al_u4520|u_logic/_al_u4418.b[0] (u_logic/_al_u4412_o) net  (fanout = 2)       0.309 r     8.305                    
+ u_logic/_al_u4520|u_logic/_al_u4418.f[0]                    cell                    0.431 r     8.736
+ u_logic/_al_u4509|u_logic/_al_u4510.d[0] (u_logic/_al_u4418_o) net  (fanout = 7)       0.613 r     9.349                    
+ u_logic/_al_u4509|u_logic/_al_u4510.f[0]                    cell                    0.262 r     9.611
+ u_logic/_al_u4521.c[1] (u_logic/_al_u4510_o)                net  (fanout = 4)       0.757 r    10.368                    
+ u_logic/_al_u4521.fx[0]                                     cell                    0.448 r    10.816
+ u_logic/_al_u4545|u_logic/_al_u4610.d[1] (u_logic/_al_u4521_o) net  (fanout = 2)       0.625 r    11.441                    
+ u_logic/_al_u4545|u_logic/_al_u4610.f[1]                    cell                    0.262 r    11.703
+ u_logic/_al_u4546|u_logic/_al_u4556.c[0] (u_logic/Hnrow6_lutinv) net  (fanout = 6)       0.307 r    12.010      ../rtl/cortexm0ds_logic.v(1216)
+ u_logic/_al_u4546|u_logic/_al_u4556.f[0]                    cell                    0.348 r    12.358
+ u_logic/_al_u4550|u_logic/_al_u4557.d[0] (u_logic/_al_u4556_o) net  (fanout = 2)       0.594 r    12.952                    
+ u_logic/_al_u4550|u_logic/_al_u4557.f[0]                    cell                    0.205 r    13.157
+ u_logic/_al_u4551|u_logic/_al_u4560.d[0] (u_logic/_al_u4557_o) net  (fanout = 8)       0.806 r    13.963                    
+ u_logic/_al_u4551|u_logic/_al_u4560.f[0]                    cell                    0.262 r    14.225
+ u_logic/_al_u4565.c[1] (u_logic/_al_u4560_o)                net  (fanout = 2)       0.468 r    14.693                    
+ u_logic/_al_u4565.fx[0]                                     cell                    0.448 r    15.141
+ u_logic/_al_u4631.d[1] (u_logic/_al_u4565_o)                net  (fanout = 3)       0.625 r    15.766                    
+ u_logic/_al_u4631.fx[0]                                     cell                    0.402 r    16.168
+ u_logic/_al_u4789.d[1] (u_logic/_al_u4631_o)                net  (fanout = 4)       1.187 r    17.355                    
+ u_logic/_al_u4789.fx[0]                                     cell                    0.402 r    17.757
+ u_logic/_al_u4802.d[0] (u_logic/_al_u4789_o)                net  (fanout = 6)       0.563 r    18.320                    
+ u_logic/_al_u4802.fx[0]                                     cell                    0.402 r    18.722
+ u_logic/_al_u4958|u_logic/_al_u5007.d[0] (u_logic/_al_u4802_o) net  (fanout = 12)      0.625 r    19.347                    
+ u_logic/_al_u4958|u_logic/_al_u5007.f[0]                    cell                    0.262 r    19.609
+ u_logic/_al_u5044|u_logic/_al_u2848.d[1] (u_logic/_al_u5007_o) net  (fanout = 8)       1.009 r    20.618                    
+ u_logic/_al_u5044|u_logic/_al_u2848.f[1]                    cell                    0.262 r    20.880
+ u_logic/Yizpw6_reg.c[1] (u_logic/_al_u5044_o)               net  (fanout = 4)       1.843 r    22.723                    
+ u_logic/Yizpw6_reg.fx[0]                                    cell                    0.448 r    23.171
+ u_logic/Rrvax6_reg.mi[0] (u_logic/D39iu6)                   net  (fanout = 15)      3.574 r    26.745      ../rtl/cortexm0ds_logic.v(425)
+ u_logic/Rrvax6_reg                                          path2reg0               0.143      26.888
+ Arrival time                                                                       26.888                  (17 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ u_logic/Rrvax6_reg.clk (clk_pad)                            net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.123      23.397
+ Required time                                                                      23.397            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -3.491ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (setup check):    -3.491 ns                                                        
+ Start Point:             u_logic/P33bx6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               u_logic/Rrvax6_reg.mi[0] (rising edge triggered by clock clk)   
+ Clock group:             clk                                                             
+ Data Path Delay:         23.166ns  (logic 5.948ns, net 17.218ns, 25% logic)              
+ Logic Levels:            17                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/P33bx6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/P33bx6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/_al_u4408|u_logic/_al_u75.d[1] (u_logic/P33bx6)     net  (fanout = 6)       1.280 r     5.148      ../rtl/cortexm0ds_logic.v(1685)
+ u_logic/_al_u4408|u_logic/_al_u75.f[1]                      cell                    0.205 r     5.353
+ u_logic/_al_u4619|u_logic/_al_u4410.c[0] (u_logic/Amsow6)   net  (fanout = 4)       1.263 r     6.616      ../rtl/cortexm0ds_logic.v(1229)
+ u_logic/_al_u4619|u_logic/_al_u4410.f[0]                    cell                    0.348 r     6.964
+ u_logic/_al_u4412|u_logic/_al_u1865.d[1] (u_logic/_al_u4410_o) net  (fanout = 6)       0.770 r     7.734                    
+ u_logic/_al_u4412|u_logic/_al_u1865.f[1]                    cell                    0.262 r     7.996
+ u_logic/_al_u4520|u_logic/_al_u4418.b[0] (u_logic/_al_u4412_o) net  (fanout = 2)       0.309 r     8.305                    
+ u_logic/_al_u4520|u_logic/_al_u4418.f[0]                    cell                    0.431 r     8.736
+ u_logic/_al_u4509|u_logic/_al_u4510.d[0] (u_logic/_al_u4418_o) net  (fanout = 7)       0.613 r     9.349                    
+ u_logic/_al_u4509|u_logic/_al_u4510.f[0]                    cell                    0.262 r     9.611
+ u_logic/_al_u4521.c[1] (u_logic/_al_u4510_o)                net  (fanout = 4)       0.757 r    10.368                    
+ u_logic/_al_u4521.fx[0]                                     cell                    0.448 r    10.816
+ u_logic/_al_u4545|u_logic/_al_u4610.d[1] (u_logic/_al_u4521_o) net  (fanout = 2)       0.625 r    11.441                    
+ u_logic/_al_u4545|u_logic/_al_u4610.f[1]                    cell                    0.262 r    11.703
+ u_logic/_al_u4546|u_logic/_al_u4556.c[0] (u_logic/Hnrow6_lutinv) net  (fanout = 6)       0.307 r    12.010      ../rtl/cortexm0ds_logic.v(1216)
+ u_logic/_al_u4546|u_logic/_al_u4556.f[0]                    cell                    0.348 r    12.358
+ u_logic/_al_u4550|u_logic/_al_u4557.d[0] (u_logic/_al_u4556_o) net  (fanout = 2)       0.594 r    12.952                    
+ u_logic/_al_u4550|u_logic/_al_u4557.f[0]                    cell                    0.205 r    13.157
+ u_logic/_al_u4551|u_logic/_al_u4560.d[0] (u_logic/_al_u4557_o) net  (fanout = 8)       0.806 r    13.963                    
+ u_logic/_al_u4551|u_logic/_al_u4560.f[0]                    cell                    0.262 r    14.225
+ u_logic/_al_u4565.c[1] (u_logic/_al_u4560_o)                net  (fanout = 2)       0.468 r    14.693                    
+ u_logic/_al_u4565.fx[0]                                     cell                    0.448 r    15.141
+ u_logic/_al_u4631.d[1] (u_logic/_al_u4565_o)                net  (fanout = 3)       0.625 r    15.766                    
+ u_logic/_al_u4631.fx[0]                                     cell                    0.402 r    16.168
+ u_logic/_al_u4789.d[1] (u_logic/_al_u4631_o)                net  (fanout = 4)       1.187 r    17.355                    
+ u_logic/_al_u4789.fx[0]                                     cell                    0.402 r    17.757
+ u_logic/_al_u4802.d[1] (u_logic/_al_u4789_o)                net  (fanout = 6)       0.563 r    18.320                    
+ u_logic/_al_u4802.fx[0]                                     cell                    0.402 r    18.722
+ u_logic/_al_u4958|u_logic/_al_u5007.d[0] (u_logic/_al_u4802_o) net  (fanout = 12)      0.625 r    19.347                    
+ u_logic/_al_u4958|u_logic/_al_u5007.f[0]                    cell                    0.262 r    19.609
+ u_logic/_al_u5044|u_logic/_al_u2848.d[1] (u_logic/_al_u5007_o) net  (fanout = 8)       1.009 r    20.618                    
+ u_logic/_al_u5044|u_logic/_al_u2848.f[1]                    cell                    0.262 r    20.880
+ u_logic/Yizpw6_reg.c[0] (u_logic/_al_u5044_o)               net  (fanout = 4)       1.843 r    22.723                    
+ u_logic/Yizpw6_reg.fx[0]                                    cell                    0.448 r    23.171
+ u_logic/Rrvax6_reg.mi[0] (u_logic/D39iu6)                   net  (fanout = 15)      3.574 r    26.745      ../rtl/cortexm0ds_logic.v(425)
+ u_logic/Rrvax6_reg                                          path2reg0               0.143      26.888
+ Arrival time                                                                       26.888                  (17 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ u_logic/Rrvax6_reg.clk (clk_pad)                            net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.123      23.397
+ Required time                                                                      23.397            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -3.491ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point u_logic/_al_u935|u_logic/Ejnpw6_reg (1893581 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (setup check):    -3.328 ns                                                        
+ Start Point:             u_logic/P33bx6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               u_logic/_al_u935|u_logic/Ejnpw6_reg.mi[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         23.003ns  (logic 5.948ns, net 17.055ns, 25% logic)              
+ Logic Levels:            17                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/P33bx6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/P33bx6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/_al_u4408|u_logic/_al_u75.d[1] (u_logic/P33bx6)     net  (fanout = 6)       1.280 r     5.148      ../rtl/cortexm0ds_logic.v(1685)
+ u_logic/_al_u4408|u_logic/_al_u75.f[1]                      cell                    0.205 r     5.353
+ u_logic/_al_u4619|u_logic/_al_u4410.c[0] (u_logic/Amsow6)   net  (fanout = 4)       1.263 r     6.616      ../rtl/cortexm0ds_logic.v(1229)
+ u_logic/_al_u4619|u_logic/_al_u4410.f[0]                    cell                    0.348 r     6.964
+ u_logic/_al_u4412|u_logic/_al_u1865.d[1] (u_logic/_al_u4410_o) net  (fanout = 6)       0.770 r     7.734                    
+ u_logic/_al_u4412|u_logic/_al_u1865.f[1]                    cell                    0.262 r     7.996
+ u_logic/_al_u4520|u_logic/_al_u4418.b[0] (u_logic/_al_u4412_o) net  (fanout = 2)       0.309 r     8.305                    
+ u_logic/_al_u4520|u_logic/_al_u4418.f[0]                    cell                    0.431 r     8.736
+ u_logic/_al_u4509|u_logic/_al_u4510.d[0] (u_logic/_al_u4418_o) net  (fanout = 7)       0.613 r     9.349                    
+ u_logic/_al_u4509|u_logic/_al_u4510.f[0]                    cell                    0.262 r     9.611
+ u_logic/_al_u4521.c[1] (u_logic/_al_u4510_o)                net  (fanout = 4)       0.757 r    10.368                    
+ u_logic/_al_u4521.fx[0]                                     cell                    0.448 r    10.816
+ u_logic/_al_u4545|u_logic/_al_u4610.d[1] (u_logic/_al_u4521_o) net  (fanout = 2)       0.625 r    11.441                    
+ u_logic/_al_u4545|u_logic/_al_u4610.f[1]                    cell                    0.262 r    11.703
+ u_logic/_al_u4546|u_logic/_al_u4556.c[0] (u_logic/Hnrow6_lutinv) net  (fanout = 6)       0.307 r    12.010      ../rtl/cortexm0ds_logic.v(1216)
+ u_logic/_al_u4546|u_logic/_al_u4556.f[0]                    cell                    0.348 r    12.358
+ u_logic/_al_u4550|u_logic/_al_u4557.d[0] (u_logic/_al_u4556_o) net  (fanout = 2)       0.594 r    12.952                    
+ u_logic/_al_u4550|u_logic/_al_u4557.f[0]                    cell                    0.205 r    13.157
+ u_logic/_al_u4551|u_logic/_al_u4560.d[0] (u_logic/_al_u4557_o) net  (fanout = 8)       0.806 r    13.963                    
+ u_logic/_al_u4551|u_logic/_al_u4560.f[0]                    cell                    0.262 r    14.225
+ u_logic/_al_u4565.c[1] (u_logic/_al_u4560_o)                net  (fanout = 2)       0.468 r    14.693                    
+ u_logic/_al_u4565.fx[0]                                     cell                    0.448 r    15.141
+ u_logic/_al_u4631.d[1] (u_logic/_al_u4565_o)                net  (fanout = 3)       0.625 r    15.766                    
+ u_logic/_al_u4631.fx[0]                                     cell                    0.402 r    16.168
+ u_logic/_al_u4789.d[1] (u_logic/_al_u4631_o)                net  (fanout = 4)       1.187 r    17.355                    
+ u_logic/_al_u4789.fx[0]                                     cell                    0.402 r    17.757
+ u_logic/_al_u4802.d[1] (u_logic/_al_u4789_o)                net  (fanout = 6)       0.563 r    18.320                    
+ u_logic/_al_u4802.fx[0]                                     cell                    0.402 r    18.722
+ u_logic/_al_u4958|u_logic/_al_u5007.d[0] (u_logic/_al_u4802_o) net  (fanout = 12)      0.625 r    19.347                    
+ u_logic/_al_u4958|u_logic/_al_u5007.f[0]                    cell                    0.262 r    19.609
+ u_logic/_al_u5044|u_logic/_al_u2848.d[1] (u_logic/_al_u5007_o) net  (fanout = 8)       1.009 r    20.618                    
+ u_logic/_al_u5044|u_logic/_al_u2848.f[1]                    cell                    0.262 r    20.880
+ u_logic/Yizpw6_reg.c[1] (u_logic/_al_u5044_o)               net  (fanout = 4)       1.843 r    22.723                    
+ u_logic/Yizpw6_reg.fx[0]                                    cell                    0.448 r    23.171
+ u_logic/_al_u935|u_logic/Ejnpw6_reg.mi[0] (u_logic/D39iu6)  net  (fanout = 15)      3.411 r    26.582      ../rtl/cortexm0ds_logic.v(425)
+ u_logic/_al_u935|u_logic/Ejnpw6_reg                         path2reg0               0.143      26.725
+ Arrival time                                                                       26.725                  (17 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ u_logic/_al_u935|u_logic/Ejnpw6_reg.clk (clk_pad)           net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.123      23.397
+ Required time                                                                      23.397            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -3.328ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (setup check):    -3.328 ns                                                        
+ Start Point:             u_logic/P33bx6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               u_logic/_al_u935|u_logic/Ejnpw6_reg.mi[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         23.003ns  (logic 5.948ns, net 17.055ns, 25% logic)              
+ Logic Levels:            17                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/P33bx6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/P33bx6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/_al_u4408|u_logic/_al_u75.d[1] (u_logic/P33bx6)     net  (fanout = 6)       1.280 r     5.148      ../rtl/cortexm0ds_logic.v(1685)
+ u_logic/_al_u4408|u_logic/_al_u75.f[1]                      cell                    0.205 r     5.353
+ u_logic/_al_u4619|u_logic/_al_u4410.c[0] (u_logic/Amsow6)   net  (fanout = 4)       1.263 r     6.616      ../rtl/cortexm0ds_logic.v(1229)
+ u_logic/_al_u4619|u_logic/_al_u4410.f[0]                    cell                    0.348 r     6.964
+ u_logic/_al_u4412|u_logic/_al_u1865.d[1] (u_logic/_al_u4410_o) net  (fanout = 6)       0.770 r     7.734                    
+ u_logic/_al_u4412|u_logic/_al_u1865.f[1]                    cell                    0.262 r     7.996
+ u_logic/_al_u4520|u_logic/_al_u4418.b[0] (u_logic/_al_u4412_o) net  (fanout = 2)       0.309 r     8.305                    
+ u_logic/_al_u4520|u_logic/_al_u4418.f[0]                    cell                    0.431 r     8.736
+ u_logic/_al_u4509|u_logic/_al_u4510.d[0] (u_logic/_al_u4418_o) net  (fanout = 7)       0.613 r     9.349                    
+ u_logic/_al_u4509|u_logic/_al_u4510.f[0]                    cell                    0.262 r     9.611
+ u_logic/_al_u4521.c[1] (u_logic/_al_u4510_o)                net  (fanout = 4)       0.757 r    10.368                    
+ u_logic/_al_u4521.fx[0]                                     cell                    0.448 r    10.816
+ u_logic/_al_u4545|u_logic/_al_u4610.d[1] (u_logic/_al_u4521_o) net  (fanout = 2)       0.625 r    11.441                    
+ u_logic/_al_u4545|u_logic/_al_u4610.f[1]                    cell                    0.262 r    11.703
+ u_logic/_al_u4546|u_logic/_al_u4556.c[0] (u_logic/Hnrow6_lutinv) net  (fanout = 6)       0.307 r    12.010      ../rtl/cortexm0ds_logic.v(1216)
+ u_logic/_al_u4546|u_logic/_al_u4556.f[0]                    cell                    0.348 r    12.358
+ u_logic/_al_u4550|u_logic/_al_u4557.d[0] (u_logic/_al_u4556_o) net  (fanout = 2)       0.594 r    12.952                    
+ u_logic/_al_u4550|u_logic/_al_u4557.f[0]                    cell                    0.205 r    13.157
+ u_logic/_al_u4551|u_logic/_al_u4560.d[0] (u_logic/_al_u4557_o) net  (fanout = 8)       0.806 r    13.963                    
+ u_logic/_al_u4551|u_logic/_al_u4560.f[0]                    cell                    0.262 r    14.225
+ u_logic/_al_u4565.c[1] (u_logic/_al_u4560_o)                net  (fanout = 2)       0.468 r    14.693                    
+ u_logic/_al_u4565.fx[0]                                     cell                    0.448 r    15.141
+ u_logic/_al_u4631.d[1] (u_logic/_al_u4565_o)                net  (fanout = 3)       0.625 r    15.766                    
+ u_logic/_al_u4631.fx[0]                                     cell                    0.402 r    16.168
+ u_logic/_al_u4789.d[1] (u_logic/_al_u4631_o)                net  (fanout = 4)       1.187 r    17.355                    
+ u_logic/_al_u4789.fx[0]                                     cell                    0.402 r    17.757
+ u_logic/_al_u4802.d[0] (u_logic/_al_u4789_o)                net  (fanout = 6)       0.563 r    18.320                    
+ u_logic/_al_u4802.fx[0]                                     cell                    0.402 r    18.722
+ u_logic/_al_u4958|u_logic/_al_u5007.d[0] (u_logic/_al_u4802_o) net  (fanout = 12)      0.625 r    19.347                    
+ u_logic/_al_u4958|u_logic/_al_u5007.f[0]                    cell                    0.262 r    19.609
+ u_logic/_al_u5044|u_logic/_al_u2848.d[1] (u_logic/_al_u5007_o) net  (fanout = 8)       1.009 r    20.618                    
+ u_logic/_al_u5044|u_logic/_al_u2848.f[1]                    cell                    0.262 r    20.880
+ u_logic/Yizpw6_reg.c[1] (u_logic/_al_u5044_o)               net  (fanout = 4)       1.843 r    22.723                    
+ u_logic/Yizpw6_reg.fx[0]                                    cell                    0.448 r    23.171
+ u_logic/_al_u935|u_logic/Ejnpw6_reg.mi[0] (u_logic/D39iu6)  net  (fanout = 15)      3.411 r    26.582      ../rtl/cortexm0ds_logic.v(425)
+ u_logic/_al_u935|u_logic/Ejnpw6_reg                         path2reg0               0.143      26.725
+ Arrival time                                                                       26.725                  (17 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ u_logic/_al_u935|u_logic/Ejnpw6_reg.clk (clk_pad)           net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.123      23.397
+ Required time                                                                      23.397            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -3.328ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (setup check):    -3.328 ns                                                        
+ Start Point:             u_logic/P33bx6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               u_logic/_al_u935|u_logic/Ejnpw6_reg.mi[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         23.003ns  (logic 5.948ns, net 17.055ns, 25% logic)              
+ Logic Levels:            17                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/P33bx6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/P33bx6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/_al_u4408|u_logic/_al_u75.d[1] (u_logic/P33bx6)     net  (fanout = 6)       1.280 r     5.148      ../rtl/cortexm0ds_logic.v(1685)
+ u_logic/_al_u4408|u_logic/_al_u75.f[1]                      cell                    0.205 r     5.353
+ u_logic/_al_u4619|u_logic/_al_u4410.c[0] (u_logic/Amsow6)   net  (fanout = 4)       1.263 r     6.616      ../rtl/cortexm0ds_logic.v(1229)
+ u_logic/_al_u4619|u_logic/_al_u4410.f[0]                    cell                    0.348 r     6.964
+ u_logic/_al_u4412|u_logic/_al_u1865.d[1] (u_logic/_al_u4410_o) net  (fanout = 6)       0.770 r     7.734                    
+ u_logic/_al_u4412|u_logic/_al_u1865.f[1]                    cell                    0.262 r     7.996
+ u_logic/_al_u4520|u_logic/_al_u4418.b[0] (u_logic/_al_u4412_o) net  (fanout = 2)       0.309 r     8.305                    
+ u_logic/_al_u4520|u_logic/_al_u4418.f[0]                    cell                    0.431 r     8.736
+ u_logic/_al_u4509|u_logic/_al_u4510.d[0] (u_logic/_al_u4418_o) net  (fanout = 7)       0.613 r     9.349                    
+ u_logic/_al_u4509|u_logic/_al_u4510.f[0]                    cell                    0.262 r     9.611
+ u_logic/_al_u4521.c[1] (u_logic/_al_u4510_o)                net  (fanout = 4)       0.757 r    10.368                    
+ u_logic/_al_u4521.fx[0]                                     cell                    0.448 r    10.816
+ u_logic/_al_u4545|u_logic/_al_u4610.d[1] (u_logic/_al_u4521_o) net  (fanout = 2)       0.625 r    11.441                    
+ u_logic/_al_u4545|u_logic/_al_u4610.f[1]                    cell                    0.262 r    11.703
+ u_logic/_al_u4546|u_logic/_al_u4556.c[0] (u_logic/Hnrow6_lutinv) net  (fanout = 6)       0.307 r    12.010      ../rtl/cortexm0ds_logic.v(1216)
+ u_logic/_al_u4546|u_logic/_al_u4556.f[0]                    cell                    0.348 r    12.358
+ u_logic/_al_u4550|u_logic/_al_u4557.d[0] (u_logic/_al_u4556_o) net  (fanout = 2)       0.594 r    12.952                    
+ u_logic/_al_u4550|u_logic/_al_u4557.f[0]                    cell                    0.205 r    13.157
+ u_logic/_al_u4551|u_logic/_al_u4560.d[0] (u_logic/_al_u4557_o) net  (fanout = 8)       0.806 r    13.963                    
+ u_logic/_al_u4551|u_logic/_al_u4560.f[0]                    cell                    0.262 r    14.225
+ u_logic/_al_u4565.c[1] (u_logic/_al_u4560_o)                net  (fanout = 2)       0.468 r    14.693                    
+ u_logic/_al_u4565.fx[0]                                     cell                    0.448 r    15.141
+ u_logic/_al_u4631.d[1] (u_logic/_al_u4565_o)                net  (fanout = 3)       0.625 r    15.766                    
+ u_logic/_al_u4631.fx[0]                                     cell                    0.402 r    16.168
+ u_logic/_al_u4789.d[1] (u_logic/_al_u4631_o)                net  (fanout = 4)       1.187 r    17.355                    
+ u_logic/_al_u4789.fx[0]                                     cell                    0.402 r    17.757
+ u_logic/_al_u4802.d[1] (u_logic/_al_u4789_o)                net  (fanout = 6)       0.563 r    18.320                    
+ u_logic/_al_u4802.fx[0]                                     cell                    0.402 r    18.722
+ u_logic/_al_u4958|u_logic/_al_u5007.d[0] (u_logic/_al_u4802_o) net  (fanout = 12)      0.625 r    19.347                    
+ u_logic/_al_u4958|u_logic/_al_u5007.f[0]                    cell                    0.262 r    19.609
+ u_logic/_al_u5044|u_logic/_al_u2848.d[1] (u_logic/_al_u5007_o) net  (fanout = 8)       1.009 r    20.618                    
+ u_logic/_al_u5044|u_logic/_al_u2848.f[1]                    cell                    0.262 r    20.880
+ u_logic/Yizpw6_reg.c[0] (u_logic/_al_u5044_o)               net  (fanout = 4)       1.843 r    22.723                    
+ u_logic/Yizpw6_reg.fx[0]                                    cell                    0.448 r    23.171
+ u_logic/_al_u935|u_logic/Ejnpw6_reg.mi[0] (u_logic/D39iu6)  net  (fanout = 15)      3.411 r    26.582      ../rtl/cortexm0ds_logic.v(425)
+ u_logic/_al_u935|u_logic/Ejnpw6_reg                         path2reg0               0.143      26.725
+ Arrival time                                                                       26.725                  (17 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ u_logic/_al_u935|u_logic/Ejnpw6_reg.clk (clk_pad)           net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.123      23.397
+ Required time                                                                      23.397            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -3.328ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point u_logic/_al_u1622|u_logic/N9ppw6_reg (1893581 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (setup check):    -3.271 ns                                                        
+ Start Point:             u_logic/P33bx6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               u_logic/_al_u1622|u_logic/N9ppw6_reg.mi[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         22.946ns  (logic 5.948ns, net 16.998ns, 25% logic)              
+ Logic Levels:            17                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/P33bx6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/P33bx6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/_al_u4408|u_logic/_al_u75.d[1] (u_logic/P33bx6)     net  (fanout = 6)       1.280 r     5.148      ../rtl/cortexm0ds_logic.v(1685)
+ u_logic/_al_u4408|u_logic/_al_u75.f[1]                      cell                    0.205 r     5.353
+ u_logic/_al_u4619|u_logic/_al_u4410.c[0] (u_logic/Amsow6)   net  (fanout = 4)       1.263 r     6.616      ../rtl/cortexm0ds_logic.v(1229)
+ u_logic/_al_u4619|u_logic/_al_u4410.f[0]                    cell                    0.348 r     6.964
+ u_logic/_al_u4412|u_logic/_al_u1865.d[1] (u_logic/_al_u4410_o) net  (fanout = 6)       0.770 r     7.734                    
+ u_logic/_al_u4412|u_logic/_al_u1865.f[1]                    cell                    0.262 r     7.996
+ u_logic/_al_u4520|u_logic/_al_u4418.b[0] (u_logic/_al_u4412_o) net  (fanout = 2)       0.309 r     8.305                    
+ u_logic/_al_u4520|u_logic/_al_u4418.f[0]                    cell                    0.431 r     8.736
+ u_logic/_al_u4509|u_logic/_al_u4510.d[0] (u_logic/_al_u4418_o) net  (fanout = 7)       0.613 r     9.349                    
+ u_logic/_al_u4509|u_logic/_al_u4510.f[0]                    cell                    0.262 r     9.611
+ u_logic/_al_u4521.c[1] (u_logic/_al_u4510_o)                net  (fanout = 4)       0.757 r    10.368                    
+ u_logic/_al_u4521.fx[0]                                     cell                    0.448 r    10.816
+ u_logic/_al_u4545|u_logic/_al_u4610.d[1] (u_logic/_al_u4521_o) net  (fanout = 2)       0.625 r    11.441                    
+ u_logic/_al_u4545|u_logic/_al_u4610.f[1]                    cell                    0.262 r    11.703
+ u_logic/_al_u4546|u_logic/_al_u4556.c[0] (u_logic/Hnrow6_lutinv) net  (fanout = 6)       0.307 r    12.010      ../rtl/cortexm0ds_logic.v(1216)
+ u_logic/_al_u4546|u_logic/_al_u4556.f[0]                    cell                    0.348 r    12.358
+ u_logic/_al_u4550|u_logic/_al_u4557.d[0] (u_logic/_al_u4556_o) net  (fanout = 2)       0.594 r    12.952                    
+ u_logic/_al_u4550|u_logic/_al_u4557.f[0]                    cell                    0.205 r    13.157
+ u_logic/_al_u4551|u_logic/_al_u4560.d[0] (u_logic/_al_u4557_o) net  (fanout = 8)       0.806 r    13.963                    
+ u_logic/_al_u4551|u_logic/_al_u4560.f[0]                    cell                    0.262 r    14.225
+ u_logic/_al_u4565.c[1] (u_logic/_al_u4560_o)                net  (fanout = 2)       0.468 r    14.693                    
+ u_logic/_al_u4565.fx[0]                                     cell                    0.448 r    15.141
+ u_logic/_al_u4631.d[1] (u_logic/_al_u4565_o)                net  (fanout = 3)       0.625 r    15.766                    
+ u_logic/_al_u4631.fx[0]                                     cell                    0.402 r    16.168
+ u_logic/_al_u4789.d[1] (u_logic/_al_u4631_o)                net  (fanout = 4)       1.187 r    17.355                    
+ u_logic/_al_u4789.fx[0]                                     cell                    0.402 r    17.757
+ u_logic/_al_u4802.d[1] (u_logic/_al_u4789_o)                net  (fanout = 6)       0.563 r    18.320                    
+ u_logic/_al_u4802.fx[0]                                     cell                    0.402 r    18.722
+ u_logic/_al_u4958|u_logic/_al_u5007.d[0] (u_logic/_al_u4802_o) net  (fanout = 12)      0.625 r    19.347                    
+ u_logic/_al_u4958|u_logic/_al_u5007.f[0]                    cell                    0.262 r    19.609
+ u_logic/_al_u5044|u_logic/_al_u2848.d[1] (u_logic/_al_u5007_o) net  (fanout = 8)       1.009 r    20.618                    
+ u_logic/_al_u5044|u_logic/_al_u2848.f[1]                    cell                    0.262 r    20.880
+ u_logic/Yizpw6_reg.c[1] (u_logic/_al_u5044_o)               net  (fanout = 4)       1.843 r    22.723                    
+ u_logic/Yizpw6_reg.fx[0]                                    cell                    0.448 r    23.171
+ u_logic/_al_u1622|u_logic/N9ppw6_reg.mi[0] (u_logic/D39iu6) net  (fanout = 15)      3.354 r    26.525      ../rtl/cortexm0ds_logic.v(425)
+ u_logic/_al_u1622|u_logic/N9ppw6_reg                        path2reg0               0.143      26.668
+ Arrival time                                                                       26.668                  (17 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ u_logic/_al_u1622|u_logic/N9ppw6_reg.clk (clk_pad)          net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.123      23.397
+ Required time                                                                      23.397            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -3.271ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (setup check):    -3.271 ns                                                        
+ Start Point:             u_logic/P33bx6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               u_logic/_al_u1622|u_logic/N9ppw6_reg.mi[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         22.946ns  (logic 5.948ns, net 16.998ns, 25% logic)              
+ Logic Levels:            17                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/P33bx6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/P33bx6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/_al_u4408|u_logic/_al_u75.d[1] (u_logic/P33bx6)     net  (fanout = 6)       1.280 r     5.148      ../rtl/cortexm0ds_logic.v(1685)
+ u_logic/_al_u4408|u_logic/_al_u75.f[1]                      cell                    0.205 r     5.353
+ u_logic/_al_u4619|u_logic/_al_u4410.c[0] (u_logic/Amsow6)   net  (fanout = 4)       1.263 r     6.616      ../rtl/cortexm0ds_logic.v(1229)
+ u_logic/_al_u4619|u_logic/_al_u4410.f[0]                    cell                    0.348 r     6.964
+ u_logic/_al_u4412|u_logic/_al_u1865.d[1] (u_logic/_al_u4410_o) net  (fanout = 6)       0.770 r     7.734                    
+ u_logic/_al_u4412|u_logic/_al_u1865.f[1]                    cell                    0.262 r     7.996
+ u_logic/_al_u4520|u_logic/_al_u4418.b[0] (u_logic/_al_u4412_o) net  (fanout = 2)       0.309 r     8.305                    
+ u_logic/_al_u4520|u_logic/_al_u4418.f[0]                    cell                    0.431 r     8.736
+ u_logic/_al_u4509|u_logic/_al_u4510.d[0] (u_logic/_al_u4418_o) net  (fanout = 7)       0.613 r     9.349                    
+ u_logic/_al_u4509|u_logic/_al_u4510.f[0]                    cell                    0.262 r     9.611
+ u_logic/_al_u4521.c[1] (u_logic/_al_u4510_o)                net  (fanout = 4)       0.757 r    10.368                    
+ u_logic/_al_u4521.fx[0]                                     cell                    0.448 r    10.816
+ u_logic/_al_u4545|u_logic/_al_u4610.d[1] (u_logic/_al_u4521_o) net  (fanout = 2)       0.625 r    11.441                    
+ u_logic/_al_u4545|u_logic/_al_u4610.f[1]                    cell                    0.262 r    11.703
+ u_logic/_al_u4546|u_logic/_al_u4556.c[0] (u_logic/Hnrow6_lutinv) net  (fanout = 6)       0.307 r    12.010      ../rtl/cortexm0ds_logic.v(1216)
+ u_logic/_al_u4546|u_logic/_al_u4556.f[0]                    cell                    0.348 r    12.358
+ u_logic/_al_u4550|u_logic/_al_u4557.d[0] (u_logic/_al_u4556_o) net  (fanout = 2)       0.594 r    12.952                    
+ u_logic/_al_u4550|u_logic/_al_u4557.f[0]                    cell                    0.205 r    13.157
+ u_logic/_al_u4551|u_logic/_al_u4560.d[0] (u_logic/_al_u4557_o) net  (fanout = 8)       0.806 r    13.963                    
+ u_logic/_al_u4551|u_logic/_al_u4560.f[0]                    cell                    0.262 r    14.225
+ u_logic/_al_u4565.c[1] (u_logic/_al_u4560_o)                net  (fanout = 2)       0.468 r    14.693                    
+ u_logic/_al_u4565.fx[0]                                     cell                    0.448 r    15.141
+ u_logic/_al_u4631.d[1] (u_logic/_al_u4565_o)                net  (fanout = 3)       0.625 r    15.766                    
+ u_logic/_al_u4631.fx[0]                                     cell                    0.402 r    16.168
+ u_logic/_al_u4789.d[1] (u_logic/_al_u4631_o)                net  (fanout = 4)       1.187 r    17.355                    
+ u_logic/_al_u4789.fx[0]                                     cell                    0.402 r    17.757
+ u_logic/_al_u4802.d[0] (u_logic/_al_u4789_o)                net  (fanout = 6)       0.563 r    18.320                    
+ u_logic/_al_u4802.fx[0]                                     cell                    0.402 r    18.722
+ u_logic/_al_u4958|u_logic/_al_u5007.d[0] (u_logic/_al_u4802_o) net  (fanout = 12)      0.625 r    19.347                    
+ u_logic/_al_u4958|u_logic/_al_u5007.f[0]                    cell                    0.262 r    19.609
+ u_logic/_al_u5044|u_logic/_al_u2848.d[1] (u_logic/_al_u5007_o) net  (fanout = 8)       1.009 r    20.618                    
+ u_logic/_al_u5044|u_logic/_al_u2848.f[1]                    cell                    0.262 r    20.880
+ u_logic/Yizpw6_reg.c[1] (u_logic/_al_u5044_o)               net  (fanout = 4)       1.843 r    22.723                    
+ u_logic/Yizpw6_reg.fx[0]                                    cell                    0.448 r    23.171
+ u_logic/_al_u1622|u_logic/N9ppw6_reg.mi[0] (u_logic/D39iu6) net  (fanout = 15)      3.354 r    26.525      ../rtl/cortexm0ds_logic.v(425)
+ u_logic/_al_u1622|u_logic/N9ppw6_reg                        path2reg0               0.143      26.668
+ Arrival time                                                                       26.668                  (17 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ u_logic/_al_u1622|u_logic/N9ppw6_reg.clk (clk_pad)          net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.123      23.397
+ Required time                                                                      23.397            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -3.271ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (setup check):    -3.271 ns                                                        
+ Start Point:             u_logic/P33bx6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               u_logic/_al_u1622|u_logic/N9ppw6_reg.mi[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         22.946ns  (logic 5.948ns, net 16.998ns, 25% logic)              
+ Logic Levels:            17                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/P33bx6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/P33bx6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/_al_u4408|u_logic/_al_u75.d[1] (u_logic/P33bx6)     net  (fanout = 6)       1.280 r     5.148      ../rtl/cortexm0ds_logic.v(1685)
+ u_logic/_al_u4408|u_logic/_al_u75.f[1]                      cell                    0.205 r     5.353
+ u_logic/_al_u4619|u_logic/_al_u4410.c[0] (u_logic/Amsow6)   net  (fanout = 4)       1.263 r     6.616      ../rtl/cortexm0ds_logic.v(1229)
+ u_logic/_al_u4619|u_logic/_al_u4410.f[0]                    cell                    0.348 r     6.964
+ u_logic/_al_u4412|u_logic/_al_u1865.d[1] (u_logic/_al_u4410_o) net  (fanout = 6)       0.770 r     7.734                    
+ u_logic/_al_u4412|u_logic/_al_u1865.f[1]                    cell                    0.262 r     7.996
+ u_logic/_al_u4520|u_logic/_al_u4418.b[0] (u_logic/_al_u4412_o) net  (fanout = 2)       0.309 r     8.305                    
+ u_logic/_al_u4520|u_logic/_al_u4418.f[0]                    cell                    0.431 r     8.736
+ u_logic/_al_u4509|u_logic/_al_u4510.d[0] (u_logic/_al_u4418_o) net  (fanout = 7)       0.613 r     9.349                    
+ u_logic/_al_u4509|u_logic/_al_u4510.f[0]                    cell                    0.262 r     9.611
+ u_logic/_al_u4521.c[1] (u_logic/_al_u4510_o)                net  (fanout = 4)       0.757 r    10.368                    
+ u_logic/_al_u4521.fx[0]                                     cell                    0.448 r    10.816
+ u_logic/_al_u4545|u_logic/_al_u4610.d[1] (u_logic/_al_u4521_o) net  (fanout = 2)       0.625 r    11.441                    
+ u_logic/_al_u4545|u_logic/_al_u4610.f[1]                    cell                    0.262 r    11.703
+ u_logic/_al_u4546|u_logic/_al_u4556.c[0] (u_logic/Hnrow6_lutinv) net  (fanout = 6)       0.307 r    12.010      ../rtl/cortexm0ds_logic.v(1216)
+ u_logic/_al_u4546|u_logic/_al_u4556.f[0]                    cell                    0.348 r    12.358
+ u_logic/_al_u4550|u_logic/_al_u4557.d[0] (u_logic/_al_u4556_o) net  (fanout = 2)       0.594 r    12.952                    
+ u_logic/_al_u4550|u_logic/_al_u4557.f[0]                    cell                    0.205 r    13.157
+ u_logic/_al_u4551|u_logic/_al_u4560.d[0] (u_logic/_al_u4557_o) net  (fanout = 8)       0.806 r    13.963                    
+ u_logic/_al_u4551|u_logic/_al_u4560.f[0]                    cell                    0.262 r    14.225
+ u_logic/_al_u4565.c[1] (u_logic/_al_u4560_o)                net  (fanout = 2)       0.468 r    14.693                    
+ u_logic/_al_u4565.fx[0]                                     cell                    0.448 r    15.141
+ u_logic/_al_u4631.d[1] (u_logic/_al_u4565_o)                net  (fanout = 3)       0.625 r    15.766                    
+ u_logic/_al_u4631.fx[0]                                     cell                    0.402 r    16.168
+ u_logic/_al_u4789.d[1] (u_logic/_al_u4631_o)                net  (fanout = 4)       1.187 r    17.355                    
+ u_logic/_al_u4789.fx[0]                                     cell                    0.402 r    17.757
+ u_logic/_al_u4802.d[1] (u_logic/_al_u4789_o)                net  (fanout = 6)       0.563 r    18.320                    
+ u_logic/_al_u4802.fx[0]                                     cell                    0.402 r    18.722
+ u_logic/_al_u4958|u_logic/_al_u5007.d[0] (u_logic/_al_u4802_o) net  (fanout = 12)      0.625 r    19.347                    
+ u_logic/_al_u4958|u_logic/_al_u5007.f[0]                    cell                    0.262 r    19.609
+ u_logic/_al_u5044|u_logic/_al_u2848.d[1] (u_logic/_al_u5007_o) net  (fanout = 8)       1.009 r    20.618                    
+ u_logic/_al_u5044|u_logic/_al_u2848.f[1]                    cell                    0.262 r    20.880
+ u_logic/Yizpw6_reg.c[0] (u_logic/_al_u5044_o)               net  (fanout = 4)       1.843 r    22.723                    
+ u_logic/Yizpw6_reg.fx[0]                                    cell                    0.448 r    23.171
+ u_logic/_al_u1622|u_logic/N9ppw6_reg.mi[0] (u_logic/D39iu6) net  (fanout = 15)      3.354 r    26.525      ../rtl/cortexm0ds_logic.v(425)
+ u_logic/_al_u1622|u_logic/N9ppw6_reg                        path2reg0               0.143      26.668
+ Arrival time                                                                       26.668                  (17 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ u_logic/_al_u1622|u_logic/N9ppw6_reg.clk (clk_pad)          net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.123      23.397
+ Required time                                                                      23.397            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -3.271ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Hold checks:
+---------------------------------------------------------------------------------------------------------
+Paths for end point buzzermusic/addr_cnt/reg0_b2|buzzermusic/addr_cnt/reg0_b3 (1 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (hold check):      0.285 ns                                                        
+ Start Point:             buzzermusic/_al_u221|buzzermusic/music_ctrl/addr_en_reg.clk (rising edge triggered by clock clk)
+ End Point:               buzzermusic/addr_cnt/reg0_b2|buzzermusic/addr_cnt/reg0_b3.ce (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.487ns  (logic 0.204ns, net 0.283ns, 41% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ buzzermusic/_al_u221|buzzermusic/music_ctrl/addr_en_reg.clk (clk_pad) net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ buzzermusic/_al_u221|buzzermusic/music_ctrl/addr_en_reg.q[0] clk2q                   0.137 r     3.527
+ buzzermusic/addr_cnt/reg0_b2|buzzermusic/addr_cnt/reg0_b3.ce (buzzermusic/addr_en) net  (fanout = 4)       0.283 r     3.810      ../rtl/buzzermusic_1.v(12)
+ buzzermusic/addr_cnt/reg0_b2|buzzermusic/addr_cnt/reg0_b3                           0.067       3.877
+ Arrival time                                                                        3.877                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ buzzermusic/addr_cnt/reg0_b2|buzzermusic/addr_cnt/reg0_b3.clk (clk_pad) net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.074       3.796
+ clock uncertainty                                                                   0.000       3.796
+ clock recovergence pessimism                                                       -0.204       3.592
+ Required time                                                                       3.592            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.285ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000 (8 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (hold check):      0.338 ns                                                        
+ Start Point:             buzzermusic/addr_cnt/reg0_b6|buzzermusic/addr_cnt/reg0_b7.clk (rising edge triggered by clock clk)
+ End Point:               buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000.addrb[11] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.666ns  (logic 0.137ns, net 0.529ns, 20% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ buzzermusic/addr_cnt/reg0_b6|buzzermusic/addr_cnt/reg0_b7.clk (clk_pad) net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ buzzermusic/addr_cnt/reg0_b6|buzzermusic/addr_cnt/reg0_b7.q[0] clk2q                   0.137 r     3.527
+ buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000.addrb[11] (buzzermusic/addr[7]) net  (fanout = 7)       0.529 r     4.056      ../rtl/buzzermusic_1.v(33)
+ buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000         (EMB)                  0.000       4.056
+ Arrival time                                                                        4.056                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000.clkb (clk_pad) net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.204       3.718
+ Required time                                                                       3.718            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.338ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (hold check):      0.654 ns                                                        
+ Start Point:             buzzermusic/addr_cnt/reg0_b0|buzzermusic/addr_cnt/reg0_b1.clk (rising edge triggered by clock clk)
+ End Point:               buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000.addrb[4] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.982ns  (logic 0.137ns, net 0.845ns, 13% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ buzzermusic/addr_cnt/reg0_b0|buzzermusic/addr_cnt/reg0_b1.clk (clk_pad) net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ buzzermusic/addr_cnt/reg0_b0|buzzermusic/addr_cnt/reg0_b1.q[1] clk2q                   0.137 r     3.527
+ buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000.addrb[4] (buzzermusic/addr[0]) net  (fanout = 7)       0.845 r     4.372      ../rtl/buzzermusic_1.v(33)
+ buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000         (EMB)                  0.000       4.372
+ Arrival time                                                                        4.372                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000.clkb (clk_pad) net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.204       3.718
+ Required time                                                                       3.718            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.654ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (hold check):      0.739 ns                                                        
+ Start Point:             buzzermusic/addr_cnt/reg0_b4|buzzermusic/addr_cnt/reg0_b5.clk (rising edge triggered by clock clk)
+ End Point:               buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000.addrb[8] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         1.067ns  (logic 0.137ns, net 0.930ns, 12% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ buzzermusic/addr_cnt/reg0_b4|buzzermusic/addr_cnt/reg0_b5.clk (clk_pad) net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ buzzermusic/addr_cnt/reg0_b4|buzzermusic/addr_cnt/reg0_b5.q[1] clk2q                   0.137 r     3.527
+ buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000.addrb[8] (buzzermusic/addr[4]) net  (fanout = 7)       0.930 r     4.457      ../rtl/buzzermusic_1.v(33)
+ buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000         (EMB)                  0.000       4.457
+ Arrival time                                                                        4.457                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ buzzermusic/BlockROM1/ram_mem0_256x12_sub_000000_000.clkb (clk_pad) net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.204       3.718
+ Required time                                                                       3.718            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.739ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000 (12 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (hold check):      0.421 ns                                                        
+ Start Point:             RAMDATA_Interface/reg0_b8|RAMDATA_Interface/reg0_b9.clk (rising edge triggered by clock clk)
+ End Point:               RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000.addra[9] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.830ns  (logic 0.137ns, net 0.693ns, 16% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ RAMDATA_Interface/reg0_b8|RAMDATA_Interface/reg0_b9.clk (clk_pad) net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ RAMDATA_Interface/reg0_b8|RAMDATA_Interface/reg0_b9.q[1]    clk2q                   0.137 r     3.527
+ RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000.addra[9] (RAMDATA_WADDR[8]) net  (fanout = 16)      0.693 r     4.220      ../rtl/CortexM0_SoC.v(337)
+ RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000                (EMB)                  0.000       4.220
+ Arrival time                                                                        4.220                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000.clka (clk_pad) net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.123       3.799
+ Required time                                                                       3.799            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.421ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (hold check):      0.551 ns                                                        
+ Start Point:             RAMDATA_Interface/reg0_b8|RAMDATA_Interface/reg0_b9.clk (rising edge triggered by clock clk)
+ End Point:               RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000.addra[10] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.960ns  (logic 0.137ns, net 0.823ns, 14% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ RAMDATA_Interface/reg0_b8|RAMDATA_Interface/reg0_b9.clk (clk_pad) net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ RAMDATA_Interface/reg0_b8|RAMDATA_Interface/reg0_b9.q[0]    clk2q                   0.137 r     3.527
+ RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000.addra[10] (RAMDATA_WADDR[9]) net  (fanout = 16)      0.823 r     4.350      ../rtl/CortexM0_SoC.v(337)
+ RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000                (EMB)                  0.000       4.350
+ Arrival time                                                                        4.350                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000.clka (clk_pad) net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.123       3.799
+ Required time                                                                       3.799            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.551ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (hold check):      0.557 ns                                                        
+ Start Point:             RAMDATA_Interface/reg0_b11|RAMDATA_Interface/reg0_b5.clk (rising edge triggered by clock clk)
+ End Point:               RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000.addra[6] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.966ns  (logic 0.137ns, net 0.829ns, 14% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ RAMDATA_Interface/reg0_b11|RAMDATA_Interface/reg0_b5.clk (clk_pad) net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ RAMDATA_Interface/reg0_b11|RAMDATA_Interface/reg0_b5.q[0]   clk2q                   0.137 r     3.527
+ RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000.addra[6] (RAMDATA_WADDR[5]) net  (fanout = 16)      0.829 r     4.356      ../rtl/CortexM0_SoC.v(337)
+ RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000                (EMB)                  0.000       4.356
+ Arrival time                                                                        4.356                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ RAM_DATA/ram_mem_al_u00_4096x8_sub_000000_000.clka (clk_pad) net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.123       3.799
+ Required time                                                                       3.799            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.557ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Recovery checks:
+---------------------------------------------------------------------------------------------------------
+Paths for end point keyboard/keyboard_reg/reg0_b4 (114 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (recovery check):  6.278 ns                                                        
+ Start Point:             u_logic/Xxqpw6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               keyboard/keyboard_reg/reg0_b4.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.213ns  (logic 1.696ns, net 11.517ns, 12% logic)              
+ Logic Levels:            5                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/Xxqpw6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/Xxqpw6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/Zx8ax6_reg.b[0] (u_logic/Xxqpw6)                    net  (fanout = 34)      0.815 r     4.683      ../rtl/cortexm0ds_logic.v(1600)
+ u_logic/Zx8ax6_reg.f[0]                                     cell                    0.333 r     5.016
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.d[1] (u_logic/T24iu6)  net  (fanout = 17)      3.437 r     8.453      ../rtl/cortexm0ds_logic.v(358)
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.f[1]                   cell                    0.205 r     8.658
+ u_logic/Zszax6_reg.d[1] (u_logic/_al_u1302_o)               net  (fanout = 2)       0.775 r     9.433                    
+ u_logic/Zszax6_reg.fx[0]                                    cell                    0.402 r     9.835
+ _al_u22|u_logic/Tfcax6_reg.d[1] (HWDATA[0])                 net  (fanout = 9)       1.551 r    11.386      ../rtl/CortexM0_SoC.v(58)
+ _al_u22|u_logic/Tfcax6_reg.f[1]                             cell                    0.262 r    11.648
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.d[0] (key_clear) net  (fanout = 1)       0.594 r    12.242      ../rtl/CortexM0_SoC.v(376)
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.f[0]    cell                    0.205 r    12.447
+ keyboard/keyboard_reg/reg0_b4.sr (keyboard/keyboard_reg/clear) net  (fanout = 16)      4.345 r    16.792      ../rtl/keyboard_reg.v(9)
+ keyboard/keyboard_reg/reg0_b4                               path2reg                0.143      16.935
+ Arrival time                                                                       16.935                  (5 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ keyboard/keyboard_reg/reg0_b4.clk (clk_pad)                 net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.123      23.213
+ Required time                                                                      23.213            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               6.278ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (recovery check):  6.278 ns                                                        
+ Start Point:             u_logic/Xxqpw6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               keyboard/keyboard_reg/reg0_b4.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.213ns  (logic 1.696ns, net 11.517ns, 12% logic)              
+ Logic Levels:            5                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/Xxqpw6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/Xxqpw6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/Zx8ax6_reg.b[0] (u_logic/Xxqpw6)                    net  (fanout = 34)      0.815 r     4.683      ../rtl/cortexm0ds_logic.v(1600)
+ u_logic/Zx8ax6_reg.f[0]                                     cell                    0.333 r     5.016
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.d[1] (u_logic/T24iu6)  net  (fanout = 17)      3.437 r     8.453      ../rtl/cortexm0ds_logic.v(358)
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.f[1]                   cell                    0.205 r     8.658
+ u_logic/Zszax6_reg.d[0] (u_logic/_al_u1302_o)               net  (fanout = 2)       0.775 r     9.433                    
+ u_logic/Zszax6_reg.fx[0]                                    cell                    0.402 r     9.835
+ _al_u22|u_logic/Tfcax6_reg.d[1] (HWDATA[0])                 net  (fanout = 9)       1.551 r    11.386      ../rtl/CortexM0_SoC.v(58)
+ _al_u22|u_logic/Tfcax6_reg.f[1]                             cell                    0.262 r    11.648
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.d[0] (key_clear) net  (fanout = 1)       0.594 r    12.242      ../rtl/CortexM0_SoC.v(376)
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.f[0]    cell                    0.205 r    12.447
+ keyboard/keyboard_reg/reg0_b4.sr (keyboard/keyboard_reg/clear) net  (fanout = 16)      4.345 r    16.792      ../rtl/keyboard_reg.v(9)
+ keyboard/keyboard_reg/reg0_b4                               path2reg                0.143      16.935
+ Arrival time                                                                       16.935                  (5 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ keyboard/keyboard_reg/reg0_b4.clk (clk_pad)                 net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.123      23.213
+ Required time                                                                      23.213            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               6.278ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (recovery check):  6.610 ns                                                        
+ Start Point:             u_logic/Qsfax6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               keyboard/keyboard_reg/reg0_b4.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         12.881ns  (logic 1.568ns, net 11.313ns, 12% logic)              
+ Logic Levels:            5                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/Qsfax6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/Qsfax6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/Zx8ax6_reg.d[0] (u_logic/Qsfax6)                    net  (fanout = 34)      0.611 r     4.479      ../rtl/cortexm0ds_logic.v(1642)
+ u_logic/Zx8ax6_reg.f[0]                                     cell                    0.205 r     4.684
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.d[1] (u_logic/T24iu6)  net  (fanout = 17)      3.437 r     8.121      ../rtl/cortexm0ds_logic.v(358)
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.f[1]                   cell                    0.205 r     8.326
+ u_logic/Zszax6_reg.d[1] (u_logic/_al_u1302_o)               net  (fanout = 2)       0.775 r     9.101                    
+ u_logic/Zszax6_reg.fx[0]                                    cell                    0.402 r     9.503
+ _al_u22|u_logic/Tfcax6_reg.d[1] (HWDATA[0])                 net  (fanout = 9)       1.551 r    11.054      ../rtl/CortexM0_SoC.v(58)
+ _al_u22|u_logic/Tfcax6_reg.f[1]                             cell                    0.262 r    11.316
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.d[0] (key_clear) net  (fanout = 1)       0.594 r    11.910      ../rtl/CortexM0_SoC.v(376)
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.f[0]    cell                    0.205 r    12.115
+ keyboard/keyboard_reg/reg0_b4.sr (keyboard/keyboard_reg/clear) net  (fanout = 16)      4.345 r    16.460      ../rtl/keyboard_reg.v(9)
+ keyboard/keyboard_reg/reg0_b4                               path2reg                0.143      16.603
+ Arrival time                                                                       16.603                  (5 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ keyboard/keyboard_reg/reg0_b4.clk (clk_pad)                 net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.123      23.213
+ Required time                                                                      23.213            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               6.610ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point keyboard/keyboard_reg/reg0_b9 (114 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (recovery check):  6.441 ns                                                        
+ Start Point:             u_logic/Xxqpw6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               keyboard/keyboard_reg/reg0_b9.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.050ns  (logic 1.696ns, net 11.354ns, 12% logic)              
+ Logic Levels:            5                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/Xxqpw6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/Xxqpw6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/Zx8ax6_reg.b[0] (u_logic/Xxqpw6)                    net  (fanout = 34)      0.815 r     4.683      ../rtl/cortexm0ds_logic.v(1600)
+ u_logic/Zx8ax6_reg.f[0]                                     cell                    0.333 r     5.016
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.d[1] (u_logic/T24iu6)  net  (fanout = 17)      3.437 r     8.453      ../rtl/cortexm0ds_logic.v(358)
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.f[1]                   cell                    0.205 r     8.658
+ u_logic/Zszax6_reg.d[1] (u_logic/_al_u1302_o)               net  (fanout = 2)       0.775 r     9.433                    
+ u_logic/Zszax6_reg.fx[0]                                    cell                    0.402 r     9.835
+ _al_u22|u_logic/Tfcax6_reg.d[1] (HWDATA[0])                 net  (fanout = 9)       1.551 r    11.386      ../rtl/CortexM0_SoC.v(58)
+ _al_u22|u_logic/Tfcax6_reg.f[1]                             cell                    0.262 r    11.648
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.d[0] (key_clear) net  (fanout = 1)       0.594 r    12.242      ../rtl/CortexM0_SoC.v(376)
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.f[0]    cell                    0.205 r    12.447
+ keyboard/keyboard_reg/reg0_b9.sr (keyboard/keyboard_reg/clear) net  (fanout = 16)      4.182 r    16.629      ../rtl/keyboard_reg.v(9)
+ keyboard/keyboard_reg/reg0_b9                               path2reg                0.143      16.772
+ Arrival time                                                                       16.772                  (5 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ keyboard/keyboard_reg/reg0_b9.clk (clk_pad)                 net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.123      23.213
+ Required time                                                                      23.213            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               6.441ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (recovery check):  6.441 ns                                                        
+ Start Point:             u_logic/Xxqpw6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               keyboard/keyboard_reg/reg0_b9.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.050ns  (logic 1.696ns, net 11.354ns, 12% logic)              
+ Logic Levels:            5                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/Xxqpw6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/Xxqpw6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/Zx8ax6_reg.b[0] (u_logic/Xxqpw6)                    net  (fanout = 34)      0.815 r     4.683      ../rtl/cortexm0ds_logic.v(1600)
+ u_logic/Zx8ax6_reg.f[0]                                     cell                    0.333 r     5.016
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.d[1] (u_logic/T24iu6)  net  (fanout = 17)      3.437 r     8.453      ../rtl/cortexm0ds_logic.v(358)
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.f[1]                   cell                    0.205 r     8.658
+ u_logic/Zszax6_reg.d[0] (u_logic/_al_u1302_o)               net  (fanout = 2)       0.775 r     9.433                    
+ u_logic/Zszax6_reg.fx[0]                                    cell                    0.402 r     9.835
+ _al_u22|u_logic/Tfcax6_reg.d[1] (HWDATA[0])                 net  (fanout = 9)       1.551 r    11.386      ../rtl/CortexM0_SoC.v(58)
+ _al_u22|u_logic/Tfcax6_reg.f[1]                             cell                    0.262 r    11.648
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.d[0] (key_clear) net  (fanout = 1)       0.594 r    12.242      ../rtl/CortexM0_SoC.v(376)
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.f[0]    cell                    0.205 r    12.447
+ keyboard/keyboard_reg/reg0_b9.sr (keyboard/keyboard_reg/clear) net  (fanout = 16)      4.182 r    16.629      ../rtl/keyboard_reg.v(9)
+ keyboard/keyboard_reg/reg0_b9                               path2reg                0.143      16.772
+ Arrival time                                                                       16.772                  (5 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ keyboard/keyboard_reg/reg0_b9.clk (clk_pad)                 net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.123      23.213
+ Required time                                                                      23.213            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               6.441ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (recovery check):  6.773 ns                                                        
+ Start Point:             u_logic/Qsfax6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               keyboard/keyboard_reg/reg0_b9.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         12.718ns  (logic 1.568ns, net 11.150ns, 12% logic)              
+ Logic Levels:            5                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/Qsfax6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/Qsfax6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/Zx8ax6_reg.d[0] (u_logic/Qsfax6)                    net  (fanout = 34)      0.611 r     4.479      ../rtl/cortexm0ds_logic.v(1642)
+ u_logic/Zx8ax6_reg.f[0]                                     cell                    0.205 r     4.684
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.d[1] (u_logic/T24iu6)  net  (fanout = 17)      3.437 r     8.121      ../rtl/cortexm0ds_logic.v(358)
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.f[1]                   cell                    0.205 r     8.326
+ u_logic/Zszax6_reg.d[1] (u_logic/_al_u1302_o)               net  (fanout = 2)       0.775 r     9.101                    
+ u_logic/Zszax6_reg.fx[0]                                    cell                    0.402 r     9.503
+ _al_u22|u_logic/Tfcax6_reg.d[1] (HWDATA[0])                 net  (fanout = 9)       1.551 r    11.054      ../rtl/CortexM0_SoC.v(58)
+ _al_u22|u_logic/Tfcax6_reg.f[1]                             cell                    0.262 r    11.316
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.d[0] (key_clear) net  (fanout = 1)       0.594 r    11.910      ../rtl/CortexM0_SoC.v(376)
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.f[0]    cell                    0.205 r    12.115
+ keyboard/keyboard_reg/reg0_b9.sr (keyboard/keyboard_reg/clear) net  (fanout = 16)      4.182 r    16.297      ../rtl/keyboard_reg.v(9)
+ keyboard/keyboard_reg/reg0_b9                               path2reg                0.143      16.440
+ Arrival time                                                                       16.440                  (5 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ keyboard/keyboard_reg/reg0_b9.clk (clk_pad)                 net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.123      23.213
+ Required time                                                                      23.213            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               6.773ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5 (114 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (recovery check):  6.731 ns                                                        
+ Start Point:             u_logic/Xxqpw6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         12.760ns  (logic 1.696ns, net 11.064ns, 13% logic)              
+ Logic Levels:            5                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/Xxqpw6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/Xxqpw6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/Zx8ax6_reg.b[0] (u_logic/Xxqpw6)                    net  (fanout = 34)      0.815 r     4.683      ../rtl/cortexm0ds_logic.v(1600)
+ u_logic/Zx8ax6_reg.f[0]                                     cell                    0.333 r     5.016
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.d[1] (u_logic/T24iu6)  net  (fanout = 17)      3.437 r     8.453      ../rtl/cortexm0ds_logic.v(358)
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.f[1]                   cell                    0.205 r     8.658
+ u_logic/Zszax6_reg.d[1] (u_logic/_al_u1302_o)               net  (fanout = 2)       0.775 r     9.433                    
+ u_logic/Zszax6_reg.fx[0]                                    cell                    0.402 r     9.835
+ _al_u22|u_logic/Tfcax6_reg.d[1] (HWDATA[0])                 net  (fanout = 9)       1.551 r    11.386      ../rtl/CortexM0_SoC.v(58)
+ _al_u22|u_logic/Tfcax6_reg.f[1]                             cell                    0.262 r    11.648
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.d[0] (key_clear) net  (fanout = 1)       0.594 r    12.242      ../rtl/CortexM0_SoC.v(376)
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.f[0]    cell                    0.205 r    12.447
+ keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5.sr (keyboard/keyboard_reg/clear) net  (fanout = 16)      3.892 r    16.339      ../rtl/keyboard_reg.v(9)
+ keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5 path2reg                0.143      16.482
+ Arrival time                                                                       16.482                  (5 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5.clk (clk_pad) net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.123      23.213
+ Required time                                                                      23.213            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               6.731ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (recovery check):  6.731 ns                                                        
+ Start Point:             u_logic/Xxqpw6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         12.760ns  (logic 1.696ns, net 11.064ns, 13% logic)              
+ Logic Levels:            5                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/Xxqpw6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/Xxqpw6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/Zx8ax6_reg.b[0] (u_logic/Xxqpw6)                    net  (fanout = 34)      0.815 r     4.683      ../rtl/cortexm0ds_logic.v(1600)
+ u_logic/Zx8ax6_reg.f[0]                                     cell                    0.333 r     5.016
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.d[1] (u_logic/T24iu6)  net  (fanout = 17)      3.437 r     8.453      ../rtl/cortexm0ds_logic.v(358)
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.f[1]                   cell                    0.205 r     8.658
+ u_logic/Zszax6_reg.d[0] (u_logic/_al_u1302_o)               net  (fanout = 2)       0.775 r     9.433                    
+ u_logic/Zszax6_reg.fx[0]                                    cell                    0.402 r     9.835
+ _al_u22|u_logic/Tfcax6_reg.d[1] (HWDATA[0])                 net  (fanout = 9)       1.551 r    11.386      ../rtl/CortexM0_SoC.v(58)
+ _al_u22|u_logic/Tfcax6_reg.f[1]                             cell                    0.262 r    11.648
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.d[0] (key_clear) net  (fanout = 1)       0.594 r    12.242      ../rtl/CortexM0_SoC.v(376)
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.f[0]    cell                    0.205 r    12.447
+ keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5.sr (keyboard/keyboard_reg/clear) net  (fanout = 16)      3.892 r    16.339      ../rtl/keyboard_reg.v(9)
+ keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5 path2reg                0.143      16.482
+ Arrival time                                                                       16.482                  (5 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5.clk (clk_pad) net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.123      23.213
+ Required time                                                                      23.213            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               6.731ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (recovery check):  7.063 ns                                                        
+ Start Point:             u_logic/Qsfax6_reg.clk (rising edge triggered by clock clk)     
+ End Point:               keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         12.428ns  (logic 1.568ns, net 10.860ns, 12% logic)              
+ Logic Levels:            5                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/Qsfax6_reg.clk (clk_pad)                            net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/Qsfax6_reg.q[0]                                     clk2q                   0.146 r     3.868
+ u_logic/Zx8ax6_reg.d[0] (u_logic/Qsfax6)                    net  (fanout = 34)      0.611 r     4.479      ../rtl/cortexm0ds_logic.v(1642)
+ u_logic/Zx8ax6_reg.f[0]                                     cell                    0.205 r     4.684
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.d[1] (u_logic/T24iu6)  net  (fanout = 17)      3.437 r     8.121      ../rtl/cortexm0ds_logic.v(358)
+ u_logic/_al_u1302|u_logic/Kqhbx6_reg.f[1]                   cell                    0.205 r     8.326
+ u_logic/Zszax6_reg.d[1] (u_logic/_al_u1302_o)               net  (fanout = 2)       0.775 r     9.101                    
+ u_logic/Zszax6_reg.fx[0]                                    cell                    0.402 r     9.503
+ _al_u22|u_logic/Tfcax6_reg.d[1] (HWDATA[0])                 net  (fanout = 9)       1.551 r    11.054      ../rtl/CortexM0_SoC.v(58)
+ _al_u22|u_logic/Tfcax6_reg.f[1]                             cell                    0.262 r    11.316
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.d[0] (key_clear) net  (fanout = 1)       0.594 r    11.910      ../rtl/CortexM0_SoC.v(376)
+ RAMCODE_Interface/reg0_b1|RAMCODE_Interface/reg0_b9.f[0]    cell                    0.205 r    12.115
+ keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5.sr (keyboard/keyboard_reg/clear) net  (fanout = 16)      3.892 r    16.007      ../rtl/keyboard_reg.v(9)
+ keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5 path2reg                0.143      16.150
+ Arrival time                                                                       16.150                  (5 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ keyboard/keyboard_filter/_al_u317|keyboard/keyboard_reg/reg0_b5.clk (clk_pad) net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.123      23.213
+ Required time                                                                      23.213            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               7.063ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Removal checks:
+---------------------------------------------------------------------------------------------------------
+Paths for end point u_logic/_al_u5084|u_logic/O4hax6_reg (1 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (removal check):   0.029 ns                                                        
+ Start Point:             u_logic/_al_u5138|cpuresetn_reg_hfnopt2_12.clk (rising edge triggered by clock clk)
+ End Point:               u_logic/_al_u5084|u_logic/O4hax6_reg.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.538ns  (logic 0.246ns, net 0.292ns, 45% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ u_logic/_al_u5138|cpuresetn_reg_hfnopt2_12.clk (clk_pad)    net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u5138|cpuresetn_reg_hfnopt2_12.q[0]             clk2q                   0.137 r     3.527
+ u_logic/_al_u5084|u_logic/O4hax6_reg.sr (cpuresetn_hfnopt2_12) net  (fanout = 36)      0.292 r     3.819      ../rtl/CortexM0_SoC.v(70)
+ u_logic/_al_u5084|u_logic/O4hax6_reg                        path2reg                0.109       3.928
+ Arrival time                                                                        3.928                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/_al_u5084|u_logic/O4hax6_reg.clk (clk_pad)          net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell removal                                                                        0.300       4.022
+ clock uncertainty                                                                   0.000       4.022
+ clock recovergence pessimism                                                       -0.123       3.899
+ Required time                                                                       3.899            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.029ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point u_logic/J0iax6_reg|u_logic/R3vpw6_reg_hfnopt2_0 (1 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (removal check):   0.120 ns                                                        
+ Start Point:             u_logic/_al_u2878|cpuresetn_reg_hfnopt2_13.clk (rising edge triggered by clock clk)
+ End Point:               u_logic/J0iax6_reg|u_logic/R3vpw6_reg_hfnopt2_0.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.548ns  (logic 0.246ns, net 0.302ns, 44% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ u_logic/_al_u2878|cpuresetn_reg_hfnopt2_13.clk (clk_pad)    net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u2878|cpuresetn_reg_hfnopt2_13.q[0]             clk2q                   0.137 r     3.527
+ u_logic/J0iax6_reg|u_logic/R3vpw6_reg_hfnopt2_0.sr (cpuresetn_hfnopt2_13) net  (fanout = 32)      0.302 r     3.829      ../rtl/CortexM0_SoC.v(70)
+ u_logic/J0iax6_reg|u_logic/R3vpw6_reg_hfnopt2_0             path2reg                0.109       3.938
+ Arrival time                                                                        3.938                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ u_logic/J0iax6_reg|u_logic/R3vpw6_reg_hfnopt2_0.clk (clk_pad) net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell removal                                                                        0.300       4.022
+ clock uncertainty                                                                   0.000       4.022
+ clock recovergence pessimism                                                       -0.204       3.818
+ Required time                                                                       3.818            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.120ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point keyboard/keyboard_filter/reg15_b8|keyboard/keyboard_filter/reg15_b9 (1 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (removal check):   0.130 ns                                                        
+ Start Point:             keyboard/keyboard_filter/_al_u448|cpuresetn_reg_hfnopt2_5.clk (rising edge triggered by clock clk)
+ End Point:               keyboard/keyboard_filter/reg15_b8|keyboard/keyboard_filter/reg15_b9.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.558ns  (logic 0.246ns, net 0.312ns, 44% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.596       1.596                    
+ keyboard/keyboard_filter/_al_u448|cpuresetn_reg_hfnopt2_5.clk (clk_pad) net                     1.794       3.390      ../rtl/CortexM0_SoC.v(3)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ keyboard/keyboard_filter/_al_u448|cpuresetn_reg_hfnopt2_5.q[0] clk2q                   0.137 r     3.527
+ keyboard/keyboard_filter/reg15_b8|keyboard/keyboard_filter/reg15_b9.sr (cpuresetn_hfnopt2_5) net  (fanout = 23)      0.312 r     3.839      ../rtl/CortexM0_SoC.v(70)
+ keyboard/keyboard_filter/reg15_b8|keyboard/keyboard_filter/reg15_b9 path2reg                0.109       3.948
+ Arrival time                                                                        3.948                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u2.ipad                                                 hier                    0.000       0.000                    
+ _al_u2.di                                                   cell (PAD)              1.660       1.660                    
+ keyboard/keyboard_filter/reg15_b8|keyboard/keyboard_filter/reg15_b9.clk (clk_pad) net                     2.062       3.722      ../rtl/CortexM0_SoC.v(3)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell removal                                                                        0.300       4.022
+ clock uncertainty                                                                   0.000       4.022
+ clock recovergence pessimism                                                       -0.204       3.818
+ Required time                                                                       3.818            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.130ns          
+
+---------------------------------------------------------------------------------------------------------
+
+
+=========================================================================================================
+Timing summary:                                                                           
+---------------------------------------------------------------------------------------------------------
+Constraint path number: more than 1,000,000,000 (STA coverage = 95.22%)
+Timing violations: 9 setup errors, and 0 hold errors.
+Minimal setup slack: -3.491, minimal hold slack: 0.029
+
+Timing group statistics: 
+	Clock constraints: 
+	  Clock Name                                  Min Period     Max Freq           Skew      Fanout            TNS
+	  clk (50.000MHz)                               23.491ns      42.569MHz        0.211ns      1481     -284.476ns
+	Minimum input arrival time before clock: no constraint path
+	Maximum output required time after clock: no constraint path
+	Maximum combinational path delay: no constraint path
+
+
+Warning: No clock constraint on 2 clock net(s): 
+	keyboard/keyboard_scan/scan_clk
+	u_logic/SWCLKTCK_pad
+
+---------------------------------------------------------------------------------------------------------

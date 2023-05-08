@@ -14,7 +14,7 @@
             <File>../i2c/i2c_dri.v</File>
             <File>../i2c/i2c_reg_cfg.v</File>
         </Verilog>
-        <ADC_FILE>TEST1.adc</ADC_FILE>
+        <ADC_FILE>WII.adc</ADC_FILE>
         <SDC_FILE/>
         <CWC_FILE/>
     </Source_Files>
@@ -24,7 +24,7 @@
         <CREATEINDEX>auto</CREATEINDEX>
     </TOP_MODULE>
     <Project_Settings>
-        <Step_Last_Change>2023-04-19 12:09:28</Step_Last_Change>
+        <Step_Last_Change>2023-05-08 22:32:17</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>

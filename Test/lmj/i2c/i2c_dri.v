@@ -25,7 +25,7 @@ module i2c_dri
     #(
       parameter   SLAVE_ADDR = 7'h52   ,  //EEPROM从机地址
       parameter   CLK_FREQ   = 26'd50_000_000, //模块输入的时钟频率
-      parameter   I2C_FREQ   = 18'd250_000     //IIC_SCL的时钟频率
+      parameter   I2C_FREQ   = 18'd100_000     //IIC_SCL的时钟频率
     )
    (                                                            
     input                clk        ,    
@@ -72,7 +72,7 @@ reg    [ 9:0]  clk_cnt   ; //分频时钟计数
 
 //wire define
 wire          sda_in     ; //SDA输入信号
-wire  [11:0]  clk_divide ; //模块驱动时钟的分频系数
+wire  [13:0]  clk_divide ; //模块驱动时钟的分频系数
 
 //*****************************************************
 //**                    main code
@@ -89,7 +89,8 @@ always @(posedge clk or negedge rst_n) begin
         dri_clk <=  1'b0;
         clk_cnt <= 10'd0;
     end
-    else if(clk_cnt == clk_divide[11:1] - 1'd1) begin
+    // else if(clk_cnt == clk_divide[13:0] - 1'd1) begin
+    else if(clk_cnt == 63 - 1'd1) begin
         clk_cnt <= 10'd0;
         dri_clk <= ~dri_clk;
     end
@@ -244,8 +245,8 @@ always @(posedge dri_clk or negedge rst_n) begin
                     7'd37: scl     <= 1'b1;            
                     7'd38: begin                     //从机应答 
                         st_done <= 1'b1;
-                        if(sda_in == 1'b1)           //高电平表示未应答
-                            i2c_ack <= 1'b1;         //拉高应答标志位     
+                        //if(sda_in == 1'b1)           //高电平表示未应答
+                            //i2c_ack <= 1'b1;         //拉高应答标志位     
                     end                                          
                     7'd39: begin                     
                         scl <= 1'b0;                 

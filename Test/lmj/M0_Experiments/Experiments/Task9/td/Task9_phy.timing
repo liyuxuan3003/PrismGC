@@ -1,0 +1,1652 @@
+=========================================================================================================
+Auto created by the td v5.0.30786
+@Copy Right: Shanghai Anlogic Infotech, 2011 - 2021.
+Sun Apr  3 22:26:03 2022
+=========================================================================================================
+
+
+Top Model:                BuzzerNLCDSoC                                                   
+Device:                   eagle_s20                                                       
+Timing Constraint File:   Task9.sdc                                                       
+STA Level:                Detail                                                          
+
+=========================================================================================================
+Timing constraint:        clock: clk                                                      
+Clock = clk, period 20ns, rising at 0ns, falling at 10ns
+
+7662 endpoints analyzed totally, and more than 1000000000 paths analyzed
+9 errors detected : 9 setup errors (TNS = -720.593), 0 hold errors (TNS = 0.000)
+Minimum period is 24.256ns
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4 (2173268 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (setup check):    -4.256 ns                                                        
+ Start Point:             u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (rising edge triggered by clock clk)
+ End Point:               BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4.e[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         24.012ns  (logic 6.563ns, net 17.449ns, 27% logic)              
+ Logic Levels:            13                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.q[0]         clk2q                   0.146 r     3.868
+ u_logic/_al_u1128|u_logic/_al_u3223.c[1] (u_logic/T1vpw6_hfnopt2_2) net  (fanout = 29)      0.583 r     4.451      ../rtl/cortexm0ds_logic.v(1608)
+ u_logic/_al_u1128|u_logic/_al_u3223.f[1]                    cell                    0.348 r     4.799
+ u_logic/_al_u1653.b[1] (u_logic/_al_u1128_o)                net  (fanout = 8)       2.794 r     7.593                    
+ u_logic/_al_u1653.fx[0]                                     cell                    0.543 r     8.136
+ u_logic/_al_u1927.c[1] (u_logic/_al_u1653_o)                net  (fanout = 12)      0.910 r     9.046                    
+ u_logic/_al_u1927.fx[0]                                     cell                    0.448 r     9.494
+ u_logic/_al_u1930.b[1] (u_logic/_al_u1927_o)                net  (fanout = 2)       0.873 r    10.367                    
+ u_logic/_al_u1930.fx[0]                                     cell                    0.543 r    10.910
+ u_logic/add3_add4/ucin_al_u5199.b[1] (u_logic/Qbfpw6[2])    net  (fanout = 3)       1.874 r    12.784      ../rtl/cortexm0ds_logic.v(1527)
+ u_logic/add3_add4/ucin_al_u5199.fco                         cell (ADDER)            0.770 r    13.554
+ u_logic/add3_add4/u3_al_u5200.fci (u_logic/add3_add4/c3)    net  (fanout = 1)       0.000 f    13.554      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u3_al_u5200.fco                           cell (ADDER)            0.132 r    13.686
+ u_logic/add3_add4/u7_al_u5201.fci (u_logic/add3_add4/c7)    net  (fanout = 1)       0.000 f    13.686      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u7_al_u5201.fco                           cell (ADDER)            0.132 r    13.818
+ u_logic/add3_add4/u11_al_u5202.fci (u_logic/add3_add4/c11)  net  (fanout = 1)       0.000 f    13.818      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u11_al_u5202.fco                          cell (ADDER)            0.132 r    13.950
+ u_logic/add3_add4/u15_al_u5203.fci (u_logic/add3_add4/c15)  net  (fanout = 1)       0.000 f    13.950      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u15_al_u5203.fco                          cell (ADDER)            0.132 r    14.082
+ u_logic/add3_add4/u19_al_u5204.fci (u_logic/add3_add4/c19)  net  (fanout = 1)       0.000 f    14.082      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u19_al_u5204.fco                          cell (ADDER)            0.132 r    14.214
+ u_logic/add3_add4/u23_al_u5205.fci (u_logic/add3_add4/c23)  net  (fanout = 1)       0.000 f    14.214      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u23_al_u5205.fco                          cell (ADDER)            0.132 r    14.346
+ u_logic/add3_add4/u27_al_u5206.fci (u_logic/add3_add4/c27)  net  (fanout = 1)       0.000 f    14.346      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u27_al_u5206.fx[1]                        cell                    0.453 r    14.799
+ u_logic/_al_u2596|u_logic/_al_u2854.a[1] (u_logic/Nxkbx6[31]) net  (fanout = 5)       0.788 r    15.587      ../rtl/cortexm0ds_logic.v(1721)
+ u_logic/_al_u2596|u_logic/_al_u2854.f[1]                    cell                    0.424 r    16.011
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0] (u_logic/_al_u2596_o) net  (fanout = 9)       2.653 r    18.664                    
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.f[0] cell                    0.431 r    19.095
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0] (HADDR[30]) net  (fanout = 1)       0.618 r    19.713      ../rtl/BuzzerNLCDSoC.v(42)
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.f[0]      cell                    0.262 r    19.975
+ BuzzerSoCBusMtx/_al_u752.d[0] (BuzzerSoCBusMtx/i_addr0[30]) net  (fanout = 3)       0.775 r    20.750      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusMtx.v(476)
+ BuzzerSoCBusMtx/_al_u752.f[0]                               cell                    0.262 r    21.012
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv) net  (fanout = 2)       0.603 r    21.615                    
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.f[1]    cell                    0.333 r    21.948
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv) net  (fanout = 9)       1.318 r    23.266                    
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.f[1]      cell                    0.408 r    23.674
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4.e[0] (BuzzerSoCBusMtx/_al_u815_o) net  (fanout = 9)       3.660 r    27.334      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusIn.v(180)
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4 path2reg0               0.400      27.734
+ Arrival time                                                                       27.734                  (13 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.204      23.478
+ Required time                                                                      23.478            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -4.256ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (setup check):    -4.256 ns                                                        
+ Start Point:             u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (rising edge triggered by clock clk)
+ End Point:               BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4.e[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         24.012ns  (logic 6.563ns, net 17.449ns, 27% logic)              
+ Logic Levels:            13                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.q[0]         clk2q                   0.146 r     3.868
+ u_logic/_al_u1128|u_logic/_al_u3223.c[1] (u_logic/T1vpw6_hfnopt2_2) net  (fanout = 29)      0.583 r     4.451      ../rtl/cortexm0ds_logic.v(1608)
+ u_logic/_al_u1128|u_logic/_al_u3223.f[1]                    cell                    0.348 r     4.799
+ u_logic/_al_u1653.b[1] (u_logic/_al_u1128_o)                net  (fanout = 8)       2.794 r     7.593                    
+ u_logic/_al_u1653.fx[0]                                     cell                    0.543 r     8.136
+ u_logic/_al_u1927.c[0] (u_logic/_al_u1653_o)                net  (fanout = 12)      0.910 r     9.046                    
+ u_logic/_al_u1927.fx[0]                                     cell                    0.448 r     9.494
+ u_logic/_al_u1930.b[1] (u_logic/_al_u1927_o)                net  (fanout = 2)       0.873 r    10.367                    
+ u_logic/_al_u1930.fx[0]                                     cell                    0.543 r    10.910
+ u_logic/add3_add4/ucin_al_u5199.b[1] (u_logic/Qbfpw6[2])    net  (fanout = 3)       1.874 r    12.784      ../rtl/cortexm0ds_logic.v(1527)
+ u_logic/add3_add4/ucin_al_u5199.fco                         cell (ADDER)            0.770 r    13.554
+ u_logic/add3_add4/u3_al_u5200.fci (u_logic/add3_add4/c3)    net  (fanout = 1)       0.000 f    13.554      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u3_al_u5200.fco                           cell (ADDER)            0.132 r    13.686
+ u_logic/add3_add4/u7_al_u5201.fci (u_logic/add3_add4/c7)    net  (fanout = 1)       0.000 f    13.686      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u7_al_u5201.fco                           cell (ADDER)            0.132 r    13.818
+ u_logic/add3_add4/u11_al_u5202.fci (u_logic/add3_add4/c11)  net  (fanout = 1)       0.000 f    13.818      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u11_al_u5202.fco                          cell (ADDER)            0.132 r    13.950
+ u_logic/add3_add4/u15_al_u5203.fci (u_logic/add3_add4/c15)  net  (fanout = 1)       0.000 f    13.950      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u15_al_u5203.fco                          cell (ADDER)            0.132 r    14.082
+ u_logic/add3_add4/u19_al_u5204.fci (u_logic/add3_add4/c19)  net  (fanout = 1)       0.000 f    14.082      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u19_al_u5204.fco                          cell (ADDER)            0.132 r    14.214
+ u_logic/add3_add4/u23_al_u5205.fci (u_logic/add3_add4/c23)  net  (fanout = 1)       0.000 f    14.214      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u23_al_u5205.fco                          cell (ADDER)            0.132 r    14.346
+ u_logic/add3_add4/u27_al_u5206.fci (u_logic/add3_add4/c27)  net  (fanout = 1)       0.000 f    14.346      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u27_al_u5206.fx[1]                        cell                    0.453 r    14.799
+ u_logic/_al_u2596|u_logic/_al_u2854.a[1] (u_logic/Nxkbx6[31]) net  (fanout = 5)       0.788 r    15.587      ../rtl/cortexm0ds_logic.v(1721)
+ u_logic/_al_u2596|u_logic/_al_u2854.f[1]                    cell                    0.424 r    16.011
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0] (u_logic/_al_u2596_o) net  (fanout = 9)       2.653 r    18.664                    
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.f[0] cell                    0.431 r    19.095
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0] (HADDR[30]) net  (fanout = 1)       0.618 r    19.713      ../rtl/BuzzerNLCDSoC.v(42)
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.f[0]      cell                    0.262 r    19.975
+ BuzzerSoCBusMtx/_al_u752.d[0] (BuzzerSoCBusMtx/i_addr0[30]) net  (fanout = 3)       0.775 r    20.750      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusMtx.v(476)
+ BuzzerSoCBusMtx/_al_u752.f[0]                               cell                    0.262 r    21.012
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv) net  (fanout = 2)       0.603 r    21.615                    
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.f[1]    cell                    0.333 r    21.948
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv) net  (fanout = 9)       1.318 r    23.266                    
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.f[1]      cell                    0.408 r    23.674
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4.e[0] (BuzzerSoCBusMtx/_al_u815_o) net  (fanout = 9)       3.660 r    27.334      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusIn.v(180)
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4 path2reg0               0.400      27.734
+ Arrival time                                                                       27.734                  (13 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.204      23.478
+ Required time                                                                      23.478            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -4.256ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (setup check):    -4.256 ns                                                        
+ Start Point:             u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (rising edge triggered by clock clk)
+ End Point:               BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4.e[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         24.012ns  (logic 6.563ns, net 17.449ns, 27% logic)              
+ Logic Levels:            13                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.q[0]         clk2q                   0.146 r     3.868
+ u_logic/_al_u1128|u_logic/_al_u3223.c[1] (u_logic/T1vpw6_hfnopt2_2) net  (fanout = 29)      0.583 r     4.451      ../rtl/cortexm0ds_logic.v(1608)
+ u_logic/_al_u1128|u_logic/_al_u3223.f[1]                    cell                    0.348 r     4.799
+ u_logic/_al_u1653.b[1] (u_logic/_al_u1128_o)                net  (fanout = 8)       2.794 r     7.593                    
+ u_logic/_al_u1653.fx[0]                                     cell                    0.543 r     8.136
+ u_logic/_al_u1927.c[1] (u_logic/_al_u1653_o)                net  (fanout = 12)      0.910 r     9.046                    
+ u_logic/_al_u1927.fx[0]                                     cell                    0.448 r     9.494
+ u_logic/_al_u1930.b[0] (u_logic/_al_u1927_o)                net  (fanout = 2)       0.873 r    10.367                    
+ u_logic/_al_u1930.fx[0]                                     cell                    0.543 r    10.910
+ u_logic/add3_add4/ucin_al_u5199.b[1] (u_logic/Qbfpw6[2])    net  (fanout = 3)       1.874 r    12.784      ../rtl/cortexm0ds_logic.v(1527)
+ u_logic/add3_add4/ucin_al_u5199.fco                         cell (ADDER)            0.770 r    13.554
+ u_logic/add3_add4/u3_al_u5200.fci (u_logic/add3_add4/c3)    net  (fanout = 1)       0.000 f    13.554      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u3_al_u5200.fco                           cell (ADDER)            0.132 r    13.686
+ u_logic/add3_add4/u7_al_u5201.fci (u_logic/add3_add4/c7)    net  (fanout = 1)       0.000 f    13.686      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u7_al_u5201.fco                           cell (ADDER)            0.132 r    13.818
+ u_logic/add3_add4/u11_al_u5202.fci (u_logic/add3_add4/c11)  net  (fanout = 1)       0.000 f    13.818      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u11_al_u5202.fco                          cell (ADDER)            0.132 r    13.950
+ u_logic/add3_add4/u15_al_u5203.fci (u_logic/add3_add4/c15)  net  (fanout = 1)       0.000 f    13.950      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u15_al_u5203.fco                          cell (ADDER)            0.132 r    14.082
+ u_logic/add3_add4/u19_al_u5204.fci (u_logic/add3_add4/c19)  net  (fanout = 1)       0.000 f    14.082      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u19_al_u5204.fco                          cell (ADDER)            0.132 r    14.214
+ u_logic/add3_add4/u23_al_u5205.fci (u_logic/add3_add4/c23)  net  (fanout = 1)       0.000 f    14.214      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u23_al_u5205.fco                          cell (ADDER)            0.132 r    14.346
+ u_logic/add3_add4/u27_al_u5206.fci (u_logic/add3_add4/c27)  net  (fanout = 1)       0.000 f    14.346      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u27_al_u5206.fx[1]                        cell                    0.453 r    14.799
+ u_logic/_al_u2596|u_logic/_al_u2854.a[1] (u_logic/Nxkbx6[31]) net  (fanout = 5)       0.788 r    15.587      ../rtl/cortexm0ds_logic.v(1721)
+ u_logic/_al_u2596|u_logic/_al_u2854.f[1]                    cell                    0.424 r    16.011
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0] (u_logic/_al_u2596_o) net  (fanout = 9)       2.653 r    18.664                    
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.f[0] cell                    0.431 r    19.095
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0] (HADDR[30]) net  (fanout = 1)       0.618 r    19.713      ../rtl/BuzzerNLCDSoC.v(42)
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.f[0]      cell                    0.262 r    19.975
+ BuzzerSoCBusMtx/_al_u752.d[0] (BuzzerSoCBusMtx/i_addr0[30]) net  (fanout = 3)       0.775 r    20.750      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusMtx.v(476)
+ BuzzerSoCBusMtx/_al_u752.f[0]                               cell                    0.262 r    21.012
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv) net  (fanout = 2)       0.603 r    21.615                    
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.f[1]    cell                    0.333 r    21.948
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv) net  (fanout = 9)       1.318 r    23.266                    
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.f[1]      cell                    0.408 r    23.674
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4.e[0] (BuzzerSoCBusMtx/_al_u815_o) net  (fanout = 9)       3.660 r    27.334      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusIn.v(180)
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4 path2reg0               0.400      27.734
+ Arrival time                                                                       27.734                  (13 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.204      23.478
+ Required time                                                                      23.478            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -4.256ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0 (2173268 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (setup check):    -4.019 ns                                                        
+ Start Point:             u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (rising edge triggered by clock clk)
+ End Point:               BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0.e[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         23.775ns  (logic 6.563ns, net 17.212ns, 27% logic)              
+ Logic Levels:            13                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.q[0]         clk2q                   0.146 r     3.868
+ u_logic/_al_u1128|u_logic/_al_u3223.c[1] (u_logic/T1vpw6_hfnopt2_2) net  (fanout = 29)      0.583 r     4.451      ../rtl/cortexm0ds_logic.v(1608)
+ u_logic/_al_u1128|u_logic/_al_u3223.f[1]                    cell                    0.348 r     4.799
+ u_logic/_al_u1653.b[1] (u_logic/_al_u1128_o)                net  (fanout = 8)       2.794 r     7.593                    
+ u_logic/_al_u1653.fx[0]                                     cell                    0.543 r     8.136
+ u_logic/_al_u1927.c[1] (u_logic/_al_u1653_o)                net  (fanout = 12)      0.910 r     9.046                    
+ u_logic/_al_u1927.fx[0]                                     cell                    0.448 r     9.494
+ u_logic/_al_u1930.b[1] (u_logic/_al_u1927_o)                net  (fanout = 2)       0.873 r    10.367                    
+ u_logic/_al_u1930.fx[0]                                     cell                    0.543 r    10.910
+ u_logic/add3_add4/ucin_al_u5199.b[1] (u_logic/Qbfpw6[2])    net  (fanout = 3)       1.874 r    12.784      ../rtl/cortexm0ds_logic.v(1527)
+ u_logic/add3_add4/ucin_al_u5199.fco                         cell (ADDER)            0.770 r    13.554
+ u_logic/add3_add4/u3_al_u5200.fci (u_logic/add3_add4/c3)    net  (fanout = 1)       0.000 f    13.554      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u3_al_u5200.fco                           cell (ADDER)            0.132 r    13.686
+ u_logic/add3_add4/u7_al_u5201.fci (u_logic/add3_add4/c7)    net  (fanout = 1)       0.000 f    13.686      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u7_al_u5201.fco                           cell (ADDER)            0.132 r    13.818
+ u_logic/add3_add4/u11_al_u5202.fci (u_logic/add3_add4/c11)  net  (fanout = 1)       0.000 f    13.818      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u11_al_u5202.fco                          cell (ADDER)            0.132 r    13.950
+ u_logic/add3_add4/u15_al_u5203.fci (u_logic/add3_add4/c15)  net  (fanout = 1)       0.000 f    13.950      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u15_al_u5203.fco                          cell (ADDER)            0.132 r    14.082
+ u_logic/add3_add4/u19_al_u5204.fci (u_logic/add3_add4/c19)  net  (fanout = 1)       0.000 f    14.082      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u19_al_u5204.fco                          cell (ADDER)            0.132 r    14.214
+ u_logic/add3_add4/u23_al_u5205.fci (u_logic/add3_add4/c23)  net  (fanout = 1)       0.000 f    14.214      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u23_al_u5205.fco                          cell (ADDER)            0.132 r    14.346
+ u_logic/add3_add4/u27_al_u5206.fci (u_logic/add3_add4/c27)  net  (fanout = 1)       0.000 f    14.346      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u27_al_u5206.fx[1]                        cell                    0.453 r    14.799
+ u_logic/_al_u2596|u_logic/_al_u2854.a[1] (u_logic/Nxkbx6[31]) net  (fanout = 5)       0.788 r    15.587      ../rtl/cortexm0ds_logic.v(1721)
+ u_logic/_al_u2596|u_logic/_al_u2854.f[1]                    cell                    0.424 r    16.011
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0] (u_logic/_al_u2596_o) net  (fanout = 9)       2.653 r    18.664                    
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.f[0] cell                    0.431 r    19.095
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0] (HADDR[30]) net  (fanout = 1)       0.618 r    19.713      ../rtl/BuzzerNLCDSoC.v(42)
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.f[0]      cell                    0.262 r    19.975
+ BuzzerSoCBusMtx/_al_u752.d[0] (BuzzerSoCBusMtx/i_addr0[30]) net  (fanout = 3)       0.775 r    20.750      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusMtx.v(476)
+ BuzzerSoCBusMtx/_al_u752.f[0]                               cell                    0.262 r    21.012
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv) net  (fanout = 2)       0.603 r    21.615                    
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.f[1]    cell                    0.333 r    21.948
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv) net  (fanout = 9)       1.318 r    23.266                    
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.f[1]      cell                    0.408 r    23.674
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0.e[0] (BuzzerSoCBusMtx/_al_u815_o) net  (fanout = 9)       3.423 r    27.097      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusIn.v(180)
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0 path2reg0               0.400      27.497
+ Arrival time                                                                       27.497                  (13 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.204      23.478
+ Required time                                                                      23.478            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -4.019ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (setup check):    -4.019 ns                                                        
+ Start Point:             u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (rising edge triggered by clock clk)
+ End Point:               BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0.e[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         23.775ns  (logic 6.563ns, net 17.212ns, 27% logic)              
+ Logic Levels:            13                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.q[0]         clk2q                   0.146 r     3.868
+ u_logic/_al_u1128|u_logic/_al_u3223.c[1] (u_logic/T1vpw6_hfnopt2_2) net  (fanout = 29)      0.583 r     4.451      ../rtl/cortexm0ds_logic.v(1608)
+ u_logic/_al_u1128|u_logic/_al_u3223.f[1]                    cell                    0.348 r     4.799
+ u_logic/_al_u1653.b[1] (u_logic/_al_u1128_o)                net  (fanout = 8)       2.794 r     7.593                    
+ u_logic/_al_u1653.fx[0]                                     cell                    0.543 r     8.136
+ u_logic/_al_u1927.c[0] (u_logic/_al_u1653_o)                net  (fanout = 12)      0.910 r     9.046                    
+ u_logic/_al_u1927.fx[0]                                     cell                    0.448 r     9.494
+ u_logic/_al_u1930.b[1] (u_logic/_al_u1927_o)                net  (fanout = 2)       0.873 r    10.367                    
+ u_logic/_al_u1930.fx[0]                                     cell                    0.543 r    10.910
+ u_logic/add3_add4/ucin_al_u5199.b[1] (u_logic/Qbfpw6[2])    net  (fanout = 3)       1.874 r    12.784      ../rtl/cortexm0ds_logic.v(1527)
+ u_logic/add3_add4/ucin_al_u5199.fco                         cell (ADDER)            0.770 r    13.554
+ u_logic/add3_add4/u3_al_u5200.fci (u_logic/add3_add4/c3)    net  (fanout = 1)       0.000 f    13.554      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u3_al_u5200.fco                           cell (ADDER)            0.132 r    13.686
+ u_logic/add3_add4/u7_al_u5201.fci (u_logic/add3_add4/c7)    net  (fanout = 1)       0.000 f    13.686      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u7_al_u5201.fco                           cell (ADDER)            0.132 r    13.818
+ u_logic/add3_add4/u11_al_u5202.fci (u_logic/add3_add4/c11)  net  (fanout = 1)       0.000 f    13.818      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u11_al_u5202.fco                          cell (ADDER)            0.132 r    13.950
+ u_logic/add3_add4/u15_al_u5203.fci (u_logic/add3_add4/c15)  net  (fanout = 1)       0.000 f    13.950      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u15_al_u5203.fco                          cell (ADDER)            0.132 r    14.082
+ u_logic/add3_add4/u19_al_u5204.fci (u_logic/add3_add4/c19)  net  (fanout = 1)       0.000 f    14.082      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u19_al_u5204.fco                          cell (ADDER)            0.132 r    14.214
+ u_logic/add3_add4/u23_al_u5205.fci (u_logic/add3_add4/c23)  net  (fanout = 1)       0.000 f    14.214      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u23_al_u5205.fco                          cell (ADDER)            0.132 r    14.346
+ u_logic/add3_add4/u27_al_u5206.fci (u_logic/add3_add4/c27)  net  (fanout = 1)       0.000 f    14.346      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u27_al_u5206.fx[1]                        cell                    0.453 r    14.799
+ u_logic/_al_u2596|u_logic/_al_u2854.a[1] (u_logic/Nxkbx6[31]) net  (fanout = 5)       0.788 r    15.587      ../rtl/cortexm0ds_logic.v(1721)
+ u_logic/_al_u2596|u_logic/_al_u2854.f[1]                    cell                    0.424 r    16.011
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0] (u_logic/_al_u2596_o) net  (fanout = 9)       2.653 r    18.664                    
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.f[0] cell                    0.431 r    19.095
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0] (HADDR[30]) net  (fanout = 1)       0.618 r    19.713      ../rtl/BuzzerNLCDSoC.v(42)
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.f[0]      cell                    0.262 r    19.975
+ BuzzerSoCBusMtx/_al_u752.d[0] (BuzzerSoCBusMtx/i_addr0[30]) net  (fanout = 3)       0.775 r    20.750      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusMtx.v(476)
+ BuzzerSoCBusMtx/_al_u752.f[0]                               cell                    0.262 r    21.012
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv) net  (fanout = 2)       0.603 r    21.615                    
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.f[1]    cell                    0.333 r    21.948
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv) net  (fanout = 9)       1.318 r    23.266                    
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.f[1]      cell                    0.408 r    23.674
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0.e[0] (BuzzerSoCBusMtx/_al_u815_o) net  (fanout = 9)       3.423 r    27.097      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusIn.v(180)
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0 path2reg0               0.400      27.497
+ Arrival time                                                                       27.497                  (13 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.204      23.478
+ Required time                                                                      23.478            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -4.019ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (setup check):    -4.019 ns                                                        
+ Start Point:             u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (rising edge triggered by clock clk)
+ End Point:               BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0.e[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         23.775ns  (logic 6.563ns, net 17.212ns, 27% logic)              
+ Logic Levels:            13                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.q[0]         clk2q                   0.146 r     3.868
+ u_logic/_al_u1128|u_logic/_al_u3223.c[1] (u_logic/T1vpw6_hfnopt2_2) net  (fanout = 29)      0.583 r     4.451      ../rtl/cortexm0ds_logic.v(1608)
+ u_logic/_al_u1128|u_logic/_al_u3223.f[1]                    cell                    0.348 r     4.799
+ u_logic/_al_u1653.b[1] (u_logic/_al_u1128_o)                net  (fanout = 8)       2.794 r     7.593                    
+ u_logic/_al_u1653.fx[0]                                     cell                    0.543 r     8.136
+ u_logic/_al_u1927.c[1] (u_logic/_al_u1653_o)                net  (fanout = 12)      0.910 r     9.046                    
+ u_logic/_al_u1927.fx[0]                                     cell                    0.448 r     9.494
+ u_logic/_al_u1930.b[0] (u_logic/_al_u1927_o)                net  (fanout = 2)       0.873 r    10.367                    
+ u_logic/_al_u1930.fx[0]                                     cell                    0.543 r    10.910
+ u_logic/add3_add4/ucin_al_u5199.b[1] (u_logic/Qbfpw6[2])    net  (fanout = 3)       1.874 r    12.784      ../rtl/cortexm0ds_logic.v(1527)
+ u_logic/add3_add4/ucin_al_u5199.fco                         cell (ADDER)            0.770 r    13.554
+ u_logic/add3_add4/u3_al_u5200.fci (u_logic/add3_add4/c3)    net  (fanout = 1)       0.000 f    13.554      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u3_al_u5200.fco                           cell (ADDER)            0.132 r    13.686
+ u_logic/add3_add4/u7_al_u5201.fci (u_logic/add3_add4/c7)    net  (fanout = 1)       0.000 f    13.686      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u7_al_u5201.fco                           cell (ADDER)            0.132 r    13.818
+ u_logic/add3_add4/u11_al_u5202.fci (u_logic/add3_add4/c11)  net  (fanout = 1)       0.000 f    13.818      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u11_al_u5202.fco                          cell (ADDER)            0.132 r    13.950
+ u_logic/add3_add4/u15_al_u5203.fci (u_logic/add3_add4/c15)  net  (fanout = 1)       0.000 f    13.950      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u15_al_u5203.fco                          cell (ADDER)            0.132 r    14.082
+ u_logic/add3_add4/u19_al_u5204.fci (u_logic/add3_add4/c19)  net  (fanout = 1)       0.000 f    14.082      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u19_al_u5204.fco                          cell (ADDER)            0.132 r    14.214
+ u_logic/add3_add4/u23_al_u5205.fci (u_logic/add3_add4/c23)  net  (fanout = 1)       0.000 f    14.214      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u23_al_u5205.fco                          cell (ADDER)            0.132 r    14.346
+ u_logic/add3_add4/u27_al_u5206.fci (u_logic/add3_add4/c27)  net  (fanout = 1)       0.000 f    14.346      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u27_al_u5206.fx[1]                        cell                    0.453 r    14.799
+ u_logic/_al_u2596|u_logic/_al_u2854.a[1] (u_logic/Nxkbx6[31]) net  (fanout = 5)       0.788 r    15.587      ../rtl/cortexm0ds_logic.v(1721)
+ u_logic/_al_u2596|u_logic/_al_u2854.f[1]                    cell                    0.424 r    16.011
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0] (u_logic/_al_u2596_o) net  (fanout = 9)       2.653 r    18.664                    
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.f[0] cell                    0.431 r    19.095
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0] (HADDR[30]) net  (fanout = 1)       0.618 r    19.713      ../rtl/BuzzerNLCDSoC.v(42)
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.f[0]      cell                    0.262 r    19.975
+ BuzzerSoCBusMtx/_al_u752.d[0] (BuzzerSoCBusMtx/i_addr0[30]) net  (fanout = 3)       0.775 r    20.750      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusMtx.v(476)
+ BuzzerSoCBusMtx/_al_u752.f[0]                               cell                    0.262 r    21.012
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv) net  (fanout = 2)       0.603 r    21.615                    
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.f[1]    cell                    0.333 r    21.948
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv) net  (fanout = 9)       1.318 r    23.266                    
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.f[1]      cell                    0.408 r    23.674
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0.e[0] (BuzzerSoCBusMtx/_al_u815_o) net  (fanout = 9)       3.423 r    27.097      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusIn.v(180)
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0 path2reg0               0.400      27.497
+ Arrival time                                                                       27.497                  (13 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.204      23.478
+ Required time                                                                      23.478            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -4.019ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6 (2173268 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (setup check):    -3.943 ns                                                        
+ Start Point:             u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (rising edge triggered by clock clk)
+ End Point:               BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6.e[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         23.618ns  (logic 6.563ns, net 17.055ns, 27% logic)              
+ Logic Levels:            13                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.q[0]         clk2q                   0.146 r     3.868
+ u_logic/_al_u1128|u_logic/_al_u3223.c[1] (u_logic/T1vpw6_hfnopt2_2) net  (fanout = 29)      0.583 r     4.451      ../rtl/cortexm0ds_logic.v(1608)
+ u_logic/_al_u1128|u_logic/_al_u3223.f[1]                    cell                    0.348 r     4.799
+ u_logic/_al_u1653.b[1] (u_logic/_al_u1128_o)                net  (fanout = 8)       2.794 r     7.593                    
+ u_logic/_al_u1653.fx[0]                                     cell                    0.543 r     8.136
+ u_logic/_al_u1927.c[1] (u_logic/_al_u1653_o)                net  (fanout = 12)      0.910 r     9.046                    
+ u_logic/_al_u1927.fx[0]                                     cell                    0.448 r     9.494
+ u_logic/_al_u1930.b[1] (u_logic/_al_u1927_o)                net  (fanout = 2)       0.873 r    10.367                    
+ u_logic/_al_u1930.fx[0]                                     cell                    0.543 r    10.910
+ u_logic/add3_add4/ucin_al_u5199.b[1] (u_logic/Qbfpw6[2])    net  (fanout = 3)       1.874 r    12.784      ../rtl/cortexm0ds_logic.v(1527)
+ u_logic/add3_add4/ucin_al_u5199.fco                         cell (ADDER)            0.770 r    13.554
+ u_logic/add3_add4/u3_al_u5200.fci (u_logic/add3_add4/c3)    net  (fanout = 1)       0.000 f    13.554      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u3_al_u5200.fco                           cell (ADDER)            0.132 r    13.686
+ u_logic/add3_add4/u7_al_u5201.fci (u_logic/add3_add4/c7)    net  (fanout = 1)       0.000 f    13.686      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u7_al_u5201.fco                           cell (ADDER)            0.132 r    13.818
+ u_logic/add3_add4/u11_al_u5202.fci (u_logic/add3_add4/c11)  net  (fanout = 1)       0.000 f    13.818      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u11_al_u5202.fco                          cell (ADDER)            0.132 r    13.950
+ u_logic/add3_add4/u15_al_u5203.fci (u_logic/add3_add4/c15)  net  (fanout = 1)       0.000 f    13.950      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u15_al_u5203.fco                          cell (ADDER)            0.132 r    14.082
+ u_logic/add3_add4/u19_al_u5204.fci (u_logic/add3_add4/c19)  net  (fanout = 1)       0.000 f    14.082      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u19_al_u5204.fco                          cell (ADDER)            0.132 r    14.214
+ u_logic/add3_add4/u23_al_u5205.fci (u_logic/add3_add4/c23)  net  (fanout = 1)       0.000 f    14.214      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u23_al_u5205.fco                          cell (ADDER)            0.132 r    14.346
+ u_logic/add3_add4/u27_al_u5206.fci (u_logic/add3_add4/c27)  net  (fanout = 1)       0.000 f    14.346      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u27_al_u5206.fx[1]                        cell                    0.453 r    14.799
+ u_logic/_al_u2596|u_logic/_al_u2854.a[1] (u_logic/Nxkbx6[31]) net  (fanout = 5)       0.788 r    15.587      ../rtl/cortexm0ds_logic.v(1721)
+ u_logic/_al_u2596|u_logic/_al_u2854.f[1]                    cell                    0.424 r    16.011
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0] (u_logic/_al_u2596_o) net  (fanout = 9)       2.653 r    18.664                    
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.f[0] cell                    0.431 r    19.095
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0] (HADDR[30]) net  (fanout = 1)       0.618 r    19.713      ../rtl/BuzzerNLCDSoC.v(42)
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.f[0]      cell                    0.262 r    19.975
+ BuzzerSoCBusMtx/_al_u752.d[0] (BuzzerSoCBusMtx/i_addr0[30]) net  (fanout = 3)       0.775 r    20.750      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusMtx.v(476)
+ BuzzerSoCBusMtx/_al_u752.f[0]                               cell                    0.262 r    21.012
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv) net  (fanout = 2)       0.603 r    21.615                    
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.f[1]    cell                    0.333 r    21.948
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv) net  (fanout = 9)       1.318 r    23.266                    
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.f[1]      cell                    0.408 r    23.674
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6.e[0] (BuzzerSoCBusMtx/_al_u815_o) net  (fanout = 9)       3.266 r    26.940      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusIn.v(180)
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6 path2reg0               0.400      27.340
+ Arrival time                                                                       27.340                  (13 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.123      23.397
+ Required time                                                                      23.397            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -3.943ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (setup check):    -3.943 ns                                                        
+ Start Point:             u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (rising edge triggered by clock clk)
+ End Point:               BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6.e[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         23.618ns  (logic 6.563ns, net 17.055ns, 27% logic)              
+ Logic Levels:            13                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.q[0]         clk2q                   0.146 r     3.868
+ u_logic/_al_u1128|u_logic/_al_u3223.c[1] (u_logic/T1vpw6_hfnopt2_2) net  (fanout = 29)      0.583 r     4.451      ../rtl/cortexm0ds_logic.v(1608)
+ u_logic/_al_u1128|u_logic/_al_u3223.f[1]                    cell                    0.348 r     4.799
+ u_logic/_al_u1653.b[1] (u_logic/_al_u1128_o)                net  (fanout = 8)       2.794 r     7.593                    
+ u_logic/_al_u1653.fx[0]                                     cell                    0.543 r     8.136
+ u_logic/_al_u1927.c[0] (u_logic/_al_u1653_o)                net  (fanout = 12)      0.910 r     9.046                    
+ u_logic/_al_u1927.fx[0]                                     cell                    0.448 r     9.494
+ u_logic/_al_u1930.b[1] (u_logic/_al_u1927_o)                net  (fanout = 2)       0.873 r    10.367                    
+ u_logic/_al_u1930.fx[0]                                     cell                    0.543 r    10.910
+ u_logic/add3_add4/ucin_al_u5199.b[1] (u_logic/Qbfpw6[2])    net  (fanout = 3)       1.874 r    12.784      ../rtl/cortexm0ds_logic.v(1527)
+ u_logic/add3_add4/ucin_al_u5199.fco                         cell (ADDER)            0.770 r    13.554
+ u_logic/add3_add4/u3_al_u5200.fci (u_logic/add3_add4/c3)    net  (fanout = 1)       0.000 f    13.554      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u3_al_u5200.fco                           cell (ADDER)            0.132 r    13.686
+ u_logic/add3_add4/u7_al_u5201.fci (u_logic/add3_add4/c7)    net  (fanout = 1)       0.000 f    13.686      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u7_al_u5201.fco                           cell (ADDER)            0.132 r    13.818
+ u_logic/add3_add4/u11_al_u5202.fci (u_logic/add3_add4/c11)  net  (fanout = 1)       0.000 f    13.818      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u11_al_u5202.fco                          cell (ADDER)            0.132 r    13.950
+ u_logic/add3_add4/u15_al_u5203.fci (u_logic/add3_add4/c15)  net  (fanout = 1)       0.000 f    13.950      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u15_al_u5203.fco                          cell (ADDER)            0.132 r    14.082
+ u_logic/add3_add4/u19_al_u5204.fci (u_logic/add3_add4/c19)  net  (fanout = 1)       0.000 f    14.082      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u19_al_u5204.fco                          cell (ADDER)            0.132 r    14.214
+ u_logic/add3_add4/u23_al_u5205.fci (u_logic/add3_add4/c23)  net  (fanout = 1)       0.000 f    14.214      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u23_al_u5205.fco                          cell (ADDER)            0.132 r    14.346
+ u_logic/add3_add4/u27_al_u5206.fci (u_logic/add3_add4/c27)  net  (fanout = 1)       0.000 f    14.346      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u27_al_u5206.fx[1]                        cell                    0.453 r    14.799
+ u_logic/_al_u2596|u_logic/_al_u2854.a[1] (u_logic/Nxkbx6[31]) net  (fanout = 5)       0.788 r    15.587      ../rtl/cortexm0ds_logic.v(1721)
+ u_logic/_al_u2596|u_logic/_al_u2854.f[1]                    cell                    0.424 r    16.011
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0] (u_logic/_al_u2596_o) net  (fanout = 9)       2.653 r    18.664                    
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.f[0] cell                    0.431 r    19.095
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0] (HADDR[30]) net  (fanout = 1)       0.618 r    19.713      ../rtl/BuzzerNLCDSoC.v(42)
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.f[0]      cell                    0.262 r    19.975
+ BuzzerSoCBusMtx/_al_u752.d[0] (BuzzerSoCBusMtx/i_addr0[30]) net  (fanout = 3)       0.775 r    20.750      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusMtx.v(476)
+ BuzzerSoCBusMtx/_al_u752.f[0]                               cell                    0.262 r    21.012
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv) net  (fanout = 2)       0.603 r    21.615                    
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.f[1]    cell                    0.333 r    21.948
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv) net  (fanout = 9)       1.318 r    23.266                    
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.f[1]      cell                    0.408 r    23.674
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6.e[0] (BuzzerSoCBusMtx/_al_u815_o) net  (fanout = 9)       3.266 r    26.940      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusIn.v(180)
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6 path2reg0               0.400      27.340
+ Arrival time                                                                       27.340                  (13 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.123      23.397
+ Required time                                                                      23.397            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -3.943ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (setup check):    -3.943 ns                                                        
+ Start Point:             u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (rising edge triggered by clock clk)
+ End Point:               BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6.e[0] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         23.618ns  (logic 6.563ns, net 17.055ns, 27% logic)              
+ Logic Levels:            13                                                              
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.q[0]         clk2q                   0.146 r     3.868
+ u_logic/_al_u1128|u_logic/_al_u3223.c[1] (u_logic/T1vpw6_hfnopt2_2) net  (fanout = 29)      0.583 r     4.451      ../rtl/cortexm0ds_logic.v(1608)
+ u_logic/_al_u1128|u_logic/_al_u3223.f[1]                    cell                    0.348 r     4.799
+ u_logic/_al_u1653.b[1] (u_logic/_al_u1128_o)                net  (fanout = 8)       2.794 r     7.593                    
+ u_logic/_al_u1653.fx[0]                                     cell                    0.543 r     8.136
+ u_logic/_al_u1927.c[1] (u_logic/_al_u1653_o)                net  (fanout = 12)      0.910 r     9.046                    
+ u_logic/_al_u1927.fx[0]                                     cell                    0.448 r     9.494
+ u_logic/_al_u1930.b[0] (u_logic/_al_u1927_o)                net  (fanout = 2)       0.873 r    10.367                    
+ u_logic/_al_u1930.fx[0]                                     cell                    0.543 r    10.910
+ u_logic/add3_add4/ucin_al_u5199.b[1] (u_logic/Qbfpw6[2])    net  (fanout = 3)       1.874 r    12.784      ../rtl/cortexm0ds_logic.v(1527)
+ u_logic/add3_add4/ucin_al_u5199.fco                         cell (ADDER)            0.770 r    13.554
+ u_logic/add3_add4/u3_al_u5200.fci (u_logic/add3_add4/c3)    net  (fanout = 1)       0.000 f    13.554      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u3_al_u5200.fco                           cell (ADDER)            0.132 r    13.686
+ u_logic/add3_add4/u7_al_u5201.fci (u_logic/add3_add4/c7)    net  (fanout = 1)       0.000 f    13.686      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u7_al_u5201.fco                           cell (ADDER)            0.132 r    13.818
+ u_logic/add3_add4/u11_al_u5202.fci (u_logic/add3_add4/c11)  net  (fanout = 1)       0.000 f    13.818      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u11_al_u5202.fco                          cell (ADDER)            0.132 r    13.950
+ u_logic/add3_add4/u15_al_u5203.fci (u_logic/add3_add4/c15)  net  (fanout = 1)       0.000 f    13.950      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u15_al_u5203.fco                          cell (ADDER)            0.132 r    14.082
+ u_logic/add3_add4/u19_al_u5204.fci (u_logic/add3_add4/c19)  net  (fanout = 1)       0.000 f    14.082      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u19_al_u5204.fco                          cell (ADDER)            0.132 r    14.214
+ u_logic/add3_add4/u23_al_u5205.fci (u_logic/add3_add4/c23)  net  (fanout = 1)       0.000 f    14.214      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u23_al_u5205.fco                          cell (ADDER)            0.132 r    14.346
+ u_logic/add3_add4/u27_al_u5206.fci (u_logic/add3_add4/c27)  net  (fanout = 1)       0.000 f    14.346      ../rtl/cortexm0ds_logic.v(3159)
+ u_logic/add3_add4/u27_al_u5206.fx[1]                        cell                    0.453 r    14.799
+ u_logic/_al_u2596|u_logic/_al_u2854.a[1] (u_logic/Nxkbx6[31]) net  (fanout = 5)       0.788 r    15.587      ../rtl/cortexm0ds_logic.v(1721)
+ u_logic/_al_u2596|u_logic/_al_u2854.f[1]                    cell                    0.424 r    16.011
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0] (u_logic/_al_u2596_o) net  (fanout = 9)       2.653 r    18.664                    
+ BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.f[0] cell                    0.431 r    19.095
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0] (HADDR[30]) net  (fanout = 1)       0.618 r    19.713      ../rtl/BuzzerNLCDSoC.v(42)
+ BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.f[0]      cell                    0.262 r    19.975
+ BuzzerSoCBusMtx/_al_u752.d[0] (BuzzerSoCBusMtx/i_addr0[30]) net  (fanout = 3)       0.775 r    20.750      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusMtx.v(476)
+ BuzzerSoCBusMtx/_al_u752.f[0]                               cell                    0.262 r    21.012
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv) net  (fanout = 2)       0.603 r    21.615                    
+ BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.f[1]    cell                    0.333 r    21.948
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1] (BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv) net  (fanout = 9)       1.318 r    23.266                    
+ BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.f[1]      cell                    0.408 r    23.674
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6.e[0] (BuzzerSoCBusMtx/_al_u815_o) net  (fanout = 9)       3.266 r    26.940      ../rtl/BuzzerSoCBusMtx/BuzzerSoCBusIn.v(180)
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6 path2reg0               0.400      27.340
+ Arrival time                                                                       27.340                  (13 lvl)      
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell setup                                                                         -0.116      23.274
+ clock uncertainty                                                                  -0.000      23.274
+ clock recovergence pessimism                                                        0.123      23.397
+ Required time                                                                      23.397            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                              -3.943ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Hold checks:
+---------------------------------------------------------------------------------------------------------
+Paths for end point RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002 (12 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (hold check):      0.152 ns                                                        
+ Start Point:             RAMCODE_Interface/reg0_b6|RAMCODE_Interface/reg0_b5.clk (rising edge triggered by clock clk)
+ End Point:               RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002.addra[6] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.480ns  (logic 0.137ns, net 0.343ns, 28% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ RAMCODE_Interface/reg0_b6|RAMCODE_Interface/reg0_b5.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ RAMCODE_Interface/reg0_b6|RAMCODE_Interface/reg0_b5.q[0]    clk2q                   0.137 r     3.527
+ RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002.addra[6] (RAMCODE_WADDR[5]) net  (fanout = 16)      0.343 r     3.870      ../rtl/BuzzerNLCDSoC.v(564)
+ RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002                (EMB)                  0.000       3.870
+ Arrival time                                                                        3.870                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002.clka (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.204       3.718
+ Required time                                                                       3.718            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.152ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (hold check):      0.282 ns                                                        
+ Start Point:             BuzzerSoCBusMtx/_al_u419|RAMCODE_Interface/reg0_b7.clk (rising edge triggered by clock clk)
+ End Point:               RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002.addra[8] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.610ns  (logic 0.137ns, net 0.473ns, 22% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ BuzzerSoCBusMtx/_al_u419|RAMCODE_Interface/reg0_b7.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ BuzzerSoCBusMtx/_al_u419|RAMCODE_Interface/reg0_b7.q[0]     clk2q                   0.137 r     3.527
+ RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002.addra[8] (RAMCODE_WADDR[7]) net  (fanout = 16)      0.473 r     4.000      ../rtl/BuzzerNLCDSoC.v(564)
+ RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002                (EMB)                  0.000       4.000
+ Arrival time                                                                        4.000                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002.clka (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.204       3.718
+ Required time                                                                       3.718            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.282ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (hold check):      0.298 ns                                                        
+ Start Point:             RAMCODE_Interface/reg0_b2|RAMCODE_Interface/reg0_b1.clk (rising edge triggered by clock clk)
+ End Point:               RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002.addra[3] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.626ns  (logic 0.137ns, net 0.489ns, 21% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ RAMCODE_Interface/reg0_b2|RAMCODE_Interface/reg0_b1.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ RAMCODE_Interface/reg0_b2|RAMCODE_Interface/reg0_b1.q[1]    clk2q                   0.137 r     3.527
+ RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002.addra[3] (RAMCODE_WADDR[2]) net  (fanout = 16)      0.489 r     4.016      ../rtl/BuzzerNLCDSoC.v(564)
+ RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002                (EMB)                  0.000       4.016
+ Arrival time                                                                        4.016                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002.clka (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.204       3.718
+ Required time                                                                       3.718            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.298ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002 (12 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (hold check):      0.305 ns                                                        
+ Start Point:             RAMCODE_Interface/reg0_b2|RAMCODE_Interface/reg0_b1.clk (rising edge triggered by clock clk)
+ End Point:               RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002.addra[2] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.633ns  (logic 0.137ns, net 0.496ns, 21% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ RAMCODE_Interface/reg0_b2|RAMCODE_Interface/reg0_b1.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ RAMCODE_Interface/reg0_b2|RAMCODE_Interface/reg0_b1.q[0]    clk2q                   0.137 r     3.527
+ RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002.addra[2] (RAMCODE_WADDR[1]) net  (fanout = 16)      0.496 r     4.023      ../rtl/BuzzerNLCDSoC.v(564)
+ RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002                (EMB)                  0.000       4.023
+ Arrival time                                                                        4.023                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002.clka (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.204       3.718
+ Required time                                                                       3.718            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.305ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (hold check):      0.333 ns                                                        
+ Start Point:             _al_u217|RAMCODE_Interface/reg0_b8.clk (rising edge triggered by clock clk)
+ End Point:               RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002.addra[9] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.661ns  (logic 0.137ns, net 0.524ns, 20% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ _al_u217|RAMCODE_Interface/reg0_b8.clk (clk_pad)            net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ _al_u217|RAMCODE_Interface/reg0_b8.q[0]                     clk2q                   0.137 r     3.527
+ RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002.addra[9] (RAMCODE_WADDR[8]) net  (fanout = 16)      0.524 r     4.051      ../rtl/BuzzerNLCDSoC.v(564)
+ RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002                (EMB)                  0.000       4.051
+ Arrival time                                                                        4.051                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002.clka (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.204       3.718
+ Required time                                                                       3.718            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.333ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (hold check):      0.403 ns                                                        
+ Start Point:             RAMCODE_Interface/reg0_b0.clk (rising edge triggered by clock clk)
+ End Point:               RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002.addra[1] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.731ns  (logic 0.137ns, net 0.594ns, 18% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ RAMCODE_Interface/reg0_b0.clk (clk_pad)                     net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ RAMCODE_Interface/reg0_b0.q[0]                              clk2q                   0.137 r     3.527
+ RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002.addra[1] (RAMCODE_WADDR[0]) net  (fanout = 16)      0.594 r     4.121      ../rtl/BuzzerNLCDSoC.v(564)
+ RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002                (EMB)                  0.000       4.121
+ Arrival time                                                                        4.121                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002.clka (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.204       3.718
+ Required time                                                                       3.718            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.403ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000 (12 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (hold check):      0.362 ns                                                        
+ Start Point:             u_logic/_al_u4368|RAMCODE_Interface/reg0_b9.clk (rising edge triggered by clock clk)
+ End Point:               RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000.addra[10] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.690ns  (logic 0.137ns, net 0.553ns, 19% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ u_logic/_al_u4368|RAMCODE_Interface/reg0_b9.clk (clk_pad)   net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u4368|RAMCODE_Interface/reg0_b9.q[0]            clk2q                   0.137 r     3.527
+ RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000.addra[10] (RAMCODE_WADDR[9]) net  (fanout = 16)      0.553 r     4.080      ../rtl/BuzzerNLCDSoC.v(564)
+ RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000                (EMB)                  0.000       4.080
+ Arrival time                                                                        4.080                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000.clka (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.204       3.718
+ Required time                                                                       3.718            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.362ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (hold check):      0.481 ns                                                        
+ Start Point:             BuzzerSoCBusMtx/_al_u619|RAMCODE_Interface/reg0_b10.clk (rising edge triggered by clock clk)
+ End Point:               RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000.addra[11] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.809ns  (logic 0.137ns, net 0.672ns, 16% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ BuzzerSoCBusMtx/_al_u619|RAMCODE_Interface/reg0_b10.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ BuzzerSoCBusMtx/_al_u619|RAMCODE_Interface/reg0_b10.q[0]    clk2q                   0.137 r     3.527
+ RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000.addra[11] (RAMCODE_WADDR[10]) net  (fanout = 16)      0.672 r     4.199      ../rtl/BuzzerNLCDSoC.v(564)
+ RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000                (EMB)                  0.000       4.199
+ Arrival time                                                                        4.199                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000.clka (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.204       3.718
+ Required time                                                                       3.718            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.481ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (hold check):      0.575 ns                                                        
+ Start Point:             RAMCODE_Interface/reg0_b6|RAMCODE_Interface/reg0_b5.clk (rising edge triggered by clock clk)
+ End Point:               RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000.addra[7] (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.903ns  (logic 0.137ns, net 0.766ns, 15% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ RAMCODE_Interface/reg0_b6|RAMCODE_Interface/reg0_b5.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ RAMCODE_Interface/reg0_b6|RAMCODE_Interface/reg0_b5.q[1]    clk2q                   0.137 r     3.527
+ RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000.addra[7] (RAMCODE_WADDR[6]) net  (fanout = 16)      0.766 r     4.293      ../rtl/BuzzerNLCDSoC.v(564)
+ RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000                (EMB)                  0.000       4.293
+ Arrival time                                                                        4.293                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000.clka (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell hold                                                                           0.200       3.922
+ clock uncertainty                                                                   0.000       3.922
+ clock recovergence pessimism                                                       -0.204       3.718
+ Required time                                                                       3.718            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.575ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Recovery checks:
+---------------------------------------------------------------------------------------------------------
+Paths for end point Buzzer/TunePWM_Sound/reg0_b0 (228 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (recovery check):  5.927 ns                                                        
+ Start Point:             Buzzer/reg0_b10.clk (rising edge triggered by clock clk)        
+ End Point:               Buzzer/TunePWM_Sound/reg0_b0.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.645ns  (logic 3.152ns, net 10.493ns, 23% logic)              
+ Logic Levels:            8                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ Buzzer/reg0_b10.clk (clk_pad)                               net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ Buzzer/reg0_b10.q[0]                                        clk2q                   0.146 r     3.868
+ Buzzer/_al_u545|Buzzer/_al_u559.d[1] (Buzzer/SoundReg_Sound[10]) net  (fanout = 22)      2.433 r     6.301      ../rtl/Buzzer/Buzzer.v(200)
+ Buzzer/_al_u545|Buzzer/_al_u559.f[1]                        cell                    0.262 r     6.563
+ Buzzer/_al_u581|Buzzer/_al_u558.a[0] (Buzzer/BeatDecoder_Sound/n2_lutinv) net  (fanout = 8)       1.393 r     7.956                    
+ Buzzer/_al_u581|Buzzer/_al_u558.f[0]                        cell                    0.424 r     8.380
+ Buzzer/_al_u545|Buzzer/_al_u559.b[0] (Buzzer/_al_u558_o)    net  (fanout = 1)       0.603 r     8.983                    
+ Buzzer/_al_u545|Buzzer/_al_u559.f[0]                        cell                    0.431 r     9.414
+ Buzzer/_al_u561|Buzzer/_al_u582.a[1] (Buzzer/_al_u559_o)    net  (fanout = 1)       0.309 r     9.723                    
+ Buzzer/_al_u561|Buzzer/_al_u582.f[1]                        cell                    0.424 r    10.147
+ Buzzer/_al_u567|Buzzer/_al_u550.b[1] (Buzzer/_al_u561_o)    net  (fanout = 1)       0.456 r    10.603                    
+ Buzzer/_al_u567|Buzzer/_al_u550.f[1]                        cell                    0.431 r    11.034
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1] (Buzzer/_al_u567_o) net  (fanout = 1)       0.662 r    11.696                    
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.f[1]          cell                    0.424 r    12.120
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1] (Buzzer/BeatFinish_Sound_lutinv) net  (fanout = 4)       2.069 r    14.189      ../rtl/Buzzer/Buzzer.v(189)
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.f[1]         cell                    0.262 r    14.451
+ Buzzer/_al_u650|Buzzer/_al_u754.d[0] (Buzzer/BeatCntRstn_Sound_lutinv) net  (fanout = 2)       0.561 r    15.012      ../rtl/Buzzer/Buzzer.v(191)
+ Buzzer/_al_u650|Buzzer/_al_u754.f[0]                        cell                    0.205 r    15.217
+ Buzzer/TunePWM_Sound/reg0_b0.sr (Buzzer/n8)                 net  (fanout = 27)      2.007 r    17.224                    
+ Buzzer/TunePWM_Sound/reg0_b0                                path2reg                0.143      17.367
+ Arrival time                                                                       17.367                  (8 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ Buzzer/TunePWM_Sound/reg0_b0.clk (clk_pad)                  net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.204      23.294
+ Required time                                                                      23.294            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               5.927ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (recovery check):  5.956 ns                                                        
+ Start Point:             Buzzer/reg0_b10.clk (rising edge triggered by clock clk)        
+ End Point:               Buzzer/TunePWM_Sound/reg0_b0.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.616ns  (logic 3.435ns, net 10.181ns, 25% logic)              
+ Logic Levels:            8                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ Buzzer/reg0_b10.clk (clk_pad)                               net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ Buzzer/reg0_b10.q[0]                                        clk2q                   0.146 r     3.868
+ Buzzer/_al_u545|Buzzer/_al_u559.d[1] (Buzzer/SoundReg_Sound[10]) net  (fanout = 22)      2.433 r     6.301      ../rtl/Buzzer/Buzzer.v(200)
+ Buzzer/_al_u545|Buzzer/_al_u559.f[1]                        cell                    0.262 r     6.563
+ Buzzer/_al_u546.b[1] (Buzzer/BeatDecoder_Sound/n2_lutinv)   net  (fanout = 8)       1.278 r     7.841                    
+ Buzzer/_al_u546.fx[0]                                       cell                    0.543 r     8.384
+ Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.a[1] (Buzzer/_al_u546_o) net  (fanout = 1)       0.358 r     8.742                    
+ Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.f[1]             cell                    0.408 r     9.150
+ Buzzer/_al_u554.a[1] (Buzzer/_al_u549_o)                    net  (fanout = 2)       0.309 r     9.459                    
+ Buzzer/_al_u554.fx[0]                                       cell                    0.618 r    10.077
+ Buzzer/_al_u567|Buzzer/_al_u550.a[1] (Buzzer/_al_u554_o)    net  (fanout = 1)       0.504 r    10.581                    
+ Buzzer/_al_u567|Buzzer/_al_u550.f[1]                        cell                    0.424 r    11.005
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1] (Buzzer/_al_u567_o) net  (fanout = 1)       0.662 r    11.667                    
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.f[1]          cell                    0.424 r    12.091
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1] (Buzzer/BeatFinish_Sound_lutinv) net  (fanout = 4)       2.069 r    14.160      ../rtl/Buzzer/Buzzer.v(189)
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.f[1]         cell                    0.262 r    14.422
+ Buzzer/_al_u650|Buzzer/_al_u754.d[0] (Buzzer/BeatCntRstn_Sound_lutinv) net  (fanout = 2)       0.561 r    14.983      ../rtl/Buzzer/Buzzer.v(191)
+ Buzzer/_al_u650|Buzzer/_al_u754.f[0]                        cell                    0.205 r    15.188
+ Buzzer/TunePWM_Sound/reg0_b0.sr (Buzzer/n8)                 net  (fanout = 27)      2.007 r    17.195                    
+ Buzzer/TunePWM_Sound/reg0_b0                                path2reg                0.143      17.338
+ Arrival time                                                                       17.338                  (8 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ Buzzer/TunePWM_Sound/reg0_b0.clk (clk_pad)                  net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.204      23.294
+ Required time                                                                      23.294            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               5.956ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (recovery check):  5.956 ns                                                        
+ Start Point:             Buzzer/reg0_b10.clk (rising edge triggered by clock clk)        
+ End Point:               Buzzer/TunePWM_Sound/reg0_b0.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.616ns  (logic 3.435ns, net 10.181ns, 25% logic)              
+ Logic Levels:            8                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ Buzzer/reg0_b10.clk (clk_pad)                               net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ Buzzer/reg0_b10.q[0]                                        clk2q                   0.146 r     3.868
+ Buzzer/_al_u545|Buzzer/_al_u559.d[1] (Buzzer/SoundReg_Sound[10]) net  (fanout = 22)      2.433 r     6.301      ../rtl/Buzzer/Buzzer.v(200)
+ Buzzer/_al_u545|Buzzer/_al_u559.f[1]                        cell                    0.262 r     6.563
+ Buzzer/_al_u546.b[0] (Buzzer/BeatDecoder_Sound/n2_lutinv)   net  (fanout = 8)       1.278 r     7.841                    
+ Buzzer/_al_u546.fx[0]                                       cell                    0.543 r     8.384
+ Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.a[1] (Buzzer/_al_u546_o) net  (fanout = 1)       0.358 r     8.742                    
+ Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.f[1]             cell                    0.408 r     9.150
+ Buzzer/_al_u554.a[1] (Buzzer/_al_u549_o)                    net  (fanout = 2)       0.309 r     9.459                    
+ Buzzer/_al_u554.fx[0]                                       cell                    0.618 r    10.077
+ Buzzer/_al_u567|Buzzer/_al_u550.a[1] (Buzzer/_al_u554_o)    net  (fanout = 1)       0.504 r    10.581                    
+ Buzzer/_al_u567|Buzzer/_al_u550.f[1]                        cell                    0.424 r    11.005
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1] (Buzzer/_al_u567_o) net  (fanout = 1)       0.662 r    11.667                    
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.f[1]          cell                    0.424 r    12.091
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1] (Buzzer/BeatFinish_Sound_lutinv) net  (fanout = 4)       2.069 r    14.160      ../rtl/Buzzer/Buzzer.v(189)
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.f[1]         cell                    0.262 r    14.422
+ Buzzer/_al_u650|Buzzer/_al_u754.d[0] (Buzzer/BeatCntRstn_Sound_lutinv) net  (fanout = 2)       0.561 r    14.983      ../rtl/Buzzer/Buzzer.v(191)
+ Buzzer/_al_u650|Buzzer/_al_u754.f[0]                        cell                    0.205 r    15.188
+ Buzzer/TunePWM_Sound/reg0_b0.sr (Buzzer/n8)                 net  (fanout = 27)      2.007 r    17.195                    
+ Buzzer/TunePWM_Sound/reg0_b0                                path2reg                0.143      17.338
+ Arrival time                                                                       17.338                  (8 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ Buzzer/TunePWM_Sound/reg0_b0.clk (clk_pad)                  net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.204      23.294
+ Required time                                                                      23.294            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               5.956ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6 (228 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (recovery check):  5.927 ns                                                        
+ Start Point:             Buzzer/reg0_b10.clk (rising edge triggered by clock clk)        
+ End Point:               Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.645ns  (logic 3.152ns, net 10.493ns, 23% logic)              
+ Logic Levels:            8                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ Buzzer/reg0_b10.clk (clk_pad)                               net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ Buzzer/reg0_b10.q[0]                                        clk2q                   0.146 r     3.868
+ Buzzer/_al_u545|Buzzer/_al_u559.d[1] (Buzzer/SoundReg_Sound[10]) net  (fanout = 22)      2.433 r     6.301      ../rtl/Buzzer/Buzzer.v(200)
+ Buzzer/_al_u545|Buzzer/_al_u559.f[1]                        cell                    0.262 r     6.563
+ Buzzer/_al_u581|Buzzer/_al_u558.a[0] (Buzzer/BeatDecoder_Sound/n2_lutinv) net  (fanout = 8)       1.393 r     7.956                    
+ Buzzer/_al_u581|Buzzer/_al_u558.f[0]                        cell                    0.424 r     8.380
+ Buzzer/_al_u545|Buzzer/_al_u559.b[0] (Buzzer/_al_u558_o)    net  (fanout = 1)       0.603 r     8.983                    
+ Buzzer/_al_u545|Buzzer/_al_u559.f[0]                        cell                    0.431 r     9.414
+ Buzzer/_al_u561|Buzzer/_al_u582.a[1] (Buzzer/_al_u559_o)    net  (fanout = 1)       0.309 r     9.723                    
+ Buzzer/_al_u561|Buzzer/_al_u582.f[1]                        cell                    0.424 r    10.147
+ Buzzer/_al_u567|Buzzer/_al_u550.b[1] (Buzzer/_al_u561_o)    net  (fanout = 1)       0.456 r    10.603                    
+ Buzzer/_al_u567|Buzzer/_al_u550.f[1]                        cell                    0.431 r    11.034
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1] (Buzzer/_al_u567_o) net  (fanout = 1)       0.662 r    11.696                    
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.f[1]          cell                    0.424 r    12.120
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1] (Buzzer/BeatFinish_Sound_lutinv) net  (fanout = 4)       2.069 r    14.189      ../rtl/Buzzer/Buzzer.v(189)
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.f[1]         cell                    0.262 r    14.451
+ Buzzer/_al_u650|Buzzer/_al_u754.d[0] (Buzzer/BeatCntRstn_Sound_lutinv) net  (fanout = 2)       0.561 r    15.012      ../rtl/Buzzer/Buzzer.v(191)
+ Buzzer/_al_u650|Buzzer/_al_u754.f[0]                        cell                    0.205 r    15.217
+ Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6.sr (Buzzer/n8) net  (fanout = 27)      2.007 r    17.224                    
+ Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6   path2reg                0.143      17.367
+ Arrival time                                                                       17.367                  (8 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.204      23.294
+ Required time                                                                      23.294            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               5.927ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (recovery check):  5.956 ns                                                        
+ Start Point:             Buzzer/reg0_b10.clk (rising edge triggered by clock clk)        
+ End Point:               Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.616ns  (logic 3.435ns, net 10.181ns, 25% logic)              
+ Logic Levels:            8                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ Buzzer/reg0_b10.clk (clk_pad)                               net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ Buzzer/reg0_b10.q[0]                                        clk2q                   0.146 r     3.868
+ Buzzer/_al_u545|Buzzer/_al_u559.d[1] (Buzzer/SoundReg_Sound[10]) net  (fanout = 22)      2.433 r     6.301      ../rtl/Buzzer/Buzzer.v(200)
+ Buzzer/_al_u545|Buzzer/_al_u559.f[1]                        cell                    0.262 r     6.563
+ Buzzer/_al_u546.b[1] (Buzzer/BeatDecoder_Sound/n2_lutinv)   net  (fanout = 8)       1.278 r     7.841                    
+ Buzzer/_al_u546.fx[0]                                       cell                    0.543 r     8.384
+ Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.a[1] (Buzzer/_al_u546_o) net  (fanout = 1)       0.358 r     8.742                    
+ Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.f[1]             cell                    0.408 r     9.150
+ Buzzer/_al_u554.a[1] (Buzzer/_al_u549_o)                    net  (fanout = 2)       0.309 r     9.459                    
+ Buzzer/_al_u554.fx[0]                                       cell                    0.618 r    10.077
+ Buzzer/_al_u567|Buzzer/_al_u550.a[1] (Buzzer/_al_u554_o)    net  (fanout = 1)       0.504 r    10.581                    
+ Buzzer/_al_u567|Buzzer/_al_u550.f[1]                        cell                    0.424 r    11.005
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1] (Buzzer/_al_u567_o) net  (fanout = 1)       0.662 r    11.667                    
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.f[1]          cell                    0.424 r    12.091
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1] (Buzzer/BeatFinish_Sound_lutinv) net  (fanout = 4)       2.069 r    14.160      ../rtl/Buzzer/Buzzer.v(189)
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.f[1]         cell                    0.262 r    14.422
+ Buzzer/_al_u650|Buzzer/_al_u754.d[0] (Buzzer/BeatCntRstn_Sound_lutinv) net  (fanout = 2)       0.561 r    14.983      ../rtl/Buzzer/Buzzer.v(191)
+ Buzzer/_al_u650|Buzzer/_al_u754.f[0]                        cell                    0.205 r    15.188
+ Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6.sr (Buzzer/n8) net  (fanout = 27)      2.007 r    17.195                    
+ Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6   path2reg                0.143      17.338
+ Arrival time                                                                       17.338                  (8 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.204      23.294
+ Required time                                                                      23.294            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               5.956ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (recovery check):  5.956 ns                                                        
+ Start Point:             Buzzer/reg0_b10.clk (rising edge triggered by clock clk)        
+ End Point:               Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.616ns  (logic 3.435ns, net 10.181ns, 25% logic)              
+ Logic Levels:            8                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ Buzzer/reg0_b10.clk (clk_pad)                               net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ Buzzer/reg0_b10.q[0]                                        clk2q                   0.146 r     3.868
+ Buzzer/_al_u545|Buzzer/_al_u559.d[1] (Buzzer/SoundReg_Sound[10]) net  (fanout = 22)      2.433 r     6.301      ../rtl/Buzzer/Buzzer.v(200)
+ Buzzer/_al_u545|Buzzer/_al_u559.f[1]                        cell                    0.262 r     6.563
+ Buzzer/_al_u546.b[0] (Buzzer/BeatDecoder_Sound/n2_lutinv)   net  (fanout = 8)       1.278 r     7.841                    
+ Buzzer/_al_u546.fx[0]                                       cell                    0.543 r     8.384
+ Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.a[1] (Buzzer/_al_u546_o) net  (fanout = 1)       0.358 r     8.742                    
+ Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.f[1]             cell                    0.408 r     9.150
+ Buzzer/_al_u554.a[1] (Buzzer/_al_u549_o)                    net  (fanout = 2)       0.309 r     9.459                    
+ Buzzer/_al_u554.fx[0]                                       cell                    0.618 r    10.077
+ Buzzer/_al_u567|Buzzer/_al_u550.a[1] (Buzzer/_al_u554_o)    net  (fanout = 1)       0.504 r    10.581                    
+ Buzzer/_al_u567|Buzzer/_al_u550.f[1]                        cell                    0.424 r    11.005
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1] (Buzzer/_al_u567_o) net  (fanout = 1)       0.662 r    11.667                    
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.f[1]          cell                    0.424 r    12.091
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1] (Buzzer/BeatFinish_Sound_lutinv) net  (fanout = 4)       2.069 r    14.160      ../rtl/Buzzer/Buzzer.v(189)
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.f[1]         cell                    0.262 r    14.422
+ Buzzer/_al_u650|Buzzer/_al_u754.d[0] (Buzzer/BeatCntRstn_Sound_lutinv) net  (fanout = 2)       0.561 r    14.983      ../rtl/Buzzer/Buzzer.v(191)
+ Buzzer/_al_u650|Buzzer/_al_u754.f[0]                        cell                    0.205 r    15.188
+ Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6.sr (Buzzer/n8) net  (fanout = 27)      2.007 r    17.195                    
+ Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6   path2reg                0.143      17.338
+ Arrival time                                                                       17.338                  (8 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.204      23.294
+ Required time                                                                      23.294            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               5.956ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4 (228 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (recovery check):  5.927 ns                                                        
+ Start Point:             Buzzer/reg0_b10.clk (rising edge triggered by clock clk)        
+ End Point:               Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.645ns  (logic 3.152ns, net 10.493ns, 23% logic)              
+ Logic Levels:            8                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ Buzzer/reg0_b10.clk (clk_pad)                               net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ Buzzer/reg0_b10.q[0]                                        clk2q                   0.146 r     3.868
+ Buzzer/_al_u545|Buzzer/_al_u559.d[1] (Buzzer/SoundReg_Sound[10]) net  (fanout = 22)      2.433 r     6.301      ../rtl/Buzzer/Buzzer.v(200)
+ Buzzer/_al_u545|Buzzer/_al_u559.f[1]                        cell                    0.262 r     6.563
+ Buzzer/_al_u581|Buzzer/_al_u558.a[0] (Buzzer/BeatDecoder_Sound/n2_lutinv) net  (fanout = 8)       1.393 r     7.956                    
+ Buzzer/_al_u581|Buzzer/_al_u558.f[0]                        cell                    0.424 r     8.380
+ Buzzer/_al_u545|Buzzer/_al_u559.b[0] (Buzzer/_al_u558_o)    net  (fanout = 1)       0.603 r     8.983                    
+ Buzzer/_al_u545|Buzzer/_al_u559.f[0]                        cell                    0.431 r     9.414
+ Buzzer/_al_u561|Buzzer/_al_u582.a[1] (Buzzer/_al_u559_o)    net  (fanout = 1)       0.309 r     9.723                    
+ Buzzer/_al_u561|Buzzer/_al_u582.f[1]                        cell                    0.424 r    10.147
+ Buzzer/_al_u567|Buzzer/_al_u550.b[1] (Buzzer/_al_u561_o)    net  (fanout = 1)       0.456 r    10.603                    
+ Buzzer/_al_u567|Buzzer/_al_u550.f[1]                        cell                    0.431 r    11.034
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1] (Buzzer/_al_u567_o) net  (fanout = 1)       0.662 r    11.696                    
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.f[1]          cell                    0.424 r    12.120
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1] (Buzzer/BeatFinish_Sound_lutinv) net  (fanout = 4)       2.069 r    14.189      ../rtl/Buzzer/Buzzer.v(189)
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.f[1]         cell                    0.262 r    14.451
+ Buzzer/_al_u650|Buzzer/_al_u754.d[0] (Buzzer/BeatCntRstn_Sound_lutinv) net  (fanout = 2)       0.561 r    15.012      ../rtl/Buzzer/Buzzer.v(191)
+ Buzzer/_al_u650|Buzzer/_al_u754.f[0]                        cell                    0.205 r    15.217
+ Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4.sr (Buzzer/n8) net  (fanout = 27)      2.007 r    17.224                    
+ Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4   path2reg                0.143      17.367
+ Arrival time                                                                       17.367                  (8 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.204      23.294
+ Required time                                                                      23.294            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               5.927ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (recovery check):  5.956 ns                                                        
+ Start Point:             Buzzer/reg0_b10.clk (rising edge triggered by clock clk)        
+ End Point:               Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.616ns  (logic 3.435ns, net 10.181ns, 25% logic)              
+ Logic Levels:            8                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ Buzzer/reg0_b10.clk (clk_pad)                               net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ Buzzer/reg0_b10.q[0]                                        clk2q                   0.146 r     3.868
+ Buzzer/_al_u545|Buzzer/_al_u559.d[1] (Buzzer/SoundReg_Sound[10]) net  (fanout = 22)      2.433 r     6.301      ../rtl/Buzzer/Buzzer.v(200)
+ Buzzer/_al_u545|Buzzer/_al_u559.f[1]                        cell                    0.262 r     6.563
+ Buzzer/_al_u546.b[1] (Buzzer/BeatDecoder_Sound/n2_lutinv)   net  (fanout = 8)       1.278 r     7.841                    
+ Buzzer/_al_u546.fx[0]                                       cell                    0.543 r     8.384
+ Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.a[1] (Buzzer/_al_u546_o) net  (fanout = 1)       0.358 r     8.742                    
+ Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.f[1]             cell                    0.408 r     9.150
+ Buzzer/_al_u554.a[1] (Buzzer/_al_u549_o)                    net  (fanout = 2)       0.309 r     9.459                    
+ Buzzer/_al_u554.fx[0]                                       cell                    0.618 r    10.077
+ Buzzer/_al_u567|Buzzer/_al_u550.a[1] (Buzzer/_al_u554_o)    net  (fanout = 1)       0.504 r    10.581                    
+ Buzzer/_al_u567|Buzzer/_al_u550.f[1]                        cell                    0.424 r    11.005
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1] (Buzzer/_al_u567_o) net  (fanout = 1)       0.662 r    11.667                    
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.f[1]          cell                    0.424 r    12.091
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1] (Buzzer/BeatFinish_Sound_lutinv) net  (fanout = 4)       2.069 r    14.160      ../rtl/Buzzer/Buzzer.v(189)
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.f[1]         cell                    0.262 r    14.422
+ Buzzer/_al_u650|Buzzer/_al_u754.d[0] (Buzzer/BeatCntRstn_Sound_lutinv) net  (fanout = 2)       0.561 r    14.983      ../rtl/Buzzer/Buzzer.v(191)
+ Buzzer/_al_u650|Buzzer/_al_u754.f[0]                        cell                    0.205 r    15.188
+ Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4.sr (Buzzer/n8) net  (fanout = 27)      2.007 r    17.195                    
+ Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4   path2reg                0.143      17.338
+ Arrival time                                                                       17.338                  (8 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.204      23.294
+ Required time                                                                      23.294            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               5.956ns          
+
+---------------------------------------------------------------------------------------------------------
+
+ Slack (recovery check):  5.956 ns                                                        
+ Start Point:             Buzzer/reg0_b10.clk (rising edge triggered by clock clk)        
+ End Point:               Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         13.616ns  (logic 3.435ns, net 10.181ns, 25% logic)              
+ Logic Levels:            8                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ Buzzer/reg0_b10.clk (clk_pad)                               net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ Buzzer/reg0_b10.q[0]                                        clk2q                   0.146 r     3.868
+ Buzzer/_al_u545|Buzzer/_al_u559.d[1] (Buzzer/SoundReg_Sound[10]) net  (fanout = 22)      2.433 r     6.301      ../rtl/Buzzer/Buzzer.v(200)
+ Buzzer/_al_u545|Buzzer/_al_u559.f[1]                        cell                    0.262 r     6.563
+ Buzzer/_al_u546.b[0] (Buzzer/BeatDecoder_Sound/n2_lutinv)   net  (fanout = 8)       1.278 r     7.841                    
+ Buzzer/_al_u546.fx[0]                                       cell                    0.543 r     8.384
+ Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.a[1] (Buzzer/_al_u546_o) net  (fanout = 1)       0.358 r     8.742                    
+ Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.f[1]             cell                    0.408 r     9.150
+ Buzzer/_al_u554.a[1] (Buzzer/_al_u549_o)                    net  (fanout = 2)       0.309 r     9.459                    
+ Buzzer/_al_u554.fx[0]                                       cell                    0.618 r    10.077
+ Buzzer/_al_u567|Buzzer/_al_u550.a[1] (Buzzer/_al_u554_o)    net  (fanout = 1)       0.504 r    10.581                    
+ Buzzer/_al_u567|Buzzer/_al_u550.f[1]                        cell                    0.424 r    11.005
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1] (Buzzer/_al_u567_o) net  (fanout = 1)       0.662 r    11.667                    
+ Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.f[1]          cell                    0.424 r    12.091
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1] (Buzzer/BeatFinish_Sound_lutinv) net  (fanout = 4)       2.069 r    14.160      ../rtl/Buzzer/Buzzer.v(189)
+ Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.f[1]         cell                    0.262 r    14.422
+ Buzzer/_al_u650|Buzzer/_al_u754.d[0] (Buzzer/BeatCntRstn_Sound_lutinv) net  (fanout = 2)       0.561 r    14.983      ../rtl/Buzzer/Buzzer.v(191)
+ Buzzer/_al_u650|Buzzer/_al_u754.f[0]                        cell                    0.205 r    15.188
+ Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4.sr (Buzzer/n8) net  (fanout = 27)      2.007 r    17.195                    
+ Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4   path2reg                0.143      17.338
+ Arrival time                                                                       17.338                  (8 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                 20.000      23.390
+---------------------------------------------------------------------------------------------------------
+ cell recovery                                                                      -0.300      23.090
+ clock uncertainty                                                                  -0.000      23.090
+ clock recovergence pessimism                                                        0.204      23.294
+ Required time                                                                      23.294            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               5.956ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Removal checks:
+---------------------------------------------------------------------------------------------------------
+Paths for end point Buzzer/_al_u326|APB_Keyboard/reg0_b5 (1 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (removal check):   0.134 ns                                                        
+ Start Point:             Buzzer/_al_u318|cpuresetn_reg_hfnopt2_7.clk (rising edge triggered by clock clk)
+ End Point:               Buzzer/_al_u326|APB_Keyboard/reg0_b5.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.562ns  (logic 0.246ns, net 0.316ns, 43% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ Buzzer/_al_u318|cpuresetn_reg_hfnopt2_7.clk (clk_pad)       net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ Buzzer/_al_u318|cpuresetn_reg_hfnopt2_7.q[0]                clk2q                   0.137 r     3.527
+ Buzzer/_al_u326|APB_Keyboard/reg0_b5.sr (cpuresetn_hfnopt2_7) net  (fanout = 33)      0.316 r     3.843      ../rtl/BuzzerNLCDSoC.v(60)
+ Buzzer/_al_u326|APB_Keyboard/reg0_b5                        path2reg                0.109       3.952
+ Arrival time                                                                        3.952                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ Buzzer/_al_u326|APB_Keyboard/reg0_b5.clk (clk_pad)          net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell removal                                                                        0.300       4.022
+ clock uncertainty                                                                   0.000       4.022
+ clock recovergence pessimism                                                       -0.204       3.818
+ Required time                                                                       3.818            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.134ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point BuzzerSoCBusMtx/_al_u483|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_1/reg0_b6 (1 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (removal check):   0.140 ns                                                        
+ Start Point:             BuzzerSoCBusMtx/_al_u755|cpuresetn_reg_hfnopt2_6.clk (rising edge triggered by clock clk)
+ End Point:               BuzzerSoCBusMtx/_al_u483|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_1/reg0_b6.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.568ns  (logic 0.246ns, net 0.322ns, 43% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ BuzzerSoCBusMtx/_al_u755|cpuresetn_reg_hfnopt2_6.clk (clk_pad) net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ BuzzerSoCBusMtx/_al_u755|cpuresetn_reg_hfnopt2_6.q[0]       clk2q                   0.137 r     3.527
+ BuzzerSoCBusMtx/_al_u483|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_1/reg0_b6.sr (cpuresetn_hfnopt2_6) net  (fanout = 34)      0.322 r     3.849      ../rtl/BuzzerNLCDSoC.v(60)
+ BuzzerSoCBusMtx/_al_u483|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_1/reg0_b6 path2reg                0.109       3.958
+ Arrival time                                                                        3.958                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ BuzzerSoCBusMtx/_al_u483|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_1/reg0_b6.clk (clk_pad) net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell removal                                                                        0.300       4.022
+ clock uncertainty                                                                   0.000       4.022
+ clock recovergence pessimism                                                       -0.204       3.818
+ Required time                                                                       3.818            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.140ns          
+
+---------------------------------------------------------------------------------------------------------
+
+Paths for end point u_logic/Vbspw6_reg|u_logic/Tngbx6_reg (1 paths)
+---------------------------------------------------------------------------------------------------------
+ Slack (removal check):   0.163 ns                                                        
+ Start Point:             u_logic/_al_u2408|cpuresetn_reg_hfnopt2_15.clk (rising edge triggered by clock clk)
+ End Point:               u_logic/Vbspw6_reg|u_logic/Tngbx6_reg.sr (rising edge triggered by clock clk)
+ Clock group:             clk                                                             
+ Data Path Delay:         0.591ns  (logic 0.246ns, net 0.345ns, 41% logic)                
+ Logic Levels:            0                                                               
+
+ Point                                                       Type                     Incr        Path      Info          
+---------------------------------------------------------------------------------------------------------
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.596       1.596                    
+ u_logic/_al_u2408|cpuresetn_reg_hfnopt2_15.clk (clk_pad)    net                     1.794       3.390      ../rtl/BuzzerNLCDSoC.v(1)
+ launch clock edge                                                                   0.000       3.390
+---------------------------------------------------------------------------------------------------------
+ u_logic/_al_u2408|cpuresetn_reg_hfnopt2_15.q[0]             clk2q                   0.137 r     3.527
+ u_logic/Vbspw6_reg|u_logic/Tngbx6_reg.sr (cpuresetn_hfnopt2_15) net  (fanout = 25)      0.345 r     3.872      ../rtl/BuzzerNLCDSoC.v(60)
+ u_logic/Vbspw6_reg|u_logic/Tngbx6_reg                       path2reg                0.109       3.981
+ Arrival time                                                                        3.981                  (0 lvl)       
+
+ source latency                                                                      0.000       0.000                    
+ clk                                                                                 0.000       0.000                    
+ _al_u70.ipad                                                hier                    0.000       0.000                    
+ _al_u70.di                                                  cell (PAD)              1.660       1.660                    
+ u_logic/Vbspw6_reg|u_logic/Tngbx6_reg.clk (clk_pad)         net                     2.062       3.722      ../rtl/BuzzerNLCDSoC.v(1)
+ capture clock edge                                                                  0.000       3.722
+---------------------------------------------------------------------------------------------------------
+ cell removal                                                                        0.300       4.022
+ clock uncertainty                                                                   0.000       4.022
+ clock recovergence pessimism                                                       -0.204       3.818
+ Required time                                                                       3.818            
+---------------------------------------------------------------------------------------------------------
+ Slack                                                                               0.163ns          
+
+---------------------------------------------------------------------------------------------------------
+
+
+=========================================================================================================
+Timing summary:                                                                           
+---------------------------------------------------------------------------------------------------------
+Constraint path number: more than 1,000,000,000 (STA coverage = 96.66%)
+Timing violations: 9 setup errors, and 0 hold errors.
+Minimal setup slack: -4.256, minimal hold slack: 0.134
+
+Timing group statistics: 
+	Clock constraints: 
+	  Clock Name                                  Min Period     Max Freq           Skew      Fanout            TNS
+	  clk (50.000MHz)                               24.256ns      41.227MHz        0.211ns      1692     -720.593ns
+	Minimum input arrival time before clock: no constraint path
+	Maximum output required time after clock: no constraint path
+	Maximum combinational path delay: no constraint path
+
+
+Warning: No clock constraint on 3 clock net(s): 
+	APB_Keyboard/KeyToCol/rowcnt[1]
+	APB_Keyboard/KeyToCol/sa_clk
+	u_logic/SWCLKTCK_pad
+
+---------------------------------------------------------------------------------------------------------
