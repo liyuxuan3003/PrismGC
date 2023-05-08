@@ -23,6 +23,7 @@
 #include "./SYSTEM/delay/delay.h"
 #include "./BSP/LED/led.h"
 #include "./BSP/BEEP/beep.h"
+#include <stdio.h>
 
 
 int main(void)
@@ -52,4 +53,7 @@ int main(void)
         BEEP(1);
         delay_ms(1000);
     }
+    printf("Hello world!/r/n");
+    uint32_t temp=10;
+    printf("%d/r/n",temp);
 }

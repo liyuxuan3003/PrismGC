@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+    <Project_Created_Time>2018-07-29 16:01:42</Project_Created_Time>
+    <TD_Version>4.2.003</TD_Version>
+    <UCode>00000000</UCode>
+    <Name>SDRAM_VGA_Display_Test</Name>
+    <HardWare>
+        <Family>EG4</Family>
+        <Device>EG4S20NG88</Device>
+    </HardWare>
+    <Source_Files>
+        <Header>
+            <File>src/Sdram_Control_2Port_512Kx4x32Bit/Sdram_Params.h</File>
+        </Header>
+        <Verilog>
+            <File>src/SDRAM_VGA_Display_Test.v</File>
+            <File>src/VGAData_Simulate_24Bit.v</File>
+            <File>src/Sdram_Control_2Port_512Kx4x32Bit/command.v</File>
+            <File>src/Sdram_Control_2Port_512Kx4x32Bit/control_interface.v</File>
+            <File>src/Sdram_Control_2Port_512Kx4x32Bit/Sdram_Control_2Port.v</File>
+            <File>src/lcd_24bit_ip/lcd_para.v</File>
+            <File>src/lcd_24bit_ip/lcd_driver.v</File>
+            <File>src/system_index/system_ctrl_pll.v</File>
+            <File>src/system_index/system_init_delay.v</File>
+            <File>src/Sdram_Control_2Port_512Kx4x32Bit/read_fifo.v</File>
+            <File>src/Sdram_Control_2Port_512Kx4x32Bit/SDRAM_512Kx4x32Bit.v</File>
+            <File>src/Sdram_Control_2Port_512Kx4x32Bit/write_fifo.v</File>
+            <File>src/system_index/sys_pll.v</File>
+        </Verilog>
+        <ADC_FILE>sdc/EGS20NG88_Board.adc</ADC_FILE>
+        <SDC_FILE>sdc/EGS20NG88_Board.sdc</SDC_FILE>
+        <CWC_FILE/>
+    </Source_Files>
+    <TOP_MODULE>
+        <LABEL/>
+        <MODULE>SDRAM_VGA_Display_Test</MODULE>
+        <CREATEINDEX>auto</CREATEINDEX>
+    </TOP_MODULE>
+    <Project_Settings>
+        <Step_Last_Change>2018-08-11 22:39:32</Step_Last_Change>
+        <Current_Step>60</Current_Step>
+        <Step_Status>true</Step_Status>
+    </Project_Settings>
+</Project>

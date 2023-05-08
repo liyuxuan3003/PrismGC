@@ -49,36 +49,6 @@ typedef struct
     volatile uint32_t O_RESERVED_DAT:24;
 } PORTBType;
 
-// typedef struct
-// {
-//     volatile uint32_t   I_SEG_DAT:8;
-//     volatile uint32_t   I_SEGCS_DAT:4;
-//     volatile uint32_t   I_RESERVED_DAT:20;
-    
-//     volatile uint32_t   O_SEG_ENA:8;
-//     volatile uint32_t   O_SEGCS_ENA:4;
-//     volatile uint32_t   O_RESERVED_ENA:20;
-
-//     volatile uint32_t   O_SEG_DAT:8;
-//     volatile uint32_t   O_SEGCS_DAT:4;
-//     volatile uint32_t   O_RESERVED_DAT:20;
-// } PORTCType;
-
-// typedef struct
-// {
-//     volatile uint8_t   I_SEG_DAT;
-//     volatile uint8_t   I_SEGCS_DAT;
-//     volatile uint16_t  I_RESERVED_DAT;
-    
-//     volatile uint8_t   O_SEG_ENA;
-//     volatile uint8_t   O_SEGCS_ENA;
-//     volatile uint16_t  O_RESERVED_ENA;
-
-//     volatile uint8_t   O_SEG_DAT;
-//     volatile uint8_t   O_SEGCS_DAT;
-//     volatile uint16_t  O_RESERVED_DAT;
-// } PORTCType;
-
 typedef struct
 {
     volatile uint16_t  I_DIG_DAT;

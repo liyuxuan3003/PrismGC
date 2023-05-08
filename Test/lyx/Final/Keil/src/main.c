@@ -9,6 +9,7 @@
 #include "HardwareConfig.h"
 #include "UART.h"
 #include "GPIO.h"
+#include "HDMI.h"
 
 int main() 
 { 
@@ -37,11 +38,20 @@ int main()
     PORTC -> O_DIG_ENA_DAT = 0xF;
     PORTC -> O_DIG_CRT_DAT = 0xF;
 
+    RamReady();
+
+    LCDBackground(0xFFFFFF);
+    int x=0;
+
 	while(1)
 	{
         PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
         PORTC -> O_DIG_DAT --;
-        Delay(TICKS/5000);
+        x++;
+        LCDBackground(0xFFFFFF);
+        LCDRectangle(0xFF0000,+x*16,20,+x*16+256,20+256,16);
+        LCDRectangle(0x0000FF,-x*16,20,-x*16+64 ,20+64 ,1 );
+        Delay(TICKS/5);
 	}
 }
 

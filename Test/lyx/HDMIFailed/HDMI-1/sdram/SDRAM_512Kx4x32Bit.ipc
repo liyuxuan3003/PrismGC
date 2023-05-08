@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SDRAMConfig>
+    <GeneralConfig>
+        <Type>EG_PHY_SDRAM</Type>
+        <Device>EG4S20NG88</Device>
+        <create_VHDL>false</create_VHDL>
+        <inst>SDRAM_512Kx4x32bit</inst>
+    </GeneralConfig>
+</SDRAMConfig>

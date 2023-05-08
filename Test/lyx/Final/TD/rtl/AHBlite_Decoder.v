@@ -13,7 +13,23 @@ module AHBlite_Decoder
     /************************/
 
     /*UART enable parameter*/
-    parameter Port3_en = 1
+    parameter Port3_en = 1,
+    /************************/
+
+    /*HDMI enable parameter*/
+    parameter Port4_en = 1,
+    /************************/
+
+    /*? enable parameter*/
+    parameter Port5_en = 0,
+    /************************/
+
+    /*? enable parameter*/
+    parameter Port6_en = 0,
+    /************************/
+
+    /*? enable parameter*/
+    parameter Port7_en = 0
     /************************/
 )
 (
@@ -29,35 +45,60 @@ module AHBlite_Decoder
     output wire P2_HSEL,
 
     /*UART OUTPUT SELECTION SIGNAL*/
-    output wire P3_HSEL       
+    output wire P3_HSEL,   
+
+    /*HDMI OUTPUT SELECTION SIGNAL*/
+    output wire P4_HSEL,
+
+    /*? OUTPUT SELECTION SIGNAL*/
+    output wire P5_HSEL,
+
+    /*? OUTPUT SELECTION SIGNAL*/
+    output wire P6_HSEL,
+
+    /*? OUTPUT SELECTION SIGNAL*/
+    output wire P7_HSEL    
 );
 
 //RAMCODE
-//0x00000000-0x0000ffff
+//0x0000_0000-0X0000_ffff
 /*Insert RAMCODE decoder code there*/
 assign P0_HSEL = (HADDR[31:16] == 16'h0000) ? Port0_en : 1'b0; 
 /***********************************/
 
 //RAMDATA
-//0X20000000-0X2000FFFF
+//0X2000_0000-0X2000_FFFF
 /*Insert RAMDATA decoder code there*/
 assign P1_HSEL = (HADDR[31:16] == 16'h2000) ? Port1_en : 1'b0; 
 /***********************************/
 
 //GPIO-n (n=0,1,2,3)
-//0X400100n0 IN  DATA
-//0x400100n4 OUT ENABLE
-//0X400100n8 OUT DATA
+//0X4001_00n0 IN  DATA
+//0x4001_00n4 OUT ENABLE
+//0X4001_00n8 OUT DATA
 /*Insert GPIO decoder code there*/
 assign P2_HSEL = (HADDR[31:16] == 16'h4001) ? Port2_en : 1'b0;
 /***********************************/
 
 //UART
-//0X40000010 UART RX DATA
-//0X40000014 UART TX STATE
-//0X40000018 UART TX DATA
+//0X4000_0010 UART RX DATA
+//0X4000_0014 UART TX STATE
+//0X4000_0018 UART TX DATA
 /*Insert UART decoder code there*/
 assign P3_HSEL = (HADDR[31:4] == 28'h4000_001) ? Port3_en : 1'b0;
+/***********************************/
+
+//HDMI
+//0X4002_0000 XPOS
+//0X4002_0004 YPOS
+//0X4002_0008 PIXEL
+//0X4002_000C LEN
+//0x4002_0010 ENABLE
+//0x4002_0014 SYS_WR_LEN
+//0x4002_0018 SYS_VAILD
+//0x4002_001C BUSY
+/*Insert HDMI decoder code there*/
+assign P4_HSEL = (HADDR[31:16] == 16'h4002) ? Port4_en : 1'b0;
 /***********************************/
 
 endmodule
