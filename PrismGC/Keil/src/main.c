@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 #include "BitOperate.h"
 
@@ -39,7 +40,7 @@ int main()
     {
         DIG[i].ENA = 1;
     }
-
+        DIG[2].ENA = 0;
     WaitRamReady();
     LCDBackground(0xFFFFFF);
 
@@ -74,11 +75,27 @@ int main()
         else
             mdelay(200);
 	}*/
-    uint16_t x1=400, y1=0, x2=416, y2=16;
+    int  x1=400, y1=0, x2=416, y2=16;
     uint16_t t=0;
     uint16_t xue=3;
     uint16_t l=5;
     uint16_t Score=0;
+    uint8_t j=0,k=0;
+    int X1[20];
+    int X2[20];
+    int Y1[20];
+    int Y2[20];
+    for(int i=0;i<=4;i++)
+    {
+        X1[i]=0;
+        X2[i]=0;
+        Y1[i]=0;
+        Y2[i]=0;
+    };
+    X1[0]=64;
+    X2[0]=80;
+    Y1[0]=64;
+    Y2[0]=80;
     while(1)
     {
         PingPong();
@@ -117,6 +134,50 @@ int main()
             DIG[0].COD = Score%10;
             DIG[1].COD = Score/10;
             DIG[3].COD = xue;
+        }
+        else if(SWI_7(P))
+        {
+            LCDBackground(0xFFFFFF);
+            LCDRectangle(0x000000,256,256,272,272,16);
+            if(KEYBOARD -> KEY == 0x01)
+            {
+                Y2[0]=Y1[0];
+                Y1[0]=Y1[0]+16;
+            }
+            else if(KEYBOARD -> KEY == 0x09)
+            {
+                Y1[0]=Y2[0];
+                Y2[0]=Y2[0]-16;
+            }
+            else if(KEYBOARD -> KEY == 0x06)
+            {
+                X2[0]=X1[0];
+                X1[0]=X1[0]-16;
+            }
+            else if(KEYBOARD -> KEY == 0x04)
+            {
+                X1[0]=X2[0];
+                X2[0]=X2[0]+16;
+            };
+            if(X1[0]==256&&Y1[0]==256)
+            {
+                j++;
+            }
+            for(int i=0;i<=j;i++)
+            {
+                X1[i+1]=X1[i];
+                Y1[i+1]=Y1[i]-16;
+                X2[i+1]=X2[i];
+                Y2[i+1]=Y2[i]-16;
+                LCDRectangle(0xFF0000,X1[i],Y1[i],X2[i],Y2[i],16);
+                Y1[i]=Y1[i]+16;
+                Y2[i]=Y2[i]+16;
+            }
+            if(Y1[0]>=584)
+            {
+                Y1[0]=0+16*j;
+                Y2[0]=16+16*j;
+            };
         }
         else
         {
