@@ -1,5 +1,7 @@
 #include <string.h>
 #include <stdint.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "BitOperate.h"
 
@@ -47,22 +49,45 @@ int main()
 
     uint8_t status=PAGE_MAIN;
     uint8_t statusTemp=PAGE_MAIN;
+    uint32_t t;
     while(1)
     {
-        if(status==PAGE_MAIN)
+        // char *timeStr;
+        // sprintf(timeStr,"%d",TIMER->TIME);
+        // UARTString(timeStr);
+        uint32_t nowTime = TIMER -> TIME;
+        uint32_t t = nowTime;
+        char str[8];
+        for(int i=0;i<8;i++)
         {
-            statusTemp=PageMain();
+            uint32_t ti=(t/10)%10;
+            str[i]= '0' + ti;
+            t=(t-ti)/10;
         }
-        else if(status==PAGE_BLOCK_GAME)
-        {
-            statusTemp=PageBlockGame();
-        }
-        else
-        {
-            statusTemp=PAGE_MAIN;
-        }
-        status=statusTemp;
-        mdelay(2000);
+
+        UARTWrite(str[5]);
+        UARTWrite(str[4]);
+        UARTWrite(str[3]);
+        UARTString("\r\n");
+        
+        // BUZZER -> NOTE ++;
+        // BUZZER -> TIME =200;
+
+        mdelay(1000);
+        // if(status==PAGE_MAIN)
+        // {
+        //     statusTemp=PageMain();
+        // }
+        // else if(status==PAGE_BLOCK_GAME)
+        // {
+        //     statusTemp=PageBlockGame();
+        // }
+        // else
+        // {
+        //     statusTemp=PAGE_MAIN;
+        // }
+        // status=statusTemp;
+        // mdelay(2000);
     }
 }
 
