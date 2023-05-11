@@ -47,80 +47,39 @@ int main()
     WaitRamReady();
     LCDBackground(0xFFFFFF);
 
-    uint8_t status=PAGE_MAIN;
-    uint8_t statusTemp=PAGE_MAIN;
-    uint32_t t;
-    while(1)
-    {
-        // char *timeStr;
-        // sprintf(timeStr,"%d",TIMER->TIME);
-        // UARTString(timeStr);
-        uint32_t nowTime = TIMER -> TIME;
-        uint32_t t = nowTime;
-        char str[8];
-        for(int i=0;i<8;i++)
+    int x=0;
+
+	while(1)
+	{
+        for(unsigned int i=0;i<4;i++)
+            DIG[i].COD ++;
+        // PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
+        PORTA -> O_LED_DAT = (TIMER -> TIME) % 256;
+
+        if(SWI_7(P))
         {
-            uint32_t ti=(t/10)%10;
-            str[i]= '0' + ti;
-            t=(t-ti)/10;
+            BUZZER -> NOTE ++;
+            BUZZER -> TIME = 200;
         }
 
-        UARTWrite(str[5]);
-        UARTWrite(str[4]);
-        UARTWrite(str[3]);
-        UARTString("\r\n");
-        
-        // BUZZER -> NOTE ++;
-        // BUZZER -> TIME =200;
-
-        mdelay(1000);
-        // if(status==PAGE_MAIN)
-        // {
-        //     statusTemp=PageMain();
-        // }
-        // else if(status==PAGE_BLOCK_GAME)
-        // {
-        //     statusTemp=PageBlockGame();
-        // }
-        // else
-        // {
-        //     statusTemp=PAGE_MAIN;
-        // }
-        // status=statusTemp;
-        // mdelay(2000);
-    }
+        if(SWI_6(P))
+        {
+            x++;
+            if(x>=64)
+                x=0;
+            PingPong();
+            
+            LCDBackground(0xFFFFFF);
+            
+            LCDRectangle(0x000000,16,16,16+256,16+256);
+            LCDRectangle(0xFFFF00,0,550,1024,555);
+            LCDRectangle(0xFF00FF,0,345,512,350);
+            LCDRectangle(0xFF00FF,0,350,563,360);
+            LCDRectangle(0xFF0000,(64-x)*1,50 ,(64-x)*1+1,50+64);    
+            LCDRectangle(0x00FF00,(64-x)*2,250,(64-x)*2+7,250+64);  
+            LCDRectangle(0x0000FF,(64-x)*1,450,(64-x)*1+64,450+64);  
+        }
+        else
+            mdelay(200);
+	}
 }
-
-    // int x=0;
-
-	// while(1)
-	// {
-    //     for(unsigned int i=0;i<4;i++)
-    //         DIG[i].COD ++;
-    //     // PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
-    //     PORTA -> O_LED_DAT = (TIMER -> TIME) % 256;
-
-    //     if(SWI_7(P))
-    //     {
-    //         BUZZER -> NOTE ++;
-    //         BUZZER -> TIME = 200;
-    //     }
-
-    //     if(SWI_6(P))
-    //     {
-    //         x++;
-    //         if(x>=64)
-    //             x=0;
-    //         PingPong();
-            
-    //         LCDBackground(0xFFFFFF);
-            
-    //         LCDRectangle(0x000000,16,16,16+256,16+256,16);
-    //         LCDRectangle(0xFFFF00,0,550,1024,555,64);
-    //         LCDRectangle(0xFF0000,(64-x)*1,50 ,(64-x)*1+1,50+64 ,1);    
-    //         LCDRectangle(0x00FF00,(64-x)*2,250,(64-x)*2+7,250+64,7);  
-    //         LCDRectangle(0x0000FF,(64-x)*1,450,(64-x)*1+64,450+64,16);  
-    //     }
-    //     else
-    //         mdelay(200);
-	// }

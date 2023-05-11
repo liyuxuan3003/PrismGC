@@ -7,13 +7,13 @@ void WaitRamReady()
     GPU -> PING_PONG = 0x0;         //0M
 }
 
-void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len,uint32_t sys_wr_len)
+void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
 {
     GPU -> X_POS = x_pos;
     GPU -> Y_POS = y_pos;
     GPU -> PIXEL = pixel;
     GPU -> LEN = len;
-    GPU -> SYS_WR_LEN = sys_wr_len;
+    GPU -> SYS_WR_LEN = (len <= 128) ? len : 128;
     GPU -> ENABLE = 1;
     __asm("nop");
     __asm("nop");
@@ -24,16 +24,21 @@ void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len,uint32_t
 
 void LCDBackground(uint32_t color)
 {
-    RamWrite(0,0,color,H_DISP*V_DISP,256);
+    RamWrite(0,0,color,H_DISP*V_DISP);
 }
 
-void LCDRectangle(uint32_t color,uint32_t x1,uint32_t y1,uint32_t x2,uint32_t y2,uint32_t sys_wr_len)
+void LCDRectangle(uint32_t color,uint32_t x1,uint32_t y1,uint32_t x2,uint32_t y2)
 {
     uint32_t len=x2-x1;
     for(uint32_t y=y1;y<=y2;y++)
     {
-        RamWrite(x1,y,color,len,sys_wr_len);
+        RamWrite(x1,y,color,len);
     }
+}
+
+void LCDRectangleDel(uint32_t color,uint32_t x1,uint32_t y1,uint32_t dx,uint32_t dy)
+{
+    LCDRectangle(color,x1,y1,x1+dx,y1+dy);
 }
 
 void PingPong()
