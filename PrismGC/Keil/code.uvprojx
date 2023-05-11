@@ -454,6 +454,56 @@
               <FileType>5</FileType>
               <FilePath>.\src\Timer.h</FilePath>
             </File>
+            <File>
+              <FileName>Buzzer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Buzzer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Digit.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Digit.h</FilePath>
+            </File>
+            <File>
+              <FileName>GlobalDefine.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\GlobalDefine.h</FilePath>
+            </File>
+            <File>
+              <FileName>HDMI.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\HDMI.h</FilePath>
+            </File>
+            <File>
+              <FileName>KeyBoard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\KeyBoard.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageBlockGame.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\PageBlockGame.c</FilePath>
+            </File>
+            <File>
+              <FileName>PageBlockGame.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\PageBlockGame.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageMain.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\PageMain.c</FilePath>
+            </File>
+            <File>
+              <FileName>PageMain.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\PageMain.h</FilePath>
+            </File>
+            <File>
+              <FileName>SDRAM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\SDRAM.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
