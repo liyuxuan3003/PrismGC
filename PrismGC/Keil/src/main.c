@@ -92,9 +92,9 @@ int main()
             
     //         LCDRectangle(0x000000,16,16,16+256,16+256,16);
     //         LCDRectangle(0xFFFF00,0,550,1024,555,64);
-    //         LCDRectangle(0xFF0000,(64-x)*1,50 ,(64-x)*1+1,50+64 ,1);    
-    //         LCDRectangle(0x00FF00,(64-x)*2,250,(64-x)*2+7,250+64,7);  
-    //         LCDRectangle(0x0000FF,(64-x)*1,450,(64-x)*1+64,450+64,16);  
+    // LCDRectangle(0xFF0000,(64-x)*1,50 ,(64-x)*1+1,50+64 ,1);    
+    // LCDRectangle(0x00FF00,(64-x)*2,250,(64-x)*2+7,250+64,7);  
+    // LCDRectangle(0x0000FF,(64-x)*1,450,(64-x)*1+64,450+64,16);  
     //     }
     //     else
     //         mdelay(200);
