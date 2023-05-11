@@ -14,16 +14,26 @@
 
 uint8_t PageMain()
 {
-    uint8_t x=1;
+    uint32_t nowTime;
+    uint16_t x=0;
+    BUZZER -> NOTE = 0;
     while(1)
     {
+        nowTime = TIMER -> TIME;
         PingPong();
-        LCDBackground(0xFF0000);
-        BUZZER -> NOTE = x;
-        BUZZER -> TIME = 200;
-        x++;
-        if(x==8)
+        LCDBackground(0xFFFFFF);
+        // BUZZER -> NOTE ++;
+        // BUZZER -> TIME = FRAME;
+        if(KEYBOARD -> KEY != 0xFF)
             return PAGE_BLOCK_GAME;
-        mdelay(500);
+            x++;
+        if(x>=64)
+            x=0;    
+        LCDRectangle(0xFF0000,(64-x)*64,50 ,(64-x+1)*64,50+64 ,16);    
+        LCDRectangle(0x00FF00,(64-x)*64,250,(64-x+1)*64,250+64,16);  
+        LCDRectangle(0x0000FF,(64-x)*64,450,(64-x+1)*64,450+64,16);  
+
+        // while(TIMER -> TIME < nowTime + FRAME) ;
+        mdelay(FRAME);
     }
 }
