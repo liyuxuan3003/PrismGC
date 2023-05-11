@@ -10,6 +10,7 @@
 #include "UART.h"
 #include "GPIO.h"
 #include "Digit.h"
+#include "Timer.h"
 //#include "SDRAM.h"
 //#include "HDMI.h"
 #include "GPULite.h"
@@ -47,7 +48,8 @@ int main()
 	{
         for(unsigned int i=0;i<4;i++)
             DIG[i].COD ++;
-        PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
+        // PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
+        PORTA -> O_LED_DAT = (TIMER -> TIME) % 256;
 
         if(SWI_7(P))
         {
@@ -71,7 +73,6 @@ int main()
             LCDRectangle(0xFF0000,(64-x)*1,50 ,(64-x)*1+1,50+64 ,1);    
             LCDRectangle(0x00FF00,(64-x)*2,250,(64-x)*2+7,250+64,7);  
             LCDRectangle(0x0000FF,(64-x)*1,450,(64-x)*1+64,450+64,16);  
-            
         }
         else
             mdelay(200);

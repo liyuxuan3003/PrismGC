@@ -211,6 +211,23 @@ AHBLiteKeyBoard uAHBKeyBoard
     .ROW            (ROW)
 );
 
+AHBLiteTimer uAHBTimer
+(
+    .HCLK			(HCLK),
+    .HRESETn		(HRESETn),
+    .HSEL			(HSEL_A[`idTimer]),
+    .HADDR			(HADDR),
+    .HPROT			(HPROT),
+    .HSIZE			(HSIZE),
+    .HTRANS			(HTRANS),
+    .HWDATA		    (HWDATA),
+    .HWRITE			(HWRITE),
+    .HRDATA			(HRDATA_A[`idTimer*32+:32]),
+    .HREADY			(HREADY),
+    .HREADYOUT		(HREADYOUT_A[`idTimer]),
+    .HRESP			(HRESP_A[`idTimer])
+);
+
 AHBLiteGPU uAHBGPU
 (
     .HCLK                   (HCLK),

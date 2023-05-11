@@ -449,6 +449,11 @@
               <FileType>5</FileType>
               <FilePath>.\src\GPULite.h</FilePath>
             </File>
+            <File>
+              <FileName>Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Timer.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
