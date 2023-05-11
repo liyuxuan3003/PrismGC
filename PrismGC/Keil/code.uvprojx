@@ -458,6 +458,61 @@
               <FileType>5</FileType>
               <FilePath>.\src\GameFunc.h</FilePath>
             </File>
+            <File>
+              <FileName>Buzzer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Buzzer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Digit.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Digit.h</FilePath>
+            </File>
+            <File>
+              <FileName>HDMI.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\HDMI.h</FilePath>
+            </File>
+            <File>
+              <FileName>HealthDetermination.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\HealthDetermination.c</FilePath>
+            </File>
+            <File>
+              <FileName>HealthDetermination.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\HealthDetermination.h</FilePath>
+            </File>
+            <File>
+              <FileName>KeyBoard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\KeyBoard.h</FilePath>
+            </File>
+            <File>
+              <FileName>LoadPage.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\LoadPage.c</FilePath>
+            </File>
+            <File>
+              <FileName>LoadPage.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\LoadPage.h</FilePath>
+            </File>
+            <File>
+              <FileName>ScoreDetermination.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\ScoreDetermination.c</FilePath>
+            </File>
+            <File>
+              <FileName>ScoreDetermination.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\ScoreDetermination.h</FilePath>
+            </File>
+            <File>
+              <FileName>SDRAM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\SDRAM.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -11,5 +11,6 @@
 #define V_SPEED 16
 
 uint16_t MoveX(uint16_t x1);
+uint16_t AutoY(uint16_t y1);
 
 #endif

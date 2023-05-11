@@ -17,6 +17,9 @@
 #include "Buzzer.h"
 #include "KeyBoard.h"
 #include "GameFunc.h"
+#include "LoadPage.h"
+#include "ScoreDetermination.h"
+#include "HealthDetermination.h"
 
 
 int main() 
@@ -77,9 +80,9 @@ int main()
 	}*/
     int  x1=400, y1=0, x2=416, y2=16;
     uint16_t t=0;
-    uint16_t xue=3;
-    uint16_t l=5;
-    uint16_t Score=0;
+    uint16_t health=3;
+    uint16_t poh=5;
+    uint16_t score=0;
     uint8_t j=0,k=0;
     int X1[20];
     int X2[20];
@@ -99,43 +102,30 @@ int main()
     while(1)
     {
         PingPong();
-        if(SWI_6(P)&&xue>0)
+        if(SWI_6(P)&&health>0)
         {
             LCDBackground(0xFFFFFF);
             LCDRectangle(0x000000,0,400,1024,416,16);
-            LCDRectangle(0xFFFFFF,16*l,400,16*(l+1),416,16);
+            LCDRectangle(0xFFFFFF,16*poh,400,16*(poh+1),416,16);
             LCDRectangle(0xFF0000,x1,y1,x2,y2,16);
-            y1=y1+16;
-            y2=y2+16;
+            y1=AutoY(y1);
+            y2 += V_SPEED;
             x1=MoveX(x1);
-            x2=x1+16;
-            if(y1>=584)
-            {
-                y1=0;
-                y2=16;
-            };
+            x2 += H_SPEED;
             if(y1==400)
             {
-                if(x1==16*l)
-                {
-                    xue=xue;
-                    Score=Score+5;
-                    BUZZER -> NOTE ++;
-                    BUZZER -> TIME = 200;
-                }
-                else
-                {
-                    xue=xue-1;
-                }
-                l=l+5;
+                score=ScoreDetermination(x1,poh,score);
+                health=HealthDetermination(x1,poh,health);
+                poh=poh+5;
             }
-            if(l>63)
-            l=1;
-            DIG[0].COD = Score%10;
-            DIG[1].COD = Score/10;
-            DIG[3].COD = xue;
+            if(poh>63)
+            poh=1;
+            DIG[0].COD = score%10;
+            DIG[1].COD = score/10;
+            DIG[3].COD = health;
+            DIG[2].DOT = 1;
         }
-        else if(SWI_7(P))
+        /*else if(SWI_7(P))
         {
             LCDBackground(0xFFFFFF);
             LCDRectangle(0x000000,256,256,272,272,16);
@@ -143,6 +133,7 @@ int main()
             {
                 Y2[0]=Y1[0];
                 Y1[0]=Y1[0]+16;
+                
             }
             else if(KEYBOARD -> KEY == 0x09)
             {
@@ -178,17 +169,11 @@ int main()
                 Y1[0]=0+16*j;
                 Y2[0]=16+16*j;
             };
-        }
+        }*/
         else
         {
             uint16_t x;
-            LCDBackground(0xFFFFFF);
-            x++;
-            if(x>=64)
-            x=0;
-            LCDRectangle(0xFF0000,(64-x)*16,50 ,(64-x)*16+64,50+64 ,16);
-            LCDRectangle(0x00FF00,(64-x)*16,250,(64-x)*16+64,250+64,16);  
-            LCDRectangle(0x0000FF,(64-x)*16,450,(64-x)*16+64,450+64,16);
+            LoadPage(x);
             if(!SWI_6(P))
             {
                 x1=400;
@@ -196,9 +181,9 @@ int main()
                 x2=416;
                 y2=16;
                 t=0;
-                xue=3;
-                l=5;
-                Score=0;
+                health=3;
+                poh=5;
+                score=0;
             }
         }
     }
