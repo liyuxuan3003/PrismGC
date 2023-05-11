@@ -29,9 +29,9 @@ uint8_t PageBlockGame()
         if(y2<=600)
         {
             LCDBackground(0xFFFFFF);
-            LCDRectangle(0x000000,0,500,1024,520,128);
-            LCDRectangle(0xFFFFFF,x,500,x+2*BLOCK_WIDTH,520,BLOCK_WIDTH);
-            LCDRectangle(0xFF0000,x1,y1,x2,y2,BLOCK_WIDTH);
+            LCDRectangle(0x000000,0,500,1024,520);
+            LCDRectangle(0xFFFFFF,x,500,x+2*BLOCK_WIDTH,520);
+            LCDRectangle(0xFF0000,x1,y1,x2,y2);
             mdelay(10);
             y1 += BLOCK_HEIGHT;
             y2 += BLOCK_HEIGHT;

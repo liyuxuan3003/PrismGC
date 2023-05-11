@@ -47,39 +47,23 @@ int main()
     WaitRamReady();
     LCDBackground(0xFFFFFF);
 
-    int x=0;
-
-	while(1)
-	{
-        for(unsigned int i=0;i<4;i++)
-            DIG[i].COD ++;
-        // PORTA -> O_LED_DAT = PORTA -> I_SWI_DAT;
-        PORTA -> O_LED_DAT = (TIMER -> TIME) % 256;
-
-        if(SWI_7(P))
+    uint8_t status=PAGE_MAIN;
+    uint8_t statusTemp=PAGE_MAIN;
+    while(1)
+    {
+        if(status==PAGE_MAIN)
         {
-            BUZZER -> NOTE ++;
-            BUZZER -> TIME = 200;
+            statusTemp=PageMain();
         }
-
-        if(SWI_6(P))
+        else if(status==PAGE_BLOCK_GAME)
         {
-            x++;
-            if(x>=64)
-                x=0;
-            PingPong();
-            
-            LCDBackground(0xFFFFFF);
-            
-            LCDRectangle(0x000000,16,16,16+256,16+256);
-            LCDRectangle(0xFFFF00,0,550,1024,555);
-            LCDRectangle(0xFF00FF,0,345,512,350);
-            LCDRectangle(0xFF00FF,0,350,563,360);
-            LCDRectangle(0xFF0000,(64-x)*1,50 ,(64-x)*1+1,50+64);    
-            LCDRectangle(0x00FF00,(64-x)*2,250,(64-x)*2+7,250+64);  
-            LCDRectangle(0x0000FF,(64-x)*1,450,(64-x)*1+64,450+64);  
+            statusTemp=PageBlockGame();
         }
         else
-            mdelay(200);
-	}
+        {
+            statusTemp=PAGE_MAIN;
+        }
+        status=statusTemp;
+        mdelay(2000);
+    }
 }
