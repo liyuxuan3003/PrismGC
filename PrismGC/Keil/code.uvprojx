@@ -503,6 +503,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\SDRAM.h</FilePath>
             </File>
+            <File>
+              <FileName>BGM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\BGM.c</FilePath>
+            </File>
+            <File>
+              <FileName>BGM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\BGM.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

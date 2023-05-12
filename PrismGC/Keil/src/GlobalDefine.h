@@ -14,4 +14,8 @@
 #define Y1_BLOCK_PLACE 0
 #define Y2_BLOCK_PLACE 20
 
+#define Init_Score 0
+#define Up_Score 5
+#define Init_Health 3
+#define Down_Health 1
 #endif
