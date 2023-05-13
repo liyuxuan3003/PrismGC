@@ -6,10 +6,10 @@ uint16_t b[33]={50,100,50,50,50,100,100,100,100,100,100,50,50,100,100,50,100,50,
 uint8_t j=0;
 
 uint16_t BGMPageMain()
- {
-    BUZZER -> NOTE =a[j];
-    BUZZER -> TIME =b[j]; 
-    j++;
-    if(j==21)
-    j=0;
- }
+{
+   BUZZER -> NOTE =a[j];
+   BUZZER -> TIME =b[j]; 
+   j++;
+   if(j==21)
+   j=0;
+}

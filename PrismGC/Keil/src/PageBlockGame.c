@@ -17,13 +17,13 @@ uint8_t PageBlockGame()
     DIG[2].ENA = 0;
     DIG[2].DOT = 1;
 
-    uint16_t x=0;
     uint16_t x1=X1_BLOCK_PLACE;
     uint16_t x2=X2_BLOCK_PLACE;
     uint16_t y1=Y1_BLOCK_PLACE;
     uint16_t y2=Y2_BLOCK_PLACE;
-    uint16_t Score=Init_Score;
-    uint16_t Health=Init_Health;
+    uint16_t Score=INIT_SCORE;
+    uint16_t Health=INIT_HEALTH;
+    uint16_t XPlace=BLOCK_WIDTH*(TIMER -> TIME%10);
     while(1)
     {
         PingPong();
@@ -35,7 +35,7 @@ uint8_t PageBlockGame()
         {
             LCDBackground(0xFFFFFF);
             LCDRectangle(0x000000,0,500,1024,520);
-            LCDRectangle(0xFFFFFF,x,500,x+2*BLOCK_WIDTH,520);
+            LCDRectangle(0xFFFFFF,XPlace,500,XPlace+2*BLOCK_WIDTH,520);
             LCDRectangle(0xFF0000,x1,y1,x2,y2);
             mdelay(10);
             if(KEYBOARD -> KEY == 0x06)
@@ -63,19 +63,19 @@ uint8_t PageBlockGame()
             }
             if(y1==500)
             {
-                if(x<=x1&&x1<=x+BLOCK_WIDTH)
+                if(XPlace<=x1&&x1<=XPlace+BLOCK_WIDTH)
                 {
-                    BUZZER -> NOTE = 3;
+                    BUZZER -> NOTE = 1;
                     BUZZER -> TIME = 200;
-                    Score +=Up_Score;
+                    Score += UP_SCORE;
                     Health = Health;
                 }
                 else
                 {
-                    BUZZER -> NOTE = 6;
+                    BUZZER -> NOTE = 7;
                     BUZZER -> TIME = 200;
                     Score = Score;
-                    Health -= Down_Health;
+                    Health -= DOWN_HEALTH;
                 }
             }
             y1 += BLOCK_HEIGHT;
@@ -85,9 +85,9 @@ uint8_t PageBlockGame()
         {
             y1=Y1_BLOCK_PLACE;
             y2=Y2_BLOCK_PLACE;
-            x += BLOCK_WIDTH;
-            if(x>=1000)
-            x=0;
+            XPlace += BLOCK_WIDTH*(TIMER -> TIME%10);
+            if(XPlace>=1000)
+            XPlace=0;
             mdelay(100);
         }
         DIG[0].COD = Score%10;
