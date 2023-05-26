@@ -27,3 +27,8 @@ Objects
 *.sdc
 
 ScreenTest
+
+work
+*.cr.mti
+transcript
+*.wlf

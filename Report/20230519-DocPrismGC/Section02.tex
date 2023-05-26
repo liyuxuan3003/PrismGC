@@ -1,0 +1,134 @@
+\section{硬件架构}
+
+\subsection{Cortex M0与AHBLite总线}
+
+硬件整体架构如\xref{fig:硬件架构}所示，顶层模块top用于连接FPGA上的引脚，并将引脚向下传递，顶层模块top下辖两个模块，其一是Cortex M0的IP核，其二是AHBLite总线。\xref{fig:硬件架构}描述了AHBLite总线与Cortex M0交互的核心过程。在Cortex M0端处有两路输出信号\texttt{HADDR}、\texttt{HWDATA}和一路输入信号\texttt{HRDATA}，它们分别代表
+\begin{itemize}
+    \item 输出信号\texttt{HADDR}，代表M0访问的地址。
+    \item 输出信号\texttt{HWDATA}，代表M0对外设的写数据。
+    \item 输入信号\texttt{HRDATA}，代表M0对外设的读数据。
+\end{itemize}
+\begin{Figure}[硬件架构]
+    \includegraphics{build/Section02_01.fig.pdf}
+\end{Figure}
+
+无论M0试图访问哪一个外设寄存器，AHBLite总线会将\texttt{HWDATA}和\texttt{HADDR}传递给每一个外设模块，但是，AHBLite中有一个模块Decoder会根据地址\texttt{HADDR}判断当前M0试图访问的地址位于哪一外设中，并给出一组\texttt{HSEL}信号。外设只有在\texttt{HSEL}为高时才会工作。若为写操作，外设会将\texttt{HWDATA}的数据写入地址\texttt{HADDR}中，若为读操作，外设会将地址\texttt{HADDR}中的数据读至\texttt{HRDATA}中。每个外设都会产生一个\texttt{HRDATA}信号，但同时只有一个外设在真正工作，因此SlaveMux模块将会根据\texttt{HSEL}信号对各外设产生的\texttt{HRDATA}进行数据选择，将M0读取的那一外设给出的\texttt{HRDATA}返回给M0。
+
+项目的M0处理器IP通过Arm官网获取，项目的AHBLite总线来自硬木课堂提供的示例程序，但在此基础上，根据项目实际做出了一些改进，主要体现为以下两点。
+
+\subsubsection{层次化设计}
+挂载于总线的外设，有两个模块组成。以内存为例，第一个模块是BlockRAM，它是内存的实现，包含了内存空间对应的BRAM资源和内存的读写操作，第二个模块则是AHBLiteBlockRAM，它是内存的总线接口，它负责将内存所需的输入输出信号与总线连接。换言之，每个外设都是由“外设”和“外设的总线接口”两个模块构成。
+
+原有示例程序的架构中，如\xref{fig:原有架构}所示，外设和外设的总线接口都直接在顶层模块中实例化。作为示例，这是简便直观的。但是，作为项目工程，这种方式存在诸多问题。首先，这会将外设与外设的总线接口之间许多内部接线不必要的暴露在顶层模块中，造成代码维护上的困难。其次，若某一同类型外设需要实例化两次，仍以内存为例，我们需要程序空间RAMCode和数据空间RAMData两个实例。依这种实现方式，需要将BlockRAM和AHBLiteBlockRAM实例化两次，并重复两遍内部接线，这是不合理的。
+
+现在经过改进的架构，如\xref{fig:现有架构}所示，坚持Verilog自顶向下的设计思想，将外设作为外设的总线接口的一个子模块，使得后者不仅仅再是一个接口，而是一个带有接口的完整外设。这样，在实例化外设时，只需要将外设的总线接口实例化即可，外设本身会作为其子模块被间接实例化，外设与外设的总线接口间的内部连线也不会暴露。对比\xref{fig:原有架构}和\xref{fig:现有架构}可以看出，创建两个同类型外设时，这种架构确实能减少重复代码。
+
+
+\begin{Figure}[层次化设计优化]
+    \begin{FigureSub}[原有架构]
+        \includegraphics{build/Section02_02.fig.pdf}
+    \end{FigureSub}\\ \vspace{0.5cm}
+    \begin{FigureSub}[现有架构]
+        \includegraphics{build/Section02_03.fig.pdf}
+    \end{FigureSub}
+\end{Figure}
+
+\subsubsection{参数化设计}
+原有示例程序的架构中，对于\texttt{HSEL}或\texttt{HRDARA}这类随着外设数量变化的信号，在编写输入输出接口时，往往是以\texttt{HSEL1}、\texttt{HSEL2}、\texttt{HSEL3}、\texttt{HSEL4}这样的方式逐个罗列的。但是，在项目实践中，常常需要向总线添加新的外设，而在原有架构中，增加外设的数量意味着需要在若干个代码文件中复制黏贴若干个与外设数量有关的信号接口。这不仅会极大的增大新增外设的工作量，还很容易因为复制黏贴中的疏漏，造成错误。
+
+现在经过改进的架构中，则将这类与外设接口有关的信号统一以“数组”形式实现，由于Verilog中不允许在输入输出接口上使用数组，这里的“数组”实际是以位宽的方式实现的。假设有$16$个外设，原先位宽为$1$的\texttt{HSEL}则变为\texttt{HSEL\_A[16-1:0]}，原先位宽为$32$的\texttt{HRDARA[31:0]}则变为\texttt{HRADATA\_A[32*16-1:0]}。\footnote{下标A代表这其实是一个“数组”。}并且，程序中还将这里的“外设数量16”通过宏定义的方式进行参数化，使得接口的设计无关外设数目，如果需要增加外设数目，只需要修改相应宏定义中的参数即可。参数化的设计并不仅限于此处，而是贯彻到了每一段代码中。例如，原先外设的编号和地址都是直接写在代码中的，但是，外设编号会在若干个地方出现，外设编号和地址又可能会根据需要反复调整，原先这种修改是麻烦且容易出错的，但参数化之后就解决了这个问题。目前，总线共有16个外设接口，实际使用了前12个，各外设的编号和内存地址如\xref{tab:外设的编号和内存地址}所示。
+
+\begin{Table}[外设的编号和内存地址]
+<外设编号&外设名称&外设说明&外设地址&备注\\>
+\texttt{00}&RAMCode&程序内存空间&\texttt{0x00000000}&共4KB空间\\
+\texttt{01}&RAMData&数据内存空间&\texttt{0x20000000}&共4KB空间\\
+\texttt{02}&SDRAM&SDRAM测试&\texttt{0x40000000}&已停用的测试接口\\
+\texttt{03}&Timer&计时器&\texttt{0x60010000}&--\\
+\texttt{04}&GPIO&通用输入输出&\texttt{0x60020000}&连接LED灯和开关\\
+\texttt{05}&UART&串口通讯&\texttt{0x60030000}&--\\
+\texttt{06}&IIC&WII手柄&\texttt{0x60040000}&开发中\\
+\texttt{07}&GPULite&显示控制&\texttt{0x60040000}&包含SDRAM显存和HDMI\\
+\texttt{08}&HDMI&HDMI测试&\texttt{0x60050000}&已停用的测试接口\\
+\texttt{09}&Buzzer&蜂鸣器&\texttt{0x60060000}&--\\
+\texttt{10}&Digit&数码管&\texttt{0x60070000}&--\\
+\texttt{11}&KeyBoard&键盘&\texttt{0x60080000}&--\\
+\texttt{12}&--&--&--&未启用\\
+\texttt{13}&--&--&--&未启用\\
+\texttt{14}&--&--&--&未启用\\
+\texttt{15}&--&--&--&未启用\\
+\end{Table}
+
+\subsection{GPULite模块的IP设计}
+GPULite模块实现了系统的显示功能，使用SDRAM作为显存，使用HDMI作为图像输出。模块实现了M0对显示屏的的完全控制，即M0可以控制显示屏上每一个像素点的颜色（而不是只能显示一些硬件预设的图形）。并且，经过优化后，模块可以保持一个合理的刷新速率，模块可以做到无闪烁的显示，从而提供一个较好的显示体验。
+
+GPULite模块主要分为三部分
+\begin{enumerate}
+    \item 片上SDRAM资源的读写封装。
+    \item 显存的写入，将M0提供的绘图数据存入显存中。
+    \item 显存的读取，将显存的数据读出，并依照VESA时序经HDMI编码后输出。
+\end{enumerate}
+
+\subsubsection{HDMI协议的实现}
+HDMI部分参照了 \url{www.fpga4fun.com}中的一段示例代码\footnote{\url{https://www.fpga4fun.com/HDMI.html}}，但作出了相当程度的修改。首先，项目使用的显示屏的分辨率为$1024\times 600$，这不是一个标准的VESA分辨率，为此，在充分理解VESA时序后，重新测试了一组可以适用于$1024\times 600$分辨率的VESA时序参数，如\xref{tab:VESA时序参数}所示。其次，示例代码原有的VESA时序存在一定的问题，在该项目中无法正常工作。调整了各显示阶段DISP、FRONT、SYNC、BACK间的先后顺序后，问题得到解决。该模块非常简洁的实现了VESA时序和HDMI编码。
+
+\begin{Table}[适用于$1024\times 600$分辨率的VESA时序参数;VESA时序参数]{lrlr}
+    <横向参量&数值&纵向参量&数值\\>
+    \texttt{H\_FRONT}&24&
+    \texttt{V\_FRONT}&3\\
+    \texttt{H\_SYNC}&136&  
+    \texttt{V\_SYNC}&6\\ 
+    \texttt{H\_BACK}&160&
+    \texttt{V\_BACK}&29\\  
+    \texttt{H\_DISP}&1024&
+    \texttt{V\_DISP}&600\\  
+    \texttt{H\_TOTAL}&1344&
+    \texttt{V\_TOTAL}&638\\           
+\end{Table}
+
+HDMI模块的实现充分运用了安路科技提供的IP资源。由于HDMI在物理接口上采用1:10的速度传输，因此需要两路时钟信号，一路是像素时钟，HDMI将以该频率传输像素点，一路是像素时钟的十倍频，HDMI将以该频率传输像素点中每一位的比特。然而十倍频后所需的时钟频率已经高达500MHz，经过测试FPGA在该频率下的工作出现不稳定。安路科技提供的\texttt{EG\_LOGIC\_ODDR}的IP可以将信号在输出引脚上倍频，这样就只需要输入250MHz的五倍频时钟了。安路科技提供的\texttt{EG\_PHY\_PLL}锁相环IP可以运用片上的硬件锁相环资源，产生所需50MHz和250MHz的五倍频时钟。
+
+\subsubsection{Ping Pong双缓存机制}
+显示部分最初遇到的一个较明显的问题是，在刷新画面的过程中，显示会出现闪烁的现象，这严重影响了显示体验。经过研究，显示出现闪烁的原因在于向显存写入图像的过程中，HDMI从显存中读取到了半截的图像。为了解决该问题，引入了Ping Pong的双缓存机制。具体而言，这需要在SDRAM中创建两块显存空间
+\begin{enumerate}
+    \item 第一个周期中，M0向显存1写入，HDMI从显存2读取。
+    \item 第二个周期中，M0向显存2写入，HDMI从显存1读取。
+\end{enumerate}
+
+这样，读写交替在两块显存空间进行，从而保证HDMI显示的画面始终是完整的。但是一个重要细节在于何时进行切换，当M0完成一帧的绘制发出Ping Pong指令后，硬件其实并不是立即执行Ping Pong操作，而是需要等待HDMI进入消隐间隔后再执行Ping Pong操作，以避免影响HDMI当前帧的显示。否则仍然会存在短暂的闪烁。
+
+\subsection{GPIO模块的IP设计}
+GPIO即通用输入输出，适合用于连接一些对速度要求不高的外设。GPIO模块的实现参照了硬木课堂的示例程序，但做出了比较大的改进。首先，原有的示例程序仅支持将整组引脚设置为读模式或写模式，而改进后，可以实现对每一单引脚的读写模式选择。其次，原有的示例程序在写模式下，写出的数据是不可读回的，这会对C程序的编写造成困难。而改进后则为每个引脚配置了三个寄存器：\texttt{IDAT}、\texttt{OENA}、\texttt{ODAT}
+\begin{enumerate}
+    \item \texttt{IDAT}即输入数据，其跟随引脚的输入变化。
+    \item \texttt{OENA}即输出状态，其跟随来自总线的输出状态变化。若为1表示输出模式，此时会将\texttt{ODAT}输出至引脚上，若为0表示输入模式，此时会将高阻态输出至引脚上。
+    \item \texttt{ODAT}即输出数据，其跟随来自总线的输出数据变化。
+\end{enumerate}
+
+GPIO模块在开发过程中曾出现过C语言中试图访问相应寄存器，但出现错误的问题。经调试，发现是C语言在编译时生成了半字（16位）或字节（8位）访问的汇编指令，而原有的硬件代码仅支持字（32位）访问。经研究，如\xref{tab:字节访问和半字访问的支持}所示，通过分析总线信号，判断当前的访问类型，确定四个字节中，哪些字节需要被访问，哪些字节不需要被访问。由此，实现了硬件对半字访问和字节访问的全面支持，解决了问题。
+\begin{Table}[字节访问和半字访问的支持]{lccc}
+    <访问类型&\texttt{HADDR[1:0]}&\texttt{HSIZE[1:0]}&当前需要访问的字节\\>
+    32位~字访问&00&10&1111\\
+    \hlinelig
+    \mr{2}{16位~半字访问}
+    &00&01&0011\\
+    &10&01&1100\\
+    \hlinelig
+    \mr{4}{08位~字节访问}
+    &00&00&0001\\
+    &01&00&0010\\
+    &10&00&0100\\
+    &11&00&1000\\
+\end{Table}
+
+\subsection{其他外设模块}
+RAMCode模块和RAMData模块分别为C程序提供了各4KB程序空间和数据空间，基于片上Block RAM资源完成，后期根据项目需要还可以进一步扩展内存大小。
+
+Timer模块实现了计时功能，其提供了一个32位寄存器，以毫秒为单位记录系统时间，经计算，这可以提供长达49天的计时跨度，完全能满足运行需要。
+
+UART模块实现了串口通讯功能，用于调试信息的输出。
+
+KeyBoard模块实现了对键盘的控制。键盘是$4\times 4$的矩阵，共有$16$个键。
+
+Digit模块实现了对数码管的控制。数码管共有四个，Digit模块可以将M0提供的四个十六进制数转换为四个段码，通过动态扫描方式在四个数码管上显示。
+
+Buzzer模块实现了对蜂鸣器硬件的控制，蜂鸣器的工作原理是，其会发出与输入信号频率相同的声音，因此，若希望获得某一频率的声音，只需要产生某一频率的时钟信号即可。Buzzer模块内现有两个寄存器，第一个寄存器存储音符的音调，目前支持Do、Re、Mi、Fa、Sol、La Si七个音，第二个寄存器存储以毫秒记的时长，当M0希望播放一个音符时，向第一个寄存器写入音调，向第二个寄存器写入音符的时长即可。
