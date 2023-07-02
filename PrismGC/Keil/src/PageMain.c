@@ -9,6 +9,7 @@
 #include "GPULite.h"
 #include "Buzzer.h"
 #include "KeyBoard.h"
+#include "BGM.h"
 
 #include "GlobalDefine.h"
 
@@ -20,8 +21,7 @@ uint8_t PageMain()
     while(1)
     {
         nowTime = TIMER -> TIME;
-        PingPong();
-        LCDBackground(0xFFFFFF);
+        BGMPageMain();
         // BUZZER -> NOTE ++;
         // BUZZER -> TIME = FRAME;
         if(KEYBOARD -> KEY != 0xFF)
@@ -29,11 +29,14 @@ uint8_t PageMain()
             x++;
         if(x>=64)
             x=0;    
+        PingPong();
+        LCDBackground(0xFFFFFF);
         LCDRectangle(0xFF0000,(64-x)*64,50 ,(64-x+1)*64,50+64);    
         LCDRectangle(0x00FF00,(64-x)*64,250,(64-x+1)*64,250+64);  
-        LCDRectangle(0x0000FF,(64-x)*64,450,(64-x+1)*64,450+64);  
+        LCDRectangle(0x0000FF,(64-x)*64,450,(64-x+1)*64,450+64);
+        
 
-        // while(TIMER -> TIME < nowTime + FRAME) ;
-        mdelay(FRAME);
+        while(TIMER -> TIME < nowTime + FRAME) ;
+        // mdelay(FRAME);
     }
 }

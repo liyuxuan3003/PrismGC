@@ -64,6 +64,5 @@ int main()
             statusTemp=PAGE_MAIN;
         }
         status=statusTemp;
-        mdelay(2000);
     }
 }
