@@ -1,0 +1,411 @@
+
+========================================================================
+
+** ELF Header Information
+
+    File Name: .\code.axf
+
+    Machine class: ELFCLASS32 (32-bit)
+    Data encoding: ELFDATA2LSB (Little endian)
+    Header version: EV_CURRENT (Current version)
+    Operating System ABI: none
+    ABI Version: 0
+    File Type: ET_EXEC (Executable) (2)
+    Machine: EM_ARM (ARM)
+
+    Image Entry point: 0x00000045
+    Flags: EF_ARM_HASENTRY + EF_ARM_ABI_FLOAT_SOFT (0x05000202)
+
+    ARM ELF revision: 5 (ABI version 2)
+
+    Conforms to Soft float procedure-call standard
+
+    Built with
+    Component: ARM Compiler 5.06 update 7 (build 960) Tool: armasm [4d35fa]
+    Component: ARM Compiler 5.06 update 7 (build 960) Tool: armlink [4d3601]
+
+    Header size: 52 bytes (0x34)
+    Program header entry size: 32 bytes (0x20)
+    Section header entry size: 40 bytes (0x28)
+
+    Program header entries: 1
+    Section header entries: 16
+
+    Program header offset: 8676 (0x000021e4)
+    Section header offset: 8708 (0x00002204)
+
+    Section header string table index: 15
+
+========================================================================
+
+** Program header #0
+
+    Type          : PT_LOAD (1)
+    File Offset   : 52 (0x34)
+    Virtual Addr  : 0x00000000
+    Physical Addr : 0x00000000
+    Size in file  : 196 bytes (0xc4)
+    Size in memory: 1232 bytes (0x4d0)
+    Flags         : PF_X + PF_W + PF_R + PF_ARM_ENTRY (0x80000007)
+    Alignment     : 16
+
+
+========================================================================
+
+** Section #1
+
+    Name        : ER_IROM1
+    Type        : SHT_PROGBITS (0x00000001)
+    Flags       : SHF_ALLOC + SHF_EXECINSTR (0x00000006)
+    Addr        : 0x00000000
+    File Offset : 52 (0x34)
+    Size        : 192 bytes (0xc0)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 4
+    Entry Size  : 0
+
+    $d.realdata
+    RESET
+    __Vectors
+        0x00000000:    20000410    ...     DCD    536871952
+        0x00000004:    00000045    E...    DCD    69
+        0x00000008:    00000000    ....    DCD    0
+        0x0000000c:    00000000    ....    DCD    0
+        0x00000010:    00000000    ....    DCD    0
+        0x00000014:    00000000    ....    DCD    0
+        0x00000018:    00000000    ....    DCD    0
+        0x0000001c:    00000000    ....    DCD    0
+        0x00000020:    00000000    ....    DCD    0
+        0x00000024:    00000000    ....    DCD    0
+        0x00000028:    00000000    ....    DCD    0
+        0x0000002c:    00000000    ....    DCD    0
+        0x00000030:    00000000    ....    DCD    0
+        0x00000034:    00000000    ....    DCD    0
+        0x00000038:    00000000    ....    DCD    0
+        0x0000003c:    00000000    ....    DCD    0
+        0x00000040:    0000004d    M...    DCD    77
+    $t
+    .text
+    Reset_Handler
+        0x00000044:    4803        .H      LDR      r0,[pc,#12] ; [0x54] = 0x65
+        0x00000046:    4680        .F      MOV      r8,r0
+        0x00000048:    46c1        .F      MOV      r9,r8
+        0x0000004a:    4700        .G      BX       r0
+    KEY_Handler
+        0x0000004c:    b507        ..      PUSH     {r0-r2,lr}
+        0x0000004e:    f000f803    ....    BL       KEY_ISR ; 0x58
+        0x00000052:    bd07        ..      POP      {r0-r2,pc}
+    $d
+        0x00000054:    00000065    e...    DCD    101
+    $t
+    i.KEY_ISR
+    KEY_ISR
+        0x00000058:    2001        .       MOVS     r0,#1
+        0x0000005a:    4901        .I      LDR      r1,[pc,#4] ; [0x60] = 0x20000000
+        0x0000005c:    6008        .`      STR      r0,[r1,#0]
+        0x0000005e:    4770        pG      BX       lr
+    $d
+        0x00000060:    20000000    ...     DCD    536870912
+    $t
+    i.__main
+    __main
+        0x00000064:    2001        .       MOVS     r0,#1
+        0x00000066:    4914        .I      LDR      r1,[pc,#80] ; [0xb8] = 0xe000e100
+        0x00000068:    6008        .`      STR      r0,[r1,#0]
+        0x0000006a:    e023        #.      B        0xb4 ; __main + 80
+        0x0000006c:    bf00        ..      NOP      
+        0x0000006e:    4b13        .K      LDR      r3,[pc,#76] ; [0xbc] = 0x20000000
+        0x00000070:    681b        .h      LDR      r3,[r3,#0]
+        0x00000072:    2b00        .+      CMP      r3,#0
+        0x00000074:    d0fb        ..      BEQ      0x6e ; __main + 10
+        0x00000076:    2301        .#      MOVS     r3,#1
+        0x00000078:    079b        ..      LSLS     r3,r3,#30
+        0x0000007a:    6819        .h      LDR      r1,[r3,#0]
+        0x0000007c:    2000        .       MOVS     r0,#0
+        0x0000007e:    2200        ."      MOVS     r2,#0
+        0x00000080:    bf00        ..      NOP      
+        0x00000082:    e00d        ..      B        0xa0 ; __main + 60
+        0x00000084:    460b        .F      MOV      r3,r1
+        0x00000086:    40c3        .@      LSRS     r3,r3,r0
+        0x00000088:    07db        ..      LSLS     r3,r3,#31
+        0x0000008a:    0fdb        ..      LSRS     r3,r3,#31
+        0x0000008c:    2b00        .+      CMP      r3,#0
+        0x0000008e:    d006        ..      BEQ      0x9e ; __main + 58
+        0x00000090:    4602        .F      MOV      r2,r0
+        0x00000092:    4613        .F      MOV      r3,r2
+        0x00000094:    3310        .3      ADDS     r3,r3,#0x10
+        0x00000096:    2401        .$      MOVS     r4,#1
+        0x00000098:    07a4        ..      LSLS     r4,r4,#30
+        0x0000009a:    6123        #a      STR      r3,[r4,#0x10]
+        0x0000009c:    e002        ..      B        0xa4 ; __main + 64
+        0x0000009e:    1c40        @.      ADDS     r0,r0,#1
+        0x000000a0:    2810        .(      CMP      r0,#0x10
+        0x000000a2:    dbef        ..      BLT      0x84 ; __main + 32
+        0x000000a4:    bf00        ..      NOP      
+        0x000000a6:    2300        .#      MOVS     r3,#0
+        0x000000a8:    4c04        .L      LDR      r4,[pc,#16] ; [0xbc] = 0x20000000
+        0x000000aa:    6023        #`      STR      r3,[r4,#0]
+        0x000000ac:    2301        .#      MOVS     r3,#1
+        0x000000ae:    079c        ..      LSLS     r4,r3,#30
+        0x000000b0:    6023        #`      STR      r3,[r4,#0]
+        0x000000b2:    bf00        ..      NOP      
+        0x000000b4:    e7da        ..      B        0x6c ; __main + 8
+    $d
+        0x000000b6:    0000        ..      DCW    0
+        0x000000b8:    e000e100    ....    DCD    3758153984
+        0x000000bc:    20000000    ...     DCD    536870912
+
+====================================
+
+** Section #2
+
+    Name        : RW_IRAM1
+    Type        : SHT_PROGBITS (0x00000001)
+    Flags       : SHF_ALLOC + SHF_WRITE (0x00000003)
+    Addr        : 0x20000000
+    File Offset : 244 (0xf4)
+    Size        : 4 bytes (0x4)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 4
+    Entry Size  : 0
+
+
+====================================
+
+** Section #3
+
+    Name        : RW_IRAM1
+    Type        : SHT_NOBITS (0x00000008)
+    Flags       : SHF_ALLOC + SHF_WRITE (0x00000003)
+    Addr        : 0x20000004
+    File Offset : 248 (0xf8)
+    Size        : 1036 bytes (0x40c)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 16
+    Entry Size  : 0
+
+
+====================================
+
+** Section #4
+
+    Name        : .debug_abbrev
+    Type        : SHT_PROGBITS (0x00000001)
+    Flags       : None (0x00000000)
+    Addr        : 0x00000000
+    File Offset : 248 (0xf8)
+    Size        : 1476 bytes (0x5c4)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 1
+    Entry Size  : 0
+
+
+====================================
+
+** Section #5
+
+    Name        : .debug_frame
+    Type        : SHT_PROGBITS (0x00000001)
+    Flags       : None (0x00000000)
+    Addr        : 0x00000000
+    File Offset : 1724 (0x6bc)
+    Size        : 204 bytes (0xcc)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 1
+    Entry Size  : 0
+
+
+====================================
+
+** Section #6
+
+    Name        : .debug_info
+    Type        : SHT_PROGBITS (0x00000001)
+    Flags       : None (0x00000000)
+    Addr        : 0x00000000
+    File Offset : 1928 (0x788)
+    Size        : 1576 bytes (0x628)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 1
+    Entry Size  : 0
+
+
+====================================
+
+** Section #7
+
+    Name        : .debug_line
+    Type        : SHT_PROGBITS (0x00000001)
+    Flags       : None (0x00000000)
+    Addr        : 0x00000000
+    File Offset : 3504 (0xdb0)
+    Size        : 404 bytes (0x194)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 1
+    Entry Size  : 0
+
+
+====================================
+
+** Section #8
+
+    Name        : .debug_loc
+    Type        : SHT_PROGBITS (0x00000001)
+    Flags       : None (0x00000000)
+    Addr        : 0x00000000
+    File Offset : 3908 (0xf44)
+    Size        : 100 bytes (0x64)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 1
+    Entry Size  : 0
+
+
+====================================
+
+** Section #9
+
+    Name        : .debug_macinfo
+    Type        : SHT_PROGBITS (0x00000001)
+    Flags       : None (0x00000000)
+    Addr        : 0x00000000
+    File Offset : 4008 (0xfa8)
+    Size        : 2196 bytes (0x894)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 1
+    Entry Size  : 0
+
+
+====================================
+
+** Section #10
+
+    Name        : .debug_pubnames
+    Type        : SHT_PROGBITS (0x00000001)
+    Flags       : None (0x00000000)
+    Addr        : 0x00000000
+    File Offset : 6204 (0x183c)
+    Size        : 90 bytes (0x5a)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 1
+    Entry Size  : 0
+
+
+====================================
+
+** Section #11
+
+    Name        : .symtab
+    Type        : SHT_SYMTAB (0x00000002)
+    Flags       : None (0x00000000)
+    Addr        : 0x00000000
+    File Offset : 6296 (0x1898)
+    Size        : 416 bytes (0x1a0)
+    Link        : Section 12 (.strtab)
+    Info        : Last local symbol no = 17
+    Alignment   : 4
+    Entry Size  : 16
+
+
+====================================
+
+** Section #12
+
+    Name        : .strtab
+    Type        : SHT_STRTAB (0x00000003)
+    Flags       : None (0x00000000)
+    Addr        : 0x00000000
+    File Offset : 6712 (0x1a38)
+    Size        : 336 bytes (0x150)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 1
+    Entry Size  : 0
+
+
+====================================
+
+** Section #13
+
+    Name        : .note
+    Type        : SHT_NOTE (0x00000007)
+    Flags       : None (0x00000000)
+    Addr        : 0x00000000
+    File Offset : 7048 (0x1b88)
+    Size        : 28 bytes (0x1c)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 4
+    Entry Size  : 0
+
+        Section     Segment
+    ====================================
+
+              1           0
+              2           0
+              3           0
+
+====================================
+
+** Section #14
+
+    Name        : .comment
+    Type        : SHT_PROGBITS (0x00000001)
+    Flags       : None (0x00000000)
+    Addr        : 0x00000000
+    File Offset : 7076 (0x1ba4)
+    Size        : 1444 bytes (0x5a4)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 1
+    Entry Size  : 0
+
+    Component: ARM Compiler 5.06 update 7 (build 960) Tool: armlink [4d3601]
+    ArmLink --strict --library_type=microlib --callgraph --load_addr_map_info --map --symbols --xref --diag_suppress=9931 --cpu=Cortex-M0 --list=.\Listings\code.map --output=.\code.axf --scatter=.\code.sct --info=summarysizes,sizes,totals,unused,veneers
+
+    Input Comments:
+    
+    keyboard.o
+    
+    Component: ARM Compiler 5.06 update 7 (build 960) Tool: ArmCC [4d365d]
+    ArmCC --c99 --split_sections --debug -c -o.\keyboard.o --depend=.\keyboard.d --cpu=Cortex-M0 --apcs=interwork -O0 --diag_suppress=9931 -IC:\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.7.1\Device\CMSDK_CM0\Include -D__MICROLIB -D__UVISION_VERSION=535 -DCMSDK_CM0 --omf_browse=.\keyboard.crf ..\keil_src\keyboard.c
+    
+    main.o
+    
+    Component: ARM Compiler 5.06 update 7 (build 960) Tool: ArmCC [4d365d]
+    ArmCC --c99 --split_sections --debug -c -o.\main.o --depend=.\main.d --cpu=Cortex-M0 --apcs=interwork -O0 --diag_suppress=9931 -IC:\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.7.1\Device\CMSDK_CM0\Include -D__MICROLIB -D__UVISION_VERSION=535 -DCMSDK_CM0 --omf_browse=.\main.crf ..\keil_src\main.c
+    
+    startup_cmsdk_cm0.o
+    
+    Component: ARM Compiler 5.06 update 7 (build 960) Tool: armasm [4d35fa]
+    ArmAsm --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interwork --depend=.\startup_cmsdk_cm0.d  -IC:\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.7.1\Device\CMSDK_CM0\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_V
+    
+    
+
+====================================
+
+** Section #15
+
+    Name        : .shstrtab
+    Type        : SHT_STRTAB (0x00000003)
+    Flags       : None (0x00000000)
+    Addr        : 0x00000000
+    File Offset : 8520 (0x2148)
+    Size        : 156 bytes (0x9c)
+    Link        : SHN_UNDEF
+    Info        : 0
+    Alignment   : 1
+    Entry Size  : 0
+
+
+====================================
+

@@ -1,0 +1,13 @@
+set_pin_assignment	{ RSTn }	{ LOCATION = A9; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ SWCLK }	{ LOCATION = R2; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ SWDIO }	{ LOCATION = P2; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ beep }	{ LOCATION = H11; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ clk }	{ LOCATION = R7; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ col[0] }	{ LOCATION = E11; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ col[1] }	{ LOCATION = D11; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ col[2] }	{ LOCATION = C11; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ col[3] }	{ LOCATION = F10; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ row[0] }	{ LOCATION = E10; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ row[1] }	{ LOCATION = C10; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ row[2] }	{ LOCATION = F9; IOSTANDARD = LVCMOS33; }
+set_pin_assignment	{ row[3] }	{ LOCATION = D9; IOSTANDARD = LVCMOS33; }

@@ -1,0 +1,481 @@
+eagle_s20
+12 22 1513 7662 1000000000 9 0
+-4.256 0.134 BuzzerNLCDSoC eagle_s20 BG256 Detail 8 1
+clock: clk
+12 1000000000 7662 4
+Setup check
+22 3
+Endpoint: BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4
+22 -4.256000 2173268 3
+Timing path: u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk->BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4
+u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4
+24 -4.256000 23.478000 27.734000 13 19
+u_logic/T1vpw6_hfnopt2_2 u_logic/_al_u1128|u_logic/_al_u3223.c[1]
+u_logic/_al_u1128_o u_logic/_al_u1653.b[1]
+u_logic/_al_u1653_o u_logic/_al_u1927.c[1]
+u_logic/_al_u1927_o u_logic/_al_u1930.b[1]
+u_logic/Qbfpw6[2] u_logic/add3_add4/ucin_al_u5199.b[1]
+u_logic/add3_add4/c3 u_logic/add3_add4/u3_al_u5200.fci
+u_logic/add3_add4/c7 u_logic/add3_add4/u7_al_u5201.fci
+u_logic/add3_add4/c11 u_logic/add3_add4/u11_al_u5202.fci
+u_logic/add3_add4/c15 u_logic/add3_add4/u15_al_u5203.fci
+u_logic/add3_add4/c19 u_logic/add3_add4/u19_al_u5204.fci
+u_logic/add3_add4/c23 u_logic/add3_add4/u23_al_u5205.fci
+u_logic/add3_add4/c27 u_logic/add3_add4/u27_al_u5206.fci
+u_logic/Nxkbx6[31] u_logic/_al_u2596|u_logic/_al_u2854.a[1]
+u_logic/_al_u2596_o BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0]
+HADDR[30] BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0]
+BuzzerSoCBusMtx/i_addr0[30] BuzzerSoCBusMtx/_al_u752.d[0]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1]
+BuzzerSoCBusMtx/_al_u815_o BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4.e[0]
+
+Timing path: u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk->BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4
+u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4
+97 -4.256000 23.478000 27.734000 13 19
+u_logic/T1vpw6_hfnopt2_2 u_logic/_al_u1128|u_logic/_al_u3223.c[1]
+u_logic/_al_u1128_o u_logic/_al_u1653.b[1]
+u_logic/_al_u1653_o u_logic/_al_u1927.c[0]
+u_logic/_al_u1927_o u_logic/_al_u1930.b[1]
+u_logic/Qbfpw6[2] u_logic/add3_add4/ucin_al_u5199.b[1]
+u_logic/add3_add4/c3 u_logic/add3_add4/u3_al_u5200.fci
+u_logic/add3_add4/c7 u_logic/add3_add4/u7_al_u5201.fci
+u_logic/add3_add4/c11 u_logic/add3_add4/u11_al_u5202.fci
+u_logic/add3_add4/c15 u_logic/add3_add4/u15_al_u5203.fci
+u_logic/add3_add4/c19 u_logic/add3_add4/u19_al_u5204.fci
+u_logic/add3_add4/c23 u_logic/add3_add4/u23_al_u5205.fci
+u_logic/add3_add4/c27 u_logic/add3_add4/u27_al_u5206.fci
+u_logic/Nxkbx6[31] u_logic/_al_u2596|u_logic/_al_u2854.a[1]
+u_logic/_al_u2596_o BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0]
+HADDR[30] BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0]
+BuzzerSoCBusMtx/i_addr0[30] BuzzerSoCBusMtx/_al_u752.d[0]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1]
+BuzzerSoCBusMtx/_al_u815_o BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4.e[0]
+
+Timing path: u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk->BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4
+u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4
+170 -4.256000 23.478000 27.734000 13 19
+u_logic/T1vpw6_hfnopt2_2 u_logic/_al_u1128|u_logic/_al_u3223.c[1]
+u_logic/_al_u1128_o u_logic/_al_u1653.b[1]
+u_logic/_al_u1653_o u_logic/_al_u1927.c[1]
+u_logic/_al_u1927_o u_logic/_al_u1930.b[0]
+u_logic/Qbfpw6[2] u_logic/add3_add4/ucin_al_u5199.b[1]
+u_logic/add3_add4/c3 u_logic/add3_add4/u3_al_u5200.fci
+u_logic/add3_add4/c7 u_logic/add3_add4/u7_al_u5201.fci
+u_logic/add3_add4/c11 u_logic/add3_add4/u11_al_u5202.fci
+u_logic/add3_add4/c15 u_logic/add3_add4/u15_al_u5203.fci
+u_logic/add3_add4/c19 u_logic/add3_add4/u19_al_u5204.fci
+u_logic/add3_add4/c23 u_logic/add3_add4/u23_al_u5205.fci
+u_logic/add3_add4/c27 u_logic/add3_add4/u27_al_u5206.fci
+u_logic/Nxkbx6[31] u_logic/_al_u2596|u_logic/_al_u2854.a[1]
+u_logic/_al_u2596_o BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0]
+HADDR[30] BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0]
+BuzzerSoCBusMtx/i_addr0[30] BuzzerSoCBusMtx/_al_u752.d[0]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1]
+BuzzerSoCBusMtx/_al_u815_o BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_4.e[0]
+
+
+Endpoint: BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0
+243 -4.019000 2173268 3
+Timing path: u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk->BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0
+u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0
+245 -4.019000 23.478000 27.497000 13 19
+u_logic/T1vpw6_hfnopt2_2 u_logic/_al_u1128|u_logic/_al_u3223.c[1]
+u_logic/_al_u1128_o u_logic/_al_u1653.b[1]
+u_logic/_al_u1653_o u_logic/_al_u1927.c[1]
+u_logic/_al_u1927_o u_logic/_al_u1930.b[1]
+u_logic/Qbfpw6[2] u_logic/add3_add4/ucin_al_u5199.b[1]
+u_logic/add3_add4/c3 u_logic/add3_add4/u3_al_u5200.fci
+u_logic/add3_add4/c7 u_logic/add3_add4/u7_al_u5201.fci
+u_logic/add3_add4/c11 u_logic/add3_add4/u11_al_u5202.fci
+u_logic/add3_add4/c15 u_logic/add3_add4/u15_al_u5203.fci
+u_logic/add3_add4/c19 u_logic/add3_add4/u19_al_u5204.fci
+u_logic/add3_add4/c23 u_logic/add3_add4/u23_al_u5205.fci
+u_logic/add3_add4/c27 u_logic/add3_add4/u27_al_u5206.fci
+u_logic/Nxkbx6[31] u_logic/_al_u2596|u_logic/_al_u2854.a[1]
+u_logic/_al_u2596_o BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0]
+HADDR[30] BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0]
+BuzzerSoCBusMtx/i_addr0[30] BuzzerSoCBusMtx/_al_u752.d[0]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1]
+BuzzerSoCBusMtx/_al_u815_o BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0.e[0]
+
+Timing path: u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk->BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0
+u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0
+318 -4.019000 23.478000 27.497000 13 19
+u_logic/T1vpw6_hfnopt2_2 u_logic/_al_u1128|u_logic/_al_u3223.c[1]
+u_logic/_al_u1128_o u_logic/_al_u1653.b[1]
+u_logic/_al_u1653_o u_logic/_al_u1927.c[0]
+u_logic/_al_u1927_o u_logic/_al_u1930.b[1]
+u_logic/Qbfpw6[2] u_logic/add3_add4/ucin_al_u5199.b[1]
+u_logic/add3_add4/c3 u_logic/add3_add4/u3_al_u5200.fci
+u_logic/add3_add4/c7 u_logic/add3_add4/u7_al_u5201.fci
+u_logic/add3_add4/c11 u_logic/add3_add4/u11_al_u5202.fci
+u_logic/add3_add4/c15 u_logic/add3_add4/u15_al_u5203.fci
+u_logic/add3_add4/c19 u_logic/add3_add4/u19_al_u5204.fci
+u_logic/add3_add4/c23 u_logic/add3_add4/u23_al_u5205.fci
+u_logic/add3_add4/c27 u_logic/add3_add4/u27_al_u5206.fci
+u_logic/Nxkbx6[31] u_logic/_al_u2596|u_logic/_al_u2854.a[1]
+u_logic/_al_u2596_o BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0]
+HADDR[30] BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0]
+BuzzerSoCBusMtx/i_addr0[30] BuzzerSoCBusMtx/_al_u752.d[0]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1]
+BuzzerSoCBusMtx/_al_u815_o BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0.e[0]
+
+Timing path: u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk->BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0
+u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0
+391 -4.019000 23.478000 27.497000 13 19
+u_logic/T1vpw6_hfnopt2_2 u_logic/_al_u1128|u_logic/_al_u3223.c[1]
+u_logic/_al_u1128_o u_logic/_al_u1653.b[1]
+u_logic/_al_u1653_o u_logic/_al_u1927.c[1]
+u_logic/_al_u1927_o u_logic/_al_u1930.b[0]
+u_logic/Qbfpw6[2] u_logic/add3_add4/ucin_al_u5199.b[1]
+u_logic/add3_add4/c3 u_logic/add3_add4/u3_al_u5200.fci
+u_logic/add3_add4/c7 u_logic/add3_add4/u7_al_u5201.fci
+u_logic/add3_add4/c11 u_logic/add3_add4/u11_al_u5202.fci
+u_logic/add3_add4/c15 u_logic/add3_add4/u15_al_u5203.fci
+u_logic/add3_add4/c19 u_logic/add3_add4/u19_al_u5204.fci
+u_logic/add3_add4/c23 u_logic/add3_add4/u23_al_u5205.fci
+u_logic/add3_add4/c27 u_logic/add3_add4/u27_al_u5206.fci
+u_logic/Nxkbx6[31] u_logic/_al_u2596|u_logic/_al_u2854.a[1]
+u_logic/_al_u2596_o BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0]
+HADDR[30] BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0]
+BuzzerSoCBusMtx/i_addr0[30] BuzzerSoCBusMtx/_al_u752.d[0]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1]
+BuzzerSoCBusMtx/_al_u815_o BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_0.e[0]
+
+
+Endpoint: BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6
+464 -3.943000 2173268 3
+Timing path: u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk->BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6
+u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6
+466 -3.943000 23.397000 27.340000 13 19
+u_logic/T1vpw6_hfnopt2_2 u_logic/_al_u1128|u_logic/_al_u3223.c[1]
+u_logic/_al_u1128_o u_logic/_al_u1653.b[1]
+u_logic/_al_u1653_o u_logic/_al_u1927.c[1]
+u_logic/_al_u1927_o u_logic/_al_u1930.b[1]
+u_logic/Qbfpw6[2] u_logic/add3_add4/ucin_al_u5199.b[1]
+u_logic/add3_add4/c3 u_logic/add3_add4/u3_al_u5200.fci
+u_logic/add3_add4/c7 u_logic/add3_add4/u7_al_u5201.fci
+u_logic/add3_add4/c11 u_logic/add3_add4/u11_al_u5202.fci
+u_logic/add3_add4/c15 u_logic/add3_add4/u15_al_u5203.fci
+u_logic/add3_add4/c19 u_logic/add3_add4/u19_al_u5204.fci
+u_logic/add3_add4/c23 u_logic/add3_add4/u23_al_u5205.fci
+u_logic/add3_add4/c27 u_logic/add3_add4/u27_al_u5206.fci
+u_logic/Nxkbx6[31] u_logic/_al_u2596|u_logic/_al_u2854.a[1]
+u_logic/_al_u2596_o BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0]
+HADDR[30] BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0]
+BuzzerSoCBusMtx/i_addr0[30] BuzzerSoCBusMtx/_al_u752.d[0]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1]
+BuzzerSoCBusMtx/_al_u815_o BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6.e[0]
+
+Timing path: u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk->BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6
+u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6
+539 -3.943000 23.397000 27.340000 13 19
+u_logic/T1vpw6_hfnopt2_2 u_logic/_al_u1128|u_logic/_al_u3223.c[1]
+u_logic/_al_u1128_o u_logic/_al_u1653.b[1]
+u_logic/_al_u1653_o u_logic/_al_u1927.c[0]
+u_logic/_al_u1927_o u_logic/_al_u1930.b[1]
+u_logic/Qbfpw6[2] u_logic/add3_add4/ucin_al_u5199.b[1]
+u_logic/add3_add4/c3 u_logic/add3_add4/u3_al_u5200.fci
+u_logic/add3_add4/c7 u_logic/add3_add4/u7_al_u5201.fci
+u_logic/add3_add4/c11 u_logic/add3_add4/u11_al_u5202.fci
+u_logic/add3_add4/c15 u_logic/add3_add4/u15_al_u5203.fci
+u_logic/add3_add4/c19 u_logic/add3_add4/u19_al_u5204.fci
+u_logic/add3_add4/c23 u_logic/add3_add4/u23_al_u5205.fci
+u_logic/add3_add4/c27 u_logic/add3_add4/u27_al_u5206.fci
+u_logic/Nxkbx6[31] u_logic/_al_u2596|u_logic/_al_u2854.a[1]
+u_logic/_al_u2596_o BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0]
+HADDR[30] BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0]
+BuzzerSoCBusMtx/i_addr0[30] BuzzerSoCBusMtx/_al_u752.d[0]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1]
+BuzzerSoCBusMtx/_al_u815_o BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6.e[0]
+
+Timing path: u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk->BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6
+u_logic/_al_u2528|u_logic/T1vpw6_reg_hfnopt2_2.clk
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6
+612 -3.943000 23.397000 27.340000 13 19
+u_logic/T1vpw6_hfnopt2_2 u_logic/_al_u1128|u_logic/_al_u3223.c[1]
+u_logic/_al_u1128_o u_logic/_al_u1653.b[1]
+u_logic/_al_u1653_o u_logic/_al_u1927.c[1]
+u_logic/_al_u1927_o u_logic/_al_u1930.b[0]
+u_logic/Qbfpw6[2] u_logic/add3_add4/ucin_al_u5199.b[1]
+u_logic/add3_add4/c3 u_logic/add3_add4/u3_al_u5200.fci
+u_logic/add3_add4/c7 u_logic/add3_add4/u7_al_u5201.fci
+u_logic/add3_add4/c11 u_logic/add3_add4/u11_al_u5202.fci
+u_logic/add3_add4/c15 u_logic/add3_add4/u15_al_u5203.fci
+u_logic/add3_add4/c19 u_logic/add3_add4/u19_al_u5204.fci
+u_logic/add3_add4/c23 u_logic/add3_add4/u23_al_u5205.fci
+u_logic/add3_add4/c27 u_logic/add3_add4/u27_al_u5206.fci
+u_logic/Nxkbx6[31] u_logic/_al_u2596|u_logic/_al_u2854.a[1]
+u_logic/_al_u2596_o BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b29|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/reg0_b30.b[0]
+HADDR[30] BuzzerSoCBusMtx/_al_u253|BuzzerSoCBusMtx/_al_u251.d[0]
+BuzzerSoCBusMtx/i_addr0[30] BuzzerSoCBusMtx/_al_u752.d[0]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n7_lutinv BuzzerSoCBusMtx/_al_u753|RAMCODE_Interface/reg0_b11.b[1]
+BuzzerSoCBusMtx/u_buzzersocbusdecs0/n10_neg_lutinv BuzzerSoCBusMtx/_al_u815|BuzzerSoCBusMtx/_al_u786.a[1]
+BuzzerSoCBusMtx/_al_u815_o BuzzerSoCBusMtx/u_buzzersocbusdecs0/u_BuzzerSoCBusMtx_default_slave/i_hreadyout_reg|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_0/pend_tran_reg_reg_hfnopt2_6.e[0]
+
+
+
+Hold check
+685 3
+Endpoint: RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002
+687 0.152000 12 3
+Timing path: RAMCODE_Interface/reg0_b6|RAMCODE_Interface/reg0_b5.clk->RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002
+RAMCODE_Interface/reg0_b6|RAMCODE_Interface/reg0_b5.clk
+RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002
+689 0.152000 3.718000 3.870000 0 1
+RAMCODE_WADDR[5] RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002.addra[6]
+
+Timing path: BuzzerSoCBusMtx/_al_u419|RAMCODE_Interface/reg0_b7.clk->RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002
+BuzzerSoCBusMtx/_al_u419|RAMCODE_Interface/reg0_b7.clk
+RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002
+726 0.282000 3.718000 4.000000 0 1
+RAMCODE_WADDR[7] RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002.addra[8]
+
+Timing path: RAMCODE_Interface/reg0_b2|RAMCODE_Interface/reg0_b1.clk->RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002
+RAMCODE_Interface/reg0_b2|RAMCODE_Interface/reg0_b1.clk
+RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002
+763 0.298000 3.718000 4.016000 0 1
+RAMCODE_WADDR[2] RAM_CODE/ram_mem_al_u10_4096x8_sub_000000_002.addra[3]
+
+
+Endpoint: RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002
+800 0.305000 12 3
+Timing path: RAMCODE_Interface/reg0_b2|RAMCODE_Interface/reg0_b1.clk->RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002
+RAMCODE_Interface/reg0_b2|RAMCODE_Interface/reg0_b1.clk
+RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002
+802 0.305000 3.718000 4.023000 0 1
+RAMCODE_WADDR[1] RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002.addra[2]
+
+Timing path: _al_u217|RAMCODE_Interface/reg0_b8.clk->RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002
+_al_u217|RAMCODE_Interface/reg0_b8.clk
+RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002
+839 0.333000 3.718000 4.051000 0 1
+RAMCODE_WADDR[8] RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002.addra[9]
+
+Timing path: RAMCODE_Interface/reg0_b0.clk->RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002
+RAMCODE_Interface/reg0_b0.clk
+RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002
+876 0.403000 3.718000 4.121000 0 1
+RAMCODE_WADDR[0] RAM_CODE/ram_mem_al_u20_4096x8_sub_000000_002.addra[1]
+
+
+Endpoint: RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000
+913 0.362000 12 3
+Timing path: u_logic/_al_u4368|RAMCODE_Interface/reg0_b9.clk->RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000
+u_logic/_al_u4368|RAMCODE_Interface/reg0_b9.clk
+RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000
+915 0.362000 3.718000 4.080000 0 1
+RAMCODE_WADDR[9] RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000.addra[10]
+
+Timing path: BuzzerSoCBusMtx/_al_u619|RAMCODE_Interface/reg0_b10.clk->RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000
+BuzzerSoCBusMtx/_al_u619|RAMCODE_Interface/reg0_b10.clk
+RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000
+952 0.481000 3.718000 4.199000 0 1
+RAMCODE_WADDR[10] RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000.addra[11]
+
+Timing path: RAMCODE_Interface/reg0_b6|RAMCODE_Interface/reg0_b5.clk->RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000
+RAMCODE_Interface/reg0_b6|RAMCODE_Interface/reg0_b5.clk
+RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000
+989 0.575000 3.718000 4.293000 0 1
+RAMCODE_WADDR[6] RAM_CODE/ram_mem_al_u00_4096x8_sub_000000_000.addra[7]
+
+
+
+Recovery check
+1026 3
+Endpoint: Buzzer/TunePWM_Sound/reg0_b0
+1028 5.927000 228 3
+Timing path: Buzzer/reg0_b10.clk->Buzzer/TunePWM_Sound/reg0_b0
+Buzzer/reg0_b10.clk
+Buzzer/TunePWM_Sound/reg0_b0
+1030 5.927000 23.294000 17.367000 8 9
+Buzzer/SoundReg_Sound[10] Buzzer/_al_u545|Buzzer/_al_u559.d[1]
+Buzzer/BeatDecoder_Sound/n2_lutinv Buzzer/_al_u581|Buzzer/_al_u558.a[0]
+Buzzer/_al_u558_o Buzzer/_al_u545|Buzzer/_al_u559.b[0]
+Buzzer/_al_u559_o Buzzer/_al_u561|Buzzer/_al_u582.a[1]
+Buzzer/_al_u561_o Buzzer/_al_u567|Buzzer/_al_u550.b[1]
+Buzzer/_al_u567_o Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1]
+Buzzer/BeatFinish_Sound_lutinv Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1]
+Buzzer/BeatCntRstn_Sound_lutinv Buzzer/_al_u650|Buzzer/_al_u754.d[0]
+Buzzer/n8 Buzzer/TunePWM_Sound/reg0_b0.sr
+
+Timing path: Buzzer/reg0_b10.clk->Buzzer/TunePWM_Sound/reg0_b0
+Buzzer/reg0_b10.clk
+Buzzer/TunePWM_Sound/reg0_b0
+1083 5.956000 23.294000 17.338000 8 9
+Buzzer/SoundReg_Sound[10] Buzzer/_al_u545|Buzzer/_al_u559.d[1]
+Buzzer/BeatDecoder_Sound/n2_lutinv Buzzer/_al_u546.b[1]
+Buzzer/_al_u546_o Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.a[1]
+Buzzer/_al_u549_o Buzzer/_al_u554.a[1]
+Buzzer/_al_u554_o Buzzer/_al_u567|Buzzer/_al_u550.a[1]
+Buzzer/_al_u567_o Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1]
+Buzzer/BeatFinish_Sound_lutinv Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1]
+Buzzer/BeatCntRstn_Sound_lutinv Buzzer/_al_u650|Buzzer/_al_u754.d[0]
+Buzzer/n8 Buzzer/TunePWM_Sound/reg0_b0.sr
+
+Timing path: Buzzer/reg0_b10.clk->Buzzer/TunePWM_Sound/reg0_b0
+Buzzer/reg0_b10.clk
+Buzzer/TunePWM_Sound/reg0_b0
+1136 5.956000 23.294000 17.338000 8 9
+Buzzer/SoundReg_Sound[10] Buzzer/_al_u545|Buzzer/_al_u559.d[1]
+Buzzer/BeatDecoder_Sound/n2_lutinv Buzzer/_al_u546.b[0]
+Buzzer/_al_u546_o Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.a[1]
+Buzzer/_al_u549_o Buzzer/_al_u554.a[1]
+Buzzer/_al_u554_o Buzzer/_al_u567|Buzzer/_al_u550.a[1]
+Buzzer/_al_u567_o Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1]
+Buzzer/BeatFinish_Sound_lutinv Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1]
+Buzzer/BeatCntRstn_Sound_lutinv Buzzer/_al_u650|Buzzer/_al_u754.d[0]
+Buzzer/n8 Buzzer/TunePWM_Sound/reg0_b0.sr
+
+
+Endpoint: Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6
+1189 5.927000 228 3
+Timing path: Buzzer/reg0_b10.clk->Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6
+Buzzer/reg0_b10.clk
+Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6
+1191 5.927000 23.294000 17.367000 8 9
+Buzzer/SoundReg_Sound[10] Buzzer/_al_u545|Buzzer/_al_u559.d[1]
+Buzzer/BeatDecoder_Sound/n2_lutinv Buzzer/_al_u581|Buzzer/_al_u558.a[0]
+Buzzer/_al_u558_o Buzzer/_al_u545|Buzzer/_al_u559.b[0]
+Buzzer/_al_u559_o Buzzer/_al_u561|Buzzer/_al_u582.a[1]
+Buzzer/_al_u561_o Buzzer/_al_u567|Buzzer/_al_u550.b[1]
+Buzzer/_al_u567_o Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1]
+Buzzer/BeatFinish_Sound_lutinv Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1]
+Buzzer/BeatCntRstn_Sound_lutinv Buzzer/_al_u650|Buzzer/_al_u754.d[0]
+Buzzer/n8 Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6.sr
+
+Timing path: Buzzer/reg0_b10.clk->Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6
+Buzzer/reg0_b10.clk
+Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6
+1244 5.956000 23.294000 17.338000 8 9
+Buzzer/SoundReg_Sound[10] Buzzer/_al_u545|Buzzer/_al_u559.d[1]
+Buzzer/BeatDecoder_Sound/n2_lutinv Buzzer/_al_u546.b[1]
+Buzzer/_al_u546_o Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.a[1]
+Buzzer/_al_u549_o Buzzer/_al_u554.a[1]
+Buzzer/_al_u554_o Buzzer/_al_u567|Buzzer/_al_u550.a[1]
+Buzzer/_al_u567_o Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1]
+Buzzer/BeatFinish_Sound_lutinv Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1]
+Buzzer/BeatCntRstn_Sound_lutinv Buzzer/_al_u650|Buzzer/_al_u754.d[0]
+Buzzer/n8 Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6.sr
+
+Timing path: Buzzer/reg0_b10.clk->Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6
+Buzzer/reg0_b10.clk
+Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6
+1297 5.956000 23.294000 17.338000 8 9
+Buzzer/SoundReg_Sound[10] Buzzer/_al_u545|Buzzer/_al_u559.d[1]
+Buzzer/BeatDecoder_Sound/n2_lutinv Buzzer/_al_u546.b[0]
+Buzzer/_al_u546_o Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.a[1]
+Buzzer/_al_u549_o Buzzer/_al_u554.a[1]
+Buzzer/_al_u554_o Buzzer/_al_u567|Buzzer/_al_u550.a[1]
+Buzzer/_al_u567_o Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1]
+Buzzer/BeatFinish_Sound_lutinv Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1]
+Buzzer/BeatCntRstn_Sound_lutinv Buzzer/_al_u650|Buzzer/_al_u754.d[0]
+Buzzer/n8 Buzzer/TunePWM_Sound/reg0_b5|Buzzer/TunePWM_Sound/reg0_b6.sr
+
+
+Endpoint: Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4
+1350 5.927000 228 3
+Timing path: Buzzer/reg0_b10.clk->Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4
+Buzzer/reg0_b10.clk
+Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4
+1352 5.927000 23.294000 17.367000 8 9
+Buzzer/SoundReg_Sound[10] Buzzer/_al_u545|Buzzer/_al_u559.d[1]
+Buzzer/BeatDecoder_Sound/n2_lutinv Buzzer/_al_u581|Buzzer/_al_u558.a[0]
+Buzzer/_al_u558_o Buzzer/_al_u545|Buzzer/_al_u559.b[0]
+Buzzer/_al_u559_o Buzzer/_al_u561|Buzzer/_al_u582.a[1]
+Buzzer/_al_u561_o Buzzer/_al_u567|Buzzer/_al_u550.b[1]
+Buzzer/_al_u567_o Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1]
+Buzzer/BeatFinish_Sound_lutinv Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1]
+Buzzer/BeatCntRstn_Sound_lutinv Buzzer/_al_u650|Buzzer/_al_u754.d[0]
+Buzzer/n8 Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4.sr
+
+Timing path: Buzzer/reg0_b10.clk->Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4
+Buzzer/reg0_b10.clk
+Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4
+1405 5.956000 23.294000 17.338000 8 9
+Buzzer/SoundReg_Sound[10] Buzzer/_al_u545|Buzzer/_al_u559.d[1]
+Buzzer/BeatDecoder_Sound/n2_lutinv Buzzer/_al_u546.b[1]
+Buzzer/_al_u546_o Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.a[1]
+Buzzer/_al_u549_o Buzzer/_al_u554.a[1]
+Buzzer/_al_u554_o Buzzer/_al_u567|Buzzer/_al_u550.a[1]
+Buzzer/_al_u567_o Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1]
+Buzzer/BeatFinish_Sound_lutinv Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1]
+Buzzer/BeatCntRstn_Sound_lutinv Buzzer/_al_u650|Buzzer/_al_u754.d[0]
+Buzzer/n8 Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4.sr
+
+Timing path: Buzzer/reg0_b10.clk->Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4
+Buzzer/reg0_b10.clk
+Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4
+1458 5.956000 23.294000 17.338000 8 9
+Buzzer/SoundReg_Sound[10] Buzzer/_al_u545|Buzzer/_al_u559.d[1]
+Buzzer/BeatDecoder_Sound/n2_lutinv Buzzer/_al_u546.b[0]
+Buzzer/_al_u546_o Buzzer/_al_u549|Buzzer/TunePWM_BGM/PWM_reg.a[1]
+Buzzer/_al_u549_o Buzzer/_al_u554.a[1]
+Buzzer/_al_u554_o Buzzer/_al_u567|Buzzer/_al_u550.a[1]
+Buzzer/_al_u567_o Buzzer/_al_u592|APB_Keyboard/KeyToCol/reg0_b0.a[1]
+Buzzer/BeatFinish_Sound_lutinv Buzzer/_al_u645|Buzzer/BuzzerCtr_Sound/reg0_b1.d[1]
+Buzzer/BeatCntRstn_Sound_lutinv Buzzer/_al_u650|Buzzer/_al_u754.d[0]
+Buzzer/n8 Buzzer/TunePWM_Sound/reg0_b3|Buzzer/TunePWM_Sound/reg0_b4.sr
+
+
+
+Removal check
+1511 3
+Endpoint: Buzzer/_al_u326|APB_Keyboard/reg0_b5
+1513 0.134000 1 1
+Timing path: Buzzer/_al_u318|cpuresetn_reg_hfnopt2_7.clk->Buzzer/_al_u326|APB_Keyboard/reg0_b5
+Buzzer/_al_u318|cpuresetn_reg_hfnopt2_7.clk
+Buzzer/_al_u326|APB_Keyboard/reg0_b5
+1515 0.134000 3.818000 3.952000 0 1
+cpuresetn_hfnopt2_7 Buzzer/_al_u326|APB_Keyboard/reg0_b5.sr
+
+
+Endpoint: BuzzerSoCBusMtx/_al_u483|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_1/reg0_b6
+1552 0.140000 1 1
+Timing path: BuzzerSoCBusMtx/_al_u755|cpuresetn_reg_hfnopt2_6.clk->BuzzerSoCBusMtx/_al_u483|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_1/reg0_b6
+BuzzerSoCBusMtx/_al_u755|cpuresetn_reg_hfnopt2_6.clk
+BuzzerSoCBusMtx/_al_u483|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_1/reg0_b6
+1554 0.140000 3.818000 3.958000 0 1
+cpuresetn_hfnopt2_6 BuzzerSoCBusMtx/_al_u483|BuzzerSoCBusMtx/u_BuzzerSoCBusIn_1/reg0_b6.sr
+
+
+Endpoint: u_logic/Vbspw6_reg|u_logic/Tngbx6_reg
+1591 0.163000 1 1
+Timing path: u_logic/_al_u2408|cpuresetn_reg_hfnopt2_15.clk->u_logic/Vbspw6_reg|u_logic/Tngbx6_reg
+u_logic/_al_u2408|cpuresetn_reg_hfnopt2_15.clk
+u_logic/Vbspw6_reg|u_logic/Tngbx6_reg
+1593 0.163000 3.818000 3.981000 0 1
+cpuresetn_hfnopt2_15 u_logic/Vbspw6_reg|u_logic/Tngbx6_reg.sr
+
+
+
+
+
+Timing group statistics: 
+	Clock constraints: 
+	  Clock Name                                  Min Period     Max Freq           Skew      Fanout            TNS
+	  clk (50.000MHz)                               24.256ns      41.227MHz        0.211ns      1692     -720.593ns
+	Minimum input arrival time before clock: no constraint path
+	Maximum output required time after clock: no constraint path
+	Maximum combinational path delay: no constraint path
+Warning: No clock constraint on 3 clock net(s): 
+	APB_Keyboard/KeyToCol/rowcnt[1]
+	APB_Keyboard/KeyToCol/sa_clk
+	u_logic/SWCLKTCK_pad
+

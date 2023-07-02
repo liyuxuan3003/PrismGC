@@ -1,0 +1,12 @@
+Dependencies for Project 'code', Target 'Target 1': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
+F (..\keil_src\code_def.h)(0x624798CE)()
+F (..\keil_src\keyboard.c)(0x62479925)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections-IC:\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.7.1\Device\CMSDK_CM0\Include-D__UVISION_VERSION="535" -DCMSDK_CM0-o .\keyboard.o --omf_browse .\keyboard.crf --depend .\keyboard.d)
+I (..\keil_src\code_def.h)(0x624798CE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6156F725)
+F (..\keil_src\main.c)(0x624798DE)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections-IC:\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.7.1\Device\CMSDK_CM0\Include-D__UVISION_VERSION="535" -DCMSDK_CM0-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6156F725)
+I (..\keil_src\code_def.h)(0x624798CE)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
+F (..\keil_src\startup_CMSDK_CM0.s)(0x624798BD)(--cpu Cortex-M0 -g --apcs=interwork --pd "__MICROLIB SETA 1"-IC:\Keil_v5\ARM\PACK\Keil\V2M-MPS2_CMx_BSP\1.7.1\Device\CMSDK_CM0\Include--pd "__UVISION_VERSION SETA 535" --pd "CMSDK_CM0 SETA 1"--list .\listings\startup_cmsdk_cm0.lst --xref -o .\startup_cmsdk_cm0.o --depend .\startup_cmsdk_cm0.d)
