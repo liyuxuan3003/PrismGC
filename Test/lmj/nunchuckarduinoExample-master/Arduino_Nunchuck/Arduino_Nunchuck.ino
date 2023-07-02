@@ -57,15 +57,17 @@ void loop()
         nunchuck_get_data();
         
         if(nunchuck_zbutton() == 0) {
+            Serial.print("摇杆的X轴坐标为");
             Serial.println(mapJoyValues(nunchuck_joyx(),25,223,115,119));
             //Serial.println(mapJoyValues0TO100(nunchuck_joyx(),25,223,115,119));
-            //Serial.println("zbutton==0");
+            Serial.println("zbutton==0");
         }
         
         if(nunchuck_zbutton() == 1) {
+            Serial.print("摇杆的X轴加速度为");
             Serial.println(mapJoyValues(nunchuck_accelx(),71,179,120,130));
             //Serial.println(mapJoyValues0TO100(nunchuck_accelx(),71,179,120,130));
-            //Serial.println("zbutton==1");
+            Serial.println("zbutton==1");
         }
     }
     loop_cnt++;

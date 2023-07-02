@@ -67,7 +67,7 @@ reg    [ 7:0]  cur_state ; //状态机当前状态
 reg    [ 7:0]  next_state; //状态机下一状态
 reg    [15:0]  addr_t    ; //地址
 reg    [ 7:0]  data_r    ; //读取的数据
-reg    [ 7:0]  data_wr_t ; //I2C需写的数据的临时寄存
+reg    [ 7:0]  data_wr_t ; //I2C需写的数据的临时寄存 40
 reg    [ 9:0]  clk_cnt   ; //分频时钟计数
 
 //wire define
