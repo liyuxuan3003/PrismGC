@@ -1,12 +1,3 @@
-/*
- * Copyright (C) 2023 by Liyuxuan,all rights reserved
- */
-/**
- * @brief I2C master 模块
- * @author Liyuxuan
- * @date 2023-04-27 初始版本
- **/
-
 module I2C
 (
 	input              rstn,
