@@ -1,15 +1,18 @@
 #include "BGM.h"
 #include "Buzzer.h"
 
-uint16_t a[33]={10,10,10,0,8,10,12,0,5,0,8,0,5,0,3,0,6,7,0,7,6,5,10,12,13,11,12,0,10,8,9,7,0};
-uint16_t b[33]={50,100,50,50,50,100,100,100,100,100,100,50,50,100,100,50,100,50,50,50,100,100,100,100,100,50,50,50,100,50,50,100,50};
-uint8_t j=0;
+#include <stdint.h>
 
-uint16_t BGMPageMain()
+static const uint16_t bgmNote[33]={10,10,10,0,8,10,12,0,5,0,8,0,5,0,3,0,6,7,0,7,6,5,10,12,13,11,12,0,10,8,9,7,0};
+static const uint16_t bgmTime[33]={50,100,50,50,50,100,100,100,100,100,100,50,50,100,100,50,100,50,50,50,100,100,100,100,100,50,50,50,100,50,50,100,50};
+static uint8_t bgmStep=0;
+
+void BGMPageMain()
 {
-   BUZZER -> NOTE =a[j];
-   BUZZER -> TIME =b[j]; 
-   j++;
-   if(j==21)
-   j=0;
+    BUZZER -> NOTE =bgmNote[bgmStep];
+    BUZZER -> TIME =bgmTime[bgmStep]; 
+    bgmStep++;
+    if(bgmStep==21)
+        bgmStep=0;
+    return;
 }

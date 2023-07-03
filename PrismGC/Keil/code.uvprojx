@@ -514,6 +514,26 @@
               <FileType>5</FileType>
               <FilePath>.\src\BGM.h</FilePath>
             </File>
+            <File>
+              <FileName>Nunchuck.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Nunchuck.c</FilePath>
+            </File>
+            <File>
+              <FileName>Nunchuck.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Nunchuck.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageI2CTest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\PageI2CTest.c</FilePath>
+            </File>
+            <File>
+              <FileName>PageI2CTest.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\PageI2CTest.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -21,12 +21,11 @@ uint8_t PageMain()
     while(1)
     {
         nowTime = TIMER -> TIME;
-        BGMPageMain();
-        // BUZZER -> NOTE ++;
-        // BUZZER -> TIME = FRAME;
+        if(SWI_7(P)==0)
+            BGMPageMain();
         if(KEYBOARD -> KEY != 0xFF)
-            return PAGE_BLOCK_GAME;
-            x++;
+            return PAGE_I2C_TEST;
+        x++;
         if(x>=64)
             x=0;    
         PingPong();
@@ -35,7 +34,6 @@ uint8_t PageMain()
         LCDRectangle(0x00FF00,(64-x)*64,250,(64-x+1)*64,250+64);  
         LCDRectangle(0x0000FF,(64-x)*64,450,(64-x+1)*64,450+64);
         
-
         while(TIMER -> TIME < nowTime + FRAME) ;
         // mdelay(FRAME);
     }

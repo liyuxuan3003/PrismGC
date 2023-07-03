@@ -246,8 +246,8 @@ AHBLiteGPU uAHBGPU
     .HDMI_CLK_P(HDMI_CLK_P),
     .HDMI_D2_P(HDMI_D2_P),
     .HDMI_D1_P(HDMI_D1_P),
-    .HDMI_D0_P(HDMI_D0_P),
-    .PI4(PI4)
+    .HDMI_D0_P(HDMI_D0_P)
+    // .PI4(PI4)
 );
 
 /*

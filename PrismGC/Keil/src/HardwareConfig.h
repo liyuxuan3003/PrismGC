@@ -22,6 +22,9 @@
 #define LED_6(X) (BASE(GPIOA_ADDR) X BIT(14))
 #define LED_7(X) (BASE(GPIOA_ADDR) X BIT(15))
 
+#define SCL(X) (BASE(GPIOB_ADDR) X BIT(0))
+#define SDA(X) (BASE(GPIOB_ADDR) X BIT(1))
+
 typedef struct
 {
     volatile uint8_t   I_SWI_DAT;

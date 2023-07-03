@@ -3,6 +3,7 @@
 
 #define PAGE_MAIN       0
 #define PAGE_BLOCK_GAME 1
+#define PAGE_I2C_TEST   2
 
 #define FRAME 150
 

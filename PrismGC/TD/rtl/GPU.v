@@ -10,8 +10,8 @@ module GPU
     output                      HDMI_CLK_P,     //HDMI CLK
     output                      HDMI_D2_P,      //HDMI D2
     output                      HDMI_D1_P,      //HDMI D1
-    output                      HDMI_D0_P,       //HDMI D0
-    output[60:1]        PI4            //下侧双排针
+    output                      HDMI_D0_P       //HDMI D0
+    // output[60:1]        PI4            //下侧双排针
 );
 
 reg [31:0] mem [15:0];

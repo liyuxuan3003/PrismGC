@@ -16,8 +16,8 @@ module AHBLiteGPU
     output      HDMI_CLK_P,     //HDMI CLK
     output      HDMI_D2_P,      //HDMI D2
     output      HDMI_D1_P,      //HDMI D1
-    output      HDMI_D0_P,      //HDMI D0
-    output[60:1]        PI4            //下侧双排针
+    output      HDMI_D0_P       //HDMI D0
+    // output[60:1]        PI4            //下侧双排针
 );
 
 localparam ADDR_WIDTH = 8;
@@ -77,8 +77,8 @@ GPU uGPU
     .HDMI_CLK_P(HDMI_CLK_P),
     .HDMI_D0_P(HDMI_D0_P),
     .HDMI_D1_P(HDMI_D1_P),
-    .HDMI_D2_P(HDMI_D2_P),
-    .PI4(PI4)
+    .HDMI_D2_P(HDMI_D2_P)
+    // .PI4(PI4)
 );
 
 endmodule

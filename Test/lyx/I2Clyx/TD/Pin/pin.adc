@@ -1,0 +1,7 @@
+set_pin_assignment { clk } { LOCATION = R7; IOSTANDARD = LVCMOS33; }
+
+set_pin_assignment { rstn } { LOCATION = A9;  IOSTANDARD = LVCMOS33; }
+
+set_pin_assignment { sda_pin } { LOCATION = E15;  IOSTANDARD = LVCMOS33; }
+set_pin_assignment { scl_pin } { LOCATION = D14;  IOSTANDARD = LVCMOS33; }
+set_pin_assignment { pin1 } { LOCATION = F14;  IOSTANDARD = LVCMOS33; }

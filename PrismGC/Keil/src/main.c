@@ -18,9 +18,11 @@
 #include "GPULite.h"
 #include "Buzzer.h"
 #include "KeyBoard.h"
+#include "Nunchuck.h"
 
 #include "PageMain.h"
 #include "PageBlockGame.h"
+#include "PageI2CTest.h"
 #include "GlobalDefine.h"
 
 int main() 
@@ -58,6 +60,10 @@ int main()
         else if(status==PAGE_BLOCK_GAME)
         {
             statusTemp=PageBlockGame();
+        }
+        else if(status==PAGE_I2C_TEST)
+        {
+            statusTemp=PageI2CTest();
         }
         else
         {
