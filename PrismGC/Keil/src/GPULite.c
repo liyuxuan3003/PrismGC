@@ -19,7 +19,7 @@ void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
     GPU -> Y_POS = y_pos;
     GPU -> PIXEL = pixel;
     GPU -> LEN = len;
-    GPU -> SYS_WR_LEN = (len <= 128) ? len : 128;
+    GPU -> SYS_WR_LEN = (len <= 8) ? len : 8;
     GPU -> ENABLE = 1;
     __asm("nop");
     __asm("nop");

@@ -176,7 +176,7 @@ EG_LOGIC_FIFO #(
 	.E(0),
 	.F(1024),
 	.ASYNC_RESET_RELEASE("SYNC"),
-	.AF(256)
+	.AF(8)
 ) 
 uWriteFIFO
 (

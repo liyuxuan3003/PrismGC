@@ -71,10 +71,10 @@ begin
                 if(wrDiv == 0)
                 begin
                     wrCount <= wrCount + 1;
-                    if(wrCount == len+255)
+                    if(wrCount == len+7)
                     begin
                     	wrState <= 4;
-                        //sysWriteRefresh <= len[7:0];
+                        // sysWriteRefresh <= len[7:0];
                     end 
                 end
             end
