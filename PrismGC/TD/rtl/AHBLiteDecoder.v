@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 `include "GlobalDefine.v"
 
 module AHBLiteDecoder

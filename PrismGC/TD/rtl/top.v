@@ -1,4 +1,8 @@
-/*** 顶层模块 ***/
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ * 顶层模块
+ */
+
 module top
 (
     input       CLK,            //系统时钟
@@ -21,16 +25,16 @@ module top
     output      VGA_HS,         //VGA HS
     output      VGA_VS,         //VGA VS
     output      BUZ,            //蜂鸣器
-    input       [3:0]   COL,
-    output      [3:0]   ROW,
+    input[3:0]  COL,            //键盘列信号
+    output[3:0] ROW,            //键盘行信号
     inout[31:0] NC              //悬空管脚
 );
 
 // AHBLite总线相关
-wire        HRESETn;
+wire        HRESETn;        //总线复位信号 低电平有效
 wire [31:0] HADDR;          //传输地址 ADDR-Address
 wire [ 2:0] HBURST;         //Burst类型
-wire        HMASTLOCK;      //未知 某种锁？
+wire        HMASTLOCK;      //未知
 wire [ 3:0] HPROT;          //未知
 wire [ 2:0] HSIZE;          //数据宽度 00-8bit 01-16bit 10-32bit
 wire [ 1:0] HTRANS;         //传输类型 00-IDLE(无操作) 01-BUSY 10-NONSEQ(主要传输方式) 11-SEQ
@@ -38,65 +42,67 @@ wire [31:0] HWDATA;         //由内核发出的写数据
 wire        HWRITE;         //读写选择 0-读 1-写
 wire [31:0] HRDATA;         //由外设返回的读数据
 wire        HRESP;          //传输是否成功 通常为0 传输成功为1
-wire        HMASTER;        //未知
-wire        HREADY;         //未知
+wire        HMASTER;        //未使用
+wire        HREADY;         //从设备就绪
 
 // Interrupt
 wire [31:0] IRQ;            //M0的IRQ中断信号
 
+
+// M0处理器
 CortexM0 uCortexM0
 (
     .CLK(CLK),
-    .RSTn(SWI[0]),
+    .RSTn(SWI[0]),          //SWI[0]作为重置信号
     .SWDIO(SWDIO),
     .SWCLK(SWCLK),
-    .IRQ            (IRQ),
-    .HRESETn        (HRESETn),
-    .HADDR          (HADDR),
-    .HTRANS         (HTRANS),
-    .HSIZE          (HSIZE),
-    .HBURST         (HBURST),
-    .HPROT          (HPROT),
-    .HMASTLOCK      (HMASTLOCK),
-    .HWRITE         (HWRITE),
-    .HWDATA         (HWDATA),
-    .HRDATA         (HRDATA),
-    .HREADY         (HREADY),
-    .HRESP          (HRESP)
+    .IRQ(IRQ),
+    .HRESETn(HRESETn),
+    .HADDR(HADDR),
+    .HTRANS(HTRANS),
+    .HSIZE(HSIZE),
+    .HBURST(HBURST),
+    .HPROT(HPROT),
+    .HMASTLOCK(HMASTLOCK),
+    .HWRITE(HWRITE),
+    .HWDATA(HWDATA),
+    .HRDATA(HRDATA),
+    .HREADY(HREADY),
+    .HRESP(HRESP)
 );
 
+// AHBLite总线
 AHBLite uAHBLite
 (
-    .HCLK           (CLK),
-    .HRESETn        (HRESETn),
-
-    // CORE SIDE
-    .HADDR          (HADDR),
-    .HTRANS         (HTRANS),
-    .HSIZE          (HSIZE),
-    .HBURST         (HBURST),
-    .HPROT          (HPROT),
-    .HMASTLOCK      (HMASTLOCK),
-    .HWRITE         (HWRITE),
-    .HWDATA         (HWDATA),
-    .HRDATA         (HRDATA),
-    .HREADY         (HREADY),
-    .HRESP          (HRESP),
-    .IRQ(IRQ),                  //中断信号
-    .TXD(TXD),                  //UART串口 输出
-    .RXD(RXD),                  //UART串口 输入
-    // .PI4(PI4),
-    .HDMI_CLK_P(HDMI_CLK_P),    //HDMI CLK
-    .HDMI_D2_P(HDMI_D2_P),      //HDMI D2
-    .HDMI_D1_P(HDMI_D1_P),      //HDMI D1
-    .HDMI_D0_P(HDMI_D0_P),      //HDMI D0
-    .VGA_R(VGA_R),              //VGA R
-    .VGA_G(VGA_G),              //VGA G
-    .VGA_B(VGA_B),              //VGA B
-    .VGA_HS(VGA_HS),            //VGA HS
-    .VGA_VS(VGA_VS),            //VGA VS
-    .SEG(SEG),                  //八段数码管 段码
-    .SEGCS(SEGCS),              //八段数码管 位码
+    // AHBLite总线信号
+    .HCLK(CLK),
+    .HRESETn(HRESETn),
+    .HADDR(HADDR),
+    .HTRANS(HTRANS),
+    .HSIZE(HSIZE),
+    .HBURST(HBURST),
+    .HPROT(HPROT),
+    .HMASTLOCK(HMASTLOCK),
+    .HWRITE(HWRITE),
+    .HWDATA(HWDATA),
+    .HRDATA(HRDATA),
+    .HREADY(HREADY),
+    .HRESP(HRESP),
+    // AHBLite外设
+    .IRQ(IRQ),
+    .TXD(TXD),
+    .RXD(RXD),
+    .HDMI_CLK_P(HDMI_CLK_P),
+    .HDMI_D2_P(HDMI_D2_P),
+    .HDMI_D1_P(HDMI_D1_P),
+    .HDMI_D0_P(HDMI_D0_P),
+    .VGA_R(VGA_R),
+    .VGA_G(VGA_G),
+    .VGA_B(VGA_B),
+    .VGA_HS(VGA_HS),
+    .VGA_VS(VGA_VS),
+    .SEG(SEG),
+    .SEGCS(SEGCS),
     .BUZ(BUZ),
     .COL(COL),
     .ROW(ROW),

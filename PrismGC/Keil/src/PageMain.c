@@ -24,7 +24,7 @@ uint8_t PageMain()
         if(SWI_7(P)==0)
             BGMPageMain();
         if(KEYBOARD -> KEY != 0xFF)
-            return PAGE_I2C_TEST;
+            return PAGE_BLOCK_GAME;
         x++;
         if(x>=64)
             x=0;    

@@ -1,22 +1,26 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module CortexM0
 (
-    input       CLK,           //时钟
-    input       RSTn,          //SoC使能
-    inout       SWDIO,         //SW调试接口 数据
-    input       SWCLK,         //SW调试接口 时钟
-    input        [31:0]  IRQ,
-    output               HRESETn,
-    output       [31:0]  HADDR,
-    output       [2:0]   HBURST,
-    output               HMASTLOCK,
-    output       [3:0]   HPROT,
-    output       [2:0]   HSIZE,
-    output       [1:0]   HTRANS,
-    output       [31:0]  HWDATA,
-    output               HWRITE,
-    input                HREADY,
-    input        [31:0]  HRDATA,
-    input                HRESP
+    input           CLK,
+    input           RSTn,
+    inout           SWDIO,
+    input           SWCLK,
+    input[31:0]     IRQ,
+    output          HRESETn,
+    output[31:0]    HADDR,
+    output[2:0]     HBURST,
+    output          HMASTLOCK,
+    output[3:0]     HPROT,
+    output[2:0]     HSIZE,
+    output[1:0]     HTRANS,
+    output[31:0]    HWDATA,
+    output          HWRITE,
+    input           HREADY,
+    input[31:0]     HRDATA,
+    input           HRESP
 );
 
 //------------------------------------------------------------------------------
