@@ -20,7 +20,7 @@
 
 
 
-//Default read/write address parameter
+//Default read/write address localparam
 //`define    DEFAULT_MAX_ADDR    {(`ASIZE - 1'b1){1'b1}}        //Rows * Columns - 1 = 1 Bank
 //`define    DEFAULT_BST_LENGTH    9'd256                        //Brust Lenght = 1 page
 
@@ -36,45 +36,45 @@
 
 `ifdef    ROW4096_133MHz
 //    Controller Parameter for 4096 Rows @ 133MHz
-parameter    INIT_PER   =   16'd26600;
-parameter    REF_PER    =   16'd2078;    //2078.125
-parameter    SC_CL      =   3;
-parameter    SC_RCD     =   3;
-parameter    SC_PM      =   1;
-parameter    SC_BL      =   1;
+localparam    INIT_PER   =   16'd26600;
+localparam    REF_PER    =   16'd2078;    //2078.125
+localparam    SC_CL      =   3;
+localparam    SC_RCD     =   3;
+localparam    SC_PM      =   1;
+localparam    SC_BL      =   1;
 `endif
 
 `ifdef    ROW4096_125MHz
 //    Controller Parameter for 4096 Rows @ 125MHz
-parameter    INIT_PER   =   16'd25000;
-parameter    REF_PER    =   16'd1953;    //1953.125
-parameter    SC_CL      =   3;
-parameter    SC_RCD     =   3;
-parameter    SC_PM      =   1;
-parameter    SC_BL      =   1;
+localparam    INIT_PER   =   16'd25000;
+localparam    REF_PER    =   16'd1953;    //1953.125
+localparam    SC_CL      =   3;
+localparam    SC_RCD     =   3;
+localparam    SC_PM      =   1;
+localparam    SC_BL      =   1;
 `endif
 
 `ifdef    ROW4096_100MHz
 //    Controller Parameter for 8192 Rows @ 133MHz
-parameter    INIT_PER   =   16'd20000;
-parameter    REF_PER    =   16'd1562;    //1562.5
-parameter    SC_CL      =   3;
-parameter    SC_RCD     =   3;
-parameter    SC_PM      =   1;
-parameter    SC_BL      =   1;
+localparam    INIT_PER   =   16'd20000;
+localparam    REF_PER    =   16'd1562;    //1562.5
+localparam    SC_CL      =   3;
+localparam    SC_RCD     =   3;
+localparam    SC_PM      =   1;
+localparam    SC_BL      =   1;
 `endif
 
 
 //-----------------------------------------------------------
 //    SDRAM Parameter
-parameter    SDR_BL     =   (SC_PM == 1)?   3'b111  :   //Page 256
+localparam    SDR_BL     =   (SC_PM == 1)?   3'b111  :   //Page 256
                             (SC_BL == 1)?   3'b000  :   //1
                             (SC_BL == 2)?   3'b001  :   //2
                             (SC_BL == 4)?   3'b010  :   //4
                                             3'b011  ;     //8
-parameter    SDR_BT    =    1'b0;    //    Sequential
+localparam    SDR_BT    =    1'b0;    //    Sequential
                       //    1'b1:    //    Interteave
                     
-parameter    SDR_CL    =    (SC_CL == 2)?   3'b10:
+localparam    SDR_CL    =    (SC_CL == 2)?   3'b10:
                                             3'b11;
      

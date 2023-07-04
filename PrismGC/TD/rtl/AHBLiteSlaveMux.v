@@ -35,7 +35,7 @@ Mux16_1 muxHREADYOUT
     .sel(hselReg),
     .sigIn(HREADYOUT_A),
     .sigOut(HREADYOUT),
-    .sigOutDefault(1)
+    .sigOutDefault(1'b1)
 );
 
 //Mux HRESP
@@ -44,7 +44,7 @@ Mux16_1 muxHRESP
     .sel(hselReg),
     .sigIn(HRESP_A),
     .sigOut(HRESP),
-    .sigOutDefault(0)
+    .sigOutDefault(1'b0)
 );
 
 //Mux HRDATA
@@ -53,7 +53,7 @@ Mux16_1 #(.WIDTH(32)) muxHRDATA
     .sel(hselReg),
     .sigIn(HRDATA_A),
     .sigOut(HRDATA),
-    .sigOutDefault(0)
+    .sigOutDefault(32'b0)
 );
 
 endmodule 

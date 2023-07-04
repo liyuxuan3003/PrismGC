@@ -36,7 +36,6 @@ module AHBLite
     output          BUZ,
     input[3:0]      COL,
     output[3:0]     ROW,
-    output[60:1]    PI4,
     inout[31:0]     io_pin0,
     inout[31:0]     io_pin1,
     inout[31:0]     io_pin2,

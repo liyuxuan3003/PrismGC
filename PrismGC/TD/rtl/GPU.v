@@ -31,6 +31,10 @@ module GPU
 
 reg [31:0] mem [15:0];
 reg enableState;
+
+wire sysVaild;
+wire busy;
+
 always@(posedge clk or negedge rstn) 
 begin
     if(~rstn)
@@ -64,9 +68,6 @@ begin
             enableState <= 0;
     end
 end
-
-wire sysVaild;
-wire busy;
 
 // System PLL
 wire clkRef;       //sdram ctrl clock

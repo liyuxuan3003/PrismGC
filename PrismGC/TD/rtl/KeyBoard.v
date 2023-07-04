@@ -19,6 +19,9 @@ module KeyBoard
 
 reg [31:0] mem [0:0];
 
+wire[3:0]   keyCode;
+wire        keyEnable;
+
 always@(posedge clk or negedge rstn) 
 begin
     if(~rstn)
@@ -41,8 +44,8 @@ begin
     end
 end
 
-reg[15:0] key;
-reg[1:0] keyScanCnt;
+reg[15:0]   key;
+reg[1:0]    keyScanCnt;
 
 always @(posedge clk) 
 begin
@@ -55,8 +58,6 @@ begin
     endcase    
 end
 
-wire[3:0] keyCode;
-wire      keyEnable;
 
 Encoder16_4 uEncoder16_4
 (

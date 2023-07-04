@@ -43,7 +43,7 @@ begin
         sizeDecodeReg <= sizeDecode;
 end
 
-reg [ADDR_WIDTH-1:0] addrReg;
+reg [ADDR_WIDTH-3:0] addrReg;
 always@(posedge HCLK or negedge HRESETn)
 begin
     if(~HRESETn) 

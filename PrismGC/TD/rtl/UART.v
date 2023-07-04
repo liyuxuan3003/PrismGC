@@ -22,6 +22,11 @@ reg [31:0] mem [3:0];
 `define TXSTAT 1
 `define TXDATA 2
 
+wire state;
+wire [7:0] UART_RX;
+wire [7:0] UART_TX;
+wire tx_en;
+
 always@(posedge clk) 
 begin
     if(sizeDecode[0]) mem[addrIn[1:0]][7:0]   <= dataIn[7:0];
@@ -34,11 +39,6 @@ begin
 
     dataOut <= mem[addrOut[1:0]];
 end
-
-wire state;
-wire [7:0] UART_RX;
-wire [7:0] UART_TX;
-wire tx_en;
 
 assign tx_en = sizeDecode[0] ? 1'b1 : 1'b0;
 assign UART_TX = sizeDecode[0] ? mem[`TXDATA][7:0] : 8'b0;
