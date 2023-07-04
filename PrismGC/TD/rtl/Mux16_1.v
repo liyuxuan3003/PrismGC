@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module Mux16_1 #(parameter WIDTH = 1)
 (
     input [16-1:0] sel,

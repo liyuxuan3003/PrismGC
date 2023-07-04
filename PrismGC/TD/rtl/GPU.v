@@ -1,17 +1,20 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module GPU 
 (
-    input clk,
-    input rstn,
-    input [7:0]                 addrIn,
-    input [7:0]                 addrOut,
-    input [3:0]                 sizeDecode,
-    input  [31:0]               dataIn,
-    output reg [31:0]           dataOut,
-    output                      HDMI_CLK_P,     //HDMI CLK
-    output                      HDMI_D2_P,      //HDMI D2
-    output                      HDMI_D1_P,      //HDMI D1
-    output                      HDMI_D0_P       //HDMI D0
-    // output[60:1]        PI4            //下侧双排针
+    input               clk,
+    input               rstn,
+    input[7:0]          addrIn,
+    input[7:0]          addrOut,
+    input[3:0]          sizeDecode,
+    input[31:0]         dataIn,
+    output reg[31:0]    dataOut,
+    output              HDMI_CLK_P,
+    output              HDMI_D2_P,
+    output              HDMI_D1_P,
+    output              HDMI_D0_P
 );
 
 reg [31:0] mem [15:0];
@@ -57,17 +60,14 @@ begin
     end
 end
 
-wire    [15:0] X_POS;
-wire    [15:0] Y_POS;
-wire    [23:0] PIXEL;
-wire    [23:0] LEN;
-wire           ENABLE;
-wire    [8:0]  SYS_WR_LEN;
-wire          SYS_VAILD;
-wire          BUSY;
-
-// wire[31:0] pingAddr;
-// wire[31:0] pongAddr;
+wire[15:0] X_POS;
+wire[15:0] Y_POS;
+wire[23:0] PIXEL;
+wire[23:0] LEN;
+wire       ENABLE;
+wire[8:0]  SYS_WR_LEN;
+wire       SYS_VAILD;
+wire       BUSY;
 
 assign X_POS=mem[0][15:0];
 assign Y_POS=mem[1][15:0];
@@ -76,8 +76,6 @@ assign LEN=mem[3][23:0];
 assign ENABLE=mem[4][0];
 assign SYS_WR_LEN=mem[5][8:0];
 
-// assign pingAddr = (mem[8]) ? 32'h0 : 32'h100_000;
-// assign pongAddr = (mem[8]) ? 32'h100_000 : 32'h0;
 wire pingPong;
 assign pingPong = mem[8][0];
 SDRAM_HDMI_Display u_SDRAM_HDMI_Display
@@ -85,19 +83,12 @@ SDRAM_HDMI_Display u_SDRAM_HDMI_Display
     .clk(clk),
     .rst_n(rstn),
     
-    //HDMI
     .HDMI_CLK_P(HDMI_CLK_P),
     .HDMI_D2_P(HDMI_D2_P),
     .HDMI_D1_P(HDMI_D1_P),
     .HDMI_D0_P(HDMI_D0_P),
 
     .bitPingPong(pingPong),
-
-    // .WR_LOAD(PI4[5]),
-    // .WR_EMPTY(PI4[7]),
-    // .WR_AFULL(PI4[9]),
-    // .WR_EN(PI4[11]),
-    // .WR_FULL(PI4[15]),
 
     .x_pos(X_POS),
     .y_pos(Y_POS),
@@ -108,15 +99,5 @@ SDRAM_HDMI_Display u_SDRAM_HDMI_Display
     .sys_vaild(SYS_VAILD),
     .busy(BUSY)
 );
-
-// assign PI4[17]   =   ENABLE;
-// assign PI4[13]   =   BUSY;
-// assign PI4[9]   =   addrIn[5];
-// assign PI4[11]  =   addrIn[4];
-
-// assign PI4[13]  =   addrOut[7];
-// assign PI4[15]  =   addrOut[6];
-// assign PI4[17]  =   addrOut[5];
-// assign PI4[19]  =   addrOut[4];
 
 endmodule

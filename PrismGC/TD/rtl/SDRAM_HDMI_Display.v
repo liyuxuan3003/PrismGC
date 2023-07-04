@@ -1,38 +1,34 @@
-`include "../GlobalDefine.v"
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
 
-`timescale 1ns / 1ns
+`include "GlobalDefine.v"
+
 module SDRAM_HDMI_Display
 (
-    //global clock
-    input               clk,
-    input               rst_n,          //global reset
-    
-	//HDMI
+    input           clk,
+    input           rst_n,
 	output			HDMI_CLK_P,
 	output			HDMI_D2_P,
 	output			HDMI_D1_P,
 	output			HDMI_D0_P,
-    //output[60:1]    PI4,            //下侧双排针
 
     input           bitPingPong,   
 
-    // input[31:0]     pingAddr,
-    // input[31:0]     pongAddr,
     output          WR_EMPTY,
     output          WR_FULL,
     output          WR_AFULL,
     output          WR_EN,
     output          WR_LOAD,
 
-    //LCD
-    input[15:0]         x_pos,
-    input[15:0]         y_pos,
-    input[23:0]         pixel,
-    input[23:0]         len,
-    input               enable,
-    input[8:0]          sys_wr_len,
-    output              sys_vaild,
-    output              busy
+    input[15:0]     x_pos,
+    input[15:0]     y_pos,
+    input[23:0]     pixel,
+    input[23:0]     len,
+    input           enable,
+    input[8:0]      sys_wr_len,
+    output          sys_vaild,
+    output          busy
 );
 
 //---------------------------------------------

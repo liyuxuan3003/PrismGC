@@ -43,7 +43,7 @@ module Sdram_Control_2Port(
 		Sdram_Write_Refresh
         );
 
-`include    "Sdram_Params.v"
+`include    "HDMI/sdram/Sdram_Params.v"
 
 
 //	HOST Side
