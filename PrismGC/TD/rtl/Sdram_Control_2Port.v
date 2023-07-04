@@ -220,55 +220,90 @@ command command1(
 //				);
 		
 wire    wfifo_afull_flag;
-write_fifo u_write_fifo
-(
-	.rst            (~RESET_N | WR_LOAD),
-    
-    .clkw           (WR_CLK), 
-	.di             (WR_DATA), 
-    .we             (WR), 
-    
-    .clkr           (REF_CLK), 
-	.do             (mDATAIN1),
-    .re             (IN_REQ & WR_MASK), 
 
-    .empty_flag     (WR_EMPTY), 
-    .full_flag      (WR_FULL),
-	.afull_flag     (wfifo_afull_flag) 
+EG_LOGIC_FIFO #(
+ 	.DATA_WIDTH_W(32),
+	.DATA_WIDTH_R(32),
+	.DATA_DEPTH_W(1024),
+	.DATA_DEPTH_R(1024),
+	.ENDIAN("BIG"),
+	.RESETMODE("ASYNC"),
+	.E(0),
+	.F(1024),
+	.ASYNC_RESET_RELEASE("SYNC"),
+	.AF(256)
+) 
+uWriteFIFO
+(
+	.rst(~RESET_N | WR_LOAD),
+	.di(WR_DATA),
+	.clkw(WR_CLK),
+	.we(WR),
+	.csw(3'b111),
+	.do(mDATAIN1),
+	.clkr(REF_CLK),
+	.re(IN_REQ & WR_MASK),
+	.csr(3'b111),
+	.ore(1'b0),
+	.empty_flag(WR_EMPTY),
+	.aempty_flag(),
+	.full_flag(WR_FULL),
+	.afull_flag(wfifo_afull_flag)
 );
+
+// write_fifo u_write_fifo
+// (
+// 	.rst            (~RESET_N | WR_LOAD),
+    
+//     .clkw           (WR_CLK), 
+// 	.di             (WR_DATA), 
+//     .we             (WR), 
+    
+//     .clkr           (REF_CLK), 
+// 	.do             (mDATAIN1),
+//     .re             (IN_REQ & WR_MASK), 
+
+//     .empty_flag     (WR_EMPTY), 
+//     .full_flag      (WR_FULL),
+// 	.afull_flag     (wfifo_afull_flag) 
+// );
 assign WR_AFULL = wfifo_afull_flag;
 // assign WR_FULL = 0;
 // assign WR_EMPTY = 0;
 				
 assign	mDATAIN	= (WR_MASK) ? mDATAIN1 : {`DSIZE-1{1'b1}};
 
-//read_fifo1 	u_read_fifo1(
-//				.data			(DQ),//(mDATAOUT),
-//				.wrreq			(OUT_VALID & RD_MASK),
-//				.wrclk			(REF_CLK),
-//				.aclr			(~RESET_N | RD_LOAD),
-//				.rdreq			(RD),
-//				.rdclk			(RD_CLK),
-//				.q				(RD_DATA),
-//				.wrusedw		(read_side_fifo_wusedw1)
-//				);
+
 wire    rfifo_aempty_flag;  //rrusede < 256
-read_fifo u_read_fifo
+
+EG_LOGIC_FIFO #(
+ 	.DATA_WIDTH_W(32),
+	.DATA_WIDTH_R(32),
+	.DATA_DEPTH_W(512),
+	.DATA_DEPTH_R(512),
+	.ENDIAN("BIG"),
+	.RESETMODE("ASYNC"),
+	.E(0),
+	.F(512),
+	.ASYNC_RESET_RELEASE("SYNC"),
+	.AE(256)
+)
+uReadFIFO
 (
-	.rst            (~RESET_N | RD_LOAD),
-    
-    .clkw           (REF_CLK), 
-	.di             (DQ), 
-    .we             (OUT_VALID & RD_MASK), 
-    
-    .clkr           (RD_CLK), 
-	.do             (RD_DATA),
-    .re             (RD), 
-
-    .empty_flag     (), 
-	.full_flag      (),
-    .aempty_flag    (rfifo_aempty_flag)
-
+	.rst(~RESET_N | RD_LOAD),
+	.di(DQ),
+	.clkw(REF_CLK),
+	.we(OUT_VALID & RD_MASK),
+	.csw(3'b111),
+	.do(RD_DATA),
+	.clkr(RD_CLK),
+	.re(RD),
+	.csr(3'b111),
+	.ore(1'b0),
+	.empty_flag(),
+	.aempty_flag(rfifo_aempty_flag),
+	.full_flag(),
+	.afull_flag()
 );
 
 always @(posedge REF_CLK)
