@@ -1,21 +1,26 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+ 
 `include "GlobalDefine.v"
 
 ////////////////////////////////////////////////////////////////////////
 module GPUHDMIEncoder
 (
-	input clk,
-    input clk_TMDS,
-    input rstn,
-	output HDMI_D0_P,
-    output HDMI_D1_P,
-    output HDMI_D2_P,
-	output HDMI_CLK_P,
-    output reg [15:0] CounterX,
-    output reg [15:0] CounterY,
-    output reg        DrawArea,
-    output            Request,
-    input      [23:0] RGB
+	input           clk,
+    input           clk_TMDS,
+    input           rstn,
+	output          HDMI_D0_P,
+    output          HDMI_D1_P,
+    output          HDMI_D2_P,
+	output          HDMI_CLK_P,
+    output          Request,
+    input[23:0]     RGB
 );
+
+reg [15:0] CounterX;
+reg [15:0] CounterY;
+reg DrawArea;
 
 ////////////////////////////////////////////////////////////////////////
 reg hSync, vSync;

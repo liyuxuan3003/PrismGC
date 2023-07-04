@@ -1,5 +1,8 @@
-`timescale 1 ns / 1 ns
-module LCD_Control
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+ 
+module GPUDataControl
 #(
     parameter           H_DISP = 12'd1024,
     parameter           V_DISP = 12'd600

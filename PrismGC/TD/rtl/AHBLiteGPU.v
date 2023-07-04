@@ -1,23 +1,26 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module AHBLiteGPU
 (
-    input               HCLK,    
-    input               HRESETn, 
-    input               HSEL,    
-    input       [31:0]  HADDR,   
-    input       [1:0]   HTRANS,  
-    input       [2:0]   HSIZE,   
-    input       [3:0]   HPROT,   
-    input               HWRITE,  
-    input       [31:0]  HWDATA,   
-    input               HREADY, 
-    output              HREADYOUT, 
-    output      [31:0]  HRDATA,  
-    output              HRESP,
-    output      HDMI_CLK_P,     //HDMI CLK
-    output      HDMI_D2_P,      //HDMI D2
-    output      HDMI_D1_P,      //HDMI D1
-    output      HDMI_D0_P       //HDMI D0
-    // output[60:1]        PI4            //下侧双排针
+    input           HCLK,    
+    input           HRESETn, 
+    input           HSEL,    
+    input[31:0]     HADDR,   
+    input[1:0]      HTRANS,  
+    input[2:0]      HSIZE,   
+    input[3:0]      HPROT,   
+    input           HWRITE,  
+    input[31:0]     HWDATA,   
+    input           HREADY, 
+    output          HREADYOUT, 
+    output[31:0]    HRDATA,  
+    output          HRESP,
+    output          HDMI_CLK_P,
+    output          HDMI_D2_P,
+    output          HDMI_D1_P,
+    output          HDMI_D0_P
 );
 
 localparam ADDR_WIDTH = 8;
@@ -78,7 +81,6 @@ GPU uGPU
     .HDMI_D0_P(HDMI_D0_P),
     .HDMI_D1_P(HDMI_D1_P),
     .HDMI_D2_P(HDMI_D2_P)
-    // .PI4(PI4)
 );
 
 endmodule

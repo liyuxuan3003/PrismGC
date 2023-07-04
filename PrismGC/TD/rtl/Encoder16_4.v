@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module Encoder16_4
 (
     input [15:0] signal,

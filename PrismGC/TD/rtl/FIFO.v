@@ -1,13 +1,17 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module FIFO
 (
-    input clock,
-    input sclr,
+    input       clock,
+    input       sclr,
 
-    input rdreq, wrreq,
-    output reg full, empty,
+    input       rdreq, wrreq,
+    output reg  full, empty,
 
-    input [7:0] data,
-    output [7:0] q
+    input[7:0]  data,
+    output[7:0] q
 );
 
 reg [7:0] mem [15:0];
@@ -81,7 +85,5 @@ begin
         empty <= 0;
     end
 end
-
-
 
 endmodule
