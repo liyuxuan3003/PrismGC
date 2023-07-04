@@ -1,6 +1,12 @@
 #include "GPULite.h"
 #include "Sleep.h"
 
+#include "Font.h"
+
+#include "BitOperate.h"
+
+#include <stdlib.h>
+
 void WaitRamReady()
 {
     while(!GPU -> SYS_VAILD) ;
@@ -22,6 +28,12 @@ void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
     GPU -> ENABLE = 0;
 }
 
+void PingPong()
+{
+    // while(GPU -> BUSY) ;
+    GPU -> PING_PONG = !GPU -> PING_PONG;
+}
+
 void LCDBackground(uint32_t color)
 {
     RamWrite(0,0,color,H_DISP*V_DISP);
@@ -41,8 +53,42 @@ void LCDRectangleDel(uint32_t color,uint32_t x1,uint32_t y1,uint32_t dx,uint32_t
     LCDRectangle(color,x1,y1,x1+dx,y1+dy);
 }
 
-void PingPong()
+void LCDPixel(uint32_t color,uint32_t x,uint32_t y)
 {
-    // while(GPU -> BUSY) ;
-    GPU -> PING_PONG = !GPU -> PING_PONG;
+    RamWrite(x,y,color,1);
+}
+
+int LCDChar(int x,int y,int c)
+{
+    int i,j;
+    const struct Font *pFont;
+    const unsigned char *pData=NULL;
+    int w=8,h=16;
+
+    pFont=GetFontGlyph(c);
+	if(pFont)
+	{
+		w=pFont->width;
+		h=pFont->height;
+		pData=pFont->pixels;
+		w=((w+7)>>3)<<3;
+	}
+
+	for (i=0;i<w;i+=8)
+    {
+		for (j=0;j<h;j++)
+        {
+            unsigned char dots=0;
+            if(pData)
+                dots=*pData++;
+            for(int k=0;k<8;k++)
+            {
+                if(BIT_IS1(dots,k))
+                    LCDPixel(0xFFFFFF,x+i+8-k,y+j);
+                else
+                    LCDPixel(0x000000,x+i+8-k,y+j);
+            }  
+        }
+    }
+	return w;
 }

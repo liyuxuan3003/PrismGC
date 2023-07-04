@@ -534,6 +534,31 @@
               <FileType>5</FileType>
               <FilePath>.\src\PageI2CTest.h</FilePath>
             </File>
+            <File>
+              <FileName>Font.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Font.c</FilePath>
+            </File>
+            <File>
+              <FileName>Font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Font.h</FilePath>
+            </File>
+            <File>
+              <FileName>Font16.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Font16.h</FilePath>
+            </File>
+            <File>
+              <FileName>I2C.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\I2C.c</FilePath>
+            </File>
+            <File>
+              <FileName>I2C.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\I2C.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
