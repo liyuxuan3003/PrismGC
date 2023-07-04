@@ -1,3 +1,5 @@
+`include "SDRAM/SDRAMParams.v"
+
 module Sdram_Control_2Port(
 		//	HOST Side
         REF_CLK,		//sdram control clock
@@ -42,8 +44,6 @@ module Sdram_Control_2Port(
 		Sdram_Read_Valid,		//SDRAM Read valid : output
 		Sdram_Write_Refresh
         );
-
-`include    "HDMI/sdram/Sdram_Params.v"
 
 
 //	HOST Side

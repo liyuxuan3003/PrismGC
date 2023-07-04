@@ -186,7 +186,7 @@
                     <Attr Name="CompileOrder" Val="22"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sys_pll/sys_pll.v">
+            <File Path="rtl/GPU.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -194,7 +194,7 @@
                     <Attr Name="CompileOrder" Val="23"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sys_pll/system_init_delay.v">
+            <File Path="rtl/AHBLiteBuzzer.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -202,7 +202,7 @@
                     <Attr Name="CompileOrder" Val="24"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sdram/command.v">
+            <File Path="rtl/Buzzer.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -210,7 +210,7 @@
                     <Attr Name="CompileOrder" Val="25"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sdram/control_interface.v">
+            <File Path="rtl/AHBLiteKeyBoard.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -218,7 +218,7 @@
                     <Attr Name="CompileOrder" Val="26"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sdram/read_fifo.v">
+            <File Path="rtl/KeyBoard.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -226,7 +226,7 @@
                     <Attr Name="CompileOrder" Val="27"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sdram/SDRAM_512Kx4x32Bit.v">
+            <File Path="rtl/Encoder16_4.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -234,7 +234,7 @@
                     <Attr Name="CompileOrder" Val="28"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sdram/write_fifo.v">
+            <File Path="rtl/AHBLiteTimer.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -242,7 +242,7 @@
                     <Attr Name="CompileOrder" Val="29"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/sys_pll/system_ctrl_pll.v">
+            <File Path="rtl/Timer.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -250,7 +250,7 @@
                     <Attr Name="CompileOrder" Val="30"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/HDMI/LCD_Control.v">
+            <File Path="rtl/UARTClock.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -258,7 +258,7 @@
                     <Attr Name="CompileOrder" Val="31"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/GPU.v">
+            <File Path="rtl/Sdram_Control_2Port.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -266,7 +266,7 @@
                     <Attr Name="CompileOrder" Val="32"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/AHBLiteBuzzer.v">
+            <File Path="rtl/SDRAM_HDMI_Display.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -274,7 +274,7 @@
                     <Attr Name="CompileOrder" Val="33"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/Buzzer.v">
+            <File Path="rtl/GPUHDMIEncoder.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -282,7 +282,7 @@
                     <Attr Name="CompileOrder" Val="34"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/AHBLiteKeyBoard.v">
+            <File Path="rtl/SDRAM/command.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -290,7 +290,7 @@
                     <Attr Name="CompileOrder" Val="35"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/KeyBoard.v">
+            <File Path="rtl/SDRAM/control_interface.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -298,7 +298,7 @@
                     <Attr Name="CompileOrder" Val="36"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/Encoder16_4.v">
+            <File Path="rtl/SDRAM/read_fifo.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -306,7 +306,7 @@
                     <Attr Name="CompileOrder" Val="37"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/AHBLiteTimer.v">
+            <File Path="rtl/SDRAM/SDRAMParams.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -314,7 +314,7 @@
                     <Attr Name="CompileOrder" Val="38"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/Timer.v">
+            <File Path="rtl/SDRAM/write_fifo.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -322,7 +322,7 @@
                     <Attr Name="CompileOrder" Val="39"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/UARTClock.v">
+            <File Path="rtl/LCD_Control.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -330,7 +330,7 @@
                     <Attr Name="CompileOrder" Val="40"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/Sdram_Control_2Port.v">
+            <File Path="rtl/SystemPLL/sys_pll.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -338,7 +338,7 @@
                     <Attr Name="CompileOrder" Val="41"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/SDRAM_HDMI_Display.v">
+            <File Path="rtl/SystemPLL/system_ctrl_pll.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -346,7 +346,7 @@
                     <Attr Name="CompileOrder" Val="42"/>
                 </FileInfo>
             </File>
-            <File Path="rtl/GPUHDMIEncoder.v">
+            <File Path="rtl/SystemPLL/system_init_delay.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -384,7 +384,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-07-04 15:20:08.913</Step_Last_Change>
+        <Step_Last_Change>2023-07-04 15:51:02.795</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>

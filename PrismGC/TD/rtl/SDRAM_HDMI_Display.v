@@ -102,23 +102,23 @@ wire    [3:0]   sdram_dqm;      //sdram data enable
 wire    [1:0]   sdram_ba;       //sdram bank address
 wire    [10:0]  sdram_addr;     //sdram address
 wire    [31:0]  sdram_data;     //sdram data
-SDRAM_512Kx4x32bit	u_SDRAM_512Kx4x32bit
-(
-	.clk                (sdram_clk),    //sdram clock
-	.cke                (sdram_cke),    //sdram clock enable
-	.cs_n               (sdram_cs_n),   //sdram chip select
-	.ras_n              (sdram_ras_n),  //sdram row address strobe
-	.cas_n              (sdram_cas_n),  //sdram column address strobe
-	.we_n               (sdram_we_n),   //sdram write enable
-	.addr               (sdram_addr),   //sdram address[10:0] 
-	.ba                 (sdram_ba),     //sdram bank address
-	.dq                 (sdram_data),   //sdram data[31:0] 
 
-	.dm0                (sdram_dqm[0]), //sdram data enable
-	.dm1                (sdram_dqm[1]), //sdram data enable
-	.dm2                (sdram_dqm[2]), //sdram data enable
-	.dm3                (sdram_dqm[3])  //sdram data enable
-);	
+EG_PHY_SDRAM_2M_32 uSDRAM
+(
+    .clk(sdram_clk),
+    .ras_n(sdram_ras_n),
+    .cas_n(sdram_cas_n),
+    .we_n(sdram_we_n),
+    .addr(sdram_addr),
+    .ba(sdram_ba),
+    .dq(sdram_data),
+    .cs_n(sdram_cs_n),
+    .dm0(sdram_dqm[0]),
+    .dm1(sdram_dqm[1]),
+    .dm2(sdram_dqm[2]),
+    .dm3(sdram_dqm[3]),
+    .cke(sdram_cke)
+);
 	
 //-------------------------------------
 //Sdram_Control_2Port module     
