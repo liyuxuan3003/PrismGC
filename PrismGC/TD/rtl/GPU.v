@@ -99,18 +99,18 @@ wire[7:0]   sysWriteRefresh;
 GPUDataControl#(.H_DISP(`H_DISP), .V_DISP(`V_DISP)) uGPUDataControl
 (
     .clk                (clkRef),        
-    .rst_n              (sysRstn),     
+    .rstn               (sysRstn),     
     
-    .sys_vaild          (sysVaild),
-    .sys_load           (sysLoad),
-    .sys_data           (sysData),    
-    .sys_we             (sysWriteEnable),
-    .sys_addr_min       (sysAddrMin),
-    .sys_addr_max       (sysAddrMax),
-    .sys_refresh        (sysWriteRefresh),
+    .sysVaild           (sysVaild),
+    .sysLoad            (sysLoad),
+    .sysData            (sysData),    
+    .sysWriteEnable     (sysWriteEnable),
+    .sysAddrMin         (sysAddrMin),
+    .sysAddrMax         (sysAddrMax),
+    .sysWriteRefresh    (sysWriteRefresh),
     
-    .x_pos(mem[`X_POS][15:0]),
-    .y_pos(mem[`Y_POS][15:0]),
+    .xpos(mem[`X_POS][15:0]),
+    .ypos(mem[`Y_POS][15:0]),
     .pixel(mem[`PIXEL][23:0]),
     .len(mem[`LEN][23:0]),
     .enable(mem[`ENABLE][0]),
