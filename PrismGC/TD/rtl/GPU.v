@@ -17,21 +17,31 @@ module GPU
     output              HDMI_D0_P
 );
 
+`define X_POS       0
+`define Y_POS       1
+`define PIXEL       2
+`define LEN         3
+`define ENABLE      4
+`define SYS_WR_LEN  5
+`define SYS_VAILD   6
+`define BUSY        7
+`define PING_PONG   8
+
 reg [31:0] mem [15:0];
 reg enableState;
 always@(posedge clk or negedge rstn) 
 begin
     if(~rstn)
     begin
-        mem[0] <= 0;
-        mem[1] <= 0;
-        mem[2] <= 0;
-        mem[3] <= 0;
-        mem[4] <= 0;
-        mem[5] <= 0;
-        mem[6] <= 0;
-        mem[7] <= 0;
-        mem[8] <= 0;
+        mem[`X_POS] <= 0;
+        mem[`Y_POS] <= 0;
+        mem[`PIXEL] <= 0;
+        mem[`LEN] <= 0;
+        mem[`ENABLE] <= 0;
+        mem[`SYS_WR_LEN] <= 0;
+        mem[`SYS_VAILD] <= 0;
+        mem[`BUSY] <= 0;
+        mem[`PING_PONG] <= 0;
         enableState <= 0;
     end
     else
@@ -41,43 +51,21 @@ begin
         if(sizeDecode[2]) mem[addrIn[3:0]][23:16] <= dataIn[23:16];
         if(sizeDecode[3]) mem[addrIn[3:0]][31:24] <= dataIn[31:24];
 
-        mem[6] <= {31'b0,SYS_VAILD};
-        mem[7] <= {31'b0,BUSY};
-        // if(addrOut==6)
-        //     dataOut <= SYS_VAILD;
-        // else if(addrOut==7)
-        //     dataOut <= BUSY;
-        // else   
+        mem[`SYS_VAILD] <= {31'b0,sysVaild};
+        mem[`BUSY] <= {31'b0,busy};
+
         dataOut <= mem[addrOut[3:0]]; 
 
-        if (mem[7][0] & mem[4][0])
+        if (mem[`BUSY][0] & mem[`ENABLE][0])
             enableState <= 1;
-        if(enableState & ~mem[7][0] & mem[4][0])
-        begin
+        if(enableState & ~mem[`BUSY][0] & mem[`ENABLE][0])
             enableState <= 0;
-            //mem[4] <= 32'b0;
-        end   
     end
 end
 
-wire[15:0] X_POS;
-wire[15:0] Y_POS;
-wire[23:0] PIXEL;
-wire[23:0] LEN;
-wire       ENABLE;
-wire[8:0]  SYS_WR_LEN;
-wire       SYS_VAILD;
-wire       BUSY;
+wire sysVaild;
+wire busy;
 
-assign X_POS=mem[0][15:0];
-assign Y_POS=mem[1][15:0];
-assign PIXEL=mem[2][23:0];
-assign LEN=mem[3][23:0];
-assign ENABLE=mem[4][0];
-assign SYS_WR_LEN=mem[5][8:0];
-
-wire pingPong;
-assign pingPong = mem[8][0];
 SDRAM_HDMI_Display u_SDRAM_HDMI_Display
 (
     .clk(clk),
@@ -88,16 +76,16 @@ SDRAM_HDMI_Display u_SDRAM_HDMI_Display
     .HDMI_D1_P(HDMI_D1_P),
     .HDMI_D0_P(HDMI_D0_P),
 
-    .bitPingPong(pingPong),
+    .bitPingPong(mem[`PING_PONG][0]),
 
-    .x_pos(X_POS),
-    .y_pos(Y_POS),
-    .pixel(PIXEL),
-    .len(LEN),
-    .enable(ENABLE),
-    .sys_wr_len(SYS_WR_LEN),
-    .sys_vaild(SYS_VAILD),
-    .busy(BUSY)
+    .x_pos(mem[`X_POS][15:0]),
+    .y_pos(mem[`Y_POS][15:0]),
+    .pixel(mem[`PIXEL][23:0]),
+    .len(mem[`LEN][23:0]),
+    .enable(mem[`ENABLE][0]),
+    .sys_wr_len(mem[`SYS_WR_LEN][8:0]),
+    .sys_vaild(sysVaild),
+    .busy(busy)
 );
 
 endmodule
