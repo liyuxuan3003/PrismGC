@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module SizeDecoder
 (
     input[1:0]  addr,

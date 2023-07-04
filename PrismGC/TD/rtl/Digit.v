@@ -1,14 +1,18 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module Digit 
 (
-    input clk,
-    input rstn,
-    input [7:0]                 addrIn,
-    input [7:0]                 addrOut,
-    input [3:0]                 sizeDecode,
-    input  [31:0]               dataIn,
-    output reg [31:0]           dataOut,
-    output reg[7:0]             SEG,
-    output reg[3:0]             SEGCS
+    input               clk,
+    input               rstn,
+    input[7:0]          addrIn,
+    input[7:0]          addrOut,
+    input[3:0]          sizeDecode,
+    input[31:0]         dataIn,
+    output reg[31:0]    dataOut,
+    output reg[7:0]     SEG,
+    output reg[3:0]     SEGCS
 );
 
 reg [31:0] mem [1:0];

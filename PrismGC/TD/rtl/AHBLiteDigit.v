@@ -1,20 +1,24 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module AHBLiteDigit
 (
-    input               HCLK,    
-    input               HRESETn, 
-    input               HSEL,    
-    input       [31:0]  HADDR,   
-    input       [1:0]   HTRANS,  
-    input       [2:0]   HSIZE,   
-    input       [3:0]   HPROT,   
-    input               HWRITE,  
-    input       [31:0]  HWDATA,   
-    input               HREADY, 
-    output              HREADYOUT, 
-    output      [31:0]  HRDATA,  
-    output              HRESP,
-    output      [7:0]   SEG,           
-    output      [3:0]   SEGCS 
+    input           HCLK,    
+    input           HRESETn, 
+    input           HSEL,    
+    input[31:0]     HADDR,   
+    input[1:0]      HTRANS,  
+    input[2:0]      HSIZE,   
+    input[3:0]      HPROT,   
+    input           HWRITE,  
+    input[31:0]     HWDATA,   
+    input           HREADY, 
+    output          HREADYOUT, 
+    output[31:0]    HRDATA,  
+    output          HRESP,
+    output[7:0]     SEG,           
+    output[3:0]     SEGCS 
 );
 
 localparam ADDR_WIDTH = 8;

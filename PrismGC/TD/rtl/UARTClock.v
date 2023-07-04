@@ -1,10 +1,13 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
 
-module clkuart_pwm #( parameter BPS_PARA = 434 )
+module UARTClock #( parameter BPS_PARA = 434 )
 (
-	input bps_en,
-	input clk,
-	input RSTn,		
-	output reg clk_uart		
+	input       bps_en,
+	input       clk,
+	input       RSTn,		
+	output reg  clk_uart		
 );	
  
 reg	[12:0] cnt = 0;

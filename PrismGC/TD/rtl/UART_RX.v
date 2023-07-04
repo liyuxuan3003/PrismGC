@@ -1,12 +1,16 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module UART_RX
 (
-    input clk,
-    input clk_uart,
-    input RSTn,
-    input RXD,
-    output reg [7:0] data,
-    output wire interrupt,
-    output wire bps_en
+    input               clk,
+    input               clk_uart,
+    input               RSTn,
+    input               RXD,
+    output reg [7:0]    data,
+    output              interrupt,
+    output              bps_en
 );
 
 //shift register

@@ -1,15 +1,19 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 `include "GlobalDefine.v"
 
 module Buzzer 
 (
-    input clk,
-    input rstn,
-    input [7:0]                 addrIn,
-    input [7:0]                 addrOut,
-    input [3:0]                 sizeDecode,
-    input  [31:0]               dataIn,
-    output reg [31:0]           dataOut,
-    output                      BUZ
+    input               clk,
+    input               rstn,
+    input[7:0]          addrIn,
+    input[7:0]          addrOut,
+    input[3:0]          sizeDecode,
+    input[31:0]         dataIn,
+    output reg[31:0]    dataOut,
+    output              BUZ
 );
 
 reg [31:0] mem [1:0];

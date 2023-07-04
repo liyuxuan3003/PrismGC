@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module AHBLiteSlaveMux #(parameter DEVICES_EXP=4)
 (
     input HCLK,

@@ -1,13 +1,17 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module UART_TX
 (
-    input clk,
-    input clk_uart,
-    input RSTn,
+    input       clk,
+    input       clk_uart,
+    input       RSTn,
     input [7:0] data,
-    input tx_en,
-    output reg TXD,
-    output wire state,
-    output wire bps_en
+    input       tx_en,
+    output reg  TXD,
+    output      state,
+    output      bps_en
 );
 
 //FIFO 8bit-16depth

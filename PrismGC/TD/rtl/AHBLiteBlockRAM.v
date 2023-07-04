@@ -1,18 +1,22 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module AHBLiteBlockRAM #(parameter ADDR_WIDTH = 0)
 (
-    input  wire                     HCLK,    
-    input  wire                     HRESETn, 
-    input  wire                     HSEL,    
-    input  wire   [31:0]            HADDR,   
-    input  wire   [1:0]             HTRANS,  
-    input  wire   [2:0]             HSIZE,   
-    input  wire   [3:0]             HPROT,   
-    input  wire                     HWRITE,  
-    input  wire   [31:0]            HWDATA,   
-    input  wire                     HREADY, 
-    output wire                     HREADYOUT, 
-    output wire   [31:0]            HRDATA,  
-    output wire                     HRESP
+    input           HCLK,    
+    input           HRESETn, 
+    input           HSEL,    
+    input[31:0]     HADDR,   
+    input[1:0]      HTRANS,  
+    input[2:0]      HSIZE,   
+    input[3:0]      HPROT,   
+    input           HWRITE,  
+    input[31:0]     HWDATA,   
+    input           HREADY, 
+    output          HREADYOUT, 
+    output[31:0]    HRDATA,  
+    output          HRESP
 );
 
 assign HRESP = 1'b0;

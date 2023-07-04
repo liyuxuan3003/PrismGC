@@ -1,16 +1,20 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 `include "GlobalDefine.v"
 
 module KeyBoard 
 (
-    input clk,
-    input rstn,
-    input [7:0]                 addrIn,
-    input [7:0]                 addrOut,
-    input [3:0]                 sizeDecode,
-    input  [31:0]               dataIn,
-    output reg [31:0]           dataOut,
-    input       [3:0]           COL,
-    output reg  [3:0]           ROW
+    input               clk,
+    input               rstn,
+    input[7:0]          addrIn,
+    input[7:0]          addrOut,
+    input[3:0]          sizeDecode,
+    input[31:0]         dataIn,
+    output reg[31:0]    dataOut,
+    input[3:0]          COL,
+    output reg [3:0]    ROW
 );
 
 reg [31:0] mem [0:0];

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+ 
 module BlockRAM #(parameter MEM_ADDR_WIDTH = 0)   
 (
     input                       clk,

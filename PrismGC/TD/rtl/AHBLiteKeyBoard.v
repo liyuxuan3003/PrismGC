@@ -1,20 +1,24 @@
+/*
+ * Copyright (c) 2023 by Liyuxuan, all rights reserved.
+ */
+
 module AHBLiteKeyBoard
 (
-    input               HCLK,    
-    input               HRESETn, 
-    input               HSEL,    
-    input       [31:0]  HADDR,   
-    input       [1:0]   HTRANS,  
-    input       [2:0]   HSIZE,   
-    input       [3:0]   HPROT,   
-    input               HWRITE,  
-    input       [31:0]  HWDATA,   
-    input               HREADY, 
-    output              HREADYOUT, 
-    output      [31:0]  HRDATA,  
-    output              HRESP,
-    input       [3:0]   COL,
-    output      [3:0]   ROW
+    input           HCLK,    
+    input           HRESETn, 
+    input           HSEL,    
+    input[31:0]     HADDR,   
+    input[1:0]      HTRANS,  
+    input[2:0]      HSIZE,   
+    input[3:0]      HPROT,   
+    input           HWRITE,  
+    input[31:0]     HWDATA,   
+    input           HREADY, 
+    output          HREADYOUT, 
+    output[31:0]    HRDATA,  
+    output          HRESP,
+    input[3:0]      COL,
+    output[3:0]     ROW
 );
 
 localparam ADDR_WIDTH = 8;
