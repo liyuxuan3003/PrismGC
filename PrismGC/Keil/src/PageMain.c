@@ -36,7 +36,8 @@ uint8_t PageMain()
 
         // LCDChar(300,300,'B');
         for(int i=0;i<(0x7e)-(0x20)+1;i++)
-            LCDChar(100+8*i,300,' '+i);
+            for (int j=0;j<10;j++)
+                LCDChar(100+8*i,50+20*j,' '+i);
         
         // while(TIMER -> TIME < nowTime + FRAME) ;
         // mdelay(FRAME);
