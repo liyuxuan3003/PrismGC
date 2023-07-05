@@ -28,6 +28,9 @@ uint8_t PageBlockGame()
     uint8_t Level=1;
     while(1) 
     {
+        if(KEYBOARD -> KEY == 0x0F)
+            return PAGE_MAIN;
+
         PingPong();
         LCDBackground(0xFFFFFF);
         // BUZZER -> NOTE = x;

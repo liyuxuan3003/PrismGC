@@ -1,8 +1,8 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
-//#include <stdio.h>
-#include "console.h"
+
+#include "Console.h"
 
 #include "BitOperate.h"
 
@@ -14,8 +14,6 @@
 #include "GPIO.h"
 #include "Digit.h"
 #include "Timer.h"
-//#include "SDRAM.h"
-//#include "HDMI.h"
 #include "GPULite.h"
 #include "Buzzer.h"
 #include "KeyBoard.h"
@@ -24,6 +22,7 @@
 #include "PageMain.h"
 #include "PageBlockGame.h"
 #include "PageI2CTest.h"
+#include "PageCharTest.h"
 #include "GlobalDefine.h"
 
 int main() 
@@ -52,25 +51,15 @@ int main()
     LCDBackground(0xFFFFFF);
 
     uint8_t status=PAGE_MAIN;
-    uint8_t statusTemp=PAGE_MAIN;
     while(1)
     {
-        if(status==PAGE_MAIN)
+        switch (status)
         {
-            statusTemp=PageMain();
+            case PAGE_MAIN: status=PageMain(); break;
+            case PAGE_BLOCK_GAME: status=PageBlockGame(); break;
+            case PAGE_I2C_TEST: status=PageI2CTest(); break;
+            case PAGE_CHAR_TEST: status=PageCharTest(); break;
+            default: status=PageMain(); break;
         }
-        else if(status==PAGE_BLOCK_GAME)
-        {
-            statusTemp=PageBlockGame();
-        }
-        else if(status==PAGE_I2C_TEST)
-        {
-            statusTemp=PageI2CTest();
-        }
-        else
-        {
-            statusTemp=PAGE_MAIN;
-        }
-        status=statusTemp;
     }
 }

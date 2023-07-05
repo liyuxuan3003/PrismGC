@@ -2,8 +2,8 @@
 * Copyright (c) 2023 by Liyuxuan,all rights reserved
 */
 
-#ifndef _CONSOLE_H
-#define _CONSOLE_H
+#ifndef CONSOLE_H
+#define CONSOLE_H
 
 #include "fmtio.h"
 
