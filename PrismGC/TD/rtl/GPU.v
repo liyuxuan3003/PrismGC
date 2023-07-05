@@ -29,7 +29,8 @@ module GPU
 `define BUSY        7
 `define PING_PONG   8
 
-reg [31:0] mem [15:0];
+reg [31:0] mem [31:0];
+reg [31:0] len;
 reg enableState;
 
 wire sysVaild;
@@ -52,15 +53,16 @@ begin
     end
     else
     begin
-        if(sizeDecode[0]) mem[addrIn[3:0]][7:0]   <= dataIn[7:0];
-        if(sizeDecode[1]) mem[addrIn[3:0]][15:8]  <= dataIn[15:8];
-        if(sizeDecode[2]) mem[addrIn[3:0]][23:16] <= dataIn[23:16];
-        if(sizeDecode[3]) mem[addrIn[3:0]][31:24] <= dataIn[31:24];
-
+        if(sizeDecode[0]) mem[addrIn[4:0]][7:0]   <= dataIn[7:0];
+        if(sizeDecode[1]) mem[addrIn[4:0]][15:8]  <= dataIn[15:8];
+        if(sizeDecode[2]) mem[addrIn[4:0]][23:16] <= dataIn[23:16];
+        if(sizeDecode[3]) mem[addrIn[4:0]][31:24] <= dataIn[31:24];
+        if(addrIn[4:0]==`LEN)
+            len <= dataIn + 1;
         mem[`SYS_VAILD] <= {31'b0,sysVaild};
         mem[`BUSY] <= {31'b0,busy};
 
-        dataOut <= mem[addrOut[3:0]]; 
+        dataOut <= mem[addrOut[4:0]]; 
 
         if (mem[`BUSY][0] & mem[`ENABLE][0])
             enableState <= 1;
@@ -90,12 +92,27 @@ SystemCrtlPLL uSystemCrtlPLL
 
 // GPU Data Control
 wire        sysLoad;
-wire[23:0]  sysData;
-wire[31:0]  sysDataIn = {sysData, sysData[7:0]};
+// wire[23:0]  sysData;
+
 wire        sysWriteEnable;
 wire[31:0]  sysAddrMin;
 wire[31:0]  sysAddrMax;
 wire[7:0]   sysWriteRefresh;
+
+wire[23:0]  wrCount;
+wire sysFull;
+wire sysEmpty;
+
+//wire pixelsUpdate = sysWriteEnable && wrCount < mem[`LEN];
+//wire pixelsEnable = mem[`ENABLE][1];
+//wire pixel = mem[`ENABLE][1]==1 ? {mem[15+wrCount][23:0],8'b0} : {mem[`PIXEL][23:0], 8'b0};
+
+//wire[31:0]  sysDataIn = (sysWriteEnable && wrCount < mem[`LEN][23:0]) ? pixel : sysDataIn;
+  
+wire[31:0]  sysDataIn = 
+    (sysWriteEnable && wrCount < len) ? 
+        (mem[`ENABLE][1]==1 ? {mem[15+wrCount][23:0],8'b0} : {mem[`PIXEL][23:0], 8'b0}) : 
+        sysDataIn;
 
 GPUDataControl#(.H_DISP(`H_DISP), .V_DISP(`V_DISP)) uGPUDataControl
 (
@@ -104,18 +121,22 @@ GPUDataControl#(.H_DISP(`H_DISP), .V_DISP(`V_DISP)) uGPUDataControl
     
     .sysVaild           (sysVaild),
     .sysLoad            (sysLoad),
-    .sysData            (sysData),    
+    // .sysData            (sysData),    
     .sysWriteEnable     (sysWriteEnable),
     .sysAddrMin         (sysAddrMin),
     .sysAddrMax         (sysAddrMax),
     .sysWriteRefresh    (sysWriteRefresh),
-    
+    .sysFull(sysFull),
+    .sysEmpty(sysEmpty),
+
     .xpos(mem[`X_POS][15:0]),
     .ypos(mem[`Y_POS][15:0]),
-    .pixel(mem[`PIXEL][23:0]),
+    // .pixel(mem[`PIXEL][23:0]),
     .len(mem[`LEN][23:0]),
     .enable(mem[`ENABLE][0]),
-    .busy(busy)
+    .busy(busy),
+
+    .wrCount(wrCount)
 );
 
 //GPU HDMI Encoder
@@ -162,6 +183,8 @@ SDRAMControl uSDRAMControl
     .WR_MIN_ADDR(wrMinAddr),          //write start address
     .WR_MAX_ADDR(wrMaxAddr),          //write max address
     .WR_LENGTH(mem[`SYS_WR_LEN][8:0]),  //write burst length
+    .WR_FULL(sysFull),
+    .WR_EMPTY(sysEmpty),
 
     // FIFO Read Side
     .RD_CLK(clkPixel),                  //read fifo clock

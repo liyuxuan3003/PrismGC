@@ -6,6 +6,7 @@
 #include "BitOperate.h"
 
 #include <stdlib.h>
+#include <string.h>
 
 void WaitRamReady()
 {
@@ -78,17 +79,36 @@ int LCDChar(int x,int y,int c)
     {
 		for (j=0;j<h;j++)
         {
-            unsigned char dots=0;
+            unsigned char dots=0xaa;
+            uint32_t colors[8];
             if(pData)
                 dots=*pData++;
             for(int k=0;k<8;k++)
             {
                 if(BIT_IS1(dots,k))
-                    LCDPixel(0xFFFFFF,x+i+8-k,y+j);
+                    colors[7-k]=0xffffff;
                 else
-                    LCDPixel(0x000000,x+i+8-k,y+j);
+                    colors[7-k]=0;
             }  
+            LCDPixels(colors,x+i,y+j,8);
         }
     }
 	return w;
+}
+
+void LCDPixels(const uint32_t *colors,uint16_t x,uint16_t y,uint16_t len)
+{
+    GPU->X_POS=x;
+    GPU->Y_POS=y;
+    GPU->PIXEL = colors[0];
+    for(int i=0;i<len;i++)
+        GPU_PIXELS[i]=colors[i];
+    GPU -> LEN = len;
+    GPU -> SYS_WR_LEN = (len <= 8) ? len : 8;
+    GPU -> ENABLE = 3;
+    __asm("nop");
+    __asm("nop");
+    while(GPU -> BUSY) ;
+    udelay(5);                          //Do not touch!
+    GPU -> ENABLE = 0;
 }

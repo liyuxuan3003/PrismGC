@@ -1,16 +1,23 @@
 #include "Font16.h"
 #include "Font.h"
-
+#include "console.h"
 #include <stdlib.h>
 
 const struct Font *GetFontGlyph(unsigned short int ch)
 {
+    const struct Font *font=NULL;
     for(int i=0;i<sizeof(font16)/sizeof(struct Font);i++)
     {
+        //printf("ch=%d,font16[%d].index=%d\r\n",(int)ch,i,(int)font16[i].index);
         if(ch==font16[i].index)
-            return &font16[i];
+        {
+            font =&font16[i];
+            break;
+        }
     }
-    return NULL;
+    //if(font=NULL)
+    //    printf("ch=%d not found\r\n",(int)ch);
+    return font;
     // int left=0;
 	// int right=0;
 	// int middle;

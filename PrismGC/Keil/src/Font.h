@@ -3,9 +3,9 @@
 
 struct Font
 {
-	unsigned short width:6;
-	unsigned short height:6;
-	unsigned short bpp:4;
+	unsigned char width;
+	unsigned char height;
+	unsigned char bpp;
 	unsigned short int index;
 	const unsigned char *pixels;
 };

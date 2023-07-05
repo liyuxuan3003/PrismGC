@@ -1,7 +1,8 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include <stdio.h>
+//#include <stdio.h>
+#include "console.h"
 
 #include "BitOperate.h"
 
@@ -32,6 +33,7 @@ int main()
 
 	//UART display
 	UARTString("Cortex-M0 Start up!\r\n");
+	printf("Cortex-M0 Version 0.1\n");
 
     //PORTA IO STATUS
     PORTA -> O_SWI_ENA = 0x00;

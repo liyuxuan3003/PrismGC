@@ -25,7 +25,7 @@ void UARTString(char *stri)
 	for(int i=0;i<strlen(stri);i++)
 		UARTWrite(stri[i]);
 }
-
+/*
 void UARTHandle()
 {
 	int data = UARTRead();
@@ -33,3 +33,4 @@ void UARTHandle()
         UARTWrite('\n');
 	UARTWrite(data);
 }
+*/
