@@ -29,15 +29,11 @@ module GPU
 `define BUSY        7
 `define PING_PONG   8
 
-`define PIXELS      31:16
-
-// 16-31 -> PIXELS
-
-reg [31:0] mem [31:0];
+reg [31:0] mem [15:0];
 reg enableState;
 
 wire sysVaild;
-reg  busy;
+wire busy;
 
 always@(posedge clk or negedge rstn) 
 begin
@@ -93,96 +89,34 @@ SystemCrtlPLL uSystemCrtlPLL
 
 
 // GPU Data Control
-reg         sysLoad;
-// wire[23:0]  sysData;
-reg[31:0]   sysDataIn;
+wire        sysLoad;
+wire[23:0]  sysData;
+wire[31:0]  sysDataIn = {sysData, sysData[7:0]};
 wire        sysWriteEnable;
-reg[31:0]   sysAddrMin;
-reg[31:0]   sysAddrMax;
-reg[7:0]    sysWriteRefresh;
+wire[31:0]  sysAddrMin;
+wire[31:0]  sysAddrMax;
+wire[7:0]   sysWriteRefresh;
 
-// GPUDataControl#(.H_DISP(`H_DISP), .V_DISP(`V_DISP)) uGPUDataControl
-// (
-//     .clk                (clkRef),        
-//     .rstn               (sysRstn),     
+GPUDataControl#(.H_DISP(`H_DISP), .V_DISP(`V_DISP)) uGPUDataControl
+(
+    .clk                (clkRef),        
+    .rstn               (sysRstn),     
     
-//     .sysVaild           (sysVaild),
-//     .sysLoad            (sysLoad),
-//     .sysData            (sysData),    
-//     .sysWriteEnable     (sysWriteEnable),
-//     .sysAddrMin         (sysAddrMin),
-//     .sysAddrMax         (sysAddrMax),
-//     .sysWriteRefresh    (sysWriteRefresh),
+    .sysVaild           (sysVaild),
+    .sysLoad            (sysLoad),
+    .sysData            (sysData),    
+    .sysWriteEnable     (sysWriteEnable),
+    .sysAddrMin         (sysAddrMin),
+    .sysAddrMax         (sysAddrMax),
+    .sysWriteRefresh    (sysWriteRefresh),
     
-//     .xpos(mem[`X_POS][15:0]),
-//     .ypos(mem[`Y_POS][15:0]),
-//     .pixel(mem[`PIXEL][23:0]),
-//     .pixels()
-//     .len(mem[`LEN][23:0]),
-//     .enable(mem[`ENABLE][0]),
-//     .busy(busy)
-// );
-
-reg[2:0]  wrState;
-reg[2:0]  wrDiv;
-reg[23:0] wrCount;
-always @(posedge clkRef or negedge sysRstn) 
-begin
-    if(!sysRstn)
-	begin
-        wrState <= 0;
-		wrCount <= 0;
-		wrDiv <= 0;
-        busy <= 0;
-        sysWriteRefresh <= 0;
-	end
-    else
-        begin
-        case (wrState)
-            0: begin
-                busy <= 0;
-                sysWriteRefresh <= 0;
-                wrState <= mem[`ENABLE][0] ? 1:0;
-            end
-            1: begin
-                busy <= 1;
-                sysAddrMin <= mem[`X_POS][15:0] + mem[`Y_POS][15:0] * `H_DISP;
-                sysAddrMax <= `H_DISP * (`V_DISP  + 1);
-                sysLoad <= 1'b1;
-                wrState <= 2;
-                wrDiv <= 0;
-            end
-            2: begin
-                busy <= 1;
-                sysLoad <= 1'b0;
-                wrCount <= 0;
-                wrDiv <= 0;
-                wrState <= 3;
-            end
-            3: begin
-                busy <= 1;
-                wrDiv <= wrDiv + 1;
-                sysDataIn <= {mem[`PIXEL][23:0],mem[`PIXEL][7:0]};
-                if(wrDiv == 0)
-                begin
-                    wrCount <= wrCount + 1;
-                    if(wrCount == mem[`LEN][23:0] + 7)
-                    begin
-                    	wrState <= 4;
-                        // sysWriteRefresh <= len[7:0];
-                    end 
-                end
-            end
-            4: begin
-                busy <= 0;
-                wrState <= mem[`ENABLE][0] ? 4:0;
-                sysWriteRefresh <= 0;
-            end
-            default: wrState <= 0;
-        endcase
-        end
-end
-assign sysWriteEnable = ((wrDiv==1) && (wrState==3))? 1:0;
+    .xpos(mem[`X_POS][15:0]),
+    .ypos(mem[`Y_POS][15:0]),
+    .pixel(mem[`PIXEL][23:0]),
+    .len(mem[`LEN][23:0]),
+    .enable(mem[`ENABLE][0]),
+    .busy(busy)
+);
 
 //GPU HDMI Encoder
 
