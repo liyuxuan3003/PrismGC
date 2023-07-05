@@ -12,7 +12,6 @@ module GPUDataControl
     input               rstn,
     input[15:0]         xpos,
     input[15:0]         ypos,
-    // input[23:0]         pixel,
     input[23:0]         len,
     input               enable, 
     output reg          busy,
@@ -20,7 +19,6 @@ module GPUDataControl
     //sys 2 sdram control
     input               sysVaild,
     output reg          sysLoad,
-    // output reg[23:0]    sysData,
     output              sysWriteEnable,
     output reg[7:0]     sysWriteRefresh,
     output reg[31:0]    sysAddrMin,
@@ -33,7 +31,7 @@ module GPUDataControl
 
 reg[2:0]  wrState;
 reg[2:0]  wrDiv;
-// reg[23:0] wrCount;
+
 always @(posedge clk or negedge rstn) 
 begin
     if(!rstn)
@@ -70,19 +68,14 @@ begin
             end
             3: begin
                 busy <= 1;
-                //if(sysEmpty==1'b1)
+                wrDiv <= wrDiv + 1;
+                if(wrDiv == 0)
                 begin
-                    wrDiv <= wrDiv + 1;
-                    // sysData <= pixel;
-                    if(wrDiv == 0)
+                    wrCount <= wrCount + 1;
+                    if(wrCount == len+7)
                     begin
-                        wrCount <= wrCount + 1;
-                        if(wrCount == len+7)
-                        begin
-                            wrState <= 4;
-                            // sysWriteRefresh <= len[7:0];
-                        end 
-                    end
+                        wrState <= 4;
+                    end 
                 end
             end
             4: begin

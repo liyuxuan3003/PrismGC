@@ -92,8 +92,6 @@ SystemCrtlPLL uSystemCrtlPLL
 
 // GPU Data Control
 wire        sysLoad;
-// wire[23:0]  sysData;
-
 wire        sysWriteEnable;
 wire[31:0]  sysAddrMin;
 wire[31:0]  sysAddrMax;
@@ -102,12 +100,6 @@ wire[7:0]   sysWriteRefresh;
 wire[23:0]  wrCount;
 wire sysFull;
 wire sysEmpty;
-
-//wire pixelsUpdate = sysWriteEnable && wrCount < mem[`LEN];
-//wire pixelsEnable = mem[`ENABLE][1];
-//wire pixel = mem[`ENABLE][1]==1 ? {mem[15+wrCount][23:0],8'b0} : {mem[`PIXEL][23:0], 8'b0};
-
-//wire[31:0]  sysDataIn = (sysWriteEnable && wrCount < mem[`LEN][23:0]) ? pixel : sysDataIn;
   
 wire[31:0]  sysDataIn = 
     (sysWriteEnable && wrCount < len) ? 
@@ -120,8 +112,7 @@ GPUDataControl#(.H_DISP(`H_DISP), .V_DISP(`V_DISP)) uGPUDataControl
     .rstn               (sysRstn),     
     
     .sysVaild           (sysVaild),
-    .sysLoad            (sysLoad),
-    // .sysData            (sysData),    
+    .sysLoad            (sysLoad), 
     .sysWriteEnable     (sysWriteEnable),
     .sysAddrMin         (sysAddrMin),
     .sysAddrMax         (sysAddrMax),
@@ -131,7 +122,6 @@ GPUDataControl#(.H_DISP(`H_DISP), .V_DISP(`V_DISP)) uGPUDataControl
 
     .xpos(mem[`X_POS][15:0]),
     .ypos(mem[`Y_POS][15:0]),
-    // .pixel(mem[`PIXEL][23:0]),
     .len(mem[`LEN][23:0]),
     .enable(mem[`ENABLE][0]),
     .busy(busy),
@@ -180,8 +170,8 @@ SDRAMControl uSDRAMControl
     .WR_LOAD(sysLoad),                  //write register load & fifo clear
     .WR_DATA(sysDataIn),                //write data input
     .WR(sysWriteEnable),                //write data request
-    .WR_MIN_ADDR(wrMinAddr),          //write start address
-    .WR_MAX_ADDR(wrMaxAddr),          //write max address
+    .WR_MIN_ADDR(wrMinAddr),            //write start address
+    .WR_MAX_ADDR(wrMaxAddr),            //write max address
     .WR_LENGTH(mem[`SYS_WR_LEN][8:0]),  //write burst length
     .WR_FULL(sysFull),
     .WR_EMPTY(sysEmpty),
@@ -191,8 +181,8 @@ SDRAMControl uSDRAMControl
     .RD_LOAD(1'b0),                     //read register load & fifo clear
     .RD_DATA(pixelData),                //read data output
     .RD(pixelRequest),                  //read request
-    .RD_MIN_ADDR(rdMinAddr),          //read start address
-    .RD_MAX_ADDR(rdMaxAddr),          //read max address
+    .RD_MIN_ADDR(rdMinAddr),            //read start address
+    .RD_MAX_ADDR(rdMaxAddr),            //read max address
     .RD_LENGTH(9'd256),                 //read length
 
     .sysVaild(sysVaild),               

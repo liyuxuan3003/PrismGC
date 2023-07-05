@@ -15,8 +15,8 @@ const struct Font *GetFontGlyph(unsigned short int ch)
             break;
         }
     }
-    //if(font=NULL)
-    //    printf("ch=%d not found\r\n",(int)ch);
+    if(font==NULL)
+       printf("ch=%d not found\r\n",(int)ch);
     return font;
     // int left=0;
 	// int right=0;
