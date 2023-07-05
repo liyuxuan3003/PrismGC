@@ -55,6 +55,6 @@
 `define	V_DISP 	12'd600  
 `define	V_TOTAL	12'd638
 
-`define VRAM_BUFF 16
+`define VRAM_BUFF 64
 
 `endif

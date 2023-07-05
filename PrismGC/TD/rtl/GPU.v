@@ -29,7 +29,7 @@ module GPU
 `define BUSY        7
 `define PING_PONG   8
 
-reg [31:0] mem [31:0];
+reg [31:0] mem [`VRAM_BUFF+16-1:0];
 reg [31:0] len;
 reg enableState;
 
