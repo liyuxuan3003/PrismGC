@@ -25,6 +25,6 @@
 
 #define INIT_SCORE 0
 #define UP_SCORE 5
-#define INIT_HEALTH 9
+#define INIT_HEALTH 5
 #define DOWN_HEALTH 1 
 #endif

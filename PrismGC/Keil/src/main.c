@@ -43,6 +43,7 @@ int main()
     {
         DIG[i].ENA = 1;
     }
+    DIG[2].ENA = 0;
 
     WaitRamReady();
     LCDBackground(0xFFFFFF);
