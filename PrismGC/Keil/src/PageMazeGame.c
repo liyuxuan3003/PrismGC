@@ -46,7 +46,7 @@ uint8_t PageMazeGame()
 
 
         PingPong();
-        LCDBackground(0x888888);
+        LCDBackground(BG_COLOR);
 
         for(uint32_t i=0;i<MAP_W;i++)
         {

@@ -10,6 +10,8 @@
 #include "Block.h"
 #include "BlockMap.h"
 
+#define BG_COLOR 0x888888
+
 #include <stdint.h>
 
 #define X_CORNER (H_DISP/2)-(MAP_W-1)*BLOCK_SIZE+120
