@@ -91,6 +91,7 @@ uint8_t PageBlockGame()
                 }
                 if(Health == 0)
                 {
+                    DIG[3].COD = Health;
                     return PAGE_MAIN;
                 }
             }
@@ -114,6 +115,7 @@ uint8_t PageBlockGame()
                 }
                 if(Health == 0)
                 {
+                    DIG[3].COD = Health;
                     return PAGE_MAIN;
                 }
             }
@@ -125,11 +127,11 @@ uint8_t PageBlockGame()
             y1=Y1_BLOCK_PLACE;
             y2=Y2_BLOCK_PLACE;
             XPlace1 += BLOCK_WIDTH*(TIMER -> TIME%10);
-            XPlace2 += BLOCK_WIDTH*((TIMER -> TIME%10)+3);
+            XPlace2 += BLOCK_WIDTH*((TIMER -> TIME%10));
             if(XPlace1>=1000)
             XPlace1=0;
             if(XPlace2>=1000)
-            XPlace2=0;
+            XPlace2=BLOCK_WIDTH*3;
             mdelay(100);
             Color = BLUE;
         }
@@ -138,14 +140,13 @@ uint8_t PageBlockGame()
         DIG[2].COD = Level;
         DIG[3].COD = Health;
         if(Health == 0)
-        return PAGE_MAIN;
-        if(Score == 50)
+            return PAGE_MAIN;
+        if(Score == 25)
         {
             Level ++;
-            Score = 0;
+            // Score = 0;
         }
         if(Level == 3)
             Level = 2;
-
     }
 }
