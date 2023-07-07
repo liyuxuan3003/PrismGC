@@ -5,6 +5,8 @@
 
 #include "BitOperate.h"
 
+#include "Console.h"
+
 #include <stdlib.h>
 #include <string.h>
 
@@ -73,7 +75,7 @@ void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len)
 }
 
 //(x,y) is the top-left corner of the char 
-uint8_t LCDChar(uint32_t c,uint32_t x,uint32_t y)
+uint8_t LCDChar(uint32_t color,uint32_t colorbck,uint32_t c,uint32_t x,uint32_t y,uint8_t scale)
 {
     const struct Font *pFont;
     const uint8_t *pData=NULL;
@@ -91,18 +93,25 @@ uint8_t LCDChar(uint32_t c,uint32_t x,uint32_t y)
 
     for (int i=0;i<h;i++)
     {
-        uint8_t dots=0xaa;
-        uint32_t colors[8];
+        uint8_t dots=0xAA;
+        uint32_t *colors=(uint32_t *)malloc(sizeof(uint32_t)*8*scale);
         if(pData)
             dots=*pData++;
         for(int j=0;j<8;j++)
         {
-            if(BIT_IS1(dots,j))
-                colors[7-j]=0xffffff;
-            else
-                colors[7-j]=0;
-        }  
-        LCDPixels(colors,x,y+i,8);
+            for(int s=0;s<scale;s++)
+            {
+                // printf("%d ",8*scale-1-j*scale-s);
+                if(BIT_IS1(dots,j))
+                    colors[8*scale-1-j*scale-s]=colorbck;
+                else
+                    colors[8*scale-1-j*scale-s]=color;
+            }
+        }
+        printf("\r\n");
+        for(int s=0;s<scale;s++)
+            LCDPixels(colors,x,y+i*scale+s,8*scale);
+        free(colors);
     }
 	return w;
 }
