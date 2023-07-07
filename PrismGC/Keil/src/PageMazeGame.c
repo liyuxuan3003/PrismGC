@@ -9,13 +9,28 @@
 #include "BlockMap.h"
 #include "Charactors.h"
 
+static uint8_t CharPlace()
+{
+    switch (KEYBOARD->KEY)
+    {
+        case 0x09: return PMG_R; break;
+        case 0x05: return PMG_L; break;
+        case 0x0A: return PMG_U; break;
+        case 0x06: return PMG_D; break;
+        default: return 0; break;
+    }
+}
+
+
 uint8_t PageMazeGame()
 {
     uint32_t nowTime;
     uint32_t xCorner=(H_DISP/2)-(MAP_W-1)*BLOCK_SIZE+120;
     uint32_t yCorner=(V_DISP/2)-(MAP_H-1)*BLOCK_SIZE;
-    uint32_t xCharacterMove=xCorner+2*level1.jstart*BLOCK_SIZE;
-    uint32_t yCharacterMove=yCorner+2*level1.istart*BLOCK_SIZE;
+    uint32_t iCharacterMove=level1.istart;
+    uint32_t jCharacterMove=level1.jstart;
+    uint32_t xCharMove=iCharacterMove;
+    uint32_t yCharMove=jCharacterMove;
     while(1)
     {
         nowTime = TIMER -> TIME;
@@ -39,24 +54,28 @@ uint8_t PageMazeGame()
                     case B_BAR: BlockBAR(x,y); break;
                     case B_END: BlockEND(x,y); break;
                     case B_TRP: BlockTRP(x,y); break;
-                }
+                };
                 
             }
         };
-        MainCharactor (xCharacterMove,yCharacterMove);
-            switch (KEYBOARD -> KEY)
+        switch (level1.map[iCharacterMove][jCharacterMove])
+        {
+            case B_ICE:
             {
-                case 0x09:xCharacterMove+=48; break;
-                case 0x05:xCharacterMove-=48; break;
-                case 0x0A:yCharacterMove-=48; break;
-                case 0x06:yCharacterMove+=48; break;
+                switch(CharPlace())
+                {
+                    case PMG_L: jCharacterMove--; break;
+                    case PMG_R: jCharacterMove++; break;
+                    case PMG_U: iCharacterMove--; break;
+                    case PMG_D: iCharacterMove++; break;
+                    case 0: break;
+                }
             }
-        if(xCharacterMove<xCorner+2*level1.jstart*BLOCK_SIZE)
-            xCharacterMove+=48;
-        else if(xCharacterMove>xCorner+2*11*BLOCK_SIZE)
-            xCharacterMove-=48;
-        else if(yCharacterMove<yCorner+2*level1.istart*BLOCK_SIZE)
-            yCharacterMove+=48;
+            case B_BAR: break;
+        }
+        xCharMove=xCorner+2*jCharacterMove*BLOCK_SIZE;
+        yCharMove=yCorner+2*iCharacterMove*BLOCK_SIZE;
+        MainCharactor (xCharMove,yCharMove);
         while(TIMER -> TIME < nowTime + FRAME);
     }
 }
