@@ -6,7 +6,7 @@
 #define B_ICE 0
 #define B_BAR 1
 #define B_END 2
-#define B_TRAP 3
+#define B_TRP 3
 
 #define MAP_W 12
 #define MAP_H 12
