@@ -18,7 +18,8 @@ typedef struct
     uint32_t jstart;
 } LevelMap;
 
+int initialLocation[]
 
-extern const LevelMap level1;
+extern LevelMap levelO;
 
 #endif
