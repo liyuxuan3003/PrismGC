@@ -9,14 +9,6 @@
 
 #define FRAME 150
 
-#define BLOCK_WIDTH 20
-#define BLOCK_HEIGHT 20
-
-#define X1_BLOCK_PLACE 400
-#define X2_BLOCK_PLACE 420
-#define Y1_BLOCK_PLACE 0
-#define Y2_BLOCK_PLACE 20
-
 #define RED    0xFF0000
 #define GREEN  0x00FF00
 #define BLACK  0x000000
@@ -26,8 +18,4 @@
 #define YELLOW 0xFFFF00
 #define PURPLE 0x800080
 
-#define INIT_SCORE 0
-#define UP_SCORE 5
-#define INIT_HEALTH 5
-#define DOWN_HEALTH 1 
 #endif

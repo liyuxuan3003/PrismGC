@@ -53,7 +53,7 @@ uint8_t PageMazeGame()
                 
             }
         }
-        MainCharactor (500,500);
+        MainCharactor (600,90);
         while(TIMER -> TIME < nowTime + FRAME);
     }
 }

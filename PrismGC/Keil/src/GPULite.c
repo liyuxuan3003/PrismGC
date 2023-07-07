@@ -108,7 +108,7 @@ uint8_t LCDChar(uint32_t color,uint32_t colorbck,uint32_t c,uint32_t x,uint32_t 
                     colors[8*scale-1-j*scale-s]=color;
             }
         }
-        printf("\r\n");
+        // printf("\r\n");
         for(int s=0;s<scale;s++)
             LCDPixels(colors,x,y+i*scale+s,8*scale);
         free(colors);
