@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define BLUE  0x8888FF
+#define BLUE  0x0000FF
 #define WHITE 0xFFFFFF
 #define LIGHTBLUE 0xAAAAFF
 #define DARKBLUE  0x4444FF

@@ -12,8 +12,10 @@
 uint8_t PageMazeGame()
 {
     uint32_t nowTime;
-    uint32_t pixels[8]={RED,RED,RED,GREEN,GREEN,GREEN,BLUE,BLUE};
-
+    uint32_t xCorner=(H_DISP/2)-(MAP_W-1)*BLOCK_SIZE+120;
+    uint32_t yCorner=(V_DISP/2)-(MAP_H-1)*BLOCK_SIZE;
+    uint32_t xCharacterMove=xCorner+2*level1.jstart*BLOCK_SIZE;
+    uint32_t yCharacterMove=yCorner+2*level1.istart*BLOCK_SIZE;
     while(1)
     {
         nowTime = TIMER -> TIME;
@@ -24,36 +26,37 @@ uint8_t PageMazeGame()
         PingPong();
         LCDBackground(0x888888);
 
-        for(int i=0;i<30;i++)
-            LCDPixels(pixels,30,30+i,8);
-
-        uint32_t xInit=(H_DISP/2)-(MAP_W-1)*BLOCK_SIZE+120;
-        uint32_t yInit=(V_DISP/2)-(MAP_H-1)*BLOCK_SIZE;
         for(uint32_t i=0;i<MAP_W;i++)
         {
             for(uint32_t j=0;j<MAP_H;j++)
             {
-                // if (i=5 && j=1)
-                // {
-                //     MainCharactor (x,y);
-                // }
-                uint32_t x=xInit+2*j*BLOCK_SIZE;
-                uint32_t y=yInit+2*i*BLOCK_SIZE;
+
+                uint32_t x=xCorner+2*j*BLOCK_SIZE;
+                uint32_t y=yCorner+2*i*BLOCK_SIZE;
                 switch (level1.map[i][j])
                 {
                     case B_ICE: BlockICE(x,y); break;
                     case B_BAR: BlockBAR(x,y); break;
-                    case B_END: BlockEnd(x,y); break;
-                    case B_TRAP: BlockTrap(x,y); break;
-                }
-                if(i==level1.istart&&j==level1.jstart)
-                {
-                    BlockOrigin(x,y);
+                    case B_END: BlockEND(x,y); break;
+                    case B_TRP: BlockTRP(x,y); break;
                 }
                 
             }
-        }
-        MainCharactor (600,90);
+        };
+        MainCharactor (xCharacterMove,yCharacterMove);
+            switch (KEYBOARD -> KEY)
+            {
+                case 0x09:xCharacterMove+=48; break;
+                case 0x05:xCharacterMove-=48; break;
+                case 0x0A:yCharacterMove-=48; break;
+                case 0x06:yCharacterMove+=48; break;
+            }
+        if(xCharacterMove<xCorner+2*level1.jstart*BLOCK_SIZE)
+            xCharacterMove+=48;
+        else if(xCharacterMove>xCorner+2*11*BLOCK_SIZE)
+            xCharacterMove-=48;
+        else if(yCharacterMove<yCorner+2*level1.istart*BLOCK_SIZE)
+            yCharacterMove+=48;
         while(TIMER -> TIME < nowTime + FRAME);
     }
 }

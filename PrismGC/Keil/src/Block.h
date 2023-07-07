@@ -13,8 +13,7 @@
 void BlockICE(uint32_t x,uint32_t y);
 void BlockBAR(uint32_t x,uint32_t y);
 void BlockBorder(uint32_t x,uint32_t y);
-void BlockOrigin(uint32_t x,uint32_t y);
-void BlockEnd(uint32_t x,uint32_t y);
-void BlockTrap(uint32_t x,uint32_t y);
+void BlockEND(uint32_t x,uint32_t y);
+void BlockTRP(uint32_t x,uint32_t y);
 
 #endif
