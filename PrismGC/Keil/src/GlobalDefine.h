@@ -5,6 +5,7 @@
 #define PAGE_BLOCK_GAME 1
 #define PAGE_I2C_TEST   2
 #define PAGE_CHAR_TEST  3
+#define PAGE_MAZE_GAME  4
 
 #define FRAME 150
 

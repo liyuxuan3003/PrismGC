@@ -27,6 +27,7 @@ uint8_t PageMain()
             {
                 case 0x00: return PAGE_BLOCK_GAME; break;
                 case 0x01: return PAGE_CHAR_TEST; break;
+                case 0x02: return PAGE_MAZE_GAME; break;
                 case 0x0F: break;
                 default: break;
             }
