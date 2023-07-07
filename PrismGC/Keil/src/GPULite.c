@@ -75,7 +75,7 @@ void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len)
 }
 
 //(x,y) is the top-left corner of the char 
-uint8_t LCDChar(uint32_t color,uint32_t colorbck,uint32_t c,uint32_t x,uint32_t y,uint8_t scale)
+uint8_t LCDChar(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t scale,uint32_t c)
 {
     const struct Font *pFont;
     const uint8_t *pData=NULL;
@@ -113,6 +113,18 @@ uint8_t LCDChar(uint32_t color,uint32_t colorbck,uint32_t c,uint32_t x,uint32_t 
             LCDPixels(colors,x,y+i*scale+s,8*scale);
         free(colors);
     }
-	return w;
+	return w*scale;
 }
+
+// uint32_t LCDPrintf(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t scale,
+// const char *fmt,...)
+// {
+// 	va_list va;
+// 	uint8_t val;
+// 	CON_tx_ie(0);
+// 	va_start(va, fmt);
+// 	val=LCDChar(color,colorbck,x,y,scale,va);
+//     va_end(va);
+// 	return val;
+// }
 

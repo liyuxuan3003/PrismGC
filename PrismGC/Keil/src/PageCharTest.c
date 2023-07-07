@@ -36,14 +36,16 @@ uint8_t PageCharTest()
         LCDRectangle(0x00FFFF,(64-x)*64,250,(64-x+1)*64,250+64);  
         LCDRectangle(0xFF00FF,(64-x)*64,450,(64-x+1)*64,450+64);
 
-        for (int j=0;j<10;j++)
-            for(int i=0;i<90;i++)
-                LCDChar(0xFF0000,0x00FF00,' '+i,100+8*i,50+20*j,1);
+        // for (int j=0;j<10;j++)
+        //     for(int i=0;i<90;i++)
+        //         LCDChar(0xFF0000,0x00FF00,100+8*i,50+20*j,1,' '+i);
 
-        for (int i=0;i<26;i++)
-            LCDChar(0x000000,0xFFFFFF,'A'+i,100+30*i,300,1);
+        // for (int i=0;i<26;i++)
+        //     LCDChar(0x000000,0xFFFFFF,100+30*i,300,1,'A'+i);
 
-        for (int i=0;i<26;i++)
-            LCDChar(0x000000,0xFFFFFF,'A'+i,100+30*i,400,2);
+        // for (int i=0;i<26;i++)
+        //     LCDChar(0x000000,0xFFFFFF,100+30*i,400,2,'A'+i);
+
+        // LCDPrintf(0x000000,0xFFFFFF,200,200,1,"abcde");
     }
 }
