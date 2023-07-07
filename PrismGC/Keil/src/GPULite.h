@@ -32,9 +32,9 @@ void LCDBackground(uint32_t color);
 void LCDRectangle(uint32_t color,uint32_t x1,uint32_t y1,uint32_t x2,uint32_t y2);
 void LCDPixel(uint32_t color,uint32_t x,uint32_t y);
 void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len);
-uint8_t LCDChar(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t scale,uint32_t c);
 
-// uint32_t LCDPrintf(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t scale,
-//     const char *fmt,...);
+uint8_t LCDChar(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t scale,uint32_t c);
+uint32_t LCDPrintf(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t scale,
+    const char *fmt,...);
 
 #endif

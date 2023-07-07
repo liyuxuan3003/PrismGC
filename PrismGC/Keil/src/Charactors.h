@@ -3,12 +3,19 @@
 
 #include <stdint.h>
 
-#define BLUE  0x8888FF
-#define WHITE 0xFFFFFF
-#define LIGHTBLUE 0xAAAAFF
-#define DARKBLUE  0x4444FF
-#define BLACK 0x000000
+#define M_BLU  0x8888FF
+#define M_WHI  0xFFFFFF
+#define M_LBU  0xAAAAFF
+#define M_DBU  0x4444FF
+#define M_BLK  0x000000
 
-void MainCharactor (uint32_t x,uint32_t y);
+typedef struct 
+{
+    int32_t xoffset;
+    uint32_t len;
+    uint32_t line[16];
+} CharactorLine;
+
+void MainCharactor(uint32_t x,uint32_t y);
 
 #endif

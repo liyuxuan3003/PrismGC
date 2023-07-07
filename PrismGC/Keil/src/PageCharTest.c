@@ -9,6 +9,7 @@
 #include "KeyBoard.h"
 #include "GPIO.h"
 #include "HardwareConfig.h"
+#include "Charactors.h"
 
 #include <string.h>
 
@@ -36,16 +37,35 @@ uint8_t PageCharTest()
         LCDRectangle(0x00FFFF,(64-x)*64,250,(64-x+1)*64,250+64);  
         LCDRectangle(0xFF00FF,(64-x)*64,450,(64-x+1)*64,450+64);
 
-        // for (int j=0;j<10;j++)
-        //     for(int i=0;i<90;i++)
-        //         LCDChar(0xFF0000,0x00FF00,100+8*i,50+20*j,1,' '+i);
+        for(int j=0;j<10;j++)
+            for(int i=0;i<90;i++)
+                LCDChar(0xFF0000,0x00FF00,100+8*i,50+20*j,1,' '+i);
 
-        // for (int i=0;i<26;i++)
-        //     LCDChar(0x000000,0xFFFFFF,100+30*i,300,1,'A'+i);
+        for(int i=0;i<26;i++)
+            LCDChar(0x000000,0xFFFFFF,100+30*i,300,1,'A'+i);
 
-        // for (int i=0;i<26;i++)
-        //     LCDChar(0x000000,0xFFFFFF,100+30*i,400,2,'A'+i);
+        for(int i=0;i<26;i++)
+            LCDChar(0x000000,0xFFFFFF,100+30*i,350,2,'A'+i);
 
-        // LCDPrintf(0x000000,0xFFFFFF,200,200,1,"abcde");
+        uint32_t colors[24]=
+        {
+            0xFF0000,0x000000,0xFF0000,0x000000,0xFF0000,0x000000,0xFF0000,0x000000,
+            0xFF0000,0x000000,0xFF0000,0x000000,0xFF0000,0x000000,0xFF0000,0x000000,
+            0xFF0000,0x000000,0xFF0000,0x000000,0xFF0000,0x000000,0xFF0000,0x000000
+        };
+
+        //LCDPixels的len需满足5<=len<=16
+        for(int i=4;i<16;i++)
+            LCDPixels(colors,200-i/2,400+i,i+1);
+
+        MainCharactor(500,400);
+
+        // for(int i=0;i<8;i++)
+        // {
+        //     LCDPixels(colors,200,400+i,i+1);
+        // }
+
+        LCDPrintf(0x000000,0xFFFFFF,200,500,1,"Zhang Yan %d",123,59.5);
+        LCDPrintf(0x000000,0xFFFFFF,200,550,2,"Zhang Yan %d",123,59.5);
     }
 }

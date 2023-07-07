@@ -70,7 +70,7 @@ void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len)
     __asm("nop");
     __asm("nop");
     while(GPU -> BUSY) ;
-    udelay(5);                          //Do not touch!
+    udelay(5l);                          //Do not touch!
     GPU -> ENABLE = 0;
 }
 
@@ -101,14 +101,12 @@ uint8_t LCDChar(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t s
         {
             for(int s=0;s<scale;s++)
             {
-                // printf("%d ",8*scale-1-j*scale-s);
                 if(BIT_IS1(dots,j))
                     colors[8*scale-1-j*scale-s]=colorbck;
                 else
                     colors[8*scale-1-j*scale-s]=color;
             }
         }
-        // printf("\r\n");
         for(int s=0;s<scale;s++)
             LCDPixels(colors,x,y+i*scale+s,8*scale);
         free(colors);
@@ -116,15 +114,30 @@ uint8_t LCDChar(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t s
 	return w*scale;
 }
 
-// uint32_t LCDPrintf(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t scale,
-// const char *fmt,...)
-// {
-// 	va_list va;
-// 	uint8_t val;
-// 	CON_tx_ie(0);
-// 	va_start(va, fmt);
-// 	val=LCDChar(color,colorbck,x,y,scale,va);
-//     va_end(va);
-// 	return val;
-// }
+static uint32_t mx;
+static uint32_t my;
+static uint32_t mcolor;
+static uint32_t mcolorbck;
+static uint8_t  mscale;
+
+static void _OutChar(uint8_t c)
+{
+    mx+=LCDChar(mcolor,mcolorbck,mx,my,mscale,c);
+    return;
+}
+
+uint32_t LCDPrintf(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t scale,
+const char *fmt,...)
+{
+    va_list va;
+    va_start(va, fmt);
+    mx=x;
+    my=y;
+    mcolor=color;
+    mcolorbck=colorbck;
+    mscale=scale;
+    _xprint(_OutChar,fmt,va);
+    va_end(va);
+    return mx;
+}
 
