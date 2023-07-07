@@ -618,6 +618,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\BlockMap.h</FilePath>
             </File>
+            <File>
+              <FileName>Charactors.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Charactors.c</FilePath>
+            </File>
+            <File>
+              <FileName>Charactors.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Charactors.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
