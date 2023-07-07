@@ -6,6 +6,7 @@
 #include "GPULite.h"
 
 #include "Block.h"
+#include "BlockMap.h"
 
 uint8_t PageMazeGame()
 {
@@ -21,17 +22,21 @@ uint8_t PageMazeGame()
         PingPong();
         LCDBackground(0x888888);
         
-        BlockICE(300,300);
-
-        BlockICE(400,300);
-
-        BlockICE(500,300);
-
-        BlockBAR(300,400);
-
-        BlockBAR(400,400);
-
-        BlockBAR(500,400);
+        uint32_t xInit=(H_DISP/2)-(MAP_W-1)*BLOCK_SIZE;
+        uint32_t yInit=(V_DISP/2)-(MAP_H-1)*BLOCK_SIZE;
+        for(uint32_t i=0;i<MAP_W;i++)
+        {
+            for(uint32_t j=0;j<MAP_H;j++)
+            {
+                uint32_t x=xInit+2*i*BLOCK_SIZE;
+                uint32_t y=yInit+2*i*BLOCK_SIZE;
+                switch (level1[x][y])
+                {
+                    case B_ICE: BlockICE(x,y); break;
+                    case B_BAR: BlockBAR(x,y); break;
+                }
+            }
+        }
 
         while(TIMER -> TIME < nowTime + FRAME);
     }
