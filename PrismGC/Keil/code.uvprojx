@@ -609,6 +609,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Block.h</FilePath>
             </File>
+            <File>
+              <FileName>BlockMap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\BlockMap.c</FilePath>
+            </File>
+            <File>
+              <FileName>BlockMap.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\BlockMap.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
