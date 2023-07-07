@@ -10,5 +10,6 @@
 
 void BlockICE(uint32_t x,uint32_t y);
 void BlockBAR(uint32_t x,uint32_t y);
+void BlockBorder(uint32_t x,uint32_t y);
 
 #endif
