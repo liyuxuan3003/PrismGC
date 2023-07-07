@@ -23,6 +23,8 @@
 #include "PageBlockGame.h"
 #include "PageI2CTest.h"
 #include "PageCharTest.h"
+#include "PageMazeGame.h"
+
 #include "GlobalDefine.h"
 
 int main() 
@@ -58,9 +60,9 @@ int main()
         {
             case PAGE_MAIN:         status=PageMain();      break;
             case PAGE_BLOCK_GAME:   status=PageBlockGame(); break;
+            case PAGE_MAZE_GAME:    status=PageMazeGame();  break;
             case PAGE_I2C_TEST:     status=PageI2CTest();   break;
             case PAGE_CHAR_TEST:    status=PageCharTest();  break;
-            case PAGE_MAZE_GAME:    status=PageMazeGame();  break;
             default: status=PageMain(); break;
         }
     }

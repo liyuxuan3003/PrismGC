@@ -589,6 +589,26 @@
               <FileType>5</FileType>
               <FilePath>.\src\PageCharTest.h</FilePath>
             </File>
+            <File>
+              <FileName>PageMazeGame.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\PageMazeGame.c</FilePath>
+            </File>
+            <File>
+              <FileName>PageMazeGame.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\PageMazeGame.h</FilePath>
+            </File>
+            <File>
+              <FileName>Block.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Block.c</FilePath>
+            </File>
+            <File>
+              <FileName>Block.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Block.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
