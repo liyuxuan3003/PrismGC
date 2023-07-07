@@ -6,6 +6,8 @@
 #define PMG_U 3
 #define PMG_D 4
 
+#define BGC 0x888888
+
 #include <stdint.h>
 
 uint8_t PageMazeGame();

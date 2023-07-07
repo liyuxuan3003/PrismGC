@@ -39,7 +39,7 @@ uint8_t PageMazeGame()
             return PAGE_MAIN;
 
         PingPong();
-        LCDBackground(0x888888);
+        LCDBackground(BGC);
 
         for(uint32_t i=0;i<MAP_W;i++)
         {
@@ -64,7 +64,14 @@ uint8_t PageMazeGame()
             {
                 switch(CharPlace())
                 {
-                    case PMG_L: jCharacterMove--; break;
+                    case PMG_L: 
+                    {
+                        switch (level1.map[iCharacterMove][jCharacterMove-1])
+                        {
+                            case B_ICE:jCharacterMove--; break;
+                            default: break;
+                        }
+                    }
                     case PMG_R: jCharacterMove++; break;
                     case PMG_U: iCharacterMove--; break;
                     case PMG_D: iCharacterMove++; break;
