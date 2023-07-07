@@ -7,6 +7,7 @@
 
 #include "Block.h"
 #include "BlockMap.h"
+#include "Charactors.h"
 
 uint8_t PageMazeGame()
 {
@@ -28,6 +29,10 @@ uint8_t PageMazeGame()
         {
             for(uint32_t j=0;j<MAP_H;j++)
             {
+                // if (i=5 && j=1)
+                // {
+                //     MainCharactor (x,y);
+                // }
                 uint32_t x=xInit+2*j*BLOCK_SIZE;
                 uint32_t y=yInit+2*i*BLOCK_SIZE;
                 switch (level1[i][j])
@@ -37,7 +42,7 @@ uint8_t PageMazeGame()
                 }
             }
         }
-
+        MainCharactor (500,500);
         while(TIMER -> TIME < nowTime + FRAME);
     }
 }
