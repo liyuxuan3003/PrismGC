@@ -2,7 +2,7 @@
 
 #include "GPULite.h"
 
-void BlockBorder(uint32_t x,uint32_t y);
+void BlockBorder(uint32_t x,uint32_t y)
 {
     LCDRectangle(0xFFFFFF,x-BLOCK_SIZE,y-BLOCK_SIZE,x+BLOCK_SIZE,y+BLOCK_SIZE);
     return;
