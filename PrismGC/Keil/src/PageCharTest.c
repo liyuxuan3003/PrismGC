@@ -37,15 +37,18 @@ uint8_t PageCharTest()
         LCDRectangle(0x00FFFF,(64-x)*64,250,(64-x+1)*64,250+64);  
         LCDRectangle(0xFF00FF,(64-x)*64,450,(64-x+1)*64,450+64);
 
-        for(int j=0;j<10;j++)
-            for(int i=0;i<90;i++)
-                LCDChar(0xFF0000,0x00FF00,100+8*i,50+20*j,1,' '+i);
+        // for(int j=0;j<10;j++)
+        //     for(int i=0;i<90;i++)
+        //         LCDChar(0xFF0000,0x00FF00,100+8*i,50+20*j,1,' '+i);
 
         for(int i=0;i<26;i++)
-            LCDChar(0x000000,0xFFFFFF,100+30*i,300,1,'A'+i);
+            LCDChar(0x000000,0xFFFFFF,100+30*i,250,1,'A'+i);
 
         for(int i=0;i<26;i++)
-            LCDChar(0x000000,0xFFFFFF,100+30*i,350,2,'A'+i);
+            LCDChar(0x000000,0xFFFFFF,100+30*i,300,2,'A'+i);
+
+        for(int i=0;i<26;i++)
+            LCDChar(0x000000,0xFFFFFF,100+30*i,350,3,'A'+i);
 
         uint32_t colors[24]=
         {
@@ -58,7 +61,7 @@ uint8_t PageCharTest()
         for(int i=4;i<16;i++)
             LCDPixels(colors,200-i/2,400+i,i+1);
 
-        MainCharactor(500,400);
+        MainCharactor(400,450,6);
 
         // for(int i=0;i<8;i++)
         // {

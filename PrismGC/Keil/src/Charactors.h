@@ -9,6 +9,8 @@
 #define M_DBU  0x4444FF
 #define M_BLK  0x000000
 
+#define CHT_MAIN_SCALE_MAX 6
+
 typedef struct 
 {
     int32_t xoffset;
@@ -16,6 +18,6 @@ typedef struct
     uint32_t line[16];
 } CharactorLine;
 
-void MainCharactor(uint32_t x,uint32_t y);
+void MainCharactor(uint32_t x,uint32_t y,uint8_t scale);
 
 #endif

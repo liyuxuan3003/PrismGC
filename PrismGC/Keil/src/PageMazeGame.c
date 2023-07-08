@@ -66,7 +66,7 @@ uint8_t PageMazeGame()
 
         uint32_t chmX=CalX(chmI,chmJ);
         uint32_t chmY=CalY(chmI,chmJ);
-        MainCharactor (chmX,chmY);
+        MainCharactor (chmX,chmY,2);
 
         uint32_t chmNextI=chmI;
         uint32_t chmNextJ=chmJ;

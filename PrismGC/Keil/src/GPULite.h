@@ -22,6 +22,8 @@ typedef struct
 #define GPU ((GPUType *)GPU_LITE_BASE)
 #define GPU_PIXELS ((uint32_t *)(GPU_LITE_BASE+16*4))
 
+#define PIXELS_MAX 16
+
 #define H_DISP 1024
 #define V_DISP 600
 
@@ -32,6 +34,9 @@ void LCDBackground(uint32_t color);
 void LCDRectangle(uint32_t color,uint32_t x1,uint32_t y1,uint32_t x2,uint32_t y2);
 void LCDPixel(uint32_t color,uint32_t x,uint32_t y);
 void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len);
+
+#define CHAR_SCALE_MAX  6
+#define CHAR_WIDTH      8
 
 uint8_t LCDChar(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t scale,uint32_t c);
 uint32_t LCDPrintf(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t scale,
