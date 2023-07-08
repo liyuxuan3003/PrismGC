@@ -11,12 +11,22 @@
 #define MAP_W 12
 #define MAP_H 12
 
+typedef struct
+{
+    int32_t i;
+    int32_t j;
+} MapCoord;
+
+MapCoord _MapCoord(int32_t i,int32_t j);
+MapCoord MapCoordPlus(MapCoord a,MapCoord b);
+MapCoord MapCoordMinus(MapCoord a,MapCoord b);
+
 typedef struct 
 {
     uint8_t map[MAP_W][MAP_H];
-    uint32_t istart;
-    uint32_t jstart;
+    MapCoord coord;
 } LevelMap;
+
 
 extern const LevelMap level1;
 
