@@ -629,6 +629,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Charactors.h</FilePath>
             </File>
+            <File>
+              <FileName>PageMenu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\PageMenu.c</FilePath>
+            </File>
+            <File>
+              <FileName>PageMenu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\PageMenu.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
