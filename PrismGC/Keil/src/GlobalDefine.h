@@ -7,7 +7,7 @@
 #define PAGE_CHAR_TEST  3
 #define PAGE_MAZE_GAME  4
 
-#define FRAME 150
+#define FRAME 100
 
 #define RED    0xFF0000
 #define GREEN  0x00FF00

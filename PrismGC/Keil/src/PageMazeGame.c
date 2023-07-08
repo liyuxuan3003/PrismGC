@@ -9,7 +9,7 @@
 #include "BlockMap.h"
 #include "Charactors.h"
 
-static uint8_t CharPlace()
+static uint8_t GetMoveDirection()
 {
     switch (KEYBOARD->KEY)
     {
@@ -21,29 +21,69 @@ static uint8_t CharPlace()
     }
 }
 
-static uint32_t CalX(uint32_t i,uint32_t j)
+static int32_t CalX(MapCoord coord)
 {
-    return X_CORNER+2*j*BLOCK_SIZE;
+    return X_CORNER+2*coord.j*BLOCK_SIZE;
 }
 
-static uint32_t CalY(uint32_t i,uint32_t j)
+static int32_t CalY(MapCoord coord)
 {
-    return Y_CORNER+2*i*BLOCK_SIZE;
+    return Y_CORNER+2*coord.i*BLOCK_SIZE;
 }
+
+static uint8_t CoordVailed(MapCoord coord)
+{
+    return (coord.i>=0 && coord.i<MAP_H && coord.j>=0 && coord.j<MAP_W);
+}
+
+static MapCoord CoordNext(MapCoord coord,uint8_t direction)
+{
+    MapCoord unitVec=_MapCoord(0,0);
+    switch (direction)
+    {
+        case PMG_R: unitVec=_MapCoord(0,+1); break;
+        case PMG_L: unitVec=_MapCoord(0,-1); break;
+        case PMG_U: unitVec=_MapCoord(-1,0); break;
+        case PMG_D: unitVec=_MapCoord(+1,0); break;
+    }
+
+    MapCoord coordResult=coord;
+    MapCoord coordStep=coord;
+    while(1)
+    {
+        coordStep=MapCoordPlus(coordStep,unitVec);
+        uint8_t flag=0;
+        if(CoordVailed(coordStep))
+        {
+            switch (level1.map[coordStep.i][coordStep.j])
+            {
+                case B_ICE: coordResult=coordStep; break;
+                case B_BAR: flag=1; break;
+                default: flag=1; break;
+            }
+        }
+        else
+        {
+            flag=1;
+        }
+
+        if(flag==1)
+            return coordResult;
+    }
+} 
 
 uint8_t PageMazeGame()
 {
     uint32_t nowTime;
 
-    uint32_t chmI=level1.istart;
-    uint32_t chmJ=level1.jstart;
+    MapCoord coord=level1.coord;
+
     while(1)
     {
         nowTime = TIMER -> TIME;
 
         if(KEYBOARD -> KEY == 0xF)
             return PAGE_MAIN;
-
 
         PingPong();
         LCDBackground(BG_COLOR);
@@ -52,8 +92,8 @@ uint8_t PageMazeGame()
         {
             for(uint32_t j=0;j<MAP_H;j++)
             {
-                uint32_t x=CalX(i,j);
-                uint32_t y=CalY(i,j);
+                uint32_t x=CalX(_MapCoord(i,j));
+                uint32_t y=CalY(_MapCoord(i,j));
                 switch (level1.map[i][j])
                 {
                     case B_ICE: BlockICE(x,y); break;
@@ -64,36 +104,16 @@ uint8_t PageMazeGame()
             }
         }
 
-        uint32_t chmX=CalX(chmI,chmJ);
-        uint32_t chmY=CalY(chmI,chmJ);
-        MainCharactor (chmX,chmY);
+        uint32_t chmX=CalX(coord);
+        uint32_t chmY=CalY(coord);
+        MainCharactor(chmX,chmY);
 
-        uint32_t chmNextI=chmI;
-        uint32_t chmNextJ=chmJ;
-        uint8_t isMove=1;
-        switch(CharPlace())
-        {
-            case PMG_L: chmNextJ--; break;
-            case PMG_R: chmNextJ++; break;
-            case PMG_U: chmNextI--; break;
-            case PMG_D: chmNextI++; break;
-            case 0: isMove=0; break;
-        }
-        
-        if(isMove)
-        {
-            switch (level1.map[chmNextI][chmNextJ])
-            {
-                case B_ICE:
-                {
-                    chmI=chmNextI;
-                    chmJ=chmNextJ;
-                    break;
-                }
-                case B_BAR: break;
-                default:    break;
-            }
-        }
+        LCDPrintf(0x000000,0xFFFFFF,50,100,1,"i: %d",coord.i);
+        LCDPrintf(0x000000,0xFFFFFF,50,150,1,"j: %d",coord.j);
+
+        uint8_t direction=GetMoveDirection();
+        if(direction)
+            coord=CoordNext(coord,direction);
 
         while(TIMER -> TIME < nowTime + FRAME);
     }

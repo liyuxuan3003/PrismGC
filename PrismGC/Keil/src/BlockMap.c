@@ -1,5 +1,27 @@
 #include "BlockMap.h"
 
+MapCoord _MapCoord(int32_t i,int32_t j)
+{
+    MapCoord coord={i,j};
+    return coord;
+}
+
+MapCoord MapCoordPlus(MapCoord a,MapCoord b)
+{
+    MapCoord result;
+    result.i=a.i+b.i;
+    result.j=a.j+b.j;
+    return result;
+}
+
+MapCoord MapCoordMinus(MapCoord a,MapCoord b)
+{
+    MapCoord result;
+    result.i=a.i-b.i;
+    result.j=a.j-b.j;
+    return result;
+}
+
 const LevelMap level1=
 {
     {
@@ -16,7 +38,7 @@ const LevelMap level1=
         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR}
     },
-    4,0
+    {4,0}
 };
 
 // //障碍BAR 冰面ICE 陷阱TRA 机关MEC 碎石GRA 传送DEL 终点END    小兽ANM
