@@ -20,6 +20,7 @@
 #include "Nunchuck.h"
 
 #include "PageMain.h"
+#include "PageMenu.h"
 #include "PageBlockGame.h"
 #include "PageI2CTest.h"
 #include "PageCharTest.h"
@@ -61,7 +62,7 @@ int main()
             case PAGE_MAIN:         status=PageMain();      break;
             case PAGE_BLOCK_GAME:   status=PageBlockGame(); break;
             case PAGE_MAZE_GAME:    status=PageMazeGame();  break;
-            case PAGE_I2C_TEST:     status=PageI2CTest();   break;
+			case PAGE_MENU:         status=PageMenu();      break;
             case PAGE_CHAR_TEST:    status=PageCharTest();  break;
             default: status=PageMain(); break;
         }

@@ -18,7 +18,7 @@ void BlockICE(uint32_t x,uint32_t y)
 void BlockBAR(uint32_t x,uint32_t y)
 {
     BlockBorder(x,y);
-    LCDRectangle(COLOR_GRO,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
+    LCDRectangle(COLOR_BAR,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
     return;
 }
 
