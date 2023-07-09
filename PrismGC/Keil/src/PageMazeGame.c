@@ -36,8 +36,9 @@ static uint8_t CoordVailed(MapCoord coord)
     return (coord.i>=0 && coord.i<MAP_H && coord.j>=0 && coord.j<MAP_W);
 }
 
-static MapCoord CoordNext(MapCoord coord,uint8_t direction)
+static MapCoord CoordNext(MapCoord coord,uint8_t direction,*moveProcess)
 {
+    uint32_t moveI=0;
     MapCoord unitVec=_MapCoord(0,0);
     switch (direction)
     {
@@ -57,7 +58,7 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction)
         {
             switch (level1.map[coordStep.i][coordStep.j])
             {
-                case B_ICE: coordResult=coordStep; break;
+                case B_ICE: coordResult=coordStep;moveProcess[moveI]=coordResult.i; moveI++; break;
                 case B_BAR: flag=1; break;
                 default: flag=1; break;
             }
@@ -69,17 +70,32 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction)
 
         if(flag==1)
             return coordResult;
+        uint32_t chmX=CalX(coordResult);
+        uint32_t chmY=CalY(coordResult);
+        MainCharactor(chmX,chmY,2);
     }
 } 
+
+static MoveProcess(uint8_t direction,uint32_t moveProcess)
+{
+    switch (direction)
+    {
+        case PMG_R||PMG_L:
+        {
+            for()
+        }
+        case PMG_U||PMG_D:
+    }
+}
 
 uint8_t PageMazeGame()
 {
     uint32_t nowTime;
-
     MapCoord coord=level1.coord;
 
     while(1)
     {
+        uint32_t moveProcess[32]={0};
         nowTime = TIMER -> TIME;
 
         if(KEYBOARD -> KEY == 0xF)
