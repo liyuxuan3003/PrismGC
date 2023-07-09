@@ -58,7 +58,7 @@ uint8_t PageMain()
                 BlockICEMain((96-x)*96+64*i,350+64*j);
             }
         }
-        MainCharactor(150,300);
+        MainCharactor(150,250,6);
         LCDPrintf(0x000000,0xCCEEFF,512-strlen("Click anywhere to start")/2*8,200,1,"Click anywhere to start");//22
         LCDPrintf(0x000000,0xCCEEFF,512-strlen("Invincible Slime's Adventure")/2*16,100,2,"Invincible Slime's Adventure");//28
         while(TIMER -> TIME < nowTime + FRAME) ;
