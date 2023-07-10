@@ -36,9 +36,10 @@ static uint8_t CoordVailed(MapCoord coord)
     return (coord.i>=0 && coord.i<MAP_H && coord.j>=0 && coord.j<MAP_W);
 }
 
-static MapCoord CoordNext(MapCoord coord,uint8_t direction,*moveProcess)
+static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess,uint32_t *mpLen)
 {
-    uint32_t moveI=0;
+    uint32_t mPI=0;
+    *mpLen=0;
     MapCoord unitVec=_MapCoord(0,0);
     switch (direction)
     {
@@ -58,9 +59,17 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,*moveProcess)
         {
             switch (level1.map[coordStep.i][coordStep.j])
             {
-                case B_ICE: coordResult=coordStep;moveProcess[moveI]=coordResult.i; moveI++; break;
-                case B_BAR: flag=1; break;
-                default: flag=1; break;
+                case B_ICE: 
+                {
+                    coordResult=coordStep;
+                    moveProcess[mPI].i=coordResult.i;
+                    moveProcess[mPI].j=coordResult.j;
+                    *mpLen=mPI;
+                    mPI++;
+                    break;
+                }
+                case B_BAR: flag=1; mPI=0; break;
+                default: flag=1;mPI=0; break;
             }
         }
         else
@@ -70,32 +79,21 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,*moveProcess)
 
         if(flag==1)
             return coordResult;
-        uint32_t chmX=CalX(coordResult);
-        uint32_t chmY=CalY(coordResult);
-        MainCharactor(chmX,chmY,2);
     }
 } 
 
-static MoveProcess(uint8_t direction,uint32_t moveProcess)
-{
-    switch (direction)
-    {
-        case PMG_R||PMG_L:
-        {
-            for()
-        }
-        case PMG_U||PMG_D:
-    }
-}
 
 uint8_t PageMazeGame()
 {
     uint32_t nowTime;
     MapCoord coord=level1.coord;
+    MapCoord moveProcess[MP_L];
+    uint32_t mpLen;
+    uint32_t isAnimate=0;
+    uint32_t mpCirculate=0;
 
     while(1)
     {
-        uint32_t moveProcess[32]={0};
         nowTime = TIMER -> TIME;
 
         if(KEYBOARD -> KEY == 0xF)
@@ -120,16 +118,36 @@ uint8_t PageMazeGame()
             }
         }
 
-        uint32_t chmX=CalX(coord);
-        uint32_t chmY=CalY(coord);
-        MainCharactor(chmX,chmY,2);
-
         LCDPrintf(0x000000,0xFFFFFF,50,100,1,"i: %d",coord.i);
         LCDPrintf(0x000000,0xFFFFFF,50,150,1,"j: %d",coord.j);
-
         uint8_t direction=GetMoveDirection();
         if(direction)
-            coord=CoordNext(coord,direction);
+        {
+            coord=CoordNext(coord,direction,moveProcess,&mpLen);
+            isAnimate=1;
+        }
+
+        if(isAnimate==0)
+        {
+            uint32_t chmX=CalX(coord);
+            uint32_t chmY=CalY(coord);
+            MainCharactor(chmX,chmY,2);
+            mpCirculate=0;
+        }
+        else if(isAnimate==1)
+        {
+            if(mpCirculate <= mpLen)
+            {
+                uint32_t chmX=X_CORNER+2*moveProcess[mpCirculate].j*BLOCK_SIZE;
+                uint32_t chmY=Y_CORNER+2*moveProcess[mpCirculate].i*BLOCK_SIZE;
+                MainCharactor(chmX,chmY,2);
+                mpCirculate++;
+            }
+            else 
+            {
+                isAnimate=0;
+            }
+        }
 
         while(TIMER -> TIME < nowTime + FRAME);
     }
