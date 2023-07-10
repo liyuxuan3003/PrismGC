@@ -53,12 +53,12 @@ uint8_t PageMain()
         LCDBackground(0xCCEEFF);
         for (uint32_t i=0;i<=15;i++)
         {
-            for (uint32_t j=0;j<=3;j++)
+            for (uint32_t j=0;j<=4;j++)
             {
                 BlockICEMain((96-x)*96+64*i,350+64*j);
             }
         }
-        MainCharactor(150,250,6);
+        MainCharactor(150,280,6);
         LCDPrintf(0x000000,0xCCEEFF,512-strlen("Click anywhere to start")/2*8,200,1,"Click anywhere to start");//22
         LCDPrintf(0x000000,0xCCEEFF,512-strlen("Invincible Slime's Adventure")/2*16,100,2,"Invincible Slime's Adventure");//28
         while(TIMER -> TIME < nowTime + FRAME) ;
