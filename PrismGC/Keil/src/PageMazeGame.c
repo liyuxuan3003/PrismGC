@@ -72,6 +72,18 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction)
     }
 } 
 
+static LevelMap *map;
+
+void ConfigMazeGame(uint8_t levelId)
+{
+    switch(levelId)
+    {
+        case 1 : map=&level1; break;
+        default: map=&level1; break;
+    }
+    return;
+}
+
 uint8_t PageMazeGame()
 {
     uint32_t nowTime;

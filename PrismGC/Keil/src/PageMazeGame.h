@@ -19,4 +19,6 @@
 
 uint8_t PageMazeGame();
 
+void ConfigMazeGame(uint8_t levelId);
+
 #endif
