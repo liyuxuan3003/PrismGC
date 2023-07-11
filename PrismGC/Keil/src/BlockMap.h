@@ -27,7 +27,6 @@ typedef struct
     MapCoord coord;
 } LevelMap;
 
-
 extern const LevelMap level1;
 
 #endif

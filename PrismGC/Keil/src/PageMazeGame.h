@@ -6,6 +6,8 @@
 #define PMG_U 3
 #define PMG_D 4
 
+#define MP_L 20
+
 #include "GPULite.h"
 #include "Block.h"
 #include "BlockMap.h"
