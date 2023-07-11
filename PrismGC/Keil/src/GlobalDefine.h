@@ -18,5 +18,6 @@
 #define ORANGE 0xFF6633
 #define YELLOW 0xFFFF00
 #define PURPLE 0x800080
+#define CHOCOLATE 0xD2691E
 
 #endif

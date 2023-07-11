@@ -48,7 +48,7 @@ static uint8_t CoordVailed(MapCoord coord)
 
 static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess,uint32_t *mpLen)
 {
-    uint32_t mPI=0;
+    uint32_t mpI=0;
     *mpLen=0;
     MapCoord unitVec=_MapCoord(0,0);
     switch (direction)
@@ -72,14 +72,23 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
                 case B_ICE: 
                 {
                     coordResult=coordStep;
-                    moveProcess[mPI].i=coordResult.i;
-                    moveProcess[mPI].j=coordResult.j;
-                    *mpLen=mPI;
-                    mPI++;
+                    moveProcess[mpI].i=coordResult.i;
+                    moveProcess[mpI].j=coordResult.j;
+                    mpI++;
+                    *mpLen=mpI;
                     break;
                 }
-                case B_BAR: flag=1; mPI=0; break;
-                default: flag=1;mPI=0; break;
+                case B_END: 
+                {
+                    coordResult=coordStep;
+                    moveProcess[mpI].i=coordResult.i;
+                    moveProcess[mpI].j=coordResult.j;
+                    mpI++;
+                    *mpLen=mpI;
+                    break;
+                }
+                case B_BAR: flag=1; mpI=0; break;
+                default: flag=1; mpI=0; break;
             }
         }
         else
@@ -112,6 +121,8 @@ uint8_t PageMazeGame()
     uint32_t mpLen;
     uint32_t isAnimate=0;
     uint32_t mpCirculate=0;
+    uint8_t isPageChange=0;
+    uint8_t gameStep=0;
 
     while(1)
     {
@@ -139,37 +150,45 @@ uint8_t PageMazeGame()
             }
         }
 
-        LCDPrintf(0x000000,0xFFFFFF,50,100,1,"i: %d",coord.i);
-        LCDPrintf(0x000000,0xFFFFFF,50,150,1,"j: %d",coord.j);
         uint8_t direction=GetMoveDirection();
-        if(direction)
+
+        if(!isAnimate)
         {
-            coord=CoordNext(coord,direction,moveProcess,&mpLen);
-            isAnimate=1;
+            MainCharactor(CalX(coord),CalY(coord),2);
+            if(direction)
+            {
+                coord=CoordNext(coord,direction,moveProcess,&mpLen);
+                isAnimate=1;
+                mpCirculate=0;
+                gameStep++;
+            }
+        }
+        else
+        {
+            uint32_t chmX=X_CORNER+2*moveProcess[mpCirculate].j*BLOCK_SIZE;
+            uint32_t chmY=Y_CORNER+2*moveProcess[mpCirculate].i*BLOCK_SIZE;
+            MainCharactor(chmX,chmY,2);
+            switch(level1.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
+            {
+                case B_END: isPageChange=1; break;
+                default:break;
+            }
+
+            mpCirculate++;
+
+            if(mpCirculate == mpLen)
+                isAnimate=0;
         }
 
-        if(isAnimate==0)
-        {
-            uint32_t chmX=CalX(coord);
-            uint32_t chmY=CalY(coord);
-            MainCharactor(chmX,chmY,2);
-            mpCirculate=0;
-        }
-        else if(isAnimate==1)
-        {
-            if(mpCirculate <= mpLen)
-            {
-                uint32_t chmX=X_CORNER+2*moveProcess[mpCirculate].j*BLOCK_SIZE;
-                uint32_t chmY=Y_CORNER+2*moveProcess[mpCirculate].i*BLOCK_SIZE;
-                MainCharactor(chmX,chmY,2);
-                mpCirculate++;
-            }
-            else 
-            {
-                isAnimate=0;
-            }
-        }
+        LCDPrintf(0xFFFFFF,BG_COLOR,50,100,3,"Step: %d",gameStep);
 
         while(TIMER -> TIME < nowTime + FRAME);
+
+        if(isPageChange==1)
+        {
+            isPageChange=0;
+            gameStep=0;
+            LCDRectangle(CHOCOLATE,0,0,1024,600);
+        }
     }
 }
