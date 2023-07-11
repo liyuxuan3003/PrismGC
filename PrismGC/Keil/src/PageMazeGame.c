@@ -123,6 +123,8 @@ uint8_t PageMazeGame()
     uint32_t mpCirculate=0;
     uint8_t isPageChange=0;
     uint8_t gameStep=0;
+    uint8_t colorChange=1;
+    uint8_t pageChange=0;
 
     while(1)
     {
@@ -162,6 +164,10 @@ uint8_t PageMazeGame()
                 mpCirculate=0;
                 gameStep++;
             }
+            if(isPageChange==1)
+            {
+                pageChange=1;
+            }
         }
         else
         {
@@ -184,11 +190,29 @@ uint8_t PageMazeGame()
 
         while(TIMER -> TIME < nowTime + FRAME);
 
-        if(isPageChange==1)
+        if(pageChange==1)
         {
-            isPageChange=0;
-            gameStep=0;
             LCDRectangle(CHOCOLATE,0,0,1024,600);
+            LCDRectangle(SADDLEBROWN,80,40,944,350);
+            LCDRectangle(Bisque,90,50,934,340);
+            LCDPrintf(RED,Bisque,200,130,8,"YOU WIN!");
+            switch(colorChange)
+            {
+                case 1:
+                {
+                    LCDPrintf(OliveDrab,Bisque,795,80,3,"TOTAL");
+                    LCDPrintf(OliveDrab,Bisque,810,120,3,"STEP");
+                    colorChange=0;
+                    break;
+                }
+                case 0:
+                {
+                    LCDPrintf(Gold,Bisque,795,80,3,"TOTAL");
+                    LCDPrintf(Gold,Bisque,810,120,3,"STEP");
+                    colorChange=1;
+                    break;
+                }
+            }
         }
     }
 }

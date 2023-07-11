@@ -19,5 +19,9 @@
 #define YELLOW 0xFFFF00
 #define PURPLE 0x800080
 #define CHOCOLATE 0xD2691E
+#define SADDLEBROWN 0x8B4513
+#define Bisque 0xFFE4C4
+#define OliveDrab 0x556B2F
+#define Gold 0xFFD700
 
 #endif
