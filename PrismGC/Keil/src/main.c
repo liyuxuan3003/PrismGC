@@ -64,6 +64,7 @@ int main()
             case PAGE_MAZE_GAME:    status=PageMazeGame();  break;
 			case PAGE_MENU:         status=PageMenu();      break;
             case PAGE_CHAR_TEST:    status=PageCharTest();  break;
+            case PAGE_I2C_TEST:     status=PageI2CTest();   break;
             default: status=PageMain(); break;
         }
     }

@@ -38,6 +38,7 @@ uint8_t PageMain()
                 case 0x01: return PAGE_CHAR_TEST; break;
                 case 0x02: return PAGE_MAZE_GAME; break;
                 case 0x03: return PAGE_MENU; break;
+                case 0x0C: return PAGE_I2C_TEST; break;
                 case 0x0F: break;
                 default: break;
             }
@@ -59,7 +60,7 @@ uint8_t PageMain()
             }
         }
         MainCharactor(150,280,6);
-        LCDPrintf(0x000000,0xCCEEFF,512-strlen("Click anywhere to start")/2*8,200,1,"Click anywhere to start");//22
+        LCDPrintf(0x000000,0xCCEEFF,512-strlen("Click any key to start")/2*8,200,1,"Click any key to start");//22
         LCDPrintf(0x000000,0xCCEEFF,512-strlen("Invincible Slime's Adventure")/2*16,100,2,"Invincible Slime's Adventure");//28
         while(TIMER -> TIME < nowTime + FRAME) ;
     }

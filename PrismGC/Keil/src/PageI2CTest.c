@@ -5,17 +5,31 @@
 #include "GlobalDefine.h"
 #include "Sleep.h"
 
+#include "GPULite.h"
+#include "KeyBoard.h"
+
+#include "Console.h"
+
 uint8_t PageI2CTest()
 {
-    NunchuckInit();
     struct NunchuckData ndata;
 
-    while (1)
+    int initStatus=NunchuckInit();
+    mdelay(100);
+
+    while(1)
     {
-        NunchuckInit();
-        mdelay(100);
+        PingPong();
+        LCDBackground(BLACK);
+
+        printf("I2C Test!\r\n");
+
+        if(KEYBOARD->KEY==0x0F)
+            return PAGE_MAIN;
+            
+        LCDPrintf(WHITE,BLACK,100,100,2,"initStatus: %d",initStatus);
+
         NunchuckRead(&ndata);
         mdelay(100);
     }
-    return PAGE_MAIN;
 }

@@ -1,5 +1,5 @@
-#ifndef _NUNCHUCK_H
-#define _NUNCHUCK_H
+#ifndef NUNCHUCK_H
+#define NUNCHUCK_H
 
 #include <stdint.h>
 
@@ -15,10 +15,7 @@ struct NunchuckData
 };
 
 int NunchuckInit();
-uint32_t NunchuckID(void);
-void NunchuckReadCal(void);
 int NunchuckRead(struct NunchuckData *d);
-int NunchuckKey(void);
 
 #endif
 
