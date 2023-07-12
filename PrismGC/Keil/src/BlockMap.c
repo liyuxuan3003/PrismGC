@@ -38,7 +38,8 @@ const LevelMap level1=
         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR}
     },
-    {4,0}
+    {4,0},
+    {{7,4},{7,0},{5,11}},
 };
 
 // //障碍BAR 冰面ICE 陷阱TRA 机关MEC 碎石GRA 传送DEL 终点END    小兽ANM

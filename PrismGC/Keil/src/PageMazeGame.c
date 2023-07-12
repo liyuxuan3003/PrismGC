@@ -111,6 +111,17 @@ void ConfigMazeGame(uint8_t levelId)
     return;
 }
 
+static int32_t AppleNumber(uint8_t *getApple)
+{
+    int applenumber=0;
+    for(uint32_t m=0;m<APPLE_MAX;m++)
+    {
+        if(!getApple[m])
+        applenumber++;
+    }
+    return applenumber;
+}
+
 uint8_t PageMazeGame()
 {
     uint32_t nowTime;
@@ -123,6 +134,7 @@ uint8_t PageMazeGame()
     uint8_t gameStep=0;
     uint8_t colorChange=1;
     uint8_t pageChange=0;
+    uint8_t getApple[APPLE_MAX]={1,1,1};
 
     while(1)
     {
@@ -149,6 +161,9 @@ uint8_t PageMazeGame()
                     case B_END: BlockEND(x,y); break;
                     case B_TRP: BlockTRP(x,y); break;
                 }
+                for(uint32_t m=0;m<APPLE_MAX;m++)
+                if(i==level1.coordApple[m].i&&j==level1.coordApple[m].j&&getApple[m])
+                    Apple(x,y,2);
             }
         }
         MapFix();
@@ -175,6 +190,18 @@ uint8_t PageMazeGame()
         {
             uint32_t chmX=X_CORNER+2*moveProcess[mpCirculate].j*BLOCK_SIZE;
             uint32_t chmY=Y_CORNER+2*moveProcess[mpCirculate].i*BLOCK_SIZE;
+            for(uint32_t m=0;m<APPLE_MAX;m++)
+            {
+                if(moveProcess[mpCirculate].i==level1.coordApple[m].i&&moveProcess[mpCirculate].j==level1.coordApple[m].j&&getApple[m])
+                {
+                    getApple[m]=0;
+                    // for(uint32_t m=0;m<APPLE_MAX;m++)
+                    // {
+                    //     if(!getApple[m])
+                    //     applenumber++;
+                    // }
+                }
+            }
             MainCharactor(chmX,chmY,2);
             switch(level1.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
             {
@@ -187,7 +214,7 @@ uint8_t PageMazeGame()
             if(mpCirculate == mpLen)
                 isAnimate=0;
         }
-
+        LCDPrintf(0xFFFFFF,BG_COLOR,50,300,3,"Apples: %d",AppleNumber(getApple));
         LCDPrintf(0x000000,0xFFFFFF,50,200,1,"frame: %d",TIMER->TIME-nowTime);
         LCDPrintf(0xFFFFFF,BG_COLOR,50,100,3,"Step: %d",gameStep);
 
