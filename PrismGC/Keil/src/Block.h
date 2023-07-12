@@ -19,5 +19,6 @@ void BlockBAR(uint32_t x,uint32_t y);
 void BlockBorder(uint32_t x,uint32_t y);
 void BlockEND(uint32_t x,uint32_t y);
 void BlockTRP(uint32_t x,uint32_t y);
+void BlockDirUp(uint32_t x,uint32_t y);
 
 #endif

@@ -7,6 +7,7 @@
 #define B_BAR 1
 #define B_END 2
 #define B_TRP 3
+#define B_DIR_UP 4
 
 #define MAP_W 12
 #define MAP_H 12

@@ -1,5 +1,7 @@
 #include "Block.h"
 
+#include "GlobalDefine.h"
+
 #include "GPULite.h"
 
 void BlockBorder(uint32_t x,uint32_t y)
@@ -33,5 +35,12 @@ void BlockTRP(uint32_t x,uint32_t y)
 {
     BlockBorder(x,y);
     LCDRectangle(0xFFCC00,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
+    return;
+}
+
+void BlockDirUp(uint32_t x,uint32_t y)
+{
+    BlockBorder(x,y);
+    LCDRectangle(BLUE,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
     return;
 }

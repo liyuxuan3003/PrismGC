@@ -64,6 +64,15 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
                     *mpLen=mpI;
                     break;
                 }
+                case B_DIR_UP:
+                {
+                    unitVec=_MapCoord(-1,0);
+                    coordResult=coordStep;
+                    moveProcess[mpI]=coordResult;
+                    mpI++;
+                    *mpLen=mpI;
+                    break;
+                }
                 case B_BAR: flag=1; mpI=0; break;
                 default: flag=1; mpI=0; break;
             }
@@ -165,6 +174,7 @@ uint8_t PageMazeGame()
                     case B_BAR: BlockBAR(x,y); break;
                     case B_END: BlockEND(x,y); break;
                     case B_TRP: BlockTRP(x,y); break;
+                    case B_DIR_UP: BlockDirUp(x,y); break;
                 }
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
