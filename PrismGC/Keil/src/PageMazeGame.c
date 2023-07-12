@@ -50,8 +50,7 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
                 case B_ICE: 
                 {
                     coordResult=coordStep;
-                    moveProcess[mpI].i=coordResult.i;
-                    moveProcess[mpI].j=coordResult.j;
+                    moveProcess[mpI]=coordResult;
                     mpI++;
                     *mpLen=mpI;
                     break;
@@ -59,8 +58,7 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
                 case B_END: 
                 {
                     coordResult=coordStep;
-                    moveProcess[mpI].i=coordResult.i;
-                    moveProcess[mpI].j=coordResult.j;
+                    moveProcess[mpI]=coordResult;
                     mpI++;
                     *mpLen=mpI;
                     break;
@@ -75,7 +73,10 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
         }
 
         if(flag==1)
+        {
+            LCDPrintf(BLACK,WHITE,100,300,1,"coordRes: %d,%d",coordResult.i,coordResult.j);
             return coordResult;
+        }
     }
 } 
 
@@ -161,10 +162,14 @@ uint8_t PageMazeGame()
             MainCharactor(CalX(coord),CalY(coord),2);
             if(IsDirection(key))
             {
-                coord=CoordNext(coord,key,moveProcess,&mpLen);
-                isAnimate=1;
-                mpCirculate=0;
-                gameStep++;
+                MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen);
+                if(!MapCoordEqual(coordNext,coord))
+                {
+                    coord=coordNext;
+                    isAnimate=1;
+                    mpCirculate=0;
+                    gameStep++;
+                }
             }
             if(isPageChange==1)
             {
@@ -173,9 +178,7 @@ uint8_t PageMazeGame()
         }
         else
         {
-            uint32_t chmX=X_CORNER+2*moveProcess[mpCirculate].j*BLOCK_SIZE;
-            uint32_t chmY=Y_CORNER+2*moveProcess[mpCirculate].i*BLOCK_SIZE;
-            MainCharactor(chmX,chmY,2);
+            MainCharactor(CalX(moveProcess[mpCirculate]),CalY(moveProcess[mpCirculate]),2);
             switch(level1.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
             {
                 case B_END: isPageChange=1; break;
@@ -190,8 +193,6 @@ uint8_t PageMazeGame()
 
         LCDPrintf(0x000000,0xFFFFFF,50,200,1,"frame: %d",TIMER->TIME-nowTime);
         LCDPrintf(0xFFFFFF,BG_COLOR,50,100,3,"Step: %d",gameStep);
-
-        while(TIMER -> TIME < nowTime + FRAME);
 
         if(pageChange==1)
         {
@@ -217,5 +218,7 @@ uint8_t PageMazeGame()
                 }
             }
         }
+
+        while(TIMER -> TIME < nowTime + FRAME);
     }
 }

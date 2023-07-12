@@ -22,6 +22,11 @@ MapCoord MapCoordMinus(MapCoord a,MapCoord b)
     return result;
 }
 
+uint8_t MapCoordEqual(MapCoord a,MapCoord b)
+{
+    return (a.i==b.i && a.j==b.j);
+}
+
 const LevelMap level1=
 {
     {

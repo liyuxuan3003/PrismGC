@@ -20,6 +20,7 @@ typedef struct
 MapCoord _MapCoord(int32_t i,int32_t j);
 MapCoord MapCoordPlus(MapCoord a,MapCoord b);
 MapCoord MapCoordMinus(MapCoord a,MapCoord b);
+uint8_t MapCoordEqual(MapCoord a,MapCoord b);
 
 typedef struct 
 {
