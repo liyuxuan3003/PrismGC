@@ -14,7 +14,7 @@
 #define A_WHI  0xFFFFFF
 #define A_BLK  0x000000
 
-#define CHT_MAIN_SCALE_MAX 6
+#define CHT_MAIN_SCALE_MAX 8
 
 typedef struct 
 {

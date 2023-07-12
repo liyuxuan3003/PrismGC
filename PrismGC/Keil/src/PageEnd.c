@@ -12,16 +12,13 @@
 #include "PageMenu.h"
 
 static uint8_t levelID;
+static uint8_t appleNumber;
 static uint8_t levelSTEP;
 
-void ConfigEnd(uint8_t _levelID)
+void ConfigEnd(uint8_t _levelID,uint8_t _appleNumber,uint8_t _levelSTEP)
 {
     levelID=_levelID;
-    return;
-}
-
-void ConfigEndStep(uint8_t _levelSTEP)
-{
+    appleNumber=_appleNumber;
     levelSTEP=_levelSTEP;
     return;
 }
@@ -54,16 +51,37 @@ uint8_t PageEnd()
                 break;
             }
         }
-        LCDPrintf(BLUE,BISQUE,840,200,5,"%d",levelSTEP);
-        LCDPrintf(BLACK,CHOCOLATE,250,450,2,"PRESS KEY_C TO CHOOSE GAME LEVEL");
-
-        if(KEYBOARD -> KEY != 0xFF)
+        LCDPrintf(ORANGE,BISQUE,840,200,5,"%d",levelSTEP);
+        // LCDPrintf(BLUE,BISQUE,840,200,5,"%d",appleNumber);
+        LCDPrintf(BLACK,CHOCOLATE,275,550,2,"PRESS KEY_C TO CHOOSE GAME LEVEL");
+        switch (appleNumber)
         {
-            switch (KEYBOARD -> KEY)
+            case 1:
             {
-                case 0x00: return PAGE_MAIN; break;
-                case 0x06: return PAGE_MENU; break;
+                Apple(256,450,8);
+                break;
             }
+            case 2:
+            {
+                Apple(256,450,8);
+                Apple(512,450,8);
+                break;
+            }
+            case 3:
+            {
+                Apple(256,450,8);
+                Apple(512,450,8);
+                Apple(768,450,8);
+                break;
+            }
+            default:break;
+        }
+
+        switch(GetKey())
+        {
+            case KEY_E: return PAGE_MAIN; break;
+            case KEY_C: return PAGE_MENU; break;
+            default: break;
         }
 
         while(TIMER -> TIME < nowTime + FRAME);

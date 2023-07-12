@@ -221,8 +221,7 @@ uint8_t PageMazeGame()
 
         if(pageChange)
         {
-            ConfigEnd(levelId);
-            ConfigEndStep(gameStep);
+            ConfigEnd(levelId,AppleNumber(getApple),gameStep);
             return PAGE_END;
         }
 
