@@ -2,6 +2,7 @@
 #include "GPULite.h"
 
 static const uint32_t chtMainLen = 12;
+static const uint32_t appleLen   = 16;
 static const CharactorLine chtMain[]=
 {
     {4,8, {M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK}},
@@ -16,6 +17,26 @@ static const CharactorLine chtMain[]=
     {0,16,{M_BLK,M_DBU,M_DBU,M_BLU,M_BLU,M_BLU,M_BLU,M_BLU,M_BLU,M_BLU,M_BLU,M_BLU,M_BLU,M_BLU,M_DBU,M_BLK}},
     {1,14,{M_BLK,M_BLK,M_DBU,M_DBU,M_DBU,M_DBU,M_DBU,M_DBU,M_DBU,M_DBU,M_DBU,M_DBU,M_BLK,M_BLK}},
     {3,10,{M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK}}
+};
+
+static const CharactorLine apple[]=
+{
+    {8,1, {A_BRO}},
+    {8,1, {A_BRO}},
+    {8,1, {A_BRO}},
+    {3,10, {A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BRO,A_BLK,A_BLK,A_BLK,A_BLK}},
+    {2,12,{A_BLK,A_RED,A_RED,A_RED,A_RED,A_RED,A_BRO,A_RED,A_RED,A_RED,A_RED,A_BLK}},
+    {1,14,{A_BLK,A_RED,A_RED,A_RED,A_RED,A_BRO,A_RED,A_BRO,A_RED,A_BRO,A_RED,A_RED,A_RED,A_BLK}},
+    {1,15,{A_BLK,A_RED,A_RED,A_RED,A_RED,A_RED,A_BRO,A_BRO,A_BRO,A_RED,A_RED,A_RED,A_RED,A_RED,A_BLK}},
+    {0,16,{A_BLK,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_WHI,A_RED,A_BLK}},
+    {0,16,{A_BLK,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_WHI,A_RED,A_BLK}},
+    {0,16,{A_BLK,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_BLK}},
+    {0,16,{A_BLK,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_WHI,A_RED,A_BLK}},
+    {0,16,{A_BLK,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_BLK}},
+    {0,16,{A_BLK,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_BLK}},
+    {1,14,{A_BLK,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_RED,A_BLK}},
+    {2,12,{A_BLK,A_DKR,A_DKR,A_DKR,A_DKR,A_DKR,A_RED,A_DKR,A_DKR,A_DKR,A_BLK}},
+    {4,8, {A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BLK}}
 };
 
 static void Charactor(uint32_t xcn,uint32_t ycn,const CharactorLine* cht,uint32_t chtlen,uint8_t scale)
@@ -38,5 +59,13 @@ void MainCharactor (uint32_t x,uint32_t y,uint8_t scale)
     uint32_t xcn=x-8*scale;
     uint32_t ycn=y-5*scale;
     Charactor(xcn,ycn,chtMain,chtMainLen,scale);
+    return;
+}
+
+void Apple (uint32_t x,uint32_t y,uint8_t scale)
+{
+    uint32_t xcn=x-8*scale;
+    uint32_t ycn=y-8*scale;
+    Charactor(xcn,ycn,apple,appleLen,scale);
     return;
 }
