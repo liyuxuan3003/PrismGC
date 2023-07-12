@@ -169,7 +169,7 @@ uint8_t PageMazeGame()
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
                     if(MapCoordEqual(level1.coordApple[m],_MapCoord(i,j)) && !getApple[m])
-                        Apple(x,y,2);
+                        Apple (x,y,2);
             }
         }
         MapFix();
