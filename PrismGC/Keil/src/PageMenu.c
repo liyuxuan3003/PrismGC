@@ -13,6 +13,7 @@
 #include "Charactors.h"
 #include "Block.h"
 #include "PageMazeGame.h"
+#include "PageEnd.h"
 
 #include <string.h>
 

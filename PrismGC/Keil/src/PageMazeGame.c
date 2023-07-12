@@ -8,6 +8,7 @@
 #include "Block.h"
 #include "BlockMap.h"
 #include "Charactors.h"
+#include "PageEnd.h"
 
 static int32_t CalX(MapCoord coord)
 {
@@ -101,10 +102,12 @@ static void MapFix()
 }
 
 static const LevelMap *map;
+static uint8_t levelID;
 
-void ConfigMazeGame(uint8_t levelId)
+void ConfigMazeGame(uint8_t _levelId)
 {
-    switch(levelId)
+    levelID=_levelId;
+    switch(_levelId)
     {
         case 1 : map=&level1; break;
         default: map=&level1; break;
@@ -148,99 +151,98 @@ uint8_t PageMazeGame()
             return PAGE_MAIN;
 
         PingPong();
-        LCDBackground(BG_COLOR);
-        MapBackground();
-        for(uint32_t i=0;i<MAP_W;i++)
+        
+        if(!pageChange)
         {
-            for(uint32_t j=0;j<MAP_H;j++)
+            LCDBackground(BG_COLOR);
+            MapBackground();
+            for(uint32_t i=0;i<MAP_W;i++)
             {
-                uint32_t x=CalX(_MapCoord(i,j));
-                uint32_t y=CalY(_MapCoord(i,j));
-                switch (level1.map[i][j])
+                for(uint32_t j=0;j<MAP_H;j++)
                 {
-                    case B_ICE: BlockICE(x,y); break;
-                    case B_BAR: BlockBAR(x,y); break;
-                    case B_END: BlockEND(x,y); break;
-                    case B_TRP: BlockTRP(x,y); break;
-                }
+                    uint32_t x=CalX(_MapCoord(i,j));
+                    uint32_t y=CalY(_MapCoord(i,j));
+                    switch (level1.map[i][j])
+                    {
+                        case B_ICE: BlockICE(x,y); break;
+                        case B_BAR: BlockBAR(x,y); break;
+                        case B_END: BlockEND(x,y); break;
+                        case B_TRP: BlockTRP(x,y); break;
+                    }
 
+                    for(uint32_t m=0;m<APPLE_MAX;m++)
+                        if(MapCoordEqual(level1.coordApple[m],_MapCoord(i,j)) && !getApple[m])
+                            Apple(x,y,2);
+                }
+            }
+            MapFix();
+
+            LCDPrintf(0x000000,0xFFFFFF,50,100,1,"i: %d",coord.i);
+            LCDPrintf(0x000000,0xFFFFFF,50,150,1,"j: %d",coord.j);
+
+            if(!isAnimate)
+            {
+                MainCharactor(CalX(coord),CalY(coord),2);
+                if(IsDirection(key))
+                {
+                    MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen);
+                    if(!MapCoordEqual(coordNext,coord))
+                    {
+                        coord=coordNext;
+                        isAnimate=1;
+                        mpCirculate=0;
+                        gameStep++;
+                    }
+                }
+                // if(isPageChange==1)
+                // {
+                //     MainCharactor(CalX(coord),CalY(coord),2);
+                //     if(IsDirection(key))
+                //     {
+                //         coord=CoordNext(coord,key,moveProcess,&mpLen);
+                //         isAnimate=1;
+                //         mpCirculate=0;
+                //         gameStep++;
+                //     }
+                //     if(isPageChange==1)
+                //     {
+                //         pageChange=1;
+                //     }
+                // }
+            }
+            else
+            {
+                MainCharactor(CalX(moveProcess[mpCirculate]),CalY(moveProcess[mpCirculate]),2);
+                
                 for(uint32_t m=0;m<APPLE_MAX;m++)
-                    if(MapCoordEqual(level1.coordApple[m],_MapCoord(i,j)) && !getApple[m])
-                        Apple(x,y,2);
-            }
-        }
-        MapFix();
+                    if(MapCoordEqual(moveProcess[mpCirculate],level1.coordApple[m]) && !getApple[m])
+                        getApple[m]=1;
 
-        LCDPrintf(0x000000,0xFFFFFF,50,100,1,"i: %d",coord.i);
-        LCDPrintf(0x000000,0xFFFFFF,50,150,1,"j: %d",coord.j);
-
-        if(!isAnimate)
-        {
-            MainCharactor(CalX(coord),CalY(coord),2);
-            if(IsDirection(key))
-            {
-                MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen);
-                if(!MapCoordEqual(coordNext,coord))
+                switch(level1.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
                 {
-                    coord=coordNext;
-                    isAnimate=1;
-                    mpCirculate=0;
-                    gameStep++;
+                    uint32_t chmX=X_CORNER+2*moveProcess[mpCirculate].j*BLOCK_SIZE;
+                    uint32_t chmY=Y_CORNER+2*moveProcess[mpCirculate].i*BLOCK_SIZE;
+                    MainCharactor(chmX,chmY,2);
+                    switch(level1.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
+                    {
+                        case B_END: isPageChange=1; break;
+                        default:break;
+                    }
+
+                    mpCirculate++;
+
+                if(mpCirculate == mpLen)
+                    isAnimate=0;
                 }
-            }
-            if(isPageChange==1)
+            LCDPrintf(0xFFFFFF,BG_COLOR,50,300,3,"Apples: %d",AppleNumber(getApple));
+            LCDPrintf(0x000000,0xFFFFFF,50,200,1,"frame: %d",TIMER->TIME-nowTime);
+            LCDPrintf(0xFFFFFF,BG_COLOR,50,100,3,"Step: %d",gameStep);
+
+            if(pageChange==1)
             {
-                pageChange=1;
-            }
-        }
-        else
-        {
-            MainCharactor(CalX(moveProcess[mpCirculate]),CalY(moveProcess[mpCirculate]),2);
-            
-            for(uint32_t m=0;m<APPLE_MAX;m++)
-                if(MapCoordEqual(moveProcess[mpCirculate],level1.coordApple[m]) && !getApple[m])
-                    getApple[m]=1;
-
-            switch(level1.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
-            {
-                case B_END: isPageChange=1; break;
-                default:break;
+                return PAGE_END;
             }
 
-            mpCirculate++;
-
-            if(mpCirculate == mpLen)
-                isAnimate=0;
-        }
-        LCDPrintf(0xFFFFFF,BG_COLOR,50,300,3,"Apples: %d",AppleNumber(getApple));
-        LCDPrintf(0x000000,0xFFFFFF,50,200,1,"frame: %d",TIMER->TIME-nowTime);
-        LCDPrintf(0xFFFFFF,BG_COLOR,50,100,3,"Step: %d",gameStep);
-
-        if(pageChange==1)
-        {
-            LCDRectangle(CHOCOLATE,0,0,1024,600);
-            LCDRectangle(SADDLEBROWN,80,40,944,350);
-            LCDRectangle(Bisque,90,50,934,340);
-            LCDPrintf(RED,Bisque,200,130,8,"YOU WIN!");
-            switch(colorChange)
-            {
-                case 1:
-                {
-                    LCDPrintf(OliveDrab,Bisque,795,80,3,"TOTAL");
-                    LCDPrintf(OliveDrab,Bisque,810,120,3,"STEP");
-                    colorChange=0;
-                    break;
-                }
-                case 0:
-                {
-                    LCDPrintf(Gold,Bisque,795,80,3,"TOTAL");
-                    LCDPrintf(Gold,Bisque,810,120,3,"STEP");
-                    colorChange=1;
-                    break;
-                }
+            while(TIMER -> TIME < nowTime + FRAME);
             }
-        }
-
-        while(TIMER -> TIME < nowTime + FRAME);
-    }
 }

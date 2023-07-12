@@ -9,6 +9,7 @@
 #include "GPULite.h"
 #include "Buzzer.h"
 #include "KeyBoard.h"
+#include "PageEnd.h"
 
 #include "GlobalDefine.h"
 

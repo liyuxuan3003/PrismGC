@@ -25,6 +25,7 @@
 #include "PageI2CTest.h"
 #include "PageCharTest.h"
 #include "PageMazeGame.h"
+#include "PageEnd.h"
 
 #include "GlobalDefine.h"
 
@@ -65,6 +66,7 @@ int main()
 			case PAGE_MENU:         mdelay(500); status=PageMenu(); break;
             case PAGE_CHAR_TEST:    status=PageCharTest();  break;
             case PAGE_I2C_TEST:     status=PageI2CTest();   break;
+            case PAGE_END:          status=PageEnd();       break;
             default: status=PageMain(); break;
         }
     }
