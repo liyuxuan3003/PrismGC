@@ -57,7 +57,7 @@ int main()
     uint8_t status=PAGE_MAIN;
     while(1)
     {
-        switch (status)
+        switch(status)
         {
             case PAGE_MAIN:         status=PageMain();      break;
             case PAGE_BLOCK_GAME:   status=PageBlockGame(); break;

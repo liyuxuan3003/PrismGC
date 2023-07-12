@@ -11,6 +11,7 @@
 #include "KeyBoard.h"
 #include "BGM.h"
 #include "Charactors.h"
+#include "Nunchuck.h"
 #include "Block.h"
 
 #include <string.h>
@@ -30,18 +31,19 @@ uint8_t PageMain()
     while(1)
     {
         nowTime = TIMER -> TIME;
-        if(KEYBOARD -> KEY != 0xFF)
+
+        if(NunchuckKey()=='C')
+            return PAGE_MENU;
+
+        switch (KEYBOARD -> KEY)
         {
-            switch (KEYBOARD -> KEY)
-            {
-                case 0x00: return PAGE_BLOCK_GAME; break;
-                case 0x01: return PAGE_CHAR_TEST; break;
-                case 0x02: return PAGE_MAZE_GAME; break;
-                case 0x03: return PAGE_MENU; break;
-                case 0x0C: return PAGE_I2C_TEST; break;
-                case 0x0F: break;
-                default: break;
-            }
+            case 0x00: return PAGE_BLOCK_GAME; break;
+            case 0x01: return PAGE_CHAR_TEST; break;
+            case 0x02: return PAGE_MAZE_GAME; break;
+            case 0x03: return PAGE_MENU; break;
+            case 0x0C: return PAGE_I2C_TEST; break;
+            case 0x0F: break;
+            default: break;
         }
             
         if(SWI_7(P)==0)
