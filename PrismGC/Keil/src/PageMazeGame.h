@@ -22,5 +22,6 @@
 uint8_t PageMazeGame();
 
 void ConfigMazeGame(uint8_t levelId);
+// int32_t AppleNumber();
 
 #endif

@@ -11,6 +11,8 @@
 #define MAP_W 12
 #define MAP_H 12
 
+#define APPLE_MAX 3
+
 typedef struct
 {
     int32_t i;
@@ -26,6 +28,7 @@ typedef struct
 {
     uint8_t map[MAP_W][MAP_H];
     MapCoord coord;
+    MapCoord coordApple[APPLE_MAX];
 } LevelMap;
 
 extern const LevelMap level1;
