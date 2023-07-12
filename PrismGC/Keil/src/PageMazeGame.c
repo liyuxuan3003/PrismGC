@@ -8,7 +8,6 @@
 #include "Block.h"
 #include "BlockMap.h"
 #include "Charactors.h"
-#include "PageEnd.h"
 
 static int32_t CalX(MapCoord coord)
 {
@@ -115,17 +114,6 @@ void ConfigMazeGame(uint8_t _levelId)
     return;
 }
 
-static int32_t AppleNumber(uint8_t *getApple)
-{
-    int applenumber=0;
-    for(uint32_t m=0;m<APPLE_MAX;m++)
-    {
-        if(getApple[m])
-            applenumber++;
-    }
-    return applenumber;
-}
-
 uint8_t PageMazeGame()
 {
     uint32_t nowTime;
@@ -139,8 +127,6 @@ uint8_t PageMazeGame()
     uint8_t colorChange=1;
     uint8_t pageChange=0;
 
-    uint8_t getApple[APPLE_MAX]={0};
-
     while(1)
     {
         nowTime = TIMER -> TIME;
@@ -151,98 +137,63 @@ uint8_t PageMazeGame()
             return PAGE_MAIN;
 
         PingPong();
-        
-        if(!pageChange)
+        LCDBackground(BG_COLOR);
+        MapBackground();
+        for(uint32_t i=0;i<MAP_W;i++)
         {
-            LCDBackground(BG_COLOR);
-            MapBackground();
-            for(uint32_t i=0;i<MAP_W;i++)
+            for(uint32_t j=0;j<MAP_H;j++)
             {
-                for(uint32_t j=0;j<MAP_H;j++)
+                uint32_t x=CalX(_MapCoord(i,j));
+                uint32_t y=CalY(_MapCoord(i,j));
+                switch (level1.map[i][j])
                 {
-                    uint32_t x=CalX(_MapCoord(i,j));
-                    uint32_t y=CalY(_MapCoord(i,j));
-                    switch (level1.map[i][j])
-                    {
-                        case B_ICE: BlockICE(x,y); break;
-                        case B_BAR: BlockBAR(x,y); break;
-                        case B_END: BlockEND(x,y); break;
-                        case B_TRP: BlockTRP(x,y); break;
-                    }
-
-                    for(uint32_t m=0;m<APPLE_MAX;m++)
-                        if(MapCoordEqual(level1.coordApple[m],_MapCoord(i,j)) && !getApple[m])
-                            Apple(x,y,2);
+                    case B_ICE: BlockICE(x,y); break;
+                    case B_BAR: BlockBAR(x,y); break;
+                    case B_END: BlockEND(x,y); break;
+                    case B_TRP: BlockTRP(x,y); break;
                 }
             }
-            MapFix();
+        }
+        MapFix();
 
-            LCDPrintf(0x000000,0xFFFFFF,50,100,1,"i: %d",coord.i);
-            LCDPrintf(0x000000,0xFFFFFF,50,150,1,"j: %d",coord.j);
+        LCDPrintf(0x000000,0xFFFFFF,50,100,1,"i: %d",coord.i);
+        LCDPrintf(0x000000,0xFFFFFF,50,150,1,"j: %d",coord.j);
 
-            if(!isAnimate)
+        if(!isAnimate)
+        {
+            MainCharactor(CalX(coord),CalY(coord),2);
+            if(IsDirection(key))
             {
-                MainCharactor(CalX(coord),CalY(coord),2);
-                if(IsDirection(key))
+                MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen);
+                if(!MapCoordEqual(coordNext,coord))
                 {
-                    MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen);
-                    if(!MapCoordEqual(coordNext,coord))
-                    {
-                        coord=coordNext;
-                        isAnimate=1;
-                        mpCirculate=0;
-                        gameStep++;
-                    }
+                    coord=coordNext;
+                    isAnimate=1;
+                    mpCirculate=0;
+                    gameStep++;
                 }
-                // if(isPageChange==1)
-                // {
-                //     MainCharactor(CalX(coord),CalY(coord),2);
-                //     if(IsDirection(key))
-                //     {
-                //         coord=CoordNext(coord,key,moveProcess,&mpLen);
-                //         isAnimate=1;
-                //         mpCirculate=0;
-                //         gameStep++;
-                //     }
-                //     if(isPageChange==1)
-                //     {
-                //         pageChange=1;
-                //     }
-                // }
             }
-            else
+            if(isPageChange==1)
+                pageChange=1;
+        }
+        else
+        {
+            MainCharactor(CalX(moveProcess[mpCirculate]),CalY(moveProcess[mpCirculate]),2);
+            switch(level1.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
             {
-                MainCharactor(CalX(moveProcess[mpCirculate]),CalY(moveProcess[mpCirculate]),2);
-                
-                for(uint32_t m=0;m<APPLE_MAX;m++)
-                    if(MapCoordEqual(moveProcess[mpCirculate],level1.coordApple[m]) && !getApple[m])
-                        getApple[m]=1;
-
-                switch(level1.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
-                {
-                    uint32_t chmX=X_CORNER+2*moveProcess[mpCirculate].j*BLOCK_SIZE;
-                    uint32_t chmY=Y_CORNER+2*moveProcess[mpCirculate].i*BLOCK_SIZE;
-                    MainCharactor(chmX,chmY,2);
-                    switch(level1.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
-                    {
-                        case B_END: isPageChange=1; break;
-                        default:break;
-                    }
-
-                    mpCirculate++;
-
-                if(mpCirculate == mpLen)
-                    isAnimate=0;
-                }
-            LCDPrintf(0xFFFFFF,BG_COLOR,50,300,3,"Apples: %d",AppleNumber(getApple));
-            LCDPrintf(0x000000,0xFFFFFF,50,200,1,"frame: %d",TIMER->TIME-nowTime);
-            LCDPrintf(0xFFFFFF,BG_COLOR,50,100,3,"Step: %d",gameStep);
-
-            if(pageChange==1)
-            {
-                return PAGE_END;
+                case B_END: isPageChange=1; break;
+                default:break;
             }
 
-            while(TIMER -> TIME < nowTime + FRAME);
-            }
+            mpCirculate++;
+
+            if(mpCirculate == mpLen)
+                isAnimate=0;
+        }
+
+        LCDPrintf(0x000000,0xFFFFFF,50,200,1,"frame: %d",TIMER->TIME-nowTime);
+        LCDPrintf(0xFFFFFF,BG_COLOR,50,100,3,"Step: %d",gameStep);
+
+        while(TIMER -> TIME < nowTime + FRAME);
+    }
 }
