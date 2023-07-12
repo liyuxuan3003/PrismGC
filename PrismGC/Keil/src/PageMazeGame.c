@@ -2,34 +2,12 @@
 
 #include "GlobalDefine.h"
 #include "Timer.h"
-#include "KeyBoard.h"
+#include "GetKey.h"
 #include "GPULite.h"
 
 #include "Block.h"
 #include "BlockMap.h"
 #include "Charactors.h"
-
-#include "Nunchuck.h"
-
-static uint8_t GetMoveDirection()
-{
-    switch(KEYBOARD->KEY)
-    {
-        case 0x05: return PMG_R; break;
-        case 0x07: return PMG_L; break;
-        case 0x0A: return PMG_U; break;
-        case 0x02: return PMG_D; break;
-        default: return 0; break;
-    }
-    // switch(NunchuckKey())
-    // {
-    //     case 'R': return PMG_R; break;
-    //     case 'L': return PMG_L; break;
-    //     case 'U': return PMG_U; break;
-    //     case 'D': return PMG_D; break;
-    //     default: return 0; break;
-    // }
-}
 
 static int32_t CalX(MapCoord coord)
 {
@@ -53,10 +31,10 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
     MapCoord unitVec=_MapCoord(0,0);
     switch (direction)
     {
-        case PMG_R: unitVec=_MapCoord(0,+1); break;
-        case PMG_L: unitVec=_MapCoord(0,-1); break;
-        case PMG_U: unitVec=_MapCoord(-1,0); break;
-        case PMG_D: unitVec=_MapCoord(+1,0); break;
+        case KEY_R: unitVec=_MapCoord(0,+1); break;
+        case KEY_L: unitVec=_MapCoord(0,-1); break;
+        case KEY_U: unitVec=_MapCoord(-1,0); break;
+        case KEY_D: unitVec=_MapCoord(+1,0); break;
     }
 
     MapCoord coordResult=coord;
@@ -92,7 +70,27 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
     }
 } 
 
-static LevelMap *map;
+static void MapBackground()
+{
+    LCDRectangle(COLOR_BAR,
+        X_CORNER-BLOCK_SIZE,
+        Y_CORNER-BLOCK_SIZE,
+        X_CORNER+(MAP_W*2-1)*BLOCK_SIZE,
+        Y_CORNER+(MAP_H*2-1)*BLOCK_SIZE);
+    return;
+}
+
+static void MapFix()
+{
+    LCDRectangle(BG_COLOR,
+        H_DISP/4-8,
+        0,
+        H_DISP/4+8,
+        V_DISP);
+    return;
+}
+
+static const LevelMap *map;
 
 void ConfigMazeGame(uint8_t levelId)
 {
@@ -117,12 +115,14 @@ uint8_t PageMazeGame()
     {
         nowTime = TIMER -> TIME;
 
-        if(KEYBOARD -> KEY == 0xF)
+        uint8_t key=GetKey();
+
+        if(key == KEY_E)
             return PAGE_MAIN;
 
         PingPong();
         LCDBackground(BG_COLOR);
-
+        MapBackground();
         for(uint32_t i=0;i<MAP_W;i++)
         {
             for(uint32_t j=0;j<MAP_H;j++)
@@ -138,13 +138,14 @@ uint8_t PageMazeGame()
                 }
             }
         }
+        MapFix();
 
         LCDPrintf(0x000000,0xFFFFFF,50,100,1,"i: %d",coord.i);
         LCDPrintf(0x000000,0xFFFFFF,50,150,1,"j: %d",coord.j);
-        uint8_t direction=GetMoveDirection();
-        if(direction)
+        
+        if(IsDirection(key))
         {
-            coord=CoordNext(coord,direction,moveProcess,&mpLen);
+            coord=CoordNext(coord,key,moveProcess,&mpLen);
             isAnimate=1;
         }
 
@@ -169,6 +170,8 @@ uint8_t PageMazeGame()
                 isAnimate=0;
             }
         }
+
+        LCDPrintf(0x000000,0xFFFFFF,50,200,1,"frame: %d",TIMER->TIME-nowTime);
 
         while(TIMER -> TIME < nowTime + FRAME);
     }

@@ -28,6 +28,7 @@ uint8_t PageI2CTest()
             return PAGE_MAIN;
             
         LCDPrintf(WHITE,BLACK,100,100,2,"initStatus: %d",initStatus);
+        LCDPrintf(WHITE,BLACK,100,150,2,"key: %c",NunchuckKey());
 
         NunchuckRead(&ndata);
         mdelay(100);

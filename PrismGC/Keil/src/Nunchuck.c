@@ -267,8 +267,11 @@ int NunchuckKey(void)
 			DBG("v,d.sx=%d,d.sy=%d\n",d.sx,d.sy);
 		}
 	}
-	//if(d.bc)
-	//	printf("d.az=%d\n",d.az);
+    if(d.bc)
+    {
+        key='C';
+        DBG("d.az=%d\n",d.az);
+    }   
 	return key;	
 }
 

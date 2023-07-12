@@ -639,6 +639,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\PageMenu.h</FilePath>
             </File>
+            <File>
+              <FileName>GetKey.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\GetKey.c</FilePath>
+            </File>
+            <File>
+              <FileName>GetKey.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\GetKey.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

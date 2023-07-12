@@ -6,9 +6,9 @@
 #include "GPIO.h"
 #include "HardwareConfig.h"
 #include "Timer.h"
+#include "GetKey.h"
 #include "GPULite.h"
 #include "Buzzer.h"
-#include "KeyBoard.h"
 #include "BGM.h"
 #include "Charactors.h"
 #include "Block.h"
@@ -61,8 +61,6 @@ static void LevelMenu(uint32_t x,uint32_t y,uint8_t type,uint8_t num)
     return;
 }
 
-
-
 static void HighLight(uint32_t x,uint32_t y)
 {
     LCDRectangle(ORANGE,x-HIGHLIGHT_SIZE,y-HIGHLIGHT_SIZE,x+HIGHLIGHT_SIZE,y+HIGHLIGHT_SIZE);
@@ -80,10 +78,10 @@ uint8_t PageMenu()
     uint8_t pageNum=1;//将第m行第n列的关卡高亮
     while(1)
     {
-        switch (KEYBOARD->KEY)
+        switch(GetKey())
         {
-            case 0x0F: return PAGE_MAIN;
-            case 0x05:
+            case KEY_E: return PAGE_MAIN;
+            case KEY_R:
             {
                 n++;
                 if(n>=JMAX)
@@ -102,7 +100,7 @@ uint8_t PageMenu()
                 }
                 break;
             } 
-            case 0x07:
+            case KEY_L:
             {
                 n--;
                 if(n<0)
@@ -121,7 +119,7 @@ uint8_t PageMenu()
                 }
                 break;
             } 
-            case 0x0A: 
+            case KEY_U: 
             {
                 m--;
                 if(m<0)
@@ -135,7 +133,7 @@ uint8_t PageMenu()
                 }
                 break;
             } 
-            case 0x02: 
+            case KEY_D: 
             {
                 m++;
                 if(m>=IMAX)
@@ -150,7 +148,7 @@ uint8_t PageMenu()
                 }
                 break;
             } 
-            case 0x06: 
+            case KEY_C: 
             {
                 ConfigMazeGame(LevelID(m,n,pageNum));
                 return PAGE_MAZE_GAME;

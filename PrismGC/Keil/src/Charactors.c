@@ -18,7 +18,7 @@ static const CharactorLine chtMain[]=
     {3,10,{M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK}}
 };
 
-static void Charactor(uint32_t xcn,uint32_t ycn,CharactorLine* cht,uint32_t chtlen,uint8_t scale)
+static void Charactor(uint32_t xcn,uint32_t ycn,const CharactorLine* cht,uint32_t chtlen,uint8_t scale)
 {
     uint32_t pixels[CHT_MAIN_SCALE_MAX*PIXELS_MAX]={0};
     for(uint32_t i=0;i<chtlen;i++)
