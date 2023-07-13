@@ -3,6 +3,7 @@
 
 static const uint32_t chtMainLen = 12;
 static const uint32_t appleLen   = 16;
+static const uint32_t dir_RgLen  = 16;
 static const CharactorLine chtMain[]=
 {
     {4,8, {M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK}},
@@ -39,7 +40,27 @@ static const CharactorLine apple[]=
     {4,8, {A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BLK}}
 };
 
-static void Charactor(uint32_t xcn,uint32_t ycn,const CharactorLine* cht,uint32_t chtlen,uint8_t scale)
+static const CharactorLine dir_Rg[]=
+{
+    {8,1, {U_BLK}},
+    {8,2, {U_BLK,U_BLK}},
+    {8,3, {U_BLK,U_BLU,U_BLK}},
+    {8,4, {U_BLK,U_BLU,U_BLU,U_BLK}},
+    {0,13,{U_BLK,U_BLK,U_BLK,U_BLK,U_BLK,U_BLK,U_BLK,U_BLK,U_BLK,U_BLU,U_BLU,U_BLU,U_BLK}},
+    {0,14,{U_BLK,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLK}},
+    {0,15,{U_BLK,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLK}},
+    {0,16,{U_BLK,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLK}},
+    {0,16,{U_BLK,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLK}},
+    {0,15,{U_BLK,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLK}},
+    {0,14,{U_BLK,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLU,U_BLK}},
+    {0,13,{U_BLK,U_BLK,U_BLK,U_BLK,U_BLK,U_BLK,U_BLK,U_BLK,U_BLK,U_BLU,U_BLU,U_BLU,U_BLK}},
+    {8,4, {U_BLK,U_BLU,U_BLU,U_BLK}},
+    {8,3, {U_BLK,U_BLU,U_BLK}},
+    {8,2, {U_BLK,U_BLK}},
+    {8,1, {U_BLK}}
+};
+
+static void  Charactor(uint32_t xcn,uint32_t ycn,const CharactorLine* cht,uint32_t chtlen,uint8_t scale)
 {
     uint32_t pixels[CHT_MAIN_SCALE_MAX*PIXELS_MAX]={0};
     for(uint32_t i=0;i<chtlen;i++)
@@ -67,5 +88,13 @@ void Apple (uint32_t x,uint32_t y,uint8_t scale)
     uint32_t xcn=x-8*scale;
     uint32_t ycn=y-8*scale;
     Charactor(xcn,ycn,apple,appleLen,scale);
+    return;
+}
+
+void Dir_Rg (uint32_t x,uint32_t y,uint8_t scale)
+{
+    uint32_t xcn=x-8*scale;
+    uint32_t ycn=y-8*scale;
+    Charactor(xcn,ycn,dir_Rg,dir_RgLen,scale);
     return;
 }

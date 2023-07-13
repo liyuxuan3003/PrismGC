@@ -33,6 +33,7 @@ uint8_t PageEnd()
         LCDRectangle(CHOCOLATE,0,0,1024,600);
         LCDRectangle(SADDLEBROWN,80,40,944,350);
         LCDRectangle(BISQUE,90,50,934,340);
+        LCDPrintf(BLACK,BISQUE,110,70,2,"Level:%d",levelID);
         LCDPrintf(RED,BISQUE,200,130,8,"YOU WIN!");
         switch(colorChange)
         {
@@ -51,9 +52,12 @@ uint8_t PageEnd()
                 break;
             }
         }
-        LCDPrintf(ORANGE,BISQUE,840,200,5,"%d",levelSTEP);
-        // LCDPrintf(BLUE,BISQUE,840,200,5,"%d",appleNumber);
-        LCDPrintf(BLACK,CHOCOLATE,275,550,2,"PRESS KEY_C TO CHOOSE GAME LEVEL");
+
+        if(levelSTEP<10)
+            LCDPrintf(ORANGE,BISQUE,840,200,5,"%d",levelSTEP);
+        else
+            LCDPrintf(ORANGE,BISQUE,820,200,5,"%d",levelSTEP);
+
         switch (appleNumber)
         {
             case 1:
@@ -76,6 +80,8 @@ uint8_t PageEnd()
             }
             default:break;
         }
+        
+        LCDPrintf(BLACK,CHOCOLATE,275,550,2,"PRESS KEY_C TO CHOOSE GAME LEVEL");
 
         switch(GetKey())
         {

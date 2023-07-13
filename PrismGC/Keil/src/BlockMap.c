@@ -22,7 +22,12 @@ MapCoord MapCoordMinus(MapCoord a,MapCoord b)
     return result;
 }
 
-uint8_t MapCoordEqual(MapCoord a,MapCoord b)
+uint8_t MapCoordEqual(MapCoord a,MapCoord b,uint32_t mpLen)
+{
+    return (a.i==b.i && a.j==b.j && mpLen==0);
+}
+
+uint8_t _MapCoordEqual(MapCoord a,MapCoord b)
 {
     return (a.i==b.i && a.j==b.j);
 }
@@ -37,7 +42,7 @@ const LevelMap level1=
         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_BAR,B_BAR,B_ICE,B_ICE,B_ICE,B_ICE,B_END},
         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-        {B_ICE,B_ICE,B_ICE,B_ICE,B_DIR_UP,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_ICE,B_DIR_UP,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},

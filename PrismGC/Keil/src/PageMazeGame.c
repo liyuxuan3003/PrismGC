@@ -73,6 +73,33 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
                     *mpLen=mpI;
                     break;
                 }
+                case B_DIR_DW:
+                {
+                    unitVec=_MapCoord(+1,0);
+                    coordResult=coordStep;
+                    moveProcess[mpI]=coordResult;
+                    mpI++;
+                    *mpLen=mpI;
+                    break;
+                }
+                case B_DIR_LF:
+                {
+                    unitVec=_MapCoord(0,-1);
+                    coordResult=coordStep;
+                    moveProcess[mpI]=coordResult;
+                    mpI++;
+                    *mpLen=mpI;
+                    break;
+                }
+                case B_DIR_RG:
+                {
+                    unitVec=_MapCoord(0,+1);
+                    coordResult=coordStep;
+                    moveProcess[mpI]=coordResult;
+                    mpI++;
+                    *mpLen=mpI;
+                    break;
+                }
                 case B_BAR: flag=1; mpI=0; break;
                 default: flag=1; mpI=0; break;
             }
@@ -178,7 +205,7 @@ uint8_t PageMazeGame()
                 }
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
-                    if(MapCoordEqual(level1.coordApple[m],_MapCoord(i,j)) && !getApple[m])
+                    if(_MapCoordEqual(level1.coordApple[m],_MapCoord(i,j)) && !getApple[m])
                         Apple(x,y,2);
             }
         }
@@ -193,7 +220,7 @@ uint8_t PageMazeGame()
             if(IsDirection(key))
             {
                 MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen);
-                if(!MapCoordEqual(coordNext,coord))
+                if(!MapCoordEqual(coordNext,coord,mpLen))
                 {
                     coord=coordNext;
                     isAnimate=1;
@@ -211,9 +238,8 @@ uint8_t PageMazeGame()
             MainCharactor(CalX(moveProcess[mpCirculate]),CalY(moveProcess[mpCirculate]),2);
             
             for(uint32_t m=0;m<APPLE_MAX;m++)
-                if(MapCoordEqual(moveProcess[mpCirculate],level1.coordApple[m]) && !getApple[m])
+                if(_MapCoordEqual(moveProcess[mpCirculate],level1.coordApple[m]) && !getApple[m])
                     getApple[m]=1;
-
             switch(level1.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
             {
                 case B_END: isPageChange=1; break;

@@ -13,6 +13,8 @@
 #define A_DKR  0xB72A32
 #define A_WHI  0xFFFFFF
 #define A_BLK  0x000000
+#define U_BLK  0x000000
+#define U_BLU  0x8888FF
 
 #define CHT_MAIN_SCALE_MAX 8
 
@@ -25,5 +27,6 @@ typedef struct
 
 void MainCharactor(uint32_t x,uint32_t y,uint8_t scale);
 void Apple(uint32_t x,uint32_t y,uint8_t scale);
+void Dir_Rg(uint32_t x,uint32_t y,uint8_t scale);
 
 #endif
