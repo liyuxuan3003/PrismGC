@@ -1,5 +1,7 @@
 #include "Block.h"
 
+#include "GlobalDefine.h"
+
 #include "GPULite.h"
 #include "Charactors.h"
 
@@ -31,4 +33,5 @@ void BlockMAC(uint32_t x,uint32_t y,uint32_t z)
 {
     LCDRectangle(COLOR_MAC,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
     Arrow(x,y,z);
+    return;
 }

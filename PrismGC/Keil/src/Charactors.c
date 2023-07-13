@@ -165,3 +165,11 @@ void Arrow(uint32_t x,uint32_t y,uint8_t z)
         default: break;
     }
 }
+
+// void Dir_Rg (uint32_t x,uint32_t y,uint8_t scale)
+// {
+//     uint32_t xcn=x-8*scale;
+//     uint32_t ycn=y-8*scale;
+//     Charactor(xcn,ycn,dir_Rg,dir_RgLen,scale);
+//     return;
+// }

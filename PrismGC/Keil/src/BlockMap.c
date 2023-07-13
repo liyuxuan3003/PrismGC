@@ -27,6 +27,16 @@ uint8_t MapCoordEqual(MapCoord a,MapCoord b)
     return (a.i==b.i && a.j==b.j);
 }
 
+// uint8_t MapCoordEqual(MapCoord a,MapCoord b,uint32_t mpLen)
+// {
+//     return (a.i==b.i && a.j==b.j && mpLen==0);
+// }
+
+// uint8_t _MapCoordEqual(MapCoord a,MapCoord b)
+// {
+//     return (a.i==b.i && a.j==b.j);
+// }
+
 const LevelMap level1=
 {
     {

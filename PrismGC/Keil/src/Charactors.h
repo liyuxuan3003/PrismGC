@@ -38,7 +38,6 @@
 #define ARROW_LEN 32
 #define ARROW_BOR 8
 
-
 typedef struct 
 {
     int8_t xoffset;

@@ -10,6 +10,7 @@
 #define PAGE_END        6
 
 #define FRAME 100
+#define APPLEFRAME 20
 
 #define RED    0xFF0000
 #define GREEN  0x00FF00

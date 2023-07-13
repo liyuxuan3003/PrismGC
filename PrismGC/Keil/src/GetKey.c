@@ -18,15 +18,15 @@ uint8_t GetKey()
         case 0x0F: key=KEY_E; break;
     }
 
-    // // 判断来自手柄的输入
-    // switch(NunchuckKey())
-    // {
-    //     case 'R': key=KEY_R; break;
-    //     case 'L': key=KEY_L; break;
-    //     case 'U': key=KEY_U; break;
-    //     case 'D': key=KEY_D; break;
-    //     case 'C': key=KEY_C; break;
-    // }
+    // 判断来自手柄的输入
+    switch(NunchuckKey())
+    {
+        case 'R': key=KEY_R; break;
+        case 'L': key=KEY_L; break;
+        case 'U': key=KEY_U; break;
+        case 'D': key=KEY_D; break;
+        case 'C': key=KEY_C; break;
+    }
 
     return key;
 }
