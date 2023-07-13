@@ -1,6 +1,7 @@
 #include "Block.h"
 
 #include "GPULite.h"
+#include "Charactors.h"
 
 void BlockBorder(uint32_t x,uint32_t y)
 {
@@ -32,6 +33,13 @@ void BlockEND(uint32_t x,uint32_t y)
 void BlockTRP(uint32_t x,uint32_t y)
 {
     BlockBorder(x,y);
-    LCDRectangle(0xFFCC00,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
+    LCDRectangle(COLOR_TRA,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
     return;
+}
+
+void BlockMAC(uint32_t x,uint32_t y,uint32_t z)
+{
+    BlockBorder(x,y);
+    LCDRectangle(COLOR_MAC,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
+    Arrow(x,y,z);
 }
