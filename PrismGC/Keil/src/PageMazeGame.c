@@ -157,7 +157,7 @@ uint8_t PageMazeGame()
             {
                 uint32_t x=CalX(_MapCoord(i,j));
                 uint32_t y=CalY(_MapCoord(i,j));
-                switch (level1.map[i][j])
+                switch (map->map[i][j])
                 {
                     case B_ICE: BlockICE(x,y); break;
                     case B_BAR: BlockBAR(x,y); break;
