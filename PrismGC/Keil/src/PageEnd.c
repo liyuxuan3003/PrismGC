@@ -30,7 +30,7 @@ uint8_t PageEnd()
     {
         uint32_t nowTime = TIMER -> TIME;
         PingPong();
-        LCDRectangle(CHOCOLATE,0,0,1024,600);
+        LCDBackground(CHOCOLATE);
         LCDRectangle(SADDLEBROWN,80,40,944,350);
         LCDRectangle(BISQUE,90,50,934,340);
         LCDPrintf(BLACK,BISQUE,110,70,2,"Level:%d",levelID);

@@ -9,6 +9,7 @@
 #include "BlockMap.h"
 #include "Charactors.h"
 #include "PageEnd.h"
+#include "Sleep.h"
 
 static const LevelMap *map;
 static uint8_t levelId;
@@ -113,9 +114,9 @@ void ConfigMazeGame(uint8_t _levelId)
     return;
 }
 
-static int32_t AppleNumber(uint8_t *getApple)
+static uint8_t AppleNumber(const uint8_t *getApple)
 {
-    int applenumber=0;
+    uint8_t applenumber=0;
     for(uint32_t m=0;m<APPLE_MAX;m++)
     {
         if(getApple[m])
@@ -127,7 +128,7 @@ static int32_t AppleNumber(uint8_t *getApple)
 uint8_t PageMazeGame()
 {
     uint32_t nowTime;
-    MapCoord coord=level1.coord;
+    MapCoord coord=map->coord;
     MapCoord moveProcess[MP_L];
     uint32_t mpLen;
     uint32_t isAnimate=0;
@@ -170,7 +171,7 @@ uint8_t PageMazeGame()
                 }
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
-                    if(MapCoordEqual(level1.coordApple[m],_MapCoord(i,j)) && !getApple[m])
+                    if(MapCoordEqual(map->coordApple[m],_MapCoord(i,j)) && !getApple[m])
                         Apple (x,y,2);
             }
         }
@@ -182,7 +183,7 @@ uint8_t PageMazeGame()
         if(!isAnimate)
         {
             MainCharactor(CalX(coord),CalY(coord),2);
-            if(level1.map[coord.i][coord.j]==B_END)
+            if(map->map[coord.i][coord.j]==B_END)
                 pageChange=1;
 
 
@@ -207,7 +208,7 @@ uint8_t PageMazeGame()
             MainCharactor(CalX(moveProcess[mpCirculate]),CalY(moveProcess[mpCirculate]),2);
             
             for(uint32_t m=0;m<APPLE_MAX;m++)
-                if(MapCoordEqual(moveProcess[mpCirculate],level1.coordApple[m]) && !getApple[m])
+                if(MapCoordEqual(moveProcess[mpCirculate],map->coordApple[m]) && !getApple[m])
                     getApple[m]=1;
 
             mpCirculate++;
@@ -222,6 +223,8 @@ uint8_t PageMazeGame()
 
         if(pageChange)
         {
+            // LCDPrintf(0x000000,0xFFFFFF,H_DISP/2,V_DISP/2,4,"END");
+            // mdelay(1000);
             ConfigEnd(levelId,AppleNumber(getApple),gameStep);
             return PAGE_END;
         }
