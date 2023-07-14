@@ -40,5 +40,6 @@ typedef struct
 
 extern const LevelMap level1;
 extern const LevelMap level2;
+extern const LevelMap level3;
 
 #endif
