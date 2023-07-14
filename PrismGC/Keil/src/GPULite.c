@@ -56,6 +56,18 @@ void LCDPixel(uint32_t color,uint32_t x,uint32_t y)
     RamWrite(x,y,color,1);
 }
 
+void LCDPixelSquare(uint32_t color,uint32_t x1,uint32_t y1,uint32_t x2,uint32_t y2)
+{
+    for(uint32_t x=x1;x<=x2;x++)
+    {
+        for(uint32_t y=y1;y<=y2;y++)
+        {
+            LCDPixel(color,x,y);
+        }  
+    }
+    
+}
+
 void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len)
 {   
     //len must smaller than 64 !
