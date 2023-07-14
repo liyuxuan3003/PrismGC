@@ -52,6 +52,9 @@ int main()
     }
     DIG[2].ENA = 0;
 
+    //Nunchuck init
+    NunchuckInit();
+
     WaitRamReady();
     LCDBackground(0xFFFFFF);
 

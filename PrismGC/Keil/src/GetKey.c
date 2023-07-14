@@ -19,14 +19,17 @@ uint8_t GetKey()
     }
 
     // 判断来自手柄的输入
-    // switch(NunchuckKey())
-    // {
-    //     case 'R': key=KEY_R; break;
-    //     case 'L': key=KEY_L; break;
-    //     case 'U': key=KEY_U; break;
-    //     case 'D': key=KEY_D; break;
-    //     case 'C': key=KEY_C; break;
-    // }
+    if(IsNumchuckReady()==0)
+    {
+        switch(NunchuckKey())
+        {
+            case 'R': key=KEY_R; break;
+            case 'L': key=KEY_L; break;
+            case 'U': key=KEY_U; break;
+            case 'D': key=KEY_D; break;
+            case 'C': key=KEY_C; break;
+        }
+    }
 
     return key;
 }

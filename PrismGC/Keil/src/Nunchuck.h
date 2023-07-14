@@ -19,6 +19,7 @@ uint32_t NunchuckID(void);
 void NunchuckReadCal(void);
 int NunchuckRead(struct NunchuckData *d);
 int NunchuckKey(void);
+int IsNumchuckReady();
 
 #endif
 

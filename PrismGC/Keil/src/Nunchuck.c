@@ -25,6 +25,8 @@
 #endif
 #define NUNCHUK_ENABLE_ENCRYPTION
 
+static int isNunchuckReady=0;
+
 static inline void BitOut(uint8_t bit)
 {
     SCL(L);
@@ -147,8 +149,15 @@ int NunchuckInit()
 #endif	
 	uint32_t id=NunchuckID();
 	if((id&0xffff)==0x20a4)
-		return 0;
-    return -1;
+    {
+        isNunchuckReady=0;
+        return 0;
+    }
+	else
+    {
+        isNunchuckReady=-1;
+        return -1;
+    }
 }
 
 uint32_t NunchuckID(void)
@@ -275,3 +284,7 @@ int NunchuckKey(void)
 	return key;	
 }
 
+int IsNumchuckReady()
+{
+    return isNunchuckReady;
+}

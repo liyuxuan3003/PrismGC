@@ -10,10 +10,10 @@ void BlockICE(uint32_t x,uint32_t y)
     LCDRectangle(COLOR_ICE,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
     // for(int i=0;i<BLOCK_INNE-8;i++)
     // {
-    //     // LCDPixel(0xFFFFFF,x-i-4,y-BLOCK_INNE+i+4);
-    //     // LCDPixel(0xFFFFFF,x-i-4,y+i+4);
-    //     // LCDPixel(0xFFFFFF,x-i-4+BLOCK_INNE,y-BLOCK_INNE+i+4);
-    //     // LCDPixel(0xFFFFFF,x-i-4+BLOCK_INNE,y+4+i);
+    //     LCDPixel(0xFFFFFF,x-i-4,y-BLOCK_INNE+i+4);
+    //     LCDPixel(0xFFFFFF,x-i-4,y+i+4);
+    //     LCDPixel(0xFFFFFF,x-i-4+BLOCK_INNE,y-BLOCK_INNE+i+4);
+    //     LCDPixel(0xFFFFFF,x-i-4+BLOCK_INNE,y+4+i);
     // }
     return;
 }
