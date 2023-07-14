@@ -174,7 +174,7 @@ uint8_t PageMazeGame()
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
                     if(MapCoordEqual(map->coordApple[m],_MapCoord(i,j)) && !getApple[m])
-                        Apple (x,y,2);
+                        Apple(x,y,2);
             }
         }
         MapFix();
@@ -218,15 +218,15 @@ uint8_t PageMazeGame()
             if(mpCirculate == mpLen)
                 isAnimate=0;
         }
-        LCDPrintf(0xFFFFFF,BG_COLOR,50,200,3,"Apples: %d",AppleNumber(getApple));
-        LCDPrintf(0xFFFFFF,BG_COLOR,50,100,3,"Step: %d",gameStep);
 
-        LCDPrintf(0x000000,0xFFFFFF,50,400,1,"frame: %d",TIMER->TIME-nowTime);
+        LCDPrintf(WHITE,BG_COLOR,50,50,3,"Level %02d",levelId);
+        LCDPrintf(WHITE,BG_COLOR,50,180,2,"Step: %d",gameStep);
+        LCDPrintf(WHITE,BG_COLOR,50,260,2,"Apples: %d",AppleNumber(getApple));
+        
+        LCDPrintf(WHITE,BG_COLOR,50,560,1,"Frame: %d",TIMER->TIME-nowTime);
 
         if(pageChange)
         {
-            // LCDPrintf(0x000000,0xFFFFFF,H_DISP/2,V_DISP/2,4,"END");
-            // mdelay(1000);
             ConfigEnd(levelId,AppleNumber(getApple),gameStep);
             return PAGE_END;
         }

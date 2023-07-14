@@ -27,7 +27,8 @@ static void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
     __asm("nop");
     __asm("nop");
     while(GPU -> BUSY) ;
-    udelay(5);                          //Do not touch!
+    ndelay(1000);
+    // udelay(5);                          //Do not touch!
     GPU -> ENABLE = 0;
 }
 
@@ -59,13 +60,8 @@ void LCDPixel(uint32_t color,uint32_t x,uint32_t y)
 void LCDPixelSquare(uint32_t color,uint32_t x1,uint32_t y1,uint32_t x2,uint32_t y2)
 {
     for(uint32_t x=x1;x<=x2;x++)
-    {
         for(uint32_t y=y1;y<=y2;y++)
-        {
             LCDPixel(color,x,y);
-        }  
-    }
-    
 }
 
 void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len)
@@ -82,7 +78,8 @@ void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len)
     __asm("nop");
     __asm("nop");
     while(GPU -> BUSY) ;
-    udelay(5l);                          //Do not touch!
+    // ndelay(1000);
+    udelay(5);                          //Do not touch!
     GPU -> ENABLE = 0;
 }
 
@@ -124,8 +121,12 @@ uint8_t LCDChar(uint32_t color,uint32_t colorbck,uint32_t x,uint32_t y,uint8_t s
 
         for(uint32_t j=0;j<scale;j++)
         {
-            for(uint32_t s=0;s<scale;s++)
-                LCDPixels(pixels+CHAR_WIDTH*s,x+CHAR_WIDTH*s,y+i*scale+j,CHAR_WIDTH);
+            // for(uint32_t s=0;s<scale;s++)
+            //     LCDPixels(pixels+CHAR_WIDTH*s,x+CHAR_WIDTH*s,y+i*scale+j,CHAR_WIDTH);
+            for(uint32_t s=0;s<scale/2;s++)
+                LCDPixels(pixels+CHAR_WIDTH*s*2,x+CHAR_WIDTH*s*2,y+i*scale+j,CHAR_WIDTH*2);
+            if(scale%2==1)
+                LCDPixels(pixels+CHAR_WIDTH*(scale-1),x+CHAR_WIDTH*(scale-1),y+i*scale+j,CHAR_WIDTH);
         }
 
     }

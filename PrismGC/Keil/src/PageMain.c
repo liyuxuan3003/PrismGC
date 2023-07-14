@@ -14,8 +14,11 @@
 #include "Nunchuck.h"
 #include "Block.h"
 #include "Sleep.h"
+#include "Console.h"
 
 #include <string.h>
+
+// static const uint32_t arr[2000]={0};
 
 static void BlockICEMain(uint32_t x,uint32_t y)
 {
@@ -26,6 +29,9 @@ static void BlockICEMain(uint32_t x,uint32_t y)
 
 uint8_t PageMain()
 {
+    // for(int i=0;i<2000;i++)
+    //     printf("%d",arr[i]);
+
     uint32_t nowTime;
     uint16_t x=0;
     BUZZER -> NOTE = 0;

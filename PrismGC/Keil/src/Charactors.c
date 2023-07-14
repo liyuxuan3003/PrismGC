@@ -44,7 +44,6 @@ static const CharactorLine apple[]=
     {4,8, {A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BLK}}
 };
 
-
 static void Charactor(uint32_t xcn,uint32_t ycn,const CharactorLine* cht,uint32_t chtlen,const uint32_t *chtColor,uint8_t scale)
 {
     uint32_t pixels[CHT_SCALE_MAX*PIXELS_MAX]={0};
@@ -60,7 +59,7 @@ static void Charactor(uint32_t xcn,uint32_t ycn,const CharactorLine* cht,uint32_
     return;
 }
 
-void MainCharactor (uint32_t x,uint32_t y,uint8_t scale)
+void MainCharactor(uint32_t x,uint32_t y,uint8_t scale)
 {
     uint32_t xcn=x-8*scale;
     uint32_t ycn=y-5*scale;
