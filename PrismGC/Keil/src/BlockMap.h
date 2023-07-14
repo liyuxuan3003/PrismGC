@@ -7,10 +7,10 @@
 #define B_BAR 1
 #define B_END 2
 #define B_TRP 3
-#define BUDIR 4
-#define BDDIR 5
-#define BLDIR 6
-#define BRDIR 7
+#define BUDIR 5
+#define BDDIR 6
+#define BLDIR 7
+#define BRDIR 8
 
 #define MAP_W 12
 #define MAP_H 12
@@ -19,11 +19,11 @@
 
 typedef struct
 {
-    int8_t i;
-    int8_t j;
+    int32_t i;
+    int32_t j;
 } MapCoord;
 
-MapCoord _MapCoord(int8_t i,int8_t j);
+MapCoord _MapCoord(int32_t i,int32_t j);
 MapCoord MapCoordPlus(MapCoord a,MapCoord b);
 MapCoord MapCoordMinus(MapCoord a,MapCoord b);
 uint8_t MapCoordEqual(MapCoord a,MapCoord b);

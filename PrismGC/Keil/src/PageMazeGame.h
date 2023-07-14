@@ -6,7 +6,7 @@
 #define PMG_U 3
 #define PMG_D 4
 
-#define MP_L 24
+#define MP_L 32
 
 #include "GPULite.h"
 #include "Block.h"
