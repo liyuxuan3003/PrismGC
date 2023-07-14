@@ -51,7 +51,7 @@ uint8_t PageMain()
             BGMPageMain();
 
         x++;
-        if(x>=96)
+        if(x>=4)
             x=0;    
         PingPong();
         LCDBackground(0xCCEEFF);
@@ -62,14 +62,14 @@ uint8_t PageMain()
                 BlockICEMain((96-x)*96+64*i,350+64*j);
             }
         }
-        MainCharactor(150,280,6);
-        AppleGray(1024-150,280,4);
-        LCDPrintf(0x000000,0xCCEEFF,512-strlen("Click any key to start")/2*8,200,1,"Click any key to start");//22
-        LCDPrintf(0x000000,0xCCEEFF,512-strlen("Invincible Slime's Adventure")/2*16,100,2,"Invincible Slime's Adventure");//28
-        BlockMAC(300,100,1);
-        BlockMAC(300,200,2);
-        BlockMAC(300,300,3);
-        BlockMAC(300,400,4);
+        MainCharactor(150,270,8);
+        Apple(1024-150,277,6);
+
+        const char title[]="Invincible Slime's Adventure";
+        const char titleSub[]="Click any key to start";
+
+        LCDPrintf(0x000000,0xCCEEFF,512-strlen(titleSub)/2*8,200,1,titleSub);
+        LCDPrintf(0x000000,0xCCEEFF,512-strlen(title)/2*3*8,100,3,title);
         while(TIMER -> TIME < nowTime + FRAME) ;
     }
 }
