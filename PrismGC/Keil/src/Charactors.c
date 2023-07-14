@@ -4,11 +4,7 @@
 #include "Block.h"
 
 static const uint32_t chtMainLen = 12;
-static const uint32_t appleLen   = 16;
-
-const uint32_t colorPalette[]=      {C_BLU,C_WHI,C_LBU,C_DBU,C_BLK,C_BRO,C_RED,C_DKR,C_BLK};
-const uint32_t colorPaletteGray[]=  {C_GRE,C_WHI,C_LTG,C_DKG,C_BLK,C_DKG,C_GRE,C_DKG,C_BLK};
-
+static const uint32_t chtMainColor[] = {M_WHI_C,M_BLK_C,M_BLU_C,M_LBU_C,M_DBU_C};
 static const CharactorLine chtMain[]=
 {
     {4,8, {M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK}},
@@ -25,6 +21,9 @@ static const CharactorLine chtMain[]=
     {3,10,{M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK}}
 };
 
+static const uint32_t appleLen = 16;
+static const uint32_t appleColor[] = {A_WHI_C,A_BLK_C,A_RED_C,A_DKR_C,A_BRO_C};
+static const uint32_t appleGrayColor[] = {A_WHI_G,A_BLK_G,A_RED_G,A_DKR_G,A_BRO_G};
 static const CharactorLine apple[]=
 {
     {8,1, {A_BRO}},
@@ -45,60 +44,15 @@ static const CharactorLine apple[]=
     {4,8, {A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BLK,A_BLK}}
 };
 
- static uint32_t ColorTra(uint8_t colorTem,int grey)//(const CharactorLine* cht,uint8_t grey)
- {
-//         switch (colorTem)//(cht[i].line[j])
-//         {
-//             case 0   :return C_BLU;break;
-//             case 1   :return C_WHI;break;
-//             case 2   :return C_LBU;break;
-//             case 3   :return C_DBU;break;
-//             case 4   :return C_BLK;break;
-//             case 5   :
-//             {
-//                 if (grey)
-//                 return C_DKG;
-//                 else
-//                 return C_BRO;
-//                 break;
-//             }
-//             case 6   :
-//             {
-//                 if (grey)
-//                 return C_GRE;
-//                 else
-//                 return C_RED;
-//                 break;
-//             }
-//             case 7   :
-//             {
-//                 if (grey)
-//                 return C_DKG;
-//                 else
-//                 return C_DKR;
-//                 break;
-//             }
-//             case 8   :return C_WHI;break;
-//             case 9   :return C_BLK;break;
-//             // case 10  :return C_GRE;break;
-//             // case 11  :return C_DKG;break;
-//             default:break;
-//         }
-    if(grey)
-        return colorPaletteGray[colorTem];
-    else
-        return colorPalette[colorTem];
 
- }
-
-static void Charactor(uint32_t xcn,uint32_t ycn,const CharactorLine* cht,uint32_t chtlen,uint8_t scale,int grey)
+static void Charactor(uint32_t xcn,uint32_t ycn,const CharactorLine* cht,uint32_t chtlen,const uint32_t *chtColor,uint8_t scale)
 {
     uint32_t pixels[CHT_SCALE_MAX*PIXELS_MAX]={0};
     for(uint32_t i=0;i<chtlen;i++)
     {
         for(uint32_t j=0;j<cht[i].len;j++)
             for(uint32_t s=0;s<scale;s++)
-                pixels[j*scale+s]=ColorTra(cht[i].line[j],grey);   //预设一列s倍长度的彩线
+                pixels[j*scale+s]=chtColor[cht[i].line[j]];   //预设一列s倍长度的彩线
         for(uint32_t j=0;j<scale;j++)               //绘制scale行
             for(uint32_t s=0;s<scale;s++)           //每行绘制scale个len的长度
                 LCDPixels(pixels+cht[i].len*s,xcn+(cht[i].xoffset)*scale+cht[i].len*s,ycn+i*scale+j,cht[i].len);//
@@ -110,7 +64,7 @@ void MainCharactor (uint32_t x,uint32_t y,uint8_t scale)
 {
     uint32_t xcn=x-8*scale;
     uint32_t ycn=y-5*scale;
-    Charactor(xcn,ycn,chtMain,chtMainLen,scale,0);
+    Charactor(xcn,ycn,chtMain,chtMainLen,chtMainColor,scale);
     return;
 }
 
@@ -118,7 +72,7 @@ void Apple (uint32_t x,uint32_t y,uint8_t scale)
 {
     uint32_t xcn=x-8*scale;
     uint32_t ycn=y-8*scale;
-    Charactor(xcn,ycn,apple,appleLen,scale,0);
+    Charactor(xcn,ycn,apple,appleLen,appleColor,scale);
     return;
 }
 
@@ -126,7 +80,7 @@ void AppleGray (uint32_t x,uint32_t y,uint8_t scale)
 {
     uint32_t xcn=x-8*scale;
     uint32_t ycn=y-8*scale;
-    Charactor(xcn,ycn,apple,appleLen,scale,1);
+    Charactor(xcn,ycn,apple,appleLen,appleGrayColor,scale);
     return;
 }
 
@@ -165,11 +119,3 @@ void Arrow(uint32_t x,uint32_t y,uint8_t z)
         default: break;
     }
 }
-
-// void Dir_Rg (uint32_t x,uint32_t y,uint8_t scale)
-// {
-//     uint32_t xcn=x-8*scale;
-//     uint32_t ycn=y-8*scale;
-//     Charactor(xcn,ycn,dir_Rg,dir_RgLen,scale);
-//     return;
-// }
