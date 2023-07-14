@@ -32,7 +32,7 @@ void PingPong();
 
 void LCDBackground(uint32_t color);
 void LCDRectangle(uint32_t color,uint32_t x1,uint32_t y1,uint32_t x2,uint32_t y2);
-void LCDSquare(uint32_t color,uint32_t x1,uint32_t y1,uint32_t x2,uint32_t y2);
+void LCDPixelSquare(uint32_t color,uint32_t x1,uint32_t y1,uint32_t x2,uint32_t y2);
 void LCDPixel(uint32_t color,uint32_t x,uint32_t y);
 void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len);
 
