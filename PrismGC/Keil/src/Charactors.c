@@ -84,36 +84,36 @@ void AppleGray (uint32_t x,uint32_t y,uint8_t scale)
     return;
 }
 
-void Arrow(uint32_t x,uint32_t y,uint8_t z)
+void Arrow(uint32_t x,uint32_t y,uint8_t z,uint32_t color)
 {
     switch (z)
     {
         case 1: //上
         {
-            LCDRectangle(0xFFFFFF,x-ARROW_WID/2,y+BLOCK_INNE-ARROW_BOR,x+ARROW_WID/2,y);
-            // for(uint32_t i=0;i<ARROW_LEN/2;i++)
-            //     LCDRectangle(0xFFFFFF,x-ARROW_LEN/2+i,y-i,x+ARROW_LEN/2-i,y-i);
+            LCDRectangle(color,x-ARROW_WID/2,y,x+ARROW_WID/2,y+BLOCK_INNE-ARROW_BOR);
+            for(uint32_t i=0;i<ARROW_LEN/2;i+=4)
+                LCDRectangle(color,x-ARROW_LEN/2+i,y-i-4,x+ARROW_LEN/2-i,y-i);
             break;
         } 
         case 2: //下
         {
-            LCDRectangle(0xFFFFFF,x-ARROW_WID/2,y-BLOCK_INNE+ARROW_BOR,x+ARROW_WID/2,y);
-            // for(uint32_t i=0;i<ARROW_LEN/2;i++)
-            //     LCDRectangle(0xFFFFFF,x-ARROW_LEN/2+i,y+i,x+ARROW_LEN/2-i,y+i);
+            LCDRectangle(color,x-ARROW_WID/2,y-BLOCK_INNE+ARROW_BOR,x+ARROW_WID/2,y);
+            for(uint32_t i=0;i<ARROW_LEN/2;i+=4)
+                LCDRectangle(color,x-ARROW_LEN/2+i,y+i,x+ARROW_LEN/2-i,y+i+4);
             break;
         } 
         case 3: //左
         {
-            LCDRectangle(0xFFFFFF,x,y-ARROW_WID/2,x+BLOCK_INNE-ARROW_BOR,y+ARROW_WID/2);
-            // for(uint32_t i=0;i<ARROW_LEN/2;i++)
-            //     LCDRectangle(0xFFFFFF,x-i,y-ARROW_LEN/2+i,x-i,y+ARROW_LEN/2-i);
+            LCDRectangle(color,x,y-ARROW_WID/2,x+BLOCK_INNE-ARROW_BOR,y+ARROW_WID/2);
+            for(uint32_t i=0;i<ARROW_LEN/2;i+=6)
+                LCDRectangle(color,x-i-6,y-ARROW_LEN/2+i,x-i,y+ARROW_LEN/2-i);
             break;
         } 
         case 4: //右
         {
-            LCDRectangle(0xFFFFFF,x-BLOCK_INNE+ARROW_BOR,y-ARROW_WID/2,x,y+ARROW_WID/2);
-            // for(uint32_t i=0;i<ARROW_LEN/2;i++)
-            //     LCDRectangle(0xFFFFFF,x+i,y-ARROW_LEN/2+i,x+i,y+ARROW_LEN/2-i);
+            LCDRectangle(color,x-BLOCK_INNE+ARROW_BOR,y-ARROW_WID/2,x,y+ARROW_WID/2);
+            for(uint32_t i=0;i<ARROW_LEN/2;i+=6)
+                LCDRectangle(color,x+i,y-ARROW_LEN/2+i,x+i+6,y+ARROW_LEN/2-i);
             break;
         } 
         default: break;
