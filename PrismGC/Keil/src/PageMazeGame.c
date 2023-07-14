@@ -61,10 +61,10 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
             {
                 case B_ICE: break;
                 case B_END: flag=1; break;
-                case BUDIR: unitVec=_MapCoord(-1,0);
-                case BDDIR: unitVec=_MapCoord(+1,0);
-                case BLDIR: unitVec=_MapCoord(0,-1);
-                case BRDIR: unitVec=_MapCoord(0,+1);
+                case BUDIR: unitVec=_MapCoord(-1,0); break;
+                case BDDIR: unitVec=_MapCoord(+1,0); break;
+                case BLDIR: unitVec=_MapCoord(0,-1); break;
+                case BRDIR: unitVec=_MapCoord(0,+1); break;
                 case B_BAR: flag=1; break;
             }
         }
@@ -162,10 +162,10 @@ uint8_t PageMazeGame()
                     case B_BAR: BlockBAR(x,y); break;
                     case B_END: BlockEND(x,y); break;
                     case B_TRP: BlockTRP(x,y); break;
-                    // case BUDIR: BlockDIR(x,y,1); break;
-                    // case BDDIR: BlockDIR(x,y,2); break;
-                    // case BLDIR: BlockDIR(x,y,3); break;
-                    // case BRDIR: BlockDIR(x,y,4); break;
+                    case BUDIR: BlockDIR(x,y,1); break;
+                    case BDDIR: BlockDIR(x,y,2); break;
+                    case BLDIR: BlockDIR(x,y,3); break;
+                    case BRDIR: BlockDIR(x,y,4); break;
                 }
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
@@ -184,10 +184,14 @@ uint8_t PageMazeGame()
             if(level1.map[coord.i][coord.j]==B_END)
                 pageChange=1;
 
+
             if(IsDirection(key))
             {
+                // 情况1：正常移动了若干格 首末坐标不等 距离不等于零
+                // 情况3：向折射方格移动 回到原位 首末坐标相等 距离不等于零
+                // 情况2：向墙壁移动 首末坐标相等 距离等于零
                 MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen);
-                if(!MapCoordEqual(coordNext,coord))
+                if(mpLen!=0)
                 {
                     coord=coordNext;
                     gameStep++;
@@ -196,10 +200,6 @@ uint8_t PageMazeGame()
                     mpCirculate=0;
                 }
             }
-            // if(isPageChange==1)
-            // {
-            //     pageChange=1;
-            // }
         }
         else
         {
