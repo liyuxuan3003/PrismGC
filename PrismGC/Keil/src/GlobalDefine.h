@@ -5,9 +5,9 @@
 #define PAGE_BLOCK_GAME 1
 #define PAGE_I2C_TEST   2
 #define PAGE_CHAR_TEST  3
-#define PAGE_MAZE_GAME  5
-#define PAGE_MENU       6
-#define PAGE_END        11
+#define PAGE_MAZE_GAME  4
+#define PAGE_MENU       5
+#define PAGE_END        8   // DO NOT USE 6 or 7 HERE !
 
 #define FRAME 100
 #define APPLEFRAME 20

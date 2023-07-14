@@ -99,6 +99,7 @@ static void MapFix()
         0,
         H_DISP/4+8,
         V_DISP);
+
     return;
 }
 
@@ -110,6 +111,7 @@ void ConfigMazeGame(uint8_t _levelId)
         case 1 : map=&level1; break;
         case 2 : map=&level2; break;
         case 3 : map=&level3; break;
+        case 10: map=&level10;break;
         default: map=&level1; break;
     }
     return;
@@ -129,15 +131,16 @@ static uint8_t AppleNumber(const uint8_t *getApple)
 uint8_t PageMazeGame()
 {
     uint32_t nowTime;
+
     MapCoord coord=map->coord;
+
     MapCoord moveProcess[MP_L];
     uint32_t mpLen;
-    uint32_t isAnimate=0;
     uint32_t mpCirculate=0;
-    uint8_t isPageChange=0;
-    uint8_t gameStep=0;
-    uint8_t colorChange=1;
+
+    uint32_t isAnimate=0;
     uint8_t pageChange=0;
+    uint8_t gameStep=0;
 
     uint8_t getApple[APPLE_MAX]={0};
 
@@ -153,11 +156,10 @@ uint8_t PageMazeGame()
         PingPong();
         LCDBackground(BG_COLOR);
         MapBackground();
-        for(int8_t j=MAP_H-1;j>=0;j--)
+        for(int8_t i=MAP_W-1;i>=0;i--)
         {
-            for(int8_t i=0;i<MAP_W;i++)
+            for(int8_t j=MAP_H-1;j>=0;j--)
             {
-
                 uint32_t x=CalX(_MapCoord(i,j));
                 uint32_t y=CalY(_MapCoord(i,j));
                 switch (map->map[i][j])
@@ -177,6 +179,7 @@ uint8_t PageMazeGame()
                         Apple(x,y,2);
             }
         }
+        
         MapFix();
 
         // LCDPrintf(0x000000,0xFFFFFF,50,450,1,"i: %d",coord.i);

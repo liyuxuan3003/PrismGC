@@ -7,7 +7,7 @@
 #define B_BAR 1
 #define B_END 2
 #define B_TRP 3
-#define BUDIR 5
+#define BUDIR 5     // DO NOT USE 4 HERE !
 #define BDDIR 6
 #define BLDIR 7
 #define BRDIR 8
@@ -38,5 +38,7 @@ typedef struct
 extern const LevelMap level1;
 extern const LevelMap level2;
 extern const LevelMap level3;
+
+extern const LevelMap level10;
 
 #endif
