@@ -32,13 +32,13 @@ void BlockTRP(uint32_t x,uint32_t y)
 void BlockDIR(uint32_t x,uint32_t y,uint32_t z)
 {
     LCDRectangle(COLOR_DIR,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
-    Arrow(x,y,z,0x000000);
+    Arrow(x,y,z,COLOR_DIR_ARR);
     return;
 }
 
 void BlockMAC(uint32_t x,uint32_t y,uint32_t z)
 {
-    LCDRectangle(COLOR_MAC,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
-    Arrow(x,y,z,COLOR_MAC_ARR);
+    LCDRectangle(GREEN,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
+    Arrow(x,y,z,WHITE);
     return;
 }
