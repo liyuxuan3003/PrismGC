@@ -33,7 +33,7 @@ uint8_t PageEnd()
         LCDBackground(CHOCOLATE);
         LCDRectangle(SADDLEBROWN,80,40,944,350);
         LCDRectangle(BISQUE,90,50,934,340);
-        LCDPrintf(BLACK,BISQUE,110,70,2,"Level:%d",levelID);
+        LCDPrintf(BLACK,BISQUE,110,70,2,"Level %02d",levelID);
         LCDPrintf(RED,BISQUE,200,130,8,"YOU WIN!");
         switch(colorChange)
         {
@@ -75,6 +75,8 @@ uint8_t PageEnd()
             case KEY_C: return PAGE_MENU; break;
             default: break;
         }
+
+        LCDRectangle(CHOCOLATE,0,0,16,V_DISP);
 
         while(TIMER -> TIME < nowTime + FRAME);
     }

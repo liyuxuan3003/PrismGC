@@ -11,7 +11,7 @@
 #include "PageEnd.h"
 #include "Sleep.h"
 
-static const LevelMap *map;
+static LevelMap map;
 static uint8_t levelId;
 
 static int32_t CalX(MapCoord coord)
@@ -29,10 +29,11 @@ static uint8_t CoordVailed(MapCoord coord)
     return (coord.i>=0 && coord.i<MAP_H && coord.j>=0 && coord.j<MAP_W);
 }
 
-static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess,uint32_t *mpLen)
+static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess,uint32_t *mpLen,MapCoord *hitCoord)
 {
     uint32_t mpI=0;
     *mpLen=0;
+    *hitCoord=_MapCoord(-1,-1);
     MapCoord unitVec=_MapCoord(0,0);
     switch (direction)
     {
@@ -50,11 +51,11 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
         uint8_t flag=0;
         if(CoordVailed(coordStep))
         {
-            uint8_t blk=map->map[coordStep.i][coordStep.j];
-            if(blk!=B_BAR)
+            uint8_t blk=map.map[coordStep.i][coordStep.j];
+            if(blk!=B_BAR && blk!=B_GRA)
             {
                 coordResult=coordStep;
-                moveProcess[mpI]=coordResult;
+                moveProcess[mpI]=coordStep;
                 mpI++;
             }
 
@@ -66,6 +67,7 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
                 case BDDIR: unitVec=_MapCoord(+1,0); break;
                 case BLDIR: unitVec=_MapCoord(0,-1); break;
                 case BRDIR: unitVec=_MapCoord(0,+1); break;
+                case B_GRA: flag=1; *hitCoord=coordStep; break;
                 case B_BAR: flag=1; break;
             }
         }
@@ -106,14 +108,23 @@ static void MapFix()
 void ConfigMazeGame(uint8_t _levelId)
 {
     levelId=_levelId;
+    const LevelMap *pmap;
     switch(_levelId)
     {
-        case 1 : map=&level1; break;
-        case 2 : map=&level2; break;
-        case 3 : map=&level3; break;
-        case 10: map=&level10;break;
-        default: map=&level1; break;
+        case 1 : pmap=&level1; break;
+        case 2 : pmap=&level2; break;
+        case 3 : pmap=&level3; break;
+        case 10: pmap=&levelTest;break;
+        default: pmap=&level1; break;
     }
+
+    map.coord=pmap->coord;
+    for(uint32_t i=0;i<APPLE_MAX;i++)
+        map.coordApple[i]=pmap->coordApple[i];
+    for(uint32_t i=0;i<MAP_H;i++)
+        for(uint32_t j=0;j<MAP_W;j++)
+            map.map[i][j]=pmap->map[i][j];
+
     return;
 }
 
@@ -121,28 +132,41 @@ static uint8_t AppleNumber(const uint8_t *getApple)
 {
     uint8_t applenumber=0;
     for(uint32_t m=0;m<APPLE_MAX;m++)
-    {
         if(getApple[m])
             applenumber++;
-    }
+
     return applenumber;
+}
+
+static uint8_t GetBlockType(MapCoord coord)
+{
+    return map.map[coord.i][coord.j];
+}
+
+static void SetBlockType(MapCoord coord,uint8_t type)
+{
+    map.map[coord.i][coord.j]=type;
+    return;
 }
 
 uint8_t PageMazeGame()
 {
     uint32_t nowTime;
 
-    MapCoord coord=map->coord;
+    MapCoord coord=map.coord;
 
     MapCoord moveProcess[MP_L];
     uint32_t mpLen;
     uint32_t mpCirculate=0;
 
     uint32_t isAnimate=0;
-    uint8_t pageChange=0;
+    uint8_t isPageChange=0;
     uint8_t gameStep=0;
 
     uint8_t getApple[APPLE_MAX]={0};
+
+    MapCoord hitCoord=_MapCoord(-1,-1);
+    uint8_t waitHit=0;
 
     while(1)
     {
@@ -162,7 +186,7 @@ uint8_t PageMazeGame()
             {
                 uint32_t x=CalX(_MapCoord(i,j));
                 uint32_t y=CalY(_MapCoord(i,j));
-                switch (map->map[i][j])
+                switch(map.map[i][j])
                 {
                     case B_ICE: BlockICE(x,y); break;
                     case B_BAR: BlockBAR(x,y); break;
@@ -172,10 +196,12 @@ uint8_t PageMazeGame()
                     case BDDIR: BlockDIR(x,y,2); break;
                     case BLDIR: BlockDIR(x,y,3); break;
                     case BRDIR: BlockDIR(x,y,4); break;
+                    case B_GRA: BlockGRA(x,y,0); break;
+                    case BHGRA: BlockGRA(x,y,1); break;
                 }
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
-                    if(MapCoordEqual(map->coordApple[m],_MapCoord(i,j)) && !getApple[m])
+                    if(MapCoordEqual(map.coordApple[m],_MapCoord(i,j)) && !getApple[m])
                         Apple(x,y,2);
             }
         }
@@ -188,16 +214,15 @@ uint8_t PageMazeGame()
         if(!isAnimate)
         {
             MainCharactor(CalX(coord),CalY(coord),2);
-            if(map->map[coord.i][coord.j]==B_END)
-                pageChange=1;
-
+            if(map.map[coord.i][coord.j]==B_END)
+                isPageChange=1;
 
             if(IsDirection(key))
             {
                 // 情况1：正常移动了若干格 首末坐标不等 距离不等于零
                 // 情况3：向折射方格移动 回到原位 首末坐标相等 距离不等于零
                 // 情况2：向墙壁移动 首末坐标相等 距离等于零
-                MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen);
+                MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen,&hitCoord);
                 if(mpLen!=0)
                 {
                     coord=coordNext;
@@ -213,13 +238,32 @@ uint8_t PageMazeGame()
             MainCharactor(CalX(moveProcess[mpCirculate]),CalY(moveProcess[mpCirculate]),2);
             
             for(uint32_t m=0;m<APPLE_MAX;m++)
-                if(MapCoordEqual(moveProcess[mpCirculate],map->coordApple[m]) && !getApple[m])
+                if(MapCoordEqual(moveProcess[mpCirculate],map.coordApple[m]) && !getApple[m])
                     getApple[m]=1;
 
             mpCirculate++;
 
             if(mpCirculate == mpLen)
-                isAnimate=0;
+            {
+                if(MapCoordEqual(hitCoord,_MapCoord(-1,-1)))
+                    isAnimate=0;
+                else
+                {
+                    mpCirculate=mpLen-1;
+                    if(waitHit==0)
+                    {
+                        waitHit=1;
+                        SetBlockType(hitCoord,BHGRA);
+                    }
+                    else
+                    {
+                        waitHit=0;
+                        SetBlockType(hitCoord,B_ICE);
+                        isAnimate=0;
+                    }
+                }
+            }
+                
         }
 
         LCDPrintf(WHITE,BG_COLOR,50,50,3,"Level %02d",levelId);
@@ -228,7 +272,7 @@ uint8_t PageMazeGame()
         
         LCDPrintf(WHITE,BG_COLOR,50,560,1,"Frame: %d",TIMER->TIME-nowTime);
 
-        if(pageChange)
+        if(isPageChange)
         {
             ConfigEnd(levelId,AppleNumber(getApple),gameStep);
             return PAGE_END;

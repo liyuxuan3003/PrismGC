@@ -11,6 +11,8 @@
 #define BDDIR 6
 #define BLDIR 7
 #define BRDIR 8
+#define B_GRA 9
+#define BHGRA 10
 
 #define MAP_W 12
 #define MAP_H 12
@@ -39,6 +41,6 @@ extern const LevelMap level1;
 extern const LevelMap level2;
 extern const LevelMap level3;
 
-extern const LevelMap level10;
+extern const LevelMap levelTest;
 
 #endif
