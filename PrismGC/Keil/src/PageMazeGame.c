@@ -61,10 +61,10 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
             {
                 case B_ICE: break;
                 case B_END: flag=1; break;
-                case BUDIR: unitVec=_MapCoord(-1,0);
-                case BDDIR: unitVec=_MapCoord(+1,0);
-                case BLDIR: unitVec=_MapCoord(0,-1);
-                case BRDIR: unitVec=_MapCoord(0,+1);
+                case BUDIR: unitVec=_MapCoord(-1,0); break;
+                case BDDIR: unitVec=_MapCoord(+1,0); break;
+                case BLDIR: unitVec=_MapCoord(0,-1); break;
+                case BRDIR: unitVec=_MapCoord(0,+1); break;
                 case B_BAR: flag=1; break;
             }
         }
@@ -187,7 +187,7 @@ uint8_t PageMazeGame()
             if(IsDirection(key))
             {
                 MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen);
-                if(!MapCoordEqual(coordNext,coord))
+                if(mpLen!=0)
                 {
                     coord=coordNext;
                     gameStep++;
