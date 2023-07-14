@@ -70,5 +70,7 @@ uint8_t PageCharTest()
 
         LCDPrintf(0x000000,0xFFFFFF,200,500,1,"Zhang Yan %d",123,59.5);
         LCDPrintf(0x000000,0xFFFFFF,200,550,2,"Zhang Yan %d",123,59.5);
+
+        Arrow(800,400,2);
     }
 }

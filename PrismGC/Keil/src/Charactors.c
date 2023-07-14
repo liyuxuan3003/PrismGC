@@ -7,7 +7,7 @@ static const uint32_t chtMainLen = 12;
 static const uint32_t appleLen   = 16;
 
 const uint32_t colorPalette[]=      {C_BLU,C_WHI,C_LBU,C_DBU,C_BLK,C_BRO,C_RED,C_DKR,C_BLK};
-const uint32_t colorPaletteGrey[]=  {C_GRE,C_WHI,C_LTG,C_DKG,C_BLK,C_DKG,C_GRE,C_DKG,C_BLK};
+const uint32_t colorPaletteGray[]=  {C_GRE,C_WHI,C_LTG,C_DKG,C_BLK,C_DKG,C_GRE,C_DKG,C_BLK};
 
 static const CharactorLine chtMain[]=
 {
@@ -85,7 +85,7 @@ static const CharactorLine apple[]=
 //             default:break;
 //         }
     if(grey)
-        return colorPaletteGrey[colorTem];
+        return colorPaletteGray[colorTem];
     else
         return colorPalette[colorTem];
 
@@ -93,7 +93,7 @@ static const CharactorLine apple[]=
 
 static void Charactor(uint32_t xcn,uint32_t ycn,const CharactorLine* cht,uint32_t chtlen,uint8_t scale,int grey)
 {
-    uint32_t pixels[CHT_MAIN_SCALE_MAX*PIXELS_MAX]={0};
+    uint32_t pixels[CHT_SCALE_MAX*PIXELS_MAX]={0};
     for(uint32_t i=0;i<chtlen;i++)
     {
         for(uint32_t j=0;j<cht[i].len;j++)
@@ -122,7 +122,7 @@ void Apple (uint32_t x,uint32_t y,uint8_t scale)
     return;
 }
 
-void AppleGrey (uint32_t x,uint32_t y,uint8_t scale)
+void AppleGray (uint32_t x,uint32_t y,uint8_t scale)
 {
     uint32_t xcn=x-8*scale;
     uint32_t ycn=y-8*scale;
@@ -137,29 +137,29 @@ void Arrow(uint32_t x,uint32_t y,uint8_t z)
         case 1: //上
         {
             LCDRectangle(0xFFFFFF,x-ARROW_WID/2,y+BLOCK_INNE-ARROW_BOR,x+ARROW_WID/2,y);
-            for(uint32_t i=0;i<ARROW_LEN/2;i++)
-                LCDRectangle(0xFFFFFF,x-ARROW_LEN/2+i,y-i,x+ARROW_LEN/2-i,y-i);
+            // for(uint32_t i=0;i<ARROW_LEN/2;i++)
+            //     LCDRectangle(0xFFFFFF,x-ARROW_LEN/2+i,y-i,x+ARROW_LEN/2-i,y-i);
             break;
         } 
         case 2: //下
         {
             LCDRectangle(0xFFFFFF,x-ARROW_WID/2,y-BLOCK_INNE+ARROW_BOR,x+ARROW_WID/2,y);
-            for(uint32_t i=0;i<ARROW_LEN/2;i++)
-                LCDRectangle(0xFFFFFF,x-ARROW_LEN/2+i,y+i,x+ARROW_LEN/2-i,y+i);
+            // for(uint32_t i=0;i<ARROW_LEN/2;i++)
+            //     LCDRectangle(0xFFFFFF,x-ARROW_LEN/2+i,y+i,x+ARROW_LEN/2-i,y+i);
             break;
         } 
         case 3: //左
         {
             LCDRectangle(0xFFFFFF,x,y-ARROW_WID/2,x+BLOCK_INNE-ARROW_BOR,y+ARROW_WID/2);
-            for(uint32_t i=0;i<ARROW_LEN/2;i++)
-                LCDRectangle(0xFFFFFF,x-i,y-ARROW_LEN/2+i,x-i,y+ARROW_LEN/2-i);
+            // for(uint32_t i=0;i<ARROW_LEN/2;i++)
+            //     LCDRectangle(0xFFFFFF,x-i,y-ARROW_LEN/2+i,x-i,y+ARROW_LEN/2-i);
             break;
         } 
         case 4: //右
         {
             LCDRectangle(0xFFFFFF,x-BLOCK_INNE+ARROW_BOR,y-ARROW_WID/2,x,y+ARROW_WID/2);
-            for(uint32_t i=0;i<ARROW_LEN/2;i++)
-                LCDRectangle(0xFFFFFF,x+i,y-ARROW_LEN/2+i,x+i,y+ARROW_LEN/2-i);
+            // for(uint32_t i=0;i<ARROW_LEN/2;i++)
+            //     LCDRectangle(0xFFFFFF,x+i,y-ARROW_LEN/2+i,x+i,y+ARROW_LEN/2-i);
             break;
         } 
         default: break;

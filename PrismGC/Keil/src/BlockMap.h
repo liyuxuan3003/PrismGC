@@ -7,10 +7,10 @@
 #define B_BAR 1
 #define B_END 2
 #define B_TRP 3
-#define B_DIR_UP 4
-#define B_DIR_DW 5
-#define B_DIR_LF 6
-#define B_DIR_RG 7
+#define BUDIR 4
+#define BDDIR 5
+#define BLDIR 6
+#define BRDIR 7
 
 #define MAP_W 12
 #define MAP_H 12

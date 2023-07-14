@@ -10,6 +10,9 @@
 #include "Charactors.h"
 #include "PageEnd.h"
 
+static const LevelMap *map;
+static uint8_t levelId;
+
 static int32_t CalX(MapCoord coord)
 {
     return X_CORNER+2*coord.j*BLOCK_SIZE;
@@ -46,62 +49,23 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
         uint8_t flag=0;
         if(CoordVailed(coordStep))
         {
-            switch (level1.map[coordStep.i][coordStep.j])
+            uint8_t blk=map->map[coordStep.i][coordStep.j];
+            if(blk!=B_BAR)
             {
-                case B_ICE: 
-                {
-                    coordResult=coordStep;
-                    moveProcess[mpI]=coordResult;
-                    mpI++;
-                    *mpLen=mpI;
-                    break;
-                }
-                case B_END: 
-                {
-                    coordResult=coordStep;
-                    moveProcess[mpI]=coordResult;
-                    mpI++;
-                    *mpLen=mpI;
-                    break;
-                }
-                case B_DIR_UP:
-                {
-                    unitVec=_MapCoord(-1,0);
-                    coordResult=coordStep;
-                    moveProcess[mpI]=coordResult;
-                    mpI++;
-                    *mpLen=mpI;
-                    break;
-                }
-                case B_DIR_DW:
-                {
-                    unitVec=_MapCoord(+1,0);
-                    coordResult=coordStep;
-                    moveProcess[mpI]=coordResult;
-                    mpI++;
-                    *mpLen=mpI;
-                    break;
-                }
-                case B_DIR_LF:
-                {
-                    unitVec=_MapCoord(0,-1);
-                    coordResult=coordStep;
-                    moveProcess[mpI]=coordResult;
-                    mpI++;
-                    *mpLen=mpI;
-                    break;
-                }
-                case B_DIR_RG:
-                {
-                    unitVec=_MapCoord(0,+1);
-                    coordResult=coordStep;
-                    moveProcess[mpI]=coordResult;
-                    mpI++;
-                    *mpLen=mpI;
-                    break;
-                }
-                case B_BAR: flag=1; mpI=0; break;
-                default: flag=1; mpI=0; break;
+                coordResult=coordStep;
+                moveProcess[mpI]=coordResult;
+                mpI++;
+            }
+
+            switch(blk)
+            {
+                case B_ICE: break;
+                case B_END: flag=1; break;
+                case BUDIR: unitVec=_MapCoord(-1,0);
+                case BDDIR: unitVec=_MapCoord(+1,0);
+                case BLDIR: unitVec=_MapCoord(0,-1);
+                case BRDIR: unitVec=_MapCoord(0,+1);
+                case B_BAR: flag=1; break;
             }
         }
         else
@@ -111,7 +75,7 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
 
         if(flag==1)
         {
-            LCDPrintf(BLACK,WHITE,100,300,1,"coordRes: %d,%d",coordResult.i,coordResult.j);
+            *mpLen=mpI;
             return coordResult;
         }
     }
@@ -136,9 +100,6 @@ static void MapFix()
         V_DISP);
     return;
 }
-
-static const LevelMap *map;
-static uint8_t levelId;
 
 void ConfigMazeGame(uint8_t _levelId)
 {
@@ -201,7 +162,10 @@ uint8_t PageMazeGame()
                     case B_BAR: BlockBAR(x,y); break;
                     case B_END: BlockEND(x,y); break;
                     case B_TRP: BlockTRP(x,y); break;
-                    // case B_DIR_UP: BlockDirUp(x,y); break;
+                    // case BUDIR: BlockDIR(x,y,1); break;
+                    // case BDDIR: BlockDIR(x,y,2); break;
+                    // case BLDIR: BlockDIR(x,y,3); break;
+                    // case BRDIR: BlockDIR(x,y,4); break;
                 }
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
@@ -211,12 +175,15 @@ uint8_t PageMazeGame()
         }
         MapFix();
 
-        LCDPrintf(0x000000,0xFFFFFF,50,450,1,"i: %d",coord.i);
-        LCDPrintf(0x000000,0xFFFFFF,50,500,1,"j: %d",coord.j);
+        // LCDPrintf(0x000000,0xFFFFFF,50,450,1,"i: %d",coord.i);
+        // LCDPrintf(0x000000,0xFFFFFF,50,500,1,"j: %d",coord.j);
 
         if(!isAnimate)
         {
             MainCharactor(CalX(coord),CalY(coord),2);
+            if(level1.map[coord.i][coord.j]==B_END)
+                pageChange=1;
+
             if(IsDirection(key))
             {
                 MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen);
@@ -229,10 +196,10 @@ uint8_t PageMazeGame()
                     mpCirculate=0;
                 }
             }
-            if(isPageChange==1)
-            {
-                pageChange=1;
-            }
+            // if(isPageChange==1)
+            // {
+            //     pageChange=1;
+            // }
         }
         else
         {
@@ -241,12 +208,6 @@ uint8_t PageMazeGame()
             for(uint32_t m=0;m<APPLE_MAX;m++)
                 if(MapCoordEqual(moveProcess[mpCirculate],level1.coordApple[m]) && !getApple[m])
                     getApple[m]=1;
-                    
-            switch(level1.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
-            {
-                case B_END: isPageChange=1; break;
-                default:break;
-            }
 
             mpCirculate++;
 

@@ -13,13 +13,13 @@
 
 static uint8_t levelID;
 static uint8_t appleNumber;
-static uint8_t levelSTEP;
+static uint8_t levelStep;
 
-void ConfigEnd(uint8_t _levelID,uint8_t _appleNumber,uint8_t _levelSTEP)
+void ConfigEnd(uint8_t _levelID,uint8_t _appleNumber,uint8_t _levelStep)
 {
     levelID=_levelID;
     appleNumber=_appleNumber;
-    levelSTEP=_levelSTEP;
+    levelStep=_levelStep;
     return;
 }
 
@@ -53,33 +53,19 @@ uint8_t PageEnd()
             }
         }
 
-        if(levelSTEP<10)
-            LCDPrintf(ORANGE,BISQUE,840,200,5,"%d",levelSTEP);
+        if(levelStep<10)
+            LCDPrintf(ORANGE,BISQUE,840,200,5,"%d",levelStep);
         else
-            LCDPrintf(ORANGE,BISQUE,820,200,5,"%d",levelSTEP);
+            LCDPrintf(ORANGE,BISQUE,820,200,5,"%d",levelStep);
 
-        switch (appleNumber)
+        for(uint32_t i=0;i<APPLE_MAX;i++)
         {
-            case 1:
-            {
-                Apple(256,450,8);
-                break;
-            }
-            case 2:
-            {
-                Apple(256,450,8);
-                Apple(512,450,8);
-                break;
-            }
-            case 3:
-            {
-                Apple(256,450,8);
-                Apple(512,450,8);
-                Apple(768,450,8);
-                break;
-            }
-            default:break;
+            if(i+1<=appleNumber)
+                Apple((i+1)*(H_DISP/4),450,8);
+            else
+                AppleGray((i+1)*(H_DISP/4),450,8);
         }
+            
         
         LCDPrintf(BLACK,CHOCOLATE,275,550,2,"PRESS KEY_C TO CHOOSE GAME LEVEL");
 
