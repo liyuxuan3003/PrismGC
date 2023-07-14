@@ -73,10 +73,16 @@ static uint8_t LevelID(int32_t m,int32_t n,uint8_t pageNum)
     return LEVELNUM_PER_PAGE*(pageNum-1)+JMAX*m+n+1;
 }
 
+static int32_t mSave=0;
+static int32_t nSave=0;
+static uint8_t pageNumSave=1;
+
 uint8_t PageMenu()
 {
-    int32_t m=0,n=0;
-    uint8_t pageNum=1;//将第m行第n列的关卡高亮
+    // 将第m行第n列的关卡高亮
+    int32_t m=mSave;
+    int32_t n=nSave;
+    uint8_t pageNum=pageNumSave;
     while(1)
     {
         switch(GetKey())
@@ -151,6 +157,9 @@ uint8_t PageMenu()
             } 
             case KEY_C: 
             {
+                mSave=m;
+                nSave=n;
+                pageNumSave=pageNum;
                 ConfigMazeGame(LevelID(m,n,pageNum));
                 return PAGE_MAZE_GAME;
                 break;
