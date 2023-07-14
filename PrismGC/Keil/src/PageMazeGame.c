@@ -152,9 +152,9 @@ uint8_t PageMazeGame()
         PingPong();
         LCDBackground(BG_COLOR);
         MapBackground();
-        for(uint32_t i=0;i<MAP_W;i++)
+        for(int8_t i=0;i<MAP_W;i++)
         {
-            for(uint32_t j=0;j<MAP_H;j++)
+            for(int8_t j=0;j<MAP_H;j++)
             {
                 uint32_t x=CalX(_MapCoord(i,j));
                 uint32_t y=CalY(_MapCoord(i,j));
