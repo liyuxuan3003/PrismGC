@@ -16,7 +16,7 @@
 #define I2C_WR    0
 #define I2C_RD    1
 
-#define DEBUG_NUNCHUCK
+// #define DEBUG_NUNCHUCK
 
 #ifdef DEBUG_NUNCHUCK
 	#define DBG printf

@@ -7,12 +7,15 @@
 #define B_BAR 1
 #define B_END 2
 #define B_TRP 3
-#define BUDIR 5     // DO NOT USE 4 HERE !
+#define BUDIR 5     // DO NOT USE 4 HERE!
 #define BDDIR 6
 #define BLDIR 7
 #define BRDIR 8
 #define B_GRA 9
 #define BHGRA 10
+#define B1POR 11
+#define B2POR 12
+#define B3POR 13
 
 #define MAP_W 12
 #define MAP_H 12
@@ -36,6 +39,12 @@ typedef struct
     MapCoord coord;
     MapCoord coordApple[APPLE_MAX];
 } LevelMap;
+
+typedef struct
+{
+    MapCoord p1;
+    MapCoord p2;
+} PortalPair;
 
 extern const LevelMap level1;
 extern const LevelMap level2;

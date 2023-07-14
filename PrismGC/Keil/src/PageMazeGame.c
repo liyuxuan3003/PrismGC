@@ -10,6 +10,7 @@
 #include "Charactors.h"
 #include "PageEnd.h"
 #include "Sleep.h"
+#include "Console.h"
 
 static LevelMap map;
 static uint8_t levelId;
@@ -198,13 +199,16 @@ uint8_t PageMazeGame()
                     case B_ICE: BlockICE(x,y); break;
                     case B_BAR: BlockBAR(x,y); break;
                     case B_END: BlockEND(x,y); break;
-                    case B_TRP: BlockTRP(x,y); break;
+                    // case B_TRP: BlockTRP(x,y); break;
                     case BUDIR: BlockDIR(x,y,1); break;
                     case BDDIR: BlockDIR(x,y,2); break;
                     case BLDIR: BlockDIR(x,y,3); break;
                     case BRDIR: BlockDIR(x,y,4); break;
                     case B_GRA: BlockGRA(x,y,0); break;
                     case BHGRA: BlockGRA(x,y,1); break;
+                    case B1POR: BlockPOR(x,y,1); break;
+                    case B2POR: BlockPOR(x,y,2); break;
+                    case B3POR: BlockPOR(x,y,3); break;
                 }
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
@@ -212,6 +216,8 @@ uint8_t PageMazeGame()
                         Apple(x,y,2);
             }
         }
+
+        printf("\r\n");
         
         MapFix();
 

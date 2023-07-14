@@ -73,8 +73,8 @@ static uint8_t LevelID(int32_t m,int32_t n,uint8_t pageNum)
     return LEVELNUM_PER_PAGE*(pageNum-1)+JMAX*m+n+1;
 }
 
-static int32_t mSave=0;
-static int32_t nSave=0;
+static int32_t mSave=3;
+static int32_t nSave=3;
 static uint8_t pageNumSave=1;
 
 uint8_t PageMenu()
