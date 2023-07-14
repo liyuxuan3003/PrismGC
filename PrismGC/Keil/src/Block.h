@@ -14,6 +14,7 @@
 #define COLOR_TRA 0x0000FF
 #define COLOR_DEL 0xFFFF00
 #define COLOR_MAC 0x804040
+#define COLOR_MAC_ARR 0xFFFFFF
 #define COLOR_DIR 0x1155DD
 
 void BlockBorder(uint32_t x,uint32_t y);

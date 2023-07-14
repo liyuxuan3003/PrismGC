@@ -34,7 +34,7 @@
 #define C_DKG  0x444444
 
 #define CHT_SCALE_MAX 8
-#define ARROW_WID 12
+#define ARROW_WID 16
 #define ARROW_LEN 32
 #define ARROW_BOR 8
 
@@ -48,6 +48,6 @@ typedef struct
 void MainCharactor(uint32_t x,uint32_t y,uint8_t scale);
 void Apple(uint32_t x,uint32_t y,uint8_t scale);
 void AppleGray(uint32_t x,uint32_t y,uint8_t scale);
-void Arrow(uint32_t x,uint32_t y,uint8_t z);
+void Arrow(uint32_t x,uint32_t y,uint8_t z,uint32_t color);
 
 #endif
