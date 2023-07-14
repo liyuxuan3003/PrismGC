@@ -107,6 +107,7 @@ void ConfigMazeGame(uint8_t _levelId)
     switch(_levelId)
     {
         case 1 : map=&level1; break;
+        case 2 : map=&level2; break;
         default: map=&level1; break;
     }
     return;
