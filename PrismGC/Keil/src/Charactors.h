@@ -36,7 +36,7 @@
 #define CHT_SCALE_MAX 8
 #define ARROW_WID 16
 #define ARROW_LEN 32
-#define ARROW_BOR 8
+#define ARROW_BOR 4
 
 typedef struct 
 {
