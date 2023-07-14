@@ -110,6 +110,13 @@ void ConfigMazeGame(uint8_t _levelId)
         case 1 : map=&level1; break;
         case 2 : map=&level2; break;
         case 3 : map=&level3; break;
+        case 4 : map=&level4; break;
+        case 5 : map=&level5; break;
+        case 6 : map=&level6; break;
+        case 7 : map=&level7; break;
+        case 8 : map=&level8; break;
+        case 9 : map=&level9; break;
+        case 10 : map=&level10; break;
         default: map=&level1; break;
     }
     return;
