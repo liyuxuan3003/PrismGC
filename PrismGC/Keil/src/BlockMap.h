@@ -28,9 +28,6 @@ MapCoord MapCoordPlus(MapCoord a,MapCoord b);
 MapCoord MapCoordMinus(MapCoord a,MapCoord b);
 uint8_t MapCoordEqual(MapCoord a,MapCoord b);
 
-// uint8_t MapCoordEqual(MapCoord a,MapCoord b,uint32_t mpLen);
-// uint8_t _MapCoordEqual(MapCoord a,MapCoord b);
-
 typedef struct 
 {
     uint8_t map[MAP_W][MAP_H];

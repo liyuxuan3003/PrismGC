@@ -78,8 +78,8 @@ void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len)
     __asm("nop");
     __asm("nop");
     while(GPU -> BUSY) ;
-    // ndelay(1000);
-    udelay(5);                          //Do not touch!
+    ndelay(1000);
+    // udelay(5);                          //Do not touch!
     GPU -> ENABLE = 0;
 }
 
