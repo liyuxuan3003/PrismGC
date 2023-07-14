@@ -42,3 +42,19 @@ void BlockMAC(uint32_t x,uint32_t y,uint32_t z)
     Arrow(x,y,z,COLOR_MAC_ARR);
     return;
 }
+
+void BlockGRA(uint32_t x,uint32_t y,uint8_t hit)
+{
+    LCDRectangle(COLOR_GRA_BUT,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
+    LCDRectangle(COLOR_GRA,x-BLOCK_INNE+BLOCK_BORD,y-BLOCK_INNE+BLOCK_BORD,x+BLOCK_INNE-BLOCK_BORD,y+BLOCK_INNE-BLOCK_BORD);
+    if(hit)
+    {
+       LCDSquare(COLOR_GRA_BUT,x+2,y-BLOCK_INNE+BLOCK_BORD,x+6,y-BLOCK_INNE+BLOCK_BORD+20); 
+       LCDSquare(COLOR_GRA_BUT,x+6,y-6,x+BLOCK_INNE-BLOCK_BORD,y-2);
+       LCDSquare(COLOR_GRA_BUT,x,y+4,x+4,y+8);
+       LCDSquare(COLOR_GRA_BUT,x-2,y+8,x+2,y+BLOCK_INNE-BLOCK_BORD);
+       LCDSquare(COLOR_GRA_BUT,x-8,y+8,x-2,y+12);
+       LCDSquare(COLOR_GRA_BUT,x-12,y+6,x-6,y+10);
+       LCDSquare(COLOR_GRA_BUT,x-BLOCK_INNE+BLOCK_BORD,y+4,x-12,y+8);
+    }
+}

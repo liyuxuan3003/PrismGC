@@ -16,6 +16,8 @@
 #define COLOR_MAC 0x804040
 #define COLOR_MAC_ARR 0xFFFFFF
 #define COLOR_DIR 0x1155DD
+#define COLOR_GRA_BUT 0x888888
+#define COLOR_GRA 0xCCCCCC
 
 void BlockBorder(uint32_t x,uint32_t y);
 
@@ -25,5 +27,6 @@ void BlockEND(uint32_t x,uint32_t y);
 void BlockTRP(uint32_t x,uint32_t y);
 void BlockDIR(uint32_t x,uint32_t y,uint32_t z);
 void BlockMAC(uint32_t x,uint32_t y,uint32_t z);
+void BlockGRA(uint32_t x,uint32_t y,uint8_t hit);
 
 #endif
