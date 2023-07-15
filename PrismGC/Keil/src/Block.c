@@ -68,6 +68,31 @@ void BlockPOR(uint32_t x,uint32_t y,uint32_t id)
     LCDRectangle(COLOR_POR,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
     LCDRectangle(colorInn ,x-(BLOCK_INNE-4),y-(BLOCK_INNE-4),x+(BLOCK_INNE-4),y+(BLOCK_INNE-4));
     LCDRectangle(COLOR_POR,x-(BLOCK_INNE-8),y-(BLOCK_INNE-8),x+(BLOCK_INNE-8),y+(BLOCK_INNE-8));
+    // for(uint32_t i=5;i<=15;i++)
+    // {
+    //     for(int j=-2;j<=2;j++)
+    //     {
+    //         LCDPixel(colorInn,x+i,y+j);
+    //         LCDPixel(colorInn,x-i,y+j);
+    //         LCDPixel(colorInn,x+j,y+i);
+    //         LCDPixel(colorInn,x+j,y-i);
+    //         LCDPixel(colorInn,x+i*0.7-j,y+i*0.7+j);
+    //         LCDPixel(colorInn,x-i*0.7+j,y+i*0.7+j);
+    //         LCDPixel(colorInn,x+i*0.7+j,y-i*0.7+j);
+    //         LCDPixel(colorInn,x-i*0.7+j,y-i*0.7-j);
+    //     }
+    // }
+        for(uint32_t i=5;i<=15;i++)
+    {
+        LCDPixel(colorInn,x+i,y);
+        LCDPixel(colorInn,x-i,y);
+        LCDPixel(colorInn,x,y+i);
+        LCDPixel(colorInn,x,y-i);
+        LCDPixel(colorInn,x+i*0.7,y+i*0.7);
+        LCDPixel(colorInn,x-i*0.7,y+i*0.7);
+        LCDPixel(colorInn,x+i*0.7,y-i*0.7);
+        LCDPixel(colorInn,x-i*0.7,y-i*0.7);
+    }
 }
 
 
