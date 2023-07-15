@@ -295,7 +295,6 @@ const LevelMap level12=
     {11,5},
     {{6,3},{5,6},{8,9}},
 };
-//UURR UULL DURR URDD LDR
 //UURR UULL DURD DRDD D
 
 const LevelMap level13=
@@ -381,11 +380,9 @@ const LevelMap level16=
     {0,0},
     {{6,9},{11,11},{6,7}},
 };
-//RDLD DRUL DUDR URD  
 //RDLD RDLL URRD
-//RDLD DRUL DDRU RD
 
-const LevelMap level17=//RULDURDR
+const LevelMap level17=
 {
     {
         {B_BAR,B_BAR,B_ICE,B_ICE,B_ICE,B_BAR,B_BAR,B_ICE,B_ICE,B_BAR,B_BAR,B_BAR},
@@ -398,16 +395,15 @@ const LevelMap level17=//RULDURDR
         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_BAR},
         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_END},
-        {B_ICE,B_ICE,B_ICE,B_ICE,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_BAR},
+        {B_ICE,B_ICE,B_ICE,B_GRA,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_BAR},
         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
     },
     {6,0},
     {{0,4},{9,0},{10,2}},
 };
+//RULD LUDR URDR
 
-
-
-const LevelMap level18=//DLURDRURDR
+const LevelMap level18=
 {
     {
         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
@@ -426,8 +422,9 @@ const LevelMap level18=//DLURDRURDR
     {2,10},
     {{2,5},{3,3},{11,5}},
 };
+//DLUR DRUR DR
 
-const LevelMap level19=//DRULDR
+const LevelMap level19=
 {
     {
         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
@@ -446,6 +443,7 @@ const LevelMap level19=//DRULDR
     {2,1},
     {{2,0},{5,4},{11,11}},
 };
+//DRUL DR
 
 const LevelMap level20=
 {
@@ -457,7 +455,7 @@ const LevelMap level20=
         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_GRA,B_ICE,B_ICE,B_ICE,B_BAR},
         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_GRA,B_ICE,B_ICE,B_ICE,B_BAR},
         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_GRA,B_BAR},
-        {B_ICE,B_ICE,B_ICE,B_BAR,B_BAR,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_GRA,B_BAR},
+        {B_ICE,B_ICE,B_ICE,B_BAR,B_BAR,B_ICE,B_ICE,B_ICE,B_BAR,B_ICE,B_GRA,B_BAR},
         {B_ICE,B_ICE,B_ICE,B_BAR,B_ICE,B_ICE,B_ICE,B_BAR,B_BAR,B_ICE,B_BAR,B_BAR},
         {B_ICE,B_ICE,B_ICE,B_BAR,B_ICE,B_ICE,B_ICE,B_ICE,B_BAR,B_END,B_ICE,B_BAR},
         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_BAR,B_ICE,B_ICE,B_BAR},
@@ -466,64 +464,5 @@ const LevelMap level20=
     {9,7},
     {{1,10},{11,7},{3,5}},
 };
-
-// const LevelMap levelTest=
-// {
-//     {
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_GRA,B_GRA,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_END},
-//         {B_ICE,B_ICE,B1POR,B_ICE,B_ICE,B_ICE,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B2POR,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,BUDIR,B_ICE,B1POR,B_ICE},
-//         {B_ICE,B_ICE,B3POR,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,BUDIR,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,BUDIR,B_BAR,B_ICE,B2POR,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_GRA,B_GRA,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B3POR,B_ICE},
-//         {B_ICE,B_GRA,B_GRA,B_GRA,B_GRA,B_ICE,B_ICE,BRDIR,BDDIR,B_ICE,B_ICE,B_ICE},
-//         {B_GRA,B_GRA,B_GRA,B_GRA,B_GRA,B_ICE,B_ICE,BUDIR,BLDIR,B_ICE,B_ICE,B_ICE}
-//     },
-//     {4,0},
-//     {{7,3},{7,0},{6,5}},
-// };
-
-// const LevelMap level3=
-// {
-//     {
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//     },
-//     {0,0},
-//     {{3,0},{0,7},{10,7}},
-// };
-
-// const LevelMap level2=
-// {
-//     {
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE}
-//     },
-//     {4,0},
-//     {{7,3},{7,0},{6,5}},
-// };
-
+//LDRU RLLD RULD LURU LDRD
+//DULD RURL DLLU RULD RD
