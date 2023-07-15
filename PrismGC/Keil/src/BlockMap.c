@@ -27,6 +27,24 @@ uint8_t MapCoordEqual(MapCoord a,MapCoord b)
     return (a.i==b.i && a.j==b.j);
 }
 
+MapCoord PortalAnother(MapCoord here,PortalPair portal)
+{
+    if(MapCoordEqual(portal.p1,here))
+        return portal.p2;
+    else
+        return portal.p1;
+}
+
+void PortalWrite(MapCoord coord,PortalPair *portal)
+{
+    switch(portal->marker)
+    {
+        case 0: portal->p1=coord; portal->marker++; break;
+        case 1: portal->p2=coord; portal->marker++; break;
+        default: break;
+    }
+}
+
 const LevelMap level1=
 {
     {
@@ -230,13 +248,13 @@ const LevelMap level10=
 const LevelMap levelTest=
 {
     {
-        {B_ICE,B_ICE,B_ICE,B_ICE,B_GRA,B_GRA,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_END},
-        {B_ICE,B_ICE,B1POR,B_ICE,B_ICE,B_ICE,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-        {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_ICE,B1POR,B_ICE,B_GRA,B_GRA,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_END},
+        {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
         {B_ICE,B_ICE,B2POR,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-        {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,BUDIR,B_ICE,B1POR,B_ICE},
-        {B_ICE,B_ICE,B3POR,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,BUDIR,B_ICE,B_ICE,B_ICE},
-        {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,BUDIR,B_BAR,B_ICE,B2POR,B_ICE},
+        {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_ICE,B3POR,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,BUDIR,B1POR,B_ICE,B2POR},
+        {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,BUDIR,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,BUDIR,B_BAR,B_ICE,B_ICE,B_ICE},
         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
         {B_ICE,B_ICE,B_ICE,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
         {B_ICE,B_ICE,B_GRA,B_GRA,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B3POR,B_ICE},

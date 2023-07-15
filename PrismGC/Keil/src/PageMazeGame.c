@@ -13,6 +13,7 @@
 #include "Console.h"
 
 static LevelMap map;
+static PortalPair portal[POR_NUM];
 static uint8_t levelId;
 
 static int32_t CalX(MapCoord coord)
@@ -46,13 +47,17 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
 
     MapCoord coordResult=coord;
     MapCoord coordStep=coord;
+
     while(1)
     {
         coordStep=MapCoordPlus(coordStep,unitVec);
+
         uint8_t flag=0;
         if(CoordVailed(coordStep))
         {
             uint8_t blk=map.map[coordStep.i][coordStep.j];
+            MapCoord portalCoord=_MapCoord(0,0);
+
             if(blk!=B_BAR && blk!=B_GRA)
             {
                 coordResult=coordStep;
@@ -68,8 +73,19 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
                 case BDDIR: unitVec=_MapCoord(+1,0); break;
                 case BLDIR: unitVec=_MapCoord(0,-1); break;
                 case BRDIR: unitVec=_MapCoord(0,+1); break;
+                case B1POR: portalCoord=PortalAnother(coordStep,portal[0]); break;
+                case B2POR: portalCoord=PortalAnother(coordStep,portal[1]); break;
+                case B3POR: portalCoord=PortalAnother(coordStep,portal[2]); break;
                 case B_GRA: flag=1; *hitCoord=coordStep; break;
                 case B_BAR: flag=1; break;
+            }
+
+            if(blk==B1POR || blk==B2POR || blk==B3POR)
+            {
+                coordStep=portalCoord;
+                coordResult=coordStep;
+                moveProcess[mpI]=coordStep;
+                mpI++;
             }
         }
         else
@@ -106,6 +122,17 @@ static void MapFix()
     return;
 }
 
+static uint8_t GetBlockType(MapCoord coord)
+{
+    return map.map[coord.i][coord.j];
+}
+
+static void SetBlockType(MapCoord coord,uint8_t type)
+{
+    map.map[coord.i][coord.j]=type;
+    return;
+}
+
 void ConfigMazeGame(uint8_t _levelId)
 {
     levelId=_levelId;
@@ -130,8 +157,20 @@ void ConfigMazeGame(uint8_t _levelId)
     for(uint32_t i=0;i<APPLE_MAX;i++)
         map.coordApple[i]=pmap->coordApple[i];
     for(uint32_t i=0;i<MAP_H;i++)
+    {
         for(uint32_t j=0;j<MAP_W;j++)
-            map.map[i][j]=pmap->map[i][j];
+        {
+            uint8_t blk=pmap->map[i][j];
+            SetBlockType(_MapCoord(i,j),blk);
+            switch(blk)
+            {
+                case B1POR: PortalWrite(_MapCoord(i,j),&portal[0]); break;
+                case B2POR: PortalWrite(_MapCoord(i,j),&portal[1]); break;
+                case B3POR: PortalWrite(_MapCoord(i,j),&portal[2]); break;
+            }
+        }      
+    }
+
 
     return;
 }
@@ -144,17 +183,6 @@ static uint8_t AppleNumber(const uint8_t *getApple)
             applenumber++;
 
     return applenumber;
-}
-
-static uint8_t GetBlockType(MapCoord coord)
-{
-    return map.map[coord.i][coord.j];
-}
-
-static void SetBlockType(MapCoord coord,uint8_t type)
-{
-    map.map[coord.i][coord.j]=type;
-    return;
 }
 
 uint8_t PageMazeGame()
@@ -216,10 +244,18 @@ uint8_t PageMazeGame()
                         Apple(x,y,2);
             }
         }
-
-        printf("\r\n");
         
         MapFix();
+
+        // LCDPrintf(BLACK,WHITE,50,450,1,"%d,%d : %d,%d",
+        //     portal[0].p1.i,portal[0].p1.j,
+        //     portal[0].p2.i,portal[0].p2.j);
+        // LCDPrintf(BLACK,WHITE,50,470,1,"%d,%d : %d,%d",
+        //     portal[1].p1.i,portal[1].p1.j,
+        //     portal[1].p2.i,portal[1].p2.j);
+        // LCDPrintf(BLACK,WHITE,50,490,1,"%d,%d : %d,%d",
+        //     portal[2].p1.i,portal[2].p1.j,
+        //     portal[2].p2.i,portal[2].p2.j);
 
         // LCDPrintf(0x000000,0xFFFFFF,50,450,1,"i: %d",coord.i);
         // LCDPrintf(0x000000,0xFFFFFF,50,500,1,"j: %d",coord.j);
