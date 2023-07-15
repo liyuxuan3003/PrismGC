@@ -139,23 +139,27 @@ void ConfigMazeGame(uint8_t _levelId)
     const LevelMap *pmap;
     switch(_levelId)
     {
-        case 1 : pmap=&level1; break;
-        case 2 : pmap=&level2; break;
-        case 3 : pmap=&level3; break;
-        case 4 : pmap=&level4; break;
-        case 5 : pmap=&level5; break;
-        case 6 : pmap=&level6; break;
-        case 7 : pmap=&level7; break;
-        case 8 : pmap=&level8; break;
-        case 9 : pmap=&level9; break;
+        case 1 : pmap=&level1;  break;
+        case 2 : pmap=&level2;  break;
+        case 3 : pmap=&level3;  break;
+        case 4 : pmap=&level4;  break;
+        case 5 : pmap=&level5;  break;
+        case 6 : pmap=&level6;  break;
+        case 7 : pmap=&level7;  break;
+        case 8 : pmap=&level8;  break;
+        case 9 : pmap=&level9;  break;
         case 10: pmap=&level10; break;
         case 11: pmap=&level11; break;
         case 12: pmap=&level12; break;
         case 13: pmap=&level13; break;
         case 14: pmap=&level14; break;
         case 15: pmap=&level15; break;
-        case 16: pmap=&level16;break;
-        default: pmap=&level1; break;
+        case 16: pmap=&level16; break;
+        case 17: pmap=&level17; break;
+        case 18: pmap=&level18; break;
+        case 19: pmap=&level19; break;
+        case 20: pmap=&level20; break;
+        default: pmap=&level1;  break;
     }
 
     map.coord=pmap->coord;
