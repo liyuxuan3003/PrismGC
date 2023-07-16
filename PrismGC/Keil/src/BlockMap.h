@@ -22,6 +22,8 @@
 
 #define APPLE_MAX 3
 
+#define POR_NUM 3
+
 typedef struct
 {
     int32_t i;
@@ -44,7 +46,11 @@ typedef struct
 {
     MapCoord p1;
     MapCoord p2;
+    uint8_t marker;
 } PortalPair;
+
+MapCoord PortalAnother(MapCoord here,PortalPair portal);
+void PortalWrite(MapCoord coord,PortalPair *portal);
 
 extern const LevelMap level1;
 extern const LevelMap level2;
@@ -56,11 +62,23 @@ extern const LevelMap level7;
 extern const LevelMap level8;
 extern const LevelMap level9;
 extern const LevelMap level10;
-
+extern const LevelMap level11;
+extern const LevelMap level12;
+extern const LevelMap level13;
+extern const LevelMap level14;
+extern const LevelMap level15;
+extern const LevelMap level16;
 extern const LevelMap level17;
 extern const LevelMap level18;
 extern const LevelMap level19;
 extern const LevelMap level20;
+extern const LevelMap level21;
+extern const LevelMap level22;
+extern const LevelMap level23;
+extern const LevelMap level24;
+extern const LevelMap level25;
+extern const LevelMap level26;
+extern const LevelMap level27;
+extern const LevelMap level28;
 
-extern const LevelMap levelTest;
 #endif
