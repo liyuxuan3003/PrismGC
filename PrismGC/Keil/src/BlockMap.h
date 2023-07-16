@@ -72,5 +72,13 @@ extern const LevelMap level17;
 extern const LevelMap level18;
 extern const LevelMap level19;
 extern const LevelMap level20;
+extern const LevelMap level21;
+extern const LevelMap level22;
+extern const LevelMap level23;
+extern const LevelMap level24;
+extern const LevelMap level25;
+extern const LevelMap level26;
+extern const LevelMap level27;
+extern const LevelMap level28;
 
 #endif

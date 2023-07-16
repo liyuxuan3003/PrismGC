@@ -159,6 +159,13 @@ void ConfigMazeGame(uint8_t _levelId)
         case 18: pmap=&level18; break;
         case 19: pmap=&level19; break;
         case 20: pmap=&level20; break;
+        case 21: pmap=&level21; break;
+        case 22: pmap=&level22; break;
+        case 23: pmap=&level23; break;
+        case 24: pmap=&level24; break;
+        case 25: pmap=&level25; break;
+        case 26: pmap=&level26; break;
+        case 27: pmap=&level27; break;
         default: pmap=&level1;  break;
     }
 
