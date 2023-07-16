@@ -289,7 +289,7 @@ const LevelMap level19=//DRULDR
     {{2,0},{5,4},{11,11}},
 };
 
-const LevelMap level20=
+const LevelMap level20=//LDRURLLDRULDLURULDRD
 {
     {
         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
