@@ -1,0 +1,155 @@
+\documentclass{xStandalone}
+
+\begin{document}
+\begin{tikzpicture}
+
+\tikzset{outerframe/.style=ultra thin,gray}
+
+\tikzset{module/.style={thick,black}}
+
+\tikzset{moduleNode/.style={
+rectangle,draw,black,thick,
+minimum width=2.5cm,
+minimum height=1.0cm,
+align=center}},
+
+\tikzset{moduleNodeSmall/.style={
+rectangle,draw,black,thick,
+minimum width=2.5cm,
+minimum height=0.5cm,
+align=center}},
+
+\draw[outerframe] 
+(-7.5,-6.5) coordinate (A1) 
+rectangle 
+(+7.5,+7) coordinate (B2);
+
+\path
+(A1|-B2) coordinate (B1)
+(A1-|B2) coordinate (A2);
+
+\path 
+($(A1)!0.05!(A2)$) coordinate (X1)
+($(A1)!0.20!(A2)$) coordinate (X2)
+($(A1)!0.30!(A2)$) coordinate (X3)
+($(A1)!0.95!(A2)$) coordinate (X4);
+
+\path 
+($(A1)!0.95!(B1)$) coordinate (Y1)
+($(A1)!0.90!(B1)$) coordinate (Y2)
+($(A1)!0.80!(B1)$) coordinate (Y3)
+($(A1)!0.05!(B1)$) coordinate (Y4);
+
+\draw[module]
+(X1|-Y1) coordinate (top11)
+rectangle
+node {top}
+(X4|-Y2) coordinate (top22);
+
+\draw[module]
+(X1|-Y3)
+coordinate (M011)
+rectangle
+node[name] {Cortex M0}
+(X2|-Y4)
+coordinate (M022)
+(M011|-M022) coordinate (M012)
+(M011-|M022) coordinate (M021);
+
+\draw[module,dashed]
+(X3|-Y3)
+coordinate (P1)
+rectangle
+(X4|-Y4)
+coordinate (Q2);
+
+\path 
+(P1|-Q2) coordinate (Q1)
+(P1-|Q2) coordinate (P2);
+
+\path 
+($(P1)!0.5!(P2)$) node[below,black] {AHBLite};
+
+\path
+(P1) ++(2,-2) 
+node[moduleNode,name=Decoder]
+{Decoder};
+
+\path
+(Q1) ++(2,+1) 
+node[moduleNode,name=SlaveMux]
+{SlaveMux};
+
+\path (Decoder.east) ++(3.5,0.25) coordinate (X);
+
+\newcounter{cnt}
+
+\foreach \x in 
+{
+    RAMCode,
+    RAMData,
+    Timer,
+    GPIO,
+    UART,
+    IIC,
+    GPULite,
+    Buzzer,
+    Digit,
+    KeyBoard%
+}
+{
+    \path (X) node[moduleNodeSmall,name=\x] {\small \x};
+    \path (X) ++(0,-0.68) coordinate (X);
+    \draw[blue,-latex] (\x.east) -- ++(0.5,0) coordinate (\x 1) node[above] {\tiny\ttfamily HRDATAx};
+    \draw[blue] (\x 1) -- ++(\fpeval{1-0.07*\thecnt},0) coordinate (\x 2);
+    \draw[blue] (\x 2) |- ($(SlaveMux.north east)!\fpeval{1-(\thecnt+1)/11}!(SlaveMux.south east)$);
+
+    \draw[purple] ($(\x.north west)!0.75!(\x.south west)$) -- ++(-1,0) coordinate (\x 3)node[above] {\tiny\ttfamily HSELx};
+    \draw[purple,-latex] ($(\x 3)-(\fpeval{0.45+0.07*\thecnt},0)$) coordinate (\x 4) -- (\x 3);
+    \draw[purple] (\x 4) |- ($(Decoder.north east)!\fpeval{(\thecnt+1)/11}!(Decoder.south east)$);
+
+    \draw[red] ($(\x.north west)!0.25!(\x.south west)$) -- ++(-0.15,0) coordinate (\x 5);
+    \draw[red,-latex] ($(\x 5)+(-0.35,0)$) coordinate (\x 6) -- (\x 5);
+    \fill[red] (\x 6) circle (0.03); 
+
+    \draw[black!20!green] ($(\x.north west)!0.50!(\x.south west)$) -- ++(-0.15,0) coordinate (\x 7);
+    \draw[black!20!green,-latex] ($(\x 7)+(-0.5,0)$) coordinate (\x 8) -- (\x 7);
+    \fill[black!20!green] (\x 8) circle (0.03); 
+    \stepcounter{cnt}
+}
+
+\draw[red,-latex]
+($(M021)!0.06!(M022)$)
+coordinate (HWDATA)
+node[above right] {\ttfamily\small HWDATA}
+--
+(HWDATA-|P1);
+
+\draw[red]
+(HWDATA-|P1)
+-|
+(KeyBoard6);
+
+\draw[black!20!green,-latex]
+($(M021)!0.12!(M022)$)
+coordinate (HADDR)
+node[above right] {\ttfamily\small HADDR}
+--
+(HADDR-|P1);
+
+\draw[black!20!green]
+(HADDR-|P1)
+-|
+(KeyBoard8);
+
+\draw[blue,-latex] (SlaveMux.west) -- (SlaveMux.west-|M021) node[above right] {\ttfamily\small HRDATA};
+
+\draw[thick,-latex] ($(top11|-top22)!0.5!(top22)$) coordinate (IO) -- node[right,black] {IO Pin} (IO|-P1);
+
+\draw[purple,thick,-latex] (Decoder.south) -- node[left] {Select} (SlaveMux.north); 
+
+\draw[black!20!green,-latex] (Decoder.north|-HADDR) -- (Decoder.north);
+
+
+\end{tikzpicture}
+\end{document}

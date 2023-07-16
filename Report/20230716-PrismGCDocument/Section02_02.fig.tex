@@ -1,0 +1,71 @@
+\documentclass{xStandalone}
+
+\begin{document}
+\begin{tikzpicture}
+\tikzset{outerframe/.style=ultra thin,gray}
+
+\tikzset{module/.style={
+rectangle,draw,black,thick,
+minimum width=4cm,
+minimum height=0.75cm,
+align=center}}
+
+\draw[outerframe] 
+(-7.5,-2) coordinate (A1) 
+rectangle 
+(+7.5,+2) coordinate (B2);
+
+\path
+(A1|-B2) coordinate (B1)
+(A1-|B2) coordinate (A2);
+
+\path (-4,+0.9)
+node[module,name=uAHBCode] 
+{uAHBLiteRAMCode}
+(uAHBCode.south)
+node[below,black] 
+{\small\ttfamily AHBLiteBlockRAM.v};
+
+\path (+4,+0.9)
+node[module,name=uCode] 
+{uRAMCode}
+(uCode.south)
+node[below,black] 
+{\small\ttfamily BlockRAM.v};
+
+\draw[-latex] 
+($(uAHBCode.north east)!0.33!(uAHBCode.south east)$)
+--
+($(uCode.north west)!0.33!(uCode.south west)$);
+
+\draw[latex-] 
+($(uAHBCode.north east)!0.66!(uAHBCode.south east)$)
+--
+($(uCode.north west)!0.66!(uCode.south west)$);
+
+\path (-4,-0.9)
+node[module,name=uAHBData] 
+{uAHBLiteRAMData}
+(uAHBData.south)
+node[below,black] 
+{\small\ttfamily AHBLiteBlockRAM.v};
+
+\path (+4,-0.9)
+node[module,name=uData] 
+{uRAMData}
+(uData.south)
+node[below,black] 
+{\small\ttfamily BlockRAM.v};
+
+\draw[-latex] 
+($(uAHBData.north east)!0.33!(uAHBData.south east)$)
+--
+($(uData.north west)!0.33!(uData.south west)$);
+
+\draw[latex-] 
+($(uAHBData.north east)!0.66!(uAHBData.south east)$)
+--
+($(uData.north west)!0.66!(uData.south west)$);
+
+\end{tikzpicture}
+\end{document}
