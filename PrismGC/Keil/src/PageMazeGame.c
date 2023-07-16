@@ -313,14 +313,16 @@ uint8_t PageMazeGame()
                 if(MapCoordEqual(moveProcess[mpCirculate],map.coordApple[m]) && !getApple[m])
                     getApple[m]=1;
 
-            mpCirculate++;
-
             switch(map.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
             {
-                case B1POR: BUZZER -> NOTE = 3; BUZZER -> TIME = 50; break;
-                case B2POR: BUZZER -> NOTE = 4; BUZZER -> TIME = 50; break;
-                case B3POR: BUZZER -> NOTE = 5; BUZZER -> TIME = 50; break;
+                // case B1POR: BUZZER -> NOTE = 3; BUZZER -> TIME = 50; break;
+                // case B2POR: BUZZER -> NOTE = 4; BUZZER -> TIME = 50; break;
+                // case B3POR: BUZZER -> NOTE = 5; BUZZER -> TIME = 50; break;
+                case BDDIR: BUZZER -> NOTE = 3; BUZZER -> TIME = 50; break;
+                default: break;
             }
+            
+            mpCirculate++;
 
             if(mpCirculate == mpLen)
             {
