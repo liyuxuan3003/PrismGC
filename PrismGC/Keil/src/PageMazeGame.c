@@ -4,6 +4,7 @@
 #include "Timer.h"
 #include "GetKey.h"
 #include "GPULite.h"
+#include "Buzzer.h"
 
 #include "Block.h"
 #include "BlockMap.h"
@@ -313,6 +314,13 @@ uint8_t PageMazeGame()
                     getApple[m]=1;
 
             mpCirculate++;
+
+            switch(map.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
+            {
+                case B1POR: BUZZER -> NOTE = 3; BUZZER -> TIME = 50; break;
+                case B2POR: BUZZER -> NOTE = 4; BUZZER -> TIME = 50; break;
+                case B3POR: BUZZER -> NOTE = 5; BUZZER -> TIME = 50; break;
+            }
 
             if(mpCirculate == mpLen)
             {

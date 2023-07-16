@@ -85,7 +85,7 @@ Reset_Handler   PROC
                 GLOBAL  Reset_Handler
 				ENTRY
                 IMPORT  __main
-1                    LDR     R0, =__main
+                    LDR     R0, =__main
 				MOV     R8, R0
                 MOV     R9, R8
                 BX      R0
