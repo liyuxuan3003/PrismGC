@@ -162,6 +162,13 @@ void ConfigMazeGame(uint8_t _levelId)
         default: pmap=&level1;  break;
     }
 
+    for(uint32_t i=0;i<POR_NUM;i++)
+    {
+        portal[i].p1=_MapCoord(0,0);
+        portal[i].p2=_MapCoord(0,0);
+        portal[i].marker=0;
+    } 
+
     map.coord=pmap->coord;
     for(uint32_t i=0;i<APPLE_MAX;i++)
         map.coordApple[i]=pmap->coordApple[i];
@@ -179,7 +186,6 @@ void ConfigMazeGame(uint8_t _levelId)
             }
         }      
     }
-
 
     return;
 }
