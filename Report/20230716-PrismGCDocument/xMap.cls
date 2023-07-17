@@ -1,0 +1,99 @@
+\ProvidesClass{xMap}
+
+\LoadClass{xStandalone}
+
+\definecolor{ColorICE}{HTML}{CCCCFF}
+\definecolor{ColorBAR}{HTML}{FFFFFF}
+\definecolor{ColorEND}{HTML}{33EE88}
+\definecolor{ColorDIR}{HTML}{1155DD}
+\definecolor{ColorDIRARR}{HTML}{FFFFFF}
+\definecolor{ColorGRA}{HTML}{CCCCCC}
+\definecolor{ColorGRABUT}{HTML}{888888}
+\definecolor{ColorPOR}{HTML}{333333}
+\definecolor{ColorPORSY1}{HTML}{CC8888}
+\definecolor{ColorPORSY2}{HTML}{88CC88}
+\definecolor{ColorPORSY3}{HTML}{8888CC}
+
+\NewDocumentCommand{\Block}{mmm}
+{
+    \path(\fpeval{#2},\fpeval{12-(#1)-1})
+    coordinate (cent);
+
+    \fill[#3]
+    ($(cent)+(-0.4,-0.4)$)
+    rectangle
+    ($(cent)+(+0.4,+0.4)$);
+}
+
+\NewDocumentCommand{\BlockICE}{mm}
+{
+    \Block{#1}{#2}{ColorICE}
+}
+
+\NewDocumentCommand{\BlockBAR}{mm}
+{
+    \Block{#1}{#2}{ColorBAR}
+}
+
+\NewDocumentCommand{\BlockEND}{mm}
+{
+    \Block{#1}{#2}{ColorEND}
+}
+
+\NewDocumentCommand{\BlockDIR}{mmm}
+{
+    \Block{#1}{#2}{ColorDIR}
+    \ifthenelse{\equal{#3}{R}}
+    {
+        \path (cent) ++(0,-0.05) node[white] {\LARGE $\rightarrow$};
+    }{}
+
+    \ifthenelse{\equal{#3}{L}}
+    {
+        \path (cent) ++(0,-0.05) node[white] {\LARGE $\leftarrow$};
+    }{}
+
+    \ifthenelse{\equal{#3}{U}}
+    {
+        \path (cent) node[white] {\LARGE $\uparrow$};
+    }{}
+
+    \ifthenelse{\equal{#3}{D}}
+    {
+        \path (cent) node[white] {\LARGE $\downarrow$};
+    }{}
+}
+
+\NewDocumentCommand{\BlockGRA}{mm}
+{
+    \Block{#1}{#2}{ColorGRABUT}
+    \fill[ColorGRA] ($(cent)+(0.32,0.32)$) rectangle ($(cent)+(-0.32,-0.32)$);
+}
+
+\NewDocumentCommand{\BlockPOR}{mmm}
+{
+    \Block{#1}{#2}{ColorPOR}
+    \ifthenelse{\equal{#3}{1}}
+    {
+        \fill[ColorPORSY1] ($(cent)+(0.35,0.35)$) rectangle ($(cent)+(-0.35,-0.35)$);
+    }{}
+    \ifthenelse{\equal{#3}{2}}
+    {
+        \fill[ColorPORSY2] ($(cent)+(0.35,0.35)$) rectangle ($(cent)+(-0.35,-0.35)$);
+    }{}
+    \ifthenelse{\equal{#3}{3}}
+    {
+        \fill[ColorPORSY3] ($(cent)+(0.35,0.35)$) rectangle ($(cent)+(-0.35,-0.35)$);
+    }{}
+    \fill[ColorPOR] ($(cent)+(0.25,0.25)$) rectangle ($(cent)+(-0.25,-0.25)$);
+}
+
+\NewDocumentCommand{\Apple}{mm}
+{
+    \draw[black,fill=red!50!white,thick] (\fpeval{#2},\fpeval{12-(#1)-1}) circle(0.25) ++(0,0.02) node[white]{A};
+}
+
+\NewDocumentCommand{\MainCht}{mm}
+{
+    \draw[black,fill=blue!50!white,thick] (\fpeval{#2},\fpeval{12-(#1)-1}) circle(0.25) ++(0,0.01) node[white]{S};
+}
