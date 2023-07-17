@@ -315,15 +315,25 @@ uint8_t PageMazeGame()
             MainCharactor(CalX(moveProcess[mpCirculate]),CalY(moveProcess[mpCirculate]),2);
             
             for(uint32_t m=0;m<APPLE_MAX;m++)
-                if(MapCoordEqual(moveProcess[mpCirculate],map.coordApple[m]) && !getApple[m])
-                    getApple[m]=1;
-
-            switch(map.map[moveProcess[mpCirculate].i][moveProcess[mpCirculate].j])
             {
-                // case B1POR: BUZZER -> NOTE = 3; BUZZER -> TIME = 50; break;
-                // case B2POR: BUZZER -> NOTE = 4; BUZZER -> TIME = 50; break;
-                // case B3POR: BUZZER -> NOTE = 5; BUZZER -> TIME = 50; break;
-                case BDDIR: BUZZER -> NOTE = 3; BUZZER -> TIME = 50; break;
+                if(MapCoordEqual(moveProcess[mpCirculate],map.coordApple[m]) && !getApple[m])
+                {
+                    getApple[m]=1;
+                    BUZZER -> NOTE = 2; 
+                    BUZZER -> TIME = 200;
+                }
+            }
+
+            switch(GetBlockType(moveProcess[mpCirculate]))
+            {
+                case B1POR: BUZZER -> NOTE = 7; BUZZER -> TIME = 40; break;
+                case B2POR: BUZZER -> NOTE = 7; BUZZER -> TIME = 40; break;
+                case B3POR: BUZZER -> NOTE = 7; BUZZER -> TIME = 40; break;
+                case BLDIR: BUZZER -> NOTE = 5; BUZZER -> TIME = 80; break;
+                case BRDIR: BUZZER -> NOTE = 5; BUZZER -> TIME = 80; break;
+                case BUDIR: BUZZER -> NOTE = 5; BUZZER -> TIME = 80; break;
+                case BDDIR: BUZZER -> NOTE = 5; BUZZER -> TIME = 80; break;
+                case B_END: BUZZER -> NOTE = 4; BUZZER -> TIME = 500; break;
                 default: break;
             }
             
@@ -339,6 +349,8 @@ uint8_t PageMazeGame()
                     if(waitHit==0)
                     {
                         waitHit=1;
+                        BUZZER -> NOTE = 1; 
+                        BUZZER -> TIME = 200;
                         SetBlockType(hitCoord,BHGRA);
                     }
                     else
