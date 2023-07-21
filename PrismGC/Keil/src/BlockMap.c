@@ -444,7 +444,7 @@ const LevelMap level19=
 };
 //DRUL DR
 
-const LevelMap level20=//LDRURLLDRULDLURULDRD
+const LevelMap level20=
 {
     {
         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
@@ -463,6 +463,7 @@ const LevelMap level20=//LDRURLLDRULDLURULDRD
     {9,7},
     {{1,10},{11,7},{3,5}},
 };
+//LDRU RLLD RULD LURU LDRD
 
 const LevelMap level21=
 {
@@ -630,6 +631,7 @@ const LevelMap level28=
     {1,0},
     {{5,0},{11,2},{10,10}},
 };
+//RDLU DRUR DRUL
 
 const LevelMap level29=
 {
@@ -650,6 +652,7 @@ const LevelMap level29=
     {9,6},
     {{9,4},{6,2},{5,9}},
 };
+//LRUL URD
 
 const LevelMap level30=
 {
@@ -670,6 +673,8 @@ const LevelMap level30=
     {10,4},
     {{7,3},{5,8},{2,2}},
 };
+//ULRU LDUL LDLU RU
+
 const LevelMap level31=
 {
     {
@@ -689,6 +694,7 @@ const LevelMap level31=
     {3,9},
     {{7,9},{10,9},{0,11}},
 };
+//LDRD URDL LRD
 
 const LevelMap level32=
 {
@@ -709,7 +715,7 @@ const LevelMap level32=
     {5,11},
     {{5,7},{1,9},{9,1}},
 };
-
+//LDLD DULD LUU
 
 //LDRU RLLD RULD LURU LDRD
 //DULD RURL DLLU RULD RD
