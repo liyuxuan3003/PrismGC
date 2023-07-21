@@ -37,6 +37,11 @@ uint8_t PageMain()
         if(NunchuckKey()=='C')
             return PAGE_MENU;
 
+        if(KEYBOARD -> KEY != 0xFF)
+        {
+            if(KEYBOARD -> KEY != 0x0F)
+                return PAGE_MENU;
+        }
         // switch (KEYBOARD -> KEY)
         // {
         //     case 0x00: return PAGE_BLOCK_GAME; break;
@@ -47,8 +52,7 @@ uint8_t PageMain()
         //     case 0x0F: break;
         //     default: break;
         // }
-        if(KEYBOARD -> KEY != 0xFF)
-            return PAGE_MENU;
+            
             
         if(SWI_7(P)==0)
             BGMPageMain();
