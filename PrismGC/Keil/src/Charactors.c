@@ -1,4 +1,6 @@
 #include "Charactors.h"
+#include "Charactors.h"
+#include "Charactors.h"
 #include "GPULite.h"
 #include "GlobalDefine.h"
 #include "Block.h"

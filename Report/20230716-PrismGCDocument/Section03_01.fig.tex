@@ -1,0 +1,45 @@
+\documentclass{xStandalone}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    
+\foreach \x in {0,1,2,3}
+{
+    \foreach \y in {0,1,2,3}
+    {
+        \draw (-\x,\y) coordinate (T1) rectangle ++(0.5,0.5) coordinate (T2);
+        \path ($(T1)!0.5!(T2)$) coordinate (P\x\y);
+    }
+}
+
+\path (P00) node[below=0.4cm] {\small \texttt{0x0}};
+\path (P10) node[below=0.4cm] {\small \texttt{0x1}};
+\path (P20) node[below=0.4cm] {\small \texttt{0x2}};
+\path (P30) node[below=0.4cm] {\small \texttt{0x3}};
+
+\path (P01) node[below=0.4cm] {\small \texttt{0x4}};
+\path (P11) node[below=0.4cm] {\small \texttt{0x5}};
+\path (P21) node[below=0.4cm] {\small \texttt{0x6}};
+\path (P31) node[below=0.4cm] {\small \texttt{0x7}};
+
+\path (P02) node[below=0.4cm] {\small \texttt{0x8}};
+\path (P12) node[below=0.4cm] {\small \texttt{0x9}};
+\path (P22) node[below=0.4cm] {\small \texttt{0xA}};
+\path (P32) node[below=0.4cm] {\small \texttt{0xB}};
+
+\path (P03) node[below=0.4cm] {\small \texttt{0xC}};
+\path (P13) node[below=0.4cm] {\small \texttt{0xD}};
+\path (P23) node[below=0.4cm] {\small \texttt{0xE}};
+\path (P33) node[below=0.4cm] {\small \texttt{0xF}};
+
+\path (P31) node {\texttt{L}}; 
+\path (P11) node {\texttt{R}};
+\path (P20) node {\texttt{D}};
+\path (P22) node {\texttt{U}};
+
+\path (P21) node {\texttt{C}};
+
+\path (P33) node {\texttt{E}};
+
+\end{tikzpicture}
+\end{document}

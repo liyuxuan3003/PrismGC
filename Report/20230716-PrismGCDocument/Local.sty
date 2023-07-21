@@ -1,3 +1,47 @@
 \ProvidesPackage{Local}
 
 \RequirePackage{xcolor}
+
+\usetikzlibrary{trees}
+\usetikzlibrary{mindmap}
+
+
+\RequirePackage{listings}
+\renewcommand{\lstlistlistingname}{代码}
+\renewcommand{\lstlistingname}{代码}
+
+\xrefcreate{code}{代码}
+
+\lstset{
+    basicstyle          =   \ttfamily\scriptsize,          % 基本代码风格
+    keywordstyle        =   \bfseries,          % 关键字风格
+    commentstyle        =   \rmfamily,          % 注释的风格
+    stringstyle         =   \ttfamily,          % 字符串风格
+    tabsize             =   4,                  % 缩进长度
+    flexiblecolumns,                
+    numbers             =   left,               % 行号的位置
+    showspaces          =   false,              % 是否显示空格
+    numberstyle         =   \tiny\ttfamily,     % 行号的样式
+    showstringspaces    =   false,
+    captionpos          =   t,                  % 代码标题位置
+    frame               =   lrtb                % 显示边框
+    breaklines          =   true,               % 自动换行
+    columns             =   fixed,              % 字间距固定
+    basewidth           =   0.5em
+}
+
+\lstdefinestyle{Verilog}{
+    language        =   Verilog,
+    keywordstyle    =   \color{blue},
+    keywordstyle    =   [2] \color{teal},
+    stringstyle     =   \color{magenta},
+    commentstyle    =   \color{red}
+}
+
+\lstdefinestyle{C}{
+    language        =   C,
+    keywordstyle    =   \color{blue},
+    keywordstyle    =   [2] \color{teal},
+    stringstyle     =   \color{magenta},
+    commentstyle    =   \color{red}
+}

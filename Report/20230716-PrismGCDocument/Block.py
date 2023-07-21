@@ -2,7 +2,7 @@
 
 import re
 
-file=open("Data")
+file=open("Block.txt")
 filestr=file.read()
 
 obj=eval(filestr)
@@ -10,15 +10,19 @@ obj=eval(filestr)
 mapId=0
 for map in obj:
     mapId=mapId+1
-    fileTex=open("Map{:02d}.tex".format(mapId),'w+')
+    fileTex=open("Map{:02d}.fig.tex".format(mapId),'w+')
     fileTex.write(r'\documentclass{xMap}'+'\n\n')
     fileTex.write(r'\begin{document}'+'\n')
     fileTex.write(r'\begin{tikzpicture}'+'\n')
+    fileTex.write(r'\draw[thin,gray,fill=white] (-0.5,-0.5) rectangle (11.5,11.5);')
     i=0
     for blockLine in map[0]:
         j=0
         for block in blockLine:
-            fileTex.write(r"\Block"+block[2:5]+"{"+str(i)+"}"+"{"+str(j)+"}\n")
+            if block[2:5] not in ["POR","DIR"]:
+                fileTex.write(r"\Block"+block[2:5]+"{"+str(i)+"}"+"{"+str(j)+"}\n")
+            else:
+                fileTex.write(r"\Block"+block[2:5]+"{"+str(i)+"}"+"{"+str(j)+"}"+"{"+str(block[1])+"}\n")
             j+=1
         i+=1
 

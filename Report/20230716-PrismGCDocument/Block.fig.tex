@@ -1,0 +1,24 @@
+\documentclass{xMap}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.6]
+    \draw[fill=black!30!white] (-0.5,11.5) rectangle (9.5,10.5);
+
+    \BlockICE{0}{0}
+    \BlockBAR{0}{1}
+    \BlockDIR{0}{2}{L}
+    \BlockDIR{0}{3}{R}
+    \BlockDIR{0}{4}{U}
+    \BlockDIR{0}{5}{D}
+    \BlockGRA{0}{6}
+    \BlockPOR{0}{7}{1}
+    \BlockPOR{0}{8}{2}
+    \BlockPOR{0}{9}{3}
+
+    \foreach \x/\t in {0/冰面,1/雪堆,2/机关--左,3/机关--右,4/机关--上,5/机关--下,6/碎石,7/法阵1,8/法阵2,9/法阵3}
+    {
+        \path (\x,10.5) node[below] {\t};
+    }
+
+\end{tikzpicture}
+\end{document}

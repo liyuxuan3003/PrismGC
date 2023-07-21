@@ -2,7 +2,7 @@
 
 \begin{document}
 \begin{tikzpicture}
-\BlockBAR{0}{0}
+\draw[thin,gray,fill=white] (-0.5,-0.5) rectangle (11.5,11.5);\BlockBAR{0}{0}
 \BlockBAR{0}{1}
 \BlockBAR{0}{2}
 \BlockBAR{0}{3}
@@ -55,13 +55,13 @@
 \BlockICE{4}{2}
 \BlockICE{4}{3}
 \BlockICE{4}{4}
-\BlockBAR{4}{5}
-\BlockBAR{4}{6}
+\BlockDIR{4}{5}{D}
+\BlockICE{4}{6}
 \BlockICE{4}{7}
 \BlockICE{4}{8}
 \BlockICE{4}{9}
 \BlockEND{4}{10}
-\BlockICE{4}{11}
+\BlockDIR{4}{11}{L}
 \BlockICE{5}{0}
 \BlockICE{5}{1}
 \BlockICE{5}{2}
@@ -86,10 +86,10 @@
 \BlockICE{6}{9}
 \BlockICE{6}{10}
 \BlockICE{6}{11}
-\BlockICE{7}{0}
+\BlockDIR{7}{0}{R}
 \BlockICE{7}{1}
 \BlockICE{7}{2}
-\BlockICE{7}{3}
+\BlockDIR{7}{3}{U}
 \BlockICE{7}{4}
 \BlockICE{7}{5}
 \BlockICE{7}{6}
@@ -147,8 +147,8 @@
 \BlockBAR{11}{10}
 \BlockBAR{11}{11}
 \MainCht{4}{0}
-\Apple{7}{4}
-\Apple{4}{4}
-\Apple{5}{11}
+\Apple{6}{0}
+\Apple{7}{2}
+\Apple{6}{5}
 \end{tikzpicture}
 \end{document}

@@ -359,7 +359,6 @@ const LevelMap level15=
     {{1,1},{0,9},{10,10}},
 };
 //RLDU RDRU DDD
-//RLUU DURR DDR
 
 const LevelMap level16=
 {
