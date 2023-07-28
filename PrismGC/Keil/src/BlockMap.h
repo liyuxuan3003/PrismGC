@@ -16,11 +16,13 @@
 #define B1POR 11
 #define B2POR 12
 #define B3POR 13
+#define ENEMY 14
 
 #define MAP_W 12
 #define MAP_H 12
 
 #define APPLE_MAX 3
+#define CHARA_MAX 3
 
 #define POR_NUM 3
 

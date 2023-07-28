@@ -70,6 +70,7 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
             {
                 case B_ICE: break;
                 case B_END: flag=1; break;
+                case B_TRP: flag=1; break;
                 case BUDIR: unitVec=_MapCoord(-1,0); break;
                 case BDDIR: unitVec=_MapCoord(+1,0); break;
                 case BLDIR: unitVec=_MapCoord(0,-1); break;
@@ -226,6 +227,7 @@ uint8_t PageMazeGame()
     uint32_t isAnimate=0;
     uint8_t isPageChange=0;
     uint8_t gameStep=0;
+    uint8_t isWin=1;
 
     uint8_t getApple[APPLE_MAX]={0};
 
@@ -265,6 +267,7 @@ uint8_t PageMazeGame()
                     case B1POR: BlockPOR(x,y,1); break;
                     case B2POR: BlockPOR(x,y,2); break;
                     case B3POR: BlockPOR(x,y,3); break;
+                    case B_TRP: BlockTRP(x,y); break;
                 }
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
@@ -292,7 +295,15 @@ uint8_t PageMazeGame()
         {
             MainCharactor(CalX(coord),CalY(coord),2);
             if(map.map[coord.i][coord.j]==B_END)
+            {
                 isPageChange=1;
+                isWin=1;
+            }
+            else if(map.map[coord.i][coord.j]==B_TRP)
+            {
+                isPageChange=1;
+                isWin=0;
+            }
 
             if(IsDirection(key))
             {
@@ -304,7 +315,6 @@ uint8_t PageMazeGame()
                 {
                     coord=coordNext;
                     gameStep++;
-
                     isAnimate=1;
                     mpCirculate=0;
                 }
@@ -372,7 +382,7 @@ uint8_t PageMazeGame()
 
         if(isPageChange)
         {
-            ConfigEnd(levelId,AppleNumber(getApple),gameStep);
+            ConfigEnd(levelId,AppleNumber(getApple),gameStep,isWin);
             return PAGE_END;
         }
 
