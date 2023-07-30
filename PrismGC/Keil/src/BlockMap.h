@@ -16,7 +16,8 @@
 #define B1POR 11
 #define B2POR 12
 #define B3POR 13
-#define ENEMY 14
+#define B_ANM 14
+#define B_MCG 15
 
 #define MAP_W 12
 #define MAP_H 12
@@ -42,6 +43,8 @@ typedef struct
     uint8_t map[MAP_W][MAP_H];
     MapCoord coord;
     MapCoord coordApple[APPLE_MAX];
+    MapCoord coordAnimal;
+    MapCoord coordMcgAct;
 } LevelMap;
 
 typedef struct
