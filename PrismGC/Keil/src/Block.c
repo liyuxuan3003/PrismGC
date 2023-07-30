@@ -108,3 +108,33 @@ void BlockPOR(uint32_t x,uint32_t y,uint32_t id)
 //     Arrow(x,y,z,WHITE);
 //     return;
 // }
+
+
+void BlockDOR(uint32_t x,uint32_t y,uint32_t opensign)
+{
+    BlockICE(x,y);
+    if(opensign>=1)//123表示开门动作，321表示关门动作，3紧闭，1大开
+    {
+        LCDPixelSquare(COLOR_DOR,x-BLOCK_INNE,y-BLOCK_INNE,x-BLOCK_INNE+4,y+BLOCK_INNE);
+        LCDPixelSquare(COLOR_DOR,x+BLOCK_INNE-4,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
+        if(opensign>=2)
+        {
+            LCDPixelSquare(COLOR_DOR_BOARD,x-BLOCK_INNE+4+2,y-BLOCK_INNE+4,x-BLOCK_INNE+8+2,y+BLOCK_INNE-4);
+            LCDPixelSquare(COLOR_DOR_BOARD,x+BLOCK_INNE-8-2,y-BLOCK_INNE+4,x+BLOCK_INNE-4-2,y+BLOCK_INNE-4);
+            LCDPixelSquare(COLOR_DOR,x-BLOCK_INNE,y-12,x-BLOCK_INNE+16,y-8);
+            LCDPixelSquare(COLOR_DOR,x-BLOCK_INNE,y+8,x-BLOCK_INNE+16,y+12);
+            LCDPixelSquare(COLOR_DOR,x+BLOCK_INNE-16,y-12,x+BLOCK_INNE,y-8);
+            LCDPixelSquare(COLOR_DOR,x+BLOCK_INNE-16,y+8,x+BLOCK_INNE,y+12);
+            if(opensign>=3)
+            {
+                LCDPixelSquare(COLOR_DOR_BOARD,x-BLOCK_INNE+12+2,y-BLOCK_INNE+4,x-BLOCK_INNE+16+2,y+BLOCK_INNE-4);
+                LCDPixelSquare(COLOR_DOR_BOARD,x+BLOCK_INNE-16-2,y-BLOCK_INNE+4,x+BLOCK_INNE-12-2,y+BLOCK_INNE-4);
+                LCDPixelSquare(COLOR_DOR,x-BLOCK_INNE+10,y-12,x,y-8);
+                LCDPixelSquare(COLOR_DOR,x-BLOCK_INNE+10,y+8,x,y+12);
+                LCDPixelSquare(COLOR_DOR,x,y-12,x+BLOCK_INNE-10,y-8);
+                LCDPixelSquare(COLOR_DOR,x,y+8,x+BLOCK_INNE-10,y+12);
+            }
+        }
+    }
+    return;
+}

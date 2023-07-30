@@ -72,6 +72,11 @@ uint8_t PageMain()
         MainCharactor(150,270,8);
         Apple(1024-150,277,6);
 
+        //test
+        BlockDOR(200,200,1);
+        BlockDOR(200,300,2);
+        BlockDOR(200,400,3);
+
         const char title[]="Invincible Slime's Adventure";
         const char titleSub[]="Click any key to start";
 
