@@ -138,3 +138,28 @@ void BlockDOR(uint32_t x,uint32_t y,uint32_t opensign)
     }
     return;
 }
+
+void BlockTRP(uint32_t x,uint32_t y)
+{
+    BlockICE(x,y);
+    LCDPixelSquare(COLOR_BAR,x-8,y-7,x+7,y-6);
+    LCDPixelSquare(COLOR_BAR,x-8,y-5,x+7,y-5);
+    LCDPixelSquare(COLOR_TRP,x-6,y-5,x+5,y-5);
+    LCDPixelSquare(COLOR_BAR,x-10,y-4,x+9,y-4);
+    LCDPixelSquare(COLOR_TRP,x-8,y-4,x+7,y-4);
+    LCDPixelSquare(COLOR_BAR,x-14,y-3,x+10,y-3);
+    LCDPixelSquare(COLOR_TRP,x-12,y-3,x+8,y-3);
+    LCDPixelSquare(COLOR_BAR,x-15,y-2,x+11,y-2);
+    LCDPixelSquare(COLOR_TRP,x-13,y-2,x+9,y-2);
+    LCDPixelSquare(COLOR_BAR,x-17,y-1,x+12,y-1);
+    LCDPixelSquare(COLOR_TRP,x-15,y-1,x+10,y-1);
+    LCDPixelSquare(COLOR_BAR,x-18,y-0,x+14,y-0);
+    LCDPixelSquare(COLOR_TRP,x-16,y-0,x+12,y-0);
+    LCDPixelSquare(COLOR_TRP,x-15,y+1,x+15,y+1);
+    LCDPixelSquare(COLOR_TRP,x-13,y+2,x+16,y+2);
+    LCDPixelSquare(COLOR_TRP,x-10,y+3,x+14,y+3);
+    LCDPixelSquare(COLOR_TRP,x-9,y+4,x+12,y+4);
+    LCDPixelSquare(COLOR_TRP,x-8,y+5,x+9,y+5);
+    LCDPixelSquare(COLOR_TRP,x-8,y+6,x+7,y+6);
+    return;
+}

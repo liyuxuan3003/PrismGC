@@ -27,6 +27,8 @@
 #define COLOR_DOR 0x884400
 #define COLOR_DOR_BOARD 0xCCCC00
 
+#define COLOR_TRP 0x00CCFF
+
 /*-------------------------------*/
 
 #define COLOR_GRO 0xFFFFFF
@@ -48,6 +50,7 @@ void BlockDIR(uint32_t x,uint32_t y,uint32_t z);
 void BlockGRA(uint32_t x,uint32_t y,uint8_t hit);
 void BlockPOR(uint32_t x,uint32_t y,uint32_t id);
 void BlockDOR(uint32_t x,uint32_t y,uint32_t opensign);
+void BlockTRP(uint32_t x,uint32_t y);
 
 // void BlockMAC(uint32_t x,uint32_t y,uint32_t z);
 // void BlockTRP(uint32_t x,uint32_t y);

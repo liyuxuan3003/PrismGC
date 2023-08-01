@@ -76,6 +76,7 @@ uint8_t PageMain()
         BlockDOR(200,200,1);
         BlockDOR(200,300,2);
         BlockDOR(200,400,3);
+        BlockTRP(200,500);
 
         const char title[]="Invincible Slime's Adventure";
         const char titleSub[]="Click any key to start";
