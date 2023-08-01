@@ -32,9 +32,10 @@ static uint8_t CoordVailed(MapCoord coord)
     return (coord.i>=0 && coord.i<MAP_H && coord.j>=0 && coord.j<MAP_W);
 }
 
-static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess,uint32_t *mpLen,MapCoord *hitCoord,uint32_t *animalVec)
+static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess,uint32_t *mpLen,MapCoord *hitCoord,uint32_t *animalVec,MapCoord coordMcgAct)
 {
     uint32_t mpI=0;
+    uint32_t isMcgChange=0;
     *mpLen=0;
     *hitCoord=_MapCoord(-1,-1);
     MapCoord unitVec=_MapCoord(0,0);
@@ -48,6 +49,7 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
 
     MapCoord coordResult=coord;
     MapCoord coordStep=coord;
+    MapCoord coordMcgTest=coord;
 
     while(1)
     {
@@ -59,17 +61,33 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
             uint8_t blk=map.map[coordStep.i][coordStep.j];
             MapCoord portalCoord=_MapCoord(0,0);
 
+            if(MapCoordEqual(coordStep,coordMcgAct))
+                isMcgChange=1;
+
             if(blk!=B_BAR && blk!=B_GRA && blk!=BMCGB)
             {
+                coordMcgTest=coordResult;
                 coordResult=coordStep;
                 moveProcess[mpI]=coordStep;
+                if(blk == BMCGI && isMcgChange==1)
+                    moveProcess[mpI]=coordMcgTest;
                 mpI++;
             }
 
             switch(blk)
             {
                 case B_ICE: break;
-                case BMCGI: break;
+                case BMCGI: 
+                {
+                    if(isMcgChange==1)
+                    {
+                        coordResult=coordMcgTest;
+                        flag=1;
+                        break;
+                    }
+                    else
+                        break;
+                }
                 case B_END: flag=1; break;
                 case B_TRP: flag=1; break;
                 case BUDIR: unitVec=_MapCoord(-1,0); break;
@@ -81,7 +99,22 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
                 case B3POR: portalCoord=PortalAnother(coordStep,portal[2]); break;
                 case B_GRA: flag=1; *hitCoord=coordStep; break;
                 case B_BAR: flag=1; break;
-                case BMCGB: flag=1; break;
+                case BMCGB: 
+                {
+                    if(isMcgChange==1)
+                    {
+                        coordMcgTest=coordResult;
+                        coordResult=coordStep;
+                        moveProcess[mpI]=coordStep;
+                        mpI++;
+                        break;
+                    }
+                    else
+                    {
+                        flag=1;
+                        break;
+                    }
+                }
             }
 
             if(blk==B1POR || blk==B2POR || blk==B3POR)
@@ -318,9 +351,9 @@ uint8_t PageMazeGame()
     {
         for(int8_t j=MAP_H-1;j>=0;j--)
         {
-            switch(map.map[i][j])
+            if(map.map[i][j] == B_MCG)
             {
-                case B_MCG: coordMechanismGate[mcgNumber]=_MapCoord(i,j); mcgNumber++; map.map[i][j]=BMCGB; break;
+                coordMechanismGate[mcgNumber]=_MapCoord(i,j); mcgNumber++; map.map[i][j]=BMCGB; break;
             }
         }
     }
@@ -413,7 +446,7 @@ uint8_t PageMazeGame()
                 // 情况1：正常移动了若干格 首末坐标不等 距离不等于零
                 // 情况3：向折射方格移动 回到原位 首末坐标相等 距离不等于零
                 // 情况2：向墙壁移动 首末坐标相等 距离等于零
-                MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen,&hitCoord,&animalVec);
+                MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen,&hitCoord,&animalVec,coordMcgAct);
                 if(mpLen!=0)
                 {
                     coord=coordNext;
