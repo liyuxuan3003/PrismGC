@@ -59,7 +59,7 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
             uint8_t blk=map.map[coordStep.i][coordStep.j];
             MapCoord portalCoord=_MapCoord(0,0);
 
-            if(blk!=B_BAR && blk!=B_GRA)
+            if(blk!=B_BAR && blk!=B_GRA && blk!=BMCGB)
             {
                 coordResult=coordStep;
                 moveProcess[mpI]=coordStep;
@@ -69,6 +69,7 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
             switch(blk)
             {
                 case B_ICE: break;
+                case BMCGI: break;
                 case B_END: flag=1; break;
                 case B_TRP: flag=1; break;
                 case BUDIR: unitVec=_MapCoord(-1,0); break;
@@ -80,6 +81,7 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
                 case B3POR: portalCoord=PortalAnother(coordStep,portal[2]); break;
                 case B_GRA: flag=1; *hitCoord=coordStep; break;
                 case B_BAR: flag=1; break;
+                case BMCGB: flag=1; break;
             }
 
             if(blk==B1POR || blk==B2POR || blk==B3POR)
@@ -289,12 +291,13 @@ uint8_t PageMazeGame()
     MapCoord coord=map.coord;
     MapCoord coordAnimal=map.coordAnimal;
     MapCoord coordMcgAct=map.coordMcgAct;
-    MapCoord coordMechanismGate;
 
+    MapCoord coordMechanismGate[MP_L];
     MapCoord moveProcess[MP_L];
     MapCoord animalMoveProcess[MP_L];
     uint32_t mpLen;
     uint32_t mapLen;
+    uint32_t mcgNumber=0;
     uint32_t mpCirculate=0;
     uint32_t mapCirculate=0;
     uint32_t animalVec=0;
@@ -310,6 +313,17 @@ uint8_t PageMazeGame()
 
     MapCoord hitCoord=_MapCoord(-1,-1);
     uint8_t waitHit=0;
+
+    for(int8_t i=MAP_W-1;i>=0;i--)
+    {
+        for(int8_t j=MAP_H-1;j>=0;j--)
+        {
+            switch(map.map[i][j])
+            {
+                case B_MCG: coordMechanismGate[mcgNumber]=_MapCoord(i,j); mcgNumber++; map.map[i][j]=BMCGB; break;
+            }
+        }
+    }
 
     while(1)
     {
@@ -345,7 +359,8 @@ uint8_t PageMazeGame()
                     case B2POR: BlockPOR(x,y,2); break;
                     case B3POR: BlockPOR(x,y,3); break;
                     case B_TRP: BlockTRP(x,y); break;
-                    case B_MCG: BlockBAR(x,y); coordMechanismGate=_MapCoord(i,j); map.map[i][j]=B_BAR;break;
+                    case BMCGB: BlockBAR(x,y); break;
+                    case BMCGI: BlockICE(x,y); break;
                 }
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
@@ -359,9 +374,9 @@ uint8_t PageMazeGame()
         // LCDPrintf(BLACK,BISQUE,50,300,1,"coordAnimal.i: %02d",coordAnimal.i);
         // LCDPrintf(BLACK,BISQUE,50,400,1,"coordAnimal.j: %02d",coordAnimal.j);
         // LCDPrintf(BLACK,BISQUE,50,350,1,"animalVec: %02d",animalVec);
-        LCDPrintf(BLACK,BISQUE,50,350,1,"B_MCG: %02d",map.map[coordMechanismGate.i][coordMechanismGate.j]);
-        LCDPrintf(BLACK,BISQUE,50,400,1,"coordMechanismGate.i: %02d",coordMechanismGate.i);
-        LCDPrintf(BLACK,BISQUE,50,450,1,"coordMechanismGate.j: %02d",coordMechanismGate.j);
+        // LCDPrintf(BLACK,BISQUE,50,350,1,"B_MCG: %02d",map.map[coordMechanismGate.i][coordMechanismGate.j]);
+        // LCDPrintf(BLACK,BISQUE,50,400,1,"coordMechanismGate.i: %02d",coordMechanismGate.i);
+        // LCDPrintf(BLACK,BISQUE,50,450,1,"coordMechanismGate.j: %02d",coordMechanismGate.j);
         
         MapFix();
 
@@ -448,10 +463,11 @@ uint8_t PageMazeGame()
                 isChange++;
                 BUZZER -> NOTE = 5; BUZZER -> TIME = 80;
                 if(isChange%2==0)
-                    map.map[coordMechanismGate.i][coordMechanismGate.j]=B_BAR;
+                    for(int i=0; i < mcgNumber; i++)
+                        map.map[coordMechanismGate[i].i][coordMechanismGate[i].j]=BMCGB;
                 else
-                    map.map[coordMechanismGate.i][coordMechanismGate.j]=B_ICE;
-                // B_MCG = MechanismGate()
+                    for(int i=0; i < mcgNumber; i++)
+                        map.map[coordMechanismGate[i].i][coordMechanismGate[i].j]=BMCGI;
             }
             
             mpCirculate++;

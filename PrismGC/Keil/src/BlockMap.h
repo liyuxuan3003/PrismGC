@@ -18,6 +18,8 @@
 #define B3POR 13
 #define B_ANM 14
 #define B_MCG 15
+#define BMCGB 16
+#define BMCGI 17
 
 #define MAP_W 12
 #define MAP_H 12
