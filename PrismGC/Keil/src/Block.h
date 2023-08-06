@@ -24,6 +24,10 @@
 #define COLOR_POR_SY2 0x88CC88
 #define COLOR_POR_SY3 0x8888CC
 
+#define COLOR_TRP 0x000000
+
+#define COLOR_ANM 0xFF0000
+#define COLOR_MCG 0x0000FF
 /*-------------------------------*/
 
 #define COLOR_GRO 0xFFFFFF
@@ -44,6 +48,9 @@ void BlockEND(uint32_t x,uint32_t y);
 void BlockDIR(uint32_t x,uint32_t y,uint32_t z);
 void BlockGRA(uint32_t x,uint32_t y,uint8_t hit);
 void BlockPOR(uint32_t x,uint32_t y,uint32_t id);
+void BlockTRP(uint32_t x,uint32_t y);
+void BlockANM(uint32_t x,uint32_t y);
+void BlockMCG(uint32_t x,uint32_t y);
 
 // void BlockMAC(uint32_t x,uint32_t y,uint32_t z);
 // void BlockTRP(uint32_t x,uint32_t y);

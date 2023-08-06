@@ -7,6 +7,7 @@
 
 static const uint32_t chtMainLen = 12;
 static const uint32_t chtMainColor[] = {M_WHI_C,M_BLK_C,M_BLU_C,M_LBU_C,M_DBU_C};
+static const uint32_t chtMainGrayColor[] = {M_WHI_C,M_BLK_C,M_BLU_G,M_LBU_G,M_DBU_G};
 static const CharactorLine chtMain[]=
 {
     {4,8, {M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK,M_BLK}},
@@ -66,6 +67,14 @@ void MainCharactor(uint32_t x,uint32_t y,uint8_t scale)
     uint32_t xcn=x-8*scale;
     uint32_t ycn=y-5*scale;
     Charactor(xcn,ycn,chtMain,chtMainLen,chtMainColor,scale);
+    return;
+}
+
+void MainCharactorGray(uint32_t x,uint32_t y,uint8_t scale)
+{
+    uint32_t xcn=x-8*scale;
+    uint32_t ycn=y-5*scale;
+    Charactor(xcn,ycn,chtMain,chtMainLen,chtMainGrayColor,scale);
     return;
 }
 

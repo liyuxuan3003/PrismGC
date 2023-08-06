@@ -32,22 +32,24 @@ static uint8_t CoordVailed(MapCoord coord)
     return (coord.i>=0 && coord.i<MAP_H && coord.j>=0 && coord.j<MAP_W);
 }
 
-static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess,uint32_t *mpLen,MapCoord *hitCoord)
+static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess,uint32_t *mpLen,MapCoord *hitCoord,uint32_t *animalVec,MapCoord coordMcgAct)
 {
     uint32_t mpI=0;
+    uint32_t isMcgChange=0;
     *mpLen=0;
     *hitCoord=_MapCoord(-1,-1);
     MapCoord unitVec=_MapCoord(0,0);
     switch (direction)
     {
-        case KEY_R: unitVec=_MapCoord(0,+1); break;
-        case KEY_L: unitVec=_MapCoord(0,-1); break;
-        case KEY_U: unitVec=_MapCoord(-1,0); break;
-        case KEY_D: unitVec=_MapCoord(+1,0); break;
+        case KEY_R: unitVec=_MapCoord(0,+1); *animalVec=4; break;
+        case KEY_L: unitVec=_MapCoord(0,-1); *animalVec=3; break;
+        case KEY_U: unitVec=_MapCoord(-1,0); *animalVec=1; break;
+        case KEY_D: unitVec=_MapCoord(+1,0); *animalVec=2; break;
     }
 
     MapCoord coordResult=coord;
     MapCoord coordStep=coord;
+    MapCoord coordMcgTest=coord;
 
     while(1)
     {
@@ -59,17 +61,35 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
             uint8_t blk=map.map[coordStep.i][coordStep.j];
             MapCoord portalCoord=_MapCoord(0,0);
 
-            if(blk!=B_BAR && blk!=B_GRA)
+            if(MapCoordEqual(coordStep,coordMcgAct))
+                isMcgChange=1;
+
+            if(blk!=B_BAR && blk!=B_GRA && blk!=BMCGB)
             {
+                coordMcgTest=coordResult;
                 coordResult=coordStep;
                 moveProcess[mpI]=coordStep;
+                if(blk == BMCGI && isMcgChange==1)
+                    moveProcess[mpI]=coordMcgTest;
                 mpI++;
             }
 
             switch(blk)
             {
                 case B_ICE: break;
+                case BMCGI: 
+                {
+                    if(isMcgChange==1)
+                    {
+                        coordResult=coordMcgTest;
+                        flag=1;
+                        break;
+                    }
+                    else
+                        break;
+                }
                 case B_END: flag=1; break;
+                case B_TRP: flag=1; break;
                 case BUDIR: unitVec=_MapCoord(-1,0); break;
                 case BDDIR: unitVec=_MapCoord(+1,0); break;
                 case BLDIR: unitVec=_MapCoord(0,-1); break;
@@ -79,6 +99,22 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
                 case B3POR: portalCoord=PortalAnother(coordStep,portal[2]); break;
                 case B_GRA: flag=1; *hitCoord=coordStep; break;
                 case B_BAR: flag=1; break;
+                case BMCGB: 
+                {
+                    if(isMcgChange==1)
+                    {
+                        coordMcgTest=coordResult;
+                        coordResult=coordStep;
+                        moveProcess[mpI]=coordStep;
+                        mpI++;
+                        break;
+                    }
+                    else
+                    {
+                        flag=1;
+                        break;
+                    }
+                }
             }
 
             if(blk==B1POR || blk==B2POR || blk==B3POR)
@@ -183,6 +219,8 @@ void ConfigMazeGame(uint8_t _levelId)
     } 
 
     map.coord=pmap->coord;
+    map.coordAnimal=pmap->coordAnimal;
+    map.coordMcgAct=pmap->coordMcgAct;
     for(uint32_t i=0;i<APPLE_MAX;i++)
         map.coordApple[i]=pmap->coordApple[i];
     for(uint32_t i=0;i<MAP_H;i++)
@@ -213,24 +251,112 @@ static uint8_t AppleNumber(const uint8_t *getApple)
     return applenumber;
 }
 
+// static MapCoord AnimalCoordNext(MapCoord coordAnimal,uint32_t animalVec,MapCoord *animalMoveProcess,uint32_t *mapLen)
+// {
+//     MapCoord animalCoordStep=coordAnimal;
+//     MapCoord animalCoordNext=coordAnimal;
+//     MapCoord animalMoveVec=_MapCoord(0,0);
+//     uint8_t mapI=0;
+//     *mapLen=0;
+//     switch (animalVec)
+//     {
+//         case 3: animalMoveVec=_MapCoord(+1,0); break;
+//         case 2: animalMoveVec=_MapCoord(-1,0); break;
+//         case 1: animalMoveVec=_MapCoord(0,+1); break;
+//         case 4: animalMoveVec=_MapCoord(0,-1); break;
+//         default: break;
+//     }
+//     while(1)
+//     {
+//         animalCoordNext=MapCoordPlus(animalCoordNext,animalMoveVec);
+//         uint8_t flag=0;
+//         if(CoordVailed(animalCoordNext))
+//         {
+//             uint8_t blk=map.map[animalCoordNext.i][animalCoordNext.j];
+//             if(blk == B_ICE)
+//             {
+//                 animalCoordStep=animalCoordNext;
+//                 animalMoveProcess[mapI]=animalCoordNext;
+//                 mapI++;
+//             }
+//             else
+//             {
+//                 flag=1;
+//             }
+//         }
+//         if(flag==1)
+//         {
+//             *mapLen=mapI;
+//             return animalCoordStep;
+//         }
+
+//     }
+// }
+
+// static uint8_t isAroundAnimal(MapCoord coord,MapCoord coordAnimal)
+// {
+//     if(MapCoordEqual(MapCoordPlus(coordAnimal,_MapCoord(+1,0)),coord))
+//         return 1;
+//     else if(MapCoordEqual(MapCoordPlus(coordAnimal,_MapCoord(-1,0)),coord))
+//         return 1;
+//     else if(MapCoordEqual(MapCoordPlus(coordAnimal,_MapCoord(0,+1)),coord))
+//         return 1;
+//     else if(MapCoordEqual(MapCoordPlus(coordAnimal,_MapCoord(0,-1)),coord))
+//         return 1;
+//     else
+//         return 0;
+// }
+
+static uint8_t MechanismGate(uint8_t isChange)
+{
+    uint8_t blk;
+    if(isChange%2==0)
+        blk = B_BAR;
+    else if(isChange%2==1)
+        blk = B_ICE;
+    return blk;
+}
+
 uint8_t PageMazeGame()
 {
     uint32_t nowTime;
 
     MapCoord coord=map.coord;
+    MapCoord coordAnimal=map.coordAnimal;
+    MapCoord coordMcgAct=map.coordMcgAct;
 
+    MapCoord coordMechanismGate[MP_L];
     MapCoord moveProcess[MP_L];
+    MapCoord animalMoveProcess[MP_L];
     uint32_t mpLen;
+    uint32_t mapLen;
+    uint32_t mcgNumber=0;
     uint32_t mpCirculate=0;
+    uint32_t mapCirculate=0;
+    uint32_t animalVec=0;
 
     uint32_t isAnimate=0;
+    uint32_t isAnimalAnimate=0;
     uint8_t isPageChange=0;
     uint8_t gameStep=0;
+    uint8_t isWin=1;
+    uint8_t isChange=0;
 
     uint8_t getApple[APPLE_MAX]={0};
 
     MapCoord hitCoord=_MapCoord(-1,-1);
     uint8_t waitHit=0;
+
+    for(int8_t i=MAP_W-1;i>=0;i--)
+    {
+        for(int8_t j=MAP_H-1;j>=0;j--)
+        {
+            if(map.map[i][j] == B_MCG)
+            {
+                coordMechanismGate[mcgNumber]=_MapCoord(i,j); mcgNumber++; map.map[i][j]=BMCGB; break;
+            }
+        }
+    }
 
     while(1)
     {
@@ -265,6 +391,9 @@ uint8_t PageMazeGame()
                     case B1POR: BlockPOR(x,y,1); break;
                     case B2POR: BlockPOR(x,y,2); break;
                     case B3POR: BlockPOR(x,y,3); break;
+                    case B_TRP: BlockTRP(x,y); break;
+                    case BMCGB: BlockBAR(x,y); break;
+                    case BMCGI: BlockICE(x,y); break;
                 }
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
@@ -272,6 +401,15 @@ uint8_t PageMazeGame()
                         Apple(x,y,2);
             }
         }
+
+        BlockMCG(CalX(coordMcgAct),CalY(coordMcgAct));
+
+        // LCDPrintf(BLACK,BISQUE,50,300,1,"coordAnimal.i: %02d",coordAnimal.i);
+        // LCDPrintf(BLACK,BISQUE,50,400,1,"coordAnimal.j: %02d",coordAnimal.j);
+        // LCDPrintf(BLACK,BISQUE,50,350,1,"animalVec: %02d",animalVec);
+        // LCDPrintf(BLACK,BISQUE,50,350,1,"B_MCG: %02d",map.map[coordMechanismGate.i][coordMechanismGate.j]);
+        // LCDPrintf(BLACK,BISQUE,50,400,1,"coordMechanismGate.i: %02d",coordMechanismGate.i);
+        // LCDPrintf(BLACK,BISQUE,50,450,1,"coordMechanismGate.j: %02d",coordMechanismGate.j);
         
         MapFix();
 
@@ -291,24 +429,40 @@ uint8_t PageMazeGame()
         if(!isAnimate)
         {
             MainCharactor(CalX(coord),CalY(coord),2);
+
             if(map.map[coord.i][coord.j]==B_END)
+            {
                 isPageChange=1;
+                isWin=1;
+            }
+            else if(map.map[coord.i][coord.j]==B_TRP)
+            {
+                isPageChange=1;
+                isWin=0;
+            }
 
             if(IsDirection(key))
             {
                 // 情况1：正常移动了若干格 首末坐标不等 距离不等于零
                 // 情况3：向折射方格移动 回到原位 首末坐标相等 距离不等于零
                 // 情况2：向墙壁移动 首末坐标相等 距离等于零
-                MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen,&hitCoord);
+                MapCoord coordNext=CoordNext(coord,key,moveProcess,&mpLen,&hitCoord,&animalVec,coordMcgAct);
                 if(mpLen!=0)
                 {
                     coord=coordNext;
                     gameStep++;
-
                     isAnimate=1;
                     mpCirculate=0;
                 }
             }
+
+            // if(isAroundAnimal(coord,coordAnimal))
+            // {
+            //     isAnimalAnimate=1;
+            //     coordAnimal=AnimalCoordNext(coordAnimal,animalVec,animalMoveProcess,&mapLen);
+            //     mapCirculate=0;
+            // }
+
         }
         else
         {
@@ -335,6 +489,18 @@ uint8_t PageMazeGame()
                 case BDDIR: BUZZER -> NOTE = 5; BUZZER -> TIME = 80; break;
                 case B_END: BUZZER -> NOTE = 4; BUZZER -> TIME = 500; break;
                 default: break;
+            }
+
+            if(MapCoordEqual(moveProcess[mpCirculate],coordMcgAct))
+            {
+                isChange++;
+                BUZZER -> NOTE = 5; BUZZER -> TIME = 80;
+                if(isChange%2==0)
+                    for(int i=0; i < mcgNumber; i++)
+                        map.map[coordMechanismGate[i].i][coordMechanismGate[i].j]=BMCGB;
+                else
+                    for(int i=0; i < mcgNumber; i++)
+                        map.map[coordMechanismGate[i].i][coordMechanismGate[i].j]=BMCGI;
             }
             
             mpCirculate++;
@@ -364,6 +530,17 @@ uint8_t PageMazeGame()
                 
         }
 
+        // if(!isAnimalAnimate)
+        //     BlockANM(CalX(coordAnimal),CalY(coordAnimal));
+
+        // else
+        // {
+        //     BlockANM(CalX(animalMoveProcess[mapCirculate]),CalY(animalMoveProcess[mapCirculate]));
+        //     mapCirculate++;
+        //     if(mapCirculate == mapLen)
+        //         isAnimalAnimate=0;
+        // }
+
         LCDPrintf(WHITE,BG_COLOR,50,50,3,"Level %02d",levelId);
         LCDPrintf(WHITE,BG_COLOR,50,180,2,"Step: %d",gameStep);
         LCDPrintf(WHITE,BG_COLOR,50,260,2,"Apples: %d",AppleNumber(getApple));
@@ -372,7 +549,7 @@ uint8_t PageMazeGame()
 
         if(isPageChange)
         {
-            ConfigEnd(levelId,AppleNumber(getApple),gameStep);
+            ConfigEnd(levelId,AppleNumber(getApple),gameStep,isWin);
             return PAGE_END;
         }
 

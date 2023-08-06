@@ -33,6 +33,24 @@ void BlockEND(uint32_t x,uint32_t y)
     return;
 }
 
+void BlockTRP(uint32_t x,uint32_t y)
+{
+    LCDRectangle(COLOR_TRP,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
+    return;
+}
+
+void BlockANM(uint32_t x,uint32_t y)
+{
+    LCDRectangle(COLOR_ANM,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
+    return;
+}
+
+void BlockMCG(uint32_t x,uint32_t y)
+{
+    LCDRectangle(COLOR_MCG,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
+    return;
+}
+
 void BlockDIR(uint32_t x,uint32_t y,uint32_t z)
 {
     LCDRectangle(COLOR_DIR,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);

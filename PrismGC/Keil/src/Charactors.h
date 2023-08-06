@@ -16,6 +16,10 @@
 #define M_LBU_C 0xAAAAFF
 #define M_DBU_C 0x4444FF
 
+#define M_BLU_G 0xC0C0C0
+#define M_LBU_G 0xD3D3D3
+#define M_DBU_G 0xA9A9A9
+
 // Apple
 #define A_WHI  0
 #define A_BLK  1
@@ -48,6 +52,7 @@ typedef struct
 } CharactorLine;
 
 void MainCharactor(uint32_t x,uint32_t y,uint8_t scale);
+void MainCharactorGray(uint32_t x,uint32_t y,uint8_t scale);
 void Apple(uint32_t x,uint32_t y,uint8_t scale);
 void AppleGray(uint32_t x,uint32_t y,uint8_t scale);
 void Arrow(uint32_t x,uint32_t y,uint8_t z,uint32_t color);
