@@ -1,0 +1,40 @@
+### Footprint positions - created on Wed Aug  2 22:50:33 2023 ###
+### Printed by KiCad version 7.0.6
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val                           Package                                                       PosX       PosY       Rot  Side
+C1        10uF                          C_0805_2012Metric                                         176.5300  -114.0460    0.0000  top
+C2        330uF                         C_Elec_6.3x5.8                                            186.6900  -109.2200  180.0000  top
+C3        0.1uF                         C_0603_1608Metric                                         176.5300  -111.5060  180.0000  top
+C4        0.1uF                         C_0603_1608Metric                                         176.5300  -109.2200  180.0000  top
+C5        10uF                          C_0805_2012Metric                                         176.5300  -106.6800  180.0000  top
+C6        0.1uF                         C_0603_1608Metric                                         109.2500   -90.9320    0.0000  top
+C7        1uF                           C_0603_1608Metric                                         176.5300  -104.1400  180.0000  top
+J1        USB_C_Receptacle              USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal   207.0100  -109.2200   90.0000  top
+J2        Nunchunk                      Nunchunk                                                  215.6460  -129.0320  -90.0000  top
+J3        USB_A                         USB_A_Molex_67643_Horizontal                              104.4200  -124.7700  -90.0000  top
+J4        HDMI_A                        HDMI_A_Molex_208658-1001_Horizontal                        98.4250  -105.4100  180.0000  top
+J5        AudioJack3                    Jack_3.5mm_KoreanHropartsElec_PJ-320D-4A_Horizontal        97.7900   -88.3920    0.0000  top
+P1        Conn_02x30_Odd_Even_Shielded  PinHeader_2x30_P2.54mm_Vertical                           116.8400   -80.0100   90.0000  top
+P2        USB_A                         USB_A_Molex_67643_Horizontal                              147.3200  -127.0000   90.0000  top
+P3        USB_A                         USB_A_Molex_67643_Horizontal                              147.3200   -97.7900   90.0000  top
+P4        Conn_02x30_Odd_Even_Shielded  PinHeader_2x30_P2.54mm_Vertical                           116.8400  -142.2400   90.0000  top
+R1        5.1k                          R_0603_1608Metric                                         195.5170  -118.6180  180.0000  top
+R2        5.1k                          R_0603_1608Metric                                         196.0250  -106.6800  180.0000  top
+R3        47k                           R_0603_1608Metric                                         196.0250  -109.2200    0.0000  top
+R6        2k                            R_0603_1608Metric                                         109.2500   -85.8520    0.0000  top
+RN0       49.9                          R_0603_1608Metric                                         114.3000  -105.0290  -90.0000  top
+RN1       49.9                          R_0603_1608Metric                                         114.3000  -108.2040   90.0000  top
+RN2       49.9                          R_0603_1608Metric                                         111.2520  -111.6330   90.0000  top
+RN3       49.9                          R_0603_1608Metric                                         109.7280  -102.2990  -90.0000  top
+RP0       49.9                          R_0603_1608Metric                                         115.8240  -106.1080  -90.0000  top
+RP1       49.9                          R_0603_1608Metric                                         115.8240  -109.2200   90.0000  top
+RP2       49.9                          R_0603_1608Metric                                         112.7760  -112.7760   90.0000  top
+RP3       49.9                          R_0603_1608Metric                                         111.2520  -103.5690  -90.0000  top
+U1        CH217K                        SOT-23-6                                                  195.5800  -113.0300    0.0000  top
+U2        CH334U                        SSOP-28_3.9x9.9mm_P0.635mm                                168.9100  -109.2200    0.0000  top
+U3        DAP                           DAP                                                       147.3200  -109.2200  -90.0000  top
+U4        AZ1045-04F                    Diodes_UDFN-10_1.0x2.5mm_P0.5mm                           106.6800  -108.7120  180.0000  top
+U5        AZ1045-04F                    Diodes_UDFN-10_1.0x2.5mm_P0.5mm                           106.6800  -105.6640  180.0000  top
+Y1        12MHz                         Crystal_HC49-4H_Vertical                                  154.8500  -108.9660  180.0000  top
+## End

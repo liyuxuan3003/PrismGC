@@ -1,0 +1,1398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>D:\Project\20230110-FPGA\PrismGC\KiCad\Adapter\Adapter.kicad_sch</source>
+    <date>2023/8/1 11:28:46</date>
+    <tool>Eeschema 7.0.6</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Adapter</title>
+        <company>棱镜 Prism</company>
+        <rev>1.0</rev>
+        <date>2023-07-30</date>
+        <source>Adapter.kicad_sch</source>
+        <comment number="1" value="绘图：李宇轩"/>
+        <comment number="2" value="审核：李宇轩"/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>10uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9fc94133-f320-42ae-b8b8-9f06443eb18a</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>330uF</value>
+      <footprint>Capacitor_SMD:C_Elec_6.3x5.8</footprint>
+      <libsource lib="Device" part="C_Polarized_Small_US" description="Polarized capacitor, small US symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Polarized capacitor, small US symbol"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>86091270-c71e-43da-9755-fe39a5d34c11</tstamps>
+    </comp>
+    <comp ref="C3">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8c1417aa-0f59-4671-8fe3-d6924ea24d94</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>73d4a58a-efd7-4cd8-8c62-30ac2a2ddc1c</tstamps>
+    </comp>
+    <comp ref="C5">
+      <value>10uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>10f734c0-85b7-4515-b8ec-c386269bec39</tstamps>
+    </comp>
+    <comp ref="C6">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7194222a-16f4-448a-8b78-ead3e2b093c1</tstamps>
+    </comp>
+    <comp ref="C7">
+      <value>1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ee609551-aaaa-42b3-a4ea-7bc98186d269</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>USB_C_Receptacle</value>
+      <footprint>Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal</footprint>
+      <datasheet>https://www.usb.org/sites/default/files/documents/usb_type-c.zip</datasheet>
+      <fields>
+        <field name="嘉立创">C134092</field>
+      </fields>
+      <libsource lib="Connector" part="USB_C_Receptacle_USB2.0" description="USB 2.0-only Type-C Receptacle connector"/>
+      <property name="嘉立创" value="C134092"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="USB 2.0-only Type-C Receptacle connector"/>
+      <property name="ki_keywords" value="usb universal serial bus type-C USB2.0"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2e9714f6-ba3a-4ea7-a594-c279ff29f069</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>Nunchunk</value>
+      <footprint>liyuxuan:Nunchunk</footprint>
+      <libsource lib="liyuxuan" part="Nunchunk" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5ff5cf0b-2243-4d3e-a534-6fe99efff9df</tstamps>
+    </comp>
+    <comp ref="J3">
+      <value>USB_A</value>
+      <footprint>Connector_USB:USB_A_Molex_67643_Horizontal</footprint>
+      <datasheet> ~</datasheet>
+      <fields>
+        <field name="嘉立创">C2765194</field>
+      </fields>
+      <libsource lib="Connector" part="USB_A" description="USB Type A connector"/>
+      <property name="嘉立创" value="C2765194"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="USB Type A connector"/>
+      <property name="ki_keywords" value="connector USB"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>35e89fcc-bda9-4379-814c-45a7fed10cfd</tstamps>
+    </comp>
+    <comp ref="J4">
+      <value>HDMI_A</value>
+      <footprint>Connector_HDMI:HDMI_A_Molex_208658-1001_Horizontal</footprint>
+      <datasheet>https://en.wikipedia.org/wiki/HDMI</datasheet>
+      <fields>
+        <field name="嘉立创">C2962407</field>
+      </fields>
+      <libsource lib="Connector" part="HDMI_A" description="HDMI type A connector"/>
+      <property name="嘉立创" value="C2962407"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="HDMI type A connector"/>
+      <property name="ki_keywords" value="hdmi conn"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ba19c61e-657f-4def-9008-c1f18b935bcd</tstamps>
+    </comp>
+    <comp ref="J5">
+      <value>AudioJack3</value>
+      <footprint>Connector_Audio:Jack_3.5mm_KoreanHropartsElec_PJ-320D-4A_Horizontal</footprint>
+      <libsource lib="Connector_Audio" part="AudioJack4" description="Audio Jack, 4 Poles (TRRS)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Audio Jack, 4 Poles (TRRS)"/>
+      <property name="ki_keywords" value="audio jack receptacle stereo headphones TRRS connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0dc14481-7c38-49bf-84a8-562ff3aa3cc3</tstamps>
+    </comp>
+    <comp ref="P1">
+      <value>Conn_02x30_Odd_Even_Shielded</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_2x30_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector_Generic" part="Conn_02x30_Odd_Even" description="Generic connector, double row, 02x30, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, double row, 02x30, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ki_keywords" value="connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>56220b1d-8374-4778-be36-ed8d95397522</tstamps>
+    </comp>
+    <comp ref="P2">
+      <value>USB_A</value>
+      <footprint>Connector_USB:USB_A_Molex_67643_Horizontal</footprint>
+      <datasheet> ~</datasheet>
+      <fields>
+        <field name="嘉立创">C2765194</field>
+      </fields>
+      <libsource lib="Connector" part="USB_A" description="USB Type A connector"/>
+      <property name="嘉立创" value="C2765194"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="USB Type A connector"/>
+      <property name="ki_keywords" value="connector USB"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>50b83312-114a-476a-a98a-abe0d5b0e9f4</tstamps>
+    </comp>
+    <comp ref="P3">
+      <value>USB_A</value>
+      <footprint>Connector_USB:USB_A_Molex_67643_Horizontal</footprint>
+      <datasheet> ~</datasheet>
+      <fields>
+        <field name="嘉立创">C2765194</field>
+      </fields>
+      <libsource lib="Connector" part="USB_A" description="USB Type A connector"/>
+      <property name="嘉立创" value="C2765194"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="USB Type A connector"/>
+      <property name="ki_keywords" value="connector USB"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c1340f7d-610b-4a83-b077-ae523d8a1b41</tstamps>
+    </comp>
+    <comp ref="P4">
+      <value>Conn_02x30_Odd_Even_Shielded</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_2x30_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector_Generic" part="Conn_02x30_Odd_Even" description="Generic connector, double row, 02x30, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, double row, 02x30, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ki_keywords" value="connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1c926376-f6fa-459a-80e2-0554246115d3</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>5.1k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small symbol"/>
+      <property name="ki_keywords" value="R resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e6c8c97d-1150-43df-bcd2-e8ce126b0264</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>5.1k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small symbol"/>
+      <property name="ki_keywords" value="R resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e92e055e-e16f-4f55-ba70-cebc700c5b4f</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>47k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small symbol"/>
+      <property name="ki_keywords" value="R resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0848452e-bf94-41ec-8ca6-e247af2b2f99</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>2k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ecdd7841-a704-4dea-b4ee-84a117e0d17c</tstamps>
+    </comp>
+    <comp ref="RN0">
+      <value>49.9</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>786135b8-7d0f-4a19-8c6a-63624402b8ba</tstamps>
+    </comp>
+    <comp ref="RN1">
+      <value>49.9</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>da4e8e7a-ad65-484a-a6a1-ee47a131f29c</tstamps>
+    </comp>
+    <comp ref="RN2">
+      <value>49.9</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>60a0b12d-cd08-4010-9be4-4e264810a1d0</tstamps>
+    </comp>
+    <comp ref="RN3">
+      <value>49.9</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6367113b-e9e8-4a70-a549-643e68d184b5</tstamps>
+    </comp>
+    <comp ref="RP0">
+      <value>49.9</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5a41cc33-b099-4dab-abbf-cf0b4cbb7a04</tstamps>
+    </comp>
+    <comp ref="RP1">
+      <value>49.9</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>19df8570-c8b1-435a-8dd2-7bbd50ea0a7d</tstamps>
+    </comp>
+    <comp ref="RP2">
+      <value>49.9</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a1483e6a-06fe-41c2-a1b0-00bf90822a58</tstamps>
+    </comp>
+    <comp ref="RP3">
+      <value>49.9</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7d9d19cb-bbdb-4ae9-a011-14f77ff49edb</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>CH217K</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <libsource lib="liyuxuan" part="CH217K" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d53309b8-598c-4058-b04d-a943b10292e7</tstamps>
+    </comp>
+    <comp ref="U2">
+      <value>CH334U</value>
+      <footprint>Package_SO:SSOP-28_3.9x9.9mm_P0.635mm</footprint>
+      <datasheet>http://www.wch-ic.com/downloads/CH334DS1_PDF.html</datasheet>
+      <libsource lib="liyuxuan" part="CH334U" description="4 ports High-Speed USB MTT Hub with over current detect &amp; power control"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="4 ports High-Speed USB MTT Hub with over current detect &amp; power control"/>
+      <property name="ki_keywords" value="HUB, hub"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e33162a8-91b3-492b-b7ad-2b5236d5dde4</tstamps>
+    </comp>
+    <comp ref="U3">
+      <value>DAP</value>
+      <footprint>liyuxuan:DAP</footprint>
+      <libsource lib="liyuxuan" part="DAP" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d4d60d1a-d033-4ad9-956c-2a740d8a5ac5</tstamps>
+    </comp>
+    <comp ref="U4">
+      <value>AZ1045-04F</value>
+      <footprint>Package_DFN_QFN:Diodes_UDFN-10_1.0x2.5mm_P0.5mm</footprint>
+      <fields>
+        <field name="嘉立创">C2987152</field>
+      </fields>
+      <libsource lib="" part="AZ1045-04F_1" description=""/>
+      <property name="嘉立创" value="C2987152"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c11f4e7e-cef4-4a63-ba69-7fa4cc20a063</tstamps>
+    </comp>
+    <comp ref="U5">
+      <value>AZ1045-04F</value>
+      <footprint>Package_DFN_QFN:Diodes_UDFN-10_1.0x2.5mm_P0.5mm</footprint>
+      <fields>
+        <field name="嘉立创">C2987152</field>
+      </fields>
+      <libsource lib="liyuxuan" part="AZ1045-04F" description=""/>
+      <property name="嘉立创" value="C2987152"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>51ec551e-4baf-4b77-9a87-b0a90fcd79ab</tstamps>
+    </comp>
+    <comp ref="Y1">
+      <value>12MHz</value>
+      <footprint>Crystal:Crystal_HC49-4H_Vertical</footprint>
+      <libsource lib="Device" part="Crystal_Small" description="Two pin crystal, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Adapter.kicad_sch"/>
+      <property name="ki_description" value="Two pin crystal, small symbol"/>
+      <property name="ki_keywords" value="quartz ceramic resonator oscillator"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>edf7fd82-9f09-4e2d-a022-bae5847d6e63</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="" part="AZ1045-04F_1">
+      <fields>
+        <field name="Reference">U</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Line1" type="input"/>
+        <pin num="2" name="Line2" type="input"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="Line3" type="input"/>
+        <pin num="5" name="Line5" type="input"/>
+        <pin num="6" name="NC" type="input"/>
+        <pin num="7" name="NC" type="input"/>
+        <pin num="8" name="GND" type="power_in"/>
+        <pin num="9" name="NC" type="input"/>
+        <pin num="10" name="NC" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="HDMI_A">
+      <description>HDMI type A connector</description>
+      <docs>https://en.wikipedia.org/wiki/HDMI</docs>
+      <footprints>
+        <fp>HDMI*A*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">HDMI_A</field>
+        <field name="Datasheet">https://en.wikipedia.org/wiki/HDMI</field>
+      </fields>
+      <pins>
+        <pin num="1" name="D2+" type="passive"/>
+        <pin num="2" name="D2S" type="power_in"/>
+        <pin num="3" name="D2-" type="passive"/>
+        <pin num="4" name="D1+" type="passive"/>
+        <pin num="5" name="D1S" type="power_in"/>
+        <pin num="6" name="D1-" type="passive"/>
+        <pin num="7" name="D0+" type="passive"/>
+        <pin num="8" name="D0S" type="power_in"/>
+        <pin num="9" name="D0-" type="passive"/>
+        <pin num="10" name="CK+" type="passive"/>
+        <pin num="11" name="CKS" type="power_in"/>
+        <pin num="12" name="CK-" type="passive"/>
+        <pin num="13" name="CEC" type="bidirectional"/>
+        <pin num="14" name="UTILITY" type="passive"/>
+        <pin num="15" name="SCL" type="passive"/>
+        <pin num="16" name="SDA" type="bidirectional"/>
+        <pin num="17" name="GND" type="power_in"/>
+        <pin num="18" name="+5V" type="power_in"/>
+        <pin num="19" name="HPD" type="passive"/>
+        <pin num="SH" name="SH" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="USB_A">
+      <description>USB Type A connector</description>
+      <docs> ~</docs>
+      <footprints>
+        <fp>USB*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">USB_A</field>
+        <field name="Datasheet"> ~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VBUS" type="power_in"/>
+        <pin num="2" name="D-" type="bidirectional"/>
+        <pin num="3" name="D+" type="bidirectional"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="Shield" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="USB_C_Receptacle_USB2.0">
+      <description>USB 2.0-only Type-C Receptacle connector</description>
+      <docs>https://www.usb.org/sites/default/files/documents/usb_type-c.zip</docs>
+      <footprints>
+        <fp>USB*C*Receptacle*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">USB_C_Receptacle_USB2.0</field>
+        <field name="Datasheet">https://www.usb.org/sites/default/files/documents/usb_type-c.zip</field>
+      </fields>
+      <pins>
+        <pin num="A1" name="GND" type="passive"/>
+        <pin num="A4" name="VBUS" type="passive"/>
+        <pin num="A5" name="CC1" type="bidirectional"/>
+        <pin num="A6" name="D+" type="bidirectional"/>
+        <pin num="A7" name="D-" type="bidirectional"/>
+        <pin num="A8" name="SBU1" type="bidirectional"/>
+        <pin num="A9" name="VBUS" type="passive"/>
+        <pin num="A12" name="GND" type="passive"/>
+        <pin num="B1" name="GND" type="passive"/>
+        <pin num="B4" name="VBUS" type="passive"/>
+        <pin num="B5" name="CC2" type="bidirectional"/>
+        <pin num="B6" name="D+" type="bidirectional"/>
+        <pin num="B7" name="D-" type="bidirectional"/>
+        <pin num="B8" name="SBU2" type="bidirectional"/>
+        <pin num="B9" name="VBUS" type="passive"/>
+        <pin num="B12" name="GND" type="passive"/>
+        <pin num="S1" name="SHIELD" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Audio" part="AudioJack4">
+      <description>Audio Jack, 4 Poles (TRRS)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Jack*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">AudioJack4</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="R1" name="" type="passive"/>
+        <pin num="R2" name="" type="passive"/>
+        <pin num="S" name="" type="passive"/>
+        <pin num="T" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_02x30_Odd_Even">
+      <description>Generic connector, double row, 02x30, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_2x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_02x30_Odd_Even</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+        <pin num="8" name="Pin_8" type="passive"/>
+        <pin num="9" name="Pin_9" type="passive"/>
+        <pin num="10" name="Pin_10" type="passive"/>
+        <pin num="11" name="Pin_11" type="passive"/>
+        <pin num="12" name="Pin_12" type="passive"/>
+        <pin num="13" name="Pin_13" type="passive"/>
+        <pin num="14" name="Pin_14" type="passive"/>
+        <pin num="15" name="Pin_15" type="passive"/>
+        <pin num="16" name="Pin_16" type="passive"/>
+        <pin num="17" name="Pin_17" type="passive"/>
+        <pin num="18" name="Pin_18" type="passive"/>
+        <pin num="19" name="Pin_19" type="passive"/>
+        <pin num="20" name="Pin_20" type="passive"/>
+        <pin num="21" name="Pin_21" type="passive"/>
+        <pin num="22" name="Pin_22" type="passive"/>
+        <pin num="23" name="Pin_23" type="passive"/>
+        <pin num="24" name="Pin_24" type="passive"/>
+        <pin num="25" name="Pin_25" type="passive"/>
+        <pin num="26" name="Pin_26" type="passive"/>
+        <pin num="27" name="Pin_27" type="passive"/>
+        <pin num="28" name="Pin_28" type="passive"/>
+        <pin num="29" name="Pin_29" type="passive"/>
+        <pin num="30" name="Pin_30" type="passive"/>
+        <pin num="31" name="Pin_31" type="passive"/>
+        <pin num="32" name="Pin_32" type="passive"/>
+        <pin num="33" name="Pin_33" type="passive"/>
+        <pin num="34" name="Pin_34" type="passive"/>
+        <pin num="35" name="Pin_35" type="passive"/>
+        <pin num="36" name="Pin_36" type="passive"/>
+        <pin num="37" name="Pin_37" type="passive"/>
+        <pin num="38" name="Pin_38" type="passive"/>
+        <pin num="39" name="Pin_39" type="passive"/>
+        <pin num="40" name="Pin_40" type="passive"/>
+        <pin num="41" name="Pin_41" type="passive"/>
+        <pin num="42" name="Pin_42" type="passive"/>
+        <pin num="43" name="Pin_43" type="passive"/>
+        <pin num="44" name="Pin_44" type="passive"/>
+        <pin num="45" name="Pin_45" type="passive"/>
+        <pin num="46" name="Pin_46" type="passive"/>
+        <pin num="47" name="Pin_47" type="passive"/>
+        <pin num="48" name="Pin_48" type="passive"/>
+        <pin num="49" name="Pin_49" type="passive"/>
+        <pin num="50" name="Pin_50" type="passive"/>
+        <pin num="51" name="Pin_51" type="passive"/>
+        <pin num="52" name="Pin_52" type="passive"/>
+        <pin num="53" name="Pin_53" type="passive"/>
+        <pin num="54" name="Pin_54" type="passive"/>
+        <pin num="55" name="Pin_55" type="passive"/>
+        <pin num="56" name="Pin_56" type="passive"/>
+        <pin num="57" name="Pin_57" type="passive"/>
+        <pin num="58" name="Pin_58" type="passive"/>
+        <pin num="59" name="Pin_59" type="passive"/>
+        <pin num="60" name="Pin_60" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Polarized_Small_US">
+      <description>Polarized capacitor, small US symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>CP_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Polarized_Small_US</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Small">
+      <description>Unpolarized capacitor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Crystal_Small">
+      <description>Two pin crystal, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Crystal*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Y</field>
+        <field name="Value">Crystal_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R_Small">
+      <description>Resistor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="liyuxuan" part="AZ1045-04F">
+      <fields>
+        <field name="Reference">U</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Line1" type="input"/>
+        <pin num="2" name="Line2" type="input"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="Line3" type="input"/>
+        <pin num="5" name="Line5" type="input"/>
+        <pin num="6" name="NC" type="input"/>
+        <pin num="7" name="NC" type="input"/>
+        <pin num="8" name="GND" type="power_in"/>
+        <pin num="9" name="NC" type="input"/>
+        <pin num="10" name="NC" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="liyuxuan" part="CH217K">
+      <fields>
+        <field name="Reference">U2</field>
+        <field name="Value">CH217K</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VOUT" type="power_out"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="FLAG#" type="output"/>
+        <pin num="4" name="EN#" type="input"/>
+        <pin num="5" name="ISET" type="bidirectional"/>
+        <pin num="6" name="VIN" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="liyuxuan" part="CH334U">
+      <description>4 ports High-Speed USB MTT Hub with over current detect &amp; power control</description>
+      <docs>http://www.wch-ic.com/downloads/CH334DS1_PDF.html</docs>
+      <fields>
+        <field name="Reference">U1</field>
+        <field name="Value">CH334U</field>
+        <field name="Footprint">Package_SO:SSOP-28_3.9x9.9mm_P0.635mm</field>
+        <field name="Datasheet">http://www.wch-ic.com/downloads/CH334DS1_PDF.html</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="XO" type="output"/>
+        <pin num="3" name="XI" type="input"/>
+        <pin num="4" name="DM4" type="bidirectional"/>
+        <pin num="5" name="DP4" type="bidirectional"/>
+        <pin num="6" name="DM3" type="bidirectional"/>
+        <pin num="7" name="DP3" type="bidirectional"/>
+        <pin num="8" name="DM2" type="bidirectional"/>
+        <pin num="9" name="DP2" type="bidirectional"/>
+        <pin num="10" name="DM1" type="bidirectional"/>
+        <pin num="11" name="DP1" type="bidirectional"/>
+        <pin num="12" name="GND" type="power_in"/>
+        <pin num="13" name="VDD33" type="power_out"/>
+        <pin num="14" name="LED3/SCL" type="bidirectional"/>
+        <pin num="15" name="DMU" type="bidirectional"/>
+        <pin num="16" name="DPU" type="bidirectional"/>
+        <pin num="17" name="RESET#/CDP" type="input"/>
+        <pin num="18" name="NC." type="no_connect"/>
+        <pin num="19" name="PSELF" type="input"/>
+        <pin num="20" name="V5" type="power_in"/>
+        <pin num="21" name="VDD33" type="power_in"/>
+        <pin num="22" name="LED4/SDA" type="bidirectional"/>
+        <pin num="23" name="LED1" type="bidirectional"/>
+        <pin num="24" name="LED2" type="bidirectional"/>
+        <pin num="25" name="PWREN#" type="output"/>
+        <pin num="26" name="OVCUR#" type="input"/>
+        <pin num="27" name="NC." type="no_connect"/>
+        <pin num="28" name="GND" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="liyuxuan" part="DAP">
+      <fields>
+        <field name="Reference">U</field>
+      </fields>
+      <pins>
+        <pin num="1" name="RX" type="input"/>
+        <pin num="2" name="CLK" type="input"/>
+        <pin num="3" name="TX" type="output"/>
+        <pin num="4" name="DIO" type="bidirectional"/>
+        <pin num="5" name="GND" type="power_in"/>
+        <pin num="6" name="GND" type="power_in"/>
+        <pin num="7" name="3.3V" type="power_out"/>
+        <pin num="8" name="3.3V" type="power_out"/>
+        <pin num="9" name="5V" type="power_out"/>
+        <pin num="10" name="5V" type="power_out"/>
+        <pin num="11" name="VBUS" type="power_in"/>
+        <pin num="12" name="D-" type="bidirectional"/>
+        <pin num="13" name="D+" type="bidirectional"/>
+        <pin num="14" name="GND" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="liyuxuan" part="Nunchunk">
+      <fields>
+        <field name="Reference">U</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SDA" type="tri_state"/>
+        <pin num="2" name="NC" type="no_connect"/>
+        <pin num="3" name="3.3V" type="power_in"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="6" name="SCL" type="tri_state"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Connector.kicad_sym</uri>
+    </library>
+    <library logical="Connector_Audio">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Connector_Audio.kicad_sym</uri>
+    </library>
+    <library logical="Connector_Generic">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Connector_Generic.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Device.kicad_sym</uri>
+    </library>
+    <library logical="liyuxuan">
+      <uri>C:/Users/liyuxuan/Documents/KiCad/7.0/symbols/liyuxuan.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+3V3">
+      <node ref="J2" pin="3" pinfunction="3.3V" pintype="power_in"/>
+      <node ref="P4" pin="59" pinfunction="Pin_59" pintype="passive"/>
+      <node ref="P4" pin="60" pinfunction="Pin_60" pintype="passive"/>
+      <node ref="RN0" pin="1" pintype="passive"/>
+      <node ref="RN1" pin="1" pintype="passive"/>
+      <node ref="RN2" pin="1" pintype="passive"/>
+      <node ref="RN3" pin="1" pintype="passive"/>
+      <node ref="RP0" pin="1" pintype="passive"/>
+      <node ref="RP1" pin="1" pintype="passive"/>
+      <node ref="RP2" pin="1" pintype="passive"/>
+      <node ref="RP3" pin="1" pintype="passive"/>
+    </net>
+    <net code="2" name="/3v3">
+      <node ref="C4" pin="2" pintype="passive"/>
+      <node ref="C5" pin="2" pintype="passive"/>
+      <node ref="C7" pin="2" pintype="passive"/>
+      <node ref="U2" pin="13" pinfunction="VDD33" pintype="power_out"/>
+      <node ref="U2" pin="21" pinfunction="VDD33" pintype="power_in"/>
+    </net>
+    <net code="3" name="/BUZ">
+      <node ref="P1" pin="54" pinfunction="Pin_54" pintype="passive"/>
+      <node ref="R6" pin="2" pintype="passive"/>
+    </net>
+    <net code="4" name="/HDMI_CLK_N">
+      <node ref="J4" pin="12" pinfunction="CK-" pintype="passive"/>
+      <node ref="P1" pin="20" pinfunction="Pin_20" pintype="passive"/>
+      <node ref="RN3" pin="2" pintype="passive"/>
+      <node ref="U5" pin="5" pinfunction="Line5" pintype="input"/>
+      <node ref="U5" pin="6" pinfunction="NC" pintype="input"/>
+    </net>
+    <net code="5" name="/HDMI_CLK_P">
+      <node ref="J4" pin="10" pinfunction="CK+" pintype="passive"/>
+      <node ref="P1" pin="18" pinfunction="Pin_18" pintype="passive"/>
+      <node ref="RP3" pin="2" pintype="passive"/>
+      <node ref="U5" pin="4" pinfunction="Line3" pintype="input"/>
+      <node ref="U5" pin="7" pinfunction="NC" pintype="input"/>
+    </net>
+    <net code="6" name="/HDMI_D0_N">
+      <node ref="J4" pin="9" pinfunction="D0-" pintype="passive"/>
+      <node ref="P1" pin="17" pinfunction="Pin_17" pintype="passive"/>
+      <node ref="RN0" pin="2" pintype="passive"/>
+      <node ref="U5" pin="2" pinfunction="Line2" pintype="input"/>
+      <node ref="U5" pin="9" pinfunction="NC" pintype="input"/>
+    </net>
+    <net code="7" name="/HDMI_D0_P">
+      <node ref="J4" pin="7" pinfunction="D0+" pintype="passive"/>
+      <node ref="P1" pin="19" pinfunction="Pin_19" pintype="passive"/>
+      <node ref="RP0" pin="2" pintype="passive"/>
+      <node ref="U5" pin="1" pinfunction="Line1" pintype="input"/>
+      <node ref="U5" pin="10" pinfunction="NC" pintype="input"/>
+    </net>
+    <net code="8" name="/HDMI_D1_N">
+      <node ref="J4" pin="6" pinfunction="D1-" pintype="passive"/>
+      <node ref="P1" pin="16" pinfunction="Pin_16" pintype="passive"/>
+      <node ref="RN1" pin="2" pintype="passive"/>
+      <node ref="U4" pin="5" pinfunction="Line5" pintype="input"/>
+      <node ref="U4" pin="6" pinfunction="NC" pintype="input"/>
+    </net>
+    <net code="9" name="/HDMI_D1_P">
+      <node ref="J4" pin="4" pinfunction="D1+" pintype="passive"/>
+      <node ref="P1" pin="14" pinfunction="Pin_14" pintype="passive"/>
+      <node ref="RP1" pin="2" pintype="passive"/>
+      <node ref="U4" pin="4" pinfunction="Line3" pintype="input"/>
+      <node ref="U4" pin="7" pinfunction="NC" pintype="input"/>
+    </net>
+    <net code="10" name="/HDMI_D2_N">
+      <node ref="J4" pin="3" pinfunction="D2-" pintype="passive"/>
+      <node ref="P1" pin="10" pinfunction="Pin_10" pintype="passive"/>
+      <node ref="RN2" pin="2" pintype="passive"/>
+      <node ref="U4" pin="2" pinfunction="Line2" pintype="input"/>
+      <node ref="U4" pin="9" pinfunction="NC" pintype="input"/>
+    </net>
+    <net code="11" name="/HDMI_D2_P">
+      <node ref="J4" pin="1" pinfunction="D2+" pintype="passive"/>
+      <node ref="P1" pin="12" pinfunction="Pin_12" pintype="passive"/>
+      <node ref="RP2" pin="2" pintype="passive"/>
+      <node ref="U4" pin="1" pinfunction="Line1" pintype="input"/>
+      <node ref="U4" pin="10" pinfunction="NC" pintype="input"/>
+    </net>
+    <net code="12" name="/OVCUR">
+      <node ref="U1" pin="3" pinfunction="FLAG#" pintype="output"/>
+      <node ref="U2" pin="26" pinfunction="OVCUR#" pintype="input"/>
+    </net>
+    <net code="13" name="/PWREN">
+      <node ref="U1" pin="4" pinfunction="EN#" pintype="input"/>
+      <node ref="U2" pin="25" pinfunction="PWREN#" pintype="output"/>
+    </net>
+    <net code="14" name="/RX">
+      <node ref="P1" pin="52" pinfunction="Pin_52" pintype="passive"/>
+      <node ref="U3" pin="1" pinfunction="RX" pintype="input"/>
+    </net>
+    <net code="15" name="/SCL">
+      <node ref="J2" pin="6" pinfunction="SCL" pintype="tri_state"/>
+      <node ref="P4" pin="53" pinfunction="Pin_53" pintype="passive"/>
+    </net>
+    <net code="16" name="/SDA">
+      <node ref="J2" pin="1" pinfunction="SDA" pintype="tri_state"/>
+      <node ref="P4" pin="55" pinfunction="Pin_55" pintype="passive"/>
+    </net>
+    <net code="17" name="/SWCLK">
+      <node ref="P1" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="U3" pin="2" pinfunction="CLK" pintype="input"/>
+    </net>
+    <net code="18" name="/SWDIO">
+      <node ref="P1" pin="8" pinfunction="Pin_8" pintype="passive"/>
+      <node ref="U3" pin="4" pinfunction="DIO" pintype="bidirectional"/>
+    </net>
+    <net code="19" name="/TX">
+      <node ref="P1" pin="50" pinfunction="Pin_50" pintype="passive"/>
+      <node ref="U3" pin="3" pinfunction="TX" pintype="output"/>
+    </net>
+    <net code="20" name="/UP_D+">
+      <node ref="J1" pin="A6" pinfunction="D+" pintype="bidirectional"/>
+      <node ref="J1" pin="B6" pinfunction="D+" pintype="bidirectional"/>
+      <node ref="U2" pin="16" pinfunction="DPU" pintype="bidirectional"/>
+    </net>
+    <net code="21" name="/UP_D-">
+      <node ref="J1" pin="A7" pinfunction="D-" pintype="bidirectional"/>
+      <node ref="J1" pin="B7" pinfunction="D-" pintype="bidirectional"/>
+      <node ref="U2" pin="15" pinfunction="DMU" pintype="bidirectional"/>
+    </net>
+    <net code="22" name="/USB1_D+">
+      <node ref="J3" pin="3" pinfunction="D+" pintype="bidirectional"/>
+      <node ref="U2" pin="11" pinfunction="DP1" pintype="bidirectional"/>
+    </net>
+    <net code="23" name="/USB1_D-">
+      <node ref="J3" pin="2" pinfunction="D-" pintype="bidirectional"/>
+      <node ref="U2" pin="10" pinfunction="DM1" pintype="bidirectional"/>
+    </net>
+    <net code="24" name="/USB2_D+">
+      <node ref="U2" pin="9" pinfunction="DP2" pintype="bidirectional"/>
+      <node ref="U3" pin="13" pinfunction="D+" pintype="bidirectional"/>
+    </net>
+    <net code="25" name="/USB2_D-">
+      <node ref="U2" pin="8" pinfunction="DM2" pintype="bidirectional"/>
+      <node ref="U3" pin="12" pinfunction="D-" pintype="bidirectional"/>
+    </net>
+    <net code="26" name="/USB3_D+">
+      <node ref="P2" pin="3" pinfunction="D+" pintype="bidirectional"/>
+      <node ref="U2" pin="7" pinfunction="DP3" pintype="bidirectional"/>
+    </net>
+    <net code="27" name="/USB3_D-">
+      <node ref="P2" pin="2" pinfunction="D-" pintype="bidirectional"/>
+      <node ref="U2" pin="6" pinfunction="DM3" pintype="bidirectional"/>
+    </net>
+    <net code="28" name="/USB4_D+">
+      <node ref="P3" pin="3" pinfunction="D+" pintype="bidirectional"/>
+      <node ref="U2" pin="5" pinfunction="DP4" pintype="bidirectional"/>
+    </net>
+    <net code="29" name="/USB4_D-">
+      <node ref="P3" pin="2" pinfunction="D-" pintype="bidirectional"/>
+      <node ref="U2" pin="4" pinfunction="DM4" pintype="bidirectional"/>
+    </net>
+    <net code="30" name="/VBUS_IN">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="C3" pin="2" pintype="passive"/>
+      <node ref="J1" pin="A4" pinfunction="VBUS" pintype="passive"/>
+      <node ref="J1" pin="A9" pinfunction="VBUS" pintype="passive"/>
+      <node ref="J1" pin="B4" pinfunction="VBUS" pintype="passive"/>
+      <node ref="J1" pin="B9" pinfunction="VBUS" pintype="passive"/>
+      <node ref="U1" pin="6" pinfunction="VIN" pintype="power_in"/>
+      <node ref="U2" pin="20" pinfunction="V5" pintype="power_in"/>
+    </net>
+    <net code="31" name="GND">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="C5" pin="1" pintype="passive"/>
+      <node ref="C6" pin="2" pintype="passive"/>
+      <node ref="C7" pin="1" pintype="passive"/>
+      <node ref="J1" pin="A1" pinfunction="GND" pintype="passive"/>
+      <node ref="J1" pin="A12" pinfunction="GND" pintype="passive"/>
+      <node ref="J1" pin="B1" pinfunction="GND" pintype="passive"/>
+      <node ref="J1" pin="B12" pinfunction="GND" pintype="passive"/>
+      <node ref="J1" pin="S1" pinfunction="SHIELD" pintype="passive"/>
+      <node ref="J2" pin="4" pinfunction="GND" pintype="power_in"/>
+      <node ref="J3" pin="4" pinfunction="GND" pintype="power_in"/>
+      <node ref="J3" pin="5" pinfunction="Shield" pintype="passive"/>
+      <node ref="J4" pin="11" pinfunction="CKS" pintype="power_in"/>
+      <node ref="J4" pin="17" pinfunction="GND" pintype="power_in"/>
+      <node ref="J4" pin="2" pinfunction="D2S" pintype="power_in"/>
+      <node ref="J4" pin="5" pinfunction="D1S" pintype="power_in"/>
+      <node ref="J4" pin="8" pinfunction="D0S" pintype="power_in"/>
+      <node ref="J4" pin="SH" pinfunction="SH" pintype="passive"/>
+      <node ref="J5" pin="S" pintype="passive"/>
+      <node ref="P1" pin="11" pinfunction="Pin_11" pintype="passive"/>
+      <node ref="P1" pin="13" pinfunction="Pin_13" pintype="passive"/>
+      <node ref="P1" pin="15" pinfunction="Pin_15" pintype="passive"/>
+      <node ref="P1" pin="23" pinfunction="Pin_23" pintype="passive"/>
+      <node ref="P1" pin="24" pinfunction="Pin_24" pintype="passive"/>
+      <node ref="P1" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="P1" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="P1" pin="43" pinfunction="Pin_43" pintype="passive"/>
+      <node ref="P1" pin="44" pinfunction="Pin_44" pintype="passive"/>
+      <node ref="P1" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="P1" pin="57" pinfunction="Pin_57" pintype="passive"/>
+      <node ref="P1" pin="58" pinfunction="Pin_58" pintype="passive"/>
+      <node ref="P1" pin="7" pinfunction="Pin_7" pintype="passive"/>
+      <node ref="P1" pin="9" pinfunction="Pin_9" pintype="passive"/>
+      <node ref="P2" pin="4" pinfunction="GND" pintype="power_in"/>
+      <node ref="P2" pin="5" pinfunction="Shield" pintype="passive"/>
+      <node ref="P3" pin="4" pinfunction="GND" pintype="power_in"/>
+      <node ref="P3" pin="5" pinfunction="Shield" pintype="passive"/>
+      <node ref="P4" pin="11" pinfunction="Pin_11" pintype="passive"/>
+      <node ref="P4" pin="13" pinfunction="Pin_13" pintype="passive"/>
+      <node ref="P4" pin="15" pinfunction="Pin_15" pintype="passive"/>
+      <node ref="P4" pin="23" pinfunction="Pin_23" pintype="passive"/>
+      <node ref="P4" pin="24" pinfunction="Pin_24" pintype="passive"/>
+      <node ref="P4" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="P4" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="P4" pin="43" pinfunction="Pin_43" pintype="passive"/>
+      <node ref="P4" pin="44" pinfunction="Pin_44" pintype="passive"/>
+      <node ref="P4" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="P4" pin="57" pinfunction="Pin_57" pintype="passive"/>
+      <node ref="P4" pin="58" pinfunction="Pin_58" pintype="passive"/>
+      <node ref="P4" pin="7" pinfunction="Pin_7" pintype="passive"/>
+      <node ref="P4" pin="9" pinfunction="Pin_9" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="1" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="12" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="28" pinfunction="GND" pintype="power_in"/>
+      <node ref="U3" pin="14" pinfunction="GND" pintype="power_in"/>
+      <node ref="U3" pin="5" pinfunction="GND" pintype="power_in"/>
+      <node ref="U3" pin="6" pinfunction="GND" pintype="power_in"/>
+      <node ref="U4" pin="3" pinfunction="GND" pintype="power_in"/>
+      <node ref="U4" pin="8" pinfunction="GND" pintype="power_in"/>
+      <node ref="U5" pin="3" pinfunction="GND" pintype="power_in"/>
+      <node ref="U5" pin="8" pinfunction="GND" pintype="power_in"/>
+    </net>
+    <net code="32" name="Net-(C6-Pad1)">
+      <node ref="C6" pin="1" pintype="passive"/>
+      <node ref="J5" pin="R1" pintype="passive"/>
+      <node ref="J5" pin="T" pintype="passive"/>
+      <node ref="R6" pin="1" pintype="passive"/>
+    </net>
+    <net code="33" name="Net-(J1-CC1)">
+      <node ref="J1" pin="A5" pinfunction="CC1" pintype="bidirectional"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+    </net>
+    <net code="34" name="Net-(J1-CC2)">
+      <node ref="J1" pin="B5" pinfunction="CC2" pintype="bidirectional"/>
+      <node ref="R2" pin="1" pintype="passive"/>
+    </net>
+    <net code="35" name="Net-(U1-ISET)">
+      <node ref="R3" pin="2" pintype="passive"/>
+      <node ref="U1" pin="5" pinfunction="ISET" pintype="bidirectional"/>
+    </net>
+    <net code="36" name="Net-(U2-XI)">
+      <node ref="U2" pin="3" pinfunction="XI" pintype="input"/>
+      <node ref="Y1" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="37" name="Net-(U2-XO)">
+      <node ref="U2" pin="2" pinfunction="XO" pintype="output"/>
+      <node ref="Y1" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="38" name="VBUS">
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="J3" pin="1" pinfunction="VBUS" pintype="power_in"/>
+      <node ref="J4" pin="18" pinfunction="+5V" pintype="power_in"/>
+      <node ref="P2" pin="1" pinfunction="VBUS" pintype="power_in"/>
+      <node ref="P3" pin="1" pinfunction="VBUS" pintype="power_in"/>
+      <node ref="U1" pin="1" pinfunction="VOUT" pintype="power_out"/>
+      <node ref="U3" pin="11" pinfunction="VBUS" pintype="power_in"/>
+    </net>
+    <net code="39" name="unconnected-(J1-SBU1-PadA8)">
+      <node ref="J1" pin="A8" pinfunction="SBU1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="40" name="unconnected-(J1-SBU2-PadB8)">
+      <node ref="J1" pin="B8" pinfunction="SBU2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="41" name="unconnected-(J2-NC-Pad2)">
+      <node ref="J2" pin="2" pinfunction="NC" pintype="no_connect"/>
+    </net>
+    <net code="42" name="unconnected-(J4-CEC-Pad13)">
+      <node ref="J4" pin="13" pinfunction="CEC" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="43" name="unconnected-(J4-HPD-Pad19)">
+      <node ref="J4" pin="19" pinfunction="HPD" pintype="passive+no_connect"/>
+    </net>
+    <net code="44" name="unconnected-(J4-SCL-Pad15)">
+      <node ref="J4" pin="15" pinfunction="SCL" pintype="passive+no_connect"/>
+    </net>
+    <net code="45" name="unconnected-(J4-SDA-Pad16)">
+      <node ref="J4" pin="16" pinfunction="SDA" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="46" name="unconnected-(J4-UTILITY-Pad14)">
+      <node ref="J4" pin="14" pinfunction="UTILITY" pintype="passive+no_connect"/>
+    </net>
+    <net code="47" name="unconnected-(J5-PadR2)">
+      <node ref="J5" pin="R2" pintype="passive+no_connect"/>
+    </net>
+    <net code="48" name="unconnected-(P1-Pin_1-Pad1)">
+      <node ref="P1" pin="1" pinfunction="Pin_1" pintype="passive+no_connect"/>
+    </net>
+    <net code="49" name="unconnected-(P1-Pin_2-Pad2)">
+      <node ref="P1" pin="2" pinfunction="Pin_2" pintype="passive+no_connect"/>
+    </net>
+    <net code="50" name="unconnected-(P1-Pin_21-Pad21)">
+      <node ref="P1" pin="21" pinfunction="Pin_21" pintype="passive+no_connect"/>
+    </net>
+    <net code="51" name="unconnected-(P1-Pin_22-Pad22)">
+      <node ref="P1" pin="22" pinfunction="Pin_22" pintype="passive+no_connect"/>
+    </net>
+    <net code="52" name="unconnected-(P1-Pin_25-Pad25)">
+      <node ref="P1" pin="25" pinfunction="Pin_25" pintype="passive+no_connect"/>
+    </net>
+    <net code="53" name="unconnected-(P1-Pin_26-Pad26)">
+      <node ref="P1" pin="26" pinfunction="Pin_26" pintype="passive+no_connect"/>
+    </net>
+    <net code="54" name="unconnected-(P1-Pin_27-Pad27)">
+      <node ref="P1" pin="27" pinfunction="Pin_27" pintype="passive+no_connect"/>
+    </net>
+    <net code="55" name="unconnected-(P1-Pin_28-Pad28)">
+      <node ref="P1" pin="28" pinfunction="Pin_28" pintype="passive+no_connect"/>
+    </net>
+    <net code="56" name="unconnected-(P1-Pin_29-Pad29)">
+      <node ref="P1" pin="29" pinfunction="Pin_29" pintype="passive+no_connect"/>
+    </net>
+    <net code="57" name="unconnected-(P1-Pin_30-Pad30)">
+      <node ref="P1" pin="30" pinfunction="Pin_30" pintype="passive+no_connect"/>
+    </net>
+    <net code="58" name="unconnected-(P1-Pin_31-Pad31)">
+      <node ref="P1" pin="31" pinfunction="Pin_31" pintype="passive+no_connect"/>
+    </net>
+    <net code="59" name="unconnected-(P1-Pin_32-Pad32)">
+      <node ref="P1" pin="32" pinfunction="Pin_32" pintype="passive+no_connect"/>
+    </net>
+    <net code="60" name="unconnected-(P1-Pin_33-Pad33)">
+      <node ref="P1" pin="33" pinfunction="Pin_33" pintype="passive+no_connect"/>
+    </net>
+    <net code="61" name="unconnected-(P1-Pin_34-Pad34)">
+      <node ref="P1" pin="34" pinfunction="Pin_34" pintype="passive+no_connect"/>
+    </net>
+    <net code="62" name="unconnected-(P1-Pin_35-Pad35)">
+      <node ref="P1" pin="35" pinfunction="Pin_35" pintype="passive+no_connect"/>
+    </net>
+    <net code="63" name="unconnected-(P1-Pin_36-Pad36)">
+      <node ref="P1" pin="36" pinfunction="Pin_36" pintype="passive+no_connect"/>
+    </net>
+    <net code="64" name="unconnected-(P1-Pin_37-Pad37)">
+      <node ref="P1" pin="37" pinfunction="Pin_37" pintype="passive+no_connect"/>
+    </net>
+    <net code="65" name="unconnected-(P1-Pin_38-Pad38)">
+      <node ref="P1" pin="38" pinfunction="Pin_38" pintype="passive+no_connect"/>
+    </net>
+    <net code="66" name="unconnected-(P1-Pin_39-Pad39)">
+      <node ref="P1" pin="39" pinfunction="Pin_39" pintype="passive+no_connect"/>
+    </net>
+    <net code="67" name="unconnected-(P1-Pin_40-Pad40)">
+      <node ref="P1" pin="40" pinfunction="Pin_40" pintype="passive+no_connect"/>
+    </net>
+    <net code="68" name="unconnected-(P1-Pin_41-Pad41)">
+      <node ref="P1" pin="41" pinfunction="Pin_41" pintype="passive+no_connect"/>
+    </net>
+    <net code="69" name="unconnected-(P1-Pin_42-Pad42)">
+      <node ref="P1" pin="42" pinfunction="Pin_42" pintype="passive+no_connect"/>
+    </net>
+    <net code="70" name="unconnected-(P1-Pin_45-Pad45)">
+      <node ref="P1" pin="45" pinfunction="Pin_45" pintype="passive+no_connect"/>
+    </net>
+    <net code="71" name="unconnected-(P1-Pin_46-Pad46)">
+      <node ref="P1" pin="46" pinfunction="Pin_46" pintype="passive+no_connect"/>
+    </net>
+    <net code="72" name="unconnected-(P1-Pin_47-Pad47)">
+      <node ref="P1" pin="47" pinfunction="Pin_47" pintype="passive+no_connect"/>
+    </net>
+    <net code="73" name="unconnected-(P1-Pin_48-Pad48)">
+      <node ref="P1" pin="48" pinfunction="Pin_48" pintype="passive+no_connect"/>
+    </net>
+    <net code="74" name="unconnected-(P1-Pin_49-Pad49)">
+      <node ref="P1" pin="49" pinfunction="Pin_49" pintype="passive+no_connect"/>
+    </net>
+    <net code="75" name="unconnected-(P1-Pin_51-Pad51)">
+      <node ref="P1" pin="51" pinfunction="Pin_51" pintype="passive+no_connect"/>
+    </net>
+    <net code="76" name="unconnected-(P1-Pin_53-Pad53)">
+      <node ref="P1" pin="53" pinfunction="Pin_53" pintype="passive+no_connect"/>
+    </net>
+    <net code="77" name="unconnected-(P1-Pin_55-Pad55)">
+      <node ref="P1" pin="55" pinfunction="Pin_55" pintype="passive+no_connect"/>
+    </net>
+    <net code="78" name="unconnected-(P1-Pin_56-Pad56)">
+      <node ref="P1" pin="56" pinfunction="Pin_56" pintype="passive+no_connect"/>
+    </net>
+    <net code="79" name="unconnected-(P1-Pin_59-Pad59)">
+      <node ref="P1" pin="59" pinfunction="Pin_59" pintype="passive+no_connect"/>
+    </net>
+    <net code="80" name="unconnected-(P1-Pin_60-Pad60)">
+      <node ref="P1" pin="60" pinfunction="Pin_60" pintype="passive+no_connect"/>
+    </net>
+    <net code="81" name="unconnected-(P4-Pin_1-Pad1)">
+      <node ref="P4" pin="1" pinfunction="Pin_1" pintype="passive+no_connect"/>
+    </net>
+    <net code="82" name="unconnected-(P4-Pin_2-Pad2)">
+      <node ref="P4" pin="2" pinfunction="Pin_2" pintype="passive+no_connect"/>
+    </net>
+    <net code="83" name="unconnected-(P4-Pin_6-Pad6)">
+      <node ref="P4" pin="6" pinfunction="Pin_6" pintype="passive+no_connect"/>
+    </net>
+    <net code="84" name="unconnected-(P4-Pin_8-Pad8)">
+      <node ref="P4" pin="8" pinfunction="Pin_8" pintype="passive+no_connect"/>
+    </net>
+    <net code="85" name="unconnected-(P4-Pin_10-Pad10)">
+      <node ref="P4" pin="10" pinfunction="Pin_10" pintype="passive+no_connect"/>
+    </net>
+    <net code="86" name="unconnected-(P4-Pin_12-Pad12)">
+      <node ref="P4" pin="12" pinfunction="Pin_12" pintype="passive+no_connect"/>
+    </net>
+    <net code="87" name="unconnected-(P4-Pin_14-Pad14)">
+      <node ref="P4" pin="14" pinfunction="Pin_14" pintype="passive+no_connect"/>
+    </net>
+    <net code="88" name="unconnected-(P4-Pin_16-Pad16)">
+      <node ref="P4" pin="16" pinfunction="Pin_16" pintype="passive+no_connect"/>
+    </net>
+    <net code="89" name="unconnected-(P4-Pin_17-Pad17)">
+      <node ref="P4" pin="17" pinfunction="Pin_17" pintype="passive+no_connect"/>
+    </net>
+    <net code="90" name="unconnected-(P4-Pin_18-Pad18)">
+      <node ref="P4" pin="18" pinfunction="Pin_18" pintype="passive+no_connect"/>
+    </net>
+    <net code="91" name="unconnected-(P4-Pin_19-Pad19)">
+      <node ref="P4" pin="19" pinfunction="Pin_19" pintype="passive+no_connect"/>
+    </net>
+    <net code="92" name="unconnected-(P4-Pin_20-Pad20)">
+      <node ref="P4" pin="20" pinfunction="Pin_20" pintype="passive+no_connect"/>
+    </net>
+    <net code="93" name="unconnected-(P4-Pin_21-Pad21)">
+      <node ref="P4" pin="21" pinfunction="Pin_21" pintype="passive+no_connect"/>
+    </net>
+    <net code="94" name="unconnected-(P4-Pin_22-Pad22)">
+      <node ref="P4" pin="22" pinfunction="Pin_22" pintype="passive+no_connect"/>
+    </net>
+    <net code="95" name="unconnected-(P4-Pin_25-Pad25)">
+      <node ref="P4" pin="25" pinfunction="Pin_25" pintype="passive+no_connect"/>
+    </net>
+    <net code="96" name="unconnected-(P4-Pin_26-Pad26)">
+      <node ref="P4" pin="26" pinfunction="Pin_26" pintype="passive+no_connect"/>
+    </net>
+    <net code="97" name="unconnected-(P4-Pin_27-Pad27)">
+      <node ref="P4" pin="27" pinfunction="Pin_27" pintype="passive+no_connect"/>
+    </net>
+    <net code="98" name="unconnected-(P4-Pin_28-Pad28)">
+      <node ref="P4" pin="28" pinfunction="Pin_28" pintype="passive+no_connect"/>
+    </net>
+    <net code="99" name="unconnected-(P4-Pin_29-Pad29)">
+      <node ref="P4" pin="29" pinfunction="Pin_29" pintype="passive+no_connect"/>
+    </net>
+    <net code="100" name="unconnected-(P4-Pin_30-Pad30)">
+      <node ref="P4" pin="30" pinfunction="Pin_30" pintype="passive+no_connect"/>
+    </net>
+    <net code="101" name="unconnected-(P4-Pin_31-Pad31)">
+      <node ref="P4" pin="31" pinfunction="Pin_31" pintype="passive+no_connect"/>
+    </net>
+    <net code="102" name="unconnected-(P4-Pin_32-Pad32)">
+      <node ref="P4" pin="32" pinfunction="Pin_32" pintype="passive+no_connect"/>
+    </net>
+    <net code="103" name="unconnected-(P4-Pin_33-Pad33)">
+      <node ref="P4" pin="33" pinfunction="Pin_33" pintype="passive+no_connect"/>
+    </net>
+    <net code="104" name="unconnected-(P4-Pin_34-Pad34)">
+      <node ref="P4" pin="34" pinfunction="Pin_34" pintype="passive+no_connect"/>
+    </net>
+    <net code="105" name="unconnected-(P4-Pin_35-Pad35)">
+      <node ref="P4" pin="35" pinfunction="Pin_35" pintype="passive+no_connect"/>
+    </net>
+    <net code="106" name="unconnected-(P4-Pin_36-Pad36)">
+      <node ref="P4" pin="36" pinfunction="Pin_36" pintype="passive+no_connect"/>
+    </net>
+    <net code="107" name="unconnected-(P4-Pin_37-Pad37)">
+      <node ref="P4" pin="37" pinfunction="Pin_37" pintype="passive+no_connect"/>
+    </net>
+    <net code="108" name="unconnected-(P4-Pin_38-Pad38)">
+      <node ref="P4" pin="38" pinfunction="Pin_38" pintype="passive+no_connect"/>
+    </net>
+    <net code="109" name="unconnected-(P4-Pin_39-Pad39)">
+      <node ref="P4" pin="39" pinfunction="Pin_39" pintype="passive+no_connect"/>
+    </net>
+    <net code="110" name="unconnected-(P4-Pin_40-Pad40)">
+      <node ref="P4" pin="40" pinfunction="Pin_40" pintype="passive+no_connect"/>
+    </net>
+    <net code="111" name="unconnected-(P4-Pin_41-Pad41)">
+      <node ref="P4" pin="41" pinfunction="Pin_41" pintype="passive+no_connect"/>
+    </net>
+    <net code="112" name="unconnected-(P4-Pin_42-Pad42)">
+      <node ref="P4" pin="42" pinfunction="Pin_42" pintype="passive+no_connect"/>
+    </net>
+    <net code="113" name="unconnected-(P4-Pin_45-Pad45)">
+      <node ref="P4" pin="45" pinfunction="Pin_45" pintype="passive+no_connect"/>
+    </net>
+    <net code="114" name="unconnected-(P4-Pin_46-Pad46)">
+      <node ref="P4" pin="46" pinfunction="Pin_46" pintype="passive+no_connect"/>
+    </net>
+    <net code="115" name="unconnected-(P4-Pin_47-Pad47)">
+      <node ref="P4" pin="47" pinfunction="Pin_47" pintype="passive+no_connect"/>
+    </net>
+    <net code="116" name="unconnected-(P4-Pin_48-Pad48)">
+      <node ref="P4" pin="48" pinfunction="Pin_48" pintype="passive+no_connect"/>
+    </net>
+    <net code="117" name="unconnected-(P4-Pin_49-Pad49)">
+      <node ref="P4" pin="49" pinfunction="Pin_49" pintype="passive+no_connect"/>
+    </net>
+    <net code="118" name="unconnected-(P4-Pin_50-Pad50)">
+      <node ref="P4" pin="50" pinfunction="Pin_50" pintype="passive+no_connect"/>
+    </net>
+    <net code="119" name="unconnected-(P4-Pin_51-Pad51)">
+      <node ref="P4" pin="51" pinfunction="Pin_51" pintype="passive+no_connect"/>
+    </net>
+    <net code="120" name="unconnected-(P4-Pin_52-Pad52)">
+      <node ref="P4" pin="52" pinfunction="Pin_52" pintype="passive+no_connect"/>
+    </net>
+    <net code="121" name="unconnected-(P4-Pin_54-Pad54)">
+      <node ref="P4" pin="54" pinfunction="Pin_54" pintype="passive+no_connect"/>
+    </net>
+    <net code="122" name="unconnected-(P4-Pin_56-Pad56)">
+      <node ref="P4" pin="56" pinfunction="Pin_56" pintype="passive+no_connect"/>
+    </net>
+    <net code="123" name="unconnected-(U2-LED1-Pad23)">
+      <node ref="U2" pin="23" pinfunction="LED1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="124" name="unconnected-(U2-LED2-Pad24)">
+      <node ref="U2" pin="24" pinfunction="LED2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="125" name="unconnected-(U2-LED3{slash}SCL-Pad14)">
+      <node ref="U2" pin="14" pinfunction="LED3/SCL" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="126" name="unconnected-(U2-LED4{slash}SDA-Pad22)">
+      <node ref="U2" pin="22" pinfunction="LED4/SDA" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="127" name="unconnected-(U2-NC.-Pad18)">
+      <node ref="U2" pin="18" pinfunction="NC." pintype="no_connect"/>
+    </net>
+    <net code="128" name="unconnected-(U2-NC.-Pad27)">
+      <node ref="U2" pin="27" pinfunction="NC." pintype="no_connect"/>
+    </net>
+    <net code="129" name="unconnected-(U2-PSELF-Pad19)">
+      <node ref="U2" pin="19" pinfunction="PSELF" pintype="input+no_connect"/>
+    </net>
+    <net code="130" name="unconnected-(U2-RESET#{slash}CDP-Pad17)">
+      <node ref="U2" pin="17" pinfunction="RESET#/CDP" pintype="input+no_connect"/>
+    </net>
+    <net code="131" name="unconnected-(U3-3.3V-Pad7)">
+      <node ref="U3" pin="7" pinfunction="3.3V" pintype="power_out+no_connect"/>
+    </net>
+    <net code="132" name="unconnected-(U3-3.3V-Pad8)">
+      <node ref="U3" pin="8" pinfunction="3.3V" pintype="power_out+no_connect"/>
+    </net>
+    <net code="133" name="unconnected-(U3-5V-Pad9)">
+      <node ref="U3" pin="9" pinfunction="5V" pintype="power_out+no_connect"/>
+    </net>
+    <net code="134" name="unconnected-(U3-5V-Pad10)">
+      <node ref="U3" pin="10" pinfunction="5V" pintype="power_out+no_connect"/>
+    </net>
+  </nets>
+</export>
