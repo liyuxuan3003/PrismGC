@@ -81,7 +81,7 @@ uint8_t PageEnd()
             LCDPrintf(ORANGE,BISQUE,840,200,5,"%d",levelStep);
         else
             LCDPrintf(ORANGE,BISQUE,820,200,5,"%d",levelStep);
-            
+             
         
         LCDPrintf(BLACK,CHOCOLATE,275,550,2,"PRESS KEY_C TO CHOOSE GAME LEVEL");
 
