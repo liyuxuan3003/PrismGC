@@ -33,11 +33,11 @@ void BlockEND(uint32_t x,uint32_t y)
     return;
 }
 
-void BlockTRP(uint32_t x,uint32_t y)
-{
-    LCDRectangle(COLOR_TRP,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
-    return;
-}
+// void BlockTRP(uint32_t x,uint32_t y)
+// {
+//     LCDRectangle(COLOR_TRP,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
+//     return;
+// }
 
 void BlockANM(uint32_t x,uint32_t y)
 {

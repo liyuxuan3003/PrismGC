@@ -334,6 +334,7 @@ uint8_t PageMazeGame()
     uint32_t mpCirculate=0;
     uint32_t mapCirculate=0;
     uint32_t animalVec=0;
+    uint8_t  mCGProcess=3;
 
     uint32_t isAnimate=0;
     uint32_t isAnimalAnimate=0;
@@ -341,6 +342,7 @@ uint8_t PageMazeGame()
     uint8_t gameStep=0;
     uint8_t isWin=1;
     uint8_t isChange=0;
+    uint8_t isMCGStart=0;
 
     uint8_t getApple[APPLE_MAX]={0};
 
@@ -392,8 +394,40 @@ uint8_t PageMazeGame()
                     case B2POR: BlockPOR(x,y,2); break;
                     case B3POR: BlockPOR(x,y,3); break;
                     case B_TRP: BlockTRP(x,y); break;
-                    case BMCGB: BlockBAR(x,y); break;
-                    case BMCGI: BlockICE(x,y); break;
+                    case BMCGI: 
+                    {
+                        if(isMCGStart==1)
+                        {
+                            BlockDOR(x,y,mCGProcess);
+                            mCGProcess --;
+                            if(mCGProcess==1)
+                            {
+                                isMCGStart=0;
+                            }
+                        }
+                        else
+                        {
+                            BlockDOR(x,y,mCGProcess);
+                        }
+                        break;
+                    }
+                    case BMCGB:
+                    {
+                        if(isMCGStart==1)
+                        {
+                            BlockDOR(x,y,mCGProcess);
+                            mCGProcess ++;
+                            if(mCGProcess==3)
+                            {
+                                isMCGStart=0;
+                            }
+                        }
+                        else
+                        {
+                            BlockDOR(x,y,mCGProcess);
+                        }
+                        break;
+                    }
                 }
 
                 for(uint32_t m=0;m<APPLE_MAX;m++)
@@ -495,6 +529,7 @@ uint8_t PageMazeGame()
             {
                 isChange++;
                 BUZZER -> NOTE = 5; BUZZER -> TIME = 80;
+                isMCGStart=1;
                 if(isChange%2==0)
                     for(int i=0; i < mcgNumber; i++)
                         map.map[coordMechanismGate[i].i][coordMechanismGate[i].j]=BMCGB;

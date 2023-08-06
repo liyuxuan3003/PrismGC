@@ -24,18 +24,15 @@
 #define COLOR_POR_SY2 0x88CC88
 #define COLOR_POR_SY3 0x8888CC
 
-<<<<<<< HEAD
-#define COLOR_TRP 0x000000
+// #define COLOR_TRP 0x000000
 
 #define COLOR_ANM 0xFF0000
 #define COLOR_MCG 0x0000FF
-=======
 #define COLOR_DOR 0x884400
 #define COLOR_DOR_BOARD 0xCCCC00
 
 #define COLOR_TRP 0x00CCFF
 
->>>>>>> lmj
 /*-------------------------------*/
 
 #define COLOR_GRO 0xFFFFFF
