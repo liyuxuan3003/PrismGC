@@ -24,18 +24,17 @@
 #define COLOR_POR_SY2 0x88CC88
 #define COLOR_POR_SY3 0x8888CC
 
-<<<<<<< HEAD
-#define COLOR_TRP 0x000000
-
 #define COLOR_ANM 0xFF0000
 #define COLOR_MCG 0x0000FF
-=======
 #define COLOR_DOR 0x884400
 #define COLOR_DOR_BOARD 0xCCCC00
 
 #define COLOR_TRP 0x00CCFF
 
->>>>>>> lmj
+#define COLOR_BUT_OPEN 0x00FF00
+#define COLOR_BUT_EXCUTING 0xFFFF00
+#define COLOR_BUT_CLOSE 0xFF0000
+
 /*-------------------------------*/
 
 #define COLOR_GRO 0xFFFFFF
@@ -60,6 +59,7 @@ void BlockTRP(uint32_t x,uint32_t y);
 void BlockANM(uint32_t x,uint32_t y);
 void BlockMCG(uint32_t x,uint32_t y);
 void BlockDOR(uint32_t x,uint32_t y,uint32_t opensign);
+void BlockBUT(uint32_t x,uint32_t y,uint32_t opensign);
 
 // void BlockMAC(uint32_t x,uint32_t y,uint32_t z);
 // void BlockTRP(uint32_t x,uint32_t y);
