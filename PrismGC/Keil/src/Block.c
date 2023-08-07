@@ -7,6 +7,7 @@
 
 #include "Console.h"
 #include "Sleep.h"
+#include <math.h>
 
 void BlockICE(uint32_t x,uint32_t y)
 {
@@ -114,19 +115,6 @@ void BlockPOR(uint32_t x,uint32_t y,uint32_t id)
 }
 
 
-// void BlockTRP(uint32_t x,uint32_t y)
-// {
-//     LCDRectangle(COLOR_TRA,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
-//     return;
-// }
-
-// void BlockMAC(uint32_t x,uint32_t y,uint32_t z)
-// {
-//     LCDRectangle(GREEN,x-BLOCK_INNE,y-BLOCK_INNE,x+BLOCK_INNE,y+BLOCK_INNE);
-//     Arrow(x,y,z,WHITE);
-//     return;
-// }
-
 
 void BlockDOR(uint32_t x,uint32_t y,uint32_t opensign)
 {
@@ -180,4 +168,25 @@ void BlockTRP(uint32_t x,uint32_t y)
     LCDPixelSquare(COLOR_TRP,x-8,y+5,x+9,y+5);
     LCDPixelSquare(COLOR_TRP,x-8,y+6,x+7,y+6);
     return;
+}
+
+void BlockBUT(uint32_t x,uint32_t y,uint32_t opensign)
+{
+    BlockICE(x,y);
+    uint32_t color;
+    if(opensign==1)
+    color=COLOR_BUT_OPEN;
+    else
+    {
+        if(opensign==2)
+        {
+            color=COLOR_BUT_EXCUTING;
+        }
+        else
+        {
+            color=COLOR_BUT_CLOSE;
+        }
+    }
+    LCDCircle(0xFFFFFF,x,y,16);
+    LCDCircle(color,x,y,12);
 }
