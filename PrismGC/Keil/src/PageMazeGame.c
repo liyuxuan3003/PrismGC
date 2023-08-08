@@ -436,7 +436,8 @@ uint8_t PageMazeGame()
             }
         }
 
-        BlockMCG(CalX(coordMcgAct),CalY(coordMcgAct));
+        if(mcgNumber!=0)
+            BlockBUT(CalX(coordMcgAct),CalY(coordMcgAct),mCGProcess);
 
         // LCDPrintf(BLACK,BISQUE,50,300,1,"coordAnimal.i: %02d",coordAnimal.i);
         // LCDPrintf(BLACK,BISQUE,50,400,1,"coordAnimal.j: %02d",coordAnimal.j);
