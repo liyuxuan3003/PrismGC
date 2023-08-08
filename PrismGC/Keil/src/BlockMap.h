@@ -45,7 +45,7 @@ typedef struct
     uint8_t map[MAP_W][MAP_H];
     MapCoord coord;
     MapCoord coordApple[APPLE_MAX];
-    MapCoord coordAnimal;
+    // MapCoord coordAnimal;
     MapCoord coordMcgAct;
 } LevelMap;
 

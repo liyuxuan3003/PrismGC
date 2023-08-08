@@ -219,7 +219,7 @@ void ConfigMazeGame(uint8_t _levelId)
     } 
 
     map.coord=pmap->coord;
-    map.coordAnimal=pmap->coordAnimal;
+    // map.coordAnimal=pmap->coordAnimal;
     map.coordMcgAct=pmap->coordMcgAct;
     for(uint32_t i=0;i<APPLE_MAX;i++)
         map.coordApple[i]=pmap->coordApple[i];
@@ -322,7 +322,7 @@ uint8_t PageMazeGame()
     uint32_t nowTime;
 
     MapCoord coord=map.coord;
-    MapCoord coordAnimal=map.coordAnimal;
+    // MapCoord coordAnimal=map.coordAnimal;
     MapCoord coordMcgAct=map.coordMcgAct;
 
     MapCoord coordMechanismGate[MP_L];
@@ -355,7 +355,9 @@ uint8_t PageMazeGame()
         {
             if(map.map[i][j] == B_MCG)
             {
-                coordMechanismGate[mcgNumber]=_MapCoord(i,j); mcgNumber++; map.map[i][j]=BMCGB; break;
+                coordMechanismGate[mcgNumber]=_MapCoord(i,j); 
+                mcgNumber++; 
+                map.map[i][j]=BMCGB;
             }
         }
     }
@@ -435,8 +437,11 @@ uint8_t PageMazeGame()
                         Apple(x,y,2);
             }
         }
-
-        BlockMCG(CalX(coordMcgAct),CalY(coordMcgAct));
+        
+        if(mcgNumber != 0)
+        {
+            BlockBUT(CalX(coordMcgAct),CalY(coordMcgAct),mCGProcess);
+        }
 
         // LCDPrintf(BLACK,BISQUE,50,300,1,"coordAnimal.i: %02d",coordAnimal.i);
         // LCDPrintf(BLACK,BISQUE,50,400,1,"coordAnimal.j: %02d",coordAnimal.j);
