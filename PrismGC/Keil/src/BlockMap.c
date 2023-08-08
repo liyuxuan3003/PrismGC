@@ -45,28 +45,26 @@ void PortalWrite(MapCoord coord,PortalPair *portal)
     }
 }
 
-// const LevelMap level1=
-// {
-//     {
-//         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
-//         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
-//         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
-//         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_BAR,B_BAR,B_ICE,B_ICE,B_ICE,B_END,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
-//         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
-//         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
-//         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
-//         {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR}
-//     },
-//     {4,0},
-//     {{7,4},{4,4},{5,11}},
-//     {7,1},
-//     {7,3},
-// };
-//RDRU L
+const LevelMap level1=
+{
+    {
+        {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
+        {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
+        {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
+        {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
+        {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_BAR,B_BAR,B_ICE,B_ICE,B_ICE,B_END,B_ICE},
+        {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE},
+        {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
+        {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
+        {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR},
+        {B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR,B_BAR}
+    },
+    {4,0},
+    {{7,4},{4,4},{5,11}},
+};
+// RDRU L
 
 const LevelMap level2=
 {
@@ -718,7 +716,7 @@ const LevelMap level32=
     {{5,7},{1,9},{9,1}},
 };
 
-const LevelMap level1=
+const LevelMap level33=
 {
     {
         {B_ICE,B_ICE,B_MCG,B_ICE,B_ICE,B_ICE,B_MCG,B_ICE,B_ICE,B_BAR,B_ICE,B1POR},
@@ -738,7 +736,29 @@ const LevelMap level1=
     {{0,0},{3,1},{1,5}},
     {10,10},//触发器位置
 };
-//RULR DURD LDLU RDRU DLUR DURU LURD
+// RULR DURD LDLU RDRU DLUR DURU LURD
+
+const LevelMap level34=
+{
+    {
+        {B_BAR,B_BAR,B_BAR,B_BAR,B_GRA,B_ICE,B_ICE,B_BAR,B_BAR,B_ICE,B_ICE,B_ICE},
+        {B_BAR,B_ICE,B_ICE,B_GRA,B_ICE,B_BAR,B_BAR,B_ICE,B_BAR,B_ICE,B_ICE,B_ICE},
+        {B_BAR,B_ICE,B_ICE,B_GRA,B_ICE,B_ICE,B_ICE,B_ICE,B_BAR,B_ICE,B_ICE,B_ICE},
+        {B_BAR,B_ICE,B_BAR,B_ICE,B_ICE,B_BAR,B_BAR,B_ICE,B_BAR,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_ICE,B_BAR,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_MCG,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_BAR,B_BAR,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_MCG,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_BAR,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_MCG,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_BAR,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_MCG,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_BAR,B_ICE,B_ICE,B_ICE,B_BAR,B_ICE,B_ICE,B_BAR,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_BAR,B_ICE,B_GRA,B_ICE,B_BAR,B_ICE,B_ICE,B_BAR,B_ICE,B_ICE,B_ICE},
+        {B_ICE,B_ICE,B_ICE,B_ICE,B_ICE,B_BAR,B_ICE,B_ICE,B_BAR,B_ICE,B_ICE,B_ICE},
+        {B_BAR,B_ICE,B_ICE,B_ICE,B_ICE,B_BAR,B_ICE,B_ICE,B_BAR,B_ICE,B_END,B_ICE}
+    },
+    {5,4},
+    {{10,0},{2,5},{0,9}},
+    {0,6},
+};
+// UURL DLUL URUR DLRR DLUL DLUR ULDR
 
 // const LevelMap level33=
 // {
