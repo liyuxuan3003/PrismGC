@@ -84,6 +84,13 @@ uint8_t PageMain()
         // BlockBUT(400,200,1);
         // BlockBUT(400,300,2);
         // BlockBUT(400,400,3);
+        BlockDOR(200,200,1);
+        BlockDOR(200,300,2);
+        BlockDOR(200,400,3);
+        BlockTRP(200,500);
+        BlockBUT(200,200,1);
+        BlockBUT(300,300,2);
+        BlockBUT(500,400,3);
 
         const char title[]="Invincible Slime's Adventure";
         const char titleSub[]="Click any key to start";
