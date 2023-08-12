@@ -165,7 +165,7 @@ void LCDCircle(uint32_t color,int32_t x,int32_t y,int32_t r)
 {
     for(int32_t i=-r;i<r;i++)
     {
-        for(int32_t j=-sqrt((r*r-i*i));j<sqrt((r*r-i*i));j++)
+        for(int32_t j=-sqrt((r*r-i*i));j*j<((r*r-i*i));j++)
         LCDPixel(color,x+i,y+j);
     }
 }

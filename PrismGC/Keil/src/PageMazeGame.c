@@ -208,6 +208,22 @@ void ConfigMazeGame(uint8_t _levelId)
         case 30: pmap=&level30; break;
         case 31: pmap=&level31; break;
         case 32: pmap=&level32; break;
+        case 33: pmap=&level33; break;
+        case 34: pmap=&level34; break;
+        case 35: pmap=&level35; break;
+        case 36: pmap=&level36; break;
+        case 37: pmap=&level37; break;
+        case 38: pmap=&level38; break;
+        case 39: pmap=&level39; break;
+        case 40: pmap=&level40; break;
+        case 41: pmap=&level41; break;
+        case 42: pmap=&level42; break;
+        case 43: pmap=&level43; break;
+        case 44: pmap=&level44; break;
+        case 45: pmap=&level45; break;
+        case 46: pmap=&level46; break;
+        // case 47: pmap=&level47; break;
+        // case 48: pmap=&level48; break;
         default: pmap=&level1;  break;
     }
 
@@ -219,7 +235,7 @@ void ConfigMazeGame(uint8_t _levelId)
     } 
 
     map.coord=pmap->coord;
-    map.coordAnimal=pmap->coordAnimal;
+    // map.coordAnimal=pmap->coordAnimal;
     map.coordMcgAct=pmap->coordMcgAct;
     for(uint32_t i=0;i<APPLE_MAX;i++)
         map.coordApple[i]=pmap->coordApple[i];
@@ -322,7 +338,7 @@ uint8_t PageMazeGame()
     uint32_t nowTime;
 
     MapCoord coord=map.coord;
-    MapCoord coordAnimal=map.coordAnimal;
+    // MapCoord coordAnimal=map.coordAnimal;
     MapCoord coordMcgAct=map.coordMcgAct;
 
     MapCoord coordMechanismGate[MP_L];
@@ -355,7 +371,9 @@ uint8_t PageMazeGame()
         {
             if(map.map[i][j] == B_MCG)
             {
-                coordMechanismGate[mcgNumber]=_MapCoord(i,j); mcgNumber++; map.map[i][j]=BMCGB; break;
+                coordMechanismGate[mcgNumber]=_MapCoord(i,j); 
+                mcgNumber++; 
+                map.map[i][j]=BMCGB;
             }
         }
     }
@@ -435,8 +453,11 @@ uint8_t PageMazeGame()
                         Apple(x,y,2);
             }
         }
-
-        BlockMCG(CalX(coordMcgAct),CalY(coordMcgAct));
+        
+        if(mcgNumber != 0)
+        {
+            BlockBUT(CalX(coordMcgAct),CalY(coordMcgAct),mCGProcess);
+        }
 
         // LCDPrintf(BLACK,BISQUE,50,300,1,"coordAnimal.i: %02d",coordAnimal.i);
         // LCDPrintf(BLACK,BISQUE,50,400,1,"coordAnimal.j: %02d",coordAnimal.j);

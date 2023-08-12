@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define PAGEMAX 2
+#define PAGEMAX 4
 #define IMAX 4
 #define JMAX 4
 #define LEVELNUM_PER_PAGE IMAX*JMAX
