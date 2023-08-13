@@ -1,6 +1,8 @@
 /*
  * Copyright (c) 2023 by Liyuxuan, all rights reserved.
  */
+
+ `include "GlobalDefine.v"
  
 module BlockRAM #(parameter MEM_ADDR_WIDTH = 0)   
 (
@@ -22,6 +24,13 @@ begin
     if(sizeDecode[3]) mem[addrIn][31:24] <= dataIn[31:24];
 
     dataOut <= mem[addrOut];
+end
+
+initial 
+begin
+    $readmemh("hex/ER_IROM1",mem);
+    // if(MEM_ADDR_WIDTH==`RAM_CODE_WIDTH-2) $readmemh("hex/ER_IROM1",mem);
+    // if(MEM_ADDR_WIDTH==`RAM_DATA_WIDTH-2) $readmemh("hex/ER_IROM2",mem,16'h1600);
 end
 
 endmodule

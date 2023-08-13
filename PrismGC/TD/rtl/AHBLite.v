@@ -75,7 +75,7 @@ AHBLiteSlaveMux uSlaveMUX
 );
 
 // RamCode
-AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) uAHBRAMCode
+AHBLiteBlockROM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) uAHBROMCode
 (
     .HCLK(HCLK),
     .HRESETn(HRESETn),
@@ -91,6 +91,22 @@ AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) uAHBRAMCode
     .HREADYOUT(HREADYOUT_A[`idRAMCode]),
     .HRESP(HRESP_A[`idRAMCode])
 );
+// AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_CODE_WIDTH)) uAHBRAMCode
+// (
+//     .HCLK(HCLK),
+//     .HRESETn(HRESETn),
+//     .HSEL(HSEL_A[`idRAMCode]),
+//     .HADDR(HADDR),
+//     .HPROT(HPROT),
+//     .HSIZE(HSIZE),
+//     .HTRANS(HTRANS),
+//     .HWDATA(HWDATA),
+//     .HWRITE(HWRITE),
+//     .HRDATA(HRDATA_A[`idRAMCode*32+:32]),
+//     .HREADY(HREADY),
+//     .HREADYOUT(HREADYOUT_A[`idRAMCode]),
+//     .HRESP(HRESP_A[`idRAMCode])
+// );
 
 // RamData
 AHBLiteBlockRAM #(.ADDR_WIDTH(`RAM_DATA_WIDTH)) uAHBRAMData
