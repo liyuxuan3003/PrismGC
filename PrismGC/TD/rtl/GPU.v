@@ -31,10 +31,28 @@ module GPU
 
 reg [31:0] mem [`VRAM_BUFF+16-1:0];
 reg [31:0] len;
-reg enableState;
+//reg enableState;
 
 wire sysVaild;
-wire busy;
+
+reg[2:0]    wrState;
+reg[2:0]    wrDiv;
+reg[23:0]   wrCount;
+
+reg         busy;
+reg         sysLoad;
+reg[31:0]   sysAddrMin;
+reg[31:0]   sysAddrMax;
+reg[7:0]    sysWriteRefresh;
+wire        sysWriteEnable;
+
+wire sysFull;
+wire sysEmpty;
+  
+wire[31:0]  sysDataIn = 
+    (sysWriteEnable && wrCount < len) ? 
+        (mem[`ENABLE][1]==1 ? {mem[15+wrCount][23:0],8'b0} : {mem[`PIXEL][23:0], 8'b0}) : 
+        sysDataIn;
 
 always@(posedge clk or negedge rstn) 
 begin
@@ -49,7 +67,7 @@ begin
         mem[`SYS_VAILD] <= 0;
         mem[`BUSY] <= 0;
         mem[`PING_PONG] <= 0;
-        enableState <= 0;
+        //enableState <= 0;
     end
     else
     begin
@@ -64,12 +82,69 @@ begin
 
         dataOut <= mem[addrOut[4:0]]; 
 
-        if (mem[`BUSY][0] & mem[`ENABLE][0])
-            enableState <= 1;
-        if(enableState & ~mem[`BUSY][0] & mem[`ENABLE][0])
-            enableState <= 0;
+        //if (mem[`BUSY][0] & mem[`ENABLE][0])
+        //    enableState <= 1;
+        //if(enableState & ~mem[`BUSY][0] & mem[`ENABLE][0])
+        //    enableState <= 0;
     end
 end
+
+always@(posedge clkRef or negedge sysRstn) 
+begin
+    if(~sysRstn)
+    begin
+        wrState <= 0;
+		wrCount <= 0;
+		wrDiv <= 0;
+        sysWriteRefresh <= 0;
+        busy<=0;
+    end
+    else
+    begin
+        case (wrState)
+            0: begin
+                busy <= 0;
+                sysWriteRefresh <= 0;
+                wrState <= mem[`ENABLE][0] ? 1:0;
+            end
+            1: begin
+                busy <= 1;
+                sysAddrMin <= mem[`X_POS][15:0] + mem[`Y_POS][15:0] * `H_DISP;
+                sysAddrMax <= `H_DISP * (`V_DISP  + 1);
+                sysLoad <= 1'b1;
+                wrState <= 2;
+                wrDiv <= 0;
+            end
+            2: begin
+                busy <= 1;
+                sysLoad <= 1'b0;
+                wrCount <= 0;
+                wrDiv <= 0;
+                wrState <= 3;
+            end
+            3: begin
+                busy <= 1;
+                wrDiv <= wrDiv + 1;
+                if(wrDiv == 0)
+                begin
+                    wrCount <= wrCount + 1;
+                    if(wrCount == mem[`LEN][23:0]+7)
+                    begin
+                        wrState <= 4;
+                    end 
+                end
+            end
+            4: begin
+                busy <= 0;
+                wrState <= mem[`ENABLE][0] ? 4:0;
+                sysWriteRefresh <= 0;
+            end
+            default: wrState <= 0;
+        endcase
+    end
+end
+
+assign sysWriteEnable = ((wrDiv==1) && (wrState==3))? 1:0;
 
 // System PLL
 wire clkRef;       //sdram ctrl clock
@@ -89,45 +164,28 @@ SystemCrtlPLL uSystemCrtlPLL
 	.clk_c3			(clkPixel5x)
 );
 
-
-// GPU Data Control
-wire        sysLoad;
-wire        sysWriteEnable;
-wire[31:0]  sysAddrMin;
-wire[31:0]  sysAddrMax;
-wire[7:0]   sysWriteRefresh;
-
-wire[23:0]  wrCount;
-wire sysFull;
-wire sysEmpty;
-  
-wire[31:0]  sysDataIn = 
-    (sysWriteEnable && wrCount < len) ? 
-        (mem[`ENABLE][1]==1 ? {mem[15+wrCount][23:0],8'b0} : {mem[`PIXEL][23:0], 8'b0}) : 
-        sysDataIn;
-
-GPUDataControl#(.H_DISP(`H_DISP), .V_DISP(`V_DISP)) uGPUDataControl
-(
-    .clk                (clkRef),        
-    .rstn               (sysRstn),     
+// GPUDataControl#(.H_DISP(`H_DISP), .V_DISP(`V_DISP)) uGPUDataControl
+// (
+//     .clk                (clkRef),        
+//     .rstn               (sysRstn),     
     
-    .sysVaild           (sysVaild),
-    .sysLoad            (sysLoad), 
-    .sysWriteEnable     (sysWriteEnable),
-    .sysAddrMin         (sysAddrMin),
-    .sysAddrMax         (sysAddrMax),
-    .sysWriteRefresh    (sysWriteRefresh),
-    .sysFull(sysFull),
-    .sysEmpty(sysEmpty),
+//     .sysVaild           (sysVaild),
+//     .sysLoad            (sysLoad), 
+//     .sysWriteEnable     (sysWriteEnable),
+//     .sysAddrMin         (sysAddrMin),
+//     .sysAddrMax         (sysAddrMax),
+//     .sysWriteRefresh    (sysWriteRefresh),
+//     .sysFull(sysFull),
+//     .sysEmpty(sysEmpty),
 
-    .xpos(mem[`X_POS][15:0]),
-    .ypos(mem[`Y_POS][15:0]),
-    .len(mem[`LEN][23:0]),
-    .enable(mem[`ENABLE][0]),
-    .busy(busy),
+//     .xpos(mem[`X_POS][15:0]),
+//     .ypos(mem[`Y_POS][15:0]),
+//     .len(mem[`LEN][23:0]),
+//     .enable(mem[`ENABLE][0]),
+//     .busy(busy),
 
-    .wrCount(wrCount)
-);
+//     .wrCount(wrCount)
+// );
 
 //GPU HDMI Encoder
 
