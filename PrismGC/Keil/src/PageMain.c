@@ -62,13 +62,13 @@ uint8_t PageMain()
             x=0;    
         PingPong();
         LCDBackground(0xCCEEFF);
-        // for (uint32_t i=0;i<=15;i++)
-        // {
-        //     for (uint32_t j=0;j<=4;j++)
-        //     {
-        //         BlockICEMain((96-x)*96+64*i,350+64*j);
-        //     }
-        // }
+        for (uint32_t i=0;i<=15;i++)
+        {
+            for (uint32_t j=0;j<=4;j++)
+            {
+                BlockICEMain((96-x)*96+64*i,350+64*j);
+            }
+        }
         MainCharactor(150,270,8);
         Apple(1024-150,277,6);
 
