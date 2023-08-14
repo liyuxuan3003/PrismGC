@@ -58,10 +58,11 @@ uint8_t PageCharTest()
         };
 
         //LCDPixels的len需满足5<=len<=16
-        for(int i=4;i<16;i++)
-            LCDPixels(colors,200-i/2,400+i,i+1);
+        for(int i=5;i<16;i++)
+            LCDPixels(colors,128,400+i,i+1);
 
         MainCharactor(400,450,6);
+        Apple(500,450,1);
 
         // for(int i=0;i<8;i++)
         // {
@@ -70,6 +71,23 @@ uint8_t PageCharTest()
 
         LCDPrintf(0x000000,0xFFFFFF,200,500,1,"Zhang Yan %d",123,59.5);
         LCDPrintf(0x000000,0xFFFFFF,200,550,2,"Zhang Yan %d",123,59.5);
+
+        LCDRectangle(0xFF0000,200,100,300,150);
+        LCDRectangle(0x00FF00,200,200,256,250);
+        LCDRectangle(0x0000FF,256,200,300,250);
+
+        LCDRectangle(0xFF0000,450,100,600,150);
+        LCDRectangle(0x00FF00,450,200,512,250);
+        LCDRectangle(0x0000FF,512,200,516,250);
+
+        MainCharactor(253,450,2);
+        MainCharactor(253,200,2);
+        MainCharactor(253,300,2);
+
+        // for(int i=0;i<4;i++)
+        // {
+        //     LCDRectangle(0x000201*i,0,i,i,i);
+        // }
 
         Arrow(800,400,2,0x000000);
     }

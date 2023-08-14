@@ -12,19 +12,21 @@ module SDRAMControl
     input                   WR,                 //Write Request
     input[`ASIZE-1:0]       WR_MIN_ADDR,        //Write start address
     input[`ASIZE-1:0]       WR_MAX_ADDR,        //Write max address
-    input[8:0]              WR_LENGTH,          //Write length
+    input[23:0]             WR_LENGTH,          //Write length
     input                   WR_LOAD,            //Write register load & fifo clear
     input                   WR_CLK,             //Write fifo clock
     output                  WR_EMPTY,
     output                  WR_FULL,
-    output                  WR_AFULL,
+    output                  WR_AFULL,           //--
+    output                  WR_REQ,
+    output                  WR_DONE,
 
     // FIFO Read Side 1
     output[`DSIZE-1:0]      RD_DATA,            //Data output
     input                   RD,                 //Read Request
     input[`ASIZE-1:0]       RD_MIN_ADDR,        //Read start address
     input[`ASIZE-1:0]       RD_MAX_ADDR,        //Read max address
-    input[8:0]              RD_LENGTH,          //Read length
+    input[10:0]             RD_LENGTH,          //Read length
     input                   RD_LOAD,            //Read register load & fifo clear
     input                   RD_CLK,             //Read fifo clock
 
@@ -164,55 +166,58 @@ EG_PHY_SDRAM_2M_32 uSDRAM
     .cke(CKE)
 );
 		
-wire    wfifo_afull_flag;
+// wire    wfifo_afull_flag;
 
-EG_LOGIC_FIFO #(
- 	.DATA_WIDTH_W(32),
-	.DATA_WIDTH_R(32),
-	.DATA_DEPTH_W(1024),
-	.DATA_DEPTH_R(1024),
-	.ENDIAN("BIG"),
-	.RESETMODE("ASYNC"),
-	.E(0),
-	.F(1024),
-	.ASYNC_RESET_RELEASE("SYNC"),
-	.AF(8)
-) 
-uWriteFIFO
-(
-	.rst(~RESET_N | WR_LOAD),
-	.di(WR_DATA),
-	.clkw(WR_CLK),
-	.we(WR),
-	.csw(3'b111),
-	.do(mDATAIN1),
-	.clkr(REF_CLK),
-	.re(IN_REQ & WR_MASK),
-	.csr(3'b111),
-	.ore(1'b0),
-	.empty_flag(WR_EMPTY),
-	.aempty_flag(),
-	.full_flag(WR_FULL),
-	.afull_flag(wfifo_afull_flag)
-);
+// EG_LOGIC_FIFO #(
+//  	.DATA_WIDTH_W(32),
+// 	.DATA_WIDTH_R(32),
+// 	.DATA_DEPTH_W(1024),
+// 	.DATA_DEPTH_R(1024),
+// 	.ENDIAN("BIG"),
+// 	.RESETMODE("ASYNC"),
+// 	.E(0),
+// 	.F(1024),
+// 	.ASYNC_RESET_RELEASE("SYNC"),
+// 	.AF(8)
+// ) 
+// uWriteFIFO
+// (
+// 	.rst(~RESET_N | WR_LOAD),
+// 	.di(WR_DATA),
+// 	.clkw(WR_CLK),
+// 	.we(WR),
+// 	.csw(3'b111),
+// 	.do(mDATAIN1),
+// 	.clkr(REF_CLK),
+// 	.re(IN_REQ & WR_MASK),
+// 	.csr(3'b111),
+// 	.ore(1'b0),
+// 	.empty_flag(WR_EMPTY),
+// 	.aempty_flag(),
+// 	.full_flag(WR_FULL),
+// 	.afull_flag(wfifo_afull_flag)
+// );
 
-assign WR_AFULL = wfifo_afull_flag;
+assign WR_REQ = IN_REQ & WR_MASK;
+assign WR_DONE = mWR_DONE;
+
+// assign WR_AFULL = wfifo_afull_flag;
 				
-assign	mDATAIN	= (WR_MASK) ? mDATAIN1 : {`DSIZE-1{1'b1}};
+assign	mDATAIN	= (WR_MASK) ? WR_DATA : {`DSIZE-1{1'b1}};
 
 wire    rfifo_aempty_flag;  //rrusede < 256
 
 EG_LOGIC_FIFO #(
  	.DATA_WIDTH_W(32),
 	.DATA_WIDTH_R(32),
-	.DATA_DEPTH_W(512),
-	.DATA_DEPTH_R(512),
+	.DATA_DEPTH_W(2048),
+	.DATA_DEPTH_R(2048),
 	.ENDIAN("BIG"),
 	.RESETMODE("ASYNC"),
 	.E(0),
-	.F(512),
+	.F(2048),
 	.ASYNC_RESET_RELEASE("SYNC"),
-	.AE(256)
+	.AE(1792)
 )
 uReadFIFO
 (
@@ -415,26 +420,7 @@ begin
 	begin
 		if((mWR==0) && (mRD==0) && (ST==0) && (WR_MASK==0) && (RD_MASK==0))	//free
 		begin	
-			//	Write Side 1 is most important
-            if(sysWriteRefresh && (WR_LOAD==0))
-            begin
-                mADDR	<=	rWR_ADDR;
-				mLENGTH	<=	sysWriteRefresh;
-				WR_MASK	<=	1;
-				RD_MASK	<=	0;
-				mWR		<=	1;
-				mRD		<=	0;
-            end
-			else if( (wfifo_afull_flag == 1'b1 ) && (WR_LOAD==0))	//write fifo
-			begin
-				mADDR	<=	rWR_ADDR;
-				mLENGTH	<=	WR_LENGTH;
-				WR_MASK	<=	1;
-				RD_MASK	<=	0;
-				mWR		<=	1;
-				mRD		<=	0;
-			end
-			else if((rfifo_aempty_flag == 1'b1) && (RD_LOAD==0) && (sysReadVaild == 1'b1))	//read fifo
+			if((rfifo_aempty_flag == 1'b1) && (RD_LOAD==0) && (sysReadVaild == 1'b1))	//read fifo
 			begin
 				mADDR	<=	rRD_ADDR;
 				mLENGTH	<=	RD_LENGTH;
@@ -443,6 +429,25 @@ begin
 				mWR		<=	0;
 				mRD		<=	1;				
 			end
+            else if(WR_LENGTH && (WR_LOAD==0))
+            begin
+                mADDR	<=	rWR_ADDR;
+				mLENGTH	<=	WR_LENGTH;
+				WR_MASK	<=	1;
+				RD_MASK	<=	0;
+				mWR		<=	1;
+				mRD		<=	0;
+            end
+			// else if( (wfifo_afull_flag == 1'b1 ) && (WR_LOAD==0))	//write fifo
+			// begin
+			// 	mADDR	<=	rWR_ADDR;
+			// 	mLENGTH	<=	WR_LENGTH;
+			// 	WR_MASK	<=	1;
+			// 	RD_MASK	<=	0;
+			// 	mWR		<=	1;
+			// 	mRD		<=	0;
+			// end
+
 		end
 		if(mWR_DONE)	//write sdram done
 		begin

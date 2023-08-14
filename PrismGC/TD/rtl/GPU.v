@@ -24,20 +24,20 @@ module GPU
 `define PIXEL       2
 `define LEN         3
 `define ENABLE      4
-`define SYS_WR_LEN  5
+`define SYS_WR_LEN  5       //--
 `define SYS_VAILD   6
 `define BUSY        7
 `define PING_PONG   8
 
 reg [31:0] mem [`VRAM_BUFF+16-1:0];
-reg [31:0] len;
-//reg enableState;
 
 wire sysVaild;
 
 reg[2:0]    wrState;
 reg[2:0]    wrDiv;
 reg[23:0]   wrCount;
+
+reg[15:0]   wrTimeout;
 
 reg         busy;
 reg         sysLoad;
@@ -46,13 +46,24 @@ reg[31:0]   sysAddrMax;
 reg[7:0]    sysWriteRefresh;
 wire        sysWriteEnable;
 
+reg[23:0]   sysWriteLen;
+
+wire        sysDone;
+
 wire sysFull;
 wire sysEmpty;
+
+reg [31:0] sysDataIn;
   
-wire[31:0]  sysDataIn = 
-    (sysWriteEnable && wrCount < len) ? 
-        (mem[`ENABLE][1]==1 ? {mem[15+wrCount][23:0],8'b0} : {mem[`PIXEL][23:0], 8'b0}) : 
-        sysDataIn;
+// wire[31:0]  sysDataIn = 
+//     (sysReq && wrCount < mem[`LEN][23:0]) ? 
+//         (mem[`ENABLE][1]==1 ? {mem[16+wrCount][23:0],8'b0} : {mem[`PIXEL][23:0], 8'b0}) : 
+//         sysDataIn;
+
+// wire[31:0]  sysDataIn = 
+//     (sysReq && wrCount <= mem[`LEN][23:0]) ? 
+//         (mem[`ENABLE][1]==1 ? {24'hFF0000,8'b0} : {mem[`PIXEL][23:0], 8'b0}) : 
+//         sysDataIn;
 
 always@(posedge clk or negedge rstn) 
 begin
@@ -67,7 +78,6 @@ begin
         mem[`SYS_VAILD] <= 0;
         mem[`BUSY] <= 0;
         mem[`PING_PONG] <= 0;
-        //enableState <= 0;
     end
     else
     begin
@@ -75,17 +85,11 @@ begin
         if(sizeDecode[1]) mem[addrIn[4:0]][15:8]  <= dataIn[15:8];
         if(sizeDecode[2]) mem[addrIn[4:0]][23:16] <= dataIn[23:16];
         if(sizeDecode[3]) mem[addrIn[4:0]][31:24] <= dataIn[31:24];
-        if(addrIn[4:0]==`LEN)
-            len <= dataIn + 1;
+
         mem[`SYS_VAILD] <= {31'b0,sysVaild};
         mem[`BUSY] <= {31'b0,busy};
 
         dataOut <= mem[addrOut[4:0]]; 
-
-        //if (mem[`BUSY][0] & mem[`ENABLE][0])
-        //    enableState <= 1;
-        //if(enableState & ~mem[`BUSY][0] & mem[`ENABLE][0])
-        //    enableState <= 0;
     end
 end
 
@@ -119,20 +123,29 @@ begin
                 busy <= 1;
                 sysLoad <= 1'b0;
                 wrCount <= 0;
+                wrTimeout <= 0;
                 wrDiv <= 0;
                 wrState <= 3;
+                sysWriteLen <= mem[`LEN][23:0];
             end
             3: begin
                 busy <= 1;
-                wrDiv <= wrDiv + 1;
-                if(wrDiv == 0)
+                if(sysReq)
                 begin
+                    sysWriteLen <= 0;
                     wrCount <= wrCount + 1;
-                    if(wrCount == mem[`LEN][23:0]+7)
+                    if(mem[`ENABLE][1]==0)
                     begin
-                        wrState <= 4;
-                    end 
+                        sysDataIn <= {mem[`PIXEL][23:0],8'b0};
+                    end
+                    else
+                    begin
+                        sysDataIn <= {mem[16+wrCount][23:0],8'b0};
+                    end
                 end
+                wrTimeout <= wrTimeout + 1;
+                if(sysDone)
+                    wrState <= 4;
             end
             4: begin
                 busy <= 0;
@@ -143,6 +156,61 @@ begin
         endcase
     end
 end
+
+// always@(posedge clkRef or negedge sysRstn) 
+// begin
+//     if(~sysRstn)
+//     begin
+//         wrState <= 0;
+// 		wrCount <= 0;
+// 		wrDiv <= 0;
+//         sysWriteRefresh <= 0;
+//         busy<=0;
+//     end
+//     else
+//     begin
+//         case (wrState)
+//             0: begin
+//                 busy <= 0;
+//                 sysWriteRefresh <= 0;
+//                 wrState <= mem[`ENABLE][0] ? 1:0;
+//             end
+//             1: begin
+//                 busy <= 1;
+//                 sysAddrMin <= mem[`X_POS][15:0] + mem[`Y_POS][15:0] * `H_DISP;
+//                 sysAddrMax <= `H_DISP * (`V_DISP  + 1);
+//                 sysLoad <= 1'b1;
+//                 wrState <= 2;
+//                 wrDiv <= 0;
+//             end
+//             2: begin
+//                 busy <= 1;
+//                 sysLoad <= 1'b0;
+//                 wrCount <= 0;
+//                 wrDiv <= 0;
+//                 wrState <= 3;
+//             end
+//             3: begin
+//                 busy <= 1;
+//                 wrDiv <= wrDiv + 1;
+//                 if(wrDiv == 0)
+//                 begin
+//                     wrCount <= wrCount + 1;
+//                     if(wrCount == mem[`LEN][23:0]+7)
+//                     begin
+//                         wrState <= 4;
+//                     end 
+//                 end
+//             end
+//             4: begin
+//                 busy <= 0;
+//                 wrState <= mem[`ENABLE][0] ? 4:0;
+//                 sysWriteRefresh <= 0;
+//             end
+//             default: wrState <= 0;
+//         endcase
+//     end
+// end
 
 assign sysWriteEnable = ((wrDiv==1) && (wrState==3))? 1:0;
 
@@ -164,31 +232,7 @@ SystemCrtlPLL uSystemCrtlPLL
 	.clk_c3			(clkPixel5x)
 );
 
-// GPUDataControl#(.H_DISP(`H_DISP), .V_DISP(`V_DISP)) uGPUDataControl
-// (
-//     .clk                (clkRef),        
-//     .rstn               (sysRstn),     
-    
-//     .sysVaild           (sysVaild),
-//     .sysLoad            (sysLoad), 
-//     .sysWriteEnable     (sysWriteEnable),
-//     .sysAddrMin         (sysAddrMin),
-//     .sysAddrMax         (sysAddrMax),
-//     .sysWriteRefresh    (sysWriteRefresh),
-//     .sysFull(sysFull),
-//     .sysEmpty(sysEmpty),
-
-//     .xpos(mem[`X_POS][15:0]),
-//     .ypos(mem[`Y_POS][15:0]),
-//     .len(mem[`LEN][23:0]),
-//     .enable(mem[`ENABLE][0]),
-//     .busy(busy),
-
-//     .wrCount(wrCount)
-// );
-
 //GPU HDMI Encoder
-
 wire pixelRequest;
 wire[31:0] pixelData;
 GPUHDMIEncoder uGPUHDMIEncoder
@@ -230,9 +274,11 @@ SDRAMControl uSDRAMControl
     .WR(sysWriteEnable),                //write data request
     .WR_MIN_ADDR(wrMinAddr),            //write start address
     .WR_MAX_ADDR(wrMaxAddr),            //write max address
-    .WR_LENGTH(mem[`SYS_WR_LEN][8:0]),  //write burst length
+    .WR_LENGTH(sysWriteLen),            //write burst length
     .WR_FULL(sysFull),
     .WR_EMPTY(sysEmpty),
+    .WR_REQ(sysReq),
+    .WR_DONE(sysDone),
 
     // FIFO Read Side
     .RD_CLK(clkPixel),                  //read fifo clock
@@ -241,7 +287,7 @@ SDRAMControl uSDRAMControl
     .RD(pixelRequest),                  //read request
     .RD_MIN_ADDR(rdMinAddr),            //read start address
     .RD_MAX_ADDR(rdMaxAddr),            //read max address
-    .RD_LENGTH(9'd256),                 //read length
+    .RD_LENGTH(11'd256),                //read length
 
     .sysVaild(sysVaild),               
     .sysReadVaild(1'b1),

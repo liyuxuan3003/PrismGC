@@ -11,6 +11,12 @@
 #include <string.h>
 #include <math.h>
 
+uint32_t GPUBusy()
+{
+    uint32_t busy = GPU -> BUSY;
+    return busy;
+}
+
 void WaitRamReady()
 {
     while(!GPU -> SYS_VAILD) ;
@@ -19,18 +25,62 @@ void WaitRamReady()
 
 static void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
 {
-    GPU -> X_POS = x_pos;
-    GPU -> Y_POS = y_pos;
-    GPU -> PIXEL = pixel;
-    GPU -> LEN = len;
-    GPU -> SYS_WR_LEN = (len <= 8) ? len : 8;
-    GPU -> ENABLE = 1;
-    __asm("nop");
-    __asm("nop");
-    while(GPU -> BUSY) ;
-    ndelay(1000);
-    // udelay(5);                          //Do not touch!
-    GPU -> ENABLE = 0;
+    uint32_t offset=0;
+    //if(x_pos==732)
+    //    printf("RAMWrite(%d,%d,%d,%d)\n",x_pos,y_pos,pixel,len);
+    while(offset<len)
+    {
+        uint32_t x = (x_pos + offset) % 1024;
+        uint32_t y = (x_pos + offset) / 1024 + y_pos;
+        uint32_t lenNow = (len-offset<256) ? len-offset : 256;
+        
+        for(uint32_t xDeath=256;xDeath<=256*3;xDeath+=256)
+        {
+            if(x < xDeath && x+lenNow > xDeath)
+            {
+                lenNow = xDeath - x;
+                break;
+            }
+        }
+        if(lenNow<=4)
+            lenNow=5;
+
+        //if(x_pos==732)
+        //    printf("(%d,%d,%d)\n",x,y,lenNow);
+
+        GPU -> X_POS = x;
+        GPU -> Y_POS = y;
+        GPU -> PIXEL = pixel;
+        GPU -> LEN = lenNow;
+        GPU -> SYS_WR_LEN = (lenNow <= 8) ? lenNow : 8;
+        GPU -> ENABLE = 1;
+        __asm("nop");
+        __asm("nop");
+        while(GPUBusy()) ;
+        // ndelay(1000);
+        udelay(5);                          //Do not touch!
+        GPU -> ENABLE = 0;
+
+        offset += lenNow;
+    }
+
+    // uint32_t offset=0;
+    // while(1)
+    // {
+    //     uint32_t lenNow = (len-offset<256) ? len-offset : 256;
+    //     GPU -> X_POS = (x_pos + offset) % 1024;
+    //     GPU -> Y_POS = (x_pos + offset) / 1024 + y_pos;
+    //     GPU -> PIXEL = pixel;
+    //     GPU -> LEN = lenNow;
+    //     GPU -> SYS_WR_LEN = (lenNow <= 8) ? lenNow : 8;
+    //     GPU -> ENABLE = 1;
+    //     __asm("nop");
+    //     __asm("nop");
+    //     while(GPU -> BUSY) ;
+    //     // ndelay(1000);
+    //     udelay(5);                          //Do not touch!
+    //     GPU -> ENABLE = 0;
+    // }
 }
 
 void PingPong()
@@ -78,9 +128,9 @@ void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len)
     GPU -> ENABLE = 3;
     __asm("nop");
     __asm("nop");
-    while(GPU -> BUSY) ;
-    ndelay(1000);
-    // udelay(5);                          //Do not touch!
+    while(GPUBusy()) ;
+    //ndelay(1000);
+    udelay(5);                          //Do not touch!
     GPU -> ENABLE = 0;
 }
 
