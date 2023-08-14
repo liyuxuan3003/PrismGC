@@ -44,11 +44,13 @@ static void CON_tx(char data)
 {
 	UART -> TX_DATA = data;
 }
+
 static void CON_tx_wait(char data)
 {
-	while(UART -> TX_STATE);
+    while(UARTReadState());
+	//while(UART -> TX_STATE);
 	UART -> TX_DATA = data;
-    while(UART -> TX_STATE);
+    //while(UART -> TX_STATE);
 }
 
 void UARTHandle()
