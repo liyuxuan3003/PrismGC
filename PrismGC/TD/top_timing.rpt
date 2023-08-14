@@ -1,0 +1,28 @@
+=========================================================================================================
+Auto created by Tang Dynasty v5.6.59063
+Copyright (c) 2012-2022 Anlogic
+Mon Aug 14 15:34:28 2023
+=========================================================================================================
+
+
+Top Model:                top                                                             
+Device:                   eagle_s20                                                       
+Timing Constraint File:                                                                   
+STA Level:                Ideal                                                           
+Speed Grade:              NA                                                              
+
+=========================================================================================================
+Timing summary:                                                                           
+---------------------------------------------------------------------------------------------------------
+Constraint path number: 0 (STA coverage = 0.00%)
+Timing violations: 0 setup errors, and 0 hold errors.
+Minimal setup slack: infinity, minimal hold slack: infinity
+
+Timing group statistics: 
+	Clock constraints: 
+	  No constraint path
+	Minimum input arrival time before clock: no constraint path
+	Maximum output required time after clock: no constraint path
+	Maximum combinational path delay: no constraint path
+
+---------------------------------------------------------------------------------------------------------
