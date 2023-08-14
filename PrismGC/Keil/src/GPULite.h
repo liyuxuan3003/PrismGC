@@ -17,6 +17,7 @@ typedef struct
     volatile uint32_t SYS_VAILD;
     volatile uint32_t BUSY;
     volatile uint32_t PING_PONG;
+    volatile uint32_t HDMI_BUSY;
 } GPUType;
 
 #define GPU ((GPUType *)GPU_LITE_BASE)

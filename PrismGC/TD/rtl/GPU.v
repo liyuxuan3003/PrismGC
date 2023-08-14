@@ -28,6 +28,7 @@ module GPU
 `define SYS_VAILD   6
 `define BUSY        7
 `define PING_PONG   8
+`define HDMI_BUSY   9
 
 reg [31:0] mem [`VRAM_BUFF+16-1:0];
 
@@ -78,6 +79,7 @@ begin
         mem[`SYS_VAILD] <= 0;
         mem[`BUSY] <= 0;
         mem[`PING_PONG] <= 0;
+        mem[`HDMI_BUSY] <= 0;
     end
     else
     begin
@@ -88,6 +90,7 @@ begin
 
         mem[`SYS_VAILD] <= {31'b0,sysVaild};
         mem[`BUSY] <= {31'b0,busy};
+        mem[`HDMI_BUSY] <= {31'b0,pixelRequest};
 
         dataOut <= mem[addrOut[4:0]]; 
     end

@@ -140,22 +140,21 @@ static MapCoord CoordNext(MapCoord coord,uint8_t direction,MapCoord *moveProcess
 
 static void MapBackground()
 {
-    // LCDRectangle(COLOR_BAR,
-    //     X_CORNER-BLOCK_SIZE,
-    //     Y_CORNER-BLOCK_SIZE,
-    //     X_CORNER+(MAP_W*2-1)*BLOCK_SIZE,
-    //     Y_CORNER+(MAP_H*2-1)*BLOCK_SIZE);
+    LCDRectangle(COLOR_BAR,
+        X_CORNER-BLOCK_SIZE,
+        Y_CORNER-BLOCK_SIZE,
+        X_CORNER+(MAP_W*2-1)*BLOCK_SIZE,
+        Y_CORNER+(MAP_H*2-1)*BLOCK_SIZE);
     return;
 }
 
 static void MapFix()
 {
-    // LCDRectangle(BG_COLOR,
-    //     H_DISP/4-8,
-    //     0,
-    //     H_DISP/4+8,
-    //     V_DISP);
-
+    LCDRectangle(BG_COLOR,
+        H_DISP/4-8,
+        0,
+        H_DISP/4+8,
+        V_DISP);
     return;
 }
 

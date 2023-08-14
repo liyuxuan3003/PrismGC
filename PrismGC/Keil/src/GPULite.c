@@ -57,8 +57,8 @@ static void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
         __asm("nop");
         __asm("nop");
         while(GPUBusy()) ;
-        // ndelay(1000);
-        udelay(5);                          //Do not touch!
+        //ndelay(2000);
+        udelay(2);                          //Do not touch!
         GPU -> ENABLE = 0;
 
         offset += lenNow;
@@ -86,6 +86,8 @@ static void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
 void PingPong()
 {
     // while(GPU -> BUSY) ;
+    printf("HDIM busy=%d\n\r",GPU->HDMI_BUSY);
+    while(GPU->HDMI_BUSY);
     GPU -> PING_PONG = !GPU -> PING_PONG;
 }
 
@@ -130,7 +132,7 @@ void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len)
     __asm("nop");
     while(GPUBusy()) ;
     //ndelay(1000);
-    udelay(5);                          //Do not touch!
+    udelay(2);                          //Do not touch!
     GPU -> ENABLE = 0;
 }
 
