@@ -30,8 +30,8 @@ EG_LOGIC_BRAM #(
     .WRITEMODE_B("NORMAL"),
     .RESETMODE("SYNC"),
     .IMPLEMENT("32K"),
-    .INIT_FILE("NONE"),
-    .FILL_ALL("11111111111111111111111111111111"))
+    .INIT_FILE("hex/code.mif"),
+    .FILL_ALL("NONE"))
 inst(
     .dia(dataIn),
     .dib({32{1'b0}}),
