@@ -6,7 +6,7 @@
 `define DEVICES_EXP 4
 
 `define RAM_DATA_WIDTH 15        //2^15 Bytes
-`define RAM_CODE_WIDTH 14        //2^14 Bytes
+`define RAM_CODE_WIDTH 15        //2^15 Bytes
 
 `define SDRAM_WIDTH    23        //2^23 Bytes
 

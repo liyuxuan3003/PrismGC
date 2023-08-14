@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project Version="1" Path="D:/Project/20230110-FPGA/PrismGC/PrismGC/TD">
-    <Project_Created_Time>2023-08-13 21:56:45</Project_Created_Time>
+    <Project_Created_Time></Project_Created_Time>
     <TD_Version>5.0.30786</TD_Version>
-    <UCode>01100100</UCode>
+    <UCode>01100110</UCode>
     <Name>TD</Name>
     <HardWare>
         <Family>EG4</Family>
@@ -376,7 +376,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2023-08-13 23:47:46.616</Step_Last_Change>
+        <Step_Last_Change>2023-08-14 09:37:30.539</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
