@@ -31,7 +31,7 @@ static void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
     {
         uint32_t x = (x_pos + offset) % 1024;
         uint32_t y = (x_pos + offset) / 1024 + y_pos;
-        uint32_t lenNow = (len-offset<64) ? len-offset : 64;
+        uint32_t lenNow = (len-offset<128) ? len-offset : 128;
         
         for(uint32_t xDeath=256;xDeath<=256*3;xDeath+=256)
         {
@@ -54,7 +54,7 @@ static void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
         __asm("nop");
         __asm("nop");
         while(GPUBusy()) ;
-        //ndelay(2000);
+        ndelay(800);
         //udelay(2);                          //Do not touch!
         GPU -> ENABLE = 0;
 
@@ -110,7 +110,7 @@ void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len)
     __asm("nop");
     __asm("nop");
     while(GPUBusy()) ;
-    //ndelay(1000);
+    // ndelay(1000);
     // udelay(2);                          //Do not touch!
     GPU -> ENABLE = 0;
 }

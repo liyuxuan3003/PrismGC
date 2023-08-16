@@ -9,7 +9,7 @@
 #define PAGE_MENU       5
 #define PAGE_END        8   // DO NOT USE 6 or 7 HERE !
 
-#define FRAME 165
+#define FRAME 150
 #define APPLEFRAME 20
 
 #define RED    0xFF0000

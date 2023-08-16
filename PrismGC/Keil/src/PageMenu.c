@@ -79,12 +79,15 @@ static uint8_t pageNumSave=1;
 
 uint8_t PageMenu()
 {
+    uint32_t nowTime;
+
     // 将第m行第n列的关卡高亮
     int32_t m=mSave;
     int32_t n=nSave;
     uint8_t pageNum=pageNumSave;
     while(1)
     {
+        nowTime = TIMER -> TIME;
         switch(GetKey())
         {
             case KEY_E: return PAGE_MAIN;
@@ -184,5 +187,7 @@ uint8_t PageMenu()
         const char menuTitle[]="Choose Your Level";
         LCDPrintf(0x000000,0xCCEEFF,512-strlen(menuTitle)/2*24,MENUYBORD/2-24,3,menuTitle);
         LCDPrintf(0x000000,0xCCEEFF,512-5/2*16,600-(MENUYBORD/2)-8,2,"%02d/%02d",pageNum,PAGEMAX);
+
+        while(TIMER -> TIME < nowTime + FRAME);
     }
 }
