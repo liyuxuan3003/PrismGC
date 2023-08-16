@@ -18,10 +18,36 @@
 
 #include <string.h>
 
+static int BordenCheck(int a)
+{
+    if(a<=1)
+    a=1;
+    if(a>=1024)
+    a=1024;
+    return a;
+}
+
 static void BlockICEMain(uint32_t x,uint32_t y)
 {
-    LCDRectangle(COLOR_GRO,x-32,y-32,x+32,y+32);
-    LCDRectangle(COLOR_ICE,x-BLOCK_INNE-8,y-BLOCK_INNE-8,x+BLOCK_INNE+8,y+BLOCK_INNE+8);
+    int a,b,c,d;
+    a=x-32;
+    b=x+32;
+    c=y-32;
+    d=y+32;
+    a=BordenCheck(a);
+    b=BordenCheck(b);
+    c=BordenCheck(c);
+    d=BordenCheck(d);
+    LCDRectangle(COLOR_GRO,a,c,b,d);
+    a=x-BLOCK_INNE-8;
+    b=x+BLOCK_INNE+8;
+    c=y-BLOCK_INNE-8;
+    d=y+BLOCK_INNE+8;
+    a=BordenCheck(a);
+    b=BordenCheck(b);
+    c=BordenCheck(c);
+    d=BordenCheck(d);
+    LCDRectangle(COLOR_ICE,a,c,b,d);
     return;
 }
 
@@ -63,11 +89,11 @@ uint8_t PageMain()
             x=0;    
         PingPong();
         LCDBackground(0xCCEEFF);
-        for (uint32_t i=0;i<=15;i++)
+        for (uint32_t i=0;i<=17;i++)
         {
             for (uint32_t j=0;j<=4;j++)
             {
-                BlockICEMain((96-x)*96+64*i,350+64*j);
+                BlockICEMain((-x)*MOVESPEED+64*i,350+64*j);
             }
         }
         MainCharactor(150,270,8);
