@@ -39,10 +39,10 @@ static void LevelMenu(uint32_t x,uint32_t y,uint8_t type,uint8_t num)
     uint32_t a;
     switch(type)
     {
-        case LINE1:a=COLOR_ICE;break;
-        case LINE2:a=COLOR_TRA;break;
-        case LINE3:a=COLOR_DEL;break;
-        case LINE4:a=COLOR_BAR;break;
+        case LINE1:a=0xDEFFF0;break;
+        case LINE2:a=0xDBDCFF;break;
+        case LINE3:a=0xFFF4B7;break;
+        case LINE4:a=0xFFE0DB;break;
     }
 
     LCDRectangle(0xFFFFFF,
@@ -57,7 +57,7 @@ static void LevelMenu(uint32_t x,uint32_t y,uint8_t type,uint8_t num)
         x+LEVEL_BLOCK_INN_SIZE,
         y+LEVEL_BLOCK_INN_SIZE);
 
-    LCDPrintf(0x000000,a,x-16,y-16,2,"%02d",num);
+    LCDPrintf(0xFFFFFF-a,a,x-16,y-16,2,"%02d",num);
 
     return;
 }
@@ -172,7 +172,7 @@ uint8_t PageMenu()
             default:  break;
         }
         PingPong();
-        LCDBackground(0xCCEEFF);
+        LCDBackground(MENU_BG_COL);
         HighLight(MENUXBORD+LEVEL_BLOCK_SIZE+LEVEL_BLOCK_SIZE*2*(1+INTERVALXBLOCK)*n,
                     MENUYBORD+LEVEL_BLOCK_SIZE+(LEVEL_BLOCK_SIZE*2+INTERVALYBLOCK)*m);
         for(uint32_t i=0;i<IMAX;i++)
@@ -185,9 +185,9 @@ uint8_t PageMenu()
                     LevelID(i,j,pageNum));
         }
         const char menuTitle[]="Choose Your Level";
-        LCDPrintf(0x000000,0xCCEEFF,512-strlen(menuTitle)/2*24,MENUYBORD/2-24,3,menuTitle);
-        LCDPrintf(0x000000,0xCCEEFF,512-5/2*16,600-(MENUYBORD/2)-8,2,"%02d/%02d",pageNum,PAGEMAX);
 
+        LCDPrintf(WHITE,MENU_BG_COL,512-strlen(menuTitle)/2*24,MENUYBORD/2-24,3,menuTitle);
+        LCDPrintf(WHITE,MENU_BG_COL,512-5/2*16,600-(MENUYBORD/2)-8,2,"%02d/%02d",pageNum,PAGEMAX);
         while(TIMER -> TIME < nowTime + FRAME);
     }
 }

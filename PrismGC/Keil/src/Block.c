@@ -151,25 +151,35 @@ void BlockDOR(uint32_t x,uint32_t y,uint32_t opensign)
 void BlockTRP(uint32_t x,uint32_t y)
 {
     BlockICE(x,y);
-    LCDRectangle(COLOR_BAR,x-8,y-7,x+7,y-6);
-    LCDRectangle(COLOR_BAR,x-8,y-5,x+7,y-5);
-    LCDRectangle(COLOR_TRP,x-6,y-5,x+5,y-5);
-    LCDRectangle(COLOR_BAR,x-10,y-4,x+9,y-4);
-    LCDRectangle(COLOR_TRP,x-8,y-4,x+7,y-4);
-    LCDRectangle(COLOR_BAR,x-14,y-3,x+10,y-3);
-    LCDRectangle(COLOR_TRP,x-12,y-3,x+8,y-3);
-    LCDRectangle(COLOR_BAR,x-15,y-2,x+11,y-2);
-    LCDRectangle(COLOR_TRP,x-13,y-2,x+9,y-2);
-    LCDRectangle(COLOR_BAR,x-17,y-1,x+12,y-1);
+    LCDRectangle(COLOR_BAR,x-8,y-9,x+7,y-8);
+    LCDRectangle(COLOR_BAR,x-10,y-7,x+7,y-7);
+    LCDRectangle(COLOR_TRP,x-6,y-7,x+5,y-7);
+    LCDRectangle(COLOR_BAR,x-12,y-6,x+9,y-6);
+    LCDRectangle(COLOR_TRP,x-8,y-6,x+7,y-6);
+    LCDRectangle(COLOR_BAR,x-14,y-5,x+10,y-5);
+    LCDRectangle(COLOR_TRP,x-12,y-5,x+8,y-5);
+    LCDRectangle(COLOR_BAR,x-15,y-4,x+11,y-4);
+    LCDRectangle(COLOR_TRP,x-13,y-4,x+9,y-4);
+    LCDRectangle(COLOR_BAR,x-15,y-3,x+11,y-3);
+    LCDRectangle(COLOR_TRP,x-13,y-3,x+9,y-3);
+    LCDRectangle(COLOR_BAR,x-17,y-2,x+12,y-2);
+    LCDRectangle(COLOR_TRP,x-15,y-2,x+10,y-2);
+    LCDRectangle(COLOR_BAR,x-17,y-1,x+14,y-1);
     LCDRectangle(COLOR_TRP,x-15,y-1,x+10,y-1);
-    LCDRectangle(COLOR_BAR,x-18,y-0,x+14,y-0);
+    LCDRectangle(COLOR_BAR,x-18,y-0,x+16,y-0);
     LCDRectangle(COLOR_TRP,x-16,y-0,x+12,y-0);
+    LCDRectangle(COLOR_BAR,x,y+1,x+17,y+1);
     LCDRectangle(COLOR_TRP,x-15,y+1,x+15,y+1);
-    LCDRectangle(COLOR_TRP,x-13,y+2,x+16,y+2);
-    LCDRectangle(COLOR_TRP,x-10,y+3,x+14,y+3);
-    LCDRectangle(COLOR_TRP,x-9,y+4,x+12,y+4);
-    LCDRectangle(COLOR_TRP,x-8,y+5,x+9,y+5);
-    LCDRectangle(COLOR_TRP,x-8,y+6,x+7,y+6);
+    LCDRectangle(COLOR_BAR,x,y+2,x+17,y+2);
+    LCDRectangle(COLOR_TRP,x-14,y+2,x+15,y+2);
+    LCDRectangle(COLOR_TRP,x-13,y+3,x+16,y+3);
+    LCDRectangle(COLOR_TRP,x-12,y+4,x+16,y+4);
+    LCDRectangle(COLOR_TRP,x-11,y+5,x+14,y+5);
+    LCDRectangle(COLOR_TRP,x-10,y+6,x+14,y+6);
+    LCDRectangle(COLOR_TRP,x-9,y+7,x+12,y+7);
+    LCDRectangle(COLOR_TRP,x-9,y+8,x+12,y+8);
+    LCDRectangle(COLOR_TRP,x-8,y+9,x+9,y+9);
+    LCDRectangle(COLOR_TRP,x-6,y+10,x+7,y+10);
     return;
 }
 

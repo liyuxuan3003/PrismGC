@@ -28,19 +28,29 @@ void ConfigEnd(uint8_t _levelID,uint8_t _appleNumber,uint8_t _levelStep,uint8_t 
 uint8_t PageEnd()
 {
     uint8_t colorChange=1;
+    uint32_t colora;//闪动字体颜色
+    uint32_t colorb;//闪动字体背景色
+    uint32_t colord;//闪动字体颜色2
+    uint32_t colorc;//背景色
     while(1)
     {
         uint32_t nowTime = TIMER -> TIME;
         PingPong();
-        LCDBackground(CHOCOLATE);
-        LCDRectangle(SADDLEBROWN,80,40,944,350);
-        LCDRectangle(BISQUE,90,50,934,340);
-        LCDPrintf(BLACK,BISQUE,110,70,2,"Level %02d",levelID);
+        // LCDBackground(CHOCOLATE);
+        // LCDRectangle(SADDLEBROWN,80,40,944,350);
+        // LCDRectangle(BISQUE,90,50,934,340);
+        // LCDPrintf(BLACK,BISQUE,110,70,2,"Level %02d",levelID);
 
         if(isWin)
         {
-
-            LCDPrintf(RED,BISQUE,200,130,8,"YOU WIN!");
+            colora=GOLD;
+            colorb=BISQUE;
+            colord=OLIVEDRAB;
+            colorc=CHOCOLATE;
+            LCDBackground(colorc);
+            LCDRectangle(SADDLEBROWN,80,40,944,350);
+            LCDRectangle(colorb,90,50,934,340);
+            LCDPrintf(RED,colorb,200,130,8,"YOU WIN!");
             for(uint32_t i=0;i<APPLE_MAX;i++)
             {
                 if(i+1<=appleNumber)
@@ -53,37 +63,45 @@ uint8_t PageEnd()
         
         else
         {
-            LCDPrintf(RED,BISQUE,200,130,8,"YOU FAIL");
+            colora=GREYBLUE;
+            colorb=WHI;
+            colord=GREYBLUE;
+            colorc=BLUE;
+            LCDBackground(colorc);
+            LCDRectangle(colora,80,40,944,350);
+            LCDRectangle(colorb,90,50,934,340);
+            LCDPrintf(BLUE,colorb,200,130,8,"YOU FAIL");
             for(uint32_t i=0;i<CHARA_MAX;i++)
                 MainCharactorGray((i+1)*(H_DISP/4),450,8);
         }
-        
+
+        LCDPrintf(BLACK,colorb,110,70,2,"Level %02d",levelID);
 
         switch(colorChange)
         {
             case 1:
             {
-                LCDPrintf(OLIVEDRAB,BISQUE,795,80,3,"TOTAL");
-                LCDPrintf(OLIVEDRAB,BISQUE,810,120,3,"STEP");
+                LCDPrintf(colord,colorb,795,80,3,"TOTAL");
+                LCDPrintf(colord,colorb,810,120,3,"STEP");
                 colorChange=0;
                 break;
             }
             case 0:
             {
-                LCDPrintf(GOLD,BISQUE,795,80,3,"TOTAL");
-                LCDPrintf(GOLD,BISQUE,810,120,3,"STEP");
+                LCDPrintf(colora,colorb,795,80,3,"TOTAL");
+                LCDPrintf(colora,colorb,810,120,3,"STEP");
                 colorChange=1;
                 break;
             }
         }
 
         if(levelStep<10)
-            LCDPrintf(ORANGE,BISQUE,840,200,5,"%d",levelStep);
+            LCDPrintf(colora,colorb,840,200,5,"%d",levelStep);
         else
-            LCDPrintf(ORANGE,BISQUE,820,200,5,"%d",levelStep);
+            LCDPrintf(colora,colorb,820,200,5,"%d",levelStep);
              
         
-        LCDPrintf(BLACK,CHOCOLATE,275,550,2,"PRESS KEY_C TO CHOOSE GAME LEVEL");
+        LCDPrintf(colorb,colorc,275,550,2,"PRESS KEY_C TO CHOOSE GAME LEVEL");
 
         switch(GetKey())
         {
@@ -92,7 +110,7 @@ uint8_t PageEnd()
             default: break;
         }
 
-        LCDRectangle(CHOCOLATE,0,0,16,V_DISP);
+        LCDRectangle(colorc,0,0,16,V_DISP);
 
         while(TIMER -> TIME < nowTime + FRAME);
     }

@@ -384,7 +384,8 @@ uint8_t PageMazeGame()
                 case BUDIR: BUZZER -> NOTE = 5; BUZZER -> TIME = 80; break;
                 case BDDIR: BUZZER -> NOTE = 5; BUZZER -> TIME = 80; break;
                 case B_END: BUZZER -> NOTE = 4; BUZZER -> TIME = 500; break;
-                case B_BUT: BUZZER -> NOTE = 1; BUZZER -> TIME = 200; break;
+                case B_TRP: BUZZER -> NOTE = 1; BUZZER -> TIME = 500; break;
+                case B_BUT: BUZZER -> NOTE = 6; BUZZER -> TIME = 800; break;
                 default: break;
             }
 

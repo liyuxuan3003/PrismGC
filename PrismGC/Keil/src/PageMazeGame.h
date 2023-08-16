@@ -13,7 +13,7 @@
 #include "Block.h"
 #include "BlockMap.h"
 
-#define BG_COLOR 0x888888
+#define BG_COLOR 0x6E9389
 
 #include <stdint.h>
 

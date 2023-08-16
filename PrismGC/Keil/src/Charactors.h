@@ -39,7 +39,7 @@
 #define A_DKR_G 0x444444
 #define A_BRO_G 0x444444
 
-#define CHT_SCALE_MAX 8
+#define CHT_SCALE_MAX 12
 #define ARROW_WID 16
 #define ARROW_LEN 32
 #define ARROW_BOR 4
