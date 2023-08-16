@@ -26,13 +26,12 @@ void WaitRamReady()
 static void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
 {
     uint32_t offset=0;
-    //if(x_pos==732)
-    //    printf("RAMWrite(%d,%d,%d,%d)\n",x_pos,y_pos,pixel,len);
+
     while(offset<len)
     {
         uint32_t x = (x_pos + offset) % 1024;
         uint32_t y = (x_pos + offset) / 1024 + y_pos;
-        uint32_t lenNow = (len-offset<256) ? len-offset : 256;
+        uint32_t lenNow = (len-offset<64) ? len-offset : 64;
         
         for(uint32_t xDeath=256;xDeath<=256*3;xDeath+=256)
         {
@@ -42,11 +41,9 @@ static void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
                 break;
             }
         }
-        if(lenNow<=4)
-            lenNow=5;
 
-        //if(x_pos==732)
-        //    printf("(%d,%d,%d)\n",x,y,lenNow);
+        if(lenNow==4)
+            lenNow=5;
 
         GPU -> X_POS = x;
         GPU -> Y_POS = y;
@@ -58,29 +55,11 @@ static void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
         __asm("nop");
         while(GPUBusy()) ;
         //ndelay(2000);
-        udelay(2);                          //Do not touch!
+        //udelay(2);                          //Do not touch!
         GPU -> ENABLE = 0;
 
         offset += lenNow;
     }
-
-    // uint32_t offset=0;
-    // while(1)
-    // {
-    //     uint32_t lenNow = (len-offset<256) ? len-offset : 256;
-    //     GPU -> X_POS = (x_pos + offset) % 1024;
-    //     GPU -> Y_POS = (x_pos + offset) / 1024 + y_pos;
-    //     GPU -> PIXEL = pixel;
-    //     GPU -> LEN = lenNow;
-    //     GPU -> SYS_WR_LEN = (lenNow <= 8) ? lenNow : 8;
-    //     GPU -> ENABLE = 1;
-    //     __asm("nop");
-    //     __asm("nop");
-    //     while(GPU -> BUSY) ;
-    //     // ndelay(1000);
-    //     udelay(5);                          //Do not touch!
-    //     GPU -> ENABLE = 0;
-    // }
 }
 
 void PingPong()
@@ -132,7 +111,7 @@ void LCDPixels(const uint32_t *colors,uint32_t x,uint32_t y,uint32_t len)
     __asm("nop");
     while(GPUBusy()) ;
     //ndelay(1000);
-    udelay(2);                          //Do not touch!
+    // udelay(2);                          //Do not touch!
     GPU -> ENABLE = 0;
 }
 
@@ -215,9 +194,14 @@ const char *fmt,...)
 
 void LCDCircle(uint32_t color,int32_t x,int32_t y,int32_t r)
 {
-    for(int32_t i=-r;i<r;i++)
+    for(int32_t i=-r;i<=r;i++)
     {
-        for(int32_t j=-sqrt((r*r-i*i));j*j<(r*r-i*i);j++)
-            LCDPixel(color,x+i,y+j);
+        LCDRectangle(color,x-(int32_t)sqrt(r*r-i*i),y+i,x+(int32_t)sqrt(r*r-i*i),y+i);
     }
+
+    // for(int32_t i=-r;i<r;i++)
+    // {
+    //     for(int32_t j=-sqrt((r*r-i*i));j*j<(r*r-i*i);j++)
+    //         LCDPixel(color,x+i,y+j);
+    // }
 }

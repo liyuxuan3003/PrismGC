@@ -37,21 +37,22 @@ uint8_t PageMain()
         if(NunchuckKey()=='C')
             return PAGE_MENU;
 
-        // if(KEYBOARD -> KEY != 0xFF)
-        // {
-        //     if(KEYBOARD -> KEY != 0x0F)
-        //         return PAGE_MENU;
-        // }
-        switch (KEYBOARD -> KEY)
+        if(KEYBOARD -> KEY != 0xFF)
         {
-            case 0x00: return PAGE_BLOCK_GAME; break;
-            case 0x01: return PAGE_CHAR_TEST; break;
-            case 0x02: return PAGE_MAZE_GAME; break;
-            case 0x03: return PAGE_MENU; break;
-            case 0x0C: return PAGE_I2C_TEST; break;
-            case 0x0F: break;
-            default: break;
+            if(KEYBOARD -> KEY != 0x0F)
+                return PAGE_MENU;
         }
+
+        // switch (KEYBOARD -> KEY)
+        // {
+        //     case 0x00: return PAGE_BLOCK_GAME; break;
+        //     case 0x01: return PAGE_CHAR_TEST; break;
+        //     case 0x02: return PAGE_MAZE_GAME; break;
+        //     case 0x03: return PAGE_MENU; break;
+        //     case 0x0C: return PAGE_I2C_TEST; break;
+        //     case 0x0F: break;
+        //     default: break;
+        // }
             
             
         if(SWI_7(P)==0)
@@ -69,14 +70,14 @@ uint8_t PageMain()
                 BlockICEMain((96-x)*96+64*i,350+64*j);
             }
         }
-        MainCharactor(150,270,2);
+        MainCharactor(150,270,8);
         Apple(1024-150,277,6);
 
         const char title[]="Invincible Slime's Adventure";
         const char titleSub[]="Click any key to start";
 
-        LCDPrintf(0x000000,0xCCEEFF,512-strlen(titleSub)/2*8,200,1,titleSub);
-        LCDPrintf(0x000000,0xCCEEFF,512-strlen(title)/2*3*8,100,3,title);
+        LCDPrintf(0x000000,0xCCEEFF,512-strlen(titleSub)/2*2*8,230,2,titleSub);
+        LCDPrintf(0x000000,0xCCEEFF,512-strlen(title)/2*4*8,100,4,title);
         while(TIMER -> TIME < nowTime + FRAME) ;
     }
 }

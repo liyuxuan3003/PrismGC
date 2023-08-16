@@ -15,6 +15,7 @@ module GPUHDMIEncoder
     output          HDMI_D2_P,
 	output          HDMI_CLK_P,
     output          Request,
+    output          PingPongSync,
     input[23:0]     RGB
 );
 
@@ -34,6 +35,10 @@ localparam	H_AHEAD = 	12'd1;
 assign	Request	= 	
 (CounterX >= `H_SYNC + `H_BACK - H_AHEAD && CounterX < `H_SYNC + `H_BACK + `H_DISP - H_AHEAD) &&
 (CounterY >= `V_SYNC + `V_BACK && CounterY < `V_SYNC + `V_BACK + `V_DISP) ? 1'b1 : 1'b0;
+
+assign PingPongSync = 
+    (CounterX == `H_SYNC + `H_BACK + `H_DISP) && 
+    (CounterY == `V_SYNC + `V_BACK + `V_DISP);
 
 always @(posedge clk) 
 begin

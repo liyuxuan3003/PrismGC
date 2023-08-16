@@ -237,6 +237,7 @@ SystemCrtlPLL uSystemCrtlPLL
 
 //GPU HDMI Encoder
 wire pixelRequest;
+wire pingPongSync;
 wire[31:0] pixelData;
 GPUHDMIEncoder uGPUHDMIEncoder
 (
@@ -248,7 +249,8 @@ GPUHDMIEncoder uGPUHDMIEncoder
     .HDMI_D1_P(HDMI_D1_P),
     .HDMI_D2_P(HDMI_D2_P),
     .RGB(pixelData[31:8]),
-    .Request(pixelRequest)
+    .Request(pixelRequest),
+    .PingPongSync(pingPongSync)
 );
 
 //SDRAMControl
@@ -285,7 +287,7 @@ SDRAMControl uSDRAMControl
 
     // FIFO Read Side
     .RD_CLK(clkPixel),                  //read fifo clock
-    .RD_LOAD(1'b0),                     //read register load & fifo clear
+    .RD_LOAD(pingPongSync),             //read register load & fifo clear
     .RD_DATA(pixelData),                //read data output
     .RD(pixelRequest),                  //read request
     .RD_MIN_ADDR(rdMinAddr),            //read start address

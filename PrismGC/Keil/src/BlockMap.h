@@ -20,6 +20,7 @@
 #define B_MCG 15
 #define BMCGB 16
 #define BMCGI 17
+#define B_BUT 18
 
 #define MAP_W 12
 #define MAP_H 12
@@ -46,7 +47,7 @@ typedef struct
     MapCoord coord;
     MapCoord coordApple[APPLE_MAX];
     // MapCoord coordAnimal;
-    MapCoord coordMcgAct;
+    // MapCoord coordMcgAct;
 } LevelMap;
 
 typedef struct

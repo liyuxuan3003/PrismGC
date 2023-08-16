@@ -10,6 +10,7 @@
 #include "GPIO.h"
 #include "HardwareConfig.h"
 #include "Charactors.h"
+#include "Block.h"
 
 #include <string.h>
 
@@ -84,11 +85,23 @@ uint8_t PageCharTest()
         MainCharactor(253,200,2);
         MainCharactor(253,300,2);
 
+        LCDRectangle(0xFF0000,800,400,801,420);
+        LCDRectangle(0xFF0000,800,420,802,440);
+        LCDRectangle(0xFF0000,800,440,803,460);
+        LCDRectangle(0xFF0000,800,460,804,480);
+        LCDRectangle(0xFF0000,800,480,805,500);
+
+        BlockDOR(500,500,1);
+        BlockDOR(500,400,2);
+        BlockDOR(500,300,3);
+
+        LCDCircle(0xFF0000,300,300,30);
+
         // for(int i=0;i<4;i++)
         // {
         //     LCDRectangle(0x000201*i,0,i,i,i);
         // }
 
-        Arrow(800,400,2,0x000000);
+        // Arrow(800,400,2,0x000000);
     }
 }
