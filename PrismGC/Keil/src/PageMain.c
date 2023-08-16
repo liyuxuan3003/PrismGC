@@ -20,8 +20,8 @@
 
 static int BordenCheck(int a)
 {
-    if(a<=1)
-    a=1;
+    if(a<=0)
+    a=0;
     if(a>=1024)
     a=1024;
     return a;
