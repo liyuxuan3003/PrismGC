@@ -18,36 +18,36 @@
 
 #include <string.h>
 
-static int BordenCheck(int a)
-{
-    if(a<=0)
-        a=0;
-    if(a>=1024)
-        a=1024;
-    return a;
-}
+// static int BordenCheck(int a)
+// {
+//     if(a<=0)
+//         a=0;
+//     if(a>=1024)
+//         a=1024;
+//     return a;
+// }
 
 static void BlockICEMain(uint32_t x,uint32_t y)
 {
-    int a,b,c,d;
-    a=x-32;
-    b=x+32;
-    c=y-32;
-    d=y+32;
-    a=BordenCheck(a);
-    b=BordenCheck(b);
-    c=BordenCheck(c);
-    d=BordenCheck(d);
-    LCDRectangle(COLOR_GRO,a,c,b,d);
-    a=x-BLOCK_INNE-8;
-    b=x+BLOCK_INNE+8;
-    c=y-BLOCK_INNE-8;
-    d=y+BLOCK_INNE+8;
-    a=BordenCheck(a);
-    b=BordenCheck(b);
-    c=BordenCheck(c);
-    d=BordenCheck(d);
-    LCDRectangle(COLOR_ICE,a,c,b,d);
+    // int a,b,c,d;
+    // a=x-32;
+    // b=x+32;
+    // c=y-32;
+    // d=y+32;
+    // a=BordenCheck(a);
+    // b=BordenCheck(b);
+    // c=BordenCheck(c);
+    // d=BordenCheck(d);
+    LCDRectangle(COLOR_GRO,x-32,y-32,x+32,y+32);
+    // a=x-BLOCK_INNE-8;
+    // b=x+BLOCK_INNE+8;
+    // c=y-BLOCK_INNE-8;
+    // d=y+BLOCK_INNE+8;
+    // a=BordenCheck(a);
+    // b=BordenCheck(b);
+    // c=BordenCheck(c);
+    // d=BordenCheck(d);
+    LCDRectangle(COLOR_ICE,x-BLOCK_INNE-8,y-BLOCK_INNE-8,x+BLOCK_INNE+8,y+BLOCK_INNE+8);
     return;
 }
 
@@ -90,6 +90,9 @@ uint8_t PageMain()
 
         PingPong();
         LCDBackground(MAIN_BG_COL);
+        Cloud(100,320,1,64);
+        Cloud(600,50,0,32);
+        Cloud(850,250,-1,32);
         for (uint32_t i=0;i<=17;i++)
         {
             for (uint32_t j=0;j<=4;j++)
