@@ -35,7 +35,7 @@ uint8_t PageEnd()
     uint32_t colorb;//闪动字体背景色
     uint32_t colord;//闪动字体颜色2
     uint32_t colorc;//背景色
-    uint16_t Time=0;
+    uint16_t time=0;
     while(1)
     {
         uint32_t nowTime = TIMER -> TIME;
@@ -47,7 +47,7 @@ uint8_t PageEnd()
         
         BuzzerConfig(SWI_6(P),SWI_7(P));
 
-        ConfigBgmNote(isWin,&Time);
+        ConfigBgmNote(isWin,&time);
 
         if(isWin)
         {
@@ -121,9 +121,9 @@ uint8_t PageEnd()
 
         LCDRectangle(colorc,0,0,16,V_DISP);
 
-        // LCDPrintf(colora,colorb,100,500,2,"%d",Time);
+        // LCDPrintf(colora,colorb,100,500,2,"%d",time);
 
-        while(TIMER -> TIME < nowTime + Time);
+        while(TIMER -> TIME < nowTime + time);
     }
     
 }

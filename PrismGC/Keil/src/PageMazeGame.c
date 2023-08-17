@@ -431,6 +431,7 @@ uint8_t PageMazeGame()
 
         if(isPageChange)
         {
+            mdelay(500);
             ConfigEnd(levelId,AppleNumber(getApple),gameStep,isWin);
             return PAGE_END;
         }

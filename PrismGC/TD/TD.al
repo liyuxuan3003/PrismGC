@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Project Version="1" Path="F:/FPGA/PrismGC/PrismGC/TD">
-    <Project_Created_Time>2023-08-17 16:10:05</Project_Created_Time>
+<Project Version="1" Path="D:/Project/20230110-FPGA/PrismGC/PrismGC/TD">
+    <Project_Created_Time></Project_Created_Time>
     <TD_Version>5.0.38657</TD_Version>
     <UCode>00010000</UCode>
     <Name>TD</Name>
@@ -376,11 +376,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-<<<<<<< HEAD
-        <Step_Last_Change>2023-08-17 16:34:01.320</Step_Last_Change>
-=======
-        <Step_Last_Change>2023-08-17 16:04:37.245</Step_Last_Change>
->>>>>>> zy
+        <Step_Last_Change>2023-08-17 22:39:23.807</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>

@@ -93,7 +93,13 @@ uint8_t PageMenu()
 
         switch(GetKey(1))
         {
-            case KEY_E: return PAGE_MAIN;
+            case KEY_E: 
+            {
+                mSave=m;
+                nSave=n;
+                pageNumSave=pageNum;
+                return PAGE_MAIN;
+            }
             case KEY_R:
             {
                 n++;
