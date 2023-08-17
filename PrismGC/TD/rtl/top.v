@@ -25,6 +25,7 @@ module top
     output      VGA_HS,         //VGA HS
     output      VGA_VS,         //VGA VS
     output      BUZ,            //蜂鸣器
+    output      AUD,            //3.5mm音频输出
     input[3:0]  COL,            //键盘列信号
     output[3:0] ROW,            //键盘行信号
     inout[31:0] NC              //悬空管脚
@@ -104,6 +105,7 @@ AHBLite uAHBLite
     .SEG(SEG),
     .SEGCS(SEGCS),
     .BUZ(BUZ),
+    .AUD(AUD),
     .COL(COL),
     .ROW(ROW),
     .io_pin0({NC[15:0],LED,SWI}),

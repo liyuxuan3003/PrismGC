@@ -34,6 +34,7 @@ module AHBLite
     output[7:0]     SEG,
     output[3:0]     SEGCS,
     output          BUZ,
+    output          AUD,
     input[3:0]      COL,
     output[3:0]     ROW,
     inout[31:0]     io_pin0,
@@ -205,7 +206,8 @@ AHBLiteBuzzer uAHBBuzzer
     .HREADY(HREADY),
     .HREADYOUT(HREADYOUT_A[`idBuzzer]),
     .HRESP(HRESP_A[`idBuzzer]),
-    .BUZ(BUZ)
+    .BUZ(BUZ),
+    .AUD(AUD)
 );
 
 // KeyBoard

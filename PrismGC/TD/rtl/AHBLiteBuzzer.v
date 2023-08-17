@@ -17,7 +17,8 @@ module AHBLiteBuzzer
     output          HREADYOUT, 
     output[31:0]    HRDATA,
     output          HRESP,
-    output          BUZ
+    output          BUZ,
+    output          AUD
 );
 
 localparam ADDR_WIDTH = 8;
@@ -75,7 +76,8 @@ Buzzer uBuzzer
     .sizeDecode(enableWriteReg ? sizeDecodeReg : 4'b0000),
     .dataIn(HWDATA),
     .dataOut(HRDATA),
-    .BUZ(BUZ)
+    .BUZ(BUZ),
+    .AUD(AUD)
 );
 
 endmodule

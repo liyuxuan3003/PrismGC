@@ -13,7 +13,8 @@ module Buzzer
     input[3:0]          sizeDecode,
     input[31:0]         dataIn,
     output reg[31:0]    dataOut,
-    output              BUZ
+    output              BUZ,
+    output              AUD
 );
 
 reg [31:0] mem [1:0];
@@ -76,5 +77,6 @@ reg speaker;
 always @(posedge clk) if(counter>=clkNum && mem[1] != 0) speaker <= ~speaker;
 
 assign BUZ = speaker;
+assign AUD = speaker;
 
 endmodule
