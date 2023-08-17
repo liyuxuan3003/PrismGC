@@ -372,23 +372,22 @@ uint8_t PageMazeGame()
                 if(MapCoordEqual(moveProcess[mpCirculate],map.coordApple[m]) && !getApple[m])
                 {
                     getApple[m]=1;
-                    BUZZER -> NOTE = 2; 
-                    BUZZER -> TIME = 200;
+                    BuzzerOutput(3,200);
                 }
             }
 
             switch(GetBlockType(moveProcess[mpCirculate]))
             {
                 case B1POR: BuzzerOutput(7,40); break;
-                case B2POR: BuzzerOutput(7,40); break;
-                case B3POR: BuzzerOutput(7,40); break;
+                case B2POR: BuzzerOutput(8,40); break;
+                case B3POR: BuzzerOutput(9,40); break;
                 case BLDIR: BuzzerOutput(5,80); break;
                 case BRDIR: BuzzerOutput(5,80); break;
                 case BUDIR: BuzzerOutput(5,80); break;
                 case BDDIR: BuzzerOutput(5,80); break;
-                case B_END: BuzzerOutput(4,500); break;
+                case B_END: BuzzerOutput(10,500); break;
                 case B_TRP: BuzzerOutput(1,500); break;
-                case B_BUT: BuzzerOutput(6,800); break;
+                case B_BUT: BuzzerOutput(14,800); break;
                 default: break;
             }
 
@@ -410,8 +409,7 @@ uint8_t PageMazeGame()
                     if(waitHit==0)
                     {
                         waitHit=1;
-                        BUZZER -> NOTE = 1; 
-                        BUZZER -> TIME = 200;
+                        BuzzerOutput(2,200);
                         SetBlockType(hitCoord,BHGRA);
                     }
                     else

@@ -62,18 +62,32 @@ end
 `define So 392
 `define La 440
 `define Si 494
+`define DoH 554
+`define ReH 622
+`define MiH 698
+`define FaH 783
+`define SoH 879
+`define LaH 987
+`define SiH 1107
 
 `define NUM(X) (`CLK_FRE/X)/2
 
 wire [31:0] clkNum =
-    (mem[0] == 0) ? 0 :
-    (mem[0] == 1) ? `NUM(`Do) :
-    (mem[0] == 2) ? `NUM(`Re) :
-    (mem[0] == 3) ? `NUM(`Mi) :
-    (mem[0] == 4) ? `NUM(`Fa) :
-    (mem[0] == 5) ? `NUM(`So) :
-    (mem[0] == 6) ? `NUM(`La) :
-    (mem[0] == 7) ? `NUM(`Si) : 0;
+    (mem[`FREQ][3:0] == 4'd0)   ? 0 :
+    (mem[`FREQ][3:0] == 4'd1)   ? `NUM(`Do) :
+    (mem[`FREQ][3:0] == 4'd2)   ? `NUM(`Re) :
+    (mem[`FREQ][3:0] == 4'd3)   ? `NUM(`Mi) :
+    (mem[`FREQ][3:0] == 4'd4)   ? `NUM(`Fa) :
+    (mem[`FREQ][3:0] == 4'd5)   ? `NUM(`So) :
+    (mem[`FREQ][3:0] == 4'd6)   ? `NUM(`La) :
+    (mem[`FREQ][3:0] == 4'd7)   ? `NUM(`Si) : 
+    (mem[`FREQ][3:0] == 4'd8)   ? `NUM(`DoH) :
+    (mem[`FREQ][3:0] == 4'd9)   ? `NUM(`ReH) :
+    (mem[`FREQ][3:0] == 4'd10)  ? `NUM(`MiH) :
+    (mem[`FREQ][3:0] == 4'd11)  ? `NUM(`FaH) :
+    (mem[`FREQ][3:0] == 4'd12)  ? `NUM(`SoH) :
+    (mem[`FREQ][3:0] == 4'd13)  ? `NUM(`LaH) :
+    (mem[`FREQ][3:0] == 4'd14)  ? `NUM(`SiH) : 0;
 
 reg [31:0] counter;
 always @(posedge clk) if(counter>=clkNum) counter<=0; else counter <= counter+1;

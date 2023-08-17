@@ -3,10 +3,10 @@
 #include "BitOperate.h"
 #include "HardwareConfig.h"
 
-void BuzzerConfig(uint8_t outputBuz,uint8_t outputAudio)
+void BuzzerConfig(uint8_t outputBuz,uint8_t outputAud)
 {
     (outputBuz) ? BIT_SET(BUZZER->OUTPUT,BUZ) : BIT_CLR(BUZZER->OUTPUT,BUZ);
-    (outputAudio) ? BIT_SET(BUZZER->OUTPUT,AUD) : BIT_CLR(BUZZER->OUTPUT,AUD);
+    (outputAud) ? BIT_SET(BUZZER->OUTPUT,AUD) : BIT_CLR(BUZZER->OUTPUT,AUD);
     return;
 }
 
