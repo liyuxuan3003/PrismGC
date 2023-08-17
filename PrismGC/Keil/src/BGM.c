@@ -20,8 +20,8 @@ static uint8_t bgmStep=0;
 static const uint16_t bgmWinNote[66]={10,10,11,12,12,11,10,9,8,8,9,10,10,9,9,9,10,10,11,12,12,11,10,9,8,8,9,10,9,8,8,8,9,9,10,8,9,10,11,10,8,9,10,11,10,9,8,9,5,10,10,10,11,12,12,11,10,9,8,8,9,10,9,8,8,8};
 static const uint16_t bgmWinTime[66]={250,250,250,250,250,250,250,250,250,250,250,250,250,150,250,250,250,250,250,250,250,250,250,250,250,250,250,250,250,150,250,250,250,250,250,250,250,150,150,250,250,250,150,150,250,250,250,250,250,250,250,250,250,250,250,250,250,250,250,250,250,250,250,150,250,250};
 static uint8_t bgmWinStep=0;
-static const uint16_t bgmFailNote[78]={10,9,10,9,10,7,9,8,6,0,1,3,6,7,0,3,5,7,8,0,3,10,9,0,0,0,0,0,6,3,6,0,0,3,3,5,0,0,6,3,6,0,0,10,9,10,7,9,8,6,0,1,3,6,7,0,3,8,7,6,0,0,0,0,6,3,6,0,0,3,3,5,0,0,6,3,6,0};
-static const uint16_t bgmFailTime[78]={75,75,75,75,75,75,75,75,150,75,75,75,75,150,75,75,75,75,150,75,75,75,75,150,25,25,25,25,75,75,75,75,150,75,75,75,75,150,75,75,75,75,150,75,75,75,75,75,75,150,75,75,75,75,150,75,75,75,75,25,25,25,25,25,75,75,75,75,150,75,75,75,75,150,75,75,75,75};
+static const uint16_t bgmFailNote[42]={10,9,10,9,10,7,9,8,6,0,1,3,6,7,0,3,5,7,8,0,3,10,9,10,9,10,7,9,8,6,0,1,3,6,7,0,3,8,7,6,0,0};
+static const uint16_t bgmFailTime[42]={75,75,75,75,75,75,75,75,150,75,75,75,75,150,75,75,75,75,150,75,75,75,75,75,75,75,75,75,75,150,75,75,75,75,150,75,75,75,75,150,75,75};
 static uint8_t bgmFailStep=0;
 
 void BGMPageMain()
@@ -29,6 +29,8 @@ void BGMPageMain()
     if(bgmNote[bgmStep]!=0)
     {    
         BUZZER -> NOTE =bgmNote[bgmStep];
+        if(BUZZER -> NOTE == 0)
+            return;
         BUZZER -> TIME =bgmTime[bgmStep]; 
     }
     bgmStep++;
@@ -42,6 +44,8 @@ void BGMPageWin()
     if(bgmWinNote[bgmWinStep]!=0)
     {    
         BUZZER -> NOTE =bgmWinNote[bgmWinStep];
+        if(BUZZER -> NOTE == 0)
+            return;
         BUZZER -> TIME =bgmWinTime[bgmWinStep]*1.2; 
     }
     bgmWinStep++;
@@ -55,10 +59,12 @@ void BGMPageFail()
     if(bgmFailNote[bgmFailStep]!=0)
     {    
         BUZZER -> NOTE =bgmFailNote[bgmFailStep];
-        BUZZER -> TIME =bgmFailTime[bgmFailStep]; 
+        if(BUZZER -> NOTE == 0)
+            return;
+        BUZZER -> TIME =bgmFailTime[bgmFailStep]*3; 
     }
     bgmFailStep++;
-    if(bgmFailStep==78)
+    if(bgmFailStep==42)
         bgmFailStep=0;
     return;
 }
@@ -68,5 +74,5 @@ void ConfigBgmNote(uint8_t isWin,uint16_t *time)
     if(isWin)
         *time=bgmWinTime[bgmWinStep]*1.2;
     else
-        *time=bgmFailTime[bgmFailStep];
+        *time=bgmFailTime[bgmFailStep]*3;
 }
