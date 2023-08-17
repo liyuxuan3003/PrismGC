@@ -91,9 +91,9 @@ uint8_t PageMain()
 
         PingPong();
         LCDBackground(MAIN_BG_COL);
-        Cloud(100,320,1,64);
-        Cloud(600,50,0,32);
-        Cloud(850,250,-1,32);
+        Cloud(120,320,1,57);
+        Cloud(600,50,0,30);
+        Cloud(850,270,-1,30);
         for (uint32_t i=0;i<=17;i++)
         {
             for (uint32_t j=0;j<=4;j++)

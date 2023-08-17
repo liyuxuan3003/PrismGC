@@ -207,16 +207,15 @@ const char *fmt,...)
     return mx;
 }
 
-void LCDCircle(uint32_t color,int32_t x,int32_t y,int32_t r)
+void LCDCircle(uint32_t color,int32_t x,int32_t y,int32_t r,int32_t pix)
 {
-    for(int32_t i=-r;i<=r;i++)
+    for(int32_t i=-r;i<=+r;i+=pix)
     {
-        LCDRectangle(color,x-(int32_t)sqrt(r*r-i*i),y+i,x+(int32_t)sqrt(r*r-i*i),y+i);
+        LCDRectangle(
+            color,
+            x-(int32_t)sqrt(r*r-i*i),
+            y+i-(pix-1),
+            x+(int32_t)sqrt(r*r-i*i),
+            y+i);
     }
-
-    // for(int32_t i=-r;i<r;i++)
-    // {
-    //     for(int32_t j=-sqrt((r*r-i*i));j*j<(r*r-i*i);j++)
-    //         LCDPixel(color,x+i,y+j);
-    // }
 }

@@ -5,11 +5,14 @@
 #include "GetKey.h"
 #include "GPULite.h"
 #include "KeyBoard.h"
+#include "HardwareConfig.h"
+#include "Buzzer.h"
 
 #include "Block.h"
 #include "BlockMap.h"
 #include "Charactors.h"
 #include "PageMenu.h"
+#include "BGM.h"
 
 static uint8_t levelID;
 static uint8_t appleNumber;
@@ -32,6 +35,7 @@ uint8_t PageEnd()
     uint32_t colorb;//闪动字体背景色
     uint32_t colord;//闪动字体颜色2
     uint32_t colorc;//背景色
+    uint16_t Time=0;
     while(1)
     {
         uint32_t nowTime = TIMER -> TIME;
@@ -40,6 +44,10 @@ uint8_t PageEnd()
         // LCDRectangle(SADDLEBROWN,80,40,944,350);
         // LCDRectangle(BISQUE,90,50,934,340);
         // LCDPrintf(BLACK,BISQUE,110,70,2,"Level %02d",levelID);
+        
+        BuzzerConfig(SWI_6(P),SWI_7(P));
+
+        ConfigBgmNote(isWin,&Time);
 
         if(isWin)
         {
@@ -58,7 +66,7 @@ uint8_t PageEnd()
                 else
                     AppleGray((i+1)*(H_DISP/4),450,8);
             }
-
+            BGMPageWin();
         }
         
         else
@@ -73,6 +81,7 @@ uint8_t PageEnd()
             LCDPrintf(BLUE,colorb,200,130,8,"YOU FAIL");
             for(uint32_t i=0;i<CHARA_MAX;i++)
                 MainCharactorGray((i+1)*(H_DISP/4),450,8);
+            BGMPageFail();
         }
 
         LCDPrintf(BLACK,colorb,110,70,2,"Level %02d",levelID);
@@ -112,7 +121,9 @@ uint8_t PageEnd()
 
         LCDRectangle(colorc,0,0,16,V_DISP);
 
-        while(TIMER -> TIME < nowTime + FRAME);
+        // LCDPrintf(colora,colorb,100,500,2,"%d",Time);
+
+        while(TIMER -> TIME < nowTime + Time);
     }
     
 }

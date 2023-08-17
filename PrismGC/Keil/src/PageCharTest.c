@@ -95,7 +95,9 @@ uint8_t PageCharTest()
         BlockDOR(500,400,2);
         BlockDOR(500,300,3);
 
-        LCDCircle(0xFF0000,300,300,30);
+        LCDCircle(0xFF0000,100,300,32,2);
+        LCDCircle(0xFF0000,200,300,32,4);
+        LCDCircle(0xFF0000,300,300,32,8);
 
         // for(int i=0;i<4;i++)
         // {

@@ -194,6 +194,6 @@ void BlockBUT(uint32_t x,uint32_t y,uint32_t opensign)
         case 1: color=COLOR_BUT_EXCUTING; break;
         case 2: color=COLOR_BUT_OPEN; break;
     }
-    LCDCircle(color*0.8,x,y,16);
-    LCDCircle(color,x,y,12);
+    LCDCircle(color*0.8,x,y,16,1);
+    LCDCircle(color,x,y,12,1);
 }
