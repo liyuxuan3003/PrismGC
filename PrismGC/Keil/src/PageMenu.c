@@ -91,7 +91,7 @@ uint8_t PageMenu()
 
         BuzzerConfig(SWI_6(P),SWI_7(P));
 
-        switch(GetKey())
+        switch(GetKey(1))
         {
             case KEY_E: return PAGE_MAIN;
             case KEY_R:

@@ -10,7 +10,7 @@
 #define KEY_C 5     //Center
 #define KEY_E 6     //Exit
 
-uint8_t GetKey();
+uint8_t GetKey(uint8_t buttonZ);
 uint8_t IsDirection(uint8_t key);
 
 #endif

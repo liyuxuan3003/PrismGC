@@ -225,14 +225,16 @@ int NunchuckRead(struct NunchuckData *d)
 	return 0;
 }
 
-int NunchuckKey(void)
+int NunchuckKey(uint8_t buttonZ)
 {
 	int key=0;
 	struct NunchuckData d;
 	NunchuckRead(&d);
 	if(d.bz)
 	{
-		if(d.ax<450 && d.ax<d.ay)
+        if(buttonZ)
+            key='E';
+		else if(d.ax<450 && d.ax<d.ay)
 		{
 			key='L';
 			DBG("<,d.ax=%d,d.ay=%d\n",d.ax,d.ay);

@@ -290,9 +290,9 @@ uint8_t PageMazeGame()
 
         BuzzerConfig(SWI_6(P),SWI_7(P));
 
-        uint8_t key=GetKey();
+        uint8_t key=GetKey(0);
 
-        if(key == KEY_E)
+        if(key == KEY_E || key == KEY_C)
             return PAGE_MENU;
 
         PingPong();

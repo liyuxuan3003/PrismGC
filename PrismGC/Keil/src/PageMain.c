@@ -15,6 +15,7 @@
 #include "Block.h"
 #include "Sleep.h"
 #include "Console.h"
+#include "GetKey.h"
 
 #include <string.h>
 
@@ -60,7 +61,7 @@ uint8_t PageMain()
     {
         nowTime = TIMER -> TIME;
 
-        if(NunchuckKey()=='C')
+        if(GetKey(1)==KEY_C)
             return PAGE_MENU;
 
         if(KEYBOARD -> KEY != 0xFF)

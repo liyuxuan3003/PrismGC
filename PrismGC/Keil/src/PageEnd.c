@@ -103,7 +103,7 @@ uint8_t PageEnd()
         
         LCDPrintf(colorb,colorc,275,550,2,"PRESS KEY_C TO CHOOSE GAME LEVEL");
 
-        switch(GetKey())
+        switch(GetKey(1))
         {
             case KEY_E: return PAGE_MAIN; break;
             case KEY_C: return PAGE_MENU; break;

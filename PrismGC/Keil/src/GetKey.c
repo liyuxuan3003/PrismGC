@@ -3,7 +3,7 @@
 #include "Keyboard.h"
 #include "Nunchuck.h"
 
-uint8_t GetKey()
+uint8_t GetKey(uint8_t buttonZ)
 {
     uint8_t key=0;
 
@@ -21,13 +21,14 @@ uint8_t GetKey()
     // 判断来自手柄的输入
     if(IsNumchuckReady()==0)
     {
-        switch(NunchuckKey())
+        switch(NunchuckKey(buttonZ))
         {
             case 'R': key=KEY_R; break;
             case 'L': key=KEY_L; break;
             case 'U': key=KEY_U; break;
             case 'D': key=KEY_D; break;
             case 'C': key=KEY_C; break;
+            case 'E': key=KEY_E; break;
         }
     }
 

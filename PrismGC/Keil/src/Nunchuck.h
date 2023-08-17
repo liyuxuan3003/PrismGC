@@ -18,7 +18,7 @@ int NunchuckInit();
 uint32_t NunchuckID(void);
 void NunchuckReadCal(void);
 int NunchuckRead(struct NunchuckData *d);
-int NunchuckKey(void);
+int NunchuckKey(uint8_t buttonZ);
 int IsNumchuckReady();
 
 #endif
