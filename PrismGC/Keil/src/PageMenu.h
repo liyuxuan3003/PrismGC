@@ -3,7 +3,8 @@
 
 #include <stdint.h>
 
-#define MENU_BG_COL 0x6E9389
+// #define MENU_BG_COL 0x6E9389
+#define MENU_BG_COL 0x13939C
 
 #define PAGEMAX 3
 #define IMAX 4

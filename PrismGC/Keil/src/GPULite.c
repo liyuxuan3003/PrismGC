@@ -11,6 +11,15 @@
 #include <string.h>
 #include <math.h>
 
+static int BordenCheck(int a,int x)
+{
+    if(a<=0)
+        a=0;
+    if(a>=x)
+        a=x;
+    return a;
+}
+
 uint32_t GPUBusy()
 {
     uint32_t busy = GPU -> BUSY;
@@ -77,10 +86,16 @@ void LCDBackground(uint32_t color)
 
 void LCDRectangle(uint32_t color,uint32_t x1,uint32_t y1,uint32_t x2,uint32_t y2)
 {
-    uint32_t len=x2-x1;
-    for(uint32_t y=y1;y<=y2;y++)
+    uint32_t a,b,c,d;
+    a=BordenCheck(x1,H_DISP);
+    b=BordenCheck(y1,V_DISP);
+    c=BordenCheck(x2,H_DISP);
+    d=BordenCheck(y2,V_DISP);
+    
+    uint32_t len=c-a;
+    for(uint32_t y=b;y<=d;y++)
     {
-        RamWrite(x1,y,color,len);
+        RamWrite(a,y,color,len);
     }
 }
 

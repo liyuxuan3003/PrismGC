@@ -129,3 +129,11 @@ void Arrow(uint32_t x,uint32_t y,uint8_t z,uint32_t color)
         default: break;
     }
 }
+
+void Cloud(uint32_t x,uint32_t y,int z,uint32_t size)
+{
+    LCDCircle(0xFFFFFF,x-size*1.2,y,size);
+    LCDCircle(0xFFFFFF,x+size*1.2,y,size);
+    LCDCircle(0xFFFFFF,x+z*0.4*size,y-size*1.2,size*1.2);
+    LCDRectangle(0xFFFFFF,x-size*1.2,y-size*0.2,x+size*1.2,y+size);
+}

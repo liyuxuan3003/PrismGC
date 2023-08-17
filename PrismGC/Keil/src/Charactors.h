@@ -56,5 +56,6 @@ void MainCharactorGray(uint32_t x,uint32_t y,uint8_t scale);
 void Apple(uint32_t x,uint32_t y,uint8_t scale);
 void AppleGray(uint32_t x,uint32_t y,uint8_t scale);
 void Arrow(uint32_t x,uint32_t y,uint8_t z,uint32_t color);
+void Cloud(uint32_t x,uint32_t y,int z,uint32_t size);
 
 #endif
