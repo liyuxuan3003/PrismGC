@@ -88,6 +88,9 @@ uint8_t PageMenu()
     while(1)
     {
         nowTime = TIMER -> TIME;
+
+        BuzzerConfig(SWI_6(P),SWI_7(P));
+
         switch(GetKey())
         {
             case KEY_E: return PAGE_MAIN;
@@ -160,8 +163,7 @@ uint8_t PageMenu()
             } 
             case KEY_C: 
             {
-                BUZZER -> NOTE = 4; 
-                BUZZER -> TIME = 300;
+                BuzzerOutput(4,300);
                 mSave=m;
                 nSave=n;
                 pageNumSave=pageNum;

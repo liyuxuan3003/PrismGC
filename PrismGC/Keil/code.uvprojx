@@ -659,6 +659,11 @@
               <FileType>5</FileType>
               <FilePath>.\src\PageEnd.h</FilePath>
             </File>
+            <File>
+              <FileName>Buzzer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Buzzer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

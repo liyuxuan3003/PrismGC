@@ -12,6 +12,7 @@
 #include "PageEnd.h"
 #include "Sleep.h"
 #include "Console.h"
+#include "HardwareConfig.h"
 
 static LevelMap map;
 static PortalPair portal[POR_NUM];
@@ -287,6 +288,8 @@ uint8_t PageMazeGame()
     {
         nowTime = TIMER -> TIME;
 
+        BuzzerConfig(SWI_6(P),SWI_7(P));
+
         uint8_t key=GetKey();
 
         if(key == KEY_E)
@@ -376,16 +379,16 @@ uint8_t PageMazeGame()
 
             switch(GetBlockType(moveProcess[mpCirculate]))
             {
-                case B1POR: BUZZER -> NOTE = 7; BUZZER -> TIME = 40; break;
-                case B2POR: BUZZER -> NOTE = 7; BUZZER -> TIME = 40; break;
-                case B3POR: BUZZER -> NOTE = 7; BUZZER -> TIME = 40; break;
-                case BLDIR: BUZZER -> NOTE = 5; BUZZER -> TIME = 80; break;
-                case BRDIR: BUZZER -> NOTE = 5; BUZZER -> TIME = 80; break;
-                case BUDIR: BUZZER -> NOTE = 5; BUZZER -> TIME = 80; break;
-                case BDDIR: BUZZER -> NOTE = 5; BUZZER -> TIME = 80; break;
-                case B_END: BUZZER -> NOTE = 4; BUZZER -> TIME = 500; break;
-                case B_TRP: BUZZER -> NOTE = 1; BUZZER -> TIME = 500; break;
-                case B_BUT: BUZZER -> NOTE = 6; BUZZER -> TIME = 800; break;
+                case B1POR: BuzzerOutput(7,40); break;
+                case B2POR: BuzzerOutput(7,40); break;
+                case B3POR: BuzzerOutput(7,40); break;
+                case BLDIR: BuzzerOutput(5,80); break;
+                case BRDIR: BuzzerOutput(5,80); break;
+                case BUDIR: BuzzerOutput(5,80); break;
+                case BDDIR: BuzzerOutput(5,80); break;
+                case B_END: BuzzerOutput(4,500); break;
+                case B_TRP: BuzzerOutput(1,500); break;
+                case B_BUT: BuzzerOutput(6,800); break;
                 default: break;
             }
 

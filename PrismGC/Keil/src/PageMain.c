@@ -79,10 +79,10 @@ uint8_t PageMain()
         //     case 0x0F: break;
         //     default: break;
         // }
-            
-            
-        if(SWI_7(P)==0)
-            BGMPageMain();
+        
+        BuzzerConfig(SWI_6(P),SWI_7(P));
+
+        BGMPageMain();
 
         x++;
         if(x>=4)

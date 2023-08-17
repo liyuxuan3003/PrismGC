@@ -17,7 +17,11 @@ module Buzzer
     output              AUD
 );
 
-reg [31:0] mem [1:0];
+`define FREQ 0
+`define TIME 1
+`define OUTPUT 2
+
+reg [31:0] mem [2:0];
 
 reg [15:0] msCounter;
 
@@ -25,28 +29,29 @@ always@(posedge clk or negedge rstn)
 begin
     if(~rstn)
     begin
-        mem[0] <= 0;
-        mem[1] <= 0;
+        mem[`FREQ] <= 0;
+        mem[`TIME] <= 0;
+        mem[`OUTPUT] <= 0;
         msCounter <= 0;
     end
     else
     begin
-        if(sizeDecode[0]) mem[addrIn[0]][7:0]   <= dataIn[7:0];
-        if(sizeDecode[1]) mem[addrIn[0]][15:8]  <= dataIn[15:8];
-        if(sizeDecode[2]) mem[addrIn[0]][23:16] <= dataIn[23:16];
-        if(sizeDecode[3]) mem[addrIn[0]][31:24] <= dataIn[31:24];
+        if(sizeDecode[0]) mem[addrIn[1:0]][7:0]   <= dataIn[7:0];
+        if(sizeDecode[1]) mem[addrIn[1:0]][15:8]  <= dataIn[15:8];
+        if(sizeDecode[2]) mem[addrIn[1:0]][23:16] <= dataIn[23:16];
+        if(sizeDecode[3]) mem[addrIn[1:0]][31:24] <= dataIn[31:24];
 
-        if(mem[1] != 0)
+        if(mem[`TIME] != 0)
         begin
             msCounter <= msCounter + 1;
             if(msCounter == 50000)
             begin
                 msCounter <= 0;
-                mem[1] <= mem[1] - 1;
+                mem[`TIME] <= mem[`TIME] - 1;
             end
         end
 
-        dataOut <= mem[addrOut[0]]; 
+        dataOut <= mem[addrOut[1:0]]; 
     end
 end
 
@@ -74,9 +79,9 @@ reg [31:0] counter;
 always @(posedge clk) if(counter>=clkNum) counter<=0; else counter <= counter+1;
 
 reg speaker;
-always @(posedge clk) if(counter>=clkNum && mem[1] != 0) speaker <= ~speaker;
+always @(posedge clk) if(counter>=clkNum && mem[`TIME] != 0) speaker <= ~speaker;
 
-assign BUZ = speaker;
-assign AUD = speaker;
+assign BUZ = (mem[`OUTPUT][0]) ? speaker : 1'bz;
+assign AUD = (mem[`OUTPUT][1]) ? speaker : 1'bz;
 
 endmodule

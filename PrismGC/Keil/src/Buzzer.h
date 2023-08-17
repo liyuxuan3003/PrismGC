@@ -5,14 +5,22 @@
 
 #include "Peripheral.h"
 
+#define BUZ 0
+#define AUD 1
+
 typedef struct
 {
     volatile uint32_t NOTE:3;
-    volatile uint32_t NC:29;
+    volatile uint32_t NOTE_NC:29;
     volatile uint32_t TIME;
+    volatile uint32_t OUTPUT:2;
+    volatile uint32_t OUTPUT_NC:30;
 } BuzzerType;
 
 #define BUZZER ((BuzzerType *)BUZZER_BASE)
+
+void BuzzerConfig(uint8_t outputBuz,uint8_t outputAudio);
+void BuzzerOutput(uint8_t note,uint32_t time);
 
 // #define T0 200
 // #define T1 180
