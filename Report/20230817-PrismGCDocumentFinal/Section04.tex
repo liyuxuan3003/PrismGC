@@ -1,0 +1,59 @@
+\section{智能化IP设计}\label{sec:智能化IP设计}
+
+系统的智能化设计主要体现在输入设备，WII Nunchuck手柄上。WII Nunchuck手柄是由任天堂公司推出的家用游戏主机配套外设。手柄包括2个按钮、2轴摇杆、3轴加速度传感器。手柄基于IIC协议工作，能方便的获取手柄上各个传感器的数据，具体包含：两个按钮（Z按钮和C按钮）是否按下、摇杆的横纵坐标、手柄的三轴加速度。
+
+WII手柄的通讯采用IIC协议，包含SDA和SCL两路信号。由于初赛期间IIC协议的硬件实现未获成功，复赛期间，IIC协议改用软件实现，WII手柄直接挂载于GPIO。目前，WII手柄已可以正常工作，通过手柄摇杆和体感方式控制游戏操作。
+
+在决赛期间，自制扩展板上通过板边连接器（金手指）制作了WII手柄的接口，这使得手柄可以直接连接在扩展板上，不再需要通过杜邦线连接于核心板的相应排针上。
+
+WII手柄的开发参照了一篇文档\footnote{\url{https://www.xarg.org/2016/12/using-a-wii-nunchuk-with-arduino/}}，其中较重要的两项操作是
+\begin{itemize}
+    \item 手柄初始化：START、0x40、0x00、STOP。
+    \item 手柄数据读取：START、0x00,、STOP、READ 6 byte。
+\end{itemize}
+
+\begin{Table}[WII手柄的数据排布]{cp{1cm}p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}}
+    <\mr{2}{Byte}&\mc{8}(c){Bit}\\
+    &7\qquad&6\qquad&5\qquad&4\qquad&3\qquad&2\qquad&1\qquad&0\qquad\\>
+    1&\mc{8}{\texttt{JX[7:0]}}\\ \hlinelig
+    2&\mc{8}{\texttt{JY[7:0]}}\\ \hlinelig
+    3&\mc{8}{\texttt{AX[9:2]}}\\ \hlinelig
+    4&\mc{8}{\texttt{AY[9:2]}}\\ \hlinelig
+    5&\mc{8}{\texttt{AZ[9:2]}}\\ \hlinelig
+    6&
+    \mc{2}(l|){\texttt{AX[1:0]}}&
+    \mc{2}(l|){\texttt{AY[1:0]}}&
+    \mc{2}(l|){\texttt{AZ[1:0]}}&
+    \mc{1}(l|){$\neg$\texttt{BC}}&$\neg$\texttt{BZ}\\
+\end{Table}
+
+值得注意的是，根据网站的内容，若通过START、0x40、0x00、STOP初始化手柄，则后期读取到的数据\texttt{x}是经过加密的，需要使用\texttt{(x\^{}0x17)+0x17}解密，文档中亦有获取不加密数据的初始化方法。但是，通过对项目实际购买的WII手柄测试发现，依照START、0x40、0x00、STOP初始化手柄后得到的数据，实际上并没有被加密。
+
+
+WII手柄传回的数据共$6$个字节，如\xref{tab:WII手柄的数据排布}所示。其中，\texttt{JX}、\texttt{JY}为摇杆$x,y$轴数据，\texttt{AX}、\texttt{AY}、\texttt{AZ}为$x,y,z$轴上的加速度传感器上的数据，\texttt{BC}、\texttt{BZ}则为按键C和Z的状态。
+
+WII手柄的相关代码如下。\texttt{SCL}和\texttt{SDA}是IIC所需的两路信号，在项目中通过GPIO方式接入。\xref{code:IIC时序的实现}依照IIC时序实现了比特读写。\xref{code:IIC基本指令}中，\texttt{I2CSetSlave()}完成了三个任务：发送IIC的START信号、发送从设备的地址\texttt{slave}、设置读写状态位为\texttt{rw}（取值为\texttt{I2C\_WR}或\texttt{I2C\_RD}）。\texttt{I2CWrite()}和\texttt{I2CRead()}进一步实现了字节的读写。\xref{code:WII手柄初始化和数据读取}则是依照前文叙述的方式，实现了手柄的初始化和数据读取功能，其中从设备地址根据阅读文档确定为0x52。\xref{code:WII手柄功能封装}则进一步将手柄读回的数据转换为按键操作，在按键Z未被按下时方向由摇杆控制，在按键Z按下时方向则由加速度传感器控制，即开启体感控制模式，另外，按键C的按下也被视为一个独立的按键操作。
+
+\lstinputlisting[
+    style       =   C,
+    caption     =   {IIC时序的实现},
+    label       =   {code:IIC时序的实现}
+]{code/Code23.c}
+
+\lstinputlisting[
+    style       =   C,
+    caption     =   {IIC基本指令},
+    label       =   {code:IIC基本指令}
+]{code/Code24.c}
+
+\lstinputlisting[
+    style       =   C,
+    caption     =   {WII手柄初始化和数据读取},
+    label       =   {code:WII手柄初始化和数据读取}
+]{code/Code25.c}
+
+\lstinputlisting[
+    style       =   C,
+    caption     =   {WII手柄功能封装},
+    label       =   {code:WII手柄功能封装}
+]{code/Code26.c}

@@ -1,0 +1,47 @@
+\documentclass{xStandalone}
+
+\begin{document}
+\begin{tikzpicture}
+\tikzset{outerframe/.style=ultra thin,gray}
+
+\tikzset{module/.style={
+rectangle,draw,black,thick,
+minimum width=4cm,
+minimum height=0.75cm,
+align=center}}
+
+\draw[outerframe] 
+(-7.5,-2.5) coordinate (A1) 
+rectangle 
+(+7.5,+2.5) coordinate (B2);
+
+\path
+(A1|-B2) coordinate (B1)
+(A1-|B2) coordinate (A2);
+
+\path (-4,+0.0)
+node[module,name=uAHBData] 
+{uAHBRAMData}
+(uAHBData.south)
+node[below,black] 
+{\small\ttfamily AHBLiteBlockRAM.v};
+
+\path (+4,+0.0)
+node[module,name=uData] 
+{uBlockRAM}
+(uData.south)
+node[below,black] 
+{\small\ttfamily BlockRAM.v};
+
+\draw[-latex] 
+($(uAHBData.north east)!0.33!(uAHBData.south east)$)
+--
+($(uData.north west)!0.33!(uData.south west)$);
+
+\draw[latex-] 
+($(uAHBData.north east)!0.66!(uAHBData.south east)$)
+--
+($(uData.north west)!0.66!(uData.south west)$);
+
+\end{tikzpicture}
+\end{document}

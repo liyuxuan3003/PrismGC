@@ -1,0 +1,121 @@
+\documentclass{xStandalone}
+
+\begin{document}
+\begin{tikzpicture}
+
+\tikzset{outerframe/.style=ultra thin,gray}
+
+\tikzset{fpga/.style={
+rectangle,draw,black,thick,
+minimum size=2.5cm,
+align=center}},
+
+\tikzset{peri/.style={
+rectangle,draw,black,thick,
+minimum width=2.5cm,
+minimum height=1.5cm,
+align=center}},
+
+\draw[outerframe] 
+(-7.5,-5) coordinate (A1) 
+rectangle 
+(+7.5,+5) coordinate (B2);
+
+\path
+(A1|-B2) coordinate (B1)
+(A1-|B2) coordinate (A2);
+
+\path
+($(A1)!0.5!(B2)$)
+node[fpga,name=FPGA] 
+{FPGA\\ \scriptsize\ttfamily EG4S20 BG256};
+
+\path (FPGA) ++(+5,0) coordinate (Output);
+\path (FPGA) ++(-5,0) coordinate (Input);
+
+\path
+($(Output)+(0,+3)$)
+node[peri,name=LCD] 
+{显示屏\\ \scriptsize 画面输出}; 
+
+\path
+($(Output)+(0,+1)$)
+node[peri,name=Buzzer] 
+{扬声器\\ \scriptsize 音频输出}; 
+
+\path
+($(Output)+(0,-1)$)
+node[peri,name=Digit] 
+{七段数码管\\ \scriptsize 数字显示}; 
+
+\path
+($(Output)+(0,-3)$)
+node[peri,name=LED] 
+{发光二极管\\ \scriptsize 调试}; 
+
+\path
+($(Input)+(0,+3)$)
+node[peri,name=WII] 
+{WII手柄\\ \scriptsize 体感控制}; 
+
+\path
+($(Input)+(0,+0)$)
+node[peri,name=KeyBoard] 
+{键盘\\ \scriptsize 按键输入}; 
+
+\path
+($(Input)+(0,-3)$)
+node[peri,name=Switch] 
+{开关\\ \scriptsize 调试}; 
+
+\begin{scope}[decoration={markings,
+    mark=at position 0.5 with {\arrow{latex}}}] 
+    %--
+    \foreach \x in{WII,KeyBoard,Switch}
+    {
+        \draw[postaction={decorate}] 
+        (\x.east) -- ++(1.5,0)
+        coordinate (\x 1);
+    }
+
+    \foreach \x in{LCD,Buzzer,Digit,LED}
+    {
+        \draw[postaction={decorate}] 
+        ($(\x.west)+(-1.5,0)$)
+        coordinate (\x 1)
+        --
+        (\x.west);
+    }
+
+    \draw[postaction={decorate}] 
+    ($(WII1)!0.5!(Switch1)$)
+    node[circ] {}
+    -- 
+    (FPGA.west);
+
+    \draw[postaction={decorate}] 
+    (FPGA.east)--
+    ($(LCD1)!0.5!(LED1)$)
+    node[circ] {};
+\end{scope}
+
+\draw (WII1)--(Switch1);
+\draw (LCD1)--(LED1);
+
+\path ($(WII.east)!0.5!(WII1)$) 
+node[above,black] {IIC};
+
+\path ($(LCD.west)!0.5!(LCD1)$) 
+node[above,black] {HDMI};
+
+\path ($(Buzzer.west)!0.5!(Buzzer1)$) 
+node[above,black] {3.5mm};
+
+\path (Switch.south) 
+node[below=0.25cm,black] {\textbf{输入外设}};
+
+\path (LED.south) 
+node[below=0.25cm,black] {\textbf{输出外设}};
+
+\end{tikzpicture}
+\end{document}

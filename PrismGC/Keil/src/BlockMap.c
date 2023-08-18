@@ -715,6 +715,7 @@ const LevelMap level32=
     {5,11},
     {{5,7},{1,9},{9,1}},
 };
+//LDLD DULD LUU
 
 const LevelMap level33=
 {
@@ -735,6 +736,7 @@ const LevelMap level33=
     {5,11},
     {{7,0},{1,1},{9,11}},
 };
+// LDUR DRU
 
 const LevelMap level34=
 {
@@ -755,6 +757,7 @@ const LevelMap level34=
     {5,0},
     {{1,3},{7,0},{4,0}}
 };
+// RDLU RDRU
 
 const LevelMap level35=
 {
@@ -775,6 +778,7 @@ const LevelMap level35=
     {4,0},
     {{7,0},{7,3},{9,2}}
 };
+// RDLU RURU
 
 const LevelMap level36=
 {
@@ -1026,6 +1030,7 @@ const LevelMap level47=
     {8,5},
     {{3,2},{5,4},{6,7}}
 };
+// LUDL DRD
 
 const LevelMap level48=
 {
@@ -1046,6 +1051,7 @@ const LevelMap level48=
     {8,2},
     {{2,7},{8,5},{7,4}}
 };
+// DRUR DLDL RUL
 
 // const LevelMap level33=
 // {

@@ -1,0 +1,40 @@
+\documentclass{xStandalone}
+
+\begin{document}
+\begin{tikzpicture}
+
+\tikzset{outerframe/.style=ultra thin,gray}
+
+\tikzset{block/.style={
+rectangle,draw,black,thick,
+minimum width=8cm,
+minimum height=1cm,
+align=center}}
+
+\draw[outerframe] 
+(-7.5,-5) coordinate (A1) 
+rectangle 
+(+7.5,+5) coordinate (B2);
+
+\path (0,3) node[block] (S) {\large 软件逻辑层};
+\path (0,1) node[block] (HAL) {\large 硬件抽象层};
+\path (0,-3) node[block] (H) {\large 硬件电路层};
+
+\draw[dashed,black] (-7.5,-1) 
+node[above right=0.1cm] {由C语言实现}
+node[below right=0.1cm] {由Verilog语言实现}
+--
+(+4,-1);
+
+\draw (S.east) ++(0.1,0) -- ++(1.2,0) node[right,black] {软件部分};
+
+\draw (HAL.east) ++(0.1,0) -- ++(0.6,0) coordinate(HAL');
+\draw (H.east) ++(0.1,0) -- ++(0.6,0) coordinate(H');
+
+\draw (H')--(HAL');
+
+\draw ($(H')!0.5!(HAL')$) -- ++(0.6,0) node[right,black] {硬件部分};
+
+
+\end{tikzpicture}
+\end{document}

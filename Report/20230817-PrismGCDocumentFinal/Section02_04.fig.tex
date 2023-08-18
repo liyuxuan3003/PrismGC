@@ -1,0 +1,39 @@
+\documentclass{xStandalone}
+
+\begin{document}
+\begin{tikzpicture}[
+    edge from parent fork right,
+    font=\ttfamily\tiny,
+    grow=right,
+    nodes={draw,rectangle},
+    level 1/.style={sibling distance=6em}, level 2/.style={sibling distance=1.5em},
+    level distance=2.5cm]
+
+\node {top}
+    child
+    {
+        node{uAHBLite}
+        child
+        {
+            child{node{uAHBRAMData}}
+            child{node{uAHBRAMCode}}
+            child{node{uAHBGPIO}}
+            child{node{uAHBUART}}
+            child{node{uAHBDigit}}
+            child{node{uAHBBuzzer}}
+            child{node{uAHBKeyBoard}}
+            child{node{uAHBTimer}}
+            child{node{uAHBGPU}}
+        }
+    }
+    child
+    {
+        node{CortexM0.v}
+        child
+        {
+            node{cortexm0ds\_logic.v}
+        }
+    };
+
+\end{tikzpicture}
+\end{document}

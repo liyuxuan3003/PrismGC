@@ -1,0 +1,210 @@
+\documentclass{xStandalone}
+
+\definecolor{ColorICE}{HTML}{CCCCFF}
+\definecolor{ColorBAR}{HTML}{FFFFFF}
+\definecolor{ColorEND}{HTML}{33EE88}
+\definecolor{ColorDIR}{HTML}{1155DD}
+\definecolor{ColorDIRARR}{HTML}{FFFFFF}
+\definecolor{ColorGRA}{HTML}{CCCCCC}
+\definecolor{ColorGRABUT}{HTML}{888888}
+\definecolor{ColorPOR}{HTML}{333333}
+\definecolor{ColorPORSY1}{HTML}{CC8888}
+\definecolor{ColorPORSY2}{HTML}{88CC88}
+\definecolor{ColorPORSY3}{HTML}{8888CC}
+\definecolor{ColorTRP}{HTML}{00CCFF}
+\definecolor{ColorDOR}{HTML}{884400}
+\definecolor{ColorDOB}{HTML}{CCCC00}
+
+\NewDocumentCommand{\Block}{mmm}
+{
+    \path(\fpeval{#2},\fpeval{12-(#1)-1})
+    coordinate (cent);
+
+    \fill[#3]
+    ($(cent)+(-0.4,-0.4)$)
+    rectangle
+    ($(cent)+(+0.4,+0.4)$);
+}
+
+\NewDocumentCommand{\BlockICE}{mm}
+{
+    \Block{#1}{#2}{ColorICE}
+}
+
+\NewDocumentCommand{\BlockBAR}{mm}
+{
+    \Block{#1}{#2}{ColorBAR}
+}
+
+\NewDocumentCommand{\BlockEND}{mm}
+{
+    \Block{#1}{#2}{ColorEND}
+}
+
+\NewDocumentCommand{\BlockDIR}{mmm}
+{
+    \Block{#1}{#2}{ColorDIR}
+    \ifthenelse{\equal{#3}{R}}
+    {
+        \path (cent) ++(0,-0.05) node[white] {\LARGE $\rightarrow$};
+    }{}
+
+    \ifthenelse{\equal{#3}{L}}
+    {
+        \path (cent) ++(0,-0.05) node[white] {\LARGE $\leftarrow$};
+    }{}
+
+    \ifthenelse{\equal{#3}{U}}
+    {
+        \path (cent) node[white] {\LARGE $\uparrow$};
+    }{}
+
+    \ifthenelse{\equal{#3}{D}}
+    {
+        \path (cent) node[white] {\LARGE $\downarrow$};
+    }{}
+}
+
+\NewDocumentCommand{\BlockGRA}{mm}
+{
+    \Block{#1}{#2}{ColorGRABUT}
+    \fill[ColorGRA] ($(cent)+(0.32,0.32)$) rectangle ($(cent)+(-0.32,-0.32)$);
+}
+
+\NewDocumentCommand{\BlockPOR}{mmm}
+{
+    \Block{#1}{#2}{ColorPOR}
+    \ifthenelse{\equal{#3}{1}}
+    {
+        \fill[ColorPORSY1] ($(cent)+(0.35,0.35)$) rectangle ($(cent)+(-0.35,-0.35)$);
+    }{}
+    \ifthenelse{\equal{#3}{2}}
+    {
+        \fill[ColorPORSY2] ($(cent)+(0.35,0.35)$) rectangle ($(cent)+(-0.35,-0.35)$);
+    }{}
+    \ifthenelse{\equal{#3}{3}}
+    {
+        \fill[ColorPORSY3] ($(cent)+(0.35,0.35)$) rectangle ($(cent)+(-0.35,-0.35)$);
+    }{}
+    \fill[ColorPOR] ($(cent)+(0.25,0.25)$) rectangle ($(cent)+(-0.25,-0.25)$);
+}
+
+\NewDocumentCommand{\BlockTRP}{mm}
+{
+    \Block{#1}{#2}{ColorICE}
+    \fill[ColorBAR] ($(cent)+(-8/48,+9/48)$) rectangle ($(cent)+(7/48,+7/48)$);
+    \fill[ColorBAR] ($(cent)+(-10/48,+7/48)$) rectangle ($(cent)+(7/48,+6/48)$);
+    \fill[ColorTRP] ($(cent)+(-6/48,+7/48)$) rectangle ($(cent)+(5/48,+6/48)$);
+    \fill[ColorBAR] ($(cent)+(-12/48,+6/48)$) rectangle ($(cent)+(9/48,+5/48)$);
+    \fill[ColorTRP] ($(cent)+(-8/48,+6/48)$) rectangle ($(cent)+(7/48,+5/48)$);
+    \fill[ColorBAR] ($(cent)+(-14/48,+5/48)$) rectangle ($(cent)+(10/48,+4/48)$);
+    \fill[ColorTRP] ($(cent)+(-12/48,+5/48)$) rectangle ($(cent)+(8/48,+4/48)$);
+    \fill[ColorBAR] ($(cent)+(-15/48,+4/48)$) rectangle ($(cent)+(11/48,+3/48)$);
+    \fill[ColorTRP] ($(cent)+(-13/48,+4/48)$) rectangle ($(cent)+(9/48,+3/48)$);
+    \fill[ColorBAR] ($(cent)+(-15/48,+3/48)$) rectangle ($(cent)+(11/48,+2/48)$);
+    \fill[ColorTRP] ($(cent)+(-13/48,+3/48)$) rectangle ($(cent)+(9/48,+2/48)$);
+    \fill[ColorBAR] ($(cent)+(-17/48,+2/48)$) rectangle ($(cent)+(12/48,+1/48)$);
+    \fill[ColorTRP] ($(cent)+(-15/48,+2/48)$) rectangle ($(cent)+(10/48,+1/48)$);
+    \fill[ColorBAR] ($(cent)+(-17/48,+1/48)$) rectangle ($(cent)+(14/48,0/48)$);
+    \fill[ColorTRP] ($(cent)+(-15/48,+1/48)$) rectangle ($(cent)+(10/48,0/48)$);
+    \fill[ColorBAR] ($(cent)+(-18/48,0/48)$) rectangle ($(cent)+(16/48,-1/48)$);
+    \fill[ColorTRP] ($(cent)+(-16/48,0/48)$) rectangle ($(cent)+(12/48,-1/48)$);
+    \fill[ColorBAR] ($(cent)+(0/48,-1/48)$) rectangle ($(cent)+(17/48,-2/48)$);
+    \fill[ColorTRP] ($(cent)+(-15/48,-1/48)$) rectangle ($(cent)+(15/48,-2/48)$);
+    \fill[ColorBAR] ($(cent)+(0/48,-2/48)$) rectangle ($(cent)+(17/48,-3/48)$);
+    \fill[ColorTRP] ($(cent)+(-14/48,-2/48)$) rectangle ($(cent)+(15/48,-3/48)$);
+    \fill[ColorTRP] ($(cent)+(-13/48,-3/48)$) rectangle ($(cent)+(16/48,-4/48)$);
+    \fill[ColorTRP] ($(cent)+(-12/48,-4/48)$) rectangle ($(cent)+(16/48,-5/48)$);
+    \fill[ColorTRP] ($(cent)+(-11/48,-5/48)$) rectangle ($(cent)+(14/48,-6/48)$);
+    \fill[ColorTRP] ($(cent)+(-10/48,-6/48)$) rectangle ($(cent)+(14/48,-7/48)$);
+    \fill[ColorTRP] ($(cent)+(-9/48,-7/48)$) rectangle ($(cent)+(12/48,-8/48)$);
+    \fill[ColorTRP] ($(cent)+(-9/48,-8/48)$) rectangle ($(cent)+(12/48,-9/48)$);
+    \fill[ColorTRP] ($(cent)+(-8/48,-9/48)$) rectangle ($(cent)+(9/48,-10/48)$);
+    \fill[ColorTRP] ($(cent)+(-6/48,-10/48)$) rectangle ($(cent)+(7/48,-11/48)$);
+}
+
+\NewDocumentCommand{\BlockMCG}{mm}
+{
+    \Block{#1}{#2}{ColorICE}
+    \fill[ColorDOR] ($(cent)+(-0.4,-0.4)$) rectangle ($(cent)+(-0.316,0.4)$);
+    \fill[ColorDOR] ($(cent)+(+0.4,-0.4)$) rectangle ($(cent)+(+0.316,0.4)$);
+
+    \fill[ColorDOB] ($(cent)+(-0.3,-0.3)$) rectangle ($(cent)+(-0.2,0.3)$);
+    \fill[ColorDOB] ($(cent)+(-0.14,-0.3)$) rectangle ($(cent)+(-0.04,0.3)$);
+    \fill[ColorDOB] ($(cent)+(+0.14,-0.3)$) rectangle ($(cent)+(+0.04,0.3)$);
+    \fill[ColorDOB] ($(cent)+(+0.3,-0.3)$) rectangle ($(cent)+(+0.2,0.3)$);
+
+    \fill[ColorDOR] ($(cent)+(-0.4,-0.12)$) rectangle ($(cent)+(+0.4,-0.23)$);
+    \fill[ColorDOR] ($(cent)+(-0.4,+0.12)$) rectangle ($(cent)+(+0.4,+0.23)$);
+}
+
+\NewDocumentCommand{\BlockMCGOpen}{mm}
+{
+    \Block{#1}{#2}{ColorICE}
+    \fill[ColorDOR] ($(cent)+(-0.4,-0.4)$) rectangle ($(cent)+(-0.316,0.4)$);
+    \fill[ColorDOR] ($(cent)+(+0.4,-0.4)$) rectangle ($(cent)+(+0.316,0.4)$);
+}
+
+\NewDocumentCommand{\BlockBUT}{mm}
+{
+    \Block{#1}{#2}{ColorPOR}
+
+    \fill[red!80!black] ($(cent)$) circle (0.3333);
+    \fill[red] ($(cent)$) circle (0.25);
+}
+
+\NewDocumentCommand{\BlockBUTOpen}{mm}
+{
+    \Block{#1}{#2}{ColorPOR}
+
+    \fill[green!80!black] ($(cent)$) circle (0.3333);
+    \fill[green] ($(cent)$) circle (0.25);
+}
+
+\NewDocumentCommand{\Apple}{mm}
+{
+    \draw[black,fill=red!50!white,thick] (\fpeval{#2},\fpeval{12-(#1)-1}) circle(0.25) ++(0,0.02) node[white]{A};
+}
+
+\NewDocumentCommand{\MainCht}{mm}
+{
+    \draw[black,fill=blue!50!white,thick] (\fpeval{#2},\fpeval{12-(#1)-1}) circle(0.25) ++(0,0.01) node[white]{S};
+}
+
+\begin{document}
+\begin{tikzpicture}
+
+\draw[thin,gray,fill=white] (-0.5,-0.5) rectangle (11.5,11.5);
+
+\BlockICE{0}{0}
+\BlockBAR{0}{1}
+\BlockEND{0}{2}
+\BlockDIR{0}{3}{L}
+\BlockDIR{0}{4}{R}
+\BlockDIR{0}{5}{U}
+\BlockDIR{0}{6}{D}
+\BlockGRA{0}{7}
+\BlockPOR{0}{8}{1}
+\BlockPOR{0}{9}{2}
+\BlockPOR{0}{10}{3}
+\BlockTRP{1}{0}
+\BlockMCG{2}{0}
+\BlockMCGOpen{2}{1}
+
+\BlockBUT{3}{0}
+\BlockBUTOpen{3}{1}
+
+\Apple{0}{0}
+\MainCht{0}{2}
+
+
+% \foreach \x in {0,1,...,11}
+% {
+%     \foreach \y in {0,1,...,11}
+%     {
+%         \BlockICE{\x}{\y}
+%     }
+% }
+
+\end{tikzpicture}
+\end{document}

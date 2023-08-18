@@ -1,0 +1,34 @@
+[
+    [
+        [4,8, ["M_BLK","M_BLK","M_BLK","M_BLK","M_BLK","M_BLK","M_BLK","M_BLK"]],
+        [2,12,["M_BLK","M_BLK","M_LBU","M_LBU","M_LBU","M_LBU","M_LBU","M_LBU","M_LBU","M_LBU","M_BLK","M_BLK"]],
+        [1,14,["M_BLK","M_LBU","M_LBU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_LBU","M_LBU","M_BLK"]],
+        [1,14,["M_BLK","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLK"]],
+        [1,14,["M_BLK","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLK"]],
+        [0,16,["M_BLK","M_BLU","M_BLU","M_BLU","M_WHI","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_WHI","M_BLU","M_BLU","M_BLU","M_BLK"]],
+        [0,16,["M_BLK","M_LBU","M_BLU","M_BLU","M_BLK","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLK","M_BLU","M_BLU","M_LBU","M_BLK"]],
+        [0,16,["M_BLK","M_BLU","M_BLU","M_BLU","M_BLK","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLK","M_BLU","M_BLU","M_BLU","M_BLK"]],
+        [0,16,["M_BLK","M_BLU","M_BLU","M_BLU","M_DBU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_DBU","M_BLU","M_BLU","M_BLU","M_BLK"]],
+        [0,16,["M_BLK","M_DBU","M_DBU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_BLU","M_DBU","M_BLK"]],
+        [1,14,["M_BLK","M_BLK","M_DBU","M_DBU","M_DBU","M_DBU","M_DBU","M_DBU","M_DBU","M_DBU","M_DBU","M_DBU","M_BLK","M_BLK"]],
+        [3,10,["M_BLK","M_BLK","M_BLK","M_BLK","M_BLK","M_BLK","M_BLK","M_BLK","M_BLK","M_BLK"]]
+    ],
+    [
+        [8,1, ["A_BRO"]],
+        [8,1, ["A_BRO"]],
+        [8,1, ["A_BRO"]],
+        [3,10,["A_BLK","A_BLK","A_BLK","A_BLK","A_BLK","A_BRO","A_BLK","A_BLK","A_BLK","A_BLK"]],
+        [2,12,["A_BLK","A_RED","A_RED","A_RED","A_RED","A_RED","A_BRO","A_RED","A_RED","A_RED","A_RED","A_BLK"]],
+        [1,14,["A_BLK","A_RED","A_RED","A_RED","A_RED","A_BRO","A_RED","A_BRO","A_RED","A_BRO","A_RED","A_RED","A_RED","A_BLK"]],
+        [1,15,["A_BLK","A_RED","A_RED","A_RED","A_RED","A_RED","A_BRO","A_BRO","A_BRO","A_RED","A_RED","A_RED","A_RED","A_RED","A_BLK"]],
+        [0,16,["A_BLK","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_WHI","A_RED","A_BLK"]],
+        [0,16,["A_BLK","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_WHI","A_RED","A_BLK"]],
+        [0,16,["A_BLK","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_BLK"]],
+        [0,16,["A_BLK","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_WHI","A_RED","A_BLK"]],
+        [0,16,["A_BLK","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_BLK"]],
+        [0,16,["A_BLK","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_BLK"]],
+        [1,14,["A_BLK","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_RED","A_BLK"]],
+        [2,12,["A_BLK","A_DKR","A_DKR","A_DKR","A_DKR","A_DKR","A_RED","A_RED","A_DKR","A_DKR","A_DKR","A_BLK"]],
+        [4,8, ["A_BLK","A_BLK","A_BLK","A_BLK","A_BLK","A_BLK","A_BLK","A_BLK"]]
+    ]
+]
