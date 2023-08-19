@@ -16,6 +16,7 @@
 #include "Sleep.h"
 #include "Console.h"
 #include "GetKey.h"
+#include "Digit.h"
 
 #include <string.h>
 
@@ -57,6 +58,17 @@ uint8_t PageMain()
     uint32_t nowTime;
     uint16_t x=0;
     BUZZER -> NOTE = 0;
+    for(uint8_t i=0;i<4;i++)
+    {
+        DIG[i].ENA = 1;
+        DIG[i].DOT = 0;
+    }
+    
+    DIG[3].COD=4;
+    DIG[2].COD=5;
+    DIG[1].COD=2;
+    DIG[0].COD=0;
+
     while(1)
     {
         nowTime = TIMER -> TIME;
@@ -81,7 +93,7 @@ uint8_t PageMain()
         //     default: break;
         // }
         
-        BuzzerConfig(SWI_6(P),SWI_7(P));
+        BuzzerConfig();
 
         BGMPageMain();
 

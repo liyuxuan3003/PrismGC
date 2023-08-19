@@ -6,6 +6,7 @@
 #include "BitOperate.h"
 
 #include "Console.h"
+#include "HardwareConfig.h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -74,8 +75,9 @@ static void RamWrite(uint32_t x_pos,uint32_t y_pos,uint32_t pixel,uint32_t len)
 void PingPong()
 {
     // while(GPU -> BUSY) ;
-    printf("HDIM busy=%d\n\r",GPU->HDMI_BUSY);
+    // printf("HDIM busy=%d\n\r",GPU->HDMI_BUSY);
     while(GPU->HDMI_BUSY);
+    LED_0(V);
     GPU -> PING_PONG = !GPU -> PING_PONG;
 }
 

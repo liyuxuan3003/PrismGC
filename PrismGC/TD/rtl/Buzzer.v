@@ -55,39 +55,40 @@ begin
     end
 end
 
-`define Do 262
-`define Re 294
-`define Mi 330
-`define Fa 349
-`define So 392
-`define La 440
-`define Si 494
-`define DoH 554
-`define ReH 622
-`define MiH 698
-`define FaH 783
-`define SoH 879
-`define LaH 987
-`define SiH 1107
+`define nC3 262
+`define nD3 294
+`define nE3 330
+`define nF3 349
+`define nG3 392
+`define nA3 440
+`define nB3 494
+
+`define nC4 523
+`define nD4 587
+`define nE4 659
+`define nF4 698
+`define nG4 784
+`define nA4 880
+`define nB4 988
 
 `define NUM(X) (`CLK_FRE/X)/2
 
 wire [31:0] clkNum =
     (mem[`FREQ][3:0] == 4'd0)   ? 0 :
-    (mem[`FREQ][3:0] == 4'd1)   ? `NUM(`Do) :
-    (mem[`FREQ][3:0] == 4'd2)   ? `NUM(`Re) :
-    (mem[`FREQ][3:0] == 4'd3)   ? `NUM(`Mi) :
-    (mem[`FREQ][3:0] == 4'd4)   ? `NUM(`Fa) :
-    (mem[`FREQ][3:0] == 4'd5)   ? `NUM(`So) :
-    (mem[`FREQ][3:0] == 4'd6)   ? `NUM(`La) :
-    (mem[`FREQ][3:0] == 4'd7)   ? `NUM(`Si) : 
-    (mem[`FREQ][3:0] == 4'd8)   ? `NUM(`DoH) :
-    (mem[`FREQ][3:0] == 4'd9)   ? `NUM(`ReH) :
-    (mem[`FREQ][3:0] == 4'd10)  ? `NUM(`MiH) :
-    (mem[`FREQ][3:0] == 4'd11)  ? `NUM(`FaH) :
-    (mem[`FREQ][3:0] == 4'd12)  ? `NUM(`SoH) :
-    (mem[`FREQ][3:0] == 4'd13)  ? `NUM(`LaH) :
-    (mem[`FREQ][3:0] == 4'd14)  ? `NUM(`SiH) : 0;
+    (mem[`FREQ][3:0] == 4'd1)   ? `NUM(`nC3) :
+    (mem[`FREQ][3:0] == 4'd2)   ? `NUM(`nD3) :
+    (mem[`FREQ][3:0] == 4'd3)   ? `NUM(`nE3) :
+    (mem[`FREQ][3:0] == 4'd4)   ? `NUM(`nF3) :
+    (mem[`FREQ][3:0] == 4'd5)   ? `NUM(`nG3) :
+    (mem[`FREQ][3:0] == 4'd6)   ? `NUM(`nA3) :
+    (mem[`FREQ][3:0] == 4'd7)   ? `NUM(`nB3) : 
+    (mem[`FREQ][3:0] == 4'd8)   ? `NUM(`nC4) :
+    (mem[`FREQ][3:0] == 4'd9)   ? `NUM(`nD4) :
+    (mem[`FREQ][3:0] == 4'd10)  ? `NUM(`nE4) :
+    (mem[`FREQ][3:0] == 4'd11)  ? `NUM(`nF4) :
+    (mem[`FREQ][3:0] == 4'd12)  ? `NUM(`nG4) :
+    (mem[`FREQ][3:0] == 4'd13)  ? `NUM(`nA4) :
+    (mem[`FREQ][3:0] == 4'd14)  ? `NUM(`nB4) : 0;
 
 reg [31:0] counter;
 always @(posedge clk) if(counter>=clkNum) counter<=0; else counter <= counter+1;

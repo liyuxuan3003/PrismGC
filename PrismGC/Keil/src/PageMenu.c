@@ -14,6 +14,7 @@
 #include "Block.h"
 #include "PageMazeGame.h"
 #include "PageEnd.h"
+#include "Digit.h"
 
 #include <string.h>
 
@@ -85,11 +86,27 @@ uint8_t PageMenu()
     int32_t m=mSave;
     int32_t n=nSave;
     uint8_t pageNum=pageNumSave;
+
+    for(uint8_t i=0;i<4;i++)
+    {
+        DIG[i].ENA = 1;
+        DIG[i].DOT = 0;
+    }
+
+    DIG[3].ENA=0;
+    DIG[2].ENA=0;
+    DIG[2].DOT=1;
+
     while(1)
     {
         nowTime = TIMER -> TIME;
 
-        BuzzerConfig(SWI_6(P),SWI_7(P));
+        BuzzerConfig();
+
+        DIG[3].COD=(LevelID(m,n,pageNum)/10)%10;
+        DIG[1].COD=(LevelID(m,n,pageNum)/10)%10;
+        DIG[2].COD=(LevelID(m,n,pageNum)/1)%10;
+        DIG[0].COD=(LevelID(m,n,pageNum)/1)%10;
 
         switch(GetKey(1))
         {

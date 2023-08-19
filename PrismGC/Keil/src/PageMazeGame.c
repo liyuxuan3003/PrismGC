@@ -13,6 +13,7 @@
 #include "Sleep.h"
 #include "Console.h"
 #include "HardwareConfig.h"
+#include "Digit.h"
 
 static LevelMap map;
 static PortalPair portal[POR_NUM];
@@ -272,6 +273,12 @@ uint8_t PageMazeGame()
     MapCoord hitCoord=_MapCoord(-1,-1);
     uint8_t waitHit=0;
 
+    for(uint8_t i=0;i<4;i++)
+    {
+        DIG[i].ENA = 1;
+        DIG[i].DOT = 0;
+    }
+
     for(int8_t i=0;i<MAP_W;i++)
     {
         for(int8_t j=0;j<MAP_H;j++)
@@ -288,7 +295,12 @@ uint8_t PageMazeGame()
     {
         nowTime = TIMER -> TIME;
 
-        BuzzerConfig(SWI_6(P),SWI_7(P));
+        DIG[0].COD=gameStep%10;
+        DIG[1].COD=(gameStep/10)%10;
+        DIG[2].COD=(gameStep/100)%10;
+        DIG[3].COD=0;
+
+        BuzzerConfig();
 
         uint8_t key=GetKey(0);
 

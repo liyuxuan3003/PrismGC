@@ -42,14 +42,9 @@ int main()
     PORTA -> O_SWI_ENA = 0x00;
     PORTA -> O_LED_ENA = 0xFF;
 
-    //PORTA INIT
-    PORTA -> O_LED_DAT = 0x55;
-
     DIG_CRTL = 0xF;
-    for(unsigned int i=0;i<4;i++)
-    {
-        DIG[i].ENA = 1;
-    }
+    for(uint8_t i=0;i<4;i++)
+        DIG[i].ENA = 0;
 
     //Nunchuck init
     NunchuckInit();

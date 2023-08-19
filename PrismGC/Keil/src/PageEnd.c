@@ -45,7 +45,7 @@ uint8_t PageEnd()
         // LCDRectangle(BISQUE,90,50,934,340);
         // LCDPrintf(BLACK,BISQUE,110,70,2,"Level %02d",levelID);
         
-        BuzzerConfig(SWI_6(P),SWI_7(P));
+        BuzzerConfig();
 
         ConfigBgmNote(isWin,&time);
 

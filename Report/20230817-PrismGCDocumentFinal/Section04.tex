@@ -9,7 +9,7 @@ WII手柄的通讯采用IIC协议，包含SDA和SCL两路信号。由于初赛�
 WII手柄的开发参照了一篇文档\footnote{\url{https://www.xarg.org/2016/12/using-a-wii-nunchuk-with-arduino/}}，其中较重要的两项操作是
 \begin{itemize}
     \item 手柄初始化：START、0x40、0x00、STOP。
-    \item 手柄数据读取：START、0x00,、STOP、READ 6 byte。
+    \item 手柄数据读取：START、0x00、STOP、READ 6 byte。
 \end{itemize}
 
 \begin{Table}[WII手柄的数据排布]{cp{1cm}p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}}
